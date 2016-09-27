@@ -167,6 +167,19 @@ loggersim -port:3456 -samples:100
 prints the message "Opened tcp://localhost:3456"
 prints 100 numbers to the console
 ---------------------------------------------------------
+ 
+Read the quickstart for teh library 
+https://commandline.codeplex.com/wikipage?title=Quickstart
+
+Read the documentation for the library 
+https://commandline.codeplex.com/documentation
+
+create a solution with the console application loggersim and add the references it needs to use 
+the Command Line Parser Library. Preferebly download and build the source code of the library as 
+part of the same solution. The instruction on how to do it are on the Quickstart page. 
+
+https://commandline.codeplex.com/wikipage?title=Quickstart
+
 
 This should get you started.
 
