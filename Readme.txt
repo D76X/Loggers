@@ -90,23 +90,100 @@ From the point of view of any consumer the logger is just a TCP/IP endpoint to w
 
 ========================================================================================= 
 
-Resources you must look at to get started and why
+Resources you must look at how to get started and why
 
 
+================================================================================================
 1-Command Line Parser
 
 https://commandline.codeplex.com/wikipage?title=Quickstart&referringTitle=Documentation 
 
-As we are going to write a console app for the loggersim.exe we need a nice way of 
-configuring it when it starts. Foe example, we might want to tell it to run for 10 seconds, create 100 samples of values between 1 and 1000 and repeat 3 times and so on.
-This can be done in... 
+As we are going to write a console app for the loggersim.exe we need a nice way of configuring it 
+when it starts. For example, we might want to tell it to run for 10 seconds, create 100 samples of values between 1 and 1000 and repeat 3 times and so on.
 
+This can be done in several ways, however it might require a large amount of effort to design 
+all the code that parses the commands. This library does a good job already, thus it si worthwile
+to make use of it.
+
+For example we would like to achieve the following result.
+
+-The user types in the console (console propmt) something like the following.
+
+-----------------------------------------------------------------------------------------------
+>>loggersim -port:3456 -samples:100  -from:0 -to:255 -timeinterval:25 -repeat:3 -signal:random
+-----------------------------------------------------------------------------------------------
+
+And loggersim.exe does the following
+
+-Sets up a communication socket on tcp://localhost:3456
+-Generates RANDOM samples of value between 0 and 255 as binary values
+-The values are sent to teh socket tcp://localhost:345
+-Each sample follows the previous one at 25 ms intervals
+-A total of 3 * 100 samples will be generated
+-loggersim.exe stops generating samples and wait for the netx command at the prompt
+
+-----------------------------------------------------------------------------------------------
+>>loggersim -help
+-----------------------------------------------------------------------------------------------
+
+provides a printout with the help for all the available command
+
+-----------------------------------------------------------------------------------------------
+>>loggersim -help {commandname}
+-----------------------------------------------------------------------------------------------
+
+provides a printout with the help for the command {commandname}
+
+-----------------------------------------------------------------------------------------------
+>>loggersim -version
+-----------------------------------------------------------------------------------------------
+
+provides a printout with the version of the loggersim.exe application
+
+  
+Start with playing with this library and see wheter these objectives can be achieved (they should).
+At first focus on getting the command parser to work. There is no need to actually use ZEROMQ
+to generate the sample for the TCP socket, at least initially. All that is required to start with 
+is that we can use the this library to feed loggersim.exe with some instructions and get it to do
+something useful as a result of our istructions.
+
+For example
+
+------------------
+loggersim -help
+
+prints something to the prompt
+------------------
+
+---------------------------------------------------------
+loggersim -help port
+
+prints the text help for the command "port" to the prompt
+----------------------------------------------------------
+
+---------------------------------------------------------
+loggersim -port:3456 -samples:100 
+
+prints the message "Opened tcp://localhost:3456"
+prints 100 numbers to the console
+---------------------------------------------------------
+
+This should get you started.
+
+================================================================================================
 2-ZeroMQ
 
 http://zguide.zeromq.org/page:all#Getting-the-Message-Out
 
-3-Messaging techniques
-....
+================================================================================================-
+3-Messaging techniques - pluralsight course
+
+https://app.pluralsight.com/library/courses/message-queue-fundamentals-dotnet/table-of-contents
+
+In particular the examples on how to use ZEROMQ.
+================================================================================================
+
+
 
 
 
