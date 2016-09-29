@@ -9,6 +9,7 @@ namespace loggersim
         string mstrMessage;
         string mstrResponse;
         byte[] bytesSent;
+
         public void processMsg(TcpClient client, NetworkStream stream, byte[] bytesReceived)
         {
             // Handle the message received and 

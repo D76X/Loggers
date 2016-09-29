@@ -12,8 +12,14 @@ namespace loggersim
     {
         static void Main(string[] args)
         {
+            Logger logger = new Logger();
+            logger.createListener();
 
- 
+            Client client = new Client();
+            
+            
+             
+  
 
 
             //OPEN TCP/IP END POINT 

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net.Sockets;
-using System.Net;
 using System.Threading;
+using System.Text;
+ using System.Net;
+ using System.Net.Sockets;
 
 namespace loggersim
 {
@@ -18,8 +17,7 @@ namespace loggersim
         }
 
         public void createListener()
-        {
-            
+        {            
             TcpListener tcpListener = null;
             IPAddress ipAddress = Dns.GetHostEntry("localhost").AddressList[0];
             try
@@ -36,15 +34,19 @@ namespace loggersim
             while (true)
             {
                 Thread.Sleep(10);
+                //create a TCP socket
                 TcpClient tcpClient = tcpListener.AcceptTcpClient();
 
                 //Read data from Client
                 byte[] bytes = new byte[256];
                 NetworkStream stream = tcpClient.GetStream();
+
                 stream.Read(bytes, 0, bytes.Length);
                 SocketHelper helper = new SocketHelper();
                 helper.processMsg(tcpClient, stream, bytes);
 
+                stream.Close();
+                tcpListener.Stop();
             }
 
          }
