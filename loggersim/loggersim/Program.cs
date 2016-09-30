@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net;
- 
+﻿
 
 namespace loggersim
 {
@@ -16,10 +10,10 @@ namespace loggersim
             logger.createListener();
 
             Client client = new Client();
-            
-            
-             
-  
+            client.Connect();
+
+
+
 
 
             //OPEN TCP/IP END POINT 
@@ -37,6 +31,6 @@ namespace loggersim
             //SAVE THE DATA TO A FILE
 
         }
-        }
+    }
     
 }

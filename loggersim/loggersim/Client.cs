@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Net;
 
@@ -14,64 +11,35 @@ namespace loggersim
         {
         }
 
-        static void Connect(string loggerIP, string message)
+       public void Connect()
         {
-            string output = "";
-            try
-            {
-                Int32 port = 13;
-                TcpClient client = new TcpClient(loggerIP, port);
+            string message = "this is the message from the client..";
+            IPHostEntry iphostInfo = Dns.GetHostEntry(Dns.GetHostName());
+            IPAddress ipAddress = iphostInfo.AddressList[0];
+            IPEndPoint localEndpoint = new IPEndPoint(ipAddress, 13000);
 
-                // Translate the passed message into ASCII and store it as a byte array.
-                Byte[] data = new Byte[256];
-                data = System.Text.Encoding.ASCII.GetBytes(message);
+            TcpClient client = new TcpClient(localEndpoint);
 
-                //client stream for reading and writing.
-                NetworkStream stream = client.GetStream();
+            // Get a client stream for reading and writing.               
+            NetworkStream stream = client.GetStream();
 
-                //send message to the connected TCPServer
-                stream.Write(data, 0, data.Length);
-                output = "Sent: " + message;
-                Console.WriteLine(output);
+            // Translate the passed message into ASCII and store it as a byte array.
+            Byte[] data = new Byte[256];
+            data = System.Text.Encoding.ASCII.GetBytes(message);
 
-                //Buffer to storeresponse
-                data =new Byte[256];
+            // Send the message to the connected TcpServer. 
+            Console.WriteLine("Sending the messagge :" + message);
+            stream.Write(data, 0, data.Length);
 
-                String responseData = String.Empty;
+            // Buffer to store the response bytes.
+            byte[] bytesToRead = new Byte[client.ReceiveBufferSize];
 
-                // Read the first batch of the TcpServer response bytes.
-                Int32 bytes = stream.Read(data, 0, data.Length);
-                responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
-                output = "Received: " + responseData;
-                Console.WriteLine( output);
-
-                // Close everything.
-                stream.Close();
-                client.Close();
-            }
-
-            catch (ArgumentNullException e)
-            {
-                output = "ArgumentNullException: " + e;
-                Console.WriteLine(output);
-            }
-            catch (SocketException e)
-            {
-                output = "SocketException: " + e.ToString();
-                Console.WriteLine(output);
-            }
-            
+            // Read the first batch of the TcpServer response bytes.
+            Int32 bytesRead = stream.Read(bytesToRead, 0, client.ReceiveBufferSize);
+            Console.WriteLine("Received : " + Encoding.ASCII.GetString(bytesToRead, 0, bytesRead));
+            Console.ReadLine();
+            client.Close();
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            // In this code example, use a hard-coded
-            // IP address and message.
-            string serverIP = "localhost";
-            string message = "Hello";
-            Connect(serverIP, message);
-        }
-
     }
     }
 

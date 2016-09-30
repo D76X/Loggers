@@ -3,53 +3,55 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Text;
- using System.Net;
- using System.Net.Sockets;
+using System.Net;
+using System.Net.Sockets;
+using System.IO;
 
 namespace loggersim
 {
     public class Logger
     {
-        static string output = "";
-        int port = 456;
+        Int32 port = 13000;
+        private TcpClient tcpClient;
+
         public Logger()
         {
         }
 
         public void createListener()
-        {            
+        {
             TcpListener tcpListener = null;
             IPAddress ipAddress = Dns.GetHostEntry("localhost").AddressList[0];
-            try
-            {
+           
                 tcpListener = new TcpListener(ipAddress, port);
+                tcpClient = default(TcpClient);
+
                 tcpListener.Start();
-                output = "Waiting for a connection...";
-            }
-            catch (Exception e)
-            {
-                output = "Error:  " + e.ToString();
-                Console.WriteLine(output);
-            }
+
+                Console.WriteLine("Waiting for a connection ...");
+
             while (true)
             {
                 Thread.Sleep(10);
-                //create a TCP socket
+                // Create a TCP socket.
                 TcpClient tcpClient = tcpListener.AcceptTcpClient();
-
-                //Read data from Client
+                // Read the data stream from the client.
                 byte[] bytes = new byte[256];
                 NetworkStream stream = tcpClient.GetStream();
+                int bytesRead = stream.Read(bytes, 0, bytes.Length);
 
-                stream.Read(bytes, 0, bytes.Length);
-                SocketHelper helper = new SocketHelper();
-                helper.processMsg(tcpClient, stream, bytes);
+                string dataReceived = Encoding.ASCII.GetString(bytes, 0, bytesRead);
+                Console.WriteLine("Received : " + bytesRead);
 
-                stream.Close();
+                //Write back text to client
+                Console.WriteLine("Sending back : " + dataReceived);
+                stream.Write(bytes, 0, bytesRead);
+                tcpClient.Close();
                 tcpListener.Stop();
-            }
+                Console.ReadLine();
 
-         }
+            }
+        }
 
     }
 }
