@@ -1,7 +1,9 @@
-﻿
+﻿using CommandLine;
+using CommandLine.Text;
 using System;
 using System.Net;
 using System.Net.Sockets;
+ 
 
 namespace SimpleTcpListener
 {
@@ -9,22 +11,38 @@ namespace SimpleTcpListener
     {
         static public void usage()
         {
-            Console.WriteLine("Usage: Executable_file_name [-l address] [-p port] [-x size]");
+            Console.WriteLine("Usage: loggersim.exe [-h help] [-p port] [-s samples]");
             Console.WriteLine("Available options:");
-            Console.WriteLine("     -l address      Local address for TCP server to listen on");
-            Console.WriteLine("     -p port         Local port for TCP server to listen on");
-            Console.WriteLine("     -x size         Size of send and receive buffers");
-            Console.WriteLine();
+            Console.WriteLine("     -h help      Help message");
+            Console.WriteLine("     -p port      Local port for TCP server to listen on");
+            Console.WriteLine("     -s samples   How many samples");
+           
+        }
+                        
+            private static void OnFail()
+        {
+            Console.WriteLine("Sorry something went wrong...");
+            Console.ReadLine();
+            Environment.Exit(-1);
         }
 
-        /// <param name="args"></param>
+       // /// <param name="args"></param>
         static void Main(string[] args)
         {
+            Options options = new Options();
+            //Console.WriteLine("Please input your port number.");
+
+            //options.InputPort= Convert.ToInt32(Console.ReadLine());
+
+
+          CommandLine.Parser.Default.ParseArgumentsStrict(args, options, OnFail);
+        
+            
+
             string myHost = System.Net.Dns.GetHostName();
             IPAddress myIP = Dns.GetHostEntry(myHost).AddressList[0];
-            ushort listenPort = 13000;
-            int bufferSize = 4096;
-
+            //ushort listenPort = 13000; sub with option.InputPort
+            int bufferSize = 500;
 
             usage();
 
@@ -41,7 +59,7 @@ namespace SimpleTcpListener
                                 myIP = IPAddress.Parse(args[++i]);
                                 break;
                             case 'p':       // Port number for the destination
-                                listenPort = System.Convert.ToUInt16(args[++i]);
+                                options.InputPort = System.Convert.ToUInt16(args[++i]);
                                 break;
                             case 'x':       // Size of the send and receive buffers
                                 bufferSize = System.Convert.ToInt32(args[++i]);
@@ -73,10 +91,10 @@ namespace SimpleTcpListener
             {
                 // Create the TCP server
                 Console.WriteLine("TCP Listener: Creating the TCP server...");
-                tcpServer = new TcpListener(myIP, (int)listenPort);
+                tcpServer = new TcpListener(myIP, (int)options.InputPort);
                 Console.WriteLine("TCP Listener: TcpListener created on address {0} and port {1}",
                     myIP.ToString(),
-                    listenPort
+                    options.InputPort
                     );
 
                 // Start listening for connections
@@ -175,6 +193,8 @@ namespace SimpleTcpListener
             //SAVE THE DATA TO A FILE
 
         }
+
+        
     }
     
 }
