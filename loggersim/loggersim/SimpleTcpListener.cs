@@ -36,8 +36,7 @@ namespace SimpleTcpListener
 
 
           CommandLine.Parser.Default.ParseArgumentsStrict(args, options, OnFail);
-        
-            
+                  
 
             string myHost = System.Net.Dns.GetHostName();
             IPAddress myIP = Dns.GetHostEntry(myHost).AddressList[0];
