@@ -25,21 +25,13 @@ namespace SimpleTcpListener
             Console.ReadLine();
             Environment.Exit(-1);
         }
-
-       // /// <param name="args"></param>
+       
         static void Main(string[] args)
         {
             Options options = new Options();
-            //Console.WriteLine("Please input your port number.");
-
-            //options.InputPort= Convert.ToInt32(Console.ReadLine());
-
-
-          CommandLine.Parser.Default.ParseArgumentsStrict(args, options, OnFail);
-                  
-
             string myHost = System.Net.Dns.GetHostName();
             IPAddress myIP = Dns.GetHostEntry(myHost).AddressList[0];
+
             //ushort listenPort = 13000; sub with option.InputPort
             int bufferSize = 500;
 
@@ -54,13 +46,13 @@ namespace SimpleTcpListener
                     {
                         switch (Char.ToLower(args[i][1]))
                         {
-                            case 'l':       // Local interface server should listen on
+                            case 'h':       // Local interface server should listen on
                                 myIP = IPAddress.Parse(args[++i]);
                                 break;
                             case 'p':       // Port number for the destination
                                 options.InputPort = System.Convert.ToUInt16(args[++i]);
                                 break;
-                            case 'x':       // Size of the send and receive buffers
+                            case 's':       // Size of the send and receive buffers
                                 bufferSize = System.Convert.ToInt32(args[++i]);
                                 break;
                             default:

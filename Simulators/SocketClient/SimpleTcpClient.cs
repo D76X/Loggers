@@ -1,5 +1,4 @@
-﻿using CommandLine;
-using System;
+﻿using System;
 using System.Net;
 using System.Net.Sockets;
 
@@ -9,16 +8,16 @@ namespace SimpleTcpClient
     {
         static public void usage()
         {
-            Console.WriteLine("usage: SocketClient.exe [-n server] [-p port] [-x size]");
+            Console.WriteLine("usage: SocketClient.exe [-h help] [-p port] [-s samples]");
             Console.WriteLine("Available options:");
-            Console.WriteLine("     -n server       Name or address of server to connect to");
-            Console.WriteLine("     -p port         Port number to connect to server on");
-            Console.WriteLine("     -x size         Size of send and receive buffers");
-            Console.WriteLine();
+            Console.WriteLine("     -h help      Help message");
+            Console.WriteLine("     -p port      Local port for TCP server to listen on");
+            Console.WriteLine("     -s size       Buffer size");
         }
 
         static void Main(string[] args)
         {
+
             string myHost = System.Net.Dns.GetHostName();
             string serverAddress = Dns.GetHostEntry(myHost).AddressList[0].ToString();
             ushort serverPort = 13000;
