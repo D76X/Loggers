@@ -1,4 +1,7 @@
 ﻿using System;
+using CommandLine;
+using CommandLine.Text;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 
@@ -15,12 +18,29 @@ namespace SimpleTcpClient
             Console.WriteLine("     -s size       Buffer size");
         }
 
+        private static int[] SampleGenerator (OptionsReader options)
+        {
+            int[] samples = new int[options.Samples];
+            Random rnd = new Random();
+            for ( int i = 1; i <= options.Samples; i++)
+            {
+                samples[i] = rnd.Next(0,options.Samples+1);
+                if (i % 5 == 0) Console.WriteLine();
+            }
+
+            return samples;
+        }
+
         static void Main(string[] args)
         {
+            OptionsReader options = new OptionsReader();
+                       
+            SampleGenerator(options);
 
             string myHost = System.Net.Dns.GetHostName();
             string serverAddress = Dns.GetHostEntry(myHost).AddressList[0].ToString();
-            ushort serverPort = 13000;
+           int serverPort = 13000;
+            
             int bufferSize = 500;
 
             usage();
@@ -40,7 +60,7 @@ namespace SimpleTcpClient
                             case 'p':       // Port number for the destination
                                 serverPort = System.Convert.ToUInt16(args[++i]);
                                 break;
-                            case 'x':       // Size of the send and receive buffers
+                            case 's':       // Size of the send and receive buffers
                                 bufferSize = System.Convert.ToInt32(args[++i]);
                                 break;
                             default:
@@ -95,8 +115,7 @@ namespace SimpleTcpClient
                 while (bytesToRead > 0)
                 {
                     // Make sure we don't read beyond what the first message indicates
-                    //    This is important if the client is sending multiple "messages" --
-                    //    but in this sample it sends only one
+                    
                     if (bytesToRead < receiveBuffer.Length)
                         nextReadCount = bytesToRead;
                     else

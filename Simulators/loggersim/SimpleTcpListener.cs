@@ -15,11 +15,11 @@ namespace SimpleTcpListener
             Console.WriteLine("Available options:");
             Console.WriteLine("     -h help      Help message");
             Console.WriteLine("     -p port      Local port for TCP server to listen on");
-            Console.WriteLine("     -s samples   How many samples");
+            Console.WriteLine("     -s size      Buffer size");
            
         }
-                        
-            private static void OnFail()
+
+    private static void OnFail()
         {
             Console.WriteLine("Sorry something went wrong...");
             Console.ReadLine();
@@ -31,8 +31,6 @@ namespace SimpleTcpListener
             Options options = new Options();
             string myHost = System.Net.Dns.GetHostName();
             IPAddress myIP = Dns.GetHostEntry(myHost).AddressList[0];
-
-            //ushort listenPort = 13000; sub with option.InputPort
             int bufferSize = 500;
 
             usage();
