@@ -3,14 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpListener", "loggersim\TcpListener.csproj", "{E2CE110E-A579-45A5-8FC7-90FE79DA6EB1}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8F994388-9528-4E34-8479-4CB0C5EC9EBE}"
 	ProjectSection(SolutionItems) = preProject
 		Readme.txt = Readme.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpClient", "SocketClient\TcpClient.csproj", "{50A6B749-CD29-4DCA-9EBF-45CA8204BD60}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpListener", "TcpListener\TcpListener.csproj", "{E3D0E125-53AC-4884-BBDB-E2C29E5D8991}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpClient", "TcpClient\TcpClient.csproj", "{FFAA5880-6B81-41DF-93F9-6D111113695D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerSim", "LoggerSim\LoggerSim.csproj", "{0C62B189-10A6-4597-BEE3-B253A5D35E1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,14 +20,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E2CE110E-A579-45A5-8FC7-90FE79DA6EB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E2CE110E-A579-45A5-8FC7-90FE79DA6EB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E2CE110E-A579-45A5-8FC7-90FE79DA6EB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E2CE110E-A579-45A5-8FC7-90FE79DA6EB1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{50A6B749-CD29-4DCA-9EBF-45CA8204BD60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{50A6B749-CD29-4DCA-9EBF-45CA8204BD60}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{50A6B749-CD29-4DCA-9EBF-45CA8204BD60}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{50A6B749-CD29-4DCA-9EBF-45CA8204BD60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3D0E125-53AC-4884-BBDB-E2C29E5D8991}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3D0E125-53AC-4884-BBDB-E2C29E5D8991}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3D0E125-53AC-4884-BBDB-E2C29E5D8991}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3D0E125-53AC-4884-BBDB-E2C29E5D8991}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFAA5880-6B81-41DF-93F9-6D111113695D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFAA5880-6B81-41DF-93F9-6D111113695D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFAA5880-6B81-41DF-93F9-6D111113695D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFAA5880-6B81-41DF-93F9-6D111113695D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C62B189-10A6-4597-BEE3-B253A5D35E1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C62B189-10A6-4597-BEE3-B253A5D35E1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C62B189-10A6-4597-BEE3-B253A5D35E1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C62B189-10A6-4597-BEE3-B253A5D35E1F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
