@@ -13,10 +13,10 @@ namespace SimpleTcpClient
         public string HelpMessage { get; set; }
 
         [Option('p', "port", Required = true, HelpText = "Please input the port number")]
-        public int InputPort { get; set; }
+        public int ServerPort { get; set; }
 
-        [Option('s', "samples", Required = true, HelpText = "Please input the number of samples")]
-        public int Samples { get; set; }
+        [Option('b', "buffer", Required = true, HelpText = "Buffer size")]
+        public int BufferSize { get; set; }
 
         [Option('i', "time interval", Required = true, HelpText =" Time interval between samples")]
         public int Milliseconds { get; set; }

@@ -18,6 +18,9 @@ namespace SimpleTcpListener
         [Option('s', "samples", Required = true, HelpText= "Please input  sample")]
         public int Samples { get; set; }
 
+        [Option('b', "buffer", Required = false, HelpText ="Buffer Size")]
+        public int Buffer { get; set; }
+
         
     }
 }

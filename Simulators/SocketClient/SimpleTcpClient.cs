@@ -17,31 +17,13 @@ namespace SimpleTcpClient
             Console.WriteLine("     -p port      Local port for TCP server to listen on");
             Console.WriteLine("     -s size       Buffer size");
         }
-
-        private static int[] SampleGenerator (OptionsReader options)
-        {
-            int[] samples = new int[options.Samples];
-            Random rnd = new Random();
-            for ( int i = 1; i <= options.Samples; i++)
-            {
-                samples[i] = rnd.Next(0,options.Samples+1);
-                if (i % 5 == 0) Console.WriteLine();
-            }
-
-            return samples;
-        }
-
+        
         static void Main(string[] args)
         {
-            OptionsReader options = new OptionsReader();
-                       
-            SampleGenerator(options);
-
+            OptionsReader options = new OptionsReader();                    
+           
             string myHost = System.Net.Dns.GetHostName();
             string serverAddress = Dns.GetHostEntry(myHost).AddressList[0].ToString();
-           int serverPort = 13000;
-            
-            int bufferSize = 500;
 
             usage();
 
@@ -58,10 +40,10 @@ namespace SimpleTcpClient
                                 serverAddress = args[++i];
                                 break;
                             case 'p':       // Port number for the destination
-                                serverPort = System.Convert.ToUInt16(args[++i]);
+                                options.ServerPort = System.Convert.ToUInt16(args[++i]);
                                 break;
-                            case 's':       // Size of the send and receive buffers
-                                bufferSize = System.Convert.ToInt32(args[++i]);
+                            case 'b':       // Size of the send and receive buffers
+                                options.BufferSize = System.Convert.ToInt32(args[++i]);
                                 break;
                             default:
                                 usage();
@@ -78,7 +60,7 @@ namespace SimpleTcpClient
 
             TcpClient simpleTcp = null;
             NetworkStream tcpStream = null;
-            byte[] sendBuffer = new byte[bufferSize], receiveBuffer = new byte[bufferSize], byteCount;
+            byte[] sendBuffer = new byte[options.BufferSize], receiveBuffer = new byte[options.BufferSize], byteCount;
             int bytesToRead = 0, nextReadCount, rc;
 
             // Initialize the send buffer
@@ -90,21 +72,16 @@ namespace SimpleTcpClient
             {
                 // Create the client and indicate the server to connect to
                 Console.WriteLine("TCP client: Creating the client and indicate the server to connect to...");
-                simpleTcp = new TcpClient(serverAddress, (int)serverPort);
+                simpleTcp = new TcpClient(serverAddress, (int)options.ServerPort);
 
                 // Retrieve the NetworkStream so we can do Read and Write
                 Console.WriteLine("TCP client: Retrieving the NetworkStream so we can do Read and Write...");
                 tcpStream = simpleTcp.GetStream();
-
-                // First send the number of bytes the client is sending
-                Console.WriteLine("TCP client: Sending the number of bytes the client is sending...");
+                
                 byteCount = BitConverter.GetBytes(sendBuffer.Length);
-                tcpStream.Write(byteCount, 0, byteCount.Length);
-
-                // Send the actual data
-                Console.WriteLine("TCP client: Sending the actual data...");
-                tcpStream.Write(sendBuffer, 0, sendBuffer.Length);
+               
                 tcpStream.Read(byteCount, 0, byteCount.Length);
+
 
                 // Read how many bytes the server is responding with
                 Console.WriteLine("TCP client: Reading how many bytes the server is responding with...");
