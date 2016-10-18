@@ -94,7 +94,7 @@ namespace SimpleTcpListener
             for (byte i = 0; i < sendBuffer.Length; i++)
             {
                 sendBuffer[i] = SampleGenerator()[i];
-                    }
+            }
 
             try
             {
@@ -161,23 +161,7 @@ namespace SimpleTcpListener
                     tcpClient.Close();
             }
 
-
-
-
-            //OPEN TCP/IP END POINT 
-
-            //CREATE STREAM OF DATA
-
-            //TRANSMIT DATA OVER THAT PORT
-
-            //CRATE A TCP/IP FOR CONSUMER
-
-            //CONSUMER MUST OBTAIN A TCP/IP ENDPOINT WHERE DATA IS PUBLISHED
-
-            //CONSUMER MUST READ THE INCOMING DATA STREAM
-
-            //SAVE THE DATA TO A FILE
-
+            
         }
 
         

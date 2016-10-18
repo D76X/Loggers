@@ -62,12 +62,7 @@ namespace SimpleTcpClient
             NetworkStream tcpStream = null;
             byte[] sendBuffer = new byte[options.BufferSize], receiveBuffer = new byte[options.BufferSize], byteCount;
             int bytesToRead = 0, nextReadCount, rc;
-
-            // Initialize the send buffer
-            Console.WriteLine("TCP client: Initializing the send buffer...");
-            for (int i = 0; i < sendBuffer.Length; i++)
-                sendBuffer[i] = (byte)'Z';
-
+            
             try
             {
                 // Create the client and indicate the server to connect to
@@ -81,8 +76,7 @@ namespace SimpleTcpClient
                 byteCount = BitConverter.GetBytes(sendBuffer.Length);
                
                 tcpStream.Read(byteCount, 0, byteCount.Length);
-
-
+                
                 // Read how many bytes the server is responding with
                 Console.WriteLine("TCP client: Reading how many bytes the server is responding with...");
                 bytesToRead = BitConverter.ToInt32(byteCount, 0);
