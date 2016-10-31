@@ -60,7 +60,7 @@ namespace SimpleTcpClient
 
             TcpClient simpleTcp = null;
             NetworkStream tcpStream = null;
-            byte[] sendBuffer = new byte[options.BufferSize], receiveBuffer = new byte[options.BufferSize], byteCount;
+            byte[] sendBuffer = new byte[options.BufferSize],  byteCount;
             int bytesToRead = 0, nextReadCount, rc;
             
             try
@@ -69,24 +69,31 @@ namespace SimpleTcpClient
                 Console.WriteLine("TCP client: Creating the client and indicate the server to connect to...");
                 simpleTcp = new TcpClient(serverAddress, (int)options.ServerPort);
 
+                string message = "Message from client to server";
+                byteCount = BitConverter.GetBytes(sendBuffer.Length);
+
                 // Retrieve the NetworkStream so we can do Read and Write
                 Console.WriteLine("TCP client: Retrieving the NetworkStream so we can do Read and Write...");
                 tcpStream = simpleTcp.GetStream();
+
+                tcpStream.Write(sendBuffer, 0, sendBuffer.Length);
+                Console.WriteLine("Sent: {0}", message);
+
+                // Buffer to store the response bytes.
+                byte[] receiveBuffer = new byte[options.BufferSize];
                 
-                byteCount = BitConverter.GetBytes(sendBuffer.Length);
-               
                 tcpStream.Read(byteCount, 0, byteCount.Length);
-                
-                // Read how many bytes the server is responding with
+
+               // Read how many bytes the server is responding with
                 Console.WriteLine("TCP client: Reading how many bytes the server is responding with...");
                 bytesToRead = BitConverter.ToInt32(byteCount, 0);
 
-                // Receive the data
+                //Receive the data
                 Console.WriteLine("TCP client: Receiving, reading & displaying the data...");
                 while (bytesToRead > 0)
                 {
                     // Make sure we don't read beyond what the first message indicates
-                    
+
                     if (bytesToRead < receiveBuffer.Length)
                         nextReadCount = bytesToRead;
                     else

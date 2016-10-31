@@ -30,6 +30,7 @@ namespace SimpleTcpListener
         {
             byte[] samples = new byte[99];
             Random rnd = new Random();
+
             for (int i = 1; i <samples.Length; i++)
             {
                 samples[i] = (byte) rnd.Next(0, 254);
@@ -87,14 +88,7 @@ namespace SimpleTcpListener
             byte[] receiveBuffer = new byte[options.Buffer], byteCount;
             int bytesToRead = 0, nextReadCount, rc;
 
-            // Initialize the send buffer
-            SampleGenerator();
-
             sendBuffer = SampleGenerator();
-            for (byte i = 0; i < sendBuffer.Length; i++)
-            {
-                sendBuffer[i] = SampleGenerator()[i];
-            }
 
             try
             {
@@ -117,22 +111,26 @@ namespace SimpleTcpListener
                 // Get the NetworkStream so we can do Read and Write on the client connection
                 Console.WriteLine("TCP Listener: Getting the NetworkStream for reading/writing client connection...");
                 tcpStream = tcpClient.GetStream();
+                
+                while ((bytesToRead = tcpStream.Read(receiveBuffer, 0, nextReadCount)) != 0)
+                {
+                    byteCount = BitConverter.GetBytes(bytesToRead);
+                    Console.WriteLine("Received: {0}", byteCount);
 
-                byteCount = BitConverter.GetBytes(bytesToRead);
 
-                // First send the number of bytes the server is responding with
-                Console.WriteLine("LOGGER: Sending the number of bytes the server is responding with...");
+                    // First send the number of bytes the server is responding with
+                    //Console.WriteLine("LOGGER: Sending the number of bytes the server is responding with...");
 
-                //GENERATE RANDOM DATA
-               
-                byteCount = BitConverter.GetBytes(sendBuffer.Length);
-                tcpStream.Write(byteCount, 0, byteCount.Length);
 
-                // Send the actual data
-                Console.WriteLine("LOGGER: Sending logger's data...");
+                    byteCount = BitConverter.GetBytes(sendBuffer.Length);
+                    tcpStream.Write(byteCount, 0, byteCount.Length);
+                    
 
-                tcpStream.Write(sendBuffer, 0, sendBuffer.Length);
+                    // Send the actual data
+                    Console.WriteLine("LOGGER: Sending logger's data..." + byteCount);
 
+                    tcpStream.Write(sendBuffer, 0, sendBuffer.Length);
+                }
                 // Close up the client
                 Console.WriteLine("TCP Listener: Closing client tcp stream...");
                 tcpStream.Close();
@@ -160,11 +158,8 @@ namespace SimpleTcpListener
                 if (tcpClient != null)
                     tcpClient.Close();
             }
-
             
         }
-
-        
     }
     
 }
