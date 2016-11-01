@@ -30,6 +30,7 @@ namespace CommandLineFluent
 
             var parsedValues = parser.Parse(args);
 
+           
             //    parser
             //        .Setup(a => a.Address)
             //        .As('a', "address")
@@ -46,11 +47,7 @@ namespace CommandLineFluent
             //        .As('p', "password")
             //        .WithDescription("The password to use for authentication.");
 
-            
-
-
-           
-
+          
         }
     }
 }
