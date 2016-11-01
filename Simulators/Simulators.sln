@@ -18,8 +18,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandLinePowerArgs", "Com
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Parsers", "Parsers", "{03C0A83D-44F0-4AF3-A0A3-5FA2811EC40D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentCommandLine", "FluentCommandLineParser\FluentCommandLine.csproj", "{500186E7-BF23-4077-B071-DEB6A8897C05}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,10 +40,6 @@ Global
 		{79CB8FC6-049A-4553-BDC7-06DF2A922898}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79CB8FC6-049A-4553-BDC7-06DF2A922898}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79CB8FC6-049A-4553-BDC7-06DF2A922898}.Release|Any CPU.Build.0 = Release|Any CPU
-		{500186E7-BF23-4077-B071-DEB6A8897C05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{500186E7-BF23-4077-B071-DEB6A8897C05}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{500186E7-BF23-4077-B071-DEB6A8897C05}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{500186E7-BF23-4077-B071-DEB6A8897C05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +47,5 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{79CB8FC6-049A-4553-BDC7-06DF2A922898} = {03C0A83D-44F0-4AF3-A0A3-5FA2811EC40D}
 		{03C0A83D-44F0-4AF3-A0A3-5FA2811EC40D} = {8F994388-9528-4E34-8479-4CB0C5EC9EBE}
-		{500186E7-BF23-4077-B071-DEB6A8897C05} = {03C0A83D-44F0-4AF3-A0A3-5FA2811EC40D}
 	EndGlobalSection
 EndGlobal
