@@ -16,27 +16,23 @@ namespace ZeroMQ_Test_1
 
             //SENDING MESSAGES TO A QUEUE
 
-            var context = ZmqContext.Create();
-            var socket = context.CreateSocket(SocketType.PUSH);
-            socket.Connect("tcp://localhost:5555");
-
-            Console.WriteLine("NET Sender: Started");
-
-            //send 1000 messages and time how long that takes
+            var context =  ZmqContext.Create();
             Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            for (int i=0; i<1000; i++)
+            using (var clientSocket = context.CreateSocket(SocketType.PUSH))
             {
-                socket.Send("Message: " + i, Encoding.UTF8);
-            }
+                clientSocket.Connect("tcp://localhost:13000");
+                Console.WriteLine("NET Sender: Started");
 
-            stopwatch.Stop();
-            TimeSpan ts = stopwatch.Elapsed;
-            // Format and display the TimeSpan value.
-            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                ts.Hours, ts.Minutes, ts.Seconds,
-                ts.Milliseconds / 10);
-            Console.WriteLine("RunTime " + elapsedTime);
+                //send 1000 messages and time how long that takes                
+                stopwatch.Start();
+                for (int i = 0; i < 2000; i++)
+                {
+                    clientSocket.Send("Message: " + i, Encoding.UTF8);
+                }
+
+                stopwatch.Stop();
+                Console.WriteLine(stopwatch.ElapsedMilliseconds);                
+            }
         }
     }
 }
