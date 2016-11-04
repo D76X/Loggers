@@ -20,9 +20,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Parsers", "Parsers", "{03C0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandLineFluent", "CommandLineFluent\CommandLineFluent.csproj", "{E5A88967-3B37-4C42-ADDA-FA49F46206E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeroMQ_Test_1", "ZeroMQ_Test_1\ZeroMQ_Test_1.csproj", "{251C6EC8-00F4-499E-A468-67D95B414E0E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeroMQ_PUSH", "ZeroMQ_Test_1\ZeroMQ_PUSH.csproj", "{251C6EC8-00F4-499E-A468-67D95B414E0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeroMQ_Test_2", "ZeroMQ_Test_2\ZeroMQ_Test_2.csproj", "{D42A1ABF-D663-4BA7-A3C6-B02BBB9EF5A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeroMQ_PULL", "ZeroMQ_Test_2\ZeroMQ_PULL.csproj", "{D42A1ABF-D663-4BA7-A3C6-B02BBB9EF5A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

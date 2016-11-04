@@ -25,11 +25,10 @@ namespace ZeroMQ_Test_1
 
                 //send 1000 messages and time how long that takes                
                 stopwatch.Start();
-                for (int i = 0; i < 2000; i++)
+                for (int i = 0; i < 2000000; i++)
                 {
                     clientSocket.Send("Message: " + i, Encoding.UTF8);
                 }
-
                 stopwatch.Stop();
                 Console.WriteLine(stopwatch.ElapsedMilliseconds);                
             }

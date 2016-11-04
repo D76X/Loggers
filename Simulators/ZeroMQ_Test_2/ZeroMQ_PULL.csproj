@@ -62,9 +62,9 @@
     <Content Include="lib\x86\libzmq.pdb" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ZeroMQ_Test_1\ZeroMQ_Test_1.csproj">
+    <ProjectReference Include="..\ZeroMQ_Test_1\ZeroMQ_PUSH.csproj">
       <Project>{251c6ec8-00f4-499e-a468-67d95b414e0e}</Project>
-      <Name>ZeroMQ_Test_1</Name>
+      <Name>ZeroMQ_PUSH</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
