@@ -55,9 +55,6 @@ namespace CommandLineFluent
 
               parser2.Parse(args);
 
-             
-
-
         }
     }
 }
