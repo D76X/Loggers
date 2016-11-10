@@ -2,9 +2,8 @@
 using CommandLine.Text;
 using System;
 using System.Net;
-using System.Net.Sockets;
-using ZeroM;
- 
+using System.Text;
+using ZeroMQ;
 
 namespace SimpleTcpListener
 {
@@ -12,8 +11,19 @@ namespace SimpleTcpListener
     {
         static void Main(string[] args)
         {
-            
-            
+            //RECEIVING MESSAGES FROM A QUEUE
+
+            var context = ZmqContext.Create();
+            using (var serverSocket = context.CreateSocket(SocketType.PULL))
+            {
+                serverSocket.Bind("tcp://*:13000");
+                while (true)
+                {
+                    var message = serverSocket.Receive(Encoding.UTF8);
+                    Console.WriteLine(message);
+                }
+            }
+
         }
     }
     

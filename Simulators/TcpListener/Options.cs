@@ -9,18 +9,7 @@ namespace SimpleTcpListener
 {
     public class Options
     {
-        [Option('h', "help", Required = false, HelpText ="Print this help")]
-        public string HelpMessage { get; set;}
-
-        [Option('p', "port", Required = true, HelpText = "Please input the port number")]
-        public int InputPort { get; set; }
-
-        [Option('s', "samples", Required = true, HelpText= "Please input  sample")]
-        public int Samples { get; set; }
-
-        [Option('b', "buffer", Required = false, HelpText ="Buffer Size")]
-        public int Buffer { get; set; }
-
+         
         
     }
 }
