@@ -13,13 +13,13 @@ namespace SimpleTcpClient
         public class MyArgs
 
         {
-            [ArgRequired(PromptIfMissing = true)]
-            [ArgDescription("Here some help...")]
-            public string Help { get; set; }
+            //[ArgRequired(PromptIfMissing = true)]
+            //[ArgDescription("Here some help...")]
+            //public string Help { get; set; }
 
-            [ArgRequired(PromptIfMissing = false)]
-            [ArgDescription("Here some help for the command Port...")]
-            public string HelpPort { get; set; }
+            //[ArgRequired(PromptIfMissing = false)]
+            //[ArgDescription("Here some help for the command Port...")]
+            //public string HelpPort { get; set; }
 
             [ArgRequired(PromptIfMissing = true)]
             [ArgDescription("Port number")]

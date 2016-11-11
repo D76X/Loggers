@@ -26,10 +26,10 @@ namespace CommandLinePowerArgs
             //    Console.WriteLine(ArgUsage.GenerateUsageFromTemplate<MyArgs>());
             //}
 
-            Args.InvokeMain<MyArgs>(args);
+          //  Args.InvokeMain<MyArgs>(args);
 
             //invoke the calculator
-           // Args.InvokeAction<CalculatorProgram>(args);
+            Args.InvokeAction<CalculatorProgram>(args);
 
         }
     }

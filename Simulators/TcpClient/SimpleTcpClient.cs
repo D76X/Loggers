@@ -20,28 +20,19 @@ namespace SimpleTcpClient
 
             try
             {
-                var arguments = Args.Parse<MyArgs>(args);
-                Console.WriteLine("You entered string '{0}' and '{1}' and '{2}'", arguments.Help, arguments.Port, arguments.HelpPort);
+               var arguments = Args.Parse<MyArgs>(args);
+                string endpoint = arguments.Port.ToString();
+                using (var context = ZmqContext.Create())
+                using (var clientSocket = context.CreateSocket(SocketType.PUSH))
+                {
+                    clientSocket.Connect("tcp://localhost:" + endpoint);
 
-
-
-                //var context = ZmqContext.Create();
-                //Stopwatch stopwatch = new Stopwatch();
-                //using (var clientSocket = context.CreateSocket(SocketType.PUSH))
-                //{
-                //    clientSocket.Connect("tcp://localhost:13000");
-                //    Console.WriteLine("NET Sender: Started");
-
-                //    //send 1000 messages and time how long that takes                
-                //    stopwatch.Start();
-                //    for (int i = 0; i < 2000000; i++)
-                //    {
-                //        clientSocket.Send("Message: " + i, Encoding.UTF8);
-                //    }
-                //    stopwatch.Stop();
-                //    Console.WriteLine(stopwatch.ElapsedMilliseconds);
-
-
+                   
+                        string message = "Hello";
+                        Console.WriteLine("sending " + message);
+                        clientSocket.Send (message , Encoding.UTF8); 
+                   
+                }
             }
             catch (ArgException e)
             {

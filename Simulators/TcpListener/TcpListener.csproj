@@ -66,6 +66,12 @@
     <Content Include="lib\x86\libzmq.dll" />
     <Content Include="lib\x86\libzmq.pdb" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TcpClient\TcpClient.csproj">
+      <Project>{ffaa5880-6b81-41df-93f9-6d111113695d}</Project>
+      <Name>TcpClient</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
