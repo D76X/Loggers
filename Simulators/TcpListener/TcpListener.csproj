@@ -41,6 +41,10 @@
       <HintPath>..\packages\CommandLineParser.1.9.71\lib\net45\CommandLine.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PowerArgs, Version=2.7.2.0, Culture=neutral, PublicKeyToken=26a276264bbd55b8, processorArchitecture=MSIL">
+      <HintPath>..\packages\PowerArgs.2.7.2.0\lib\net45\PowerArgs.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -51,7 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Options.cs" />
+    <Compile Include="MyOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimpleTcpListener.cs" />
   </ItemGroup>
@@ -65,12 +69,6 @@
     <Content Include="lib\x64\libzmq.pdb" />
     <Content Include="lib\x86\libzmq.dll" />
     <Content Include="lib\x86\libzmq.pdb" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TcpClient\TcpClient.csproj">
-      <Project>{ffaa5880-6b81-41df-93f9-6d111113695d}</Project>
-      <Name>TcpClient</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

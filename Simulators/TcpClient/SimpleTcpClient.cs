@@ -20,30 +20,32 @@ namespace SimpleTcpClient
 
             try
             {
-               var arguments = Args.Parse<MyArgs>(args);
+                
+                var arguments = Args.Parse<MyArgs>(args);
                 string endpoint = arguments.Port.ToString();
                 using (var context = ZmqContext.Create())
                 using (var clientSocket = context.CreateSocket(SocketType.PUSH))
                 {
                     clientSocket.Connect("tcp://localhost:" + endpoint);
+                    string message = "Hello, you've connected to port " + endpoint.ToString();
+                    Console.WriteLine("sending " + message);
+                    clientSocket.Send(message, Encoding.UTF8);
 
-                   
-                        string message = "Hello";
-                        Console.WriteLine("sending " + message);
-                        clientSocket.Send (message , Encoding.UTF8); 
-                   
+                   Args.InvokeAction< Action>(args);
                 }
             }
+
             catch (ArgException e)
             {
                 Console.WriteLine(ArgUsage.GenerateUsageFromTemplate<MyArgs>());
-            }
+            }           
+            
         }
     }
 }
 
-            
 
-    
+
+
 
 

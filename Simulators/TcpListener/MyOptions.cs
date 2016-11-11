@@ -1,4 +1,4 @@
-﻿
+﻿using CommandLine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,13 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using PowerArgs;
 
-namespace SimpleTcpClient
+namespace SimpleTcpListener
 {
     [ArgExceptionBehavior(ArgExceptionPolicy.StandardExceptionHandling)]
-    public class MyArgs
-
+    public class MyOptions
     {
-        //[ArgRequired(PromptIfMissing = true)]
         [ArgDescription("Here some help...")]
         public string Help { get; set; }
 
@@ -24,12 +22,5 @@ namespace SimpleTcpClient
         [ArgDescription("Port number")]
         public int Port { get; set; }
 
-        [ArgRequired(PromptIfMissing = true)]
-        [ArgDescription("Number of samples")]
-        public int Sample { get; set; }
-
-        
     }
 }
-
-
