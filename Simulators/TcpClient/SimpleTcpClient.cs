@@ -14,10 +14,10 @@ namespace SimpleTcpClient
     class SimpleTcpClient
     {
 
-       private static Byte[] GenerateSamples(MyArgs arg)
+        private static Byte[] GenerateSamples(MyArgs arg)
         {
             Random random = new Random();
-            byte[] randomArray = new byte[arg.Sample];            
+            byte[] randomArray = new byte[arg.Sample];
             for (byte i = 0; i < randomArray.Length; i++)
             {
                 randomArray[i] = (byte)random.Next(0, 256);
@@ -31,8 +31,7 @@ namespace SimpleTcpClient
 
             return randomArray;
         }
-
-
+        
         static void Main(string[] args)
         {
             //SENDING MESSAGES TO A QUEUE
@@ -50,9 +49,8 @@ namespace SimpleTcpClient
                         //string message = "Hello, you've connected to port " + endpoint.ToString();
                         //clientSocket.Send("Message sent" + message, Encoding.UTF8);
 
-                        //clientSocket.Send("Message sent " +GenerateSamples(arguments).ToString(), Encoding.UTF8);
                         byte[] samplesGenerate = GenerateSamples(arguments);
-                    foreach (int i in samplesGenerate)
+                        foreach (int i in samplesGenerate)
                         {
                             clientSocket.Send("Data " + i, Encoding.UTF8);
                         }
@@ -64,9 +62,9 @@ namespace SimpleTcpClient
             {
                 Console.WriteLine(ArgUsage.GenerateUsageFromTemplate<MyArgs>());
             }
-             
+
         }
-        
+
     }
 }
 
