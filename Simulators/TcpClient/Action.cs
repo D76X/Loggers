@@ -10,8 +10,8 @@ namespace TcpClient
 {
     public class Action
     {
-        [ArgReviver, ArgDescription("Generates n random samples")]
-        public static Action[] Revive(MyArgs arg)
+        //[ArgActionMethod, ArgDescription("Generates n random samples")]
+        public static void GenerateSamples(MyArgs arg)
         {
             Random random = new Random();
             int[] randomArray = new int[arg.Sample];
@@ -19,11 +19,11 @@ namespace TcpClient
             {
                 randomArray[i] = random.Next(0, 256);
             }
-            foreach(int i in randomArray)
+            foreach (int i in randomArray)
             {
                 Console.WriteLine(i.ToString());
             }
-            return randomArray;
-
+             
+        }
     }
 }
