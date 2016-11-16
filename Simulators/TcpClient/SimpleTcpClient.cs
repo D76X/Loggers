@@ -13,7 +13,6 @@ namespace SimpleTcpClient
 {
     class SimpleTcpClient
     {
-
         private static Byte[] GenerateSamples(MyArgs arg)
         {
             Random random = new Random();
@@ -21,7 +20,6 @@ namespace SimpleTcpClient
             for (byte i = 0; i < randomArray.Length; i++)
             {
                 randomArray[i] = (byte)random.Next(0, 256);
-
             }
 
             foreach (byte i in randomArray)
@@ -31,28 +29,65 @@ namespace SimpleTcpClient
 
             return randomArray;
         }
+
+        private static void GeneralOptions( MyArgs arg)
+        {
+            Console.WriteLine(ArgUsage.GenerateUsageFromTemplate<MyArgs>());
+        }
+
         
         static void Main(string[] args)
         {
             //SENDING MESSAGES TO A QUEUE
-
+           
             try
             {
-
                 var arguments = Args.Parse<MyArgs>(args);
+                Console.WriteLine(ArgUsage.GenerateUsageFromTemplate<MyArgs>());
                 string endpoint = arguments.Port.ToString();
                 using (var context = ZmqContext.Create())
                 {
                     using (var clientSocket = context.CreateSocket(SocketType.PUSH))
                     {
                         clientSocket.Connect("tcp://localhost:" + endpoint);
-                        //string message = "Hello, you've connected to port " + endpoint.ToString();
-                        //clientSocket.Send("Message sent" + message, Encoding.UTF8);
 
-                        byte[] samplesGenerate = GenerateSamples(arguments);
-                        foreach (int i in samplesGenerate)
+                        if (arguments.HelpPort !=null)
                         {
-                            clientSocket.Send("Data " + i, Encoding.UTF8);
+                            Console.WriteLine(arguments.HelpPort);
+                        }
+
+                        else if (arguments.HelpSample !=null)
+                        {
+                            Console.WriteLine(arguments.HelpSample);
+                        }
+                        else if (arguments.HelpRepeat != null)
+                        {
+                            Console.WriteLine(arguments.HelpRepeat);
+                        }
+                        else if (arguments.HelpTimeInterval != null)
+                        {
+                            Console.WriteLine(arguments.HelpTimeInterval);
+                        }
+
+                        string message = "Message sent: Hello, you've connected to port " + endpoint.ToString();
+                        clientSocket.Send(message, Encoding.UTF8);
+                        Console.WriteLine(message);
+
+
+                        string message2 = "Number of samples generated are " + arguments.Sample + " with a time interval of " + arguments.TimeInterval + "milliseconds ";
+                        clientSocket.Send(message2, Encoding.UTF8);
+                        Console.WriteLine(message2);
+
+                        for (int t = 0; t < arguments.Repeat; t ++ )
+                        {
+                            byte[] samplesGenerate = GenerateSamples(arguments);
+
+                            foreach (int i in samplesGenerate)
+                            {
+                                clientSocket.Send(" Sent Data " + i, Encoding.UTF8);
+                            }
+                            Console.WriteLine("----");
+                            Thread.Sleep(arguments.TimeInterval);                            
                         }
                     }
                 }

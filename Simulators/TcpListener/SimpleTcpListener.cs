@@ -24,7 +24,7 @@ namespace SimpleTcpListener
                 while (true)
                 {
                     var receivedMessage = serverSocket.Receive(Encoding.UTF8);
-                    Console.WriteLine("Message received " + receivedMessage);
+                    Console.WriteLine("Message received:  " + receivedMessage);
                 }
                 
             }
