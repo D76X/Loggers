@@ -42,8 +42,8 @@ namespace SimpleTcpClient
            
             try
             {
-                var arguments = Args.Parse<MyArgs>(args);
                 Console.WriteLine(ArgUsage.GenerateUsageFromTemplate<MyArgs>());
+                var arguments = Args.Parse<MyArgs>(args);                
                 string endpoint = arguments.Port.ToString();
                 using (var context = ZmqContext.Create())
                 {
@@ -51,21 +51,15 @@ namespace SimpleTcpClient
                     {
                         clientSocket.Connect("tcp://localhost:" + endpoint);
 
-                        if (arguments.HelpPort !=null)
+                        if (arguments.HelpPort !=null | arguments.HelpSample != null
+                            | arguments.HelpRepeat != null | arguments.HelpTimeInterval != null)
                         {
                             Console.WriteLine(arguments.HelpPort);
-                        }
-
-                        else if (arguments.HelpSample !=null)
-                        {
+                        
                             Console.WriteLine(arguments.HelpSample);
-                        }
-                        else if (arguments.HelpRepeat != null)
-                        {
+                        
                             Console.WriteLine(arguments.HelpRepeat);
-                        }
-                        else if (arguments.HelpTimeInterval != null)
-                        {
+                      
                             Console.WriteLine(arguments.HelpTimeInterval);
                         }
 

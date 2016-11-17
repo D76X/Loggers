@@ -11,14 +11,13 @@ namespace SimpleTcpClient
     [ArgExceptionBehavior(ArgExceptionPolicy.StandardExceptionHandling)]
     public class MyArgs
 
-    {
-        //[ArgRequired(PromptIfMissing = true)]
+    {       
         [ArgDescription("Here some help...")]
         public string Help { get; set; }
 
-        //[ArgRequired(PromptIfMissing = false)]
-        [ArgDescription("Here some help for the command Port...")]
+
         private string helpPort;
+        [ArgDescription("Here some help for the command Port...")]
         public string HelpPort {
             get
             {
@@ -28,8 +27,8 @@ namespace SimpleTcpClient
             { this.helpPort = "Help Port: This is the port number the socket connects to in order to send messages.";}
         }
 
-        [ArgDescription("Here some help for the command Sample...")]
         private string helpSample;
+        [ArgDescription("Here some help for the command Sample...")]       
         public string HelpSample
         {
             get
@@ -41,10 +40,9 @@ namespace SimpleTcpClient
                 this.helpSample = "Help Sample: This is the number of samples you would like to generate.";
             }
         }
-
-
-        [ArgDescription("Here some help for the command Repeat...")]
+                
         private string helpRepeat;
+        [ArgDescription("Here some help for the command Repeat...")]
         public string HelpRepeat
         {
             get
@@ -56,9 +54,9 @@ namespace SimpleTcpClient
                 this.helpRepeat = "Help Repeat: this is the number of sets of sample yuo would like to generate";
             }
          }
-
-        [ArgDescription("Here some help for the command Port...")]
+       
         private string helpTimeInterval;
+        [ArgDescription("Here some help for the command Time Interval...")]
         public string HelpTimeInterval
         {
             get
@@ -82,7 +80,6 @@ namespace SimpleTcpClient
         [ArgRequired(PromptIfMissing = true)]
         [ArgDescription("Time interval between sets of samples")]
         public int TimeInterval { get; set; }
-
 
         [ArgRequired(PromptIfMissing = true)]
         [ArgDescription("Number of sample repeats")]
