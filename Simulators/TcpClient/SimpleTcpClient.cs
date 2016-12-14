@@ -19,14 +19,14 @@ namespace SimpleTcpClient
             byte[] randomArray = new byte[arg.Sample];
             for (byte i = 0; i < randomArray.Length; i++)
             {
-                randomArray[i] = (byte)random.Next(0, 256);
+                randomArray[i] = (byte)random.Next(arg.MinValue, arg.MaxValue);
             }
 
             foreach (byte i in randomArray)
             {
                 Console.WriteLine(i.ToString());
             }
-
+             
             return randomArray;
         }
 
@@ -63,12 +63,12 @@ namespace SimpleTcpClient
                             Console.WriteLine(arguments.HelpTimeInterval);
                         }
 
-                        string message = "Message sent: Hello, you've connected to port " + endpoint.ToString();
+                        string message = "Message sent: Opened tcp:// localhost: " + endpoint.ToString();
                         clientSocket.Send(message, Encoding.UTF8);
                         Console.WriteLine(message);
 
 
-                        string message2 = "Number of samples generated are " + arguments.Sample + " with a time interval of " + arguments.TimeInterval + "milliseconds ";
+                        string message2 = "Number of samples generated are " + arguments.Sample + "ranging between a min value of " + arguments.MinValue + " and a max value of " + arguments.MaxValue + " with a time interval of " + arguments.TimeInterval + " milliseconds.";
                         clientSocket.Send(message2, Encoding.UTF8);
                         Console.WriteLine(message2);
 

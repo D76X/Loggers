@@ -84,6 +84,16 @@ namespace SimpleTcpClient
         [ArgRequired(PromptIfMissing = true)]
         [ArgDescription("Number of sample repeats")]
         public int Repeat { get; set; }
+         
+        [ArgRequired(PromptIfMissing = true)]
+        [ArgDescription("Minimum sample value")]
+        public int MinValue { get; set; }
+
+        [ArgRequired(PromptIfMissing = true)]
+        [ArgDescription("Maximum sample value")]
+        public int MaxValue { get; set; }
+
+
     }
 }
 
