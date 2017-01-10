@@ -12,12 +12,12 @@ namespace SimpleTcpClient
     public class MyArgs
 
     {       
-        [ArgDescription("Here some help...")]
+        [ArgShortcut ("H"), ArgDescription("Here some help...")]
         public string Help { get; set; }
 
 
         private string helpPort;
-        [ArgDescription("Here some help for the command Port...")]
+        [ArgShortcut("HPort"), ArgDescription("Here some help for the command Port...")]
         public string HelpPort {
             get
             {
@@ -27,8 +27,8 @@ namespace SimpleTcpClient
             { this.helpPort = "Help Port: This is the port number the socket connects to in order to send messages.";}
         }
 
-        private string helpSample;
-        [ArgDescription("Here some help for the command Sample...")]       
+        private string helpSample;     
+        [ArgShortcut("HSample"), ArgDescription("Here some help for the command Sample...")]       
         public string HelpSample
         {
             get
@@ -42,7 +42,7 @@ namespace SimpleTcpClient
         }
                 
         private string helpRepeat;
-        [ArgDescription("Here some help for the command Repeat...")]
+        [ArgShortcut("HRepeat"), ArgDescription("Here some help for the command Repeat...")]
         public string HelpRepeat
         {
             get
@@ -74,25 +74,30 @@ namespace SimpleTcpClient
         public int Port { get; set; }
         
         [ArgRequired(PromptIfMissing = true)]
-        [ArgDescription("Number of samples")]
+        [ArgShortcut("S"), ArgDescription("Number of samples")]
         public int Sample { get; set; }
 
-        [ArgRequired(PromptIfMissing = true)]
-        [ArgDescription("Time interval between sets of samples")]
-        public int TimeInterval { get; set; }
+       // [ArgRequired(PromptIfMissing = true)]
+       // [ArgShortcut("Int"), ArgDescription("Time interval between samples")]
+       // public int Interval { get; set; }
 
         [ArgRequired(PromptIfMissing = true)]
-        [ArgDescription("Number of sample repeats")]
+        [ArgShortcut("Rep"), ArgShortcut("repeatNumb"), ArgDescription("Number of sample repeats")]
         public int Repeat { get; set; }
          
         [ArgRequired(PromptIfMissing = true)]
-        [ArgDescription("Minimum sample value")]
+        [ArgShortcut("MinV"), ArgDescription("Minimum sample value")]
         public int MinValue { get; set; }
 
         [ArgRequired(PromptIfMissing = true)]
-        [ArgDescription("Maximum sample value")]
+        [ArgShortcut("MaxV"), ArgDescription("Maximum sample value")]
         public int MaxValue { get; set; }
 
+        [ArgRequired(PromptIfMissing = true)]
+        [ArgShortcut("TimeS"), ArgDescription("Length of time to take samples")]
+        public int TimeSample { get; set; }
+
+        //SIGNAL: LINEAR
 
     }
 }

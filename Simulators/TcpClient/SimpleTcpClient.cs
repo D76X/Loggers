@@ -13,7 +13,7 @@ namespace SimpleTcpClient
 {
     class SimpleTcpClient
     {
-        private static Byte[] GenerateSamples(MyArgs arg)
+        private static Byte[] GenerateRandomSamples(MyArgs arg)
         {
             Random random = new Random();
             byte[] randomArray = new byte[arg.Sample];
@@ -25,9 +25,24 @@ namespace SimpleTcpClient
             foreach (byte i in randomArray)
             {
                 Console.WriteLine(i.ToString());
+                //Thread.Sleep(arg.Interval);
             }
              
             return randomArray;
+        }
+
+        private static float[] GenerateLinearSignal (MyArgs arg)
+        {            
+            int x = arg.MaxValue - arg.MinValue;
+            float rate = x / arg.TimeSample;
+            float[] sampleLinearSignals = new float[arg.Sample];
+            foreach (float i in sampleLinearSignals)
+            {
+                Console.WriteLine(i.ToString());
+                Thread.Sleep(rate);
+            }
+
+            return sampleLinearSignals;
         }
 
         private static void GeneralOptions( MyArgs arg)
@@ -68,20 +83,25 @@ namespace SimpleTcpClient
                         Console.WriteLine(message);
 
 
-                        string message2 = "Number of samples generated are " + arguments.Sample + "ranging between a min value of " + arguments.MinValue + " and a max value of " + arguments.MaxValue + " with a time interval of " + arguments.TimeInterval + " milliseconds.";
+                        string message2 = "Number of samples generated are " + arguments.Sample + " ranging between a min value of " + arguments.MinValue + " and a max value of " + arguments.MaxValue + " with a time interval of " + arguments.TimeSample + " milliseconds.";
                         clientSocket.Send(message2, Encoding.UTF8);
                         Console.WriteLine(message2);
-
+                        
                         for (int t = 0; t < arguments.Repeat; t ++ )
                         {
-                            byte[] samplesGenerate = GenerateSamples(arguments);
+                            //byte[] samplesGenerate = GenerateRandomSamples(arguments);
 
-                            foreach (int i in samplesGenerate)
+                            //foreach (int i in samplesGenerate)
+                            //{
+                            //    clientSocket.Send(" Sent Data " + i, Encoding.UTF8);
+                            //}      
+
+                            float[] sampleLinearSignal = GenerateLinearSignal(arguments);
+                            foreach (float i in sampleLinearSignal)
                             {
                                 clientSocket.Send(" Sent Data " + i, Encoding.UTF8);
                             }
-                            Console.WriteLine("----");
-                            Thread.Sleep(arguments.TimeInterval);                            
+
                         }
                     }
                 }
