@@ -39,7 +39,7 @@ namespace SimpleTcpClient
             foreach (float i in sampleLinearSignals)
             {
                 Console.WriteLine(i.ToString());
-                Thread.Sleep(rate);
+                Thread.Sleep(r);
             }
 
             return sampleLinearSignals;
