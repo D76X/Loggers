@@ -13,36 +13,62 @@ namespace SimpleTcpClient
 {
     class SimpleTcpClient
     {
-        private static Byte[] GenerateRandomSamples(MyArgs arg)
+        private static List<int> GenerateRandomSamples(MyArgs arg)
         {
             Random random = new Random();
-            byte[] randomArray = new byte[arg.Sample];
-            for (byte i = 0; i < randomArray.Length; i++)
+            List<int> randomList = new List<int>();
+            for (int i = 0; i < randomList.Count(); i++)
             {
-                randomArray[i] = (byte)random.Next(arg.MinValue, arg.MaxValue);
+                randomList.Add(random.Next(arg.MinValue, arg.MaxValue));
             }
 
-            foreach (byte i in randomArray)
+            foreach (int i in randomList)
             {
                 Console.WriteLine(i.ToString());
                 //Thread.Sleep(arg.Interval);
             }
              
-            return randomArray;
+            return randomList;
         }
 
-        private static float[] GenerateLinearSignal (MyArgs arg)
+        private static void DecimalToIntConverter( List<decimal> decValues)
+        {
+            int result;
+            foreach (decimal value in decValues)
+            { 
+                try
+                {
+                    result = Convert.ToInt32(value);
+                    Console.WriteLine("Converted the {0} value '{1}' to the {2} value {3}.",
+                        value.GetType().Name, value, 
+                        result.GetType().Name, result);
+                }
+                catch (OverflowException)
+                {
+                    Console.WriteLine("{0} is outside the range of the Int32 type.",
+                        value);
+                }
+            }
+        }
+
+        private static void GenerateLinearSignal (MyArgs arg)
         {            
             int x = arg.MaxValue - arg.MinValue;
-            float rate = x / arg.TimeSample;
-            float[] sampleLinearSignals = new float[arg.Sample];
-            foreach (float i in sampleLinearSignals)
+            decimal rate = x / arg.Sample;
+            List<decimal> samplesLinearSignal = new List<decimal>();
+            for ( decimal i = arg.MinValue;i <=x; i = i+ rate  )
+            {
+                Console.WriteLine(i);
+                samplesLinearSignal.Add(i);
+            }
+            foreach (decimal i in samplesLinearSignal)
             {
                 Console.WriteLine(i.ToString());
-                Thread.Sleep(r);
+                Thread.Sleep(arg.TimeSample);
             }
 
-            return sampleLinearSignals;
+            DecimalToIntConverter(samplesLinearSignal);
+           // return samplesLinearSignal;             
         }
 
         private static void GeneralOptions( MyArgs arg)
@@ -96,11 +122,12 @@ namespace SimpleTcpClient
                             //    clientSocket.Send(" Sent Data " + i, Encoding.UTF8);
                             //}      
 
-                            float[] sampleLinearSignal = GenerateLinearSignal(arguments);
-                            foreach (float i in sampleLinearSignal)
-                            {
-                                clientSocket.Send(" Sent Data " + i, Encoding.UTF8);
-                            }
+                             GenerateLinearSignal(arguments);
+
+                            //foreach (int i in sampleLinearSignal)
+                            //{
+                            //    clientSocket.Send(" Sent Data " + i, Encoding.UTF8);
+                            //}
 
                         }
                     }
