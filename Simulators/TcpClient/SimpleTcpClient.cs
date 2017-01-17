@@ -13,28 +13,28 @@ namespace SimpleTcpClient
 {
     class SimpleTcpClient
     {
-        private static List<int> GenerateRandomSamples(MyArgs arg)
-        {
-            Random random = new Random();
-            List<int> randomList = new List<int>();
-            for (int i = 0; i < randomList.Count(); i++)
-            {
-                randomList.Add(random.Next(arg.MinValue, arg.MaxValue));
-            }
+        //private static List<int> GenerateRandomSamples(MyArgs arg)
+        //{
+        //    Random random = new Random();
+        //    List<int> randomList = new List<int>();
+        //    for (int i = 0; i < randomList.Count(); i++)
+        //    {
+        //        randomList.Add(random.Next(arg.MinValue, arg.MaxValue));
+        //    }
 
-            foreach (int i in randomList)
-            {
-                Console.WriteLine(i.ToString());
-                //Thread.Sleep(arg.Interval);
-            }
+        //    foreach (int i in randomList)
+        //    {
+        //        Console.WriteLine(i.ToString());
+        //        //Thread.Sleep(arg.Interval);
+        //    }
              
-            return randomList;
-        }
+        //    return randomList;
+        //}
 
-        private static void DecimalToIntConverter( List<decimal> decValues)
+        private static void DoubleToIntConverter( List<double> decValues)
         {
             int result;
-            foreach (decimal value in decValues)
+            foreach (double value in decValues)
             { 
                 try
                 {
@@ -53,21 +53,21 @@ namespace SimpleTcpClient
 
         private static void GenerateLinearSignal (MyArgs arg)
         {            
-            int x = arg.MaxValue - arg.MinValue;
-            decimal rate = x / arg.Sample;
-            List<decimal> samplesLinearSignal = new List<decimal>();
-            for ( decimal i = arg.MinValue;i <=x; i = i+ rate  )
+            double x = arg.MaxValue - arg.MinValue;
+            double rate = x / arg.Sample;
+            List<double> samplesLinearSignal = new List<double>();
+            for ( double i = arg.MinValue;i <=x; i = i+ rate  )
             {
                 Console.WriteLine(i);
                 samplesLinearSignal.Add(i);
             }
-            foreach (decimal i in samplesLinearSignal)
+            foreach (double i in samplesLinearSignal)
             {
                 Console.WriteLine(i.ToString());
                 Thread.Sleep(arg.TimeSample);
             }
 
-            DecimalToIntConverter(samplesLinearSignal);
+            DoubleToIntConverter(samplesLinearSignal);
            // return samplesLinearSignal;             
         }
 

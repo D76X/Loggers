@@ -87,11 +87,11 @@ namespace SimpleTcpClient
          
         [ArgRequired(PromptIfMissing = true)]
         [ArgShortcut("MinV"), ArgDescription("Minimum sample value")]
-        public int MinValue { get; set; }
+        public double MinValue { get; set; }
 
         [ArgRequired(PromptIfMissing = true)]
         [ArgShortcut("MaxV"), ArgDescription("Maximum sample value")]
-        public int MaxValue { get; set; }
+        public double MaxValue { get; set; }
 
         [ArgRequired(PromptIfMissing = true)]
         [ArgShortcut("TimeS"), ArgDescription("Length of time to take samples")]
