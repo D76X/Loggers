@@ -78,9 +78,9 @@ namespace SimpleTcpClient
         [ArgShortcut("sample"), ArgDescription("Number of samples")]
         public int SampleNumber { get; set; }
 
-        // [ArgRequired(PromptIfMissing = true)]
-        // [ArgShortcut("Int"), ArgDescription("Time interval between samples")]
-        // public int Interval { get; set; }
+        [ArgRequired(PromptIfMissing = true)]
+        [ArgShortcut("Interval"), ArgDescription("Time interval between samples")]
+        public int TimeInterval { get; set; }
 
         [ArgRequired(PromptIfMissing = true)]
         [ArgShortcut("Rep"), ArgShortcut("repeatNumb"), ArgDescription("Number of sample repeats")]
@@ -93,10 +93,6 @@ namespace SimpleTcpClient
         [ArgRequired(PromptIfMissing = true)]
         [ArgShortcut("MaxV"), ArgDescription("Maximum sample value")]
         public double MaxValue { get; set; }
-
-        [ArgRequired(PromptIfMissing = true)]
-        [ArgShortcut("TimeS"), ArgDescription("Time lapse between each sample")]
-        public int TimeSample { get; set; }
 
         [ArgRequired(PromptIfMissing = true)]
         [ArgShortcut("Signal"), ArgDescription("Type of signal")]

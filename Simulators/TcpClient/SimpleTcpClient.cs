@@ -18,16 +18,19 @@ namespace SimpleTcpClient
             Random random = new Random();
             int newMinValue = Convert.ToInt32(arg.MinValue);
             int newMaxValue = Convert.ToInt32(arg.MaxValue);
-
-            
+                        
             List<int> randomList = new List<int>();
-            for (int i = newMinValue; i <= newMaxValue; i++)
+            for (int t = newMinValue; t <= arg.SampleNumber; t++)
             {
                 randomList.Add(random.Next(newMinValue, newMaxValue));
+
+
             }
 
             foreach (int i in randomList)
             {
+               
+
                 Console.WriteLine(i.ToString());
             }
             return randomList;
@@ -61,11 +64,11 @@ namespace SimpleTcpClient
             double x = arg.MaxValue - arg.MinValue;
             double rate = x / arg.SampleNumber;
             List<double> samplesLinearSignal = new List<double>();
-            for ( double i = arg.MinValue;i <=x; i = i+ rate  )
+            for ( double i = arg.MinValue; i <=x; i = i+ rate  )
             {
                 Console.WriteLine(i);
                 samplesLinearSignal.Add(i);
-                Thread.Sleep(arg.TimeSample);
+                Thread.Sleep(arg.TimeInterval);
             }
             
            return  DoubleToIntConverter(samplesLinearSignal);                       
@@ -108,7 +111,10 @@ namespace SimpleTcpClient
                         clientSocket.Send(message, Encoding.UTF8);
                         Console.WriteLine(message);
 
-                        string message2 = "You have chosen to generate a '" + arguments.SignalType + "' signal. Number of samples generated are " + arguments.SampleNumber + " ranging between a min value of " + arguments.MinValue + " and a max value of " + arguments.MaxValue + " with a time interval of " + arguments.TimeSample + " milliseconds.";
+                        string message2 = "You have chosen to generate a '" + arguments.SignalType + "' signal. Number of samples generated are " + 
+                            arguments.SampleNumber + " ranging between a min value of " + arguments.MinValue + " and a max value of " + arguments.MaxValue +
+                            " with a time interval of " + arguments.TimeInterval + " milliseconds.";
+
                         clientSocket.Send(message2, Encoding.UTF8);
                         Console.WriteLine(message2);
                         
