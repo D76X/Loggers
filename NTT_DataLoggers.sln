@@ -46,6 +46,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logger_Assets", "Logger_Ass
 		Loggers\Loggers_Assets\Product.wxs = Loggers\Loggers_Assets\Product.wxs
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FSharp", "FSharp", "{DE568A54-66CB-490F-B05E-A68098963527}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Composition", "Composition", "{B2EEDD0D-FA84-460D-9DBB-0F23C5AA3B06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompositionEx1", "Loggers\Composition\CompositionEx1\CompositionEx1.csproj", "{59A2A05A-F281-4B4F-A4CC-3ABA219B7FEB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -140,6 +146,14 @@ Global
 		{6C506C51-75CA-4749-BD47-136B0AE00F71}.Release|Any CPU.ActiveCfg = Release|x86
 		{6C506C51-75CA-4749-BD47-136B0AE00F71}.Release|x86.ActiveCfg = Release|x86
 		{6C506C51-75CA-4749-BD47-136B0AE00F71}.Release|x86.Build.0 = Release|x86
+		{59A2A05A-F281-4B4F-A4CC-3ABA219B7FEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59A2A05A-F281-4B4F-A4CC-3ABA219B7FEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59A2A05A-F281-4B4F-A4CC-3ABA219B7FEB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{59A2A05A-F281-4B4F-A4CC-3ABA219B7FEB}.Debug|x86.Build.0 = Debug|Any CPU
+		{59A2A05A-F281-4B4F-A4CC-3ABA219B7FEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59A2A05A-F281-4B4F-A4CC-3ABA219B7FEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59A2A05A-F281-4B4F-A4CC-3ABA219B7FEB}.Release|x86.ActiveCfg = Release|Any CPU
+		{59A2A05A-F281-4B4F-A4CC-3ABA219B7FEB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -159,5 +173,7 @@ Global
 		{8188B0BC-3F50-4284-A84A-7E3235E35F77} = {649A6568-F0E9-4734-83DF-C844B0C1F515}
 		{6C506C51-75CA-4749-BD47-136B0AE00F71} = {FAFE10AF-AF2C-4D6F-82BC-81ED9863EE85}
 		{EDF6A5B6-8E82-4ED3-ACA6-F2E5945E6A66} = {FAFE10AF-AF2C-4D6F-82BC-81ED9863EE85}
+		{B2EEDD0D-FA84-460D-9DBB-0F23C5AA3B06} = {FAFE10AF-AF2C-4D6F-82BC-81ED9863EE85}
+		{59A2A05A-F281-4B4F-A4CC-3ABA219B7FEB} = {B2EEDD0D-FA84-460D-9DBB-0F23C5AA3B06}
 	EndGlobalSection
 EndGlobal
