@@ -13,21 +13,65 @@ namespace SimpleTcpClient
 {
     class SimpleTcpClient
     {
-        private static Byte[] GenerateSamples(MyArgs arg)
+        private static List<int> GenerateRandomSamples(MyArgs arg)
         {
             Random random = new Random();
-            byte[] randomArray = new byte[arg.Sample];
-            for (byte i = 0; i < randomArray.Length; i++)
+            int newMinValue = Convert.ToInt32(arg.MinValue);
+            int newMaxValue = Convert.ToInt32(arg.MaxValue);
+                        
+            List<int> randomList = new List<int>();
+            for (int t = newMinValue; t <= arg.SampleNumber; t++)
             {
-                randomArray[i] = (byte)random.Next(0, 256);
+                randomList.Add(random.Next(newMinValue, newMaxValue));
+
+
             }
 
-            foreach (byte i in randomArray)
+            foreach (int i in randomList)
             {
+               
+
                 Console.WriteLine(i.ToString());
             }
+            return randomList;
+        }
 
-            return randomArray;
+        private static List<int> DoubleToIntConverter( List<double> decValues)
+        {
+            List<int> resultList = new List<int>();
+            int result;
+            foreach (double value in decValues)
+            { 
+                try
+                {
+                    result = Convert.ToInt32(value);
+                    resultList.Add(result);
+                    Console.WriteLine("Converted the {0} value '{1}' to the {2} value {3}.",
+                        value.GetType().Name, value, 
+                        result.GetType().Name, result);
+                }
+                catch (OverflowException)
+                {
+                    Console.WriteLine("{0} is outside the range of the Int32 type.",
+                        value);
+                }                
+            }
+            return resultList;
+        }
+
+        private static List<int> GenerateLinearSignal (MyArgs arg)
+        {            
+            double x = arg.MaxValue - arg.MinValue;
+            double rate = x / arg.SampleNumber;
+            List<double> samplesLinearSignal = new List<double>();
+            for ( double i = arg.MinValue; i <=x; i = i+ rate  )
+            {
+                Console.WriteLine(i);
+                samplesLinearSignal.Add(i);
+                Thread.Sleep(arg.TimeInterval);
+            }
+            
+           return  DoubleToIntConverter(samplesLinearSignal);                       
         }
 
         private static void GeneralOptions( MyArgs arg)
@@ -44,7 +88,7 @@ namespace SimpleTcpClient
             {
                 Console.WriteLine(ArgUsage.GenerateUsageFromTemplate<MyArgs>());
                 var arguments = Args.Parse<MyArgs>(args);                
-                string endpoint = arguments.Port.ToString();
+                string endpoint = arguments.PortNumber.ToString();
                 using (var context = ZmqContext.Create())
                 {
                     using (var clientSocket = context.CreateSocket(SocketType.PUSH))
@@ -52,7 +96,7 @@ namespace SimpleTcpClient
                         clientSocket.Connect("tcp://localhost:" + endpoint);
 
                         if (arguments.HelpPort !=null | arguments.HelpSample != null
-                            | arguments.HelpRepeat != null | arguments.HelpTimeInterval != null)
+                            | arguments.HelpRepeat != null | arguments.HelpTimeInterval != null| arguments.SignalType!=null)
                         {
                             Console.WriteLine(arguments.HelpPort);
                         
@@ -60,40 +104,51 @@ namespace SimpleTcpClient
                         
                             Console.WriteLine(arguments.HelpRepeat);
                       
-                            Console.WriteLine(arguments.HelpTimeInterval);
+                            Console.WriteLine(arguments.HelpTimeInterval);                           
                         }
-
-                        string message = "Message sent: Hello, you've connected to port " + endpoint.ToString();
+                                                
+                        string message = "Message sent: Opened tcp:// localhost: " + endpoint.ToString();
                         clientSocket.Send(message, Encoding.UTF8);
                         Console.WriteLine(message);
 
+                        string message2 = "You have chosen to generate a '" + arguments.SignalType + "' signal. Number of samples generated are " + 
+                            arguments.SampleNumber + " ranging between a min value of " + arguments.MinValue + " and a max value of " + arguments.MaxValue +
+                            " with a time interval of " + arguments.TimeInterval + " milliseconds.";
 
-                        string message2 = "Number of samples generated are " + arguments.Sample + " with a time interval of " + arguments.TimeInterval + "milliseconds ";
                         clientSocket.Send(message2, Encoding.UTF8);
                         Console.WriteLine(message2);
-
+                        
                         for (int t = 0; t < arguments.Repeat; t ++ )
                         {
-                            byte[] samplesGenerate = GenerateSamples(arguments);
-
-                            foreach (int i in samplesGenerate)
+                            if (arguments.SignalType == "random")
                             {
-                                clientSocket.Send(" Sent Data " + i, Encoding.UTF8);
+                                List<int> intValues = GenerateRandomSamples(arguments);
+
+                                foreach (int i in intValues)
+                                {
+                                    clientSocket.Send(" Sent Data " + i, Encoding.UTF8);
+                                }
                             }
-                            Console.WriteLine("----");
-                            Thread.Sleep(arguments.TimeInterval);                            
+
+                            else if (arguments.SignalType == "linear")
+                            {
+                                List<int> intValues = GenerateLinearSignal(arguments);
+
+                                foreach (int i in intValues)
+                                {
+                                    clientSocket.Send(" Sent Data " + i, Encoding.UTF8);
+                                }
+                            }
+                            
                         }
                     }
                 }
             }
-
             catch (ArgException e)
             {
                 Console.WriteLine(ArgUsage.GenerateUsageFromTemplate<MyArgs>());
             }
-
         }
-
     }
 }
 
