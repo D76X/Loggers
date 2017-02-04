@@ -168,7 +168,7 @@ prints the message "Opened tcp://localhost:3456"
 prints 100 numbers to the console
 ---------------------------------------------------------
  
-Read the quickstart for teh library 
+Read the quickstart for the library 
 https://commandline.codeplex.com/wikipage?title=Quickstart
 
 Read the documentation for the library 
