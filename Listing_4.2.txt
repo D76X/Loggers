@@ -1,0 +1,12 @@
+open System;;
+
+let convertDataRow(csvLine:string) =
+    let cells = List.ofSeq(csvLine.Split(','))
+    match cells with 
+    | title::number::_->
+        let parsedNumber = Int32.Parse(number)
+        (title, parsedNumber)
+    | _-> failwith "incorrect data format!"
+;;
+
+convertDataRow("Testing reading, 1234");;
