@@ -1,0 +1,2 @@
+https://fsharppowerpack.codeplex.com/
+http://fsharp.org/community/projects/
