@@ -67,6 +67,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntroMEF.Interfaces", "Logg
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntroMEF.Modules", "Loggers\Composition\IntroMEF.Modules\IntroMEF.Modules.csproj", "{FC5B7484-B630-47C2-9819-2D35B36FAEF8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompositionWpfEx3", "Loggers\Composition\CompositionWpfEx3\CompositionWpfEx3.csproj", "{703CDDE9-CEB2-47EC-897D-1C8C468C9D5B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -193,6 +195,14 @@ Global
 		{FC5B7484-B630-47C2-9819-2D35B36FAEF8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FC5B7484-B630-47C2-9819-2D35B36FAEF8}.Release|x86.ActiveCfg = Release|Any CPU
 		{FC5B7484-B630-47C2-9819-2D35B36FAEF8}.Release|x86.Build.0 = Release|Any CPU
+		{703CDDE9-CEB2-47EC-897D-1C8C468C9D5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{703CDDE9-CEB2-47EC-897D-1C8C468C9D5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{703CDDE9-CEB2-47EC-897D-1C8C468C9D5B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{703CDDE9-CEB2-47EC-897D-1C8C468C9D5B}.Debug|x86.Build.0 = Debug|Any CPU
+		{703CDDE9-CEB2-47EC-897D-1C8C468C9D5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{703CDDE9-CEB2-47EC-897D-1C8C468C9D5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{703CDDE9-CEB2-47EC-897D-1C8C468C9D5B}.Release|x86.ActiveCfg = Release|Any CPU
+		{703CDDE9-CEB2-47EC-897D-1C8C468C9D5B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -217,5 +227,6 @@ Global
 		{43E294A2-DD99-40FB-BFA1-5C760A902D9E} = {B2EEDD0D-FA84-460D-9DBB-0F23C5AA3B06}
 		{4B57534A-9C72-43E4-BA43-0CC70452EE6A} = {B2EEDD0D-FA84-460D-9DBB-0F23C5AA3B06}
 		{FC5B7484-B630-47C2-9819-2D35B36FAEF8} = {B2EEDD0D-FA84-460D-9DBB-0F23C5AA3B06}
+		{703CDDE9-CEB2-47EC-897D-1C8C468C9D5B} = {B2EEDD0D-FA84-460D-9DBB-0F23C5AA3B06}
 	EndGlobalSection
 EndGlobal
