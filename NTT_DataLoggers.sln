@@ -54,6 +54,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FSharp", "FSharp", "{DE568A
 	ProjectSection(SolutionItems) = preProject
 		FSharp\1_Listing_4.2.txt = FSharp\1_Listing_4.2.txt
 		FSharp\2_WorkingWithStrings.txt = FSharp\2_WorkingWithStrings.txt
+		FSharp\3_FSharp.PowerPack.dll.txt = FSharp\3_FSharp.PowerPack.dll.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Composition", "Composition", "{B2EEDD0D-FA84-460D-9DBB-0F23C5AA3B06}"
