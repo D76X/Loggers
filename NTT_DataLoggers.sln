@@ -33,6 +33,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Simulators", "Simulators", "{7CC7BD5E-E214-42C2-9CE0-627FD6D9E0D5}"
 	ProjectSection(SolutionItems) = preProject
 		Simulators\requirements_1.txt = Simulators\requirements_1.txt
+		requirements_2.txt = requirements_2.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Loggers", "Loggers", "{FAFE10AF-AF2C-4D6F-82BC-81ED9863EE85}"
@@ -51,7 +52,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logger_Assets", "Logger_Ass
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FSharp", "FSharp", "{DE568A54-66CB-490F-B05E-A68098963527}"
 	ProjectSection(SolutionItems) = preProject
-		Listing_4.2.txt = Listing_4.2.txt
+		FSharp\Listing_4.2.txt = FSharp\Listing_4.2.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Composition", "Composition", "{B2EEDD0D-FA84-460D-9DBB-0F23C5AA3B06}"
