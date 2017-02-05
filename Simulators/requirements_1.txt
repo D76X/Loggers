@@ -1,42 +1,67 @@
 PROJECT: Simulator
 
-=======================================================================================
+=========================================================================================================
 
 Intro
 
 Read carefully, you might not understand all of it at once. However, proceed step by step
-and apply what you know in a rational fashion. Try to understand what you are doing and the steps you take, use a scientific approach to solve problems. Document yourself on 
-the parts into which the work may be brocken down without getting stuck. Some work and 
-progress must be made at all costs!
+and apply what you know in a rational fashion. Try to understand what you are doing and 
+the steps you take. Use a scientific approach to solve problems. Document yourself on 
+the parts into which the work may be brocken down without getting stuck. 
 
-=======================================================================================
+Some work and progress must be made at all costs!
+
+=========================================================================================================
 
 What is it all about?
 
-We need to code a simulator application that generates numbers as if it were a real data logger. This application will be in the form of an executable named loggersim.exe.
-All that we need for the moment is a simple console application that generate numbers and makes them "available" to "consumers" or "listeners". This means that in some way the loggersim.exe is fired up and starts producing numbers that it sends to one or more "end points". Consumers for this datastream will have to fine an endpoint and read the data from it and do whatever they want to do with it. To the consumers these stream of data is exaclty that could be produced by a real data logger, they just won't care.
+We need to code a simulator application that generates numbers as if it were a real data logger. 
+This application will be in the form of an executable named loggersim.exe. All that we need for 
+the moment is a simple console application that generate numbers and makes them "available" to 
+"consumers" or "listeners". This means that in some way the loggersim.exe is fired up and starts 
+producing numbers that it sends to one or more "end points". Consumers for this datastream will 
+have to fine an endpoint and read the data from it and do whatever they want to do with it. 
 
-For example an obvious consumer could be a GUI that display that data to the user as it is read from the endpoint. Another example might be a Windows Service that connects to the endpoint, reads the data from the stream and relays to somewhere else in a different format.  
+To the consumers these stream of data is exaclty that could be produced by a real data logger, 
+they just won't care. For example an obvious consumer could be a GUI that displays that data to 
+the user as it is read from the endpoint. Another example might be a Windows Service that connects 
+to the endpoint, reads the data from the stream and relays it to somewhere else in a different 
+format.  
 
-This means that the endpoint must be easy to reach and read from for consumers. 
+This means that the endpoint must be easy to reach and be read by the consumers. 
 
 To achieve this goal we will use TCP/IP.
 
-The simulator will use some algorithm to create a fake stream of data that looks the same as that of a data logger, then it will use some piece of software that takes this stream of numbers and pushes it to a TCP/IP endpoint.
+The simulator will use some algorithm to create a fake stream of data that looks the same as that of 
+a data logger, then it will use some piece of software that takes this stream of numbers and pushes it 
+to a TCP/IP endpoint.
 
-Computers and any piece of electronics that have an ETHERNET port on it can communicate over TCP/IP. As with real telephone calls and home addresses for letters communication between two points can be done once the two parties know eachother address. 
+Computers and any piece of electronics that have an ETHERNET port on it can communicate over TCP/IP. 
+As with real telephone calls and home addresses for letters communication between two points can be done 
+once the two parties know each other address. 
 
-With TCP/IP is the same. The device or simulator that produces the datastream will send it to a TCP/IP address and then the consumer will open its own TCP/IP endpoint and connect this to the endpoint of the producer and read the stream of data.
+With TCP/IP is the same. The device or simulator that produces the datastream will send it to a TCP/IP 
+address and then the consumer will open its own TCP/IP endpoint and connect this to the endpoint of the 
+producer and read the stream of data. TCP/IP is biderictional and duplex, that is, once the two endpoints 
+connect the data can flow in either way at any time. However, for our case here, what we care for is the 
+flow of data that goes from the producer (logger or simulator) to the consumer.  
 
-TCP/IP is biderictional and duplex, that is, once the two endpoints connect the data can flow in either way at any time. However, for our case here, what we care for is the flow of data that goes from the producer (logger or simulator) to the consumer.  
+How the bits of info travel from one end point to the other is all taken care by the TCP/IP protocol that 
+in most cases is provided. We do not need to know anything about TCP/IP as it has already done by someone 
+else, instead we need to know the following
 
-How the bits of info travel from one end point to the other is all taken care by the TCP/IP protocol that in most cases is provided. We do not need to know anything about TCP/IP as it has already done by someone else, istead we need to know 
+1-How to obtain TCP/IP endpoint to send data to so that it can be available to other endpoints over the 
+  network.
+2-How to push the data produced by the simulator or the logger to the TCP/IP endpoint we have obtained 
+  in order to send it over the network
+3-How to obtain TCP/IP endpoint in order to listen to it and read from it the data stream. 
 
-1-How to obtain TCP/IP endpoint to send data to so that it can be available to other endpoints over the network.
-2-How to push the data produced by the simulator or the logger to the TCP/IP endpoint we have obtained in order to send it over the network
-3-How to obtain TCP/IP endpoint to listen to/read from to get the data stream. 
+In accordance with The Open Systems Interconnection model (OSI model i.e.. https://en.wikipedia.org/wiki/OSI_model)
 
-The OS [operating system] comes with the TCP/IP protocol implemented in it. It is a piece of low-lever software that deals with the details transitting and receiving data that files over teh nework.
+The OS [operating system] comes with the TCP/IP protocol implemented in it. It is a piece of low-level 
+software implementing theh transport layer of the OSI model. It deals with the details of transitting and 
+receiving data over the network layer. In any application the network layer is the ETHERNET protocol whereby 
+the data is exachanged in the form of frames.
 
 On sending data it takes the data that arrives to the endpoint from an application and that must be sent over the network, it chops it up in bits and send it to the network card
 and make sure that any TCP/IP listener endpoint receives all the right bits.
