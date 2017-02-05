@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{59A2A05A-F281-4B4F-A4CC-3ABA219B7FEB}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{FC5B7484-B630-47C2-9819-2D35B36FAEF8}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CompositionEx1</RootNamespace>
-    <AssemblyName>CompositionEx1</AssemblyName>
+    <RootNamespace>IntroMEF.Modules</RootNamespace>
+    <AssemblyName>IntroMEF.Modules</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -44,18 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IModule.cs" />
-    <Compile Include="Menu.cs" />
-    <Compile Include="ModuleSupplier.cs" />
-    <Compile Include="ModuleProduct.cs" />
     <Compile Include="ModuleCustomer.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="ModuleProduct.cs" />
+    <Compile Include="ModuleSupplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <ProjectReference Include="..\IntroMEF.Interfaces\IntroMEF.Interfaces.csproj">
+      <Project>{4b57534a-9c72-43e4-ba43-0cc70452ee6a}</Project>
+      <Name>IntroMEF.Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /Y "$(TargetDir)$(ProjectName).*" "$(SolutionDir)\Loggers\Composition\CompositionEx2\bin\Debug\modules\"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
