@@ -13,17 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-/// <summary>
-/// http://blogs.msmvps.com/bsonnino/2013/08/31/developing-modular-applications-with-mef/
-/// </summary>
-namespace CompositionWpfEx3 {
+namespace WpfMef.Modules {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SupplierList.xaml
     /// </summary>
-    public partial class MainWindow : Window {
-        public MainWindow() {
+    public partial class SupplierList : UserControl {
+        public SupplierList() {
             InitializeComponent();
-            this.DataContext = new MainViewModel();
+            this.List.ItemsSource = Enumerable.Range(1, 100).Select(n => "Supplier " + n);
         }
     }
 }
