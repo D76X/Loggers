@@ -119,17 +119,16 @@ From the point of view of any consumer the data logger is just an end point to w
 Resources you must look at how to get started and why
 
 
-================================================================================================
+======================================================================================================================================
 1-Command Line Parser
 
 https://commandline.codeplex.com/wikipage?title=Quickstart&referringTitle=Documentation 
 
-As we are going to write a console app for the loggersim.exe we need a nice way of configuring it 
-when it starts. For example, we might want to tell it to run for 10 seconds, create 100 samples of values between 1 and 1000 and repeat 3 times and so on.
+As we are going to write a console app for the loggersim.exe we need a nice way of configuring it when it starts. For example, we might 
+want to tell it to run for 10 seconds, create 100 samples of values between 1 and 1000 and repeat 3 times and so on.
 
-This can be done in several ways, however it might require a large amount of effort to design 
-all the code that parses the commands. This library does a good job already, thus it si worthwile
-to make use of it.
+This can be done in several ways, however it might require a large amount of effort to design all the code that parses the commands. 
+This library and others do a good job already, thus it is worthwile to make use of it.
 
 For example we would like to achieve the following result.
 
@@ -142,8 +141,8 @@ For example we would like to achieve the following result.
 And loggersim.exe does the following
 
 -Sets up a communication socket on tcp://localhost:3456
--Generates RANDOM samples of value between 0 and 255 as binary values
--The values are sent to teh socket tcp://localhost:345
+-Generates 100 samples of random value between 0 and 255 
+-The values are sent to the socket tcp://localhost:345
 -Each sample follows the previous one at 25 ms intervals
 -A total of 3 * 100 samples will be generated
 -loggersim.exe stops generating samples and wait for the netx command at the prompt
