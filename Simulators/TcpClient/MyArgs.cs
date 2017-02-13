@@ -52,7 +52,7 @@ namespace SimpleTcpClient
             }
             set
             {
-                this.helpRepeat = "Help Repeat: this is the number of sets of sample yuo would like to generate";
+                this.helpRepeat = "Help Repeat: this is the number of sets of sample you would like to generate";
             }
         }
 
