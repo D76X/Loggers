@@ -23,8 +23,6 @@ namespace SimpleTcpClient
             for (int t = newMinValue; t <= arg.SampleNumber; t++)
             {
                 randomList.Add(random.Next(newMinValue, newMaxValue));
-
-
             }
 
             foreach (int i in randomList)
