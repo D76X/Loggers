@@ -5,9 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace WpfEmf.Interfaces {
-    public abstract class WorkSpaceViewModel: BaseViewModel {
+    public abstract class WorkSpaceViewModel : BindableBase {
 
-        public String HeaderText { get; set; }
+        private string headerText;
+        public string HeaderText {
+            get { return this.headerText; }
+            set {
+                this.SetProperty(ref this.headerText, value);
+            }
+        }
+
         public override string ToString() {
             return HeaderText;
         }
