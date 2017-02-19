@@ -6,15 +6,8 @@
              xmlns:local="clr-namespace:WpfEmf.Plugin.Product.WpfControlLibrary"
              xmlns:ViewModels="clr-namespace:WpfEmf.ViewModels;assembly=WpfEmf.ViewModels" x:Class="WpfEmf.Plugin.Product.WpfControlLibrary.ProductUserControl"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" 
-             d:DataContext="{d:DesignInstance {x:Type ViewModels:ProductViewModel}, IsDesignTimeCreatable=True}">
+             d:DesignHeight="300" d:DesignWidth="300" d:DataContext="{d:DesignInstance {x:Type ViewModels:ProductViewModel}, IsDesignTimeCreatable=True}">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <TextBox x:Name="textBox" TextWrapping="Wrap" Text="{Binding HeaderText}" Grid.Row="1"/>
-        <Label x:Name="label" Content="Product User Control" Foreground="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" HorizontalAlignment="Center" Margin="89.411,0" VerticalAlignment="Center"/>
+        <TextBox x:Name="textBox" Height="23" Margin="126,101,54,0" TextWrapping="Wrap" Text="{Binding HeaderText}" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

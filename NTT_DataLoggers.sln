@@ -87,10 +87,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfEmf.Plugin.Product.WpfCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfEmf.ViewModels", "Loggers\Composition-Examples\Advanced-1\WpfEmf.ViewModels\WpfEmf.ViewModels.csproj", "{D857D44F-C714-4A7A-A9A4-767411311D62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfEmf.PluginCustomer", "Loggers\Composition-Examples\Advanced-1\WpfEmf.PluginCustomer\WpfEmf.PluginCustomer.csproj", "{3F766682-77A6-4BFE-A677-BD3EBC465C06}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfEmf.PluginProduct", "Loggers\Composition-Examples\Advanced-1\WpfEmf.PluginProduct\WpfEmf.PluginProduct.csproj", "{FE2A821C-CE76-43FA-AE99-8B4B0BB1F01B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -267,22 +263,6 @@ Global
 		{D857D44F-C714-4A7A-A9A4-767411311D62}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D857D44F-C714-4A7A-A9A4-767411311D62}.Release|x86.ActiveCfg = Release|Any CPU
 		{D857D44F-C714-4A7A-A9A4-767411311D62}.Release|x86.Build.0 = Release|Any CPU
-		{3F766682-77A6-4BFE-A677-BD3EBC465C06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3F766682-77A6-4BFE-A677-BD3EBC465C06}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3F766682-77A6-4BFE-A677-BD3EBC465C06}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{3F766682-77A6-4BFE-A677-BD3EBC465C06}.Debug|x86.Build.0 = Debug|Any CPU
-		{3F766682-77A6-4BFE-A677-BD3EBC465C06}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3F766682-77A6-4BFE-A677-BD3EBC465C06}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3F766682-77A6-4BFE-A677-BD3EBC465C06}.Release|x86.ActiveCfg = Release|Any CPU
-		{3F766682-77A6-4BFE-A677-BD3EBC465C06}.Release|x86.Build.0 = Release|Any CPU
-		{FE2A821C-CE76-43FA-AE99-8B4B0BB1F01B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FE2A821C-CE76-43FA-AE99-8B4B0BB1F01B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FE2A821C-CE76-43FA-AE99-8B4B0BB1F01B}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{FE2A821C-CE76-43FA-AE99-8B4B0BB1F01B}.Debug|x86.Build.0 = Debug|Any CPU
-		{FE2A821C-CE76-43FA-AE99-8B4B0BB1F01B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FE2A821C-CE76-43FA-AE99-8B4B0BB1F01B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FE2A821C-CE76-43FA-AE99-8B4B0BB1F01B}.Release|x86.ActiveCfg = Release|Any CPU
-		{FE2A821C-CE76-43FA-AE99-8B4B0BB1F01B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -316,7 +296,5 @@ Global
 		{AE0440EC-2597-4194-8273-11136A3DF65F} = {A5C03099-87F4-4AED-8119-41056FF48722}
 		{7A305F95-E462-4C84-AEB4-C6EFDED01E36} = {A5C03099-87F4-4AED-8119-41056FF48722}
 		{D857D44F-C714-4A7A-A9A4-767411311D62} = {A5C03099-87F4-4AED-8119-41056FF48722}
-		{3F766682-77A6-4BFE-A677-BD3EBC465C06} = {A5C03099-87F4-4AED-8119-41056FF48722}
-		{FE2A821C-CE76-43FA-AE99-8B4B0BB1F01B} = {A5C03099-87F4-4AED-8119-41056FF48722}
 	EndGlobalSection
 EndGlobal

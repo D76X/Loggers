@@ -13,15 +13,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfEmf.Plugin.Product.WpfControlLibrary
-{
+namespace WpfEmf.Plugin.Product.WpfControlLibrary {
     /// <summary>
     /// Interaction logic for UserControl1.xaml
     /// </summary>
-    public partial class ProductUserControl : UserControl
-    {
-        public ProductUserControl()
-        {
+    public partial class ProductUserControl : UserControl {
+        public ProductUserControl() {
             InitializeComponent();
         }
     }
