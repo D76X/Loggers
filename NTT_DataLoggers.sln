@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Parsers", "Parsers", "{8F994388-9528-4E34-8479-4CB0C5EC9EBE}"
 	ProjectSection(SolutionItems) = preProject
@@ -40,6 +40,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Loggers", "Loggers", "{FAFE
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub", "GitHub", "{E9200801-28A9-48F9-9CE7-FC85A30EBB58}"
 	ProjectSection(SolutionItems) = preProject
+		GitHubResources.txt = GitHubResources.txt
 		GitHub\GitWorkflow.png = GitHub\GitWorkflow.png
 	EndProjectSection
 EndProject
@@ -81,6 +82,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompositionWpfEx4", "Loggers\Composition-Examples\Advanced-1\CompositionWpfEx4\CompositionWpfEx4.csproj", "{F0ECA8D4-1A43-4787-90FC-71537707D11C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfEmf.Interfaces", "Loggers\Composition-Examples\Advanced-1\WpfEmf.Interfaces\WpfEmf.Interfaces.csproj", "{AE0440EC-2597-4194-8273-11136A3DF65F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfEmf.Plugin.Product.WpfControlLibrary", "Loggers\Composition-Examples\Advanced-1\WpfEmf.Plugin.Product.WpfControlLibrary\WpfEmf.Plugin.Product.WpfControlLibrary.csproj", "{7A305F95-E462-4C84-AEB4-C6EFDED01E36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfEmf.ViewModels", "Loggers\Composition-Examples\Advanced-1\WpfEmf.ViewModels\WpfEmf.ViewModels.csproj", "{D857D44F-C714-4A7A-A9A4-767411311D62}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfEmf.PluginCustomer", "Loggers\Composition-Examples\Advanced-1\WpfEmf.PluginCustomer\WpfEmf.PluginCustomer.csproj", "{3F766682-77A6-4BFE-A677-BD3EBC465C06}"
 EndProject
@@ -244,6 +249,22 @@ Global
 		{AE0440EC-2597-4194-8273-11136A3DF65F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AE0440EC-2597-4194-8273-11136A3DF65F}.Release|x86.ActiveCfg = Release|Any CPU
 		{AE0440EC-2597-4194-8273-11136A3DF65F}.Release|x86.Build.0 = Release|Any CPU
+		{7A305F95-E462-4C84-AEB4-C6EFDED01E36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A305F95-E462-4C84-AEB4-C6EFDED01E36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A305F95-E462-4C84-AEB4-C6EFDED01E36}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7A305F95-E462-4C84-AEB4-C6EFDED01E36}.Debug|x86.Build.0 = Debug|Any CPU
+		{7A305F95-E462-4C84-AEB4-C6EFDED01E36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A305F95-E462-4C84-AEB4-C6EFDED01E36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A305F95-E462-4C84-AEB4-C6EFDED01E36}.Release|x86.ActiveCfg = Release|Any CPU
+		{7A305F95-E462-4C84-AEB4-C6EFDED01E36}.Release|x86.Build.0 = Release|Any CPU
+		{D857D44F-C714-4A7A-A9A4-767411311D62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D857D44F-C714-4A7A-A9A4-767411311D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D857D44F-C714-4A7A-A9A4-767411311D62}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D857D44F-C714-4A7A-A9A4-767411311D62}.Debug|x86.Build.0 = Debug|Any CPU
+		{D857D44F-C714-4A7A-A9A4-767411311D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D857D44F-C714-4A7A-A9A4-767411311D62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D857D44F-C714-4A7A-A9A4-767411311D62}.Release|x86.ActiveCfg = Release|Any CPU
+		{D857D44F-C714-4A7A-A9A4-767411311D62}.Release|x86.Build.0 = Release|Any CPU
 		{3F766682-77A6-4BFE-A677-BD3EBC465C06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3F766682-77A6-4BFE-A677-BD3EBC465C06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F766682-77A6-4BFE-A677-BD3EBC465C06}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -283,6 +304,8 @@ Global
 		{71BFA319-1012-45F6-8667-317F37704221} = {5C8BB8FF-F0BD-4D56-AE71-C3F580AB8F47}
 		{F0ECA8D4-1A43-4787-90FC-71537707D11C} = {A5C03099-87F4-4AED-8119-41056FF48722}
 		{AE0440EC-2597-4194-8273-11136A3DF65F} = {A5C03099-87F4-4AED-8119-41056FF48722}
+		{7A305F95-E462-4C84-AEB4-C6EFDED01E36} = {A5C03099-87F4-4AED-8119-41056FF48722}
+		{D857D44F-C714-4A7A-A9A4-767411311D62} = {A5C03099-87F4-4AED-8119-41056FF48722}
 		{3F766682-77A6-4BFE-A677-BD3EBC465C06} = {A5C03099-87F4-4AED-8119-41056FF48722}
 	EndGlobalSection
 EndGlobal
