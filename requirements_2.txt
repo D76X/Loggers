@@ -2,4 +2,4 @@ PROJECT: Simulator
 
 =========================================================================================================
 
-1- Read requiremts_1.txt again as a refresher.
+1- Read requiremts_1.txt again as a refresher. 

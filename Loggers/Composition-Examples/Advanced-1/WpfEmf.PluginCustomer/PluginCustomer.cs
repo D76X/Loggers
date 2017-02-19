@@ -16,7 +16,8 @@ namespace WpfEmf.PluginCustomer
     public class PluginCustomer : IBasePlugin {
 
         [Import]
-        private PluginCustomerViewModel _viewModel { get; set; }
+        //private PluginCustomerViewModel _viewModel { get; set; }
+        private WorkSpaceViewModel _viewModel { get; set; }
 
         private ResourceDictionary _viewDictionary = new ResourceDictionary(); 
 
