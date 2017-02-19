@@ -33,7 +33,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Simulators", "Simulators", "{7CC7BD5E-E214-42C2-9CE0-627FD6D9E0D5}"
 	ProjectSection(SolutionItems) = preProject
 		Simulators\requirements_1.txt = Simulators\requirements_1.txt
-		requirements_2.txt = requirements_2.txt
+		Simulators\requirements_2.txt = Simulators\requirements_2.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Loggers", "Loggers", "{FAFE10AF-AF2C-4D6F-82BC-81ED9863EE85}"
