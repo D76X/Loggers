@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using WpfEmf.Interfaces;
 
+/// <summary>
+/// http://stackoverflow.com/questions/12204614/load-wpf-ui-into-mvvm-application-from-plug-in-assembly
+/// </summary>
 namespace CompositionWpfEx4 {
     /// <summary>
     /// Interaction logic for App.xaml

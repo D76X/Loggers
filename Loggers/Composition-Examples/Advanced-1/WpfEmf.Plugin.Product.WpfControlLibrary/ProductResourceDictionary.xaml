@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:WpfEmf.Plugin.Product.WpfControlLibrary"
-                    xmlns:ViewModels="clr-namespace:WpfEmf.ViewModels;assembly=WpfEmf.ViewModels" x:Class="WpfEmf.Plugin.Product.WpfControlLibrary.ProductUserControl_1">
+                    xmlns:ViewModels="clr-namespace:WpfEmf.ViewModels;assembly=WpfEmf.ViewModels" x:Class="WpfEmf.Plugin.Product.WpfControlLibrary.ProductUserControl">
     <DataTemplate DataType="{x:Type ViewModels:ProductViewModel}">
         <local:ProductUserControl 
             HorizontalAlignment="Stretch"

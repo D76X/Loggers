@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+/// <summary>
+/// http://stackoverflow.com/questions/12204614/load-wpf-ui-into-mvvm-application-from-plug-in-assembly
+/// </summary>
 namespace CompositionWpfEx4 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

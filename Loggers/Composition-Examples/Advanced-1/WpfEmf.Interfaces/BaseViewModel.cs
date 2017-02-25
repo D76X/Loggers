@@ -2,6 +2,11 @@
 using System.Runtime.CompilerServices;
 
 namespace WpfEmf.Interfaces {
+
+    /// <summary>
+    /// Typical implementation of INotifyPropertyChanged, inspred by the PluralSight course
+    /// WPF MVVM in Depth by Brian Noyes - Demo: Envapsulating INotifyPropertyChanged.
+    /// </summary>
     public class BindableBase : INotifyPropertyChanged {
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
