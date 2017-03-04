@@ -25,10 +25,9 @@ namespace CompositionWpfEx4 {
     /// </summary>
     public partial class MainWindow : Window {
 
-        public MainWindow() {
+        public MainWindow(IEnumerable<WorkSpaceViewModel> viewModels) {
 
-            //this.DataContext = new ProductViewModel();
-            this.DataContext = new MainWindowViewModel(App.ViewModels);
+            this.DataContext = new MainWindowViewModel(viewModels);
             InitializeComponent();
         }
                 

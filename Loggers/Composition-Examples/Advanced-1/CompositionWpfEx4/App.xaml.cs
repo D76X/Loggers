@@ -52,5 +52,12 @@ namespace CompositionWpfEx4 {
             this.resourceDictionaries = rds;
             this.viewModels = vms;
         }
+
+        private void Application_Startup(object sender, StartupEventArgs e) {
+
+            MainWindow wnd = new MainWindow(this.viewModels);
+            wnd.Title = "Main Window";
+            wnd.Show();
+        }
     }
 }

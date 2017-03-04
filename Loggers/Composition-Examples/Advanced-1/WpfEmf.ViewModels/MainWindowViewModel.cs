@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using WpfEmf.Interfaces;
@@ -9,7 +10,15 @@ using WpfEmf.Interfaces;
 namespace WpfEmf.ViewModels {
     public class MainWindowViewModel : BindableBase {
 
-        private WorkSpaceViewModel selectedViewModel = new ProductViewModel();
+        public MainWindowViewModel(IEnumerable<WorkSpaceViewModel> viewModels) {
+
+            this.workSpaces = new ObservableCollection<WorkSpaceViewModel>();
+            viewModels.ToList().ForEach(vm => this.workSpaces.Add(vm));
+            this.selectedViewModel = this.workSpaces.FirstOrDefault();
+           
+        }
+
+        private WorkSpaceViewModel selectedViewModel;
 
         public WorkSpaceViewModel SelecedViewModel {
             get {
@@ -23,20 +32,12 @@ namespace WpfEmf.ViewModels {
             }
         }
 
-        private ObservableCollection<WorkSpaceViewModel> workspaces;
+        private ObservableCollection<WorkSpaceViewModel> workSpaces;
 
-        public ObservableCollection<WorkSpaceViewModel> Workspaces {
+        public ObservableCollection<WorkSpaceViewModel> WorkSpaces {
 
             get {
-                if (this.workspaces == null) {
-                    this.workspaces = new ObservableCollection<WorkSpaceViewModel>();
-                }
-                return this.workspaces;
-            }
-
-            set {
-
-
+                return this.workSpaces;
             }
         }
     }
