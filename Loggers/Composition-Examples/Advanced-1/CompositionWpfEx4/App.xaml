@@ -5,6 +5,6 @@
              Startup="Application_Startup">
     <!--StartupUri="MainWindow.xaml">-->
     <Application.Resources>
-         
+        <!--some resources are loaded dynamically in the App constructor leveraging MEF--> 
     </Application.Resources>
 </Application>
