@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseViewModel.cs" />
+    <Compile Include="BindableBase.cs" />
     <Compile Include="IBasePlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WorkSpaceViewModel.cs" />

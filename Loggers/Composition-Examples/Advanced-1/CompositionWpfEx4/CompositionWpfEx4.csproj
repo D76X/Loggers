@@ -100,6 +100,10 @@
       <Project>{ae0440ec-2597-4194-8273-11136a3df65f}</Project>
       <Name>WpfEmf.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WpfEmf.ViewModels\WpfEmf.ViewModels.csproj">
+      <Project>{d857d44f-c714-4a7a-a9a4-767411311d62}</Project>
+      <Name>WpfEmf.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

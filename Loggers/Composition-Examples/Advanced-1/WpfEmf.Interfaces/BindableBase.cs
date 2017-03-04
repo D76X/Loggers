@@ -13,7 +13,7 @@ namespace WpfEmf.Interfaces {
 
         /// <summary>
         /// Notify WPF stack that the view model has changed its state and it time to update the view via databinding.
-        /// Intended to be called from the settter ot the exposed property on the decendant view models.
+        /// Intended to be called from the setter of the exposed property on the descendant view models.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="member"></param>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfEmf.Interfaces;
+using WpfEmf.ViewModels;
 
 /// <summary>
 /// http://stackoverflow.com/questions/12204614/load-wpf-ui-into-mvvm-application-from-plug-in-assembly
@@ -21,8 +24,14 @@ namespace CompositionWpfEx4 {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
+
         public MainWindow() {
+
+            //this.DataContext = new ProductViewModel();
+            this.DataContext = new MainWindowViewModel(App.ViewModels);
             InitializeComponent();
         }
+                
     }
+
 }

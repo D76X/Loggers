@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
-using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 using System.Windows;
 using WpfEmf.Interfaces;
 
@@ -18,17 +15,16 @@ namespace CompositionWpfEx4 {
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application {
-
-        //[ImportMany("ResourceDictionaries", typeof(ResourceDictionary))]
-        private IEnumerable<ResourceDictionary> _resourceDictionaries;
-
-        private IEnumerable<WorkSpaceViewModel> _viewModels;
+      
+        private IEnumerable<ResourceDictionary> resourceDictionaries;
+        private IEnumerable<WorkSpaceViewModel> viewModels;
 
         [ImportMany]
-        private IEnumerable<IBasePlugin> _plugins;
+        private IEnumerable<IBasePlugin> plugins;
 
+        public IEnumerable<WorkSpaceViewModel> ViewModels => this.viewModels;
 
-        public App() {
+        public App() {            
 
             var catalog = new AggregateCatalog(
                 new AssemblyCatalog(Assembly.GetExecutingAssembly()),
@@ -38,7 +34,23 @@ namespace CompositionWpfEx4 {
 
             container.ComposeParts(this);
 
-            var x = this._plugins;
+            var rds = new List<ResourceDictionary>();
+            var vms = new List<WorkSpaceViewModel>();
+
+            var plugins = this.plugins.OrderBy(p => p.ViewModel.HeaderText);
+
+            foreach (var p in plugins) {
+
+                rds.Add(p.View);
+                vms.Add(p.ViewModel);
+
+                // Take the View from the Plugin and Merge it with,
+                // our Applications Resource Dictionary.
+                Application.Current.Resources.MergedDictionaries.Add(p.View);
+            }
+
+            this.resourceDictionaries = rds;
+            this.viewModels = vms;
         }
     }
 }
