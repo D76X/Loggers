@@ -16,11 +16,16 @@
         <ListView x:Name="listView"
                   Grid.ColumnSpan="2"
                   ItemsSource="{Binding Path=WorkSpaces}">
-            <ListView.View>
+            <!--<ListView.View>
                 <GridView>
                     <GridViewColumn />
                 </GridView>
-            </ListView.View>            
+            </ListView.View>-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding HeaderText}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
         <ContentControl Grid.Column="1"
                         Content="{Binding Path=SelecedViewModel}"/>
