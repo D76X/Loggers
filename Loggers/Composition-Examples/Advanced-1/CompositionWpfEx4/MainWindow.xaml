@@ -14,13 +14,8 @@
             <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
         <ListView x:Name="listView"
-                  Grid.ColumnSpan="2"
-                  ItemsSource="{Binding Path=WorkSpaces}">
-            <!--<ListView.View>
-                <GridView>
-                    <GridViewColumn />
-                </GridView>
-            </ListView.View>-->
+                  Grid.ColumnSpan="1"
+                  ItemsSource="{Binding Path=WorkSpaces}">            
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding HeaderText}" />
