@@ -44,6 +44,7 @@
     <Compile Include="BindableBase.cs" />
     <Compile Include="IBasePlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelayCommand.cs" />
     <Compile Include="WorkSpaceViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
