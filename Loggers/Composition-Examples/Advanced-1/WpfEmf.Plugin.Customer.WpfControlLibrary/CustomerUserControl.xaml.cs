@@ -1,11 +1,13 @@
 ﻿using System.Windows.Controls;
 
-namespace WpfEmf.Plugin.Product.WpfControlLibrary {
+namespace WpfEmf.Plugin.Customer.WpfControlLibrary {
     /// <summary>
     /// Interaction logic for UserControl1.xaml
     /// </summary>
-    public partial class ProductUserControl : UserControl {
-        public ProductUserControl() {
+    public partial class CustomerUserControl : UserControl
+    {
+        public CustomerUserControl()
+        {
             InitializeComponent();
         }
     }

@@ -96,6 +96,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfEmf.Plugin.Product.WpfCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfEmf.ViewModels", "Loggers\Composition-Examples\Advanced-1\WpfEmf.ViewModels\WpfEmf.ViewModels.csproj", "{D857D44F-C714-4A7A-A9A4-767411311D62}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfEmf.Plugin.Customer.WpfControlLibrary", "Loggers\Composition-Examples\Advanced-1\WpfEmf.Plugin.Customer.WpfControlLibrary\WpfEmf.Plugin.Customer.WpfControlLibrary.csproj", "{C11DA2A8-9C4F-441F-AA71-46F21F6F0CBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -272,6 +274,14 @@ Global
 		{D857D44F-C714-4A7A-A9A4-767411311D62}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D857D44F-C714-4A7A-A9A4-767411311D62}.Release|x86.ActiveCfg = Release|Any CPU
 		{D857D44F-C714-4A7A-A9A4-767411311D62}.Release|x86.Build.0 = Release|Any CPU
+		{C11DA2A8-9C4F-441F-AA71-46F21F6F0CBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C11DA2A8-9C4F-441F-AA71-46F21F6F0CBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C11DA2A8-9C4F-441F-AA71-46F21F6F0CBC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C11DA2A8-9C4F-441F-AA71-46F21F6F0CBC}.Debug|x86.Build.0 = Debug|Any CPU
+		{C11DA2A8-9C4F-441F-AA71-46F21F6F0CBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C11DA2A8-9C4F-441F-AA71-46F21F6F0CBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C11DA2A8-9C4F-441F-AA71-46F21F6F0CBC}.Release|x86.ActiveCfg = Release|Any CPU
+		{C11DA2A8-9C4F-441F-AA71-46F21F6F0CBC}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -305,5 +315,6 @@ Global
 		{AE0440EC-2597-4194-8273-11136A3DF65F} = {A5C03099-87F4-4AED-8119-41056FF48722}
 		{7A305F95-E462-4C84-AEB4-C6EFDED01E36} = {A5C03099-87F4-4AED-8119-41056FF48722}
 		{D857D44F-C714-4A7A-A9A4-767411311D62} = {A5C03099-87F4-4AED-8119-41056FF48722}
+		{C11DA2A8-9C4F-441F-AA71-46F21F6F0CBC} = {A5C03099-87F4-4AED-8119-41056FF48722}
 	EndGlobalSection
 EndGlobal
