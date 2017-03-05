@@ -37,7 +37,7 @@ namespace CompositionWpfEx4 {
             var rds = new List<ResourceDictionary>();
             var vms = new List<WorkSpaceViewModel>();
 
-            var plugins = this.plugins.OrderBy(p => p.ViewModel.HeaderText);
+            var plugins = this.plugins.OrderBy(p => p.ViewModel.WorkSpaceName);
 
             foreach (var p in plugins) {
 

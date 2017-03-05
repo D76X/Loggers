@@ -2,6 +2,7 @@
 using System.Windows.Input;
 
 namespace WpfEmf.Interfaces {
+
     public class RelayCommand : ICommand {
 
         private Action targetExecute;
@@ -47,7 +48,6 @@ namespace WpfEmf.Interfaces {
         #endregion
     }
 
-
     /// <summary>
     /// http://stackoverflow.com/questions/6273002/generic-type-safe-icommand-implementation
     /// </summary>
@@ -66,7 +66,7 @@ namespace WpfEmf.Interfaces {
             targetCanExecute = canExecute;
         }
 
-        #region
+        #region ICommand
         public event EventHandler CanExecuteChanged = delegate { };
 
         public bool CanExecute(object parameter) {

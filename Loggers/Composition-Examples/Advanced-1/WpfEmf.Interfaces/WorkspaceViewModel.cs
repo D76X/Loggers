@@ -10,16 +10,23 @@ using System.Threading.Tasks;
 namespace WpfEmf.Interfaces {
     public abstract class WorkSpaceViewModel : BindableBase {
 
-        private string headerText;
-        public string HeaderText {
-            get { return this.headerText; }
-            set {
-                this.SetProperty(ref this.headerText, value);
-            }
+        private readonly string workSpaceName;
+
+        public WorkSpaceViewModel(string wsName) {
+            this.workSpaceName = wsName;
         }
 
+        public string WorkSpaceName {
+            get { return this.workSpaceName; }
+        }
+
+        public string ViewModelName {
+            get { return this.GetType().Name; }
+        }
+
+
         public override string ToString() {
-            return HeaderText;
+            return this.WorkSpaceName+"."+this.ViewModelName ;
         }
     }
 }

@@ -18,7 +18,7 @@
                   ItemsSource="{Binding Path=WorkSpaces}">            
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding HeaderText}" />
+                    <TextBlock Text="{Binding WorkSpaceName}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
