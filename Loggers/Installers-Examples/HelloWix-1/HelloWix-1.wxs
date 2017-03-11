@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     RequiredVersion="3.10.0.0">
   <Product Id="*" 
            Name="HelloWix" 
            Language="1033" 
