@@ -8,7 +8,10 @@
            Manufacturer="New Thinking Technologies" 
            UpgradeCode="A59F9B81-9243-43EC-98C8-11296785AFA3">
     <Package Description="Simple Demo" 
-             Compressed="yes"/>
+             Compressed="yes"
+             Manufacturer="New Thinking Technologies" 
+             Keywords="Practice, Installer, MSI"
+             Comments="Test MSI Installer HelloWix-1 by NTT"/>
     <MediaTemplate EmbedCab="yes"/>
   </Product>
 </Wix>
