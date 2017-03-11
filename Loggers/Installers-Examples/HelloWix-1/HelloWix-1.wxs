@@ -11,7 +11,8 @@
              Compressed="yes"
              Manufacturer="New Thinking Technologies" 
              Keywords="Practice, Installer, MSI"
-             Comments="Test MSI Installer HelloWix-1 by NTT"/>
+             Comments="Test MSI Installer HelloWix-1 by NTT"
+             InstallerVersion="405"/>
     <MediaTemplate EmbedCab="yes"/>
   </Product>
 </Wix>
