@@ -4,14 +4,30 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:WpfEmf.Plugin.Customer.WpfControlLibrary"
+             xmlns:ViewModels="clr-namespace:WpfEmf.ViewModels;assembly=WpfEmf.ViewModels"
              mc:Ignorable="d"
              d:DesignHeight="300"
-             d:DesignWidth="300">
+             d:DesignWidth="300"
+             d:DataContext="{d:DesignInstance {x:Type ViewModels:CustomerViewModel}, IsDesignTimeCreatable=True}">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
         <TextBox x:Name="textBox"
                  TextWrapping="Wrap"
-                 Text="TextBox"
-                 TextAlignment="Center" />
+                 Text="{Binding Path=ViewModelName, Mode=OneWay}"
+                 TextAlignment="Center"
+                 Grid.Column="1" />
+        <Label x:Name="label"
+               Content="VM Name"
+               BorderBrush="#FFF5C008"
+               Foreground="#FF0ABB12" />
 
     </Grid>
 </UserControl>

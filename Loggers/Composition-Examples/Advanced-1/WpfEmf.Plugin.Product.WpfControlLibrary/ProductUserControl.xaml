@@ -35,7 +35,7 @@
                          Grid.Row="1"
                          TextAlignment="Center" />
                 <Label x:Name="label"
-                       Content="VM Header" />
+                       Content="VM Name" />
                 <TextBox x:Name="textBox"
                          TextWrapping="Wrap"
                          Text="{Binding Path=ViewModelName, Mode=OneWay}"
