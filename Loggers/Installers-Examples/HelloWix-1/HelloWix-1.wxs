@@ -5,7 +5,7 @@
            Language="1033" 
            Version="1.0.0.0" 
            Manufacturer="New Thinking Technologies" 
-           UpgradeCode="123BF1E5-32A5-431F-A215-BB5CF00F3B71">
+           UpgradeCode="A59F9B81-9243-43EC-98C8-11296785AFA3">
     <Package Description="Simple Demo" 
              Compressed="yes"/>
     <MediaTemplate EmbedCab="yes"/>
