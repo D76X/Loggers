@@ -88,6 +88,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompositionWpfEx4", "Loggers\Composition-Examples\Advanced-1\CompositionWpfEx4\CompositionWpfEx4.csproj", "{F0ECA8D4-1A43-4787-90FC-71537707D11C}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7A305F95-E462-4C84-AEB4-C6EFDED01E36} = {7A305F95-E462-4C84-AEB4-C6EFDED01E36}
+		{C11DA2A8-9C4F-441F-AA71-46F21F6F0CBC} = {C11DA2A8-9C4F-441F-AA71-46F21F6F0CBC}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfEmf.Interfaces", "Loggers\Composition-Examples\Advanced-1\WpfEmf.Interfaces\WpfEmf.Interfaces.csproj", "{AE0440EC-2597-4194-8273-11136A3DF65F}"
