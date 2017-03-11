@@ -50,7 +50,7 @@ References
 
 -------------------------------------------------------------------------------------------------------
 How to use App.xaml and App.xaml.cs
-
+Create the main window of the application in Application_Startup
 http://www.wpf-tutorial.com/wpf-application/working-with-app-xaml/
 
 -------------------------------------------------------------------------------------------------------

@@ -19,11 +19,18 @@ namespace CompositionWpfEx4 {
         private IEnumerable<ResourceDictionary> resourceDictionaries;
         private IEnumerable<WorkSpaceViewModel> viewModels;
 
+        /// <summary>
+        /// This will be set by MEF when the container is composed.
+        /// </summary>
         [ImportMany]
         private IEnumerable<IBasePlugin> plugins;
 
         public IEnumerable<WorkSpaceViewModel> ViewModels => this.viewModels;
 
+        /// <summary>
+        /// Entry point of the application where all the MEF set up
+        /// for the main parts of the application must happen.
+        /// </summary>
         public App() {            
 
             var catalog = new AggregateCatalog(
@@ -52,6 +59,14 @@ namespace CompositionWpfEx4 {
             this.resourceDictionaries = rds;
             this.viewModels = vms;
         }
+        /// <summary>
+        /// Create the main window of the application in Application_Startup
+        /// http://www.wpf-tutorial.com/wpf-application/working-with-app-xaml/
+        /// 
+        /// This allows to pass parameters to the constructor of the main window.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void Application_Startup(object sender, StartupEventArgs e) {
 
