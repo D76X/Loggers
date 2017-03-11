@@ -17,7 +17,8 @@ namespace WpfEmf.Plugin.Product.WpfControlLibrary {
         private ResourceDictionary _viewDictionary = new ResourceDictionary();
 
         /// <summary>
-        /// 
+        /// Use importing constructor if you want to import MEF dependencies
+        /// at construction time as explaied here http://www.brendanforster.com/mef-import-vs-importingconstructor.html
         /// </summary>
         [ImportingConstructor]
         public PluginProduct() {           
