@@ -130,6 +130,7 @@ http://www.brendanforster.com/mef-import-vs-importingconstructor.html
 
 Pack Uri
 http://stackoverflow.com/questions/3442000/is-it-really-important-to-use-pack-uris-in-wpf-apps
+http://www.abhisheksur.com/2010/04/pack-uri-to-reference-component.html
 
 -------------------------------------------------------------------------------------------------------
 
