@@ -2,7 +2,7 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
      RequiredVersion="3.10.0.0">
   <Product Id="*" 
-           Name="HelloWix" 
+           Name="HelloWix-1" 
            Language="1033" 
            Version="1.0.0.0" 
            Manufacturer="New Thinking Technologies" 
