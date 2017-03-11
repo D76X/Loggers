@@ -25,7 +25,8 @@ namespace WpfEmf.Plugin.Customer.WpfControlLibrary {
         public PluginCustomer() {
 
             // there exist two URI styles - the first is an example of PACK URI  
-
+            // The differnce is explained here
+            // http://stackoverflow.com/questions/3442000/is-it-really-important-to-use-pack-uris-in-wpf-apps
             ResourceDictionary testResourceDisctionary = new ResourceDictionary();
             testResourceDisctionary.Source = new Uri("pack://application:,,,/WpfEmf.Plugin.Customer.WpfControlLibrary;component/CustomerResourceDictionary.xaml", UriKind.RelativeOrAbsolute);
 

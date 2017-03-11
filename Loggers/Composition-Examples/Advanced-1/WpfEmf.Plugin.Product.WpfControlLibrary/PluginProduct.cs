@@ -21,7 +21,11 @@ namespace WpfEmf.Plugin.Product.WpfControlLibrary {
         /// at construction time as explaied here http://www.brendanforster.com/mef-import-vs-importingconstructor.html
         /// </summary>
         [ImportingConstructor]
-        public PluginProduct() {           
+        public PluginProduct() {
+
+            // there exist two URI styles - the first is an example of PACK URI  
+            // The differnce is explained here
+            // http://stackoverflow.com/questions/3442000/is-it-really-important-to-use-pack-uris-in-wpf-apps        
 
             // This is a test that shows how a resource dictionary can be parsed and loaded in memory.
             // In TestDictionary1.xaml contains a single style. It is worth noting that if the resource dictionary is left

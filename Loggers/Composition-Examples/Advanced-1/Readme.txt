@@ -126,3 +126,10 @@ http://www.brendanforster.com/mef-import-vs-importingconstructor.html
 
 ***
 
+-------------------------------------------------------------------------------------------------------
+
+Pack Uri
+http://stackoverflow.com/questions/3442000/is-it-really-important-to-use-pack-uris-in-wpf-apps
+
+-------------------------------------------------------------------------------------------------------
+
