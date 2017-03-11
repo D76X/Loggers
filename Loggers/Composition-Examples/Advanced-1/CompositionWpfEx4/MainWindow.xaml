@@ -15,7 +15,8 @@
         </Grid.ColumnDefinitions>
         <ListView x:Name="listView"
                   Grid.ColumnSpan="1"
-                  ItemsSource="{Binding Path=WorkSpaces}">            
+                  ItemsSource="{Binding Path=WorkSpaces}"
+                  SelectedItem="{Binding Path=SelecedViewModel}">            
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding WorkSpaceName}" />
