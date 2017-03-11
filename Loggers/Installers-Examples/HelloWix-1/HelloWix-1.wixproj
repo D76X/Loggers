@@ -24,7 +24,7 @@
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="HelloWix.wxs" />
+    <Compile Include="HelloWix-1.wxs" />
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <!--

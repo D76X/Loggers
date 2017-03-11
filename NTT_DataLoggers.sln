@@ -66,9 +66,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installers-Examples", "Installers-Examples", "{C7C6F88C-55B2-466B-A0EB-318D990B2C2E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HelloWix-1", "HelloWix-1", "{129DC57C-243A-4F82-BBCF-0A1E6ED6EC6E}"
-	ProjectSection(SolutionItems) = preProject
-		Loggers\Installers-Examples\HelloWix-1\Product.wxs = Loggers\Installers-Examples\HelloWix-1\Product.wxs
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompositionEx1", "Loggers\Composition-Examples\Basic-1\CompositionEx1\CompositionEx1.csproj", "{59A2A05A-F281-4B4F-A4CC-3ABA219B7FEB}"
 EndProject
@@ -99,6 +96,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfEmf.Plugin.Customer.WpfControlLibrary", "Loggers\Composition-Examples\Advanced-1\WpfEmf.Plugin.Customer.WpfControlLibrary\WpfEmf.Plugin.Customer.WpfControlLibrary.csproj", "{C11DA2A8-9C4F-441F-AA71-46F21F6F0CBC}"
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "HelloWix-1", "Loggers\Installers-Examples\HelloWix-1\HelloWix-1.wixproj", "{6C506C51-75CA-4749-BD47-136B0AE00F71}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ZeorMQ-Eamples", "ZeorMQ-Eamples", "{BDAAF03F-645C-4E45-BAE7-3309CC441A9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -325,5 +324,6 @@ Global
 		{D857D44F-C714-4A7A-A9A4-767411311D62} = {A5C03099-87F4-4AED-8119-41056FF48722}
 		{C11DA2A8-9C4F-441F-AA71-46F21F6F0CBC} = {A5C03099-87F4-4AED-8119-41056FF48722}
 		{6C506C51-75CA-4749-BD47-136B0AE00F71} = {129DC57C-243A-4F82-BBCF-0A1E6ED6EC6E}
+		{BDAAF03F-645C-4E45-BAE7-3309CC441A9C} = {FAFE10AF-AF2C-4D6F-82BC-81ED9863EE85}
 	EndGlobalSection
 EndGlobal
