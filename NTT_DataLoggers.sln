@@ -99,6 +99,8 @@ Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "HelloWix-1", "Loggers\Insta
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ZeorMQ-Eamples", "ZeorMQ-Eamples", "{BDAAF03F-645C-4E45-BAE7-3309CC441A9C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{40C1783E-5AFE-4D71-B97F-2FBAF275A257}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
