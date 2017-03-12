@@ -34,9 +34,36 @@
               Hidden="no"
               ReadOnly="no"
               Vital="yes"
-              KeyPath="yes">          
+              KeyPath="yes">
+        </File>
+      </Component>
+      <Component Id="CMP_AdditionalForMainFeature"
+                 Guid="9C82DD54-A2CF-459B-A248-C4D6722DFFC1">
+        <File Id="FILE_ForMainFeature1TXT"
+              Source="ForMainFeature1.txt"
+              Name="ForMainFeature1 Friendly Name"
+              KeyPath="yes">
+        </File>
+      </Component>
+      <Component Id="CMP_ForOptionalFeature">
+        <File Id="FILE_OptionalFileForFeature2TXT"
+              Source="OptionalFileForFeature2.txt"
+              Name="File For Otinal Feature"
+              KeyPath="yes">
+
         </File>
       </Component>
     </DirectoryRef>
+    <Feature Id="MainProduct"
+             Title="Main Product"
+             Level="1">
+      <ComponentRef Id="CMP_InstallMeTXT"/>
+      <ComponentRef Id="CMP_AdditionalForMainFeature"/>
+    </Feature>
+    <Feature Id="OptionalFeature"
+             Title="Optional Feature"
+             Level="1">
+      <ComponentRef Id="CMP_ForOptionalFeature"/>    
+    </Feature>
   </Product>
 </Wix>
