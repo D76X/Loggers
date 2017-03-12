@@ -25,5 +25,14 @@
 
       </Directory>
     </Directory>
+    <DirectoryRef Id="_HelloWix-1">
+      <Component Id="CMP_InstallMeTXT"
+                 Guid="11EB228A-F4D0-444E-82E1-10066BFB89B4">
+        <File Id="FILE_InstallMeTXT"
+              Source="InstallMe.txt"
+              KeyPath="yes">          
+        </File>
+      </Component>
+    </DirectoryRef>
   </Product>
 </Wix>
