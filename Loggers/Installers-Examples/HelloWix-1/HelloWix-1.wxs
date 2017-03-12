@@ -30,6 +30,10 @@
                  Guid="11EB228A-F4D0-444E-82E1-10066BFB89B4">
         <File Id="FILE_InstallMeTXT"
               Source="InstallMe.txt"
+              Name="InstallMe Friendly Name"
+              Hidden="no"
+              ReadOnly="no"
+              Vital="yes"
               KeyPath="yes">          
         </File>
       </Component>
