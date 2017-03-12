@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
      RequiredVersion="3.10.0.0">
-  <Product Id="04E730A9-0619-4439-945B-568641D1E2F6" 
-           Name="HelloWix-1" 
-           Language="1033" 
-           Version="1.0.0.0" 
-           Manufacturer="New Thinking Technologies" 
+  <Product Id="04E730A9-0619-4439-945B-568641D1E2F6"
+           Name="HelloWix-1"
+           Language="1033"
+           Version="1.0.0.0"
+           Manufacturer="New Thinking Technologies"
            UpgradeCode="A59F9B81-9243-43EC-98C8-11296785AFA3">
-    <Package Description="Simple Demo" 
+    <Package Description="Simple Demo"
              Compressed="yes"
-             Manufacturer="New Thinking Technologies" 
+             Manufacturer="New Thinking Technologies"
              Keywords="Practice, Installer, MSI"
              Comments="Test MSI Installer HelloWix-1 by NTT"
              InstallerVersion="405"/>
     <MediaTemplate EmbedCab="yes"/>
+    <Directory Id="TARGETDIR"
+               Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="_NewThinkingTechnologies"
+                   Name="NewThinkingTechnologies">
+          <Directory Id="_HelloWix-1"
+                     Name="HelloWix-1"></Directory>
+        </Directory>
+
+      </Directory>
+    </Directory>
   </Product>
 </Wix>
