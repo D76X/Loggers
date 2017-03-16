@@ -20,15 +20,14 @@ namespace SimpleTcpListener
             using (var serverSocket = context.CreateSocket(SocketType.PULL))
             {
                 serverSocket.Bind("tcp://*:" + arguments.Port);
+                Console.WriteLine("Waiting for a connection...");
 
                 while (true)
                 {
                     var receivedMessage = serverSocket.Receive(Encoding.UTF8);
                     Console.WriteLine("Message received:  " + receivedMessage);
-                }
-                
+                }                
             }
-
         }
     }
 
