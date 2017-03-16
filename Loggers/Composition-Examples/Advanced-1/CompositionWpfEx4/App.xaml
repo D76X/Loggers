@@ -1,0 +1,10 @@
+﻿<Application x:Class="CompositionWpfEx4.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:CompositionWpfEx4"
+             Startup="Application_Startup">
+    <!--StartupUri="MainWindow.xaml">-->
+    <Application.Resources>
+        <!--some resources are loaded dynamically in the App constructor leveraging MEF--> 
+    </Application.Resources>
+</Application>
