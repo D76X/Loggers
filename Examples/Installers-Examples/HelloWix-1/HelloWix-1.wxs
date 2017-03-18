@@ -56,12 +56,14 @@
     </DirectoryRef>
     <Feature Id="MainProduct"
              Title="Main Product"
+             Description="Installs the Main Feature"
              Level="1">
       <ComponentRef Id="CMP_InstallMeTXT"/>
       <ComponentRef Id="CMP_AdditionalForMainFeature"/>
     </Feature>
     <Feature Id="OptionalFeature"
              Title="Optional Feature"
+             Description="This Feature is optional"
              Level="1">
       <ComponentRef Id="CMP_ForOptionalFeature"/>    
     </Feature>
