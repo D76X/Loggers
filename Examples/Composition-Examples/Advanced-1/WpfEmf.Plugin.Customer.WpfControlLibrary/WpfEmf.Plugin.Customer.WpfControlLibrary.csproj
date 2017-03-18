@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7A305F95-E462-4C84-AEB4-C6EFDED01E36}</ProjectGuid>
+    <ProjectGuid>{C11DA2A8-9C4F-441F-AA71-46F21F6F0CBC}</ProjectGuid>
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WpfEmf.Plugin.Product.WpfControlLibrary</RootNamespace>
-    <AssemblyName>WpfEmf.Plugin.Product.WpfControlLibrary</AssemblyName>
+    <RootNamespace>WpfEmf.Plugin.Customer.WpfControlLibrary</RootNamespace>
+    <AssemblyName>WpfEmf.Plugin.Customer.WpfControlLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,7 +49,21 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PluginProduct.cs" />
+    <Resource Include="CustomerResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+    <Page Include="CustomerUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="CustomerUserControl.xaml.cs">
+      <DependentUpon>CustomerUserControl.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PluginCustomer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -64,12 +77,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="UserControl1.xaml.cs">
-      <DependentUpon>UserControl1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ProductUserControl.xaml.cs">
-      <DependentUpon>ProductUserControl.xaml</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -81,40 +88,18 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="UserControl1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Resource Include="TestDictionary1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Resource>
-    <Resource Include="ProductResourceDictionary.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Resource>
-    <Page Include="ProductUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>t</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Basic-1\WpfMef.Interfaces\WpfMef.Interfaces.csproj">
-      <Project>{9520a719-81d2-41f3-9e6a-1e90b8b7cea4}</Project>
-      <Name>WpfMef.Interfaces</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WpfEmf.Interfaces\WpfEmf.Interfaces.csproj">
       <Project>{AE0440EC-2597-4194-8273-11136A3DF65F}</Project>
       <Name>WpfEmf.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\WpfEmf.ViewModels\WpfEmf.ViewModels.csproj">
-      <Project>{d857d44f-c714-4a7a-a9a4-767411311d62}</Project>
+      <Project>{D857D44F-C714-4A7A-A9A4-767411311D62}</Project>
       <Name>WpfEmf.ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(TargetDir)$(ProjectName).*" "$(SolutionDir)\Loggers\Composition-Examples\Advanced-1\CompositionWpfEx4\bin\Debug\modules\"</PostBuildEvent>
+    <PostBuildEvent>copy /Y "$(TargetDir)$(ProjectName).*" "$(SolutionDir)\Examples\Composition-Examples\Advanced-1\CompositionWpfEx4\bin\Debug\modules\"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
