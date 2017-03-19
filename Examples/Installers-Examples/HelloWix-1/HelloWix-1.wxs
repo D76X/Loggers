@@ -14,6 +14,7 @@
              Comments="Test MSI Installer HelloWix-1 by NTT"
              InstallerVersion="405"/>
     <MediaTemplate EmbedCab="yes"/>
+    <Icon Id="product_icon.ico" SourceFile="ntt_logo.ico"/>
     <Directory Id="TARGETDIR"
                Name="SourceDir">
       <Directory Id="ProgramFilesFolder">
@@ -67,12 +68,14 @@
         <Shortcut Id="DocumentationStartMenuShortcut"
                   Name="HelloWix-1 Documentation"
                   Description="HelloWix-1 Documentation"
-                  Target="[_NewThinkingTechnologies]InstallMe.txt"/>     
+                  Target="[_NewThinkingTechnologies]InstallMe.txt"
+                  Icon="product_icon.ico"/>     
         <Shortcut Id="UninstallShortcut"
                   Name="Uninstall HelloWix-1"
                   Description="Uninstall HelloWix-1 and all its components"
                   Target="[System64Folder]msiexec.exe"
-                  Arguments="/x [ProductCode]"/>
+                  Arguments="/x [ProductCode]"
+                  Icon="product_icon.ico"/>
         <RemoveFolder Id="RemoveNewThinkingTechnologiesShortCutsDir"
                       On="uninstall"/>        
         <RegistryValue Root="HKCU"
