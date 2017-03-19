@@ -20,7 +20,13 @@
         <Directory Id="_NewThinkingTechnologies"
                    Name="NewThinkingTechnologies">
           <Directory Id="_HelloWix-1"
-                     Name="HelloWix-1"></Directory>
+                     Name="HelloWix-1">
+          </Directory>
+          <Directory Id="ProgramMenuFolder">
+            <Directory Id="_NewThinkingTechnologiesShortCutsDir"
+                       Name="NewThinkingTechnologiesShortCutsDir">              
+            </Directory>
+          </Directory>
         </Directory>
 
       </Directory>
@@ -65,7 +71,7 @@
              Title="Optional Feature"
              Description="This Feature is optional"
              Level="1">
-      <ComponentRef Id="CMP_ForOptionalFeature"/>    
+      <ComponentRef Id="CMP_ForOptionalFeature"/>
     </Feature>
   </Product>
 </Wix>
