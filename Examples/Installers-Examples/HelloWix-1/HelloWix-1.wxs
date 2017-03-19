@@ -24,7 +24,7 @@
           </Directory>
           <Directory Id="ProgramMenuFolder">
             <Directory Id="_NewThinkingTechnologiesShortCutsDir"
-                       Name="NewThinkingTechnologiesShortCutsDir">              
+                       Name="NewThinkingTechnologiesShortCutsDir">
             </Directory>
           </Directory>
         </Directory>
@@ -51,13 +51,31 @@
               KeyPath="yes">
         </File>
       </Component>
-      <Component Id="CMP_ForOptionalFeature">
+      <Component Id="CMP_ForOptionalFeature"
+                 Guid="63908AA4-2D57-4D82-856C-D81699AF4E71">
         <File Id="FILE_OptionalFileForFeature2TXT"
               Source="OptionalFileForFeature2.txt"
               Name="File For Otinal Feature"
               KeyPath="yes">
 
         </File>
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="NewThinkingTechnologiesShortCutsDir">
+      <Component Id="CMP_DocumentationShortcut"
+                 Guid="534FD503-4846-44C5-8238-E93EA50572DF">
+        <Shortcut Id="DocumentationStartMenuShortcut"
+                  Name="HelloWix-1 Documentation"
+                  Description="HelloWix-1 Documentation"
+                  Target="[_NewThinkingTechnologies]InstallMe.txt"/>        
+        <RemoveFolder Id="RemoveNewThinkingTechnologiesShortCutsDir"
+                      On="uninstall"/>        
+        <RegistryValue Root="HKCU"
+                       KeyPath="yes"
+                       Key="Software\Microsoft\NewThinkingTechnologies"
+                       Name="installed"
+                       Type="integer"
+                       Value="1"/>
       </Component>
     </DirectoryRef>
     <Feature Id="MainProduct"
