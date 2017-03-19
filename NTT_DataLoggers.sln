@@ -70,7 +70,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HelloWix-1", "HelloWix-1", 
 		Examples\Installers-Examples\HelloWix-1\ntt_logo.ico = Examples\Installers-Examples\HelloWix-1\ntt_logo.ico
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ZeorMQ-Eamples", "ZeorMQ-Eamples", "{BDAAF03F-645C-4E45-BAE7-3309CC441A9C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ZeorMQ-Examples", "ZeorMQ-Examples", "{BDAAF03F-645C-4E45-BAE7-3309CC441A9C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{40C1783E-5AFE-4D71-B97F-2FBAF275A257}"
 EndProject
@@ -112,6 +112,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Icons", "Icons", "{8370025A
 	ProjectSection(SolutionItems) = preProject
 		Assets\Icons\ntt_logo.ico = Assets\Icons\ntt_logo.ico
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docking-Examples", "Docking-Examples", "{79C78CAD-C08A-4A43-8E01-C91BC88BA1B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -360,5 +362,6 @@ Global
 		{9520A719-81D2-41F3-9E6A-1E90B8B7CEA4} = {5C8BB8FF-F0BD-4D56-AE71-C3F580AB8F47}
 		{71BFA319-1012-45F6-8667-317F37704221} = {5C8BB8FF-F0BD-4D56-AE71-C3F580AB8F47}
 		{8370025A-AD2F-41C8-A5AF-C82008C5BB1F} = {40C1783E-5AFE-4D71-B97F-2FBAF275A257}
+		{79C78CAD-C08A-4A43-8E01-C91BC88BA1B6} = {FAFE10AF-AF2C-4D6F-82BC-81ED9863EE85}
 	EndGlobalSection
 EndGlobal
