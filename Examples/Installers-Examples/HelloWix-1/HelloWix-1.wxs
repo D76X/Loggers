@@ -67,7 +67,12 @@
         <Shortcut Id="DocumentationStartMenuShortcut"
                   Name="HelloWix-1 Documentation"
                   Description="HelloWix-1 Documentation"
-                  Target="[_NewThinkingTechnologies]InstallMe.txt"/>        
+                  Target="[_NewThinkingTechnologies]InstallMe.txt"/>     
+        <Shortcut Id="UninstallShortcut"
+                  Name="Uninstall HelloWix-1"
+                  Description="Uninstall HelloWix-1 and all its components"
+                  Target="[System64Folder]msiexec.exe"
+                  Arguments="/x [ProductCode]"/>
         <RemoveFolder Id="RemoveNewThinkingTechnologiesShortCutsDir"
                       On="uninstall"/>        
         <RegistryValue Root="HKCU"
