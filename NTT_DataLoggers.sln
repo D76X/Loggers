@@ -66,6 +66,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installers-Examples", "Installers-Examples", "{C7C6F88C-55B2-466B-A0EB-318D990B2C2E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HelloWix-1", "HelloWix-1", "{129DC57C-243A-4F82-BBCF-0A1E6ED6EC6E}"
+	ProjectSection(SolutionItems) = preProject
+		Examples\Installers-Examples\HelloWix-1\ntt_logo.ico = Examples\Installers-Examples\HelloWix-1\ntt_logo.ico
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ZeorMQ-Eamples", "ZeorMQ-Eamples", "{BDAAF03F-645C-4E45-BAE7-3309CC441A9C}"
 EndProject
@@ -104,6 +107,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfMef.Interfaces", "Examples\Composition-Examples\Basic-1\WpfMef.Interfaces\WpfMef.Interfaces.csproj", "{9520A719-81D2-41F3-9E6A-1E90B8B7CEA4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfMef.Modules", "Examples\Composition-Examples\Basic-1\WpfMef.Modules\WpfMef.Modules.csproj", "{71BFA319-1012-45F6-8667-317F37704221}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Icons", "Icons", "{8370025A-AD2F-41C8-A5AF-C82008C5BB1F}"
+	ProjectSection(SolutionItems) = preProject
+		Assets\Icons\ntt_logo.ico = Assets\Icons\ntt_logo.ico
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -351,5 +359,6 @@ Global
 		{FC5B7484-B630-47C2-9819-2D35B36FAEF8} = {5C8BB8FF-F0BD-4D56-AE71-C3F580AB8F47}
 		{9520A719-81D2-41F3-9E6A-1E90B8B7CEA4} = {5C8BB8FF-F0BD-4D56-AE71-C3F580AB8F47}
 		{71BFA319-1012-45F6-8667-317F37704221} = {5C8BB8FF-F0BD-4D56-AE71-C3F580AB8F47}
+		{8370025A-AD2F-41C8-A5AF-C82008C5BB1F} = {40C1783E-5AFE-4D71-B97F-2FBAF275A257}
 	EndGlobalSection
 EndGlobal
