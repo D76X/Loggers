@@ -55,7 +55,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="lib\libzmq-version.txt" />
     <Content Include="lib\x64\libzmq.dll" />
     <Content Include="lib\x64\libzmq.pdb" />
     <Content Include="lib\x86\libzmq.dll" />

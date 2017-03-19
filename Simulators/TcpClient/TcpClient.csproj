@@ -37,8 +37,8 @@
       <HintPath>..\packages\clrzmq.3.0.0-rc1\lib\net40\clrzmq.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="PowerArgs, Version=2.7.2.0, Culture=neutral, PublicKeyToken=26a276264bbd55b8, processorArchitecture=MSIL">
-      <HintPath>..\packages\PowerArgs.2.7.2.0\lib\net45\PowerArgs.dll</HintPath>
+    <Reference Include="PowerArgs, Version=2.8.0.0, Culture=neutral, PublicKeyToken=26a276264bbd55b8, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PowerArgs.2.8.0.0\lib\net45\PowerArgs.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -60,7 +60,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="lib\libzmq-version.txt" />
     <Content Include="lib\x64\libzmq.dll" />
     <Content Include="lib\x64\libzmq.pdb" />
     <Content Include="lib\x86\libzmq.dll" />
