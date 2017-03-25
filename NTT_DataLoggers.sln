@@ -75,6 +75,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{40C1783E-5AFE-4D71-B97F-2FBAF275A257}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LINQPad", "LINQPad", "{EF3AC871-513F-49E5-854F-30BCB5F6B9B6}"
+	ProjectSection(SolutionItems) = preProject
+		Assets\LINQPad\Example_Sql_1.linq = Assets\LINQPad\Example_Sql_1.linq
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Updater-Examples", "Updater-Examples", "{F4356A52-5A33-4EA1-B523-F4AAE5B8E074}"
 EndProject
