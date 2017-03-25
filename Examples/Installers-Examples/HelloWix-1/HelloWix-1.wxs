@@ -33,43 +33,53 @@
       </Directory>
     </Directory>
     <DirectoryRef Id="DIR_HelloWix_1">
-      <Component Id="CMP_InstallMeTXT"
+      <Component Id="CMP_Main"
                  Guid="11EB228A-F4D0-444E-82E1-10066BFB89B4">
-        <File Id="FILE_InstallMeTXT"
-              Source="InstallMe.txt"
-              Name="InstallMe Friendly Name"
+        <File Id="FILE_Main"
+              Source="Main.txt"
+              Name="Application.txt"
               Hidden="no"
               ReadOnly="no"
               Vital="yes"
               KeyPath="yes">
         </File>
       </Component>
-      <Component Id="CMP_AdditionalForMainFeature"
+      <Component Id="CMP_Second"
                  Guid="9C82DD54-A2CF-459B-A248-C4D6722DFFC1">
-        <File Id="FILE_ForMainFeature1TXT"
-              Source="ForMainFeature1.txt"
-              Name="ForMainFeature1 Friendly Name"
+        <File Id="FILE_Second"
+              Source="Second.txt"
+              Name="Documentation.txt"
               KeyPath="yes">
         </File>
       </Component>
-      <Component Id="CMP_ForOptionalFeature"
+      <Component Id="CMP_Third"
                  Guid="63908AA4-2D57-4D82-856C-D81699AF4E71">
-        <File Id="FILE_OptionalFileForFeature2TXT"
-              Source="OptionalFileForFeature2.txt"
-              Name="File For Otinal Feature"
+        <File Id="FILE_Third"
+              Source="Third.txt"
+              Name="OptionalDocumentation.txt"
               KeyPath="yes">
 
         </File>
       </Component>
     </DirectoryRef>
     <DirectoryRef Id="DIR_NewThinkingTechnologiesShortCutsDir">
-      <Component Id="CMP_DocumentationShortcut"
+      <Component Id="CMP_ApplicationShortcuts"
                  Guid="534FD503-4846-44C5-8238-E93EA50572DF">
+        <Shortcut Id="LaunchMainProductMenuShortcut"
+                  Name="HelloWix-1 Main Product Launch"
+                  Description="HelloWix-1 Launch"
+                  Target="[DIR_HelloWix_1]Application.txt"
+                  Icon="product_icon.ico"/>
         <Shortcut Id="DocumentationStartMenuShortcut"
                   Name="HelloWix-1 Documentation"
                   Description="HelloWix-1 Documentation"
-                  Target="[DIR_NewThinkingTechnologies]InstallMe.txt"
+                  Target="[DIR_HelloWix_1]Documentation.txt"
                   Icon="product_icon.ico"/>
+        <Shortcut Id="OptionalDocumentationStartMenuShortcut"
+                  Name="HelloWix-1 Optional Documentation"
+                  Description="HelloWix-1 Optional Documentation"
+                  Target="[DIR_HelloWix_1]OptionalDocumentation.txt"
+                  Icon="product_icon.ico"/>          
         <Shortcut Id="UninstallShortcut"
                   Name="Uninstall HelloWix-1"
                   Description="Uninstall HelloWix-1 and all its components"
@@ -90,15 +100,15 @@
              Title="Main Product"
              Description="Installs the Main Feature"
              Level="1">
-      <ComponentRef Id="CMP_InstallMeTXT"/>
-      <ComponentRef Id="CMP_AdditionalForMainFeature"/>
-      <ComponentRef Id="CMP_DocumentationShortcut"/>
+      <ComponentRef Id="CMP_Main"/>
+      <ComponentRef Id="CMP_Second"/>
+      <ComponentRef Id="CMP_ApplicationShortcuts"/>
     </Feature>
     <Feature Id="OptionalFeature"
              Title="Optional Feature"
              Description="This Feature is optional"
              Level="1">
-      <ComponentRef Id="CMP_ForOptionalFeature"/>
+      <ComponentRef Id="CMP_Third"/>
     </Feature>
   </Product>
 </Wix>

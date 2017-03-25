@@ -1,2 +1,0 @@
-This is a file for Feature 2 of trhe product.
-Feature 2 is optional and might not be installed with the product. 

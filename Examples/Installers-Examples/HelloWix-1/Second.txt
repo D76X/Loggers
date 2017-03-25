@@ -1,0 +1,3 @@
+This file belongs to the main feature of the product.
+It might be a secondary application such as an updater or a tool that works with the main application or some 
+other kind of non executable file.
