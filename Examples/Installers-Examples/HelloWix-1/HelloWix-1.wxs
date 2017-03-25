@@ -18,13 +18,13 @@
     <Directory Id="TARGETDIR"
                Name="SourceDir">
       <Directory Id="ProgramFilesFolder">
-        <Directory Id="_NewThinkingTechnologies"
+        <Directory Id="DIR_NewThinkingTechnologies"
                    Name="NewThinkingTechnologies">
-          <Directory Id="_HelloWix-1"
+          <Directory Id="DIR_HelloWix_1"
                      Name="HelloWix-1">
           </Directory>
           <Directory Id="ProgramMenuFolder">
-            <Directory Id="_NewThinkingTechnologiesShortCutsDir"
+            <Directory Id="DIR_NewThinkingTechnologiesShortCutsDir"
                        Name="NewThinkingTechnologiesShortCutsDir">
             </Directory>
           </Directory>
@@ -32,7 +32,7 @@
 
       </Directory>
     </Directory>
-    <DirectoryRef Id="_HelloWix-1">
+    <DirectoryRef Id="DIR_HelloWix_1">
       <Component Id="CMP_InstallMeTXT"
                  Guid="11EB228A-F4D0-444E-82E1-10066BFB89B4">
         <File Id="FILE_InstallMeTXT"
@@ -62,13 +62,13 @@
         </File>
       </Component>
     </DirectoryRef>
-    <DirectoryRef Id="NewThinkingTechnologiesShortCutsDir">
+    <DirectoryRef Id="DIR_NewThinkingTechnologiesShortCutsDir">
       <Component Id="CMP_DocumentationShortcut"
                  Guid="534FD503-4846-44C5-8238-E93EA50572DF">
         <Shortcut Id="DocumentationStartMenuShortcut"
                   Name="HelloWix-1 Documentation"
                   Description="HelloWix-1 Documentation"
-                  Target="[_NewThinkingTechnologies]InstallMe.txt"
+                  Target="[DIR_NewThinkingTechnologies]InstallMe.txt"
                   Icon="product_icon.ico"/>
         <Shortcut Id="UninstallShortcut"
                   Name="Uninstall HelloWix-1"
