@@ -117,6 +117,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docking-Examples", "Docking
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeroMQ-Basic-1", "Examples\ZeroMQ-Examples\ZeroMQ-Basic-1\ZeroMQ-Basic-1.csproj", "{FB040439-F4CD-45F4-97D0-9FEADB2E121C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ZeroMQ-Basic-0", "ZeroMQ-Basic-0", "{2999A355-D7EB-4167-BE4D-D32E5BDE9917}"
+	ProjectSection(SolutionItems) = preProject
+		Examples\ZeroMQ-Examples\ZeroMQ-Basic-0\RequestResponse_Client_1.linq = Examples\ZeroMQ-Examples\ZeroMQ-Basic-0\RequestResponse_Client_1.linq
+		Examples\ZeroMQ-Examples\ZeroMQ-Basic-0\RequestResponse_Server_1.linq = Examples\ZeroMQ-Examples\ZeroMQ-Basic-0\RequestResponse_Server_1.linq
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -374,5 +380,6 @@ Global
 		{8370025A-AD2F-41C8-A5AF-C82008C5BB1F} = {40C1783E-5AFE-4D71-B97F-2FBAF275A257}
 		{79C78CAD-C08A-4A43-8E01-C91BC88BA1B6} = {FAFE10AF-AF2C-4D6F-82BC-81ED9863EE85}
 		{FB040439-F4CD-45F4-97D0-9FEADB2E121C} = {BDAAF03F-645C-4E45-BAE7-3309CC441A9C}
+		{2999A355-D7EB-4167-BE4D-D32E5BDE9917} = {BDAAF03F-645C-4E45-BAE7-3309CC441A9C}
 	EndGlobalSection
 EndGlobal
