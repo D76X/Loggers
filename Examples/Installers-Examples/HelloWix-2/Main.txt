@@ -1,0 +1,4 @@
+HelloWix-1!
+
+This is a placeholder for what in the real case would be the main executable of an application i.e. Logger.exe.
+This executable is going to be part of the main feature of the installer.

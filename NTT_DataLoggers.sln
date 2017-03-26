@@ -126,6 +126,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ZeroMQ-Basic-0", "ZeroMQ-Ba
 		Examples\ZeroMQ-Examples\ZeroMQ-Basic-0\RequestResponse_Server_1.linq = Examples\ZeroMQ-Examples\ZeroMQ-Basic-0\RequestResponse_Server_1.linq
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HelloWix-2", "HelloWix-2", "{C9E9F105-FA5F-4E14-8DB2-95531033E62C}"
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "HelloWix-2", "Examples\Installers-Examples\HelloWix-2\HelloWix-2.wixproj", "{76DEE9DC-144F-41A9-87F9-0980728C1E82}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -340,6 +344,12 @@ Global
 		{FB040439-F4CD-45F4-97D0-9FEADB2E121C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FB040439-F4CD-45F4-97D0-9FEADB2E121C}.Release|x86.ActiveCfg = Release|Any CPU
 		{FB040439-F4CD-45F4-97D0-9FEADB2E121C}.Release|x86.Build.0 = Release|Any CPU
+		{76DEE9DC-144F-41A9-87F9-0980728C1E82}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{76DEE9DC-144F-41A9-87F9-0980728C1E82}.Debug|x86.ActiveCfg = Debug|x86
+		{76DEE9DC-144F-41A9-87F9-0980728C1E82}.Debug|x86.Build.0 = Debug|x86
+		{76DEE9DC-144F-41A9-87F9-0980728C1E82}.Release|Any CPU.ActiveCfg = Release|x86
+		{76DEE9DC-144F-41A9-87F9-0980728C1E82}.Release|x86.ActiveCfg = Release|x86
+		{76DEE9DC-144F-41A9-87F9-0980728C1E82}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -384,5 +394,7 @@ Global
 		{79C78CAD-C08A-4A43-8E01-C91BC88BA1B6} = {FAFE10AF-AF2C-4D6F-82BC-81ED9863EE85}
 		{FB040439-F4CD-45F4-97D0-9FEADB2E121C} = {BDAAF03F-645C-4E45-BAE7-3309CC441A9C}
 		{2999A355-D7EB-4167-BE4D-D32E5BDE9917} = {BDAAF03F-645C-4E45-BAE7-3309CC441A9C}
+		{C9E9F105-FA5F-4E14-8DB2-95531033E62C} = {C7C6F88C-55B2-466B-A0EB-318D990B2C2E}
+		{76DEE9DC-144F-41A9-87F9-0980728C1E82} = {C9E9F105-FA5F-4E14-8DB2-95531033E62C}
 	EndGlobalSection
 EndGlobal

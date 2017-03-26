@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     RequiredVersion="3.10.0.0">
+  <Product Id="A773B01A-1D74-4FAD-878F-5111A114F2BB"
+           Name="HelloWix-2"
+           Language="1033"
+           Version="1.0.0.0"
+           Manufacturer="New Thinking Technologies"
+           UpgradeCode="A59F9B81-9243-43EC-98C8-11296785AFA3">    
+    <Package Description="Simple Demo With basic UI"
+             Compressed="yes"
+             Manufacturer="New Thinking Technologies"
+             Keywords="Practice, Installer, MSI"
+             Comments="Test MSI Installer HelloWix-2 by NTT"
+             InstallerVersion="405"/>
+
+    <!--The minimal UI from WixUIExtension.dll-->
+    <!--The UI tags must be children of Product-->
+    <!--The UI tags must appear anywhere after tag Package-->
+    <UIRef Id="WixUI_Minimal"/>
+    <!--<UIRef Id="WixUI_Advanced"/>-->
+    <!--<UIRef Id="WWixUI_FeatureTree"/>-->
+    <!--<UIRef Id="WixUI_InstallDir"/>-->
+    <!--<UIRef Id="WixUI_Mondo"/>-->
+    
+    <MediaTemplate EmbedCab="yes"/>
+    <Icon Id="product_icon.ico" SourceFile="ntt_logo.ico"/>
+    <Directory Id="TARGETDIR"
+               Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="DIR_NewThinkingTechnologies"
+                   Name="NewThinkingTechnologies">
+          <Directory Id="DIR_HelloWix_2"
+                     Name="HelloWix-2">
+          </Directory>
+          <Directory Id="ProgramMenuFolder">
+            <Directory Id="DIR_NewThinkingTechnologiesShortCutsDir"
+                       Name="NewThinkingTechnologiesShortCutsDir">
+            </Directory>
+          </Directory>
+        </Directory>
+
+      </Directory>
+    </Directory>
+    <DirectoryRef Id="DIR_HelloWix_2">
+      <Component Id="CMP_Main"
+                 Guid="4F68F7C6-97BE-469B-B21C-509530F0436A">
+        <File Id="FILE_Main"
+              Source="Main.txt"
+              Name="Application.txt"
+              Hidden="no"
+              ReadOnly="no"
+              Vital="yes"
+              KeyPath="yes">
+        </File>
+      </Component>
+      <Component Id="CMP_Second"
+                 Guid="FE2E0BDD-37C2-4EDE-9FBD-BB2313A884AC">
+        <File Id="FILE_Second"
+              Source="Second.txt"
+              Name="Documentation.txt"
+              KeyPath="yes">
+        </File>
+      </Component>
+      <Component Id="CMP_Third"
+                 Guid="AC8FD048-2E81-446E-AFDD-C164FAB2B30A">
+        <File Id="FILE_Third"
+              Source="Third.txt"
+              Name="OptionalDocumentation.txt"
+              KeyPath="yes">
+
+        </File>
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="DIR_NewThinkingTechnologiesShortCutsDir">
+      <Component Id="CMP_ApplicationShortcuts"
+                 Guid="904C7E40-1E78-4F83-97D1-3B90FD251D72">
+        <Shortcut Id="LaunchMainProductMenuShortcut"
+                  Name="HelloWix-2 Main Product Launch"
+                  Description="HelloWix-2 Launch"
+                  Target="[DIR_HelloWix_2]Application.txt"
+                  Icon="product_icon.ico"/>
+        <Shortcut Id="DocumentationStartMenuShortcut"
+                  Name="HelloWix-2 Documentation"
+                  Description="HelloWix-2 Documentation"
+                  Target="[DIR_HelloWix_2]Documentation.txt"
+                  Icon="product_icon.ico"/>
+        <Shortcut Id="OptionalDocumentationStartMenuShortcut"
+                  Name="HelloWix-2 Optional Documentation"
+                  Description="HelloWix-2 Optional Documentation"
+                  Target="[DIR_HelloWix_2]OptionalDocumentation.txt"
+                  Icon="product_icon.ico"/>
+        <Shortcut Id="UninstallShortcut"
+                  Name="Uninstall HelloWix-2"
+                  Description="Uninstall HelloWix-2 and all its components"
+                  Target="[System64Folder]msiexec.exe"
+                  Arguments="/x [ProductCode]"
+                  Icon="product_icon.ico"/>
+        <RemoveFolder Id="RemoveNewThinkingTechnologiesShortCutsDir"
+                      On="uninstall"/>
+        <RegistryValue Root="HKCU"
+                       KeyPath="yes"
+                       Key="Software\Microsoft\NewThinkingTechnologies"
+                       Name="installed"
+                       Type="integer"
+                       Value="1"/>
+      </Component>
+    </DirectoryRef>
+    <Feature Id="MainProduct"
+             Title="Main Product"
+             Description="Installs the Main Feature"
+             Level="1">
+      <ComponentRef Id="CMP_Main"/>
+      <ComponentRef Id="CMP_Second"/>
+      <ComponentRef Id="CMP_ApplicationShortcuts"/>
+    </Feature>
+    <Feature Id="OptionalFeature"
+             Title="Optional Feature"
+             Description="This Feature is optional"
+             Level="1">
+      <ComponentRef Id="CMP_Third"/>
+    </Feature>
+  </Product>
+</Wix>
