@@ -26,5 +26,65 @@
     <MediaTemplate EmbedCab="yes"/>
     <Icon Id="product_icon.ico" SourceFile="ntt_logo.ico"/>
 
+    <Directory Id="TARGETDIR"
+               Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="DIR_NewThinkingTechnologies"
+                   Name="NewThinkingTechnologies">
+          <Directory Id="DIR_HelloWix_3"
+                     Name="HelloWix-3">
+            <Directory Id="ProgramMenuFolder">
+              <Directory Id="DIR_NewThinkingTechnologiesShortCutsDir"
+                         Name="NewThinkingTechnologiesShortCutsDir">
+              </Directory>
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <DirectoryRef Id="DIR_HelloWix_3">
+      <Component Id="CMP_MAIN_APPLICATION_EXE"
+                 Guid="1122F6D0-54BC-4F76-9DA7-F08B9FB8DB30">
+        <File Id="FILE_MAIN_APPLICATION_EXE"
+              Source="../HelloWixTestApp1Bin/HelloWixTetsApp1.exe"
+              Name="HelloWixTetsApp1.exe"
+              Hidden="no"
+              ReadOnly="no"
+              Vital="yes"
+              KeyPath="yes">
+        </File>
+      </Component>
+      <Component Id="CMP_MAIN_APPLICATION_EXE_CONFIG"
+                   Guid="0C11D597-EB9F-4253-B291-0BD42A5B722D">
+        <File Id="FILE_MAIN_APPLICATION_EXE_CONFIG"
+              Source="../HelloWixTestApp1Bin/HelloWixTetsApp1.exe.config"
+              Name="HelloWixTetsApp1.exe.config"
+              Hidden="no"
+              ReadOnly="no"
+              Vital="yes"
+              KeyPath="yes">
+        </File>
+      </Component>
+      <Component Id="CMP_MAIN_APPLICATION_MAIN_DLL"
+                     Guid="1E87083B-0EB4-429C-AB69-4ADFECAF0750">
+        <File Id="FILE_MAIN_APPLICATION_MAIN_DLL"
+              Source="../HelloWixTestApp1Bin/HelloWixTestLib1.dll"
+              Name="HelloWixTestLib1.dll"
+              Hidden="no"
+              ReadOnly="no"
+              Vital="yes"
+              KeyPath="yes">
+        </File>
+      </Component>
+      <Component Id="CMP_MAIN_APPLICATION_DOCUMENTATION"
+                   Guid="4B9505BA-44E0-4E39-B5B6-7B6F2146F153">
+        <File Id="FILE_MAIN_APPLICATION_DOCUMENTATION"
+              Source="../HelloWixTestApp1Bin/MainAppDoc.txt"
+              Name="Documentation.txt"
+              KeyPath="yes">
+        </File>
+      </Component>
+    </DirectoryRef>
   </Product>
 </Wix>
