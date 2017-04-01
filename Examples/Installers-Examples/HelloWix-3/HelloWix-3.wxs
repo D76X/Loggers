@@ -86,5 +86,44 @@
         </File>
       </Component>
     </DirectoryRef>
+    <DirectoryRef Id="DIR_NewThinkingTechnologiesShortCutsDir">
+      <Component Id="CMP_APPLICATION_SHORTCUTS"
+                 Guid="22713CF6-254F-457B-B3B0-81BE5C3B2FEA">
+        <Shortcut Id="SHORTCUT_MAIN_APPLICATION_EXE"
+                  Name="HelloWix-3 Main Product Launch"
+                  Description="HelloWix-3 Launch"
+                  Target="[DIR_HelloWix_3]HelloWixTetsApp1.exe"
+                  Icon="product_icon.ico"/>
+        <Shortcut Id="SHORTCUT_MAIN_APPLICATION_DOCS"
+                  Name="HelloWix-3 Documentation"
+                  Description="HelloWix-3 Documentation"
+                  Target="[DIR_HelloWix_3]Documentation.txt"
+                  Icon="product_icon.ico"/>
+        <Shortcut Id="SHORTCUT_UNISTALL"
+                    Name="Uninstall HelloWix-3"
+                    Description="Uninstall HelloWix-3 and all its components"
+                    Target="[System64Folder]msiexec.exe"
+                    Arguments="/x [ProductCode]"
+                    Icon="product_icon.ico"/>
+        <RemoveFolder Id="RemoveNewThinkingTechnologiesShortCutsDir"
+                        On="uninstall"/>
+        <RegistryValue Root="HKCU"
+                         KeyPath="yes"
+                         Key="Software\Microsoft\NewThinkingTechnologies"
+                         Name="installed"
+                         Type="integer"
+                         Value="1"/>
+      </Component>
+    </DirectoryRef>
+    <Feature Id="MainProduct"
+             Title="Main Product"
+             Description="Installs the Main Feature and Shortcuts"
+             Level="1">
+      <ComponentRef Id="CMP_MAIN_APPLICATION_EXE"/>
+      <ComponentRef Id="CMP_MAIN_APPLICATION_EXE_CONFIG"/>
+      <ComponentRef Id="CMP_MAIN_APPLICATION_MAIN_DLL"/>
+      <ComponentRef Id="CMP_MAIN_APPLICATION_DOCUMENTATION"/>
+      <ComponentRef Id="CMP_APPLICATION_SHORTCUTS"/>
+    </Feature>
   </Product>
 </Wix>
