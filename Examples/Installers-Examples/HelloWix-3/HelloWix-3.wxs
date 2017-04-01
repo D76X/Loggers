@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     RequiredVersion="3.10.0.0">
+  <Product Id="292AEA3F-7C8E-4657-98C0-BFA9106A1CD9"
+           Name="HelloWix-3"
+           Language="1033"
+           Version="1.0.0.0"
+           Manufacturer="New Thinking Technologies"
+           UpgradeCode="D3250E62-435A-4A9A-8416-AB8B4C8D3977">
+    <Package Description="Simple Demo With basic UI and binary assets"
+             Compressed="yes"
+             Manufacturer="New Thinking Technologies"
+             Keywords="Practice, Installer, MSI"
+             Comments="Test MSI Installer HelloWix-3 by NTT"
+             InstallerVersion="405"/>
+
+    <!--The minimal UI from WixUIExtension.dll-->
+    <!--The UI tags must be children of Product-->
+    <!--The UI tags must appear anywhere after tag Package-->
+    <UIRef Id="WixUI_Minimal"/>
+    <!--<UIRef Id="WixUI_Advanced"/>-->
+    <!--<UIRef Id="WWixUI_FeatureTree"/>-->
+    <!--<UIRef Id="WixUI_InstallDir"/>-->
+    <!--<UIRef Id="WixUI_Mondo"/>-->
+
+    <MediaTemplate EmbedCab="yes"/>
+    <Icon Id="product_icon.ico" SourceFile="ntt_logo.ico"/>
+
+  </Product>
+</Wix>
