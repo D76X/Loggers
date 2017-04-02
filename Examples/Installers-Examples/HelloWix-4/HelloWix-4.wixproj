@@ -14,13 +14,14 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
-    <DefineConstants>Debug;FilePath=../HelloWixTestApp1Bin</DefineConstants>
+    <DefineConstants>Debug;FilePath=../HelloWixTestApp1Bin;IconPath=../HelloWixIcons</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Components.wxs" />
     <Compile Include="HelloWix-4.wxs" />
   </ItemGroup>
   <ItemGroup>

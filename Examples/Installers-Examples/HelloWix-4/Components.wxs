@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <ComponentGroup Id="CMPGROPUP_MAIN">
+      <Component Id="CMP_MAIN_APPLICATION_EXE"
+                 Guid="BDDCD075-5CFB-46E9-8408-E6545EC354EB"
+                 Directory="DIR_HelloWix_4">
+        <File Id="FILE_MAIN_APPLICATION_EXE"
+              Source="$(var.FilePath)/HelloWixTetsApp1.exe"
+              Hidden="no"
+              ReadOnly="no"
+              Vital="yes"
+              KeyPath="yes">
+        </File>
+      </Component>
+      <Component Id="CMP_MAIN_APPLICATION_EXE_CONFIG"
+                   Guid="681D27C6-AA50-4B39-B9D7-B2FF5139B2EB"
+                   Directory="DIR_HelloWix_4">
+        <File Id="FILE_MAIN_APPLICATION_EXE_CONFIG"
+              Source="$(var.FilePath)/HelloWixTetsApp1.exe.config"
+              Hidden="no"
+              ReadOnly="no"
+              Vital="yes"
+              KeyPath="yes">
+        </File>
+      </Component>
+      <Component Id="CMP_MAIN_APPLICATION_MAIN_DLL"
+                     Guid="D3466029-98C0-4A78-9CB0-8A154BC2A081"
+                     Directory="DIR_HelloWix_4">
+        <File Id="FILE_MAIN_APPLICATION_MAIN_DLL"
+              Source="$(var.FilePath)/HelloWixTestLib1.dll"
+              Hidden="no"
+              ReadOnly="no"
+              Vital="yes"
+              KeyPath="yes">
+        </File>
+      </Component>
+      <Component Id="CMP_MAIN_APPLICATION_DOCUMENTATION"
+                   Guid="DE2C58BB-C399-4C7B-920E-898BDD38F751"
+                   Directory="DIR_HelloWix_4">
+        <File Id="FILE_MAIN_APPLICATION_DOCUMENTATION"
+              Source="$(var.FilePath)/MainAppDoc.txt"
+              Name="Documentation.txt"
+              KeyPath="yes">
+        </File>
+      </Component>
+    </ComponentGroup>
+    <ComponentGroup Id="CMPGROUP_SHORTCUTS">
+      <Component Id="CMP_APPLICATION_SHORTCUTS"
+                 Guid="424BB8B7-BA70-4F27-9E32-ACF1CD348929"
+                 Directory="DIR_NewThinkingTechnologiesShortCutsDir">
+        <Shortcut Id="SHORTCUT_MAIN_APPLICATION_EXE"
+                  Name="HelloWix-4 Main Product Launch"
+                  Description="HelloWix-4 Launch"
+                  Target="[DIR_HelloWix_4]HelloWixTetsApp1.exe"
+                  Icon="product_icon.ico"/>
+        <Shortcut Id="SHORTCUT_MAIN_APPLICATION_DOCS"
+                  Name="HelloWix-4 Documentation"
+                  Description="HelloWix-4 Documentation"
+                  Target="[DIR_HelloWix_4]Documentation.txt"
+                  Icon="product_icon.ico"/>
+        <Shortcut Id="SHORTCUT_UNISTALL"
+                    Name="Uninstall HelloWix-4"
+                    Description="Uninstall HelloWix-4 and all its components"
+                    Target="[System64Folder]msiexec.exe"
+                    Arguments="/x [ProductCode]"
+                    Icon="product_icon.ico"/>
+        <RemoveFolder Id="RemoveNewThinkingTechnologiesShortCutsDir"
+                        On="uninstall"/>
+        <RegistryValue Root="HKCU"
+                         KeyPath="yes"
+                         Key="Software\Microsoft\NewThinkingTechnologies"
+                         Name="installed"
+                         Type="integer"
+                         Value="1"/>
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>
