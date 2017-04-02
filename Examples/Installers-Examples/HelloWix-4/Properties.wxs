@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+		<Property Id="PROP_TEST_PROPERTY_1" Value="1"/>
+		<Property Id="PROP_TEST_PROPERTY_2" Value="0"/>  
+	</Fragment>
+</Wix>

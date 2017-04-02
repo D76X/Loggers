@@ -23,6 +23,7 @@
   <ItemGroup>
     <Compile Include="Components.wxs" />
     <Compile Include="HelloWix-4.wxs" />
+    <Compile Include="Properties.wxs" />
   </ItemGroup>
   <ItemGroup>
     <WixExtension Include="WixUIExtension">

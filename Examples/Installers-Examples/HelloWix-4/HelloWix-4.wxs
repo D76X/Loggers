@@ -14,6 +14,9 @@
              Comments="Test MSI Installer HelloWix-4 by NTT"
              InstallerVersion="405"/>
 
+    <!--This pulls in all the properties defined in the same file-->
+    <PropertyRef Id="PROP_TEST_PROPERTY_1"/>
+
     <!--The minimal UI from WixUIExtension.dll-->
     <!--The UI tags must be children of Product-->
     <!--The UI tags must appear anywhere after tag Package-->
