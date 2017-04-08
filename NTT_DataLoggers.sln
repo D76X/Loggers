@@ -152,15 +152,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Regions", "Examples\Prism-E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegionsCustom", "Examples\Prism-Examples\Prism-Samples-Wpf\3-CustomRegions\Regions\RegionsCustom.csproj", "{47C79E8F-B568-4B5E-A98E-79B3AEF716BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewDiscovery", "Examples\Prism-Examples\Prism-Samples-Wpf\4-ViewDiscovery\ViewDiscovery\ViewDiscovery.csproj", "{A5B35F7E-F9BD-45C8-9FBE-D780AF76C6BB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View1Discovery", "Examples\Prism-Examples\Prism-Samples-Wpf\4-ViewDiscovery\ViewDiscovery\View1Discovery.csproj", "{A5B35F7E-F9BD-45C8-9FBE-D780AF76C6BB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HelloWix-5", "HelloWix-5", "{B5F948D6-31C9-4343-8576-66F7BBA3BF36}"
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "HelloWix-5", "Examples\Installers-Examples\HelloWix-5\HelloWix-5.wixproj", "{1FBCD2B2-CA1D-415E-80C5-32751255FEAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewInjection", "Examples\Prism-Examples\Prism-Samples-Wpf\5-ViewInjection\ViewInjection\ViewInjection.csproj", "{14EC94D4-6042-4D5C-B9E5-B760809372D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View2Injection", "Examples\Prism-Examples\Prism-Samples-Wpf\5-ViewInjection\ViewInjection\View2Injection.csproj", "{14EC94D4-6042-4D5C-B9E5-B760809372D0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyStronglySignedAssembly1", "Examples\Installers-Examples\MyStronglySignedAssembly1\MyStronglySignedAssembly1.csproj", "{E9E96BD5-31D8-4096-82BD-74FA0000F40B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View3ActivationDeactivation", "Examples\Prism-Examples\Prism-Samples-Wpf\6-ViewActivationDeactivation\ActivationDeactivation\View3ActivationDeactivation.csproj", "{373C2A89-02AE-4D83-82E5-13D3B4B15691}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -464,6 +466,14 @@ Global
 		{E9E96BD5-31D8-4096-82BD-74FA0000F40B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E9E96BD5-31D8-4096-82BD-74FA0000F40B}.Release|x86.ActiveCfg = Release|Any CPU
 		{E9E96BD5-31D8-4096-82BD-74FA0000F40B}.Release|x86.Build.0 = Release|Any CPU
+		{373C2A89-02AE-4D83-82E5-13D3B4B15691}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{373C2A89-02AE-4D83-82E5-13D3B4B15691}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{373C2A89-02AE-4D83-82E5-13D3B4B15691}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{373C2A89-02AE-4D83-82E5-13D3B4B15691}.Debug|x86.Build.0 = Debug|Any CPU
+		{373C2A89-02AE-4D83-82E5-13D3B4B15691}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{373C2A89-02AE-4D83-82E5-13D3B4B15691}.Release|Any CPU.Build.0 = Release|Any CPU
+		{373C2A89-02AE-4D83-82E5-13D3B4B15691}.Release|x86.ActiveCfg = Release|Any CPU
+		{373C2A89-02AE-4D83-82E5-13D3B4B15691}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -526,5 +536,6 @@ Global
 		{1FBCD2B2-CA1D-415E-80C5-32751255FEAD} = {B5F948D6-31C9-4343-8576-66F7BBA3BF36}
 		{14EC94D4-6042-4D5C-B9E5-B760809372D0} = {5051B330-2E53-458B-A940-5BC19192E4C3}
 		{E9E96BD5-31D8-4096-82BD-74FA0000F40B} = {C7C6F88C-55B2-466B-A0EB-318D990B2C2E}
+		{373C2A89-02AE-4D83-82E5-13D3B4B15691} = {5051B330-2E53-458B-A940-5BC19192E4C3}
 	EndGlobalSection
 EndGlobal
