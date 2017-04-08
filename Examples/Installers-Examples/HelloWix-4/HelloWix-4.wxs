@@ -36,9 +36,11 @@
                    Name="NewThinkingTechnologies">
           <Directory Id="DIR_HelloWix_4"
                      Name="HelloWix-4">
+            <Directory Id="DIR_CopiedFiles" 
+                       Name="CopiedFiles"/>
             <Directory Id="ProgramMenuFolder">
               <Directory Id="DIR_NewThinkingTechnologiesShortCutsDir"
-                         Name="NewThinkingTechnologiesShortCutsDir">
+                         Name="NewThinkingTechnologiesShortCutsDir">         
               </Directory>
             </Directory>
           </Directory>

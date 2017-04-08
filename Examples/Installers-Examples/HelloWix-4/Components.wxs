@@ -44,6 +44,17 @@
               KeyPath="yes">
         </File>
       </Component>
+      <Component Id="CMP_MAIN_APPLICATION_FileToCopy.txt"
+                 Guid="B47781B1-C5FE-4524-BD6D-750C296CFD60"
+                 Directory="DIR_HelloWix_4">
+        <File Id="FILE_MAIN_APPLICATION_FileToCopy.txt"
+              Source="$(var.FilePath)/FileToCopy.txt"
+              KeyPath="yes">
+          <CopyFile Id="COPYFILE_MAIN_APPLICATION_FileToCopy.txt"
+                    DestinationDirectory="DIR_CopiedFiles"
+                    DestinationName="CopiedFile.txt"/>
+        </File>
+      </Component>
     </ComponentGroup>
     <ComponentGroup Id="CMPGROUP_SHORTCUTS">
       <Component Id="CMP_APPLICATION_SHORTCUTS"
