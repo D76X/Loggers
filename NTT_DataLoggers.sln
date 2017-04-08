@@ -165,6 +165,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View3ActivationDeactivation", "Examples\Prism-Examples\Prism-Samples-Wpf\6-ViewActivationDeactivation\ActivationDeactivation\View3ActivationDeactivation.csproj", "{373C2A89-02AE-4D83-82E5-13D3B4B15691}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModulesAppConfig", "Examples\Prism-Examples\Prism-Samples-Wpf\7-Modules - AppConfig\Modules\ModulesAppConfig.csproj", "{8A520113-4B42-41FE-B04A-7BD84E2ABC91}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AB8B448C-DD74-4D60-A041-3E5D03A32180} = {AB8B448C-DD74-4D60-A041-3E5D03A32180}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModulesCode", "Examples\Prism-Examples\Prism-Samples-Wpf\7-Modules - Code\Modules\ModulesCode.csproj", "{46A1FA93-8615-4AE3-BD61-552CF7B2B46B}"
 EndProject
