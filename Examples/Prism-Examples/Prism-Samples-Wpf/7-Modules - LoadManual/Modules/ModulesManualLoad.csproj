@@ -130,9 +130,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\7-Modules - AppConfig\ModuleA\ModuleAAppConfig.csproj">
-      <Project>{ab8b448c-dd74-4d60-a041-3e5d03a32180}</Project>
-      <Name>ModuleAAppConfig</Name>
+    <ProjectReference Include="..\ModuleA\ModuleAManualLoad.csproj">
+      <Project>{462b8fcd-799a-4284-a565-018ce7e1e52c}</Project>
+      <Name>ModuleAManualLoad</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
