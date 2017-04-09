@@ -198,6 +198,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsingEventAggregator.Core", "Examples\Prism-Examples\Prism-Samples-Wpf\14-UsingEventAggregator\UsingEventAggregator.Core\UsingEventAggregator.Core.csproj", "{E97A55B5-66F7-48C8-908D-C1C0C3D780C8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsingEventAggregator", "Examples\Prism-Examples\Prism-Samples-Wpf\14-UsingEventAggregator\UsingEventAggregator\UsingEventAggregator.csproj", "{BB1A970E-6021-4551-87D7-4663BDA95B83}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1A9F2288-7E7C-4DE0-B67B-3176B5142857} = {1A9F2288-7E7C-4DE0-B67B-3176B5142857}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventAggregatorModuleB", "Examples\Prism-Examples\Prism-Samples-Wpf\14-UsingEventAggregator\ModuleB\EventAggregatorModuleB.csproj", "{3AF56532-15B2-436E-8813-BA13B64DFBB3}"
 EndProject

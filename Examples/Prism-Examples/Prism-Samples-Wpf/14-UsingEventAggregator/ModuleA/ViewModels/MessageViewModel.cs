@@ -26,7 +26,7 @@ namespace ModuleA.ViewModels
 
         private void SendMessage()
         {
-            _ea.GetEvent<MessageSentEvent>().Publish(Message);
+            _ea.GetEvent<MessageSentEvent>().Publish(Message);            
         }
     }
 }
