@@ -101,7 +101,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetDir)$(TargetFileName)" "$(SolutionDir)\$(SolutionName)\$(OutDir)Modules\" /Y</PostBuildEvent>
+    <PostBuildEvent>xcopy "ModuleA.*" "C:\GitHub\Loggers\Examples\Prism-Examples\Prism-Samples-Wpf\7-Modules - Directory\Modules\bin\Debug\Modules\" /Y
+</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

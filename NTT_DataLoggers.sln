@@ -172,6 +172,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModulesCode", "Examples\Prism-Examples\Prism-Samples-Wpf\7-Modules - Code\Modules\ModulesCode.csproj", "{46A1FA93-8615-4AE3-BD61-552CF7B2B46B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModulesDirectory", "Examples\Prism-Examples\Prism-Samples-Wpf\7-Modules - Directory\Modules\ModulesDirectory.csproj", "{2F9BEC46-AC34-4322-9788-89F42DBC5152}"
+	ProjectSection(ProjectDependencies) = postProject
+		{52FFDE38-1DE0-4E41-B96A-DC5E4C261414} = {52FFDE38-1DE0-4E41-B96A-DC5E4C261414}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModulesManualLoad", "Examples\Prism-Examples\Prism-Samples-Wpf\7-Modules - LoadManual\Modules\ModulesManualLoad.csproj", "{9B316E7A-2C27-49CE-8DEB-B31CDFA6C249}"
 EndProject
