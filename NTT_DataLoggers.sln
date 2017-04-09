@@ -186,7 +186,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleADirectory", "Example
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleAManualLoad", "Examples\Prism-Examples\Prism-Samples-Wpf\7-Modules - LoadManual\ModuleA\ModuleAManualLoad.csproj", "{462B8FCD-799A-4284-A565-018CE7E1E52C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ModuleAs", "ModuleAs", "{A426753C-68A9-4878-8ECD-7352D7C30E5D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LoadModules", "LoadModules", "{A426753C-68A9-4878-8ECD-7352D7C30E5D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModulesXAML", "Examples\Prism-Examples\Prism-Samples-Wpf\7-Modules -XAML\ModulesXAML\ModulesXAML.csproj", "{840A4071-FCD2-4796-91F3-2A4313C75D1B}"
 EndProject
