@@ -157,6 +157,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HelloWix-5", "HelloWix-5", "{B5F948D6-31C9-4343-8576-66F7BBA3BF36}"
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "HelloWix-5", "Examples\Installers-Examples\HelloWix-5\HelloWix-5.wixproj", "{1FBCD2B2-CA1D-415E-80C5-32751255FEAD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E9E96BD5-31D8-4096-82BD-74FA0000F40B} = {E9E96BD5-31D8-4096-82BD-74FA0000F40B}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View2Injection", "Examples\Prism-Examples\Prism-Samples-Wpf\5-ViewInjection\ViewInjection\View2Injection.csproj", "{14EC94D4-6042-4D5C-B9E5-B760809372D0}"
 EndProject

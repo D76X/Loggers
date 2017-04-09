@@ -1,6 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Fragment>
-		<!-- TODO: Put your code here. -->
-	</Fragment>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     RequiredVersion="3.10.0.0">
+  <Product Id="79F8A112-1708-434B-A882-E5EF52213E57"
+           Name="HelloWix-5"
+           Language="1033"
+           Version="1.0.0.0"
+           Manufacturer="New Thinking Technologies"
+           UpgradeCode="D73C8C33-7636-4357-B797-BB66F94EB7F2">
+    <Package Description="Demo Install a signed assembly to GAC"
+             Compressed="yes"
+             Manufacturer="New Thinking Technologies"
+             Keywords="Practice, Installer, MSI, signed assembly, strong names"
+             Comments="Test MSI Installer HelloWix-5 by NTT"
+             InstallerVersion="405"/>
+
+    <MediaTemplate EmbedCab="yes"/>
+    <Icon Id="product_icon.ico" SourceFile="$(var.IconPath)/ntt_logo.ico"/>
+
+    <Directory Id="TARGETDIR"
+               Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="DIR_NewThinkingTechnologies"
+                   Name="NewThinkingTechnologies">
+          <!--Do not give a value to the Name attr. of the fake GAC dir-->
+          <Directory Id="DIR_FAKE_GAC">
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <!-- 
+    This will install the MyStronglySignedAssembly1.dll to the GAC.
+    The assembly must be stringly named and signed. 
+    The attribute Assembly=".net" on the File element istructs WiX
+    to try to install the assembly to the GAC. In this case the 
+    DirectoryRef instruction is ignored.    
+    -->
+    <DirectoryRef Id="DIR_FAKE_GAC">
+      <Component Id="CMP_GAC_MyStronglySignedAssembly1.dll"
+                 Guid="D4BD4F91-01E8-4207-A1CF-818A6B429C0B">
+        <File Id="FILE_GAC_MyStronglySignedAssembly1.dll"
+              Assembly=".net"
+              Source="$(var.FilePath)/MyStronglySignedAssembly1.dll"
+              KeyPath="yes">          
+        </File>
+      </Component>
+    </DirectoryRef>
+
+    <Feature Id="MainProduct"
+             Title="Main Product"
+             Description="Installs the Main Feature"
+             Level="1">
+      <ComponentRef Id="CMP_GAC_MyStronglySignedAssembly1.dll"/>     
+    </Feature>
+    
+  </Product>
 </Wix>

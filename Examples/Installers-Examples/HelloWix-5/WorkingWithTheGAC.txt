@@ -1,0 +1,58 @@
+﻿
+
+Using the Visual Studio Developer Command Prompt you have access to the following tools
+
+-gacutil.exe
+-sn.exe
+
+You can aslo use UI tools such as 
+
+-MSIL Disassembler (ILdasm.exe) in the .NET Framework SDK - 
+ this is useful to see the signature in the assembly MANIFEST.
+
+-IL Spy - this is useful to see the Public Key
+
+The GAC is normally made of several system folders i.e.
+
+- C:\Windows\assembly
+- C:\Windows\Microsoft.NET\assembly
+
+To install the assembly run the installer to uninstall the usseblu run it in uninstall mode
+
+=====================================================================================================================
+
+Example1: 
+
+Use gacutil.exe to inspect an assembly already installed in the GAC.
+The output shows the strong name of the assembly.	
+
+C:\Program Files (x86)\Microsoft Visual Studio 14.0>gacutil /l System
+
+Microsoft (R) .NET Global Assembly Cache Utility.  Version 4.0.30319.0
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+The Global Assembly Cache contains the following assemblies:
+  System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL
+  System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL
+                                                                                Number of items = 2
+                                                                                
+=====================================================================================================================
+        
+Example 2
+
+Use gacutil.exe to inspect one of your signed assemblies once it's been installed to the GAC.
+You can istall asseblies to teh GAC using gacutil.exe directly or using WiX.
+
+
+C:\Program Files (x86)\Microsoft Visual Studio 14.0>gacutil /l MyStronglySignedAssembly1																		
+
+
+Microsoft (R) .NET Global Assembly Cache Utility.  Version 4.0.30319.0
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+The Global Assembly Cache contains the following assemblies:
+MyStronglySignedAssembly1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d7c05a0e4f4e749d, processorArchitecture=MSIL
+
+Number of items = 1
+
+=====================================================================================================================
