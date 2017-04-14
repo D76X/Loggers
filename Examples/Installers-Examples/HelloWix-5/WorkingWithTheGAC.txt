@@ -1,4 +1,8 @@
-﻿
+﻿References 
+
+https://www.youtube.com/watch?v=eTIzG02ymRk
+
+=====================================================================================================================
 
 Using the Visual Studio Developer Command Prompt you have access to the following tools
 
