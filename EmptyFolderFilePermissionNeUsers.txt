@@ -1,0 +1,47 @@
+In order to use WiX to install files and set the permissions of the installed files
+on the target system the project must use the WixUtilExtension. Therefore a project 
+reference to WiXUtilExtensio must be added.
+
+The WixUtilExtensions provides the attributes that are necessary in the WiX markup
+to specify the permissions of the installed files. Once the project reference to the 
+WixUtilExtensions is added the WiX mark up must declare the corresponding namespace
+as one of the attributes to the WiX element.
+
+xmlns:util="http://schemas.microsoft.com/wix/UtilExtension"
+
+The **PermissionEx** element is provided by this namespace as well the following set of 
+attributes. 
+=========================================================================================
+GenericAll					Gives the user all permissions.
+GenericRead					Must have at least one other permission specified. Grants all
+							Read privileges: "Read Data", "Read Attributes", "Read Extended
+							Attributes", and "Read Permissions".
+GenericWrite				Grants "Write Data, "Append Data", "Write Attributes", and "Read
+							Permissions".
+GenericExecute				Grants "Execute File", "Read Attributes", and "Read Permissions".
+Read						Grants	"Read Data".
+Write						Grants	"Write Data".
+Execute						Grants	"Execute File" permission.
+Append						Grants "Append Data".
+Delete						Grants "Delete".
+ChangePermission			Grants "Change Permissions".
+ReadPermission				Grants "Read Permissions".
+TakeOwnership				Grants "Take Ownership".
+Synchronize					If "yes", then threads must wait their turn before accessing the 
+							file.
+=========================================================================================
+
+The same namespace also provides the User element which can be used to create new users.
+This can be accompliched in a Component element by means of the following markup.
+
+Notice that by setting RemoveOnUninstall="yes" the user can be removed by unistalling the 
+product.
+
+<!--Creates new user-->
+<util:User Id="MyNewUser"
+CreateUser="yes"
+Name="nickramirez"
+Password="password"
+PasswordNeverExpires="yes"
+RemoveOnUninstall="yes"
+UpdateIfExists="yes" />

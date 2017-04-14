@@ -216,7 +216,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Loggers", "Loggers", "{336F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HelloWix-6", "HelloWix-6", "{9C55C627-3A47-4A4A-9BE4-5468529816C6}"
 	ProjectSection(SolutionItems) = preProject
-		EmptyFolderAndFilePermission.txt = EmptyFolderAndFilePermission.txt
+		EmptyFolderFilePermissionNeUsers.txt = EmptyFolderFilePermissionNeUsers.txt
 	EndProjectSection
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "HelloWix-6", "Examples\Installers-Examples\HelloWix-6\HelloWix-6.wixproj", "{182ECC6B-E4F0-43F9-B118-54AD553689E7}"

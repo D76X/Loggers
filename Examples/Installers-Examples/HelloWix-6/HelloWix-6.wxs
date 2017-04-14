@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension"
      RequiredVersion="3.10.0.0">
   <Product Id="2EC882A5-72DF-4383-94A6-056739A3840A"
            Name="HelloWix-6"
@@ -22,12 +23,46 @@
       <Directory Id="ProgramFilesFolder">
         <Directory Id="DIR_NewThinkingTechnologies"
                    Name="NewThinkingTechnologies">
-          <!--Provide Id and Name for the empty directory-->
-          <Directory Id="DIR_EMPTY" Name="EmptyDirectory">
+          <Directory Id="DIR_HelloWix_6"
+                     Name="HelloWix-6">
+            <!--Provide Id and Name for the empty directory-->
+            <Directory Id="DIR_EMPTY" Name="EmptyDirectory">
+            </Directory>
           </Directory>
         </Directory>
       </Directory>
     </Directory>
+
+    <DirectoryRef Id="DIR_HelloWix_6">
+      <Component Id="CMP_MAIN_APPLICATION"
+                 Guid="967F3DE3-CED5-4856-9F6A-922FAEC6E626">
+
+        <!--You could also create new users-->
+        <!--<util:User Id="MyNewUser"
+        CreateUser="yes"
+        Name="nickramirez"
+        Password="password"
+        PasswordNeverExpires="yes"
+        RemoveOnUninstall="yes"
+        UpdateIfExists="yes" />-->
+
+        <File Id="FILE_InstallWithPermissions.txt"
+              Source="$(var.FilePath)/InstallWithPermissions.txt"
+              KeyPath="yes">
+
+          <!-- GenericAll=Gives the user all permissions.-->
+          <!-- 
+          Change the attribute on PermissionEx to alter the
+          permission granted to the user on the file installed 
+          on the target. The list of available attribute is 
+          included in the comment file for this demo project.
+          -->
+          <util:PermissionEx User="davidespano"
+                             GenericAll="yes"/>
+        </File>
+      </Component>
+
+    </DirectoryRef>
 
     <!--
     An empty directory is created by using the CreateFolder tag
@@ -43,13 +78,14 @@
         <CreateFolder />
       </Component>
     </DirectoryRef>
-    
+
     <Feature Id="MainProduct"
              Title="Main Product"
              Description="Installs the Main Feature"
              Level="1">
-      <ComponentRef Id="CMP_EMPTYFOLDER"/>     
-    </Feature>    
+      <ComponentRef Id="CMP_MAIN_APPLICATION"/>
+      <ComponentRef Id="CMP_EMPTYFOLDER"/>
+    </Feature>
 
     <!--<Feature Id="MainProduct"
              Title="Main Product"
