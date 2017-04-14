@@ -38,13 +38,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Simulators", "Simulators", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{FAFE10AF-AF2C-4D6F-82BC-81ED9863EE85}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub", "GitHub", "{E9200801-28A9-48F9-9CE7-FC85A30EBB58}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_GitHub", "_GitHub", "{E9200801-28A9-48F9-9CE7-FC85A30EBB58}"
 	ProjectSection(SolutionItems) = preProject
 		GitHubResources.txt = GitHubResources.txt
 		GitHub\GitWorkflow.png = GitHub\GitWorkflow.png
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FSharp", "FSharp", "{DE568A54-66CB-490F-B05E-A68098963527}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_FSharp", "_FSharp", "{DE568A54-66CB-490F-B05E-A68098963527}"
 	ProjectSection(SolutionItems) = preProject
 		FSharp\1_Listing_4.2.txt = FSharp\1_Listing_4.2.txt
 		FSharp\2_WorkingWithStrings.txt = FSharp\2_WorkingWithStrings.txt
@@ -209,6 +209,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UseRegions", "UseRegions", "{0DE1B2C1-8D37-426B-883A-336F7D2A4F55}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LoadViews", "LoadViews", "{48ECB05A-6DFE-4713-A927-5C32EEF18487}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sites", "Sites", "{32C4F17A-C5B0-49EA-9C38-5EB126010CF6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Loggers", "Loggers", "{336F8F07-C586-45D4-B7E2-20FDB911D3B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
