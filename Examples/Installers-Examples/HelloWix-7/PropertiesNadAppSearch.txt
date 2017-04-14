@@ -1,0 +1,53 @@
+﻿
+Some facts on properties.
+
+Declaring Properties and setting their value
+
+Properties hold installation time data.
+Properties are persisted for the duration of the whole istallation process.
+Properties can be used to store and communicate state between the istallation phases.
+Properties can be used to capture user input.
+Properties and their values can be use in the installer logic to determine its control flow.
+The default value of a property is NULL.
+During the compilation process properties with NULL value are left out of teh MSI.
+Properies are declared by means of the Property element.
+Property can be declared and an optional value can be set as its attribute.
+When a Property is declared its value does not have to be set.
+The value of a declared property can be set after the declaration of the property.
+Once the value of the property is set it CANNOT be changed - a build error would occur.
+Properties can be set from command line.
+Properties declared on the command line override those set in your WiX markup.
+So, you could declare a WiX Property element in your XML to give it a default
+value, then override that value from the command line.
+----------------------------------------------------------------------------------------
+When a property is set from command line it does not have to be declared in the markup.
+
+msiexec /i myInstaller.msi PROPERTY1=100 PROPERTY2="my value"
+----------------------------------------------------------------------------------------
+You can clear a property by setting its value to an empty string
+
+msiexec /i myInstaller.msi PROPERTY1=""
+----------------------------------------------------------------------------------------
+
+=============================================================================================
+
+Referencing Properties
+
+A property is usually referenced by attributes of another WiX element.
+To reference a property use square brackets around its name i.e. [USERNAME].
+----------------------------------------------------------------------------------------
+Not all element attributes will interpret this square bracket notation back into its
+original literal value.
+----------------------------------------------------------------------------------------
+
+A classical example.
+The condition tests whether if the property is defined and its value is set to the literal "1".
+If the test fails thus the condition evaluates to FALSE then the Message is displayed.
+
+<Property Id="myProperty" Value="0" />
+
+<Condition Message="Value of myProperty is [myProperty]. Should be 1">
+	<![CDATA[Installed OR myProperty = "1"]]>
+</Condition>
+
+----------------------------------------------------------------------------------------
