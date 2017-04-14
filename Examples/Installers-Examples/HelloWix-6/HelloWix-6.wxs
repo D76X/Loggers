@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     RequiredVersion="3.10.0.0">
+  <Product Id="2EC882A5-72DF-4383-94A6-056739A3840A"
+           Name="HelloWix-6"
+           Language="1033"
+           Version="1.0.0.0"
+           Manufacturer="New Thinking Technologies"
+           UpgradeCode="09AF691F-2502-4700-A941-3306D5F38F42">
+    <Package Description="Demo Installer creates a empty folder and set permissions on files"
+             Compressed="yes"
+             Manufacturer="New Thinking Technologies"
+             Keywords="Practice, Installer, MSI, create empty folder, file permission"
+             Comments="Test MSI Installer HelloWix-6 by NTT"
+             InstallerVersion="405"/>
+
+    <MediaTemplate EmbedCab="yes"/>
+    <Icon Id="product_icon.ico" SourceFile="$(var.IconPath)/ntt_logo.ico"/>
+
+    <Directory Id="TARGETDIR"
+               Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="DIR_NewThinkingTechnologies"
+                   Name="NewThinkingTechnologies">
+          <!--Provide Id and Name for the empty directory-->
+          <Directory Id="DIR_EMPTY" Name="EmptyDirectory">
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <!--
+    An empty directory is created by using the CreateFolder tag
+    inside of a regular component. Contrary to common pattern 
+    where components install files the KeyPath is in this case 
+    set on the component itself as there are no files in the 
+    component for an empty folder.
+    -->
+    <DirectoryRef Id="DIR_EMPTY">
+      <Component Id="CMP_EMPTYFOLDER"
+                 Guid="EF04E6A4-6EED-472B-9D08-1269510D2AEA"
+                 KeyPath="yes">
+        <CreateFolder />
+      </Component>
+    </DirectoryRef>
+    
+    <Feature Id="MainProduct"
+             Title="Main Product"
+             Description="Installs the Main Feature"
+             Level="1">
+      <ComponentRef Id="CMP_EMPTYFOLDER"/>     
+    </Feature>    
+
+    <!--<Feature Id="MainProduct"
+             Title="Main Product"
+             Description="Installs the Main Feature"
+             Level="1">
+      <ComponentRef Id="CMP_GAC_MyStronglySignedAssembly1.dll"/>     
+    </Feature>-->
+
+  </Product>
+</Wix>

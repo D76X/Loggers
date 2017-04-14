@@ -154,7 +154,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegionsCustom", "Examples\P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View1Discovery", "Examples\Prism-Examples\Prism-Samples-Wpf\4-ViewDiscovery\ViewDiscovery\View1Discovery.csproj", "{A5B35F7E-F9BD-45C8-9FBE-D780AF76C6BB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HelloWix-5-GAC", "HelloWix-5-GAC", "{B5F948D6-31C9-4343-8576-66F7BBA3BF36}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HelloWix-5", "HelloWix-5", "{B5F948D6-31C9-4343-8576-66F7BBA3BF36}"
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "HelloWix-5", "Examples\Installers-Examples\HelloWix-5\HelloWix-5.wixproj", "{1FBCD2B2-CA1D-415E-80C5-32751255FEAD}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -214,7 +214,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sites", "Sites", "{32C4F17A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Loggers", "Loggers", "{336F8F07-C586-45D4-B7E2-20FDB911D3B5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HelloWix-6-EmptyFolder", "HelloWix-6-EmptyFolder", "{9C55C627-3A47-4A4A-9BE4-5468529816C6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HelloWix-6", "HelloWix-6", "{9C55C627-3A47-4A4A-9BE4-5468529816C6}"
+	ProjectSection(SolutionItems) = preProject
+		EmptyFolderAndFilePermission.txt = EmptyFolderAndFilePermission.txt
+	EndProjectSection
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "HelloWix-6", "Examples\Installers-Examples\HelloWix-6\HelloWix-6.wixproj", "{182ECC6B-E4F0-43F9-B118-54AD553689E7}"
 EndProject
