@@ -24,7 +24,7 @@
     <Compile Include="HelloWix-7.wxs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="PropertiesNadAppSearch.txt" />
+    <Content Include="PropertiesAndAppSearch.txt" />
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <!--
