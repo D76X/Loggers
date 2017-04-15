@@ -9,3 +9,16 @@ https://spdx.org/licenses/
 { "license": "UNLICENSED"}
 
 ======================================================================================================================
+
+Visual Studio 2015 - Fixing "Dependencies npm not installed" from fsevents with node on Windows
+https://www.hanselman.com/blog/VisualStudio2015FixingDependenciesNpmNotInstalledFromFseventsWithNodeOnWindows.aspx
+
+Its caused by this in the C:\GitHub\Loggers\Sites\brainsnetwork\node_modules\chokidar\package.json 
+
+"optionalDependencies": {
+        "fsevents": "^1.0.0"
+    },
+
+Cannot remove it and therefore ignore the dependency
+
+======================================================================================================================
