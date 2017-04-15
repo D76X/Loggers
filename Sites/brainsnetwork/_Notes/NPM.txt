@@ -1,0 +1,11 @@
+﻿
+======================================================================================================================
+
+IN package.jon THE  LINCE MUST BE SET TO A VALID SPDX LICENCE
+
+what SPDX license should I use for private modules?
+https://github.com/npm/npm/issues/8773
+https://spdx.org/licenses/
+{ "license": "UNLICENSED"}
+
+======================================================================================================================
