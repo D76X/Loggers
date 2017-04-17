@@ -19,6 +19,8 @@ Properties can be set from command line.
 Properties declared on the command line override those set in your WiX markup.
 So, you could declare a WiX Property element in your XML to give it a default
 value, then override that value from the command line.
+Properties in WiX are not stronlgy typed.
+
 ----------------------------------------------------------------------------------------
 When a property is set from command line it does not have to be declared in the markup.
 
@@ -103,9 +105,53 @@ MSI package with Orca.exe.
 
 ----------------------------------------------------------------------------------------
 
-PUBLIC PROPERTIES
+SCOPE OF PROPERTIES - PUBLIC PROPERTIES vs SESSION PROPERTIES
 
+Making a property public is just a matter of making its Id all uppercase.
+The property MY_PASSWORD is public, while my_Password is not.
 
+PUBLIC PROPERTIES HAVE INSTALLATION SCOPE
+MY_PROPERTY will persist throughout the entire installation.
+<Property Id="MY_PROPERTY" Value="my string" />
+
+NON PUBLIC PROPERTIES HAVE SESSION SCOPE
+My_Property will only last during the current session.
+<Property Id="My_Property" Value="my string" />
+
+WHEN PUBLIC ARE PROPERTIES REQUIRED TO BE PUBLIC ?
+ 
+if you plan on using your properties when writing to the Registry, laying down files, or 
+during any other act that changes the user's computer, then those properties must be made 
+public.
+----------------------------------------------------------------------------------------
+
+SECURE PROPERTIES
+
+<Property Id="MY_PROPERTY" Value="my string" Secure="yes" />
+
+Secure properties are public properties that can be passed to the Execute phase when doing 
+a managed installation with elevated privileges. An installer will prompt the user to elevate 
+their privileges thus to enter the password of the built-in Administrator account. 
+This is necessary before performing tasks that change directories and Registry keys outside 
+the logged-in user's permissions zone any time the installer is executed in the context of 
+a non admin account.
+
+HOW TO FIND OUT WHEATHER A PROPERTY NEEDS TO BE SECURED
+
+In the install log the RestrictedUserControl property has been set by Windows Installer.
+
+=> Adding RestrictedUserControl property. Its value is '1'.
+=> Ignoring disallowed property MYPROPERTY
+
+The public property MYPROPERTY must be defined with Secure="yes"  to be used after the 
+RestrictedUserControl property is set to 1.
+
+SETTING ALL PROPERTIES TO SECURE
+
+By setting EnableUserControl to 1 in the  markup, all properties will be marked as Secure.
 
 ----------------------------------------------------------------------------------------
 
+THE TYPE OF PROPERTIES
+
+----------------------------------------------------------------------------------------
