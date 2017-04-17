@@ -34,13 +34,19 @@ msiexec /i myInstaller.msi PROPERTY1=""
 Referencing Properties
 
 A property is usually referenced by attributes of another WiX element.
-To reference a property use square brackets around its name i.e. [USERNAME].
+To reference a property in element attributes use square brackets around its Id i.e. [USERNAME] .
+To reference a property in the child text of an element use its Id without square brackets.
+
 ----------------------------------------------------------------------------------------
 Not all element attributes will interpret this square bracket notation back into its
 original literal value.
 ----------------------------------------------------------------------------------------
+The **Installed** keyword is another property set by WiX that tells the installer to only
+check this condition during an install.
+----------------------------------------------------------------------------------------
 
-A classical example.
+A classical example: condition dependant on the value assigned to a custom property.
+
 The condition tests whether if the property is defined and its value is set to the literal "1".
 If the test fails thus the condition evaluates to FALSE then the Message is displayed.
 
@@ -51,3 +57,55 @@ If the test fails thus the condition evaluates to FALSE then the Message is disp
 </Condition>
 
 ----------------------------------------------------------------------------------------
+
+Another classical example: condition dependant on the built-in NETFRAMEWORKxx property.
+
+If NETFRAMEWORK30 is undefined then .NET Framework is not istalled thus and the condition 
+evaluates to FALSE. Consequently, the message is displayed to the user during installation.
+
+Note: for thsi condition the .wxs must reference NetFXExtension which must be added to the
+project for the MSI.
+
+
+<PropertyRef Id="NETFRAMEWORK30" />
+<Condition Message="You must install Microsoft .NET Framework 3.0 or higher.">
+	<![CDATA[Installed OR NETFRAMEWORK30]]>
+</Condition>
+
+----------------------------------------------------------------------------------------
+
+Another example: this is how WiX define the built-in property NETFRAMEWORK30.
+The value of NETFRAMEWORK30 is set by means of a specific type of AppSerach that is a 
+RegistrySearch.
+
+<Fragment>
+	<Property Id="NETFRAMEWORK30" Secure="yes">
+		<RegistrySearch Id="NetFramework30"
+						Root="HKLM"
+						Key="SOFTWARE\Microsoft\NET Framework
+						Setup\NDP\v3.0\Setup"
+						Name="InstallSuccess"
+						Type="raw" />
+	</Property>
+</Fragment>
+
+----------------------------------------------------------------------------------------
+
+Use Hidden="yes" to prvent the value of a property from being displayed in a log when 
+the MSI is run with logging mode on (i.e. msiexec /i myInstaller.msi /l*v log.log)
+Marking a property as hidden does not, however, prevent it from displaying
+its value in the MSI database's Property table.
+Set the value from the command line or collect it from the user via the UI.
+That way, it is defined dynamically and the end user can not see it by opening the
+MSI package with Orca.exe.
+
+<Property Id="MY_PASSWORD" Value="some value" Hidden="yes" />
+
+----------------------------------------------------------------------------------------
+
+PUBLIC PROPERTIES
+
+
+
+----------------------------------------------------------------------------------------
+
