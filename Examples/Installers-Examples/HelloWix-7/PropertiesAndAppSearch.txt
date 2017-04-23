@@ -154,4 +154,105 @@ By setting EnableUserControl to 1 in the  markup, all properties will be marked 
 
 THE TYPE OF PROPERTIES
 
+The properties in WiX are not strongly typed
+you don't need to specify whether a property is an integer, string, or boolean.
+Most of the time, you'll be setting properties by using the WiX Property element
+Properties can be set from the command line 
+Properties can be set dynamically with a UI control or CUSTOM ACTION
+Using a Property element always implicitly casts the property as a string.
+When you compare two string values, case counts.
+If you prefix the comparison operator with a tilde (~), case will be ignored.
+
 ----------------------------------------------------------------------------------------
+
+PROPERTY AS AN STRING
+
+<Property Id="MyProperty" Value="5" />
+
+<Condition Message="Some message if condition is false.">
+	<![CDATA[MyProperty = "5"]]>
+</Condition>
+
+CASE INSENSITIVE COMPARISON
+
+<Property Id="MyProperty" Value="sample string" />
+
+<Condition Message="Some message if condition is false.">
+	<![CDATA[MyProperty ~= "SAMPLE STRING"]]>
+</Condition>
+
+----------------------------------------------------------------------------------------
+
+PROPERTY AS AN INTEGER 
+
+Depending on how you reference a property WiX may interpret it as an integer.
+If, in a conditional statement, you compare your property to an integer (a whole
+number without quotes around it), WiX will assume that your property is an integer
+
+<Property Id="MyProperty" Value="5" />
+
+<Condition Message="Some message if condition is false." >
+	<![CDATA[MyProperty > 3]]>
+</Condition>
+
+----------------------------------------------------------------------------------------
+PROPERTY AS DECIMAL VALUE
+
+If the property is a decimal, such as 2.0, then you can't compare it to a numeric value 
+unless you put quotes around that value.
+
+<Property Id="myNum" Value="2.0" />
+
+<Condition Message="myNum must be > 1.">
+	<![CDATA[myNum > "1"]]>
+</Condition>
+
+----------------------------------------------------------------------------------------
+
+CHECK WHETHER A RPORTY HAS BEEN DEFINED REGARDLESS OF ITS VALUE
+
+<Condition Message="Some message if condition is false">
+	<![CDATA[MY_PROPERTY]]>	
+</Condition>
+
+----------------------------------------------------------------------------------------
+
+PREDEFINED WINDOWS INSTALLER PROPERTIES
+
+Some are created automatically as part of the install process i.e Installed 
+Install is set when the product has already been locally installed
+
+Some have an Id attribute already are defined for you
+buT, only come to life when you instantiate them with Property elements 
+
+----------------------------------------------------------------------------------------
+
+IMPLIED PROPERTIES
+
+properties that don't need to be set with a Property element
+They're implied. They're set for you.
+Another set of implied properties are directories i.e. ProgramFilesFolder
+Any directories from the Directory elements are available as properties
+Properties from Directory elements are referenced by their Id attribute.
+
+The following properties are automatically created:
+They're available to you in all phases of the install.
+They can be accessed in the attributes and inner text of other elements just like normal.
+
+• Manufacturer
+• ProductCode
+• ProductLanguage
+• ProductName
+• ProductVersion
+• UpgradeCode
+
+USE THE INSTALL LOG TO SEE THE DEFINED PROPERTIES
+
+Taking a look at the install log will reveal many of these.
+
+----------------------------------------------------------------------------------------
+
+CITED PROPERTIES
+
+----------------------------------------------------------------------------------------
+
