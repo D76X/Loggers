@@ -54,6 +54,11 @@ namespace CosmicMixer
 
             app.UseMvc(routes =>
             {
+                // add the new route here.
+                routes.MapRoute(name: "areaRoute",
+                    template: "{area:exists}/{controller}/{action}",
+                    defaults: new { controller = "Test", action = "Index" });
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
