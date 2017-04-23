@@ -228,8 +228,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HelloWix-7", "HelloWix-7", 
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "HelloWix-7", "Examples\Installers-Examples\HelloWix-7\HelloWix-7.wixproj", "{7ED44290-B733-465E-8DA7-654FD249032A}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "brainsnetwork", "Sites\brainsnetwork\brainsnetwork.xproj", "{8D22C407-CAD9-40EF-9635-28AA6CC5539B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -656,14 +654,6 @@ Global
 		{7ED44290-B733-465E-8DA7-654FD249032A}.Release|Any CPU.ActiveCfg = Release|x86
 		{7ED44290-B733-465E-8DA7-654FD249032A}.Release|x86.ActiveCfg = Release|x86
 		{7ED44290-B733-465E-8DA7-654FD249032A}.Release|x86.Build.0 = Release|x86
-		{8D22C407-CAD9-40EF-9635-28AA6CC5539B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D22C407-CAD9-40EF-9635-28AA6CC5539B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D22C407-CAD9-40EF-9635-28AA6CC5539B}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{8D22C407-CAD9-40EF-9635-28AA6CC5539B}.Debug|x86.Build.0 = Debug|Any CPU
-		{8D22C407-CAD9-40EF-9635-28AA6CC5539B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D22C407-CAD9-40EF-9635-28AA6CC5539B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8D22C407-CAD9-40EF-9635-28AA6CC5539B}.Release|x86.ActiveCfg = Release|Any CPU
-		{8D22C407-CAD9-40EF-9635-28AA6CC5539B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -748,6 +738,5 @@ Global
 		{182ECC6B-E4F0-43F9-B118-54AD553689E7} = {9C55C627-3A47-4A4A-9BE4-5468529816C6}
 		{E1EE2AFD-01C2-4039-82AE-A391005DBB0B} = {C7C6F88C-55B2-466B-A0EB-318D990B2C2E}
 		{7ED44290-B733-465E-8DA7-654FD249032A} = {E1EE2AFD-01C2-4039-82AE-A391005DBB0B}
-		{8D22C407-CAD9-40EF-9635-28AA6CC5539B} = {32C4F17A-C5B0-49EA-9C38-5EB126010CF6}
 	EndGlobalSection
 EndGlobal
