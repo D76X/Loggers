@@ -26,6 +26,9 @@ use Application.Current.MainWindow = (Window)Shell; in the override of Bootstrap
 the dependency object to the application window.
 
 PRISM CORE SERVICES
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+PRISM CORE INTERFACES
 
 IModuleManager
 IModuleCatalog
@@ -35,8 +38,26 @@ IEventAggregator
 ILoggerFacade
 IServiceLocator
 
+--------------------------------------------------------------------------------------------------------------------------------------------
+
 THE SHELL
 
 Is a Window user control
 In it you define Regions into which Views will be injected at runtime
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+MODULES
+http://prismlibrary.readthedocs.io/en/latest/WPF/04-Modules/
+
+Modules are implemented in WPF User Control Libraries.
+In the library a single class implementing IModule exits.
+
+REGISTER MODULES
+
+LOAD MODULES
+
+INITIALISE MODULES
+
+--------------------------------------------------------------------------------------------------------------------------------------------
 
