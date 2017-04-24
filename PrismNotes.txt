@@ -47,6 +47,33 @@ In it you define Regions into which Views will be injected at runtime
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
+REGION
+
+Regions are managed by a RegionManager.
+Regions are not controls.
+A region implements IRegion.
+
+The RegionManager maintsins a collection of regions and creates regions for controls.
+The RegionManager provides the RegionName attached property.
+The RegionManager.RegionName attached property is applied to a host control via XAML or code.
+The RegionManager maps Region Adapters to Controls.
+
+The RegionManager.Context attached property is similar to the concept fo DataContext.
+The RegionManager.Context is used to share data between a parent/child views hosted between a region.
+The RegionManager.Context can be set through code or through XAML.
+
+A RegonAdapter is responsible for associating a Region with a host control.
+In order to expose a UI control as a region a Region Adapter must be defined for the UI control.
+
+The default RegionAdaper in Prism are
+	ContentControlRegionAdapter
+	ItemControlRegionAdapter
+	SelectorRegionAdapTER
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
 MODULES
 http://prismlibrary.readthedocs.io/en/latest/WPF/04-Modules/
 
