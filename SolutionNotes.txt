@@ -1,0 +1,11 @@
+USEFUL SHORTCUTS
+
+ctrl+[ => s
+
+DEACTIVATE TRAVK ACIVE ITEM IN SOLUTION EXPLORER
+https://blogs.msdn.microsoft.com/zainnab/2010/03/29/track-active-item-in-solution-explorer/
+Tools -> Options -> Projects and Solutions -> General -> "Track Active Item in Solution Explorer"
+
+SHOW AVAILABLE OVERRIDES
+type override in a class then SPACE or TAB SPACE
+http://stackoverflow.com/questions/6213332/visual-studio-2010-keyboard-shortcut-to-override-method-in-c

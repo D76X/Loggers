@@ -1,0 +1,42 @@
+THE BOOTSTRAPPER
+
+Initialises the application
+Initialises the Core Services
+Initialises the application specific services
+
+THE BOOTSPRAPPING PROCESS
+
+Create the LoggerFacade
+Create and Configure the Module Catalog
+Create and Configure the Container i.e. Unity
+Configure the default Region Adapter Mappings 
+Configure Region Behaviours
+Register the Framewok Exception Types
+Create the Shell
+Initialise the Shell
+Initialise Modules
+
+TO GET THE BOOTSTRAPPER TO WORK YOU MUST
+
+Remove the StartupUri attribute from the Window XAML as the Bootstrapper will initialise and show the Shell instead
+Override the Application.OnStartup in which the Bootstrapper must be instantiated.
+Add the statement [using Microsoft.Practices.Unity;] to the Bootstrapper.cs for the Container.Resolve<T>
+
+use Application.Current.MainWindow = (Window)Shell; in the override of Bootstrapper.InitializeShell() to cast 
+the dependency object to the application window.
+
+PRISM CORE SERVICES
+
+IModuleManager
+IModuleCatalog
+IModuleInitializer
+IRegionManager
+IEventAggregator
+ILoggerFacade
+IServiceLocator
+
+THE SHELL
+
+Is a Window user control
+In it you define Regions into which Views will be injected at runtime
+
