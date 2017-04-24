@@ -14,6 +14,7 @@ namespace CosmicMixer.Areas.Test.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
+            ViewData["Title"] = "this is page one title";
             return View();
         }
     }
