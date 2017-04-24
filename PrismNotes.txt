@@ -68,7 +68,7 @@ In order to expose a UI control as a region a Region Adapter must be defined for
 The default RegionAdaper in Prism are
 	ContentControlRegionAdapter
 	ItemControlRegionAdapter
-	SelectorRegionAdapTER
+	SelectorRegionAdapter
 
 
 
