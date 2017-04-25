@@ -1,9 +1,9 @@
-﻿using ModuleA.Views;
+﻿using LogXtreme.WinDsk.Modules.TestModules.Views;
 using Prism.Modularity;
 using Prism.Regions;
 using System;
 
-namespace ModuleA
+namespace LogXtreme.WinDsk.Modules.TestModules
 {
     public class ModuleAModule : IModule
     {

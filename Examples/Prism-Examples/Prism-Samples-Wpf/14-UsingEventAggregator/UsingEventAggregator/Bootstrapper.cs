@@ -3,7 +3,7 @@ using Prism.Unity;
 using UsingEventAggregator.Views;
 using System.Windows;
 using Prism.Modularity;
-using ModuleA;
+using LogXtreme.WinDsk.Modules.TestModules;
 using ModuleB;
 
 namespace UsingEventAggregator

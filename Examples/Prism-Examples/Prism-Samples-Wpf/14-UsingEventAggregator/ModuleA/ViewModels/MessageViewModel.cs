@@ -3,7 +3,7 @@ using Prism.Events;
 using Prism.Mvvm;
 using UsingEventAggregator.Core;
 
-namespace ModuleA.ViewModels
+namespace LogXtreme.WinDsk.Modules.TestModules.ViewModels
 {
     public class MessageViewModel : BindableBase
     {

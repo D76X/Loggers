@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace ModuleA.Views
+namespace LogXtreme.WinDsk.Modules.TestModules.Views
 {
     /// <summary>
     /// Interaction logic for ViewA

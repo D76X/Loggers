@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="ModuleA.Views.MessageView"
+﻿<UserControl x:Class="LogXtreme.WinDsk.Modules.TestModules.Views.MessageView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"             

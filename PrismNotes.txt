@@ -1,3 +1,5 @@
+--------------------------------------------------------------------------------------------------------------------------------------------
+
 THE BOOTSTRAPPER
 
 Initialises the application
@@ -25,7 +27,10 @@ Add the statement [using Microsoft.Practices.Unity;] to the Bootstrapper.cs for 
 use Application.Current.MainWindow = (Window)Shell; in the override of Bootstrapper.InitializeShell() to cast 
 the dependency object to the application window.
 
+--------------------------------------------------------------------------------------------------------------------------------------------
+
 PRISM CORE SERVICES
+
 --------------------------------------------------------------------------------------------------------------------------------------------
 
 PRISM CORE INTERFACES
@@ -47,7 +52,10 @@ In it you define Regions into which Views will be injected at runtime
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
-REGION
+REGION -REGION MANAGER - REGION ADAPTER
+REGION NAME ATTACHED PROPERTY
+REGION CONTEXT ATTACHED PROPERTY
+
 
 Regions are managed by a RegionManager.
 Regions are not controls.
@@ -70,8 +78,6 @@ The default RegionAdaper in Prism are
 	ItemControlRegionAdapter
 	SelectorRegionAdapter
 
-
-
 -------------------------------------------------------------------------------------------------------------------------------------------
 
 MODULES
@@ -80,11 +86,41 @@ http://prismlibrary.readthedocs.io/en/latest/WPF/04-Modules/
 Modules are implemented in WPF User Control Libraries.
 In the library a single class implementing IModule exits.
 
+MODULES LIFETIME = REGISTRATION => DISCOVERY => REGISTRATION => LOADING
+
+THE MODULE CATALOG
+
+A ModuleCatalog is used to maintain a collection of loaded modules.
+The ModuleCatalog knows the location of each module.
+The ModuleCatalog knows the order in which all modules are loaded.
+The ModuleCatalog knows all the dependencies between modules.
+A ModuleCatalog is instantiated in the Bootstrapper.ConfigureModuleCatalog override.
+
 REGISTER MODULES
+ 
+From Code
+From XAML
+From a Configuartion File.
+From Dsik by specifying a directory from which compiled module assembly may be loaded at runtime. 
 
 LOAD MODULES
 
+Modules can be loaded from Disk or from a remote location such as a shared directory.
+
+Modules can be loaded in two ways
+	When Available
+	On Demand
+
+
 INITIALISE MODULES
+
+Make a module ready for comsumption in a Prims application
+
+IModule.Initialize() =>
+	Register types
+	Subscribe to Services or Events
+	Register Shared Services
+	Compose Views into the Shell
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 

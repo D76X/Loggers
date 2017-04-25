@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ModuleA.Views
+namespace LogXtreme.WinDsk.Modules.TestModules.Views
 {
     /// <summary>
     /// Interaction logic for ViewA.xaml

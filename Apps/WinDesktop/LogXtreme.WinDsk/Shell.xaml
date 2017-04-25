@@ -10,11 +10,12 @@
         Title="Shell">
     <Grid>
         <DockPanel>
-            <StackPanel prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionToolbar}" 
+            <!--<StackPanel prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionToolbar}" 
                         Orientation="Horizontal"
-                        DockPanel.Dock="Top"/>
+                        DockPanel.Dock="Top"/>-->
+            <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionToolbar}"
+                        DockPanel.Dock="Top" />
             <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionContent}"/>
-            <!--<TextBlock>Hello World</TextBlock>-->
         </DockPanel>        
     </Grid>
 </Window>

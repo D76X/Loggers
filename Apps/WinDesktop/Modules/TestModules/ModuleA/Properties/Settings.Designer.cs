@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ModuleA.Properties
+namespace LogXtreme.WinDsk.Modules.TestModules.Properties
 {
     
     

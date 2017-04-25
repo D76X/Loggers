@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ModuleA.Properties {
+namespace LogXtreme.WinDsModuleA.Properties {
     
     
     /// <summary>

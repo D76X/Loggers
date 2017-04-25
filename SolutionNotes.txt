@@ -1,8 +1,23 @@
+
+======================================================================================================
+
+REBUILD NUGET PACKAGES IN A PROJECT
+
+A quick tutorial on the Update-Package command
+http://blog.nuget.org/20121231/a-quick-tutorial-on-update-package-command.html
+
+Example PM> Update-Package -ProjectName ModuleA -Reinstall
+
+More on this subject 
+
+https://docs.microsoft.com/en-us/nuget/consume-packages/package-restore
+
+======================================================================================================
 USEFUL SHORTCUTS
 
 ctrl+[ => s
 
-DEACTIVATE TRAVK ACIVE ITEM IN SOLUTION EXPLORER
+DEACTIVATE TRACK ACIVE ITEM IN SOLUTION EXPLORER
 https://blogs.msdn.microsoft.com/zainnab/2010/03/29/track-active-item-in-solution-explorer/
 Tools -> Options -> Projects and Solutions -> General -> "Track Active Item in Solution Explorer"
 

@@ -134,6 +134,10 @@
       <Project>{489706e3-c226-4d83-bb3d-c5a0d49d3835}</Project>
       <Name>LogXtreme.WinDsk.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Modules\TestModules\ModuleA\ModuleA.csproj">
+      <Project>{fa36194e-68ec-4179-b9ac-ef9d1b843db7}</Project>
+      <Name>ModuleA</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
