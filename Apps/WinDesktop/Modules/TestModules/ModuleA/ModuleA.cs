@@ -2,14 +2,21 @@
 using Prism.Modularity;
 using Prism.Regions;
 using LogXtreme.WinDsk.Infrastructure;
+using ModuleA.Views;
+using Microsoft.Practices.Unity;
 
 namespace LogXtreme.WinDsk.Modules.TestModules {
     public class TestModuleA : IModule {
 
         private RegionManager regionManager;
+        private IUnityContainer container;
 
-        public TestModuleA(RegionManager regionManager) {
+        public TestModuleA(
+            IUnityContainer unityContainer,
+            RegionManager regionManager) {
+
             this.regionManager = regionManager;
+            this.container = unityContainer;
         }
 
         public void Initialize() {
@@ -21,7 +28,11 @@ namespace LogXtreme.WinDsk.Modules.TestModules {
             // Register Shared Services
 
             // Compose Views into the Shell
-            regionManager.RegisterViewWithRegion(RegionNames.RegionToolbar, typeof(ToolbarView));
+
+            IRegion toolbarRegion = this.regionManager.Regions[RegionNames.RegionToolbar];
+            toolbarRegion.Add(this.container.Resolve<ToolbarView>());
+            toolbarRegion.Add(this.container.Resolve<ToolbarView>());
+
             regionManager.RegisterViewWithRegion(RegionNames.RegionContent, typeof(ContentView));
         }
     }
