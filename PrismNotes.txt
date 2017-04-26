@@ -77,6 +77,31 @@ The default RegionAdaper in Prism are
 	ContentControlRegionAdapter
 	ItemControlRegionAdapter
 	SelectorRegionAdapter
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE A CUSTOM REGION ADAPTER
+
+For any control other than ContentControl, ItemControl or Selector controls for which Prism comes with built-in Region Adapters
+a Custom Region Adapter is required.
+
+Derive from RegionAdapterBase<T> where T is the type of the host control for the CustomRegion
+
+Provide a PUBLIC constructor such as
+public RegionAdapterStackPanel(IRegionBehaviorFactory regionBehaviorFactory) 
+			: base(regionBehaviorFactory) {
+
+		}
+
+Implement RegionAdapterBase<T>.CreateRegion which can return
+	SingleActiveRegion	=> allows none or one ACTIVE view at any one time => used for ContentControl
+	AllActiveRegion		=> all the views are ACTIVE and DEACTIVATION of views is NOT ALLOWED => used for ItemControl
+	Region				=> allows multiple active views => used for SelectorControl
+
+Implement RegionAdapterBase<T>.Adapt
+
+Register the RegionAdapter with the Bootstrapper
+override RegionAdapterMappings ConfigureRegionAdapterMappings() and return the base class mappings with the addition 
+of the Custom Region Adapter
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 

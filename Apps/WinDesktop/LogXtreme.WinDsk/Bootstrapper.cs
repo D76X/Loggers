@@ -4,6 +4,9 @@ using System;
 using System.Windows;
 using LogXtreme.WinDsk.Modules.TestModules;
 using Prism.Modularity;
+using Prism.Regions;
+using System.Windows.Controls;
+using LogXtreme.WinDsk.Infrastructure;
 
 namespace LogXtreme.WinDsk {
     public class Bootstrapper: UnityBootstrapper {
@@ -29,6 +32,15 @@ namespace LogXtreme.WinDsk {
             });
 
             base.ConfigureModuleCatalog();
-        }        
+        }
+
+        protected override RegionAdapterMappings ConfigureRegionAdapterMappings() {
+
+            RegionAdapterMappings mappings = base.ConfigureRegionAdapterMappings();
+            mappings.RegisterMapping(typeof(StackPanel), Container.Resolve<RegionAdapterStackPanel>());
+
+            return mappings;
+
+        }
     }
 }
