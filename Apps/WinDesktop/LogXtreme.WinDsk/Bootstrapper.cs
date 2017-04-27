@@ -7,6 +7,7 @@ using Prism.Modularity;
 using Prism.Regions;
 using System.Windows.Controls;
 using LogXtreme.WinDsk.Infrastructure;
+using ModuleB;
 
 namespace LogXtreme.WinDsk {
     public class Bootstrapper: UnityBootstrapper {
@@ -23,11 +24,12 @@ namespace LogXtreme.WinDsk {
 
         protected override void ConfigureModuleCatalog() {
 
-            Type typeModuleA = typeof(TestModuleA);
+            // Type testModule = typeof(TestModuleA);
+            Type testModule = typeof(TestModuleB);
 
             ModuleCatalog.AddModule(new ModuleInfo() {
-                ModuleName = typeModuleA.Name,
-                ModuleType = typeModuleA.AssemblyQualifiedName,
+                ModuleName = testModule.Name,
+                ModuleType = testModule.AssemblyQualifiedName,
                 InitializationMode = InitializationMode.WhenAvailable
             });
 
