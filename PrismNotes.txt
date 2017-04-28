@@ -77,6 +77,34 @@ The default RegionAdaper in Prism are
 	ContentControlRegionAdapter
 	ItemControlRegionAdapter
 	SelectorRegionAdapter
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE A SCOPED REGION MANAGER - NECESSARY WHEN USING MULTIPLE SHELLS
+
+Prism uses a global RegionManager instance by default and that instance is injected via DI into modules.
+In IModules.Initialise() the reference to the global region manager is used to retrive the regions of the
+Shell by their name (key) and then the views of the modules are added to corresponding regions of the shell. 
+We cannot add the same two identical region names to the same instance of the RegionManager and this may 
+cause exceptions when modules add their views to the global region manager when the added view has child
+views also registered to regions of the global region manager. In order to prevent this kind of exceptions 
+any module should rather use a dedicated instance of the region manager that is not the global 
+
+
+Method 1 - use the IRegion.Add overload to return a scoped region manager 
+
+IRegion region = regionManager.Regions["SomeRegionName"];
+View view = container.Resolve<View>();
+// IRegion.Add(-,-,true)
+IRegionManager scopedRegion = region.Add(view, null, true);
+
+Method 2 - use IRegionManager.CreateRegionManager() to obtained a scope region
+		   use IRegionManager.SetRegionManager to set a scope region for a view
+
+IRegionManager scopedRegion = regionManager.CreateRegionManager();
+View view = container.Resolve<View>();
+ResionManager.SetRegionManager(voew, scopedRegion)
+
 -------------------------------------------------------------------------------------------------------------------------------------------
 
 CREATE A CUSTOM REGION ADAPTER
