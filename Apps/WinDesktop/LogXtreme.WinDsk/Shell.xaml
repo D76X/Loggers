@@ -10,9 +10,19 @@
         Title="Shell">
     <Grid>
         <DockPanel>
-            <StackPanel prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionToolbar}" 
+            <!--<Menu DockPanel.Dock="Top">
+                <MenuItem Header="Open Shell" 
+                          Command="{Binding OpenShellCommand}"/>
+                <MenuItem Header="Navigate to ViewA"
+                          Command="{Binding NavigateCommand}" 
+                          CommandParameter="ViewA" />
+                <MenuItem Header="Navigate to ViewB"
+                          Command="{Binding NavigateCommand}"
+                          CommandParameter="ViewB" />
+            </Menu>-->
+            <!--<StackPanel prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionToolbar}" 
                         Orientation="Horizontal"
-                        DockPanel.Dock="Top"/>
+                        DockPanel.Dock="Top"/>-->
             <!--<ItemsControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionToolbar}"
                         DockPanel.Dock="Top" />-->
             <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionContent}"/>

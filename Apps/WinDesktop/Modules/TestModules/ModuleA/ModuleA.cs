@@ -5,7 +5,7 @@ using LogXtreme.WinDsk.Infrastructure;
 using ModuleA.Views;
 using Microsoft.Practices.Unity;
 
-namespace LogXtreme.WinDsk.Modules.TestModules {
+namespace LogXtreme.WinDsk.Modules.TestModules.ModuleA {
     public class TestModuleA : IModule {
 
         private RegionManager regionManager;

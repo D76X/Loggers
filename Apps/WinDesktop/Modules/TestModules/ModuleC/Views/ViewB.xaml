@@ -6,7 +6,10 @@
              xmlns:local="clr-namespace:ModuleC.Views"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
+    <Grid Background="White">
+        <TextBlock Text="ViewB"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontSize="40" />
     </Grid>
 </UserControl>

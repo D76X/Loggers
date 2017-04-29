@@ -2,12 +2,13 @@
 using Prism.Unity;
 using System;
 using System.Windows;
-using LogXtreme.WinDsk.Modules.TestModules;
 using Prism.Modularity;
 using Prism.Regions;
 using System.Windows.Controls;
 using LogXtreme.WinDsk.Infrastructure;
-using ModuleB;
+using LogXtreme.WinDsk.Modules.TestModules.ModuleA;
+using LogXtreme.WinDsk.Modules.TestModules.ModuleB;
+using LogXtreme.WinDsk.Modules.TestModules.ModuleC;
 
 namespace LogXtreme.WinDsk {
     public class Bootstrapper: UnityBootstrapper {        
@@ -15,7 +16,8 @@ namespace LogXtreme.WinDsk {
         protected override void ConfigureModuleCatalog() {
 
             // Type testModule = typeof(TestModuleA);
-            Type testModule = typeof(TestModuleB);
+            // Type testModule = typeof(TestModuleB);
+            Type testModule = typeof(TestModuleC);
 
             ModuleCatalog.AddModule(new ModuleInfo() {
                 ModuleName = testModule.Name,
@@ -40,8 +42,11 @@ namespace LogXtreme.WinDsk {
             base.ConfigureContainer();
 
             // now register your application services
+            
             // RegisterTypeIfMissing(typeof(IMyService), typeof(MyService), true);
             // this.Container.RegisterInstance<CallbackLogger>(this.callbackLogger);
+
+            Container.RegisterType<IShellService, ShellService>(new ContainerControlledLifetimeManager());
         }
 
         protected override RegionAdapterMappings ConfigureRegionAdapterMappings() {

@@ -4,7 +4,7 @@ using ModuleB.Views;
 using Prism.Modularity;
 using Prism.Regions;
 
-namespace ModuleB {
+namespace LogXtreme.WinDsk.Modules.TestModules.ModuleB {
     public class TestModuleB : IModule {
 
         private RegionManager regionManager;

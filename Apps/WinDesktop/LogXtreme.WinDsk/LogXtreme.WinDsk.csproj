@@ -87,6 +87,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ShellService.cs" />
     <Compile Include="ShellViewModel.cs" />
     <Page Include="Shell.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -142,6 +143,10 @@
     <ProjectReference Include="..\Modules\TestModules\ModuleB\ModuleB.csproj">
       <Project>{a2701a97-77cb-4bb2-9cb3-ce4b30dac983}</Project>
       <Name>ModuleB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\TestModules\ModuleC\ModuleC.csproj">
+      <Project>{3381f123-4971-4de4-9982-4370dad2a4b0}</Project>
+      <Name>ModuleC</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

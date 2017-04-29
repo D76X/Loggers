@@ -12,14 +12,26 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LogXtreme.WinDsk.Infrastructure;
+using ModuleC.Interfaces;
 
 namespace ModuleC.Views {
     /// <summary>
     /// Interaction logic for ViewA.xaml
     /// </summary>
-    public partial class ViewA : UserControl {
+    public partial class ViewA : UserControl, IViewA {
         public ViewA() {
             InitializeComponent();
+        }
+
+        IViewModel IView.ViewModel {
+            get {
+                return (IViewAViewModel)DataContext;
+            }
+
+            set {
+                DataContext = value;
+            }
         }
     }
 }
