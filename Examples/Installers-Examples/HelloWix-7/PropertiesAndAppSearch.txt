@@ -398,7 +398,7 @@ check if a directory exists on a computer and, if it exists, get its path
 					 Id="DoesDesktopExist" />
 </Property>
 
-// It is possible to the teh installer where to start the search
+// It is possible to the the installer where to start the search
 
 ----------------------------------------------------------------------------------------
 
