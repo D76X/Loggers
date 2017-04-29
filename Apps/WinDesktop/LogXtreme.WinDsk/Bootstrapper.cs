@@ -12,16 +12,6 @@ using ModuleB;
 namespace LogXtreme.WinDsk {
     public class Bootstrapper: UnityBootstrapper {
 
-        protected override DependencyObject CreateShell() {
-            return Container.Resolve<Shell>();
-        }
-
-        protected override void InitializeShell() {
-            base.InitializeShell();
-            Application.Current.MainWindow = (Window)Shell;                
-            Application.Current.MainWindow.Show();
-        }
-
         protected override void ConfigureModuleCatalog() {
 
             // Type testModule = typeof(TestModuleA);
@@ -44,5 +34,15 @@ namespace LogXtreme.WinDsk {
             return mappings;
 
         }
+
+        protected override DependencyObject CreateShell() {
+            return Container.Resolve<Shell>();
+        }
+
+        protected override void InitializeShell() {
+            base.InitializeShell();
+            Application.Current.MainWindow = (Window)Shell;                
+            Application.Current.MainWindow.Show();
+        }        
     }
 }
