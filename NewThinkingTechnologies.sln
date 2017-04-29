@@ -265,6 +265,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleA", "Apps\WinDesktop\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleB", "Apps\WinDesktop\Modules\TestModules\ModuleB\ModuleB.csproj", "{A2701A97-77CB-4BB2-9CB3-CE4B30DAC983}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleC", "Apps\WinDesktop\Modules\TestModules\ModuleC\ModuleC.csproj", "{3381F123-4971-4DE4-9982-4370DAD2A4B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -731,6 +733,14 @@ Global
 		{A2701A97-77CB-4BB2-9CB3-CE4B30DAC983}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A2701A97-77CB-4BB2-9CB3-CE4B30DAC983}.Release|x86.ActiveCfg = Release|Any CPU
 		{A2701A97-77CB-4BB2-9CB3-CE4B30DAC983}.Release|x86.Build.0 = Release|Any CPU
+		{3381F123-4971-4DE4-9982-4370DAD2A4B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3381F123-4971-4DE4-9982-4370DAD2A4B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3381F123-4971-4DE4-9982-4370DAD2A4B0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3381F123-4971-4DE4-9982-4370DAD2A4B0}.Debug|x86.Build.0 = Debug|Any CPU
+		{3381F123-4971-4DE4-9982-4370DAD2A4B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3381F123-4971-4DE4-9982-4370DAD2A4B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3381F123-4971-4DE4-9982-4370DAD2A4B0}.Release|x86.ActiveCfg = Release|Any CPU
+		{3381F123-4971-4DE4-9982-4370DAD2A4B0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -829,5 +839,6 @@ Global
 		{B77FB842-C827-4853-82B0-142F5C246A69} = {62CF1173-E7C8-4563-AD35-5AF9EADE86EA}
 		{FA36194E-68EC-4179-B9AC-EF9D1B843DB7} = {B77FB842-C827-4853-82B0-142F5C246A69}
 		{A2701A97-77CB-4BB2-9CB3-CE4B30DAC983} = {B77FB842-C827-4853-82B0-142F5C246A69}
+		{3381F123-4971-4DE4-9982-4370DAD2A4B0} = {B77FB842-C827-4853-82B0-142F5C246A69}
 	EndGlobalSection
 EndGlobal
