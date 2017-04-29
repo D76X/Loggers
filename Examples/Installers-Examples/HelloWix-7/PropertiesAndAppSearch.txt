@@ -254,5 +254,69 @@ Taking a look at the install log will reveal many of these.
 
 CITED PROPERTIES
 
+Most of the properties that are built into Windows Installer aren't implied.
+You have to set them explicitly with a Property element.
+Contrary to custom properties the Id of cited properties must match the predefined name.
+There is a fairly long list of these available.
+Check the Property Refernce in the MSI SDK help file that comes with WiX
+searching in it for the phrase "Property Reference".
+
+The list of all cited properties is published at the URL below
+http://msdn.microsoft.com/en-us/library/aa370905%28v=VS.85%29.aspx
+
+Some Cited Properties - These set of CITED properties control what is displayed to the 
+						user in the Add/Remove Program UI in the Control Panel. However,
+						there are other cited properties related to other apsects of the 
+						intsalled product.
+https://msdn.microsoft.com/en-us/library/aa370905(v=VS.85).aspx#summary_information_update_properties
+
+ARPAUTHORIZEDCDPREFIX		URL of the update channel for the application
+ARPCOMMENTS					Provides Comments for Add/Remove Programs
+ARPCONTACT					Provides the Contact for Add/Remove Programs
+ARPINSTALLLOCATION			Fully qualified path to the application's primary folder
+ARPHELPLINK					URL for technical support
+ARPHELPTELEPHONE			Technical support phone numbers
+ARPNOMODIFY					Prevents displaying a Change button for the product
+							in Add/Remove Programs
+ARPNOREMOVE					Prevents displaying a Remove
+ARPNOREPAIR					Disables the Repair button in Add/Remove Programs
+ARPPRODUCTICON				Identifies the icon to display for the product in Add/
+							Remove Programs
+ARPREADME					Provides the ReadMe for Add/Remove Programs
+ARPSIZE						Estimated size of the application in kilobytes
+ARPSYSTEMCOMPONENT			Prevents the application from displaying at all in
+							Add/Remove Programs
+ARPURLINFOABOUT				URL for the application's home page
+ARPURLUPDATEINFO			URL for the application's update information
+
+----------------------------------------------------------------------------------------
+
+DIFFERENT TYPES OF CITED PROPERTIES
+
+Component Location Properties
+Configuration Properties
+Date, Time Properties
+Feature Installation Options Properties
+Hardware Properties
+Installation Status Properties
+Operating System Properties
+Product Information Properties
+Summary Information Update Properties
+System Folder Properties
+User Information Properties
+
+----------------------------------------------------------------------------------------
+
+CITED PROPERTIES - HOW TO USE THEM
+
+<Icon Id="myIcon" SourceFile="..\myIcon.ico" />
+<Property Id="ARPPRODUCTICON" Value="myIcon" />
+
+<Property Id="ARPCOMMENTS" Value="(c) Amazing Software" />
+
+<Property Id="ARPNOREPAIR" Value="1" />
+
+<Property Id="ARPCONTACT" Value="Nick Ramirez" />
+
 ----------------------------------------------------------------------------------------
 
