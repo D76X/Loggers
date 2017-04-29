@@ -318,5 +318,87 @@ CITED PROPERTIES - HOW TO USE THEM
 
 <Property Id="ARPCONTACT" Value="Nick Ramirez" />
 
+<Property Id="ARPHELPLINK" Value="http://www.MYURL.com/AmazingSoftware/support.html"/>
+
+<Property Id="ARPREADME" Value="http://www.MYURL.com/AmazingSoftware/readme.html" />
+
+----------------------------------------------------------------------------------------
+
+THE SPECIAL CASE OF THE ALLUSER CITED PROPERTY
+
+// ALLUSERS is particulary mportant - it can be set to 1, 2 or an empty string.
+
+// ALLUSER = 1  => Install will be performed in the per-machine context
+//				=> should use this in most cases
+
+// ALLUSER = 2  => Install will be performed in the per-user context
+//				   If the user is Administrator the install will be per-machine
+//			       This rules depend upon OS versions!
+//				   This cannot be used if REGISTRY KEYS needs to be set for machine-level
+
+// WARNING!
+// do not change the value of the ALLUSER property as it is used by the installer to 
+// determine whether the app has already been istalled on the machine.
+
+// ALLUSER = "" => Install will be performed in the per-machine context
+<Property Id="ALLUSERS" Value="1" />
+
+The ALLUSER propety can also be set using 
+
+<Package InstallScope="perMachine" />
+<Package InstallScope="perUser" />
+
+
+----------------------------------------------------------------------------------------
+
+AppSearch
+
+search the computer during an install for 
+	files
+	directories
+	settings - registry or inifiles
+	components
+
+AppSearch is also the name of the MSI database table where search tasks are stored
+
+TYPES OF APPSEARCHES
+
+
+• DirectorySearch: Search for the existence or path of a directory
+• FileSearch: Search for a specific file
+• ComponentSearch: Search for a file by its component GUID
+• RegistrySearch: Search the Windows Registry for a key
+• IniFileSearch: Search inside INI files for configuration settings
+
+All types of AppSearch are declared as child of <Property>.
+The Value of <Property> will be set to the result of teh search.
+
+----------------------------------------------------------------------------------------
+
+DirectorySearch
+
+check if a directory exists on a computer and, if it exists, get its path
+
+<Property Id="DESKTOP_PATH">
+	<DirectorySearch Path="C:\Documents and Settings\All Users\Desktop"
+					 Depth="0"
+					 AssignToProperty="yes"
+					 Id="DoesDesktopExist" />
+</Property>
+
+// Here we've set the Path attribute to just Desktop and the Depth attribute to five.
+// search for a folder called Desktop and go up to five directories deep to find it.
+// we haven't explicitly told it where to start
+// the search starts at C:\
+
+<Property Id="DESKTOP_PATH">
+	<DirectorySearch Path="Desktop"
+					 Depth="5"
+					 AssignToProperty="yes"
+					 Id="DoesDesktopExist" />
+</Property>
+
+// It is possible to the teh installer where to start the search
+
 ----------------------------------------------------------------------------------------
 
