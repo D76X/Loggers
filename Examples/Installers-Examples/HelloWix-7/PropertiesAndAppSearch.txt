@@ -398,7 +398,38 @@ check if a directory exists on a computer and, if it exists, get its path
 					 Id="DoesDesktopExist" />
 </Property>
 
-// It is possible to the the installer where to start the search
+// It is possible to tell the the installer where to start the search by nesting the 
+// DirecorySearch elements as illustrated below. The search for the Desktop folder 
+// will go 3 level deaper starting at C:\Documents and Settings\All Users. In order
+// for the containing property to be set to the value returned by the search the 
+// innermost DirectorySearch element holds the attribute AssignToProperty="yes" while
+// the outer DirecorySearch doen not.
+
+<Property Id="DESKTOP_PATH">
+
+	<DirectorySearch Path="C:\Documents and Settings\All Users"
+					 Depth="0"
+					 Id="CDrive">
+				
+		<DirectorySearch Path="Desktop"
+						 Depth="3"
+						 Id="DesktopPath"
+						 AssignToProperty="yes" />
+		</DirectorySearch>
+
+</Property>
 
 ----------------------------------------------------------------------------------------
 
+DirectorySearch - Path attribute
+
+• A Windows share, such as \\myshare\myFolder
+• A path relative to the top-level directory for any attached drives, such as \temp
+• An absolute path, such as C:\temp
+• The name of a folder, such as temp
+• an environment variable (using WiX preprocessor syntax), such as $(env.ALLUSERSPROFILE)
+
+if the installer can't find the path you set in the parent element, it will skip it and 
+use its default: every attached drive's root directory i.e. C:\
+
+----------------------------------------------------------------------------------------
