@@ -20,17 +20,19 @@ namespace ModuleC.Views {
     /// Interaction logic for ViewB.xaml
     /// </summary>
     public partial class ViewB : UserControl, IViewB {
-        public ViewB() {
+
+        public ViewB(IViewBViewModel viewModel) {
             InitializeComponent();
+            this.ViewModel = viewModel;
         }
 
-        IViewModel IView.ViewModel {
+        public IViewModel ViewModel {
             get {
-                throw new NotImplementedException();
+                return (IViewBViewModel)this.DataContext;
             }
 
             set {
-                throw new NotImplementedException();
+                this.DataContext = value;
             }
         }
     }

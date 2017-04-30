@@ -2,13 +2,10 @@
 using ModuleC.Interfaces;
 
 namespace ModuleC.ViewModels {
-    public class ViewAViewModel : IViewAViewModel {  
+    public class ViewAViewModel : IViewAViewModel {
 
-        public IView View { get; set; }
+        public ViewAViewModel() {
 
-        public ViewAViewModel(IViewA view) {
-            this.View = view;
-            this.View.ViewModel = this;
-        }
+        }       
     }
 }

@@ -9,6 +9,7 @@ using LogXtreme.WinDsk.Infrastructure;
 using LogXtreme.WinDsk.Modules.TestModules.ModuleA;
 using LogXtreme.WinDsk.Modules.TestModules.ModuleB;
 using LogXtreme.WinDsk.Modules.TestModules.ModuleC;
+using LogXtreme.WinDsk.Interfaces;
 
 namespace LogXtreme.WinDsk {
     public class Bootstrapper: UnityBootstrapper {        
@@ -42,10 +43,12 @@ namespace LogXtreme.WinDsk {
             base.ConfigureContainer();
 
             // now register your application services
-            
+
             // RegisterTypeIfMissing(typeof(IMyService), typeof(MyService), true);
             // this.Container.RegisterInstance<CallbackLogger>(this.callbackLogger);
 
+            Container.RegisterType<IShellView, Shell>();
+            Container.RegisterType<IShellViewModel, ShellViewModel>();
             Container.RegisterType<IShellService, ShellService>(new ContainerControlledLifetimeManager());
         }
 
@@ -63,7 +66,7 @@ namespace LogXtreme.WinDsk {
         /// </summary>
         /// <returns></returns>
         protected override DependencyObject CreateShell() {
-            return Container.Resolve<Shell>();
+            return Container.Resolve<Shell>();            
         }
 
         protected override void InitializeShell() {

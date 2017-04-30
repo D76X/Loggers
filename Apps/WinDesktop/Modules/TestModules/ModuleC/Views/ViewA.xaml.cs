@@ -20,17 +20,19 @@ namespace ModuleC.Views {
     /// Interaction logic for ViewA.xaml
     /// </summary>
     public partial class ViewA : UserControl, IViewA {
-        public ViewA() {
+
+        public ViewA(IViewAViewModel viewModel) {
             InitializeComponent();
+            this.ViewModel = viewModel;
         }
 
-        IViewModel IView.ViewModel {
+        public IViewModel ViewModel {
             get {
-                return (IViewAViewModel)DataContext;
+                return (IViewAViewModel)this.DataContext;
             }
 
             set {
-                DataContext = value;
+                this.DataContext = value;
             }
         }
     }

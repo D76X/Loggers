@@ -10,7 +10,7 @@
         Title="Shell">
     <Grid>
         <DockPanel>
-            <!--<Menu DockPanel.Dock="Top">
+            <Menu DockPanel.Dock="Top">
                 <MenuItem Header="Open Shell" 
                           Command="{Binding OpenShellCommand}"/>
                 <MenuItem Header="Navigate to ViewA"
@@ -19,7 +19,7 @@
                 <MenuItem Header="Navigate to ViewB"
                           Command="{Binding NavigateCommand}"
                           CommandParameter="ViewB" />
-            </Menu>-->
+            </Menu>
             <!--<StackPanel prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionToolbar}" 
                         Orientation="Horizontal"
                         DockPanel.Dock="Top"/>-->
