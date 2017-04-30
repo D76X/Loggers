@@ -33,7 +33,8 @@ namespace LogXtreme.WinDsk {
 
         private void Navigate(string viewName) {
 
-            this.regionManager.RequestNavigate(RegionNames.RegionContent, viewName);
+            //this.regionManager.RequestNavigate(RegionNames.RegionContent, viewName);
+            this.regionManager.RequestNavigate(RegionNames.RegionContent, new Uri(viewName, UriKind.Relative));
         }
     }
 }
