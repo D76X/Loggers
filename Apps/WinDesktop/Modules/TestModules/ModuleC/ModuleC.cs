@@ -1,5 +1,6 @@
 ﻿using LogXtreme.WinDsk.Infrastructure;
 using Microsoft.Practices.Unity;
+using ModuleC;
 using ModuleC.Interfaces;
 using ModuleC.ViewModels;
 using ModuleC.Views;
@@ -69,7 +70,7 @@ namespace LogXtreme.WinDsk.Modules.TestModules.ModuleC {
 
             // IF THIS IS THE MAIN MODULE OF THE APPLICATION AND IT CONTAINS A MAIN VIEW YOU MIGHT WANT TO SHOW IT 
             // BY DEFAULT            
-            regionManager.RequestNavigate(RegionNames.RegionContent, "ViewA");
+            regionManager.RequestNavigate(RegionNames.RegionContent, ViewNamesModuleC.ViewA);
         }
     }
 }
