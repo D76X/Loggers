@@ -419,6 +419,33 @@ check if a directory exists on a computer and, if it exists, get its path
 
 </Property>
 
+// This example illustrate a search with starting at C:\ where Depth=0 as it does not need
+// to go deeper. Starting from C:\ a directory "All User" is searched up to 3 levels down 
+// form C:\. Lastly, if the "C:\...\All User" forder is found the app search carries on
+// looking for a "C:\...\All User\...\Desktop" up to e levels down from "C:\...\All User".
+// 
+
+<Property Id="DESKTOP_PATH">
+		
+		<DirectorySearch Path="C:\"
+						 Depth="0"
+						 Id="CDrive">
+			
+			<DirectorySearch Path="All Users"
+							 Depth="3"
+							 Id="AllUsersFolder">
+
+					<DirectorySearch Path="Desktop"
+									 Depth="3"
+									 Id="DesktopFolder"
+									 AssignToProperty="yes" />
+
+					</DirectorySearch>
+
+			</DirectorySearch>
+
+</Property>
+
 ----------------------------------------------------------------------------------------
 
 DirectorySearch - Path attribute
