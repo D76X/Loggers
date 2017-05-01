@@ -1,12 +1,15 @@
-﻿using LogXtreme.WinDsk.Infrastructure;
+﻿using System;
+using LogXtreme.WinDsk.Infrastructure;
 using Microsoft.Practices.Unity;
 using Prism.Regions;
 
 namespace LogXtreme.WinDsk {
     public class ShellService : IShellService {
 
-        IUnityContainer container;
-        IRegionManager regionManager;
+        private IUnityContainer container;
+        private IRegionManager regionManager;
+
+        private int registeredShellCount; 
 
         public ShellService(
             IUnityContainer container,
@@ -15,6 +18,17 @@ namespace LogXtreme.WinDsk {
             this.container = container;
             this.regionManager = regionManager;
 
+        }
+
+        public int RegisteredShellCount {
+            get {
+                return this.registeredShellCount;
+            }
+        }
+
+        public int RegisterShellId() {
+            this.registeredShellCount += 1;
+            return this.registeredShellCount;
         }
 
         public void ShowShell() {
@@ -30,7 +44,7 @@ namespace LogXtreme.WinDsk {
 
             // do all the initialisation you need on the shell
             // then show it
-            shell.Show();
+            shell.Show();            
         }
     }
 }

@@ -1,18 +1,20 @@
-﻿using System;
-using LogXtreme.WinDsk.Infrastructure;
-using Prism.Commands;
-using Prism.Mvvm;
-using Prism.Regions;
+﻿using LogXtreme.WinDsk.Infrastructure;
 using LogXtreme.WinDsk.Interfaces;
+using Prism.Commands;
+using Prism.Regions;
+using System;
 
 namespace LogXtreme.WinDsk {
-    public class ShellViewModel : BindableBase, IShellViewModel {
+    public class ShellViewModel : ViewModelBase, IShellViewModel {
 
-        IRegionManager regionManager;
-        IShellService shellService;
+        private IRegionManager regionManager;
+        private IShellService shellService;
+
+        private int shellId;        
 
         public DelegateCommand<string> OpenShellCommand { get; private set; }
-        public DelegateCommand<string> NavigateCommand { get; private set; }        
+        public DelegateCommand<string> NavigateCommand { get; private set; }
+        public DelegateCommand<string> SaveSessionCommand { get; private set; }
 
         public ShellViewModel(
             IRegionManager regionManager, 
@@ -23,8 +25,26 @@ namespace LogXtreme.WinDsk {
 
             this.OpenShellCommand = new DelegateCommand<string>(OpenShell);
             this.NavigateCommand = new DelegateCommand<string>(Navigate);
+
+            this.SaveSessionCommand = new DelegateCommand<string>(SaveSession, CanSaveSession);
+            CommandsGlobal.SaveSession.RegisterCommand(SaveSessionCommand);
+
+            this.ShellId = this.shellService.RegisterShellId();
+        } 
+        
+        public int ShellId {
+            get { return this.shellId; }
+            private set { this.SetProperty(ref this.shellId, value); }
+        }    
+
+        private void SaveSession(string obj) {
+
+            //..do the saving...ISessionService.SaveSession()....
         }
 
+        private bool CanSaveSession(string arg) {
+            return !(this.shellService.RegisteredShellCount % 2 == 0);
+        }
 
         private void OpenShell(string viewName) {
 

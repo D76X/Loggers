@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:LogXtreme.WinDsk"
         xmlns:inf="clr-namespace:LogXtreme.WinDsk.Infrastructure;assembly=LogXtreme.WinDsk.Infrastructure"
         mc:Ignorable="d"
-        Title="Shell">
+        Title="{Binding Path=ShellId, StringFormat='Shell {0}'}">
     <Grid>
         <DockPanel>
             <Menu DockPanel.Dock="Top">
@@ -19,6 +19,9 @@
                 <MenuItem Header="Navigate to ViewB"
                           Command="{Binding NavigateCommand}"
                           CommandParameter="ViewB" />
+                <MenuItem Header="Save Session"
+                          Command="{x:Static inf:CommandsGlobal.SaveSession}"
+                          CommandParameter="SomeParameter" />
             </Menu>
             <!--<StackPanel prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionToolbar}" 
                         Orientation="Horizontal"
