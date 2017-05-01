@@ -31,7 +31,7 @@ namespace LogXtreme.WinDsk {
             return this.registeredShellCount;
         }
 
-        public void ShowShell() {
+        public void ShowShell(string uri=null) {
 
             var shell = this.container.Resolve<Shell>();
 
@@ -41,6 +41,10 @@ namespace LogXtreme.WinDsk {
             // register the shell with the scoped region
             RegionManager.SetRegionManager(shell, scopedRegionManager);
 
+            // navigate to the view passed by the caller
+            if (!string.IsNullOrEmpty(uri)) {
+                scopedRegionManager.RequestNavigate(RegionNames.RegionContent, uri); 
+            }
 
             // do all the initialisation you need on the shell
             // then show it

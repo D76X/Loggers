@@ -1,7 +1,7 @@
 ﻿namespace LogXtreme.WinDsk.Infrastructure {
     public interface IShellService {
 
-        void ShowShell();        
+        void ShowShell(string uri=null);        
 
         int RegisteredShellCount { get; }
 

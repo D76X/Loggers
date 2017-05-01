@@ -12,7 +12,8 @@
         <DockPanel>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="Open Shell" 
-                          Command="{Binding OpenShellCommand}"/>
+                          Command="{Binding OpenShellCommand}"
+                          CommandParameter="ViewB"/>
                 <MenuItem Header="Navigate to ViewA"
                           Command="{Binding NavigateCommand}" 
                           CommandParameter="ViewA" />

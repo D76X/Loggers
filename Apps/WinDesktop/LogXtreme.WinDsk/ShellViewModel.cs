@@ -48,7 +48,7 @@ namespace LogXtreme.WinDsk {
 
         private void OpenShell(string viewName) {
 
-            this.shellService.ShowShell();
+            this.shellService.ShowShell(viewName);
         }
 
         private void Navigate(string viewName) {
