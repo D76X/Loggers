@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandsGlobal.cs" />
+    <Compile Include="IRegionManagerAware.cs" />
     <Compile Include="IShellService.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="IViewModel.cs" />
@@ -83,6 +84,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="RegionAdapterStackPanel.cs" />
+    <Compile Include="RegionManagerAware.cs" />
     <Compile Include="RegionNames.cs" />
     <Compile Include="ViewModelBase.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

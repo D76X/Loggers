@@ -38,8 +38,12 @@ namespace LogXtreme.WinDsk {
             // use the global manager to produce a scoped region manager
             var scopedRegionManager = this.regionManager.CreateRegionManager();
 
-            // register the shell with the scoped region
+            // register this new instance of the Shell with its scoped region manager
             RegionManager.SetRegionManager(shell, scopedRegionManager);
+
+            // allow this instance of the shell to retain a refernce to its own scoped region manager
+            // this will allow the shell to control its on navigation
+            RegionManagerAware.SetRegionManagerAware(shell, scopedRegionManager);
 
             // navigate to the view passed by the caller
             if (!string.IsNullOrEmpty(uri)) {

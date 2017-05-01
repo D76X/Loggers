@@ -47,9 +47,11 @@ namespace LogXtreme.WinDsk {
             // RegisterTypeIfMissing(typeof(IMyService), typeof(MyService), true);
             // this.Container.RegisterInstance<CallbackLogger>(this.callbackLogger);
 
+            Container.RegisterType<IShellService, ShellService>(new ContainerControlledLifetimeManager());
+
             Container.RegisterType<IShellView, Shell>();
             Container.RegisterType<IShellViewModel, ShellViewModel>();
-            Container.RegisterType<IShellService, ShellService>(new ContainerControlledLifetimeManager());
+           
         }
 
         protected override RegionAdapterMappings ConfigureRegionAdapterMappings() {
@@ -72,6 +74,12 @@ namespace LogXtreme.WinDsk {
         protected override void InitializeShell() {
 
             base.InitializeShell();
+
+            // the first shell created during the application lifetime is instantiated 
+            // via the Bottstrapper and not via the ShellService, thus it is necessary
+            // set the RegionManager property of this shell in the Bootstrapper 
+            var firstShellRegionManager = RegionManager.GetRegionManager(Shell);
+            RegionManagerAware.SetRegionManagerAware(Shell, firstShellRegionManager);
 
             Application.Current.MainWindow = (Window)Shell;                            
             Application.Current.MainWindow.Show();            

@@ -5,9 +5,10 @@ using Prism.Regions;
 using System;
 
 namespace LogXtreme.WinDsk {
-    public class ShellViewModel : ViewModelBase, IShellViewModel {
+    public class ShellViewModel : ViewModelBase, 
+        IShellViewModel, 
+        IRegionManagerAware {
 
-        private IRegionManager regionManager;
         private IShellService shellService;
 
         private int shellId;        
@@ -16,11 +17,8 @@ namespace LogXtreme.WinDsk {
         public DelegateCommand<string> NavigateCommand { get; private set; }
         public DelegateCommand<string> SaveSessionCommand { get; private set; }
 
-        public ShellViewModel(
-            IRegionManager regionManager, 
-            IShellService shellService) {
+        public ShellViewModel(IShellService shellService) {
 
-            this.regionManager = regionManager;
             this.shellService = shellService;                  
 
             this.OpenShellCommand = new DelegateCommand<string>(OpenShell);
@@ -35,7 +33,13 @@ namespace LogXtreme.WinDsk {
         public int ShellId {
             get { return this.shellId; }
             private set { this.SetProperty(ref this.shellId, value); }
-        }    
+        }
+
+        /// <summary>
+        /// This properties holds a reference to the scoped region manager for the instance of 
+        /// the Shell supported by this instance of the ShellViewModel.
+        /// </summary>
+        public IRegionManager RegionManager { get; set; }
 
         private void SaveSession(string obj) {
 
@@ -53,8 +57,9 @@ namespace LogXtreme.WinDsk {
 
         private void Navigate(string viewName) {
 
-            //this.regionManager.RequestNavigate(RegionNames.RegionContent, viewName);
-            this.regionManager.RequestNavigate(RegionNames.RegionContent, new Uri(viewName, UriKind.Relative));
+            this.RegionManager.RequestNavigate(
+                RegionNames.RegionContent, 
+                new Uri(viewName, UriKind.Relative));
         }
     }
 }
