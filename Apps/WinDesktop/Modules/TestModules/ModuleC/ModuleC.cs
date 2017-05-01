@@ -26,19 +26,23 @@ namespace LogXtreme.WinDsk.Modules.TestModules.ModuleC {
             // register the views for the module
             // rgister the view models for the module
 
-            // THIS REGISTRATION PATTERN IS NOT SUITABLE FOR NAVIGATION
-            //this.container.RegisterType<IViewA, ViewA>();
-            //this.container.RegisterType<IViewB,ViewB>();
+            // THE VIEW MODELS FOR THE VIEWS MUST BE REGISTERED WITH THE CONTAINER
             this.container.RegisterType<IViewAViewModel, ViewAViewModel>();
             this.container.RegisterType<IViewBViewModel, ViewBViewModel>();
 
+            // THIS REGISTRATION PATTERN FOR THE VIEWS IS NOT SUITABLE FOR NAVIGATION
+            //this.container.RegisterType<IViewA, ViewA>();
+            //this.container.RegisterType<IViewB,ViewB>();            
+
             // IF THE VIEW NAVIGATION PATTERN IN PRISM IS GOING TO BE USED THEN REGISTER THE VIEWS AS BELOW
+            
+            // EITHER
             //this.container.RegisterType<object, ViewA>("ViewA");
             //this.container.RegisterType<object, ViewB>("ViewB");
 
             // OR 
             this.container.RegisterType(typeof(object), typeof(ViewA), "ViewA");
-            this.container.RegisterType(typeof(object), typeof(ViewB), "ViewB");            
+            this.container.RegisterType(typeof(object), typeof(ViewB), "ViewB");
 
             // VIEW DISCOVERY 
 
@@ -62,6 +66,10 @@ namespace LogXtreme.WinDsk.Modules.TestModules.ModuleC {
             // by holding on a IRegion reference all the methods defined on the IRegion interface become available
             // IRegion region = this.regionManager.Regions[RegionNames.RegionContent];
             // region.Add(viewAviewModel.View);
+
+            // IF THIS IS THE MAIN MODULE OF THE APPLICATION AND IT CONTAINS A MAIN VIEW YOU MIGHT WANT TO SHOW IT 
+            // BY DEFAULT            
+            regionManager.RequestNavigate(RegionNames.RegionContent, "ViewA");
         }
     }
 }

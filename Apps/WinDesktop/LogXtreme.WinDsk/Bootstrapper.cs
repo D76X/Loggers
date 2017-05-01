@@ -70,9 +70,11 @@ namespace LogXtreme.WinDsk {
         }
 
         protected override void InitializeShell() {
+
             base.InitializeShell();
-            Application.Current.MainWindow = (Window)Shell;                
-            Application.Current.MainWindow.Show();
+
+            Application.Current.MainWindow = (Window)Shell;                            
+            Application.Current.MainWindow.Show();            
         }        
     }
 }
