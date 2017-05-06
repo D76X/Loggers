@@ -1,6 +1,5 @@
 ﻿using Prism.Regions;
 using System.Windows.Controls;
-using System;
 using System.Windows;
 
 namespace LogXtreme.WinDsk.Infrastructure {
