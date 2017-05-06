@@ -7,21 +7,20 @@ using Prism.Regions;
 namespace ModuleC.ViewModels {
     public class ViewAViewModel : 
         ViewModelBase,
-        IViewAViewModel {
-
-        private readonly IRegionManager regionManager;
+        IViewAViewModel,
+        IRegionManagerAware {
 
         public DelegateCommand NavigateCommand { get; private set; }
 
-        public ViewAViewModel(IRegionManager regionManager) {
+        public IRegionManager RegionManager { get; set; }
 
-            this.regionManager = regionManager;
+        public ViewAViewModel() {
 
             this.NavigateCommand = new DelegateCommand(Navigate);
         }
 
         private void Navigate() {
-            this.regionManager.RequestNavigate(RegionNames.RegionContent, "ViewB");
+            this.RegionManager.RequestNavigate(RegionNames.RegionContent, "ViewB");
         }
     }
 }

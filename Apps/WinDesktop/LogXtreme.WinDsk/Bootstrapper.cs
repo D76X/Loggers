@@ -63,6 +63,14 @@ namespace LogXtreme.WinDsk {
 
         }
 
+        protected override IRegionBehaviorFactory ConfigureDefaultRegionBehaviors() {
+
+            IRegionBehaviorFactory behaviors = base.ConfigureDefaultRegionBehaviors();
+            behaviors.AddIfMissing(RegionManagerAwareBehavior.BehaviorKey, typeof(RegionManagerAwareBehavior));
+            return behaviors;
+
+        }
+
         /// <summary>
         /// Use the container to resolve the shell.
         /// </summary>
@@ -76,10 +84,15 @@ namespace LogXtreme.WinDsk {
             base.InitializeShell();
 
             // the first shell created during the application lifetime is instantiated 
-            // via the Bottstrapper and not via the ShellService, thus it is necessary
-            // set the RegionManager property of this shell in the Bootstrapper 
-            var firstShellRegionManager = RegionManager.GetRegionManager(Shell);
-            RegionManagerAware.SetRegionManagerAware(Shell, firstShellRegionManager);
+            // via the Bootstrapper.CreateShell() and not via our ShellService. In order
+            // to get a IRegionManager reference to the RegionManager of the first shell
+            // we use RegionManager.GetRegionManager                        
+            var firstShellRegionManagerName = RegionManager.GetRegionManager(Shell);
+
+            // Our shell's ViewModel implements IRegionManagerAware and can retain a reference 
+            // to its region manager. We use RegionManagerAware.SetRegionManagerAware to do 
+            // exaclty that.
+            RegionManagerAware.SetRegionManagerAware(Shell, firstShellRegionManagerName);
 
             Application.Current.MainWindow = (Window)Shell;                            
             Application.Current.MainWindow.Show();            

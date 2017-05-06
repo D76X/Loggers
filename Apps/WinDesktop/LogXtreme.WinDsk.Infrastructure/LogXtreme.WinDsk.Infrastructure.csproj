@@ -85,6 +85,7 @@
     </Compile>
     <Compile Include="RegionAdapterStackPanel.cs" />
     <Compile Include="RegionManagerAware.cs" />
+    <Compile Include="RegionManagerAwareBehavior.cs" />
     <Compile Include="RegionNames.cs" />
     <Compile Include="ViewModelBase.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

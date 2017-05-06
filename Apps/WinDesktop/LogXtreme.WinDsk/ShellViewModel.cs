@@ -5,7 +5,8 @@ using Prism.Regions;
 using System;
 
 namespace LogXtreme.WinDsk {
-    public class ShellViewModel : ViewModelBase, 
+    public class ShellViewModel : 
+        ViewModelBase, 
         IShellViewModel, 
         IRegionManagerAware {
 

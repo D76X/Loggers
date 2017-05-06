@@ -28,6 +28,11 @@ namespace LogXtreme.WinDsk.Modules.TestModules.ModuleC {
             // rgister the view models for the module
 
             // THE VIEW MODELS FOR THE VIEWS MUST BE REGISTERED WITH THE CONTAINER
+            // NOTICE THAT THESE VIEW MODELS IMPLEMENT IRegionManagerAware THUS 
+            // THEIR IRegionManagerAware.RegionManager WILL BE SET TO THE SCOPED
+            // REGION MANAGER OF THE SHELL THE VIEWS ARE REGITERED WITH AND NOT THE
+            // GLOBAL REGION MANAGER OF THE APP BY THE RegionManagerAwareBehavior.
+            // THIS ALLOWS NATIVIAGTION BETWEEN VIEWS WHICH BELONG TO THE SAME SHELL. 
             this.container.RegisterType<IViewAViewModel, ViewAViewModel>();
             this.container.RegisterType<IViewBViewModel, ViewBViewModel>();
 
