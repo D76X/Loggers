@@ -9,7 +9,7 @@ namespace LogXtreme.WinDsk.Infrastructure {
     /// 
     /// A RegionAdapter<T> sits between the Region and the Host Control of type T.
     /// When Prism injects a view into or remove a view from a Region a RegionAdapter 
-    /// provides the smae logic for the underlying control of the Region. 
+    /// provides the logic for the underlying control of type T for the Region. 
     /// 
     /// </summary>
     public class RegionAdapterStackPanel : RegionAdapterBase<StackPanel> {
@@ -22,12 +22,14 @@ namespace LogXtreme.WinDsk.Infrastructure {
         /// <summary>
         /// 
         /// Handles the logic that adds to or remove from the underlying host control a 
-        /// FrameworkElement instance that is the view that is injected into the region.        /// 
+        /// FrameworkElement instance that is the view that is injected into the region.       
         /// 
         /// </summary>
         /// <param name="region"></param>
         /// <param name="regionTarget"></param>
-        protected override void Adapt(IRegion region, StackPanel regionTarget) {
+        protected override void Adapt(
+            IRegion region, 
+            StackPanel regionTarget) {
 
             region.Views.CollectionChanged += (s, e) => {
 
@@ -35,8 +37,8 @@ namespace LogXtreme.WinDsk.Infrastructure {
 
                     foreach (FrameworkElement element in e.NewItems) {
 
-                        // the RegionAdaptr adds the element to the StackPanel when a View is added to the 
-                        // corresponding region Region 
+                        // the RegionAdapter adds the elements to the StackPanel Host Control when a View is 
+                        // added to the corresponding region Region 
                         regionTarget.Children.Add(element);
                     }
 
@@ -45,7 +47,7 @@ namespace LogXtreme.WinDsk.Infrastructure {
                     // TODO: should handle the remove
 
                     // when a view is removed from the region the region adapter for the host control
-                    // tha is a StackPanel must remove it from the Children collection
+                    // that is a StackPanel must remove it from the Children collection
                 }
             };
         }
@@ -53,11 +55,29 @@ namespace LogXtreme.WinDsk.Infrastructure {
         /// <summary>
         /// RegionAdapterBase<T>.CreateRegion returns an IRegion
         /// 
-        /// SingleActiveRegion	=> allows none or one ACTIVE view at any one time => used for ContentControl
+        /// There exist 2 possible types of IRegion implementations that can be returned to the caller,
+        /// which one dependens on the type of Region as explained belo.
         /// 
-        /// AllActiveRegion => all the views are ACTIVE and DEACTIVATION of views is NOT ALLOWED => used for ItemControl
+        /// ---------------------------------------------------------------------------------------------
+        /// -1 SingleActiveRegion:	
         /// 
-        /// Region => allows multiple active views => used for SelectorControl
+        /// Allows none or one ACTIVE view at any one time i.e. this implemenation of IRegion is returned  
+        /// when ContentControl is the type T.
+        /// 
+        /// ---------------------------------------------------------------------------------------------        
+        /// -2 AllActiveRegion 
+        /// 
+        /// All the views are ACTIVE and DEACTIVATION of views is NOT ALLOWED.
+        /// This implemenation of IRegion is returned  when ItemControl is the Type T.
+        /// 
+        /// ---------------------------------------------------------------------------------------------        
+        /// -3 Region 
+        /// 
+        /// Allows multiple active views.
+        /// This s returned when SelectorControl is the Type T.
+        /// 
+        /// ---------------------------------------------------------------------------------------------
+        /// 
         /// </summary>
         /// <returns>IRegion</returns>
         protected override IRegion CreateRegion() {
