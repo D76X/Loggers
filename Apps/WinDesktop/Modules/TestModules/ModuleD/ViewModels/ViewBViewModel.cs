@@ -26,5 +26,9 @@ namespace ModuleD.ViewModels {
         private void Navigate() {
             this.RegionManager.RequestNavigate(RegionNames.RegionContent, "ViewA");
         }
+
+        public override bool IsNavigationTarget(NavigationContext navigationContext) {
+            return false;
+        }
     }
 }
