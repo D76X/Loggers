@@ -5,7 +5,6 @@ using Prism.Regions;
 using ModuleD.Interfaces;
 using Microsoft.Practices.Unity;
 using LogXtreme.WinDsk.Modules.TestModules.ModuleD.Names;
-using ModuleD.Views;
 
 namespace ModuleD.ViewModels
 {

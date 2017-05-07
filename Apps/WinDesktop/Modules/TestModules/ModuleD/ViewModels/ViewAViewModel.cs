@@ -18,6 +18,8 @@ namespace ModuleD.ViewModels
         /// </summary>
         public IRegionManager RegionManager { get; set; }
 
+        public string Title => nameof(ViewAViewModel);
+
         public ViewAViewModel() {
 
             this.NavigateCommand = new DelegateCommand(Navigate);

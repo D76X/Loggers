@@ -2,6 +2,6 @@
 
 namespace ModuleD.Interfaces
 {
-    public interface IViewBViewModel : IViewModel {
+    public interface IViewBViewModel : IViewModel, IViewModelTitle {
     }
 }

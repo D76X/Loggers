@@ -2,7 +2,7 @@
 
 namespace ModuleD.Interfaces
 {
-    public interface ITabviewViewModel : IViewModel
-    {
+    public interface ITabviewViewModel : IViewModel {
+        
     }
 }
