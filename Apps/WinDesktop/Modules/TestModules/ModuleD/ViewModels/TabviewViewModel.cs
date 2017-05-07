@@ -7,11 +7,13 @@ using Microsoft.Practices.Unity;
 using LogXtreme.WinDsk.Modules.TestModules.ModuleD.Names;
 using ModuleD.Views;
 
-namespace ModuleD.ViewModels {
-    public class TabviewViewModel: 
+namespace ModuleD.ViewModels
+{
+    public class TabviewViewModel :
         ViewModelBase,
         ITabviewViewModel,
-        IRegionManagerAware {
+        IRegionManagerAware
+    {
 
         private readonly IUnityContainer container;
 
@@ -30,10 +32,9 @@ namespace ModuleD.ViewModels {
 
         private void Navigate(string viewName) {
 
-            IRegion tabViewRegion = this.RegionManager.Regions[RegionNamesModuleD.RegionTabview];
-            var view = this.container.Resolve<ViewA>();
-            tabViewRegion.Add(view);
-            tabViewRegion.Activate(view);         
+            this.RegionManager.RequestNavigate(
+                RegionNamesModuleD.RegionTabview,
+                new Uri(viewName, UriKind.Relative));               
         }
     }
 }
