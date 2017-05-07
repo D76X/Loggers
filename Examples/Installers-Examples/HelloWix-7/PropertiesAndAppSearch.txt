@@ -165,7 +165,7 @@ If you prefix the comparison operator with a tilde (~), case will be ignored.
 
 ----------------------------------------------------------------------------------------
 
-PROPERTY AS AN STRING
+PROPERTY AS A STRING
 
 <Property Id="MyProperty" Value="5" />
 
@@ -348,6 +348,17 @@ The ALLUSER propety can also be set using
 <Package InstallScope="perMachine" />
 <Package InstallScope="perUser" />
 
+----------------------------------------------------------------------------------------
+
+WAYS FOR WiX TO SEARCH FOR INFORMATION ON THE TARGET SYSTEM AND SET THE VALUE OF 
+PROPERTIES BASED ON THE RESULT OF THE SEARCH
+
+-AppSearch
+	1-DirectorySearch
+	2-FileSearch
+	3-ComponentSearch
+	4-RegistrySearch
+	5-IniFileSearch 
 
 ----------------------------------------------------------------------------------------
 
@@ -375,7 +386,7 @@ The Value of <Property> will be set to the result of teh search.
 
 ----------------------------------------------------------------------------------------
 
-DirectorySearch
+1-DirectorySearch
 
 check if a directory exists on a computer and, if it exists, get its path
 
@@ -458,5 +469,94 @@ DirectorySearch - Path attribute
 
 if the installer can't find the path you set in the parent element, it will skip it and 
 use its default: every attached drive's root directory i.e. C:\
+
+----------------------------------------------------------------------------------------
+
+2-FileSearch
+
+You want to find a specific file instead of just a directory.
+Use a DirectorySearch element, but nest a FileSearch element inside it.
+The FileSearch element can't do recursive searches through subfolders.
+Its parent DirectorySearch MUST name the exact folder where the file is supposed to be.
+Its parent DirectorySearch specifies a path with the Path attribute.
+You can see the searches you've set up in the MSI database under the Signature table.
+There, the filename, version, size, date, and language are listed.
+An Id on that table is joined to the DrLocator table where the directory structure is defined.
+The search is referenced on the AppSearch table, where it is linked with a property.
+
+Example 1
+
+Notice that AssignToProperty="no" on the DirectorySearch as we want the FileSearch to 
+set the MY_FILE property value instead. 
+If C:\Documents and Settings\All Users\Desktop\myFile.txt is found, the MY_FILE property 
+is set to the path of the file.
+If not, the property will be set to null.
+Omitting the Path attribute on the DirectorySearch tells the installer to look at all 
+attached drives for the file you specify.
+The FileSearch element's Name attribute is the name of the file to search for.
+
+Example 1
+
+<Property Id="MY_FILE">
+	<DirectorySearch 
+		Path="C:\Documents and Settings\All Users\Desktop"
+		Depth="0"
+		Id="DesktopPath"
+		AssignToProperty="no">
+
+			<FileSearch Name="myFile.txt"
+						Id="myFileSearch" />
+
+	</DirectorySearch>
+</Property>
+
+Example 2
+
+<Property Id="MY_FILE">
+
+	<DirectorySearch Path="C:\"
+					 Depth="0"
+					 Id="DesktopPath"
+					 AssignToProperty="no">
+		
+		<DirectorySearch Path="All Users"
+						 Depth="3"
+						 AssignToProperty="no"
+						 Id="AllUsersFolder">
+
+			<DirectorySearch Path="Desktop"
+							 Depth="0"
+							 AssignToProperty="no"
+							 Id="DesktopFolder">
+
+				<FileSearch Name="myFile.txt" 
+							Id="myFileSearch" />
+			
+			</DirectorySearch>
+
+		</DirectorySearch>
+
+	</DirectorySearch>
+
+</Property>
+
+Example 3 - The attributes of FileSearch
+
+Notice that in this example Language="1033" set the search to find the file with a Language
+property of "English, United States".
+
+<FileSearch Name="myFile.txt"
+			MinSize="100"
+			MaxSize="200"
+			MinVersion="1.5.0.0"
+			MaxVersion="2.0.0.0"
+			MinDate="2009-12-20T12:30:00"
+			MaxDate="2009-12-25T12:30:00" 
+			Language="1033"/>
+
+
+----------------------------------------------------------------------------------------
+
+3-ComponentSearch
 
 ----------------------------------------------------------------------------------------
