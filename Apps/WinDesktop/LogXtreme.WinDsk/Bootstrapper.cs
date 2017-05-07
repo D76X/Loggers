@@ -10,6 +10,7 @@ using LogXtreme.WinDsk.Modules.TestModules.ModuleA;
 using LogXtreme.WinDsk.Modules.TestModules.ModuleB;
 using LogXtreme.WinDsk.Modules.TestModules.ModuleC;
 using LogXtreme.WinDsk.Interfaces;
+using LogXtreme.WinDsk.Modules.TestModules.ModuleD;
 
 namespace LogXtreme.WinDsk {
     public class Bootstrapper: UnityBootstrapper {        
@@ -18,7 +19,8 @@ namespace LogXtreme.WinDsk {
 
             // Type testModule = typeof(TestModuleA);
             // Type testModule = typeof(TestModuleB);
-            Type testModule = typeof(TestModuleC);
+            // Type testModule = typeof(TestModuleC);
+            Type testModule = typeof(TestModuleD);
 
             ModuleCatalog.AddModule(new ModuleInfo() {
                 ModuleName = testModule.Name,

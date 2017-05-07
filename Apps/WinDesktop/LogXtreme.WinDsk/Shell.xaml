@@ -20,6 +20,9 @@
                 <MenuItem Header="Navigate to ViewB"
                           Command="{Binding NavigateCommand}"
                           CommandParameter="ViewB" />
+                <MenuItem Header="Navigate to Tabview"
+                          Command="{Binding NavigateCommand}"
+                          CommandParameter="Tabview" />
                 <MenuItem Header="Save Session"
                           Command="{x:Static inf:CommandsGlobal.SaveSession}"
                           CommandParameter="SomeParameter" />
