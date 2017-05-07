@@ -1,0 +1,3 @@
+
+HOW TO CREATE A NEW REPOSITORY ON GITHUB FROM A LOCAL FOLDER USING GITHUB FOR WINDOWS 
+https://guides.github.com/introduction/getting-your-project-on-github/
