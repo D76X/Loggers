@@ -12,6 +12,10 @@ namespace ModuleC.ViewModels {
 
         public DelegateCommand NavigateCommand { get; private set; }
 
+        /// <summary>
+        /// A reference to the region manager of the shell in which the view 
+        /// of this view model in displayed.
+        /// </summary>
         public IRegionManager RegionManager { get; set; }
 
         public ViewAViewModel() {

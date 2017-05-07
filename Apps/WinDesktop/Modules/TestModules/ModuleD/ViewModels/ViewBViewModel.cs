@@ -13,6 +13,10 @@ namespace ModuleD.ViewModels {
 
         public IRegionManager RegionManager { get; set; }
 
+        /// <summary>
+        /// A reference to the region manager of the shell in which the view 
+        /// of this view model in displayed.
+        /// </summary>
         public ViewBViewModel() {       
             this.NavigateCommand = new DelegateCommand(Navigate);
         }
