@@ -2,10 +2,12 @@
 using LogXtreme.WinDsk.Infrastructure;
 using Prism.Commands;
 using Prism.Regions;
+using ModuleD.Interfaces;
 
 namespace ModuleD.ViewModels {
     public class TabviewViewModel: 
         ViewModelBase,
+        ITabviewViewModel,
         IRegionManagerAware {
 
         public DelegateCommand<string> NavigateCommand { get; private set; }

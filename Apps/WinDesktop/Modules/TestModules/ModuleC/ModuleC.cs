@@ -33,6 +33,9 @@ namespace LogXtreme.WinDsk.Modules.TestModules.ModuleC {
             // REGION MANAGER OF THE SHELL THE VIEWS ARE REGITERED WITH AND NOT THE
             // GLOBAL REGION MANAGER OF THE APP BY THE RegionManagerAwareBehavior.
             // THIS ALLOWS NATIVIAGTION BETWEEN VIEWS WHICH BELONG TO THE SAME SHELL. 
+            // with the view first approach the view takes a reference on the interface of the corresponding
+            // ViewModel in its constructor in the code behind and the DI resolves the ViewModel when the 
+            // view is requested
             this.container.RegisterType<IViewAViewModel, ViewAViewModel>();
             this.container.RegisterType<IViewBViewModel, ViewBViewModel>();
 

@@ -1,6 +1,6 @@
 ﻿using LogXtreme.WinDsk.Infrastructure;
 
-namespace ModuleC.Interfaces
+namespace ModuleD.Interfaces
 {
     public interface IViewBViewModel : IViewModel {
     }

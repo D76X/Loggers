@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModuleD.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,14 +13,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LogXtreme.WinDsk.Infrastructure;
 
 namespace ModuleD.Views {
     /// <summary>
     /// Interaction logic for TabView.xaml
     /// </summary>
-    public partial class TabView : UserControl {
-        public TabView() {
+    public partial class TabView : UserControl, ITabview {
+
+        public TabView(ITabviewViewModel viewModel) {
             InitializeComponent();
+            this.ViewModel = viewModel;
+        }
+
+        public IViewModel ViewModel {
+            get => (ITabviewViewModel)this.DataContext;
+            set => this.DataContext = value;
         }
     }
 }

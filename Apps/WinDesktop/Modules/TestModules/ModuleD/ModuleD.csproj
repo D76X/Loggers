@@ -80,6 +80,12 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\ITabview.cs" />
+    <Compile Include="Interfaces\ITabviewViewModel.cs" />
+    <Compile Include="Interfaces\IViewA.cs" />
+    <Compile Include="Interfaces\IViewAViewModel.cs" />
+    <Compile Include="Interfaces\IViewB.cs" />
+    <Compile Include="Interfaces\IViewBViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -96,6 +102,8 @@
     <Compile Include="ModuleD.cs" />
     <Compile Include="RegionNamesModuleD.cs" />
     <Compile Include="ViewModels\TabviewViewModel.cs" />
+    <Compile Include="ViewModels\ViewAViewModel.cs" />
+    <Compile Include="ViewModels\ViewBViewModel.cs" />
     <Compile Include="Views\TabView.xaml.cs">
       <DependentUpon>TabView.xaml</DependentUpon>
     </Compile>
@@ -136,9 +144,7 @@
       <Name>LogXtreme.WinDsk.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
