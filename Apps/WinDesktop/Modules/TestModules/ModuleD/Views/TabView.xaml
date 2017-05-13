@@ -3,14 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:prism="http://prismlibrary.com/"
-             xmlns:local="clr-namespace:LogXtreme.WinDsk.Modules.TestModules.ModuleD.Names"
              xmlns:inf="clr-namespace:LogXtreme.WinDsk.Infrastructure;assembly=LogXtreme.WinDsk.Infrastructure"
+             xmlns:actions="clr-namespace:LogXtreme.WinDsk.Infrastructure.Actions;assembly=LogXtreme.WinDsk.Infrastructure"
+             xmlns:localNames="clr-namespace:LogXtreme.WinDsk.Modules.TestModules.ModuleD.Names"
              mc:Ignorable="d">
 
     <UserControl.Resources>
         <Style TargetType="TabItem">
-            <Setter Property="Header" Value="{Binding DataContext.Title}"/>
+            <Setter Property="Header"
+                    Value="{Binding DataContext.Title}" />
             <Setter Property="HeaderTemplate">
                 <Setter.Value>
                     <DataTemplate>
@@ -23,33 +26,39 @@
                                             Grid.Column="0"
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Center"
-                                            Margin="0,0,7,7">                                    
+                                            Margin="0,0,7,7">
                             </ContentControl>
                             <Button Content="X"
-                                    Grid.Column="1" />
+                                    Grid.Column="1">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <actions:CloseTabAction />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
                         </Grid>
                     </DataTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
-    </UserControl.Resources>  
-    
+    </UserControl.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        
+
         <StackPanel Orientation="Horizontal">
-            <Button Command="{Binding NavigateCommand}" 
-                    CommandParameter="ViewA" 
-                    Content="Navigate to ViewA"/>
+            <Button Command="{Binding NavigateCommand}"
+                    CommandParameter="ViewA"
+                    Content="Navigate to ViewA" />
             <Button Command="{Binding NavigateCommand}"
                     CommandParameter="ViewB"
                     Content="Navigate to ViewB" />
         </StackPanel>
-        
-        <TabControl prism:RegionManager.RegionName="{x:Static local:RegionNamesModuleD.RegionTabview}" 
-                    Grid.Row="1"/>
+
+        <TabControl prism:RegionManager.RegionName="{x:Static localNames:RegionNamesModuleD.RegionTabview}"
+                    Grid.Row="1" />
     </Grid>
 </UserControl>
