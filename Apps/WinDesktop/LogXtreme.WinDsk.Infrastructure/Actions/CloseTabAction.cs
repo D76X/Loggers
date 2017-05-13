@@ -31,9 +31,9 @@ namespace LogXtreme.WinDsk.Infrastructure.Actions {
     public class CloseTabAction : TriggerAction<Button> {
 
         /// <summary>
-        /// Finds the TabControl and the TabItem of the DO that has invoked this action by useing 
-        /// the RoutedEventArgs parameter and implement the logic to remove the TabItem from the 
-        /// TabControl.
+        /// Finds the TabControl and the TabItem of the DO that has invoked this action by using 
+        /// the RoutedEventArgs parameter and implements the logic to remove the view from the 
+        /// region defined within the TabItem of the TabControl.
         /// </summary>
         /// <param name="parameter">An instance of RoutedEventArgs holding the invoking DO</param>
         protected override void Invoke(object parameter) {
