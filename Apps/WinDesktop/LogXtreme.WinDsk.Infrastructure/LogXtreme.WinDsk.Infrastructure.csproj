@@ -64,6 +64,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\CloseTabAction.cs" />
     <Compile Include="CommandsGlobal.cs" />
     <Compile Include="Prism\IRegionManagerAware.cs" />
     <Compile Include="IShellService.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Prism\RegionManagerAware.cs" />
     <Compile Include="Prism\RegionManagerAwareBehavior.cs" />
     <Compile Include="RegionNames.cs" />
+    <Compile Include="Utils\SearchVisualTree.cs" />
     <Compile Include="ViewModelBase.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
