@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows;
 
-namespace LogXtreme.WinDsk.Infrastructure {
+namespace LogXtreme.WinDsk.Infrastructure.Prism {
 
     /// <summary>
     /// 

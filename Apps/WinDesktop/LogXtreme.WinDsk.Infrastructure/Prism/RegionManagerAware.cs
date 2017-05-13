@@ -1,7 +1,7 @@
 ﻿using Prism.Regions;
 using System.Windows;
 
-namespace LogXtreme.WinDsk.Infrastructure {
+namespace LogXtreme.WinDsk.Infrastructure.Prism {
 
     /// <summary> 
     /// This class provides a set method to set the value of the IRegionManagerAware.RegionManager 

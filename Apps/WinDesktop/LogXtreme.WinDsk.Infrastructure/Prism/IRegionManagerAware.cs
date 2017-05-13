@@ -1,6 +1,6 @@
 ﻿using Prism.Regions;
 
-namespace LogXtreme.WinDsk.Infrastructure {
+namespace LogXtreme.WinDsk.Infrastructure.Prism {
 
     /// <summary>
     /// This interface may be supported by any descendant that needs to 
