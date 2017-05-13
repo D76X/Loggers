@@ -27,8 +27,8 @@ namespace ModuleD.Views {
         }
 
         public IViewModel ViewModel {
-            get { return (ITabviewViewModel)this.DataContext; }
-            set { this.DataContext = value; }
+            get => (ITabviewViewModel) this.DataContext;
+            set => this.DataContext = value; 
         }
     }
 }
