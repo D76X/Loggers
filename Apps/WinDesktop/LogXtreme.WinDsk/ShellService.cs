@@ -2,6 +2,7 @@
 using LogXtreme.WinDsk.Infrastructure;
 using Microsoft.Practices.Unity;
 using Prism.Regions;
+using LogXtreme.WinDsk.Infrastructure.Prism;
 
 namespace LogXtreme.WinDsk {
 
