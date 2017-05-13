@@ -3,6 +3,7 @@ using LogXtreme.WinDsk.Infrastructure;
 using ModuleC.Interfaces;
 using Prism.Commands;
 using Prism.Regions;
+using LogXtreme.WinDsk.Infrastructure.Prism;
 
 namespace ModuleC.ViewModels {
     public class ViewAViewModel : 

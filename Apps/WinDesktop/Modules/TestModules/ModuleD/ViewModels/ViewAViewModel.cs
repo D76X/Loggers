@@ -1,4 +1,5 @@
 ﻿using LogXtreme.WinDsk.Infrastructure;
+using LogXtreme.WinDsk.Infrastructure.Prism;
 using ModuleD.Interfaces;
 using Prism.Commands;
 using Prism.Regions;
