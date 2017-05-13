@@ -62,9 +62,48 @@ namespace LogXtreme.WinDsk.Infrastructure.Actions {
                 return;
             }
 
-            if (region.Views.Contains(tabItem.Content)) {
-                region.Remove(tabItem.Content);
+            this.RemoveItemFromrRegion(tabItem.Content, region);
+        }
+
+        private void RemoveItemFromrRegion(object item, IRegion region) {
+
+            var navigationContext = new NavigationContext(region.NavigationService, null); 
+
+            if (this.CanRemove(item, navigationContext)) {
+
+                region.Remove(item);
             }
-        }        
+        }
+        
+        private bool CanRemove(object item, NavigationContext navigationContext) {
+
+            bool canRemove = true;
+
+            var confirmRequestItem = item as IConfirmNavigationRequest;
+
+            if (confirmRequestItem != null) {
+
+                confirmRequestItem.ConfirmNavigationRequest(navigationContext, result => {
+                    canRemove = result;
+                });
+            }
+
+            var frameworkElement = item as FrameworkElement;
+
+            if (frameworkElement != null && canRemove) {
+
+                IConfirmNavigationRequest confirmRequestDataContext = 
+                    frameworkElement.DataContext as IConfirmNavigationRequest;
+
+                if (confirmRequestDataContext != null) {
+
+                    confirmRequestDataContext.ConfirmNavigationRequest(navigationContext, result => {
+                        canRemove = result;
+                    });
+                }
+            }
+
+            return canRemove;
+        }
     }
 }
