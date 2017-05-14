@@ -72,9 +72,7 @@ namespace LogXtreme.WinDsk {
         }
 
         private void NavigateComplete(NavigationResult navigationResult) {
-
             this.StatusMessage = navigationResult.Context.Uri.ToString();
-
         }
     }
 }
