@@ -78,12 +78,14 @@
   <ItemGroup>
     <Compile Include="Actions\CloseTabAction.cs" />
     <Compile Include="CommandsGlobal.cs" />
+    <Compile Include="Prism\ICreateRegionManagerScope.cs" />
     <Compile Include="Prism\IRegionManagerAware.cs" />
     <Compile Include="IShellService.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="IViewModel.cs" />
     <Compile Include="IViewModelBase.cs" />
     <Compile Include="IViewModelTitle.cs" />
+    <Compile Include="Prism\ScopedRegionNavigationContentLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
