@@ -10,5 +10,6 @@
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    FontSize="40" />
+        <CheckBox IsChecked="{Binding IsClosable}"/>
     </StackPanel>    
 </UserControl>

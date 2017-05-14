@@ -1,14 +1,17 @@
-﻿using LogXtreme.WinDsk.Infrastructure;
+﻿using System;
+using LogXtreme.WinDsk.Infrastructure;
 using LogXtreme.WinDsk.Infrastructure.Prism;
 using ModuleD.Interfaces;
 using Prism.Commands;
 using Prism.Regions;
 
 namespace ModuleD.ViewModels {
+
     public class ViewBViewModel : 
         ViewModelBase,
         IViewBViewModel,
-        IRegionManagerAware {       
+        IRegionManagerAware,
+        IConfirmNavigationRequest {       
 
         public DelegateCommand NavigateCommand { get; private set; }
 
@@ -30,6 +33,13 @@ namespace ModuleD.ViewModels {
 
         public override bool IsNavigationTarget(NavigationContext navigationContext) {
             return false;
+        }
+
+        public void ConfirmNavigationRequest(
+            NavigationContext navigationContext, 
+            Action<bool> continuationCallback) {
+
+            continuationCallback(true);
         }
     }
 }
