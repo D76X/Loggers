@@ -11,7 +11,8 @@ namespace ModuleD.ViewModels
     public class ViewAViewModel : 
         ViewModelBase,
         IViewAViewModel,
-        IRegionManagerAware {
+        IRegionManagerAware,
+        ICreateRegionManagerScope {
 
         public IRegionManager RegionManager { get; set; }
         public DelegateCommand NavigateCommand { get; private set; }
@@ -27,7 +28,9 @@ namespace ModuleD.ViewModels
         public bool IsClosable {
             get { return this.isClosable; }
             set { SetProperty(ref this.isClosable, value); }
-        }       
+        }
+
+        public bool CreateRegionManagerScope => true;
 
         public override bool IsNavigationTarget(NavigationContext navigationContext) {
             return false;
