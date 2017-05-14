@@ -13,8 +13,7 @@ namespace LogXtreme.WinDsk {
 
         private IShellService shellService;
 
-        private int shellId;
-        private string statusMessage;
+        private int shellId;        
 
         public DelegateCommand<string> OpenShellCommand { get; private set; }
         public DelegateCommand<string> NavigateCommand { get; private set; }
@@ -44,11 +43,6 @@ namespace LogXtreme.WinDsk {
         /// </summary>
         public IRegionManager RegionManager { get; set; }
 
-        public string StatusMessage {
-            get { return this.statusMessage; }
-            set { SetProperty(ref this.statusMessage, value); }
-        }
-
         private void SaveSession(string obj) {
 
             //..do the saving...ISessionService.SaveSession()....
@@ -67,14 +61,7 @@ namespace LogXtreme.WinDsk {
 
             this.RegionManager.RequestNavigate(
                 RegionNames.RegionContent, 
-                new Uri(viewName, UriKind.Relative),
-                NavigateComplete);
-        }
-
-        private void NavigateComplete(NavigationResult navigationResult) {
-
-            this.StatusMessage = navigationResult.Context.Uri.ToString();
-
+                new Uri(viewName, UriKind.Relative));
         }
     }
 }

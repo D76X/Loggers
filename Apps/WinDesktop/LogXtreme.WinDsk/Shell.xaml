@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:prism="http://prismlibrary.com/"          
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:local="clr-namespace:LogXtreme.WinDsk"
         xmlns:inf="clr-namespace:LogXtreme.WinDsk.Infrastructure;assembly=LogXtreme.WinDsk.Infrastructure"
         mc:Ignorable="d"
         Title="{Binding Path=ShellId, StringFormat='Shell {0}'}">
@@ -12,41 +13,26 @@
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="Open Shell" 
                           Command="{Binding OpenShellCommand}"
-                          CommandParameter="ModuleD.Views.ViewB"/>
+                          CommandParameter="ViewB"/>
                 <MenuItem Header="Navigate to ViewA"
-                          Command="{Binding NavigateCommand}"
-                          CommandParameter="ModuleD.Views.ViewA" />
+                          Command="{Binding NavigateCommand}" 
+                          CommandParameter="ViewA" />
                 <MenuItem Header="Navigate to ViewB"
                           Command="{Binding NavigateCommand}"
-                          CommandParameter="ModuleD.Views.ViewB" />
+                          CommandParameter="ViewB" />
                 <MenuItem Header="Navigate to Tabview"
                           Command="{Binding NavigateCommand}"
-                          CommandParameter="ModuleD.Views.TabView" />
+                          CommandParameter="Tabview" />
                 <MenuItem Header="Save Session"
                           Command="{x:Static inf:CommandsGlobal.SaveSession}"
                           CommandParameter="SomeParameter" />
             </Menu>
-            <StatusBar DockPanel.Dock="Bottom">
-                <StatusBarItem>
-                    <ProgressBar Width="100"
-                                 Height="15"
-                                 Value="67" />                    
-                </StatusBarItem>                
-                <StatusBarItem>
-                    <Label Content="Loading..." />
-                </StatusBarItem>
-                <Separator />
-                <StatusBarItem>
-                    <TextBlock Text="{Binding StatusMessage}" />
-                </StatusBarItem>
-            </StatusBar>
             <!--<StackPanel prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionToolbar}" 
                         Orientation="Horizontal"
                         DockPanel.Dock="Top"/>-->
             <!--<ItemsControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionToolbar}"
                         DockPanel.Dock="Top" />-->
-            <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionContent}"                            />
-            
+            <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionContent}"/>
         </DockPanel>        
     </Grid>
 </Window>
