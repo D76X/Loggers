@@ -71,6 +71,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Actions {
 
             if (this.CanRemove(item, navigationContext)) {
 
+                this.InvokeOnNavigatedFrom(item, navigationContext);
                 region.Remove(item);
             }
         }
@@ -104,6 +105,26 @@ namespace LogXtreme.WinDsk.Infrastructure.Actions {
             }
 
             return canRemove;
+        }
+
+        private void InvokeOnNavigatedFrom(object item, NavigationContext navigationContext) {
+
+            var navigationAware = item as INavigationAware;
+
+            if (navigationAware != null) {
+                navigationAware.OnNavigatedFrom(navigationContext);
+            }
+
+            var frameworkElement = item as FrameworkElement;
+
+            if (frameworkElement != null) {
+
+                var navigationAwareDataContext = frameworkElement.DataContext as INavigationAware;
+
+                if (navigationAwareDataContext != null) {
+                    navigationAwareDataContext.OnNavigatedFrom(navigationContext);
+                }
+            }
         }
     }
 }
