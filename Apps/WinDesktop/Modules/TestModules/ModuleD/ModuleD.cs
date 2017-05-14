@@ -1,4 +1,5 @@
-﻿using Microsoft.Practices.Unity;
+﻿using LogXtreme.WinDsk.Infrastructure.Unity;
+using Microsoft.Practices.Unity;
 using ModuleD.Interfaces;
 using ModuleD.ViewModels;
 using ModuleD.Views;
@@ -30,9 +31,9 @@ namespace LogXtreme.WinDsk.Modules.TestModules.ModuleD {
             this.container.RegisterType<IViewBViewModel, ViewBViewModel>();
 
             // resiter the view with the container so that it is possible to navigate to them
-            this.container.RegisterType(typeof(object), typeof(TabView), "Tabview");
-            this.container.RegisterType(typeof(object), typeof(ViewA), "ViewA");
-            this.container.RegisterType(typeof(object), typeof(ViewB), "ViewB");
+            this.container.RegisterTypeForNavigation<TabView>();
+            this.container.RegisterTypeForNavigation<ViewA>();
+            this.container.RegisterTypeForNavigation<ViewB>();
         }
     }
 }

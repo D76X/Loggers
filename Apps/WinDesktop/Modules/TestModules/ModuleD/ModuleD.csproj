@@ -104,6 +104,7 @@
     <Compile Include="ViewModels\TabviewViewModel.cs" />
     <Compile Include="ViewModels\ViewAViewModel.cs" />
     <Compile Include="ViewModels\ViewBViewModel.cs" />
+    <Compile Include="ViewNamesModuleD.cs" />
     <Compile Include="Views\TabView.xaml.cs">
       <DependentUpon>TabView.xaml</DependentUpon>
     </Compile>
