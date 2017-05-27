@@ -7,8 +7,8 @@
     <ProjectGuid>{E0926928-EA49-4304-A9C4-DFB0426FA167}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LogXtreme.WinDsk.TestApp</RootNamespace>
-    <AssemblyName>LogXtreme.WinDsk.TestApp</AssemblyName>
+    <RootNamespace>LogXtreme.WinDsk.TestApp1</RootNamespace>
+    <AssemblyName>LogXtreme.WinDsk.TestApp1</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

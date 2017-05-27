@@ -269,7 +269,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleA", "Examples\Prism-E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleD", "Apps\WinDesktop\Modules\TestModules\ModuleD\ModuleD.csproj", "{E33B900A-787B-44E1-B99B-7F7264320BE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.WinDsk.TestApp", "Apps\WinDesktop\LogXtreme.WinDsk.TestApp\LogXtreme.WinDsk.TestApp.csproj", "{E0926928-EA49-4304-A9C4-DFB0426FA167}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.WinDsk.TestApp1", "Apps\WinDesktop\LogXtreme.WinDsk.TestApp1\LogXtreme.WinDsk.TestApp1.csproj", "{E0926928-EA49-4304-A9C4-DFB0426FA167}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
