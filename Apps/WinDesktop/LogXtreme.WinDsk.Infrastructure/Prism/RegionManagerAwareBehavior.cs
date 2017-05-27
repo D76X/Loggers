@@ -6,6 +6,7 @@ using LogXtreme.WinDsk.Infrastructure.Prism;
 
 namespace LogXtreme.WinDsk.Infrastructure.Prims {
 
+
     /// <summary>
     /// 
     /// This class is a custom region behaviour and must be registered with the Bootstrapper 
@@ -35,7 +36,18 @@ namespace LogXtreme.WinDsk.Infrastructure.Prims {
         }
 
         /// <summary>
+        /// Any time a new view is added to the collection of views of a region it is tested whether
+        /// the view has a value for the attached property RegionManager.RegionManagerProperty and if 
+        /// this is the case a refence to this region manager is tempoarily stored and passed to the 
+        /// the next call to InvokeOnRegionManagerAwareElement. In this call it checked whether the 
+        /// view model for the view implements IRegionManagerAware and when this is the case the 
+        /// IRegionManagerAware.RegionManager of the view model is also set to the same regionmanager 
+        /// as its view.
         /// 
+        /// This is useful as a view in Prism my be added to a region using an override of the method
+        /// IRegionManager.Add(IRegion,VIEWNAME,BOOL) where the last parameter when TRUE causes a 
+        /// scoped region be created that is 
+        /// ...
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
