@@ -13,7 +13,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
     public static class RegionManagerAware {
 
         /// <summary>
-        /// 
+        /// Sets the IRegionManagerAware.RegionManager to an istance of IRegionManager
         /// </summary>
         /// <param name="item">Can be either a ViewModel implementing IRegionManagerAware or a View whose DataContext implements IRegionManagerAware</param>
         /// <param name="regionManager">Reference to a scope region manager</param>
