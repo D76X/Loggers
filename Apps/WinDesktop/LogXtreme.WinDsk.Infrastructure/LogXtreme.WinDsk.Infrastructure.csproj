@@ -103,6 +103,7 @@
     <Compile Include="Prism\RegionManagerAware.cs" />
     <Compile Include="Prism\RegionManagerAwareBehavior.cs" />
     <Compile Include="RegionNames.cs" />
+    <Compile Include="Services\IMenuService.cs" />
     <Compile Include="Unity\UnityExtensios.cs" />
     <Compile Include="Utils\SearchVisualTree.cs" />
     <Compile Include="ViewModelBase.cs" />
