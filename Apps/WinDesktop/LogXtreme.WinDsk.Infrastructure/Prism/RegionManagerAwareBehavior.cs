@@ -2,9 +2,8 @@
 using Prism.Regions;
 using System.Windows;
 using System;
-using LogXtreme.WinDsk.Infrastructure.Prism;
 
-namespace LogXtreme.WinDsk.Infrastructure.Prims {
+namespace LogXtreme.WinDsk.Infrastructure.Prism {
 
 
     /// <summary>
