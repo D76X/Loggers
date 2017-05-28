@@ -273,6 +273,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.WinDsk.TestApp1",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuServiceModule", "Apps\WinDesktop\Modules\AppServices\MenuServiceModule\MenuServiceModule.csproj", "{B83968E6-57AB-4457-94B3-635D693E4686}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.WinDsk", "Apps\WinDesktop\LogXtreme.WinDsk\LogXtreme.WinDsk.csproj", "{3A2D46F2-91F8-4AEC-BC99-3495E8E3709A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -771,6 +773,14 @@ Global
 		{B83968E6-57AB-4457-94B3-635D693E4686}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B83968E6-57AB-4457-94B3-635D693E4686}.Release|x86.ActiveCfg = Release|Any CPU
 		{B83968E6-57AB-4457-94B3-635D693E4686}.Release|x86.Build.0 = Release|Any CPU
+		{3A2D46F2-91F8-4AEC-BC99-3495E8E3709A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A2D46F2-91F8-4AEC-BC99-3495E8E3709A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A2D46F2-91F8-4AEC-BC99-3495E8E3709A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3A2D46F2-91F8-4AEC-BC99-3495E8E3709A}.Debug|x86.Build.0 = Debug|Any CPU
+		{3A2D46F2-91F8-4AEC-BC99-3495E8E3709A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A2D46F2-91F8-4AEC-BC99-3495E8E3709A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A2D46F2-91F8-4AEC-BC99-3495E8E3709A}.Release|x86.ActiveCfg = Release|Any CPU
+		{3A2D46F2-91F8-4AEC-BC99-3495E8E3709A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -874,5 +884,6 @@ Global
 		{E33B900A-787B-44E1-B99B-7F7264320BE6} = {B77FB842-C827-4853-82B0-142F5C246A69}
 		{E0926928-EA49-4304-A9C4-DFB0426FA167} = {45449303-EA76-4B02-B1EE-CCBB11D41186}
 		{B83968E6-57AB-4457-94B3-635D693E4686} = {B41C4F41-E9F6-4C26-B701-E6A51C4E716F}
+		{3A2D46F2-91F8-4AEC-BC99-3495E8E3709A} = {45449303-EA76-4B02-B1EE-CCBB11D41186}
 	EndGlobalSection
 EndGlobal
