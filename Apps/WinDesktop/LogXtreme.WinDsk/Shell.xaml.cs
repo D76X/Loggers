@@ -9,8 +9,9 @@ namespace LogXtreme.WinDsk {
     /// </summary>
     public partial class Shell : Window, IShellView {
 
-        public Shell() {
+        public Shell(IShellViewModel viewModel) {
             InitializeComponent();
+            this.ViewModel = viewModel;
         }
 
         public IViewModel ViewModel {

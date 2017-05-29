@@ -4,10 +4,19 @@ using Prism.Regions;
 using Prism.Unity;
 using System.Windows;
 using System.Windows.Controls;
+using Prism.Logging;
+using LogXtreme.WinDsk.Infrastructure;
+using LogXtreme.WinDsk.Services;
+using LogXtreme.WinDsk.Interfaces;
+using LogXtreme.WinDsk.ViewModels;
 
 namespace LogXtreme.WinDsk {
 
-    public class Bootstrapper: UnityBootstrapper {        
+    public class Bootstrapper: UnityBootstrapper {
+
+        protected override ILoggerFacade CreateLogger() {
+            return base.CreateLogger();
+        }
 
         protected override void ConfigureModuleCatalog() {            
 
@@ -16,7 +25,7 @@ namespace LogXtreme.WinDsk {
 
         /// <summary>
         /// 
-        /// Set up the container by registering the default Prism srvices with the container.
+        /// Set up the container by registering the default Prism services with the container.
         /// Register your application services with the container (before loading the app modules).
         /// 
         /// Refs
@@ -25,7 +34,17 @@ namespace LogXtreme.WinDsk {
         protected override void ConfigureContainer() {
 
             // the call to the base class method registers the core Prism services
-            base.ConfigureContainer();       
+            base.ConfigureContainer();
+
+            // replace Prism services with custom services
+            //...
+
+            // register the application services
+            RegisterTypeIfMissing(typeof(IShellService), typeof(ShellService), true);
+
+            // register view and view models with their interfaces
+            Container.RegisterType<IShellView, Shell>();
+            Container.RegisterType<IShellViewModel, ShellViewModel>();
         }
 
         protected override RegionAdapterMappings ConfigureRegionAdapterMappings() {
@@ -45,31 +64,35 @@ namespace LogXtreme.WinDsk {
 
         }
 
+        protected override void RegisterFrameworkExceptionTypes() {
+            base.RegisterFrameworkExceptionTypes();
+        }
+
         /// <summary>
         /// Use the container to resolve the shell.
         /// </summary>
         /// <returns></returns>
         protected override DependencyObject CreateShell() {
-            return Container.Resolve<Shell>();            
+
+            // use the shell service to create an instance of the shell so that it
+            // can properly retain a reference to its scoped region manager. In the
+            // case of the first shell created by the application the region manager
+            // to register with the shell must be the global region manager.
+            var shellService = Container.Resolve<IShellService>();
+            var globalRegionManager = Container.Resolve<IRegionManager>();
+            return shellService.CreateShell(globalRegionManager);
         }
 
         protected override void InitializeShell() {
 
             base.InitializeShell();
+            Application.Current.MainWindow = (Window)Shell;
+            var shellService = Container.Resolve<IShellService>();
+            shellService.ShowShell(Shell);
+        }
 
-            // the first shell created during the application lifetime is instantiated 
-            // via the Bootstrapper.CreateShell() and not via our ShellService. In order
-            // to get a IRegionManager reference to the RegionManager of the first shell
-            // we use RegionManager.GetRegionManager                        
-            var firstShellRegionManagerName = RegionManager.GetRegionManager(Shell);
-
-            // Our shell's ViewModel implements IRegionManagerAware and can retain a reference 
-            // to its region manager. We use RegionManagerAware.SetRegionManagerAware to do 
-            // exaclty that.
-            RegionManagerAware.SetRegionManagerAware(Shell, firstShellRegionManagerName);
-
-            Application.Current.MainWindow = (Window)Shell;                            
-            Application.Current.MainWindow.Show();            
-        }        
+        protected override void InitializeModules() {
+            base.InitializeModules();
+        }
     }
 }
