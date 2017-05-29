@@ -1,15 +1,15 @@
-﻿using LogXtreme.WinDsk.Infrastructure.Prism;
+﻿using LogXtreme.WinDsk.Infrastructure;
+using LogXtreme.WinDsk.Infrastructure.Prism;
+using LogXtreme.WinDsk.Interfaces;
+using LogXtreme.WinDsk.Services;
+using LogXtreme.WinDsk.ViewModels;
 using Microsoft.Practices.Unity;
+using Prism.Logging;
+using Prism.Modularity;
 using Prism.Regions;
 using Prism.Unity;
 using System.Windows;
 using System.Windows.Controls;
-using Prism.Logging;
-using LogXtreme.WinDsk.Infrastructure;
-using LogXtreme.WinDsk.Services;
-using LogXtreme.WinDsk.Interfaces;
-using LogXtreme.WinDsk.ViewModels;
-using Prism.Modularity;
 
 namespace LogXtreme.WinDsk {
 
@@ -20,7 +20,7 @@ namespace LogXtreme.WinDsk {
         }
 
         protected override IModuleCatalog CreateModuleCatalog() {
-            return base.CreateModuleCatalog();
+            return new DirectoryModuleCatalog() { ModulePath = Settings.ModulePath };
         }
 
         protected override void ConfigureModuleCatalog() {            
