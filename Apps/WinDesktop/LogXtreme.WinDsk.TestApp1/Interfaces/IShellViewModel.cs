@@ -2,5 +2,6 @@
 
 namespace LogXtreme.WinDsk.Interfaces {
     public interface IShellViewModel : IViewModel {
+        int Id { get; }
     }
 }

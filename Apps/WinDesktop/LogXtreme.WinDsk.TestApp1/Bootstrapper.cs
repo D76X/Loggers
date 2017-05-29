@@ -82,26 +82,22 @@ namespace LogXtreme.WinDsk {
         /// </summary>
         /// <returns></returns>
         protected override DependencyObject CreateShell() {
-            return Container.Resolve<Shell>();            
+
+            // use the shell service to create an instance of the shell so that it
+            // can properly retain a reference to its scoped region manager. In the
+            // case of the first shell created by the application the region manager
+            // to register with the shell must be the global region manager.
+            var shellService = Container.Resolve<IShellService>();
+            var globalRegionManager = Container.Resolve<IRegionManager>();
+            return shellService.CreateShell(globalRegionManager);
         }
 
         protected override void InitializeShell() {
 
-            base.InitializeShell();
-
-            // the first shell created during the application lifetime is instantiated 
-            // via the Bootstrapper.CreateShell() and not via our ShellService. In order
-            // to get a IRegionManager reference to the RegionManager of the first shell
-            // we use RegionManager.GetRegionManager                        
-            var firstShellRegionManagerName = RegionManager.GetRegionManager(Shell);
-
-            // Our shell's ViewModel implements IRegionManagerAware and can retain a reference 
-            // to its region manager. We use RegionManagerAware.SetRegionManagerAware to do 
-            // exaclty that.
-            RegionManagerAware.SetRegionManagerAware(Shell, firstShellRegionManagerName);
-
-            Application.Current.MainWindow = (Window)Shell;                            
-            Application.Current.MainWindow.Show();            
+            base.InitializeShell();         
+            Application.Current.MainWindow = (Window)Shell;
+            var shellService = Container.Resolve<IShellService>();
+            shellService.ShowShell(Shell);
         }        
     }
 }

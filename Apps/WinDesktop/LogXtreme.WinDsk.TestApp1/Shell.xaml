@@ -6,7 +6,7 @@
         xmlns:prism="http://prismlibrary.com/"          
         xmlns:inf="clr-namespace:LogXtreme.WinDsk.Infrastructure;assembly=LogXtreme.WinDsk.Infrastructure"
         mc:Ignorable="d"
-        Title="{Binding Path=ShellId, StringFormat='Shell {0}'}">
+        Title="{Binding Path=Id, StringFormat='Shell {0}'}">
     <Grid>
         <DockPanel>
             <Menu DockPanel.Dock="Top">
@@ -45,7 +45,7 @@
                         DockPanel.Dock="Top"/>-->
             <!--<ItemsControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionToolbar}"
                         DockPanel.Dock="Top" />-->
-            <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionContent}"                            />
+            <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionContent}"/>
             
         </DockPanel>        
     </Grid>

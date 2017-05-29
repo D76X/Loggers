@@ -13,7 +13,7 @@ namespace LogXtreme.WinDsk {
 
         private IShellService shellService;
 
-        private int shellId;
+        private int id;
         private string statusMessage;
 
         public DelegateCommand<string> OpenShellCommand { get; private set; }
@@ -22,20 +22,19 @@ namespace LogXtreme.WinDsk {
 
         public ShellViewModel(IShellService shellService) {
 
-            this.shellService = shellService;                  
+            this.shellService = shellService;
+            this.Id = this.shellService.ShellCreatedCount;
 
             this.OpenShellCommand = new DelegateCommand<string>(OpenShell);
             this.NavigateCommand = new DelegateCommand<string>(Navigate);
 
             this.SaveSessionCommand = new DelegateCommand<string>(SaveSession, CanSaveSession);
-            CommandsGlobal.SaveSession.RegisterCommand(SaveSessionCommand);
+            CommandsGlobal.SaveSession.RegisterCommand(SaveSessionCommand);            
+        }
 
-            this.ShellId = this.shellService.RegisterShellId();
-        } 
-        
-        public int ShellId {
-            get { return this.shellId; }
-            private set { this.SetProperty(ref this.shellId, value); }
+        public int Id {
+            get { return this.id; }
+            private set { this.SetProperty(ref this.id, value); }
         }
 
         /// <summary>
@@ -55,12 +54,13 @@ namespace LogXtreme.WinDsk {
         }
 
         private bool CanSaveSession(string arg) {
-            return !(this.shellService.RegisteredShellCount % 2 == 0);
+            return !(this.shellService.ShellCreatedCount % 2 == 0);
         }
 
         private void OpenShell(string viewName) {
 
-            this.shellService.ShowShell(viewName);
+            var shell = this.shellService.CreateShell();
+            this.shellService.ShowShell(shell, viewName);
         }
 
         private void Navigate(string viewName) {
