@@ -9,6 +9,7 @@ using LogXtreme.WinDsk.Infrastructure;
 using LogXtreme.WinDsk.Services;
 using LogXtreme.WinDsk.Interfaces;
 using LogXtreme.WinDsk.ViewModels;
+using Prism.Modularity;
 
 namespace LogXtreme.WinDsk {
 
@@ -18,10 +19,14 @@ namespace LogXtreme.WinDsk {
             return base.CreateLogger();
         }
 
+        protected override IModuleCatalog CreateModuleCatalog() {
+            return base.CreateModuleCatalog();
+        }
+
         protected override void ConfigureModuleCatalog() {            
 
             base.ConfigureModuleCatalog();
-        }
+        }        
 
         /// <summary>
         /// 
