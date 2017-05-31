@@ -16,14 +16,13 @@ namespace MainMenuModule
         public MainMenuModule(
             IUnityContainer container,
             RegionManager regionManager
-            )
-        {
+            ) {
             this.container = container;
             this.regionManager = regionManager;
         }
 
-        public void Initialize()
-        {
+        public void Initialize() {
+
             // Register types
 
             // Subscribe to Services or Events
