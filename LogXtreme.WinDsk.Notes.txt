@@ -1,5 +1,16 @@
 --------------------------------------------------------------------------------------------------------------------------------------------
 
+LogXtreme.WinDsk
+
+It's the WPF Windows Desktop application.
+
+Some References to relevant topics are given below.
+
+For the main window grid
+https://social.msdn.microsoft.com/Forums/vstudio/en-US/c7edafe9-d4ac-4bd8-ac25-f4482cfdaa75/dockpanel-stackpanel-or-grid?forum=wpf
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
 LogXtreme.WinDsk.Infrastructure 
 
 It's a WPF User Control Library so that the Add item menu displays WPF related items.
