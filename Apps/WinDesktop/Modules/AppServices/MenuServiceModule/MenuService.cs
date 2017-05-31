@@ -1,10 +1,6 @@
-﻿using LogXtreme.WinDsk.Infrastructure.Services;
+﻿using LogXtreme.WinDsk.Infrastructure.Menu;
+using LogXtreme.WinDsk.Infrastructure.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LogXtreme.WinDsk.Infrastructure.Menu;
 
 namespace MenuService {
     public class MenuService : IMenuService {

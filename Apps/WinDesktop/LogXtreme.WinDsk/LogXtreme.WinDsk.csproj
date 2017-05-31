@@ -130,6 +130,10 @@
       <Project>{489706e3-c226-4d83-bb3d-c5a0d49d3835}</Project>
       <Name>LogXtreme.WinDsk.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Modules\InfrastructureModules\MainMenuModule\MainMenuModule.csproj">
+      <Project>{7a2c09df-62df-4d7a-a68c-f66ccc184ae4}</Project>
+      <Name>MainMenuModule</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

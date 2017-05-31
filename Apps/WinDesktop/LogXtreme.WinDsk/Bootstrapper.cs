@@ -11,7 +11,8 @@ using Prism.Unity;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace LogXtreme.WinDsk {
+namespace LogXtreme.WinDsk
+{
 
     public class Bootstrapper: UnityBootstrapper {
 
@@ -26,6 +27,12 @@ namespace LogXtreme.WinDsk {
         protected override void ConfigureModuleCatalog() {            
 
             base.ConfigureModuleCatalog();
+
+            // add all the modules that must be always present in the application
+            this.ModuleCatalog.AddModule(new ModuleInfo() {
+                ModuleName = typeof(MainMenuModule.MainMenuModule).Name,
+                ModuleType = typeof(MainMenuModule.MainMenuModule).AssemblyQualifiedName,
+            });
         }        
 
         /// <summary>
@@ -45,7 +52,7 @@ namespace LogXtreme.WinDsk {
             //...
 
             // register the application services
-            RegisterTypeIfMissing(typeof(IShellService), typeof(ShellService), true);
+            RegisterTypeIfMissing(typeof(IShellService), typeof(ShellService), true);          
 
             // register view and view models with their interfaces
             Container.RegisterType<IShellView, Shell>();
