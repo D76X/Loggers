@@ -6,5 +6,6 @@ using System.Threading.Tasks;
 
 namespace LogXtreme.WinDsk.Infrastructure.Menu {
     public interface IMenuItemNode {
+        string Text { get; }
     }
 }
