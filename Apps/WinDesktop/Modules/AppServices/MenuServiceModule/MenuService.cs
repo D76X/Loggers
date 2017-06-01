@@ -8,6 +8,10 @@ namespace MenuService {
             throw new NotImplementedException();
         }
 
+        public IMenuItemNode GetMenuRoot() {
+            throw new NotImplementedException();
+        }
+
         public void RegisterMenu(IMenuItemNode menuItemNode) {
             throw new NotImplementedException();
         }
