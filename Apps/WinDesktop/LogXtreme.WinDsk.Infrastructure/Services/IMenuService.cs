@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LogXtreme.WinDsk.Infrastructure.Services {
     public interface IMenuService {
-
+        IMenuItemNode GetMenuRoot();
         void AddTopLevelMenu(IMenuItemNode menuItemNode);
         void RegisterMenu(IMenuItemNode menuItemNode);
     }
