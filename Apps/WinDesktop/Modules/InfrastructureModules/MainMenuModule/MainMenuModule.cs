@@ -7,7 +7,6 @@ using Prism.Regions;
 
 namespace MainMenuModule
 {
-    [Module(ModuleName = nameof(MainMenuModule))]
     public class MainMenuModule : IModule
     {
 
