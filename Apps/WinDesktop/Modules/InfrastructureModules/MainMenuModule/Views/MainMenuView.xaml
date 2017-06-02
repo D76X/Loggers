@@ -7,16 +7,7 @@
              mc:Ignorable="d"
              d:DesignHeight="300"
              d:DesignWidth="300">
-    <Grid>
-        <!--<Menu>
-            <MenuItem Header="_File">
-                <MenuItem Header="_New" />
-                <MenuItem Header="_Open" />
-                <MenuItem Header="_Save" />
-                <Separator />
-                <MenuItem Header="_Exit" />
-            </MenuItem>
-        </Menu>-->
+    <Grid>        
         <Menu IsMainMenu="True"
               ItemsSource="{Binding MenuItems}">
             <Menu.ItemContainerStyle>

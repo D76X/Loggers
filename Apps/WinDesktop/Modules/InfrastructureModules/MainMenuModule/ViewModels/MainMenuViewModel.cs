@@ -10,27 +10,11 @@ namespace MainMenuModule.ViewModels {
 
         public MainMenuViewModel() {
 
-            var menuItems = new List<IMenuItem>();
-
-            //< !--< Menu >
-            //< MenuItem Header = "_File" >
-
-            //     < MenuItem Header = "_New" />
-
-            //      < MenuItem Header = "_Open" />
-
-            //       < MenuItem Header = "_Save" />
-
-            //        < Separator />
-
-            //        < MenuItem Header = "_Exit" />
-
-            //     </ MenuItem >
-
-            // </ Menu > -->           
+            var menuItems = new List<IMenuItem>();                     
 
             var newMenuItem = new MenuItemViewModel("_New", null);
             var openMenuItem = new MenuItemViewModel("_Open", null);
+
             var fileMenuItemChildren = new List<IMenuItem>() {
                 newMenuItem,
                 openMenuItem,
