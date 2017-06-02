@@ -1,6 +1,8 @@
-﻿using LogXtreme.WinDsk.Infrastructure.Services;
+﻿using LogXtreme.WinDsk.Infrastructure.Menu;
+using LogXtreme.WinDsk.Infrastructure.Services;
 using MainMenuModule.ViewModels;
 using Prism.Modularity;
+using System.Collections.Generic;
 
 namespace MainMenuOptionsModule {
 
@@ -24,7 +26,9 @@ namespace MainMenuOptionsModule {
             // Compose Views into the Shell
 
             //...
-            //this.menuService.AddTopLevelMenu(new MenuItemNode() { Text = "Options"});
+            IMenuItem parent = null;
+            List<IMenuItem> children = null;
+            this.menuService.AddMenuItem(new MenuItemViewModel("Options", parent, children));
         }
     }
 }

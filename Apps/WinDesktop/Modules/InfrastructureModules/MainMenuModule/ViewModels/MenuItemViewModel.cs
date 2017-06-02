@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using LogXtreme.WinDsk.Infrastructure.Menu;
+﻿using LogXtreme.WinDsk.Infrastructure.Menu;
 using Prism.Mvvm;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace MainMenuModule.ViewModels {
 
@@ -14,9 +12,23 @@ namespace MainMenuModule.ViewModels {
 
         public MenuItemViewModel(
             string header,
+            IMenuItem parent,
             IEnumerable<IMenuItem> children) {
 
             this.header = header;
+            this.parent = parent;
+
+            if (children != null) {
+                foreach (var child in children) {
+
+                    var childViewModel = (child as MenuItemViewModel);
+
+                    if (childViewModel != null) {
+                        childViewModel.Parent = parent;
+                    }
+                }
+            }
+
             this.children = children;
         }
 
