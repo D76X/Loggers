@@ -1,14 +1,7 @@
 ﻿using LogXtreme.WinDsk.Infrastructure.Menu;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LogXtreme.WinDsk.Infrastructure.Services {
     public interface IMenuService {
-        IMenuItemNode GetMenuRoot();
-        void AddTopLevelMenu(IMenuItemNode menuItemNode);
-        void RegisterMenu(IMenuItemNode menuItemNode);
+        void Add(IMenuItem menuItem, IMenuItem parent);
     }
 }
