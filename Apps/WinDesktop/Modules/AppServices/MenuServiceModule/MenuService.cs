@@ -4,8 +4,12 @@ using System;
 
 namespace MenuService {
     public class MenuService : IMenuService {
-        public void Add(IMenuItem menuItem, IMenuItem parent) {
-            throw new NotImplementedException();
+
+        public void AddMenuItem(IMenuItem menuItem) {
+
+            this.AddMenuItemEvent?.Invoke(null, new MenuItemEventArgs(menuItem));
         }
+
+        public event EventHandler<MenuItemEventArgs> AddMenuItemEvent;        
     }
 }
