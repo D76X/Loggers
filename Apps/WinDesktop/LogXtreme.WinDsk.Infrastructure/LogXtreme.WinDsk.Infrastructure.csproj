@@ -78,7 +78,7 @@
   <ItemGroup>
     <Compile Include="Actions\CloseTabAction.cs" />
     <Compile Include="CommandsGlobal.cs" />
-    <Compile Include="Menu\IMenuItemNode.cs" />
+    <Compile Include="Menu\IMenuItem.cs" />
     <Compile Include="Prism\ICreateRegionManagerScope.cs" />
     <Compile Include="Prism\IRegionManagerAware.cs" />
     <Compile Include="IShellService.cs" />

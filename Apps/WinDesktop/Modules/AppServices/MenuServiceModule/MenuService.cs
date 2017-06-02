@@ -4,15 +4,7 @@ using System;
 
 namespace MenuService {
     public class MenuService : IMenuService {
-        public void AddTopLevelMenu(IMenuItemNode menuItemNode) {
-            throw new NotImplementedException();
-        }
-
-        public IMenuItemNode GetMenuRoot() {
-            throw new NotImplementedException();
-        }
-
-        public void RegisterMenu(IMenuItemNode menuItemNode) {
+        public void Add(IMenuItem menuItem, IMenuItem parent) {
             throw new NotImplementedException();
         }
     }

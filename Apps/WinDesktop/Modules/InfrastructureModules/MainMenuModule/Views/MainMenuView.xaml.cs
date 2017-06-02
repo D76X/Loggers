@@ -1,28 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using LogXtreme.WinDsk.Infrastructure;
+using MainMenuModule.Interfaces;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace MainMenuModule.Views
-{
+namespace MainMenuModule.Views {
     /// <summary>
     /// Interaction logic for MainMenuView.xaml
     /// </summary>
-    public partial class MainMenuView : UserControl
-    {
-        public MainMenuView()
-        {
+    public partial class MainMenuView : UserControl, IMainMenuView {
+
+        public MainMenuView(IMainMenuViewModel viewModel) {
             InitializeComponent();
+            this.ViewModel = viewModel;
+        }
+
+        public IViewModel ViewModel {
+            get {
+                return (IMainMenuViewModel)this.DataContext;
+            }
+
+            set {
+                this.DataContext = value;
+            }
         }
     }
 }

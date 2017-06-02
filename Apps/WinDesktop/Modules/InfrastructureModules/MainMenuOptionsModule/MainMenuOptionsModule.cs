@@ -1,7 +1,5 @@
-﻿using LogXtreme.WinDsk.Infrastructure.Menu;
-using LogXtreme.WinDsk.Infrastructure.Services;
+﻿using LogXtreme.WinDsk.Infrastructure.Services;
 using MainMenuModule.ViewModels;
-using Microsoft.Practices.Unity;
 using Prism.Modularity;
 
 namespace MainMenuOptionsModule {
@@ -26,7 +24,7 @@ namespace MainMenuOptionsModule {
             // Compose Views into the Shell
 
             //...
-            this.menuService.AddTopLevelMenu(new MenuItemNode() { Text = "Options"});
+            //this.menuService.AddTopLevelMenu(new MenuItemNode() { Text = "Options"});
         }
     }
 }

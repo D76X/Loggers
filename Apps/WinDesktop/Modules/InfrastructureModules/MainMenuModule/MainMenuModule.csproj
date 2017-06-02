@@ -72,8 +72,11 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IMainMenuView.cs" />
+    <Compile Include="Interfaces\IMainMenuViewModel.cs" />
     <Compile Include="MainMenuModule.cs" />
-    <Compile Include="ViewModels\MenuItemNode.cs" />
+    <Compile Include="ViewModels\MenuItemViewModel.cs" />
+    <Compile Include="ViewModels\MainMenuViewModel.cs" />
     <Compile Include="Views\MainMenuView.xaml.cs">
       <DependentUpon>MainMenuView.xaml</DependentUpon>
     </Compile>

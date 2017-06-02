@@ -1,5 +1,7 @@
 ﻿using LogXtreme.WinDsk.Infrastructure;
 using LogXtreme.WinDsk.Infrastructure.Services;
+using MainMenuModule.Interfaces;
+using MainMenuModule.ViewModels;
 using MainMenuModule.Views;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
@@ -20,11 +22,12 @@ namespace MainMenuModule
             ) {
             this.container = container;
             this.regionManager = regionManager;
-        }
+        }      
 
         public void Initialize() {
 
             // Register types
+            this.container.RegisterType<IMainMenuViewModel, MainMenuViewModel>();
 
             // Subscribe to Services or Events
 
