@@ -15,6 +15,8 @@ namespace MainMenuModule.ViewModels {
         public MainMenuViewModel(IMenuService menuService) {
 
             this.menuService = menuService;
+
+            // this will prevent the MainMenuViewModel from being disposed for the lifetime of the MenuService! 
             this.menuService.AddMenuItemEvent += this.AddMenuItemEventHanlder;
 
             var menuItems = new List<IMenuItem>();  
