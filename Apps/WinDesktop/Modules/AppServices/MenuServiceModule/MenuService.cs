@@ -10,6 +10,10 @@ namespace MenuService {
             this.AddMenuItemEvent?.Invoke(null, new MenuItemEventArgs(menuItem));
         }
 
-        public event EventHandler<MenuItemEventArgs> AddMenuItemEvent;        
+        public event EventHandler<MenuItemEventArgs> AddMenuItemEvent;
+
+        public IMenuItem GetMenuItem(string header) {
+            throw new NotImplementedException();
+        }    
     }
 }
