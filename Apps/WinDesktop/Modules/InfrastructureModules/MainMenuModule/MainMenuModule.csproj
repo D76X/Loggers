@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="Interfaces\IMainMenuView.cs" />
     <Compile Include="Interfaces\IMainMenuViewModel.cs" />
+    <Compile Include="MainMenuHeaders.cs" />
     <Compile Include="MainMenuModule.cs" />
     <Compile Include="ViewModels\MenuItemViewModel.cs" />
     <Compile Include="ViewModels\MainMenuViewModel.cs" />
