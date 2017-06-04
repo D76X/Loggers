@@ -122,6 +122,7 @@
     <Compile Include="Prism\RegionAdapterStackPanel.cs" />
     <Compile Include="Prism\RegionManagerAware.cs" />
     <Compile Include="Prism\RegionManagerAwareBehavior.cs" />
+    <Compile Include="ReactiveExtensions\ObservableEx.cs" />
     <Compile Include="RegionNames.cs" />
     <Compile Include="Services\IMenuService.cs" />
     <Compile Include="Services\IStatusService.cs" />
@@ -142,9 +143,7 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ReactiveExtensions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
