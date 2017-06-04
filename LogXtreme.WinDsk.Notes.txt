@@ -15,4 +15,39 @@ LogXtreme.WinDsk.Infrastructure
 
 It's a WPF User Control Library so that the Add item menu displays WPF related items.
 
+On Events and Delegates
+http://csharpindepth.com/Articles/Chapter2/Events.aspx
+http://jonskeet.uk/csharp/events.html
+https://stackoverflow.com/questions/1015166/c-event-with-explicity-add-remove-typical-event
+
+Weak Events and implementation of the Weak Event Pattern with RX
+http://blog.functionalfun.net/2009/06/managed-memory-leaks-and-their.html 
+https://www.codeproject.com/Articles/29922/Weak-Events-in-C
+WeakReference
+https://msdn.microsoft.com/en-us/library/system.weakreference.aspx
+https://www.codeproject.com/Articles/664282/Understanding-weak-references-in-NET
+https://www.codeproject.com/Articles/35152/WeakReferences-as-a-Good-Caching-Mechanism
+Samuel Jack's article
+https://dzone.com/articles/weak-events-net-easy-way
+http://blog.functionalfun.net/2012/03/weak-events-in-net-easy-way.html
+Weak events in .NET using Reactive Extensions by Kenneth Haugland
+https://www.codeproject.com/Tips/1078183/Weak-events-in-NET-using-Reactive-Extensions-Rx
+Bridging with Existing .NET Events with IObservable.FromEventPattern
+https://msdn.microsoft.com/en-us/library/system.reactive.linq.observable.fromeventpattern(v=vs.103).aspx
+https://msdn.microsoft.com/en-us/library/hh242978(v=vs.103).aspx
+https://msdn.microsoft.com/en-us/library/hh229705(v=vs.103).aspx
+http://synchronicity-life.blogspot.co.uk/2011/12/how-to-use-fromeventpattern-in-reactive.html
+
+***
+RX can convert events to IObservable<EventPattern<SomeEventArgs>> using one of the overloads of the extension methods 
+IObservable.FromEventPattern. There are two main overloads to remember according to the type of event that we want to
+obtain a IObservable for.
+
+1-An example of event defined with the generic EventHanlder<T> signature
+https://msdn.microsoft.com/en-us/library/system.threading.tasks.taskscheduler.unobservedtaskexception(v=vs.110).aspx
+
+2-An Example of an event that is defined using a delegate and the non generic EventHanlder
+https://msdn.microsoft.com/en-us/library/system.collections.specialized.notifycollectionchangedeventhandler(v=vs.110).aspx
+***
+
 --------------------------------------------------------------------------------------------------------------------------------------------
