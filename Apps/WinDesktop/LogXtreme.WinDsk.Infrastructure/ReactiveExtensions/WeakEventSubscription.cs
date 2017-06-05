@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Specialized;
-using System.ComponentModel;
-using System.Diagnostics.Contracts;
-using System.Linq.Expressions;
-using System.Reactive;
-using System.Reactive.Disposables;
 using System.Reactive.Linq;
-using System.Reflection;
 
 namespace LogXtreme.WinDsk.Infrastructure.ReactiveExtensions {
 
@@ -37,8 +30,8 @@ namespace LogXtreme.WinDsk.Infrastructure.ReactiveExtensions {
         /// <returns>The subscription as IDisposable</returns>
         public static IDisposable SubscribeWeakly<TEventPattern>(
             this IObservable<TEventPattern> observable,
-            Action<TEventPattern> onNext
-            ) where TEventPattern : class {
+            Action<TEventPattern> onNext) 
+            where TEventPattern : class {
 
             IDisposable subscription = null;
 
