@@ -122,7 +122,8 @@
     <Compile Include="Prism\RegionAdapterStackPanel.cs" />
     <Compile Include="Prism\RegionManagerAware.cs" />
     <Compile Include="Prism\RegionManagerAwareBehavior.cs" />
-    <Compile Include="ReactiveExtensions\ObservableEx.cs" />
+    <Compile Include="ReactiveExtensions\ObserveOn.cs" />
+    <Compile Include="ReactiveExtensions\SubscribeWeakly.cs" />
     <Compile Include="RegionNames.cs" />
     <Compile Include="Services\IMenuService.cs" />
     <Compile Include="Services\IStatusService.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="Unity\UnityExtensios.cs" />
     <Compile Include="Utils\SearchVisualTree.cs" />
     <Compile Include="ViewModelBase.cs" />
+    <EmbeddedResource Include="Properties\Resource.it.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
