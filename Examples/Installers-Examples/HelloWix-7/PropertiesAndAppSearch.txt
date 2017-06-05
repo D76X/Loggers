@@ -559,4 +559,23 @@ property of "English, United States".
 
 3-ComponentSearch
 
+It's a second way to search for files installed on the end user's computer.
+Like other search elements, ComponentSearch is nested inside a Property element.
+If the file you're looking for is found, the path of its parent directory will be saved to the property.
+it won't be the full path to the file itself, but close enough.
+you have to remember that Windows Installer uses components with unique GUIDs as
+containers for the files that get copied to a computer.
+ComponentSearch looks for the GUID that was set as the **KeyPath** in that component.
+as long as you know the GUID, you can find the file
+**Orca.exe** to open an MSI installer and check the Component table for a file's GUID.
+
+EXAMPLE 1
+Here, we are looking for the candle.exe file that's installed with the WiX toolset.
+
+<Property Id="CANDLE_PATH">
+	<ComponentSearch Id="candlePath"
+					 Guid="{FBD4BCFB-F1B7-4B6D-B07C-E999A24521CF}" />
+</Property>
+
+
 ----------------------------------------------------------------------------------------
