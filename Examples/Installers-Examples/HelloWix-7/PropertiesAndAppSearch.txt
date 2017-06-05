@@ -568,6 +568,11 @@ containers for the files that get copied to a computer.
 ComponentSearch looks for the GUID that was set as the **KeyPath** in that component.
 as long as you know the GUID, you can find the file
 **Orca.exe** to open an MSI installer and check the Component table for a file's GUID.
+might use it to find out where the user installed your software
+You could also use it to check if someone else's software is installed.
+The downside to ComponentSearch is that you're relying on the GUIDs staying the same.
+pretty safe when it's your own software
+can be risky with anyone else's
 
 EXAMPLE 1
 Here, we are looking for the candle.exe file that's installed with the WiX toolset.
@@ -577,5 +582,47 @@ Here, we are looking for the candle.exe file that's installed with the WiX tools
 					 Guid="{FBD4BCFB-F1B7-4B6D-B07C-E999A24521CF}" />
 </Property>
 
+
+EXAMPLE 2
+Use of the optional attribute Type 
+
+This is a Component that does not specify a KeyPath.
+Most Component do specify a KeyPath.
+In this case the component is used to create an empty directory on the target.
+The KeyPath is set to "yes" on the Component element itself.
+The Componet becomes the KeyPath itself.
+
+<DirectoryRef Id="INSTALLLOCATION">
+		<Directory Id="newDir" Name="New Directory">
+			<Component Id="newDirComp"
+					   Guid="EA8062E0-E9C2-49E7-B76D-32161923F9F9"
+					   KeyPath="yes">
+				<CreateFolder />
+			</Component>
+		</Directory>
+</DirectoryRef>
+
+When there's no file specified as the KeyPath, you can set the ComponentSearch
+element's Type attribute to directory and it will return the path to the component's
+parent directory. 
+
+<!--Returns newDir: C:\Program Files\mySoftware\New Directory-->
+<Property Id="MY_DIRECTORY_PATH ">
+	<ComponentSearch Id="myCompSearch"
+					 Guid="{EA8062E0-E9C2-49E7-B76D-32161923F9F9}"
+					 Type="directory" />
+</Property>
+
+If the Type attribute is omitted or left to its default Type="file" the return value to
+the property will be
+
+<!--Returns INSTALLLOCATION: C:\Program Files\mySoftware\-->
+
+Finally if there is a KeyPath file, setting the ComponentSearch element's Type attribute 
+to directory will cause the search to return null.
+
+----------------------------------------------------------------------------------------
+
+4-RegistrySearch
 
 ----------------------------------------------------------------------------------------
