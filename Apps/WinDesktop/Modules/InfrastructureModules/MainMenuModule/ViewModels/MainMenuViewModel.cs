@@ -1,23 +1,32 @@
 ﻿using LogXtreme.WinDsk.Infrastructure.Menu;
+using LogXtreme.WinDsk.Infrastructure.ReactiveExtensions;
 using LogXtreme.WinDsk.Infrastructure.Services;
 using MainMenuModule.Interfaces;
+using Prism.Mvvm;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System;
+using System.Reactive;
+using System.Reactive.Linq;
 
 namespace MainMenuModule.ViewModels {
 
-    public class MainMenuViewModel : IMainMenuViewModel {
+    public class MainMenuViewModel : BindableBase, IMainMenuViewModel, IDisposable {
 
         private readonly IMenuService menuService;
+
         private ObservableCollection<IMenuItem> menuItems;
+
+        private IDisposable subscriptionToAddMenuItem;
 
         public MainMenuViewModel(IMenuService menuService) {
 
             this.menuService = menuService;
 
-            // this will prevent the MainMenuViewModel from being disposed for the lifetime of the MenuService! 
-            this.menuService.AddMenuItemEvent += this.AddMenuItemEventHanlder;
+            this.subscriptionToAddMenuItem = Observable.FromEventPattern<MenuItemEventArgs>(
+                h => this.menuService.AddMenuItemEvent += h,
+                h => this.menuService.AddMenuItemEvent -= h)
+                .SubscribeWeakly(this.AddMenuItemEventHanlder);    
 
             var menuItems = new List<IMenuItem>();  
             
@@ -36,12 +45,35 @@ namespace MainMenuModule.ViewModels {
             this.menuItems = new ObservableCollection<IMenuItem>(menuItems);
         }
 
+        private void AddMenuItemEventHanlder(EventPattern<MenuItemEventArgs> pattern) {
+            this.AddMenuItemEventHanlder(pattern.Sender, pattern.EventArgs);
+        }
+
         private void AddMenuItemEventHanlder(object sender, MenuItemEventArgs e) {
             this.menuItems.Add(e.MenuItem);
         }
 
         public ObservableCollection<IMenuItem> MenuItems => this.menuItems;
 
-        
+        #region IDisposable
+
+        public void Dispose() {
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing) {
+
+            if (disposing) {
+
+                if (this.subscriptionToAddMenuItem != null) {
+
+                    this.subscriptionToAddMenuItem.Dispose();
+                    this.subscriptionToAddMenuItem = null;
+                }
+            }
+        }
+
+        #endregion
     }
 }
