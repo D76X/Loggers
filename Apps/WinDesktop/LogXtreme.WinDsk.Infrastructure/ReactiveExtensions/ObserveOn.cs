@@ -17,6 +17,8 @@ namespace LogXtreme.WinDsk.Infrastructure.ReactiveExtensions {
     /// https://dzone.com/articles/weak-events-net-easy-way
     /// IObservable from events
     /// http://www.introtorx.com/content/v1.0.10621.0/04_CreatingObservableSequences.html#FromEvent
+    /// Observing Property changes
+    /// https://github.com/LeeCampbell/RxCookbook/blob/master/Model/PropertyChange.md
     /// PropertyChangedEventHandler Delegate
     /// https://msdn.microsoft.com/en-us/library/system.componentmodel.propertychangedeventhandler(v=vs.110).aspx
     /// NotifyCollectionChangedEventHandler Delegate
@@ -29,8 +31,8 @@ namespace LogXtreme.WinDsk.Infrastructure.ReactiveExtensions {
 
         /// <summary>
         /// Extension method for implemetations of INotifyPropertyChanged to convert a source of 
-        /// INotifyPropertyChanged events into an IObservable of EventPattern with payload 
-        /// PropertyChangedEventArgs.
+        /// INotifyPropertyChanged events into an IObservable of EventPattern with a payload of 
+        /// type PropertyChangedEventArgs and by using an expression such as item => item.Property
         /// </summary>
         /// <typeparam name="TSource">The type of the INotifyPropertyChanged implemetation to observe</typeparam>
         /// <typeparam name="TProperty">The type of the property to observe</typeparam>
@@ -73,7 +75,7 @@ namespace LogXtreme.WinDsk.Infrastructure.ReactiveExtensions {
 
         /// <summary>
         /// Extension method for implemetations of INotifyCollectionChanged to convert a source of 
-        /// INotifyCollectionChanged events into an IObservable of EventPattern with payload 
+        /// INotifyCollectionChanged events into an IObservable of EventPattern with payload of type
         /// NotifyCollectionChangedEventArgs.
         /// </summary>
         /// <param name="collection"></param>
