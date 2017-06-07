@@ -31,15 +31,18 @@ let modifiedNames3 = names
                     |>Seq.map(composedBackwards)                  
                     |>Seq.toList
 
+printfn "print the integer number %d" 100
+printfn "print the string %s" "like bang!"
+printfn "print the float %f" 10.5
+
 let numbers = [1..5]
+let processNumberEx1 =  numbers |> Seq.map(fun x -> printfn "mapped to %d" x; x*x) |> Seq.sort |> Seq.toList
 
-numbers
-
-let processNumber =  numbers
-                     |> Seq.map(fun x -> printfn "process %d" x)
-                     |> Seq.toList
-
-processNumber
+let processNumberEx2 = 
+    numbers
+    |> Seq.map(fun x -> printfn "mapped to %d" x; x*x*x)
+    |> Seq.sort
+    |> Seq.toList
 
 
 
