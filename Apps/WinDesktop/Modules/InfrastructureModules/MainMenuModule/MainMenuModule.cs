@@ -7,11 +7,9 @@ using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Regions;
 
-namespace MainMenuModule
-{
+namespace MainMenuModule {
     [Module(ModuleName = nameof(MainMenuModule))]
-    public class MainMenuModule : IModule
-    {
+    public class MainMenuModule : IModule {
 
         private readonly IUnityContainer container;
         private readonly RegionManager regionManager;
@@ -22,7 +20,7 @@ namespace MainMenuModule
             ) {
             this.container = container;
             this.regionManager = regionManager;
-        }      
+        }
 
         public void Initialize() {
 
