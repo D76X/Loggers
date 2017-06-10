@@ -33,6 +33,11 @@ namespace LogXtreme.WinDsk
                 ModuleName = typeof(MainMenuModule.MainMenuModule).Name,
                 ModuleType = typeof(MainMenuModule.MainMenuModule).AssemblyQualifiedName,
             });
+
+            this.ModuleCatalog.AddModule(new ModuleInfo() {
+                ModuleName = typeof(DeviceTreeModule.DeviceTreeModule).Name,
+                ModuleType = typeof(DeviceTreeModule.DeviceTreeModule).AssemblyQualifiedName,
+            });
         }        
 
         /// <summary>
