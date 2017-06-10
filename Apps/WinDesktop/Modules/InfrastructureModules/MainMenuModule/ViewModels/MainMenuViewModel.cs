@@ -26,10 +26,12 @@ namespace MainMenuModule.ViewModels {
             this.subscriptionToAddMenuItem = Observable.FromEventPattern<MenuItemEventArgs>(
                 h => this.menuService.AddMenuItemEvent += h,
                 h => this.menuService.AddMenuItemEvent -= h)
-                .SubscribeWeakly(this.AddMenuItemEventHanlder);    
+                .SubscribeWeakly(eventPattern => {
+                    this.AddMenuItemEventHanlder(eventPattern.Sender, eventPattern.EventArgs);
+                });
 
-            var menuItems = new List<IMenuItem>();  
-            
+            var menuItems = new List<IMenuItem>();
+
             var newMenuItem = new MenuItemViewModel("_New", null, null);
             var openMenuItem = new MenuItemViewModel("_Open", null, null);
 
@@ -44,11 +46,6 @@ namespace MainMenuModule.ViewModels {
 
             this.menuItems = new ObservableCollection<IMenuItem>(menuItems);
         }
-
-        private void AddMenuItemEventHanlder(EventPattern<MenuItemEventArgs> pattern) {
-            this.AddMenuItemEventHanlder(pattern.Sender, pattern.EventArgs);
-        }
-
         private void AddMenuItemEventHanlder(object sender, MenuItemEventArgs e) {
             this.menuItems.Add(e.MenuItem);
         }
