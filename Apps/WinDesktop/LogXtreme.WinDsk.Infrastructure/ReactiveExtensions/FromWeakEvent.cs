@@ -33,7 +33,6 @@ namespace LogXtreme.WinDsk.Infrastructure.ReactiveExtensions {
 
                 disposable.Add(observable);
                 return disposable;
-
             });
         }
     }
