@@ -2,12 +2,12 @@
 
 namespace LogXtreme.WinDsk.Infrastructure.ReactiveExtensions {
 
-    internal class WeakEventForwarded<TEventArgs, TEventSource> : IDisposable {
+    internal class WeakEventForwarder<TEventArgs, TEventSource> : IDisposable {
 
-        private WeakEventHandler weakEventHanlder;
+        //private WeakEventHandler weakEventHanlder;
         private IObserver<TEventArgs> observer;
 
-        public WeakEventForwarded(
+        public WeakEventForwarder(
             TEventSource eventSource,
             Action<TEventSource, EventHandler> subscribeHandler,
             Action<TEventSource, EventHandler> unsubscribeHandler,
