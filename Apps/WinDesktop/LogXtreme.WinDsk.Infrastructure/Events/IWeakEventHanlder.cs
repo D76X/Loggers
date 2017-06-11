@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace LogXtreme.WinDsk.Infrastructure.Events {
+    internal interface IWeakEventHanlder {
 
-namespace LogXtreme.WinDsk.Infrastructure.Events {
-    interface IWeakEventHanlder {
+        /// <summary>
+        /// Deregisters the event handler if the listener is no longer alive.
+        /// </summary>
+        /// <returns></returns>
+        bool TryDeregister();
     }
 }
