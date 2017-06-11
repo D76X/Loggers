@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Parsers", "Parsers", "{8F994388-9528-4E34-8479-4CB0C5EC9EBE}"
 	ProjectSection(SolutionItems) = preProject
@@ -282,11 +282,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InfrastructureModules", "In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainMenuModule", "Apps\WinDesktop\Modules\InfrastructureModules\MainMenuModule\MainMenuModule.csproj", "{7A2C09DF-62DF-4D7A-A68C-F66CCC184AE4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logging", "Logging", "{2FA43DAC-3752-4900-A6D4-C51FE7F469D6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainMenuOptionsModule", "Apps\WinDesktop\Modules\InfrastructureModules\MainMenuOptionsModule\MainMenuOptionsModule.csproj", "{5EAF14E5-39CA-43E7-86DC-40B1DE6C2252}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceTreeModule", "Apps\WinDesktop\Modules\InfrastructureModules\DeviceTreeModule\DeviceTreeModule.csproj", "{E152DB85-F4CB-4864-87D2-EE408093C3FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemanticLogging", "Apps\Instrumentation\SemanticLogging\SemanticLogging.csproj", "{724FB395-9F33-4F4C-993F-2B004425BFC3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Instrumentation", "Instrumentation", "{CFB67B6F-4DB8-40B2-9DBE-3F9AEC33ADF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -818,6 +820,14 @@ Global
 		{E152DB85-F4CB-4864-87D2-EE408093C3FE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E152DB85-F4CB-4864-87D2-EE408093C3FE}.Release|x86.ActiveCfg = Release|Any CPU
 		{E152DB85-F4CB-4864-87D2-EE408093C3FE}.Release|x86.Build.0 = Release|Any CPU
+		{724FB395-9F33-4F4C-993F-2B004425BFC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{724FB395-9F33-4F4C-993F-2B004425BFC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{724FB395-9F33-4F4C-993F-2B004425BFC3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{724FB395-9F33-4F4C-993F-2B004425BFC3}.Debug|x86.Build.0 = Debug|Any CPU
+		{724FB395-9F33-4F4C-993F-2B004425BFC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{724FB395-9F33-4F4C-993F-2B004425BFC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{724FB395-9F33-4F4C-993F-2B004425BFC3}.Release|x86.ActiveCfg = Release|Any CPU
+		{724FB395-9F33-4F4C-993F-2B004425BFC3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -924,8 +934,9 @@ Global
 		{3A2D46F2-91F8-4AEC-BC99-3495E8E3709A} = {45449303-EA76-4B02-B1EE-CCBB11D41186}
 		{54A6C670-22E2-4D00-BCD9-D42D60C9C5E4} = {62CF1173-E7C8-4563-AD35-5AF9EADE86EA}
 		{7A2C09DF-62DF-4D7A-A68C-F66CCC184AE4} = {54A6C670-22E2-4D00-BCD9-D42D60C9C5E4}
-		{2FA43DAC-3752-4900-A6D4-C51FE7F469D6} = {336F8F07-C586-45D4-B7E2-20FDB911D3B5}
 		{5EAF14E5-39CA-43E7-86DC-40B1DE6C2252} = {54A6C670-22E2-4D00-BCD9-D42D60C9C5E4}
 		{E152DB85-F4CB-4864-87D2-EE408093C3FE} = {54A6C670-22E2-4D00-BCD9-D42D60C9C5E4}
+		{724FB395-9F33-4F4C-993F-2B004425BFC3} = {CFB67B6F-4DB8-40B2-9DBE-3F9AEC33ADF5}
+		{CFB67B6F-4DB8-40B2-9DBE-3F9AEC33ADF5} = {336F8F07-C586-45D4-B7E2-20FDB911D3B5}
 	EndGlobalSection
 EndGlobal

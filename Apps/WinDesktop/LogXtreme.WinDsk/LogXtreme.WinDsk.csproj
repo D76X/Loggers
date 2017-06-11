@@ -126,6 +126,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Instrumentation\SemanticLogging\SemanticLogging.csproj">
+      <Project>{724fb395-9f33-4f4c-993f-2b004425bfc3}</Project>
+      <Name>SemanticLogging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LogXtreme.WinDsk.Infrastructure\LogXtreme.WinDsk.Infrastructure.csproj">
       <Project>{489706e3-c226-4d83-bb3d-c5a0d49d3835}</Project>
       <Name>LogXtreme.WinDsk.Infrastructure</Name>
