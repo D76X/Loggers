@@ -96,8 +96,6 @@
     <Compile Include="CommandsGlobal.cs" />
     <Compile Include="Commands\GlobalCommands.cs" />
     <Compile Include="Events\DeviceAttachedEvents.cs" />
-    <Compile Include="Events\IWeakEventHanlder.cs" />
-    <Compile Include="Events\WeakEventHanlder.cs" />
     <Compile Include="Menu\IMenuItem.cs" />
     <Compile Include="Menu\MenuItemEventArgs.cs" />
     <Compile Include="Prism\ICreateRegionManagerScope.cs" />
@@ -124,9 +122,7 @@
     <Compile Include="Prism\RegionAdapterStackPanel.cs" />
     <Compile Include="Prism\RegionManagerAware.cs" />
     <Compile Include="Prism\RegionManagerAwareBehavior.cs" />
-    <Compile Include="ReactiveExtensions\FromWeakEvent.cs" />
     <Compile Include="ReactiveExtensions\ObserveOn.cs" />
-    <Compile Include="ReactiveExtensions\WeakEventForwarder.cs" />
     <Compile Include="ReactiveExtensions\WeakEventSubscription.cs" />
     <Compile Include="ReactiveExtensions\WeakEventClassSubscription.cs" />
     <Compile Include="RegionNames.cs" />
