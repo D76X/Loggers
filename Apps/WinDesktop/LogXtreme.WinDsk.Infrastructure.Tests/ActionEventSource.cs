@@ -2,22 +2,23 @@
 
 namespace LogXtreme.WinDsk.Infrastructure.Tests {
 
-        internal class ActionEventSource {
+    internal class ActionEventSource {
 
-            public event Action Event = delegate { };
-            private FinalizeTracker finalizeTracker;
+        private FinalizeTracker finalizeTracker;
 
-            public ActionEventSource(ref  FinalizeTracker finalizeTracker) {
-                this.finalizeTracker = finalizeTracker;
-            }
+        public event Action Event = delegate { };
 
-            public void Raise() {
-                Event();
-            }
-
-            ~ActionEventSource() {
-                this.finalizeTracker.MarkAsFinalized();
-            }
+        public ActionEventSource(ref FinalizeTracker finalizeTracker) {
+            this.finalizeTracker = finalizeTracker;
         }
-    
+
+        public void Raise() {
+            Event();
+        }
+
+        ~ActionEventSource() {
+            this.finalizeTracker.MarkAsFinalized();
+        }
+    }
+
 }

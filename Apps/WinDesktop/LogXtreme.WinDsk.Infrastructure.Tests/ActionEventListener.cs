@@ -9,9 +9,7 @@
             this.finalizeTracker = finalizeTracker;
         }
 
-        public void OnEvent() {
-            this.invokations += 1;
-        }
+        public void OnEvent() { this.invokations += 1; }
 
         public int Invokations => this.invokations;
 
