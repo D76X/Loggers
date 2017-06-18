@@ -18,9 +18,7 @@ namespace WpfEmf.PluginProduct {
         private ResourceDictionary _viewDictionary = new ResourceDictionary();
 
         [ImportingConstructor]
-        public PluginProduct() {
-            this._viewDictionary = 
-        }
+        public PluginProduct() { }
 
         public ResourceDictionary View {
             get {
