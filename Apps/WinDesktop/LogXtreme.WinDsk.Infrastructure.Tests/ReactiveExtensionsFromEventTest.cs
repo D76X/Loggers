@@ -71,7 +71,6 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests {
                 h => eventSource.Event -= h);
 
             var counter = 0;
-            // var subscription = eventObservable.Subscribe(observer => { counter += 1; });
             var subscription = eventObservable.Subscribe(o => { }, err => { }, () => { });
 
             // act
