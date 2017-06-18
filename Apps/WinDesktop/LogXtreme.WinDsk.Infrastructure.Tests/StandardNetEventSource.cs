@@ -12,8 +12,12 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests {
             this.finalizeTracker = finalizeTracker;
         }
 
+        public void Raise(EventArgs args) {
+            this.Event(this, args);
+        }
+
         public void Raise() {
-            Event(this, EventArgs.Empty);
+            this.Event(this, EventArgs.Empty);
         }
 
         ~StandardNetEventSource() {
