@@ -290,6 +290,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemanticLogging", "Apps\Ins
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Instrumentation", "Instrumentation", "{CFB67B6F-4DB8-40B2-9DBE-3F9AEC33ADF5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.WinDsk.Infrastructure.Tests", "Apps\WinDesktop\LogXtreme.WinDsk.Infrastructure.Tests\LogXtreme.WinDsk.Infrastructure.Tests.csproj", "{69F4D4DB-C4CD-46B1-93DC-9D2EF251E717}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -828,6 +830,14 @@ Global
 		{724FB395-9F33-4F4C-993F-2B004425BFC3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{724FB395-9F33-4F4C-993F-2B004425BFC3}.Release|x86.ActiveCfg = Release|Any CPU
 		{724FB395-9F33-4F4C-993F-2B004425BFC3}.Release|x86.Build.0 = Release|Any CPU
+		{69F4D4DB-C4CD-46B1-93DC-9D2EF251E717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69F4D4DB-C4CD-46B1-93DC-9D2EF251E717}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69F4D4DB-C4CD-46B1-93DC-9D2EF251E717}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{69F4D4DB-C4CD-46B1-93DC-9D2EF251E717}.Debug|x86.Build.0 = Debug|Any CPU
+		{69F4D4DB-C4CD-46B1-93DC-9D2EF251E717}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69F4D4DB-C4CD-46B1-93DC-9D2EF251E717}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69F4D4DB-C4CD-46B1-93DC-9D2EF251E717}.Release|x86.ActiveCfg = Release|Any CPU
+		{69F4D4DB-C4CD-46B1-93DC-9D2EF251E717}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -938,5 +948,6 @@ Global
 		{E152DB85-F4CB-4864-87D2-EE408093C3FE} = {54A6C670-22E2-4D00-BCD9-D42D60C9C5E4}
 		{724FB395-9F33-4F4C-993F-2B004425BFC3} = {CFB67B6F-4DB8-40B2-9DBE-3F9AEC33ADF5}
 		{CFB67B6F-4DB8-40B2-9DBE-3F9AEC33ADF5} = {336F8F07-C586-45D4-B7E2-20FDB911D3B5}
+		{69F4D4DB-C4CD-46B1-93DC-9D2EF251E717} = {F0C6C271-B1C0-4922-BE27-B2527AD6D2D1}
 	EndGlobalSection
 EndGlobal
