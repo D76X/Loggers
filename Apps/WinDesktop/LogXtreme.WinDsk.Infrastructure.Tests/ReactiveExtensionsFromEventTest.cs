@@ -5,64 +5,16 @@ using System.Reactive.Linq;
 namespace LogXtreme.WinDsk.Infrastructure.Tests {
 
     [TestClass]
-    public class ReactiveExtensionsFromEventTest {
-
-        private class ActionEventSource {
-
-            public event Action Event = delegate { };
-
-            public void Raise() {
-                Event();
-            }
-        }
-
-        private class ActionEventListener {
-
-            private int invokations = 0;
-
-            public void OnEvent() {
-                this.invokations += 1;
-            }        
-
-            public int Invokations => this.invokations;
-        }
-
-        private class StandardNetEventSource {
-
-            public event EventHandler Event = delegate { };
-
-            public void Raise() {
-                Event(this, EventArgs.Empty);
-            }
-        }
-
-        private class StandardNetEventListener {
-
-            private int invokations = 0;  
-
-            public void OnEvent(object source, EventArgs args) {
-                this.invokations += 1;
-            }          
-
-            public int Invokations => this.invokations;
-        }
-
-        private static void TriggerGC() {
-            Console.WriteLine("Starting GC.");
-
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            GC.Collect();
-
-            Console.WriteLine("GC finished.");
-        }
+    public partial class ReactiveExtensionsFromEventTest {
 
         [TestMethod]
         public void FromEventActionBasedEvent() {
 
             // arrange
-            var eventSource = new ActionEventSource();
-            var listener = new ActionEventListener();
+            var eventSourceFinalizeTracker = new FinalizeTracker();
+            var listenerFinalizeTracker = new FinalizeTracker();
+            var eventSource = new ActionEventSource(ref eventSourceFinalizeTracker);
+            var listener = new ActionEventListener(ref listenerFinalizeTracker);
 
             eventSource.Event += listener.OnEvent;
 
@@ -70,8 +22,13 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests {
                 h => eventSource.Event += h,
                 h => eventSource.Event -= h);
 
+            var completed = false;
             var counter = 0;
-            var subscription = eventObservable.Subscribe(o => { }, err => { }, () => { });
+
+            var subscription = eventObservable.Subscribe(
+                observable => { counter += 1; }, 
+                error => { }, 
+                () => { completed = true; });
 
             // act
             eventSource.Raise();
@@ -79,6 +36,45 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests {
             // assert
             Assert.IsTrue(listener.Invokations==1);
             Assert.IsTrue(counter == 1);
+            Assert.IsFalse(completed);
+
+            // act              
+            subscription.Dispose(); // this unsubcribes but does not complete!        
+
+            // assert
+            Assert.IsFalse(completed);
+
+            // act 
+            eventSource.Raise();
+
+            // assert
+            Assert.IsTrue(listener.Invokations == 2);
+            Assert.IsTrue(counter == 1);
+            Assert.IsFalse(completed);
+
+            // act
+            eventSource.Event -= listener.OnEvent;
+            eventSource.Raise();
+
+            // assert
+            Assert.IsTrue(listener.Invokations == 2);
+            Assert.IsTrue(counter == 1);            
+
+            // act
+            Utils.TriggerGC();
+
+            // assert
+            Assert.IsFalse(eventSourceFinalizeTracker.IsFinalzed);
+            Assert.IsFalse(listenerFinalizeTracker.IsFinalzed);
+
+            // act
+            eventSource = null;
+            listener = null;
+            Utils.TriggerGC();
+
+            // assert
+            Assert.IsTrue(eventSourceFinalizeTracker.IsFinalzed);
+            Assert.IsTrue(listenerFinalizeTracker.IsFinalzed);
         }
     }
 }
