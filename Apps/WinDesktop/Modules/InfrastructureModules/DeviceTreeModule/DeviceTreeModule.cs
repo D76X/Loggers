@@ -3,6 +3,7 @@ using Prism.Modularity;
 using Microsoft.Practices.Unity;
 using Prism.Regions;
 using LogXtreme.WinDsk.Infrastructure;
+using DeviceTreeModule.Views;
 
 namespace DeviceTreeModule {
 
@@ -29,7 +30,7 @@ namespace DeviceTreeModule {
             // Register Shared Services
 
             // Compose Views into the Shell
-            regionManager.RegisterViewWithRegion(RegionNames.RegionDeviceTree, typeof(MainMenuView));
+            regionManager.RegisterViewWithRegion(RegionNames.RegionDeviceTree, typeof(DeviceTreeView));
         }
     }
 }
