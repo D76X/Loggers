@@ -88,6 +88,9 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Events {
         }
 
         [TestMethod]
+        public void FromEventActionBasedEventConvertArgs() { Assert.Fail(); }
+
+        [TestMethod]
         public void FromEventStandardNetEvent() {
 
             // arrange
@@ -180,5 +183,11 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Events {
             // assert
             Assert.IsTrue(listenerFinalizeTracker2.IsFinalzed);
         }
+
+        [TestMethod]
+        public void FromEventStandardNetEventConvertArgs() { Assert.Fail(); }
+
+        [TestMethod]
+        public void FromEventPatternTest() { Assert.Fail(); }
     }
 }

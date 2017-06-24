@@ -6,6 +6,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Events {
     [TestClass]
     public class WeakEventTest {
 
-     
+        [TestMethod]
+        public void ListenerIsGCedWhenThereAreNoRefsOtherThanWeakEvent() { Assert.Fail(); }
     }
 }
