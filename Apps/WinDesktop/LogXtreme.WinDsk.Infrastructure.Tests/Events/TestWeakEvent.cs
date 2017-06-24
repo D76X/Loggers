@@ -4,7 +4,7 @@ using System.Reactive.Linq;
 
 namespace LogXtreme.WinDsk.Infrastructure.Tests.Events {
     [TestClass]
-    public class WeakEventTest {
+    public class TestWeakEvent {
 
         [TestMethod]
         public void ListenerIsGCedWhenThereAreNoRefsOtherThanWeakEvent() { Assert.Fail(); }

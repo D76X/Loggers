@@ -68,12 +68,12 @@
     <Compile Include="Events\ActionEventListener.cs" />
     <Compile Include="Events\ActionEventSource.cs" />
     <Compile Include="Events\MessageEventArgs.cs" />
-    <Compile Include="Events\ReactiveExtensionsFromEventTest.cs" />
+    <Compile Include="Events\TestReactiveExtensionsFromEvent.cs" />
     <Compile Include="Events\FinalizeTracker.cs" />
     <Compile Include="Events\StandardNetEventListener.cs" />
     <Compile Include="Events\StandardNetEventSource.cs" />
     <Compile Include="Utils.cs" />
-    <Compile Include="Events\WeakEventTest.cs" />
+    <Compile Include="Events\TestWeakEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

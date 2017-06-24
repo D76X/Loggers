@@ -15,7 +15,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Events {
     /// https://www.codeproject.com/Articles/738109/The-NET-weak-event-pattern-in-Csharp
     /// </summary>
     [TestClass]
-    public partial class ReactiveExtensionsFromEventTest {
+    public partial class TestReactiveExtensionsFromEvent {
 
         [TestMethod]
         public void FromEventActionBasedEvent() {
