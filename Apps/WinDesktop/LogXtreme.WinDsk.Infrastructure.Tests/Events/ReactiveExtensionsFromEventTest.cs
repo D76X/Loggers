@@ -104,6 +104,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Events {
 
             // https://stackoverflow.com/questions/19895373/how-to-use-observable-fromevent-instead-of-fromeventpattern-and-avoid-string-lit
             // The first delegate is a factory that provides a conversion from Action<EventArgs> to EventHadler.
+            // The first delegate must be provided otherwise the hanlder will not be executed on the observer.
             var eventObservable = Observable.FromEvent<EventHandler, EventArgs>(
                 h => { return (s, e) => h(e); },
                 h => eventSource.Event += h,
@@ -127,6 +128,57 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Events {
             Assert.IsTrue(((MessageEventArgs)listener1.LastReceivedEventArgs).Message == secretMessage);
             Assert.IsTrue(((MessageEventArgs)listener2.LastReceivedEventArgs).Message == secretMessage);
             Assert.IsFalse(completed);
+
+            // act
+            eventSource.Raise(payload);
+
+            // assert
+            Assert.IsTrue(listener1.Invokations == 2);
+            Assert.IsTrue(listener2.Invokations == 2);
+            Assert.IsTrue(listener1.LastReceivedEventArgs is MessageEventArgs);
+            Assert.IsTrue(listener2.LastReceivedEventArgs is MessageEventArgs);
+            Assert.IsTrue(((MessageEventArgs)listener1.LastReceivedEventArgs).Message == secretMessage);
+            Assert.IsTrue(((MessageEventArgs)listener2.LastReceivedEventArgs).Message == secretMessage);
+            Assert.IsFalse(completed);
+
+            // act 
+            eventSource.Event -= listener1.OnEvent;
+            eventSource.Raise(payload);
+
+            // assert
+            Assert.IsTrue(listener1.Invokations == 2);
+            Assert.IsTrue(listener2.Invokations == 3);
+            Assert.IsTrue(listener1.LastReceivedEventArgs is MessageEventArgs);
+            Assert.IsTrue(listener2.LastReceivedEventArgs is MessageEventArgs);
+            Assert.IsTrue(((MessageEventArgs)listener1.LastReceivedEventArgs).Message == secretMessage);
+            Assert.IsTrue(((MessageEventArgs)listener2.LastReceivedEventArgs).Message == secretMessage);
+            Assert.IsFalse(completed);
+
+            // act
+            Utils.TriggerGC();
+
+            // assert
+            Assert.IsFalse(eventSourceFinalizeTracker.IsFinalzed);
+            Assert.IsFalse(listenerFinalizeTracker1.IsFinalzed);
+            Assert.IsFalse(listenerFinalizeTracker2.IsFinalzed);
+
+            // act
+            subscription.Dispose(); // this couse the handlers to get detached from the source
+            eventSource = null;
+            listener1 = null;
+            Utils.TriggerGC();
+
+            // assert
+            Assert.IsTrue(eventSourceFinalizeTracker.IsFinalzed);
+            Assert.IsTrue(listenerFinalizeTracker1.IsFinalzed);
+            Assert.IsFalse(listenerFinalizeTracker2.IsFinalzed); // the subscription still points to listener2
+
+            // act            
+            listener2 = null;
+            Utils.TriggerGC();
+
+            // assert
+            Assert.IsTrue(listenerFinalizeTracker2.IsFinalzed);
         }
     }
 }
