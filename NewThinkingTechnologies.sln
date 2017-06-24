@@ -292,6 +292,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Instrumentation", "Instrume
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.WinDsk.Infrastructure.Tests", "Apps\WinDesktop\LogXtreme.WinDsk.Infrastructure.Tests\LogXtreme.WinDsk.Infrastructure.Tests.csproj", "{69F4D4DB-C4CD-46B1-93DC-9D2EF251E717}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Temp", "Temp", "{215EEAAD-076C-4645-A8C7-76FC214BCA3C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

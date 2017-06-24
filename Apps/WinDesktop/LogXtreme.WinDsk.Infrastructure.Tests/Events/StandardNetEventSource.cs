@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LogXtreme.WinDsk.Infrastructure.Tests {
+namespace LogXtreme.WinDsk.Infrastructure.Tests.Events {
     internal class StandardNetEventSource {
 
         private int invokations = 0;

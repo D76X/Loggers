@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LogXtreme.WinDsk.Infrastructure.Tests {
+namespace LogXtreme.WinDsk.Infrastructure.Tests.Events {
 
     internal class StandardNetEventListener {
 
@@ -19,7 +19,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests {
 
         public int Invokations => this.invokations;
 
-        public EventArgs LastReceivedEventArgs => this.LastReceivedEventArgs;
+        public EventArgs LastReceivedEventArgs => this.lastReceivedEventArgs;
 
         ~StandardNetEventListener() {
             this.finalizeTracker.MarkAsFinalized();

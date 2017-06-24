@@ -1,11 +1,15 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Diagnostics;
 using System.Reactive.Linq;
 
-namespace LogXtreme.WinDsk.Infrastructure.Tests {
+namespace LogXtreme.WinDsk.Infrastructure.Tests.Events {
 
-    /// <summary>  
+    /// <summary>
+    /// Tests used for reference to show how to use RX's FromEvent and FromEventPatter.
+    /// 
     /// Refs
+    /// https://msdn.microsoft.com/en-us/library/hh229241(v=vs.103).aspx
     /// https://stackoverflow.com/questions/19895373/how-to-use-observable-fromevent-instead-of-fromeventpattern-and-avoid-string-lit
     /// http://rxwiki.wikidot.com/101samples#toc6
     /// https://www.codeproject.com/Articles/738109/The-NET-weak-event-pattern-in-Csharp
@@ -32,15 +36,15 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests {
             var counter = 0;
 
             var subscription = eventObservable.Subscribe(
-                observable => { counter += 1; }, 
-                error => { }, 
+                observable => { counter += 1; },
+                error => { },
                 () => { completed = true; });
 
             // act
             eventSource.Raise();
 
             // assert
-            Assert.IsTrue(listener.Invokations==1);
+            Assert.IsTrue(listener.Invokations == 1);
             Assert.IsTrue(counter == 1);
             Assert.IsFalse(completed);
 
@@ -64,7 +68,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests {
 
             // assert
             Assert.IsTrue(listener.Invokations == 2);
-            Assert.IsTrue(counter == 1);            
+            Assert.IsTrue(counter == 1);
 
             // act
             Utils.TriggerGC();
@@ -88,35 +92,41 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests {
 
             // arrange
             var eventSourceFinalizeTracker = new FinalizeTracker();
-            var listenerFinalizeTracker = new FinalizeTracker();
+            var listenerFinalizeTracker1 = new FinalizeTracker();
+            var listenerFinalizeTracker2 = new FinalizeTracker();
             var eventSource = new StandardNetEventSource(ref eventSourceFinalizeTracker);
-            var listener = new StandardNetEventListener(ref listenerFinalizeTracker);
+            var listener1 = new StandardNetEventListener(ref listenerFinalizeTracker1);
+            var listener2 = new StandardNetEventListener(ref listenerFinalizeTracker2);
 
-            // act
             string secretMessage = @"secret message";
-            eventSource.Event += listener.OnEvent;
             var payload = new MessageEventArgs(secretMessage);
+            eventSource.Event += listener1.OnEvent;
 
-            // we do not need a conversion function here as both the source and the listener work with the
-            // standard .NET event signature
-            var eventObservable = Observable.FromEvent<EventHandler, EventHandler>(               
+            // https://stackoverflow.com/questions/19895373/how-to-use-observable-fromevent-instead-of-fromeventpattern-and-avoid-string-lit
+            // The first delegate is a factory that provides a conversion from Action<EventArgs> to EventHadler.
+            var eventObservable = Observable.FromEvent<EventHandler, EventArgs>(
+                h => { return (s, e) => h(e); },
                 h => eventSource.Event += h,
-                h => eventSource.Event -= h);
+                h => eventSource.Event -= h);         
 
-            var completed = false;            
+            var completed = false;           
 
             var subscription = eventObservable.Subscribe(
-                observable => { counter += 1; },
-                error => { },
+                args => listener2.OnEvent(null, args),
+                error => { Debug.Write($"error in {nameof(FromEventStandardNetEvent)}"); },
                 () => { completed = true; });
 
             // act
             eventSource.Raise(payload);
 
             // assert
-            Assert.IsTrue(listener.Invokations == 1);
-            Assert.IsTrue(counter == 1);
-            Assert.IsFalse(completed);          
+            Assert.IsTrue(listener1.Invokations == 1);
+            Assert.IsTrue(listener2.Invokations == 1);
+            Assert.IsTrue(listener1.LastReceivedEventArgs is MessageEventArgs);
+            Assert.IsTrue(listener2.LastReceivedEventArgs is MessageEventArgs);
+            Assert.IsTrue(((MessageEventArgs)listener1.LastReceivedEventArgs).Message == secretMessage);
+            Assert.IsTrue(((MessageEventArgs)listener2.LastReceivedEventArgs).Message == secretMessage);
+            Assert.IsFalse(completed);
         }
     }
 }

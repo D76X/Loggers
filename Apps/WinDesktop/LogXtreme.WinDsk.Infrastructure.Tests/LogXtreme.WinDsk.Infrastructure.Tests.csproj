@@ -65,15 +65,15 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActionEventListener.cs" />
-    <Compile Include="ActionEventSource.cs" />
-    <Compile Include="MessageEventArgs.cs" />
-    <Compile Include="ReactiveExtensionsFromEventTest.cs" />
-    <Compile Include="FinalizeTracker.cs" />
-    <Compile Include="StandardNetEventListener.cs" />
-    <Compile Include="StandardNetEventSource.cs" />
+    <Compile Include="Events\ActionEventListener.cs" />
+    <Compile Include="Events\ActionEventSource.cs" />
+    <Compile Include="Events\MessageEventArgs.cs" />
+    <Compile Include="Events\ReactiveExtensionsFromEventTest.cs" />
+    <Compile Include="Events\FinalizeTracker.cs" />
+    <Compile Include="Events\StandardNetEventListener.cs" />
+    <Compile Include="Events\StandardNetEventSource.cs" />
     <Compile Include="Utils.cs" />
-    <Compile Include="WeakEventTest.cs" />
+    <Compile Include="Events\WeakEventTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
