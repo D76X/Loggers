@@ -1,11 +1,11 @@
-﻿using System;
+﻿using LogXtreme.WinDsk.Infrastructure.Expressions;
+using System;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
 using System.Linq.Expressions;
 using System.Reactive;
 using System.Reactive.Linq;
-using System.Reflection;
 
 namespace LogXtreme.WinDsk.Infrastructure.ReactiveExtensions {
 
@@ -26,9 +26,6 @@ namespace LogXtreme.WinDsk.Infrastructure.ReactiveExtensions {
     /// </summary>
     public static partial class ObservableEx {
 
-        const string ErrMsgExpressionIsNotProperty = @"The specified expression does not reference a property.";
-        const string ErrMsgNoPropertyInfoForMemberExpression = @"The specified member expression does not have property information.";
-
         /// <summary>
         /// Extension method for implemetations of INotifyPropertyChanged to convert a source of 
         /// INotifyPropertyChanged events into an IObservable of EventPattern with a payload of 
@@ -46,20 +43,8 @@ namespace LogXtreme.WinDsk.Infrastructure.ReactiveExtensions {
 
             Contract.Requires(source != null);
             Contract.Requires(propertyExpression != null);
-
-            var expressionBody = propertyExpression.Body as MemberExpression;
-
-            if (expressionBody == null) {
-                throw new ArgumentException(ErrMsgExpressionIsNotProperty);
-            }
-
-            var propertyInfo = expressionBody.Member as PropertyInfo;
-
-            if (propertyInfo == null) {
-                throw new ArgumentException(ErrMsgNoPropertyInfoForMemberExpression);
-            }
-
-            string propertyName = propertyInfo.Name;
+            
+            string propertyName = propertyExpression.ToPropertyName();
 
             // http://www.introtorx.com/content/v1.0.10621.0/04_CreatingObservableSequences.html#FromEvent
             // Observable.FromEventPattern<TEvent, TEventArgs>

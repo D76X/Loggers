@@ -96,6 +96,8 @@
     <Compile Include="CommandsGlobal.cs" />
     <Compile Include="Commands\GlobalCommands.cs" />
     <Compile Include="Events\DeviceAttachedEvents.cs" />
+    <Compile Include="Expressions\ExpressionExtensions.cs" />
+    <Compile Include="Expressions\PropertyExpression.cs" />
     <Compile Include="Menu\IMenuItem.cs" />
     <Compile Include="Menu\MenuItemEventArgs.cs" />
     <Compile Include="Prism\ICreateRegionManagerScope.cs" />
