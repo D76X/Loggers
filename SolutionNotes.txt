@@ -15,6 +15,7 @@ https://docs.microsoft.com/en-us/nuget/consume-packages/package-restore
 ======================================================================================================
 USEFUL SHORTCUTS
 
+TRACK FILE IN SOLUTION EXPLORER
 ctrl+[ => s
 
 DEACTIVATE TRACK ACIVE ITEM IN SOLUTION EXPLORER
@@ -24,3 +25,16 @@ Tools -> Options -> Projects and Solutions -> General -> "Track Active Item in S
 SHOW AVAILABLE OVERRIDES
 type override in a class then SPACE or TAB SPACE
 http://stackoverflow.com/questions/6213332/visual-studio-2010-keyboard-shortcut-to-override-method-in-c
+
+ZOOM IN/OUT IN THE TEXT EDITOR
+ctrl+shift+(+/-)
+
+======================================================================================================
+
+CLEAR CACHE WHEN TEST EXPLORER DO NOT SHOW TESTS
+https://stackoverflow.com/questions/35103781/why-is-the-visual-studio-2015-2017-test-runner-not-discovering-my-xunit-v2-tests
+
+In PowerShell
+del $env:TEMP\VisualStudioTestExplorerExtensions
+
+======================================================================================================
