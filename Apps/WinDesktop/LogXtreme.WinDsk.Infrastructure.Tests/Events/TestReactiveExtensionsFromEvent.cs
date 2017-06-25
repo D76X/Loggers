@@ -13,6 +13,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Events {
     /// https://stackoverflow.com/questions/19895373/how-to-use-observable-fromevent-instead-of-fromeventpattern-and-avoid-string-lit
     /// http://rxwiki.wikidot.com/101samples#toc6
     /// https://www.codeproject.com/Articles/738109/The-NET-weak-event-pattern-in-Csharp
+    /// https://rehansaeed.com/reactive-extensions-part2-wrapping-events/
     /// </summary>
     [TestClass]
     public partial class TestReactiveExtensionsFromEvent {
@@ -85,10 +86,14 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Events {
             // assert
             Assert.IsTrue(eventSourceFinalizeTracker.IsFinalzed);
             Assert.IsTrue(listenerFinalizeTracker.IsFinalzed);
-        }
 
-        [TestMethod]
-        public void FromEventActionBasedEventConvertArgs() { Assert.Fail(); }
+            // clean-up
+            subscription.Dispose();
+            subscription = null;
+            eventObservable = null;
+            listenerFinalizeTracker = null;
+            eventSourceFinalizeTracker = null;
+        }
 
         [TestMethod]
         public void FromEventStandardNetEvent() {
@@ -111,9 +116,9 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Events {
             var eventObservable = Observable.FromEvent<EventHandler, EventArgs>(
                 h => { return (s, e) => h(e); },
                 h => eventSource.Event += h,
-                h => eventSource.Event -= h);         
+                h => eventSource.Event -= h);
 
-            var completed = false;           
+            var completed = false;
 
             var subscription = eventObservable.Subscribe(
                 args => listener2.OnEvent(null, args),
@@ -182,12 +187,114 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Events {
 
             // assert
             Assert.IsTrue(listenerFinalizeTracker2.IsFinalzed);
+
+            // clean-up
+            subscription.Dispose();
+            subscription = null;
+            eventObservable = null;
+            listenerFinalizeTracker1 = null;
+            listenerFinalizeTracker2 = null;
+            eventSourceFinalizeTracker = null;
         }
 
         [TestMethod]
-        public void FromEventStandardNetEventConvertArgs() { Assert.Fail(); }
+        public void FromEventPattern() {
+
+            // arrange 
+            var eventSourceFinalizeTracker = new FinalizeTracker();
+            var listenerFinalizeTracker = new FinalizeTracker();
+            var eventSource = new GenericStandardNetEventSource<EventArgs>(ref eventSourceFinalizeTracker);
+            var listener = new StandardNetEventListener(ref listenerFinalizeTracker);
+
+            var eventObservable = Observable.FromEventPattern<EventArgs>(
+                h => eventSource.Event += h,
+                h => eventSource.Event -= h);
+
+            var subscription = eventObservable.Subscribe(
+                eventPattern => listener.OnEvent(eventPattern.Sender, eventPattern.EventArgs),
+                error => { },
+                () => { });
+
+            var secretMessage = @"secretMessage";
+
+            // act
+            eventSource.Raise(new MessageEventArgs(secretMessage));
+
+            // assert
+            Assert.AreEqual(listener.Invokations, 1);
+            Assert.IsInstanceOfType(listener.LastReceivedEventArgs, typeof(MessageEventArgs));
+            Assert.AreEqual(secretMessage, ((MessageEventArgs)listener.LastReceivedEventArgs).Message);
+
+            // clean-up
+            subscription.Dispose();
+            subscription = null;
+            eventObservable = null;
+            listenerFinalizeTracker = null;
+            eventSourceFinalizeTracker = null;
+        }
 
         [TestMethod]
-        public void FromEventPatternTest() { Assert.Fail(); }
+        public void FromEventPatternWithTypeCastTest() {
+
+            // arrange 
+            var eventSourceFinalizeTracker = new FinalizeTracker();
+            var listenerFinalizeTracker = new FinalizeTracker();
+            var eventSource = new StandardNetEventSource(ref eventSourceFinalizeTracker);
+            var listener = new StandardNetEventListener(ref listenerFinalizeTracker);
+
+            var eventObservable = Observable.FromEventPattern(
+                h => eventSource.Event += h,
+                h => eventSource.Event -= h);
+
+            var subscription = eventObservable.Subscribe(
+                eventPattern => listener.OnEvent(eventPattern.Sender, eventPattern.EventArgs as EventArgs),
+                error => { },
+                () => { });
+
+            // act
+            eventSource.Raise();
+
+            // assert
+            Assert.AreEqual(listener.Invokations, 1);
+
+            // clean-up
+            subscription.Dispose();
+            subscription = null;
+            eventObservable = null;
+            listenerFinalizeTracker = null;
+            eventSourceFinalizeTracker = null;
+        }        
+
+        [TestMethod]
+        public void FromEventPatternToAction() {
+
+            // arrange 
+            var eventSourceFinalizeTracker = new FinalizeTracker();
+            var listenerFinalizeTracker = new FinalizeTracker();
+            var eventSource = new GenericStandardNetEventSource<MessageEventArgs>(ref eventSourceFinalizeTracker);
+
+            var eventObservable = Observable.FromEventPattern<MessageEventArgs>(                
+                h => eventSource.Event += h,
+                h => eventSource.Event -= h).
+                Select(x => x.EventArgs.Message);
+
+            var readMessage = string.Empty;
+            var secretMessage = @"secretMessage";
+            var subscription = eventObservable.Subscribe(m => readMessage = m);
+
+            // act
+            eventSource.Raise(new MessageEventArgs(secretMessage));
+
+            // assert
+            Assert.AreEqual(readMessage, secretMessage);
+
+            // clean-up
+            subscription.Dispose();
+            subscription = null;
+            eventObservable = null;
+            listenerFinalizeTracker = null;
+            eventSourceFinalizeTracker = null;
+
+        }
     }
 }

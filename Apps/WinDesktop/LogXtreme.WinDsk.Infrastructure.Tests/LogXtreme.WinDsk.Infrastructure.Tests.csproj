@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Events\ActionEventListener.cs" />
     <Compile Include="Events\ActionEventSource.cs" />
+    <Compile Include="Events\GenericStandardNetEventSource.cs" />
     <Compile Include="Events\MessageEventArgs.cs" />
     <Compile Include="Events\TestReactiveExtensionsFromEvent.cs" />
     <Compile Include="Events\FinalizeTracker.cs" />
