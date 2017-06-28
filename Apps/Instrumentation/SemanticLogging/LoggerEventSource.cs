@@ -15,6 +15,36 @@ namespace SemanticLogging {
     [EventSource(Name = "NewThinkingTechnologies-LogXtreme-LoggerEventSource")]
     public sealed class LoggerEventSource : EventSource {
 
+        /// <summary>
+        /// Keywords are indipendent and ortogonal
+        /// </summary>
+        public class Keywords {
+            public const EventKeywords DATA = (EventKeywords)0x0001;
+            public const EventKeywords COMMUNICATION = (EventKeywords)0x0002;
+            public const EventKeywords USB = (EventKeywords)0x0003;
+            public const EventKeywords ETHERNET = (EventKeywords)0x0004;
+            public const EventKeywords TCPIP = (EventKeywords)0x0005;
+            public const EventKeywords LICENCE = (EventKeywords)0x0006;
+            public const EventKeywords REGISTRY = (EventKeywords)0x0007;
+            public const EventKeywords CONFIG = (EventKeywords)0x0008;
+            public const EventKeywords INITIALIZATION = (EventKeywords)0x0009;
+            public const EventKeywords PERFORMANCE = (EventKeywords)0x0010;
+            public const EventKeywords OPTIMIZATION = (EventKeywords)0x0011;
+            public const EventKeywords EXPIRED = (EventKeywords)0x0012;
+            public const EventKeywords TIME = (EventKeywords)0x0013;
+            public const EventKeywords DATE = (EventKeywords)0x0014;
+            public const EventKeywords CONNECTION = (EventKeywords)0x0014;
+            public const EventKeywords LOST = (EventKeywords)0x0015;
+            public const EventKeywords MADE = (EventKeywords)0x0016;
+            public const EventKeywords FAILED = (EventKeywords)0x0017;
+            public const EventKeywords TRIED = (EventKeywords)0x0018;
+            public const EventKeywords SENT = (EventKeywords)0x0019;
+            public const EventKeywords RECEIVED = (EventKeywords)0x0020;
+            public const EventKeywords CHANGED = (EventKeywords)0x0021;
+            public const EventKeywords ENABLED = (EventKeywords)0x0022;
+            public const EventKeywords DISABLED = (EventKeywords)0x0023;
+        }
+
         private static Lazy<LoggerEventSource> logger = new Lazy<LoggerEventSource>();
         private LoggerEventSource() { }
         public static LoggerEventSource Logger => logger.Value;
