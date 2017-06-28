@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Diagnostics.Tracing;
 
+/// <summary>
+/// Refs
+/// https://stackoverflow.com/questions/23101017/why-is-my-eventsource-not-logging
+/// https://dzimchuk.net/troubleshooting-slab-out-of-process-logging/
+/// </summary>
 namespace SemanticLogging {
-    
+
     /// <summary>
     /// Keywords are indipendent and orthogonal
     /// </summary>
@@ -33,15 +38,20 @@ namespace SemanticLogging {
         public const EventKeywords DISABLED = (EventKeywords)0x0023;
     }
 
-    [EventSource(Name = "NewThinkingTechnologies-LogXtreme-LoggerEventSource")]
-    public sealed class LoggerEventSource : EventSource {  
+    [EventSource(Name = "NewThinkingTechnologies-LogXtreme-LoggerEventSource")]   
+    public sealed class LoggerEventSource : EventSource {
 
-        private static Lazy<LoggerEventSource> logger = new Lazy<LoggerEventSource>();
+        /// <summary>
+        /// Singletone pattern in .NET 4 or higher
+        /// Refs
+        /// http://csharpindepth.com/Articles/General/Singleton.aspx
+        /// </summary>
+        private static Lazy<LoggerEventSource> logger = new Lazy<LoggerEventSource>(() => new LoggerEventSource());
         private LoggerEventSource() { }
-        public static LoggerEventSource Logger => logger.Value;
+        public static LoggerEventSource Logger =>logger.Value;
 
         [Event(1, Level = EventLevel.Informational)]
-        public void LogInfo(string message, string source, object value) {
+        public void LogInfo(string message, string source, string value) {
 
             if (IsEnabled()) {
                 WriteEvent(1, message, source, value);
@@ -49,7 +59,7 @@ namespace SemanticLogging {
         }
 
         [Event(2, Level = EventLevel.Warning)]
-        public void LogWarning(string message, string source, object value) {
+        public void LogWarning(string message, string source, string value) {
 
             if (IsEnabled()) {
                 WriteEvent(2, message, source, value);
@@ -57,7 +67,7 @@ namespace SemanticLogging {
         }
 
         [Event(3, Level = EventLevel.Error)]
-        public void LogError(string message, string source, object value) {
+        public void LogError(string message, string source, string value) {
 
             if (IsEnabled()) {
                 WriteEvent(3, message, source, value);
@@ -65,7 +75,7 @@ namespace SemanticLogging {
         }
 
         [Event(4, Level = EventLevel.Critical)]
-        public void LogCritical(string message, string source, object value) {
+        public void LogCritical(string message, string source, string value) {
 
             if (IsEnabled()) {
                 WriteEvent(4, message, source, value);
@@ -73,7 +83,7 @@ namespace SemanticLogging {
         }
 
         [Event(5, Level = EventLevel.LogAlways)]
-        public void LogAlways(string message, string source, object value) {
+        public void LogAlways(string message, string source, string value) {
 
             if (IsEnabled()) {
                 WriteEvent(5, message, source, value);
@@ -81,7 +91,7 @@ namespace SemanticLogging {
         }
 
         [Event(6, Level = EventLevel.Verbose)]
-        public void LogVerbose(string message, string source, object value) {
+        public void LogVerbose(string message, string source, string value) {
 
             if (IsEnabled()) {
                 WriteEvent(6, message, source, value);

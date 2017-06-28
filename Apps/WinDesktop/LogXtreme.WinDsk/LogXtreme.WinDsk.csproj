@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3A2D46F2-91F8-4AEC-BC99-3495E8E3709A}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>LogXtreme.WinDsk</RootNamespace>
     <AssemblyName>LogXtreme.WinDsk</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
@@ -32,6 +32,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -129,6 +132,10 @@
     <ProjectReference Include="..\..\Instrumentation\SemanticLogging\SemanticLogging.csproj">
       <Project>{724fb395-9f33-4f4c-993f-2b004425bfc3}</Project>
       <Name>SemanticLogging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Instrumentation\SlabManagementTools\SlabManagementTools.csproj">
+      <Project>{c92cf373-0901-4db0-9c82-daf9e9a09ffa}</Project>
+      <Name>SlabManagementTools</Name>
     </ProjectReference>
     <ProjectReference Include="..\LogXtreme.WinDsk.Infrastructure\LogXtreme.WinDsk.Infrastructure.csproj">
       <Project>{489706e3-c226-4d83-bb3d-c5a0d49d3835}</Project>
