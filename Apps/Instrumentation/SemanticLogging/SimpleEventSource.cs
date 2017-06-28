@@ -17,6 +17,13 @@ namespace SemanticLogging {
     /// 10-If you supply only a Task but not the Opcode this is used as the name of the event by consumers and the method name is ignored
     /// 11-You can redefined the enums Task, Opcodes, Keywords as illustrated below - use nested classes and costs
     /// 12-Use Int32 or Int64 values consistently to redifined the enums i.e. 0x0001 for the Int32 value 1 but do not mix Inte32 and Int64
+    /// 13-The event name shown in the manifest is the name of the event when the Task and opcode are not defined in the [Event] attribute 
+    /// 14-If the [Event] attribute defines Task and Opcode the name of the event name shown in the manifest is the concatenation Task-Opcode
+    /// 15-The standard Opcodes are Start & Stop - it is advised not to create new opcodes unless absolutely necessary
+    /// 16-The only methods considered by ETW to create the manifest are those that return void!
+    /// 17-It is possible to use support methods that do not return void in those that defines events
+    /// 18-The access level of the methods return void that define events is irrelevant
+    /// 19-Use the [NonEventAttribute] to identify the support methods
     /// </summary>
     [EventSource(Name = "NewThinkingTechnologies-LogXtreme-SimpleEventSource")]
     public sealed class SimpleEventSource : EventSource {
