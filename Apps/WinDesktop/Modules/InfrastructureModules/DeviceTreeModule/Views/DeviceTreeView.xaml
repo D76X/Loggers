@@ -8,7 +8,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
 
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <ContentControl Content="Device TreeView" Foreground="Wheat"/>
+        <ContentControl Content="Device TreeView" Foreground="Red"/>
     </Grid>
 
 </UserControl>

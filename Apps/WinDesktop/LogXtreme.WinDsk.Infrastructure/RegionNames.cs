@@ -9,10 +9,7 @@ namespace LogXtreme.WinDsk.Infrastructure {
         public const string RegionContent = @"RegionContent";        
         public const string RegionLeftPanels = @"RegionLeftPanels";
         public const string RegionWorkspace = @"RegionWorkspace";
-        public const string RegionRightPanels = @"RegionRightPanels";
-
-        // normally in the left panel
-        public const string RegionDeviceTree = @"RegionDeviceTree";
+        public const string RegionRightPanels = @"RegionRightPanels";        
 
         public const string RegionStatusBar = @"RegionStatusBar";
     }

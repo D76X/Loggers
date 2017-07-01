@@ -31,7 +31,7 @@ namespace DeviceTreeModule {
             // Register Shared Services
 
             // Compose Views into the Shell
-            regionManager.RegisterViewWithRegion(RegionNames.RegionDeviceTree, typeof(DeviceTreeView));
+            regionManager.RegisterViewWithRegion(RegionNames.RegionLeftPanels, typeof(DeviceTreeView));
         }
     }
 }
