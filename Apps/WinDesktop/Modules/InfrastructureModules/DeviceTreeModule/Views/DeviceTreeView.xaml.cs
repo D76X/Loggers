@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DeviceTreeModule.Interfaces;
+using LogXtreme.WinDsk.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,9 +19,21 @@ namespace DeviceTreeModule.Views {
     /// <summary>
     /// Interaction logic for DeviceTreeView.xaml
     /// </summary>
-    public partial class DeviceTreeView : UserControl {
-        public DeviceTreeView() {
+    public partial class DeviceTreeView : UserControl, IDeviceTreeView {
+
+        public DeviceTreeView(IDeviceTreeViewModel viewModel) {
             InitializeComponent();
+            this.ViewModel = viewModel;
+        }
+
+        public IViewModel ViewModel {
+            get {
+                return (IDeviceTreeViewModel)this.DataContext;
+            }
+
+            set {
+                this.DataContext = value;
+            }
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ContentModule.Interfaces;
+using LogXtreme.WinDsk.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,9 +19,21 @@ namespace ContentModule.Views {
     /// <summary>
     /// Interaction logic for ContentView.xaml
     /// </summary>
-    public partial class ContentView : UserControl {
-        public ContentView() {
+    public partial class ContentView : UserControl, IContentView {
+
+        public ContentView(IContentViewModel viewModel) {
             InitializeComponent();
+            this.ViewModel = viewModel;
+        }
+
+        public IViewModel ViewModel {
+            get {
+                return (IContentViewModel)this.DataContext;
+            }
+
+            set {
+                this.DataContext = value;
+            }
         }
     }
 }

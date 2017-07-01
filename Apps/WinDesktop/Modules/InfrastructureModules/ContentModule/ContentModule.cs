@@ -1,4 +1,6 @@
-﻿using ContentModule.Views;
+﻿using ContentModule.Interfaces;
+using ContentModule.ViewModels;
+using ContentModule.Views;
 using LogXtreme.WinDsk.Infrastructure;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
@@ -22,6 +24,7 @@ namespace ContentModule {
         public void Initialize() {
 
             // Register types
+            this.container.RegisterType<IContentViewModel, ContentViewModel>();
 
             // Subscribe to Services or Events
 

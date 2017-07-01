@@ -1,4 +1,6 @@
-﻿using DeviceTreeModule.Views;
+﻿using DeviceTreeModule.Interfaces;
+using DeviceTreeModule.ViewModels;
+using DeviceTreeModule.Views;
 using LogXtreme.WinDsk.Infrastructure;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
@@ -22,6 +24,7 @@ namespace DeviceTreeModule {
         public void Initialize() {
 
             // Register types
+            this.container.RegisterType<IDeviceTreeViewModel, DeviceTreeViewModel>();
 
             // Subscribe to Services or Events
 

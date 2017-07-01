@@ -2,6 +2,8 @@
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Regions;
+using StatusBarModule.Interfaces;
+using StatusBarModule.ViewModels;
 using StatusBarModule.Views;
 using System;
 using System.Collections.Generic;
@@ -27,6 +29,7 @@ namespace StatusBarModule {
         public void Initialize() {
 
             // Register types
+            this.container.RegisterType<IStatusBarViewModel, StatusBarViewModel>();
 
             // Subscribe to Services or Events
 

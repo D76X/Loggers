@@ -6,7 +6,9 @@
              xmlns:local="clr-namespace:StatusBarModule.Views"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
+    <Grid HorizontalAlignment="Center"
+          VerticalAlignment="Center">
+        <ContentControl Content="StatusBar"
+                        Foreground="Wheat" />
     </Grid>
 </UserControl>

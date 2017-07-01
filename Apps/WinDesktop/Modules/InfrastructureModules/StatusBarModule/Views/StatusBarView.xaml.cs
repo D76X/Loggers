@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LogXtreme.WinDsk.Infrastructure;
+using StatusBarModule.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,9 +19,21 @@ namespace StatusBarModule.Views {
     /// <summary>
     /// Interaction logic for StatusBarView.xaml
     /// </summary>
-    public partial class StatusBarView : UserControl {
-        public StatusBarView() {
+    public partial class StatusBarView : UserControl, IStatusBarView {
+
+        public StatusBarView(IStatusBarViewModel viewModel) {
             InitializeComponent();
+            this.ViewModel = viewModel;
+        }
+
+        public IViewModel ViewModel {
+            get {
+                return (IStatusBarViewModel)this.DataContext;
+            }
+
+            set {
+                this.DataContext = value;
+            }
         }
     }
 }

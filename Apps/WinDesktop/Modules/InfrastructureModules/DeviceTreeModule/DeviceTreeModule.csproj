@@ -73,6 +73,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeviceTreeModule.cs" />
+    <Compile Include="Interfaces\IDeviceTreeView.cs" />
+    <Compile Include="Interfaces\IDeviceTreeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -86,6 +88,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ViewModels\DeviceTreeViewModel.cs" />
     <Compile Include="Views\DeviceTreeView.xaml.cs">
       <DependentUpon>DeviceTreeView.xaml</DependentUpon>
     </Compile>
@@ -111,5 +114,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
