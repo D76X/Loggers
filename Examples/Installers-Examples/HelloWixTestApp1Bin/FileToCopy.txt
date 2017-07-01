@@ -1,1 +1,0 @@
-This file should be capied over to a specific folder on the target system during installation of the product.
