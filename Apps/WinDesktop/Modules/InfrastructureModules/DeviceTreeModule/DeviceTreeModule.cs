@@ -1,9 +1,8 @@
-﻿using System;
-using Prism.Modularity;
-using Microsoft.Practices.Unity;
-using Prism.Regions;
+﻿using DeviceTreeModule.Views;
 using LogXtreme.WinDsk.Infrastructure;
-using DeviceTreeModule.Views;
+using Microsoft.Practices.Unity;
+using Prism.Modularity;
+using Prism.Regions;
 
 namespace DeviceTreeModule {
 
