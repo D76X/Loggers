@@ -1,19 +1,18 @@
-﻿using System;
-using Prism.Modularity;
-using Microsoft.Practices.Unity;
-using Prism.Regions;
+﻿using ContentModule.Views;
 using LogXtreme.WinDsk.Infrastructure;
-using DeviceTreeModule.Views;
+using Microsoft.Practices.Unity;
+using Prism.Modularity;
+using Prism.Regions;
 
-namespace DeviceTreeModule {
+namespace ContentModule {
 
-    [Module(ModuleName = nameof(DeviceTreeModule))]
-    public class DeviceTreeModule : IModule {
+    [Module(ModuleName = nameof(ContentModule))]
+    public class ContentModule : IModule {
 
         private readonly IUnityContainer container;
         private readonly RegionManager regionManager;
 
-        public DeviceTreeModule(
+        public ContentModule(
             IUnityContainer container,
             RegionManager regionManager) {
             this.container = container;
@@ -29,7 +28,7 @@ namespace DeviceTreeModule {
             // Register Shared Services
 
             // Compose Views into the Shell
-            regionManager.RegisterViewWithRegion(RegionNames.RegionDeviceTree, typeof(DeviceTreeView));
+            regionManager.RegisterViewWithRegion(RegionNames.RegionContent, typeof(ContentView));
         }
     }
 }

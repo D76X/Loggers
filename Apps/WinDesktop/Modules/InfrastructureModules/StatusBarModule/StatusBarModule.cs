@@ -1,19 +1,23 @@
-﻿using System;
-using Prism.Modularity;
+﻿using LogXtreme.WinDsk.Infrastructure;
 using Microsoft.Practices.Unity;
+using Prism.Modularity;
 using Prism.Regions;
-using LogXtreme.WinDsk.Infrastructure;
-using DeviceTreeModule.Views;
+using StatusBarModule.Views;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace DeviceTreeModule {
+namespace StatusBarModule {
 
-    [Module(ModuleName = nameof(DeviceTreeModule))]
-    public class DeviceTreeModule : IModule {
+    [Module(ModuleName = nameof(StatusBarModule))]
+    public class StatusBarModule : IModule {
 
         private readonly IUnityContainer container;
         private readonly RegionManager regionManager;
 
-        public DeviceTreeModule(
+        public StatusBarModule(
             IUnityContainer container,
             RegionManager regionManager) {
             this.container = container;
@@ -29,7 +33,7 @@ namespace DeviceTreeModule {
             // Register Shared Services
 
             // Compose Views into the Shell
-            regionManager.RegisterViewWithRegion(RegionNames.RegionDeviceTree, typeof(DeviceTreeView));
+            regionManager.RegisterViewWithRegion(RegionNames.RegionStatusBar, typeof(StatusBarView));
         }
     }
 }
