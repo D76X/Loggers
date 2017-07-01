@@ -90,19 +90,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{62CF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AppServices", "AppServices", "{B41C4F41-E9F6-4C26-B701-E6A51C4E716F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Notes", "_Notes", "{ED860E34-B8CA-4E78-AC0C-2167C5C67172}"
-	ProjectSection(SolutionItems) = preProject
-		LogXtreme.WinDsk.Notes.txt = LogXtreme.WinDsk.Notes.txt
-		PrismNotes.txt = PrismNotes.txt
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{A347067B-01F3-4599-8D51-ED23973E8043}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{F0C6C271-B1C0-4922-BE27-B2527AD6D2D1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Notes", "_Notes", "{54A549FC-CAB6-43C9-847E-FE7F3E5C50E7}"
 	ProjectSection(SolutionItems) = preProject
-		SolutionNotes.txt = SolutionNotes.txt
+		Notes\GitHubResources.txt = Notes\GitHubResources.txt
+		Notes\GitWorkflow.png = Notes\GitWorkflow.png
+		Notes\LogXtreme.WinDsk.Notes.txt = Notes\LogXtreme.WinDsk.Notes.txt
+		Notes\PrismNotes.txt = Notes\PrismNotes.txt
+		Notes\SolutionNotes.txt = Notes\SolutionNotes.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Comms", "Comms", "{54F16C71-D5DA-4F92-A183-832493915D5E}"
@@ -253,12 +251,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Temp", "Temp", "{215EEAAD-076C-4645-A8C7-76FC214BCA3C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlabManagementTools", "Apps\Instrumentation\SlabManagementTools\SlabManagementTools.csproj", "{C92CF373-0901-4DB0-9C82-DAF9E9A09FFA}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_GitHubResources", "_GitHubResources", "{CFE9334C-9AF2-425E-AAD4-ED94F722AA3E}"
-	ProjectSection(SolutionItems) = preProject
-		GitHubResources\GitHubResources.txt = GitHubResources\GitHubResources.txt
-		GitHubResources\GitWorkflow.png = GitHubResources\GitWorkflow.png
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Simulators", "Simulators", "{B604183E-C50C-4460-A57A-F52C0A036206}"
 EndProject
@@ -867,7 +859,6 @@ Global
 		{45449303-EA76-4B02-B1EE-CCBB11D41186} = {336F8F07-C586-45D4-B7E2-20FDB911D3B5}
 		{62CF1173-E7C8-4563-AD35-5AF9EADE86EA} = {45449303-EA76-4B02-B1EE-CCBB11D41186}
 		{B41C4F41-E9F6-4C26-B701-E6A51C4E716F} = {62CF1173-E7C8-4563-AD35-5AF9EADE86EA}
-		{ED860E34-B8CA-4E78-AC0C-2167C5C67172} = {45449303-EA76-4B02-B1EE-CCBB11D41186}
 		{A347067B-01F3-4599-8D51-ED23973E8043} = {45449303-EA76-4B02-B1EE-CCBB11D41186}
 		{F0C6C271-B1C0-4922-BE27-B2527AD6D2D1} = {45449303-EA76-4B02-B1EE-CCBB11D41186}
 		{54F16C71-D5DA-4F92-A183-832493915D5E} = {336F8F07-C586-45D4-B7E2-20FDB911D3B5}
