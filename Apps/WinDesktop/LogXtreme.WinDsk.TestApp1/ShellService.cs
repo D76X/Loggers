@@ -1,8 +1,8 @@
-﻿using System;
-using LogXtreme.WinDsk.Infrastructure;
+﻿using LogXtreme.WinDsk.Infrastructure;
+using LogXtreme.WinDsk.Infrastructure.Prism;
+using LogXtreme.WinDsk.Infrastructure.Services;
 using Microsoft.Practices.Unity;
 using Prism.Regions;
-using LogXtreme.WinDsk.Infrastructure.Prism;
 using System.Windows;
 
 namespace LogXtreme.WinDsk {

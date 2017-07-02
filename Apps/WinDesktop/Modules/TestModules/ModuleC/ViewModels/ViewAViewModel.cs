@@ -1,9 +1,9 @@
-﻿using System;
-using LogXtreme.WinDsk.Infrastructure;
+﻿using LogXtreme.WinDsk.Infrastructure;
+using LogXtreme.WinDsk.Infrastructure.Models;
+using LogXtreme.WinDsk.Infrastructure.Prism;
 using ModuleC.Interfaces;
 using Prism.Commands;
 using Prism.Regions;
-using LogXtreme.WinDsk.Infrastructure.Prism;
 
 namespace ModuleC.ViewModels {
     public class ViewAViewModel : 

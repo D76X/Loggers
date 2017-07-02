@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:prism="http://prismlibrary.com/"          
         xmlns:inf="clr-namespace:LogXtreme.WinDsk.Infrastructure;assembly=LogXtreme.WinDsk.Infrastructure"
+        xmlns:infcommands="clr-namespace:LogXtreme.WinDsk.Infrastructure.Commands;assembly=LogXtreme.WinDsk.Infrastructure"
         mc:Ignorable="d"
         Title="{Binding Path=Id, StringFormat='Shell {0}'}">
     <Grid>
@@ -23,7 +24,7 @@
                           Command="{Binding NavigateCommand}"
                           CommandParameter="ModuleD.Views.TabView" />
                 <MenuItem Header="Save Session"
-                          Command="{x:Static inf:CommandsGlobal.SaveSession}"
+                          Command="{x:Static infcommands:CommandsGlobal.SaveSession}"
                           CommandParameter="SomeParameter" />
             </Menu>
             <StatusBar DockPanel.Dock="Bottom">

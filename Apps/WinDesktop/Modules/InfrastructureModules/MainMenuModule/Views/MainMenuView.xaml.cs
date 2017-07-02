@@ -1,4 +1,4 @@
-﻿using LogXtreme.WinDsk.Infrastructure;
+﻿using LogXtreme.WinDsk.Infrastructure.Models;
 using MainMenuModule.Interfaces;
 using System.Windows.Controls;
 

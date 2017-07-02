@@ -1,4 +1,5 @@
 ﻿using LogXtreme.WinDsk.Infrastructure;
+using LogXtreme.WinDsk.Infrastructure.Models;
 using StatusBarModule.Interfaces;
 using System;
 using System.Collections.Generic;

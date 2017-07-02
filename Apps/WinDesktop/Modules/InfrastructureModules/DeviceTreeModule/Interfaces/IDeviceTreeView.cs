@@ -1,4 +1,4 @@
-﻿using LogXtreme.WinDsk.Infrastructure;
+﻿using LogXtreme.WinDsk.Infrastructure.Models;
 
 namespace DeviceTreeModule.Interfaces {
     public interface IDeviceTreeView : IView {

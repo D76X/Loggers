@@ -1,5 +1,5 @@
-﻿using LogXtreme.WinDsk.Infrastructure;
-using LogXtreme.WinDsk.Infrastructure.Prism;
+﻿using LogXtreme.WinDsk.Infrastructure.Prism;
+using LogXtreme.WinDsk.Infrastructure.Services;
 using LogXtreme.WinDsk.Interfaces;
 using LogXtreme.WinDsk.Services;
 using LogXtreme.WinDsk.ViewModels;
@@ -11,8 +11,7 @@ using Prism.Unity;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace LogXtreme.WinDsk
-{
+namespace LogXtreme.WinDsk {
 
     public class Bootstrapper: UnityBootstrapper {
 

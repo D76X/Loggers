@@ -12,6 +12,7 @@ using LogXtreme.WinDsk.Modules.TestModules.ModuleC;
 using LogXtreme.WinDsk.Interfaces;
 using LogXtreme.WinDsk.Modules.TestModules.ModuleD;
 using LogXtreme.WinDsk.Infrastructure.Prism;
+using LogXtreme.WinDsk.Infrastructure.Services;
 
 namespace LogXtreme.WinDsk {
     public class Bootstrapper: UnityBootstrapper {        

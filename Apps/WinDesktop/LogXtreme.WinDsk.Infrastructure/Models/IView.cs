@@ -1,4 +1,4 @@
-﻿namespace LogXtreme.WinDsk.Infrastructure {
+﻿namespace LogXtreme.WinDsk.Infrastructure.Models {
     public interface IView {
 
         IViewModel ViewModel { get; set; }

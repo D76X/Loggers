@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LogXtreme.WinDsk.Infrastructure;
 using ModuleC.Interfaces;
+using LogXtreme.WinDsk.Infrastructure.Models;
 
 namespace ModuleC.Views {
     /// <summary>

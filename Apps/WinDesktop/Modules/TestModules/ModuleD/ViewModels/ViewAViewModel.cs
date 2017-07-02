@@ -1,13 +1,13 @@
-﻿using System;
-using LogXtreme.WinDsk.Infrastructure;
+﻿using LogXtreme.WinDsk.Infrastructure;
+using LogXtreme.WinDsk.Infrastructure.Models;
 using LogXtreme.WinDsk.Infrastructure.Prism;
+using LogXtreme.WinDsk.Modules.TestModules.ModuleD.Names;
 using ModuleD.Interfaces;
 using Prism.Commands;
 using Prism.Regions;
-using LogXtreme.WinDsk.Modules.TestModules.ModuleD.Names;
+using System;
 
-namespace ModuleD.ViewModels
-{
+namespace ModuleD.ViewModels {
     public class ViewAViewModel : 
         ViewModelBase,
         IViewAViewModel,

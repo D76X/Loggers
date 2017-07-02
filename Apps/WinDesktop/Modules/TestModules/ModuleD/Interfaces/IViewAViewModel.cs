@@ -1,6 +1,8 @@
-﻿using LogXtreme.WinDsk.Infrastructure;
+﻿using LogXtreme.WinDsk.Infrastructure.Models;
 
 namespace ModuleD.Interfaces {
-    public interface IViewAViewModel : IViewModel, IViewModelTitle {
+    public interface IViewAViewModel : 
+        IViewModel, 
+        IViewModelTitle {
     }
 }

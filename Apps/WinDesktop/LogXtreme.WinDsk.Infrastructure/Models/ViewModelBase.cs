@@ -2,7 +2,7 @@
 using Prism.Mvvm;
 using Prism.Regions;
 
-namespace LogXtreme.WinDsk.Infrastructure {
+namespace LogXtreme.WinDsk.Infrastructure.Models {
 
     /// <summary>
     /// The Base View Model.

@@ -1,7 +1,7 @@
 ﻿using Prism.Regions;
 using System.Windows;
 
-namespace LogXtreme.WinDsk.Infrastructure {
+namespace LogXtreme.WinDsk.Infrastructure.Services {
 
     public interface IShellService {
 

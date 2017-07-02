@@ -93,8 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\CloseTabAction.cs" />
-    <Compile Include="CommandsGlobal.cs" />
-    <Compile Include="Commands\GlobalCommands.cs" />
+    <Compile Include="Commands\CommandsGlobal.cs" />
     <Compile Include="Events\DeviceAttachedEvents.cs" />
     <Compile Include="Expressions\ExpressionExtensions.cs" />
     <Compile Include="Expressions\PropertyExpression.cs" />
@@ -102,11 +101,11 @@
     <Compile Include="Menu\MenuItemEventArgs.cs" />
     <Compile Include="Prism\ICreateRegionManagerScope.cs" />
     <Compile Include="Prism\IRegionManagerAware.cs" />
-    <Compile Include="IShellService.cs" />
-    <Compile Include="IView.cs" />
-    <Compile Include="IViewModel.cs" />
-    <Compile Include="IViewModelBase.cs" />
-    <Compile Include="IViewModelTitle.cs" />
+    <Compile Include="Services\IShellService.cs" />
+    <Compile Include="Models\IView.cs" />
+    <Compile Include="Models\IViewModel.cs" />
+    <Compile Include="Models\IViewModelBase.cs" />
+    <Compile Include="Models\IViewModelTitle.cs" />
     <Compile Include="Prism\ScopedRegionNavigationContentLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -133,7 +132,7 @@
     <Compile Include="Services\IToolService.cs" />
     <Compile Include="Unity\UnityExtensios.cs" />
     <Compile Include="Utils\SearchVisualTree.cs" />
-    <Compile Include="ViewModelBase.cs" />
+    <Compile Include="Models\ViewModelBase.cs" />
     <EmbeddedResource Include="Properties\Resource.it.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
