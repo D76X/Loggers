@@ -12,19 +12,24 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
     /// https://stackoverflow.com/questions/169973/when-should-i-use-a-list-vs-a-linkedlist
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class Node<T> {
+    public abstract class NodeBase<T> {
 
-        private readonly List<Node<T>> children = new List<Node<T>>();
+        private readonly IEnumerable<NodeBase<T>> children;
+
+        public NodeBase<T> Parent { get; }
+
+        public T Value { get; set; }
+
+        public IEnumerable<NodeBase<T>> Children => this.children;       
+    }
+
+    public class Node<T> : NodeBase<T> {
+
+        private readonly List<NodeBase<T>> children = new List<NodeBase<T>>();
 
         public Node(T value) {
             Value = value;
         }
-
-        public Node<T> Parent { get; }
-
-        public T Value { get; set; }
-
-        public IEnumerable<Node<T>> Children => this.children;
 
         public Node<T> this[int index] => this.children[index];
 
