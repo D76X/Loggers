@@ -17,6 +17,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
     /// http://www.siepman.nl/blog/post/2013/07/30/tree-node-nodes-descendants-ancestors.aspx
     /// https://stackoverflow.com/questions/169973/when-should-i-use-a-list-vs-a-linkedlist
     /// Refs
+    /// https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/abstract
     /// https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/knowing-when-to-use-override-and-new-keywords
     /// https://stackoverflow.com/questions/2705163/c-abstract-classes-need-to-implement-interfaces
     /// </summary>
