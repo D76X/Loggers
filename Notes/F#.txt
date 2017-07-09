@@ -1,0 +1,13 @@
+===================================================================================
+
+SET UP UNIT TESTTING IN F#
+
+SET UP UNIT TESTING WITH xUnit 
+https://mallibone.com/post/f-unit-testing-with-xunit
+IN PARTICULAR YOU MUST INSTALL THE TEST RUNNER TO SEE THE TESTS!
+PM> Install-Package xunit.runner.visualstudio -Version 2.0.1
+
+GIVE UP MS TEST
+https://stackoverflow.com/questions/5103964/using-mstest-with-f
+
+===================================================================================

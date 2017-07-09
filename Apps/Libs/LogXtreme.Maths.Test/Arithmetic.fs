@@ -1,4 +1,8 @@
-﻿namespace LogXtreme.Maths.Test
+﻿module LogXtreme.Maths.Test.Arithmetic
 
-type Class1() = 
-    member this.X = "F#"
+open Xunit
+open LogXtreme.Maths.Arithmetic      
+
+[<Fact>]
+let ``add 1 to 2 gets 3``() = 
+    Assert.Equal(3,1+2)
