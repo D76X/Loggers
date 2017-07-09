@@ -89,6 +89,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ViewModels\DeviceTreeViewModel.cs" />
+    <Compile Include="ViewModels\DeviceViewModel.cs" />
     <Compile Include="Views\DeviceTreeView.xaml.cs">
       <DependentUpon>DeviceTreeView.xaml</DependentUpon>
     </Compile>

@@ -1,5 +1,6 @@
 ﻿using DeviceTreeModule.Interfaces;
 using LogXtreme.WinDsk.Infrastructure.Models;
+using LogXtreme.WinDsk.Infrastructure.Services;
 using Prism.Mvvm;
 using System;
 
@@ -11,11 +12,13 @@ namespace DeviceTreeModule.ViewModels {
         IDisposable {
 
         private readonly IDeviceService deviceService;
-        private TreeItemViewModel<DeviceModel> deviceTree;
+        private TreeItemViewModel<DeviceViewModel> deviceTree;
 
         public DeviceTreeViewModel(IDeviceService deviceService) {
 
             this.deviceService = deviceService;
+            var master = new DeviceModel();
+            var root = new DeviceViewModel();
         }
 
         public TreeItemViewModel<DeviceModel> DeviceTree {
