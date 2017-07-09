@@ -18,7 +18,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
         private readonly IReadOnlyNotifyCollection<TreeItemViewModel<T>> children;
 
         private bool isSelected;
-        private bool isExpanded;        
+        private bool isExpanded;      
 
         public TreeItemViewModel(Node<T> data, TreeItemViewModel<T> parent) {
 
