@@ -96,6 +96,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Notes", "_Notes", "{54A549FC-CAB6-43C9-847E-FE7F3E5C50E7}"
 	ProjectSection(SolutionItems) = preProject
+		Notes\F#.txt = Notes\F#.txt
 		Notes\GitNotes.txt = Notes\GitNotes.txt
 		Notes\GitWorkflow.png = Notes\GitWorkflow.png
 		Notes\LogXtreme.WinDsk.Notes.txt = Notes\LogXtreme.WinDsk.Notes.txt
@@ -287,6 +288,8 @@ EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "LogXtreme.Maths.Test", "Apps\Libs\LogXtreme.Maths.Test\LogXtreme.Maths.Test.fsproj", "{BB7E8785-8C1B-43B3-AD5A-DEE5A410850D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.Maths.TestC", "Apps\Libs\LogXtreme.Maths.TestC\LogXtreme.Maths.TestC.csproj", "{2ACB982C-150F-4766-BFA6-BC545AEE2A96}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Tutorial1", "Apps\Libs\Tutorial1\Tutorial1.fsproj", "{F802490D-9A2B-4907-A517-9C4AA3141E5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -890,6 +893,14 @@ Global
 		{2ACB982C-150F-4766-BFA6-BC545AEE2A96}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2ACB982C-150F-4766-BFA6-BC545AEE2A96}.Release|x86.ActiveCfg = Release|Any CPU
 		{2ACB982C-150F-4766-BFA6-BC545AEE2A96}.Release|x86.Build.0 = Release|Any CPU
+		{F802490D-9A2B-4907-A517-9C4AA3141E5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F802490D-9A2B-4907-A517-9C4AA3141E5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F802490D-9A2B-4907-A517-9C4AA3141E5F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F802490D-9A2B-4907-A517-9C4AA3141E5F}.Debug|x86.Build.0 = Debug|Any CPU
+		{F802490D-9A2B-4907-A517-9C4AA3141E5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F802490D-9A2B-4907-A517-9C4AA3141E5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F802490D-9A2B-4907-A517-9C4AA3141E5F}.Release|x86.ActiveCfg = Release|Any CPU
+		{F802490D-9A2B-4907-A517-9C4AA3141E5F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1007,5 +1018,6 @@ Global
 		{E9083EC0-8F0D-46CF-B145-A09E139B93DF} = {B41C4F41-E9F6-4C26-B701-E6A51C4E716F}
 		{BB7E8785-8C1B-43B3-AD5A-DEE5A410850D} = {57F38F0E-585A-4964-B8F1-B252263FFD24}
 		{2ACB982C-150F-4766-BFA6-BC545AEE2A96} = {57F38F0E-585A-4964-B8F1-B252263FFD24}
+		{F802490D-9A2B-4907-A517-9C4AA3141E5F} = {57F38F0E-585A-4964-B8F1-B252263FFD24}
 	EndGlobalSection
 EndGlobal
