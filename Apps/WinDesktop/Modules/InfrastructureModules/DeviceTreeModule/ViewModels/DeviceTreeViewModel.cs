@@ -1,15 +1,13 @@
 ﻿using DeviceTreeModule.Interfaces;
 using Prism.Mvvm;
 using System;
-using System.Collections.ObjectModel;
 
 namespace DeviceTreeModule.ViewModels {
     public class DeviceTreeViewModel : 
         BindableBase, 
         IDeviceTreeViewModel, 
         IDisposable {
-
-        //readonly ObservableCollection<DeviceTreeViewModel> 
+      
 
         public DeviceTreeViewModel() {
 

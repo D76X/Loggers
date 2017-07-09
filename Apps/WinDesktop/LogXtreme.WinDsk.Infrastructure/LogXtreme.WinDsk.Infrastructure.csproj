@@ -99,7 +99,10 @@
     <Compile Include="Expressions\PropertyExpression.cs" />
     <Compile Include="Menu\IMenuItem.cs" />
     <Compile Include="Menu\MenuItemEventArgs.cs" />
+    <Compile Include="Models\INotifyCollection.cs" />
+    <Compile Include="Models\IReadOnlyNotifyCollection.cs" />
     <Compile Include="Models\Node.cs" />
+    <Compile Include="Models\NotifyCollection.cs" />
     <Compile Include="Models\TreeItemViewModel.cs" />
     <Compile Include="Prism\ICreateRegionManagerScope.cs" />
     <Compile Include="Prism\IRegionManagerAware.cs" />

@@ -1,35 +1,9 @@
 ﻿using Prism.Mvvm;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.Linq;
 
 namespace LogXtreme.WinDsk.Infrastructure.Models {
 
     /// <summary>
-    /// https://stackoverflow.com/questions/1763696/how-can-i-make-a-read-only-observablecollection-property
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public interface INotifyCollection<T>
-       : ICollection<T>,
-         INotifyCollectionChanged { }
-
-    public interface IReadOnlyNotifyCollection<out T>
-           : IReadOnlyCollection<T>,
-             INotifyCollectionChanged { }
-
-    public class NotifyCollection<T>
-           : ObservableCollection<T>,
-             INotifyCollection<T>,
-             IReadOnlyNotifyCollection<T> {
-
-        public NotifyCollection():base() { }
-        public NotifyCollection(IEnumerable<T> items) : base(items) { }
-        public NotifyCollection(List<T> items) : base(items) { }
-    }    
-
-    /// <summary>
-    /// 
     /// Refs
     /// https://www.codeproject.com/Articles/26288/Simplifying-the-WPF-TreeView-by-Using-the-ViewMode
     /// Refs
@@ -61,9 +35,13 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
 
         public bool IsExpanded {
             get { return isExpanded; }
-            set {
-                // some more here!
+            set {               
+                
                 SetProperty(ref this.isExpanded, value);
+
+                if (this.isExpanded && this.parent != null) {
+                    this.parent.IsExpanded = true;
+                } 
             }
         }
 
