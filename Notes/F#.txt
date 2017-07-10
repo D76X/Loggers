@@ -7,6 +7,8 @@ https://mallibone.com/post/f-unit-testing-with-xunit
 IN PARTICULAR YOU MUST INSTALL THE TEST RUNNER TO SEE THE TESTS!
 PM> Install-Package xunit.runner.visualstudio -Version 2.0.1
 
+This installs the runner at solution level, then it needsto be installed by project. 
+
 GIVE UP MS TEST
 https://stackoverflow.com/questions/5103964/using-mstest-with-f
 
