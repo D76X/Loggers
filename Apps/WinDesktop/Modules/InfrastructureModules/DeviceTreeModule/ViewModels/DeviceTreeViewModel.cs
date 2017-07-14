@@ -3,6 +3,7 @@ using LogXtreme.WinDsk.Infrastructure.Models;
 using LogXtreme.WinDsk.Infrastructure.Services;
 using Prism.Mvvm;
 using System;
+using System.Linq;
 
 namespace DeviceTreeModule.ViewModels {
 
@@ -17,11 +18,23 @@ namespace DeviceTreeModule.ViewModels {
         public DeviceTreeViewModel(IDeviceService deviceService) {
 
             this.deviceService = deviceService;
+
+            var devices = deviceService.GetDevices();
+
             var master = new DeviceModel();
-            var root = new DeviceViewModel();
+            var root = new DeviceViewModel(master);            
+            var deviceViewModels = devices.Select(d => new DeviceViewModel(d));
+
+            var rootNode = new Node<DeviceViewModel>(root, null, null);
+            var childNodes = deviceViewModels.Select(dvm =>
+                new Node<DeviceViewModel>(dvm, rootNode, null));
+
+            childNodes.ToList().ForEach(cn => rootNode.Add(cn));
+
+            this.deviceTree = new TreeItemViewModel<DeviceViewModel>(rootNode, null);
         }
 
-        public TreeItemViewModel<DeviceModel> DeviceTree {
+        public TreeItemViewModel<DeviceViewModel> DeviceTree {
 
             get { return this.deviceTree; }
 
