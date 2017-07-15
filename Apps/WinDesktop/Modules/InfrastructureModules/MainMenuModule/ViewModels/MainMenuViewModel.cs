@@ -2,6 +2,7 @@
 using LogXtreme.WinDsk.Infrastructure.ReactiveExtensions;
 using LogXtreme.WinDsk.Infrastructure.Services;
 using MainMenuModule.Interfaces;
+using MainMenuModule.Labels;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -31,25 +32,50 @@ namespace MainMenuModule.ViewModels {
 
             var menuItems = new List<IMenuItem>();
 
-            var newMenuItem = new MenuItemViewModel("_New", null, null);
-            var openMenuItem = new MenuItemViewModel("_Open", null, null);
+            var fileMenuItems = this.CreateFileMenuItems();
+            menuItems.Add(fileMenuItems);
+
+            var editMenuItems = this.CreateEditMenuItems();
+            menuItems.Add(editMenuItems);
+
+            this.menuItems = new ObservableCollection<IMenuItem>(menuItems);
+        }
+
+        public ObservableCollection<IMenuItem> MenuItems => this.menuItems;
+
+        private void AddMenuItemEventHanlder(object sender, MenuItemEventArgs e) {
+            this.menuItems.Add(e.MenuItem);
+        }
+
+        private MenuItemViewModel CreateFileMenuItems() {
+
+            var newMenuItem = new MenuItemViewModel(FileMenuLabels.New, null, null);
+            var openMenuItem = new MenuItemViewModel(FileMenuLabels.Open, null, null);
 
             var fileMenuItemChildren = new List<IMenuItem>() {
                 newMenuItem,
                 openMenuItem,
             };
 
-            var fileMenuItem = new MenuItemViewModel("_File", null, fileMenuItemChildren);
+            var fileMenuItem = new MenuItemViewModel(FileMenuLabels.File, null, fileMenuItemChildren);
 
-            menuItems.Add(fileMenuItem);
-
-            this.menuItems = new ObservableCollection<IMenuItem>(menuItems);
-        }
-        private void AddMenuItemEventHanlder(object sender, MenuItemEventArgs e) {
-            this.menuItems.Add(e.MenuItem);
+            return fileMenuItem;
         }
 
-        public ObservableCollection<IMenuItem> MenuItems => this.menuItems;
+        private MenuItemViewModel CreateEditMenuItems() {
+
+            var newMenuItem = new MenuItemViewModel(EditMenuLabels.New, null, null);
+            var openMenuItem = new MenuItemViewModel(EditMenuLabels.Open, null, null);
+
+            var fileMenuItemChildren = new List<IMenuItem>() {
+                newMenuItem,
+                openMenuItem,
+            };
+
+            var editMenuItem = new MenuItemViewModel(EditMenuLabels.Edit, null, fileMenuItemChildren);
+
+            return editMenuItem;
+        }
 
         #region IDisposable
 
