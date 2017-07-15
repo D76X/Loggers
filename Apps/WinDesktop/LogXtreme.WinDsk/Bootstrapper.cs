@@ -48,6 +48,11 @@ namespace LogXtreme.WinDsk {
                 ModuleName = typeof(Modules.DeviceTreeModule).Name,
                 ModuleType = typeof(Modules.DeviceTreeModule).AssemblyQualifiedName,
             });
+
+            this.ModuleCatalog.AddModule(new ModuleInfo() {
+                ModuleName = typeof(Modules.DataTreeModule).Name,
+                ModuleType = typeof(Modules.DataTreeModule).AssemblyQualifiedName,
+            });
         }        
 
         /// <summary>
@@ -69,6 +74,7 @@ namespace LogXtreme.WinDsk {
             // register the application services
             RegisterTypeIfMissing(typeof(IShellService), typeof(ShellService), true);
             RegisterTypeIfMissing(typeof(IDeviceService), typeof(DeviceService), true);
+            RegisterTypeIfMissing(typeof(IDataService), typeof(DataService), true);
 
             // register view and view models with their interfaces
             Container.RegisterType<IShellView, Shell>();
