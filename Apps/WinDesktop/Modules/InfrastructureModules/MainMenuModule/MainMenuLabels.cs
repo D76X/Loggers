@@ -8,7 +8,7 @@
 
     static class EditMenuLabels {
         public const string Edit = @"_Edit";
-        public const string File = @"_Do";        
-        public const string View = @"_Undo";
+        public const string Do = @"_Do";        
+        public const string Undo= @"_Undo";
     }
 }

@@ -64,12 +64,12 @@ namespace MainMenuModule.ViewModels {
 
         private MenuItemViewModel CreateEditMenuItems() {
 
-            var newMenuItem = new MenuItemViewModel(EditMenuLabels.New, null, null);
-            var openMenuItem = new MenuItemViewModel(EditMenuLabels.Open, null, null);
+            var doMenuItem = new MenuItemViewModel(EditMenuLabels.Do, null, null);
+            var undoMenuItem = new MenuItemViewModel(EditMenuLabels.Undo, null, null);
 
             var fileMenuItemChildren = new List<IMenuItem>() {
-                newMenuItem,
-                openMenuItem,
+                doMenuItem,
+                undoMenuItem,
             };
 
             var editMenuItem = new MenuItemViewModel(EditMenuLabels.Edit, null, fileMenuItemChildren);
