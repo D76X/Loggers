@@ -141,6 +141,10 @@
       <Project>{489706e3-c226-4d83-bb3d-c5a0d49d3835}</Project>
       <Name>LogXtreme.WinDsk.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Modules\AppServices\DeviceService\DeviceServiceModule\DeviceServiceModule.csproj">
+      <Project>{e9083ec0-8f0d-46cf-b145-a09e139b93df}</Project>
+      <Name>DeviceServiceModule</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Modules\InfrastructureModules\ContentModule\ContentModule.csproj">
       <Project>{6f2a2afa-717b-49a7-92fd-015122540034}</Project>
       <Name>ContentModule</Name>

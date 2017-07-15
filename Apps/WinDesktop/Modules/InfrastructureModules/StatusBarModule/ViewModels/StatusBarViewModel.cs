@@ -1,10 +1,6 @@
 ﻿using Prism.Mvvm;
 using StatusBarModule.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StatusBarModule.ViewModels {
     public class StatusBarViewModel : BindableBase ,IStatusBarViewModel, IDisposable {

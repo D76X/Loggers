@@ -26,20 +26,21 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
         protected readonly List<NodeBase<T>> children;
 
         protected NodeBase(IEnumerable<NodeBase<T>> children) {
+
             this.children = new List<NodeBase<T>>();
-            this.children.AddRange(children);
+            if (children != null) { this.children.AddRange(children); };
         }
 
         public INode<T> Parent { get; protected set; }
 
-        public T Value { get; protected set; }   
+        public T Value { get; protected set; }
 
         public virtual IEnumerable<INode<T>> Children => this.children;
 
         public abstract void Add(NodeBase<T> node);
     }
 
-    public class Node<T> : NodeBase<T> {        
+    public class Node<T> : NodeBase<T> {
 
         public Node(T value, Node<T> parent, IEnumerable<Node<T>> children) :
             base(children) {
@@ -53,6 +54,6 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
         public bool IsRoot => this.Parent == null;
 
         public override void Add(NodeBase<T> node) { this.children.Add(node); }
-        
+
     }
 }

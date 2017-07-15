@@ -6,7 +6,7 @@ using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Regions;
 
-namespace DeviceTreeModule {
+namespace LogXtreme.WinDsk.Modules {
 
     [Module(ModuleName = nameof(DeviceTreeModule))]
     public class DeviceTreeModule : IModule {

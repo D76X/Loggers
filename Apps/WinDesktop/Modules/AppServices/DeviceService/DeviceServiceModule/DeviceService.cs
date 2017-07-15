@@ -1,13 +1,17 @@
-﻿using System;
-using LogXtreme.WinDsk.Infrastructure.Models;
+﻿using LogXtreme.WinDsk.Infrastructure.Models;
 using LogXtreme.WinDsk.Infrastructure.Services;
+using System.Collections.Generic;
 
-namespace DeviceService {
+namespace LogXtreme.WinDsk.Modules.Services {
 
     public class DeviceService : IDeviceService {
 
-        public Node<DeviceModel> GetDevices() {
-            throw new NotImplementedException();
+        public IEnumerable<DeviceModel> GetDevices() {
+
+            return new List<DeviceModel>() {
+                new DeviceModel(){Name=@"device1"},
+                new DeviceModel(){Name=@"device2"}
+            };
         }
     }
 }

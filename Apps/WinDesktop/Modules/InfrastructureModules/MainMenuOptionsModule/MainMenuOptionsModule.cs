@@ -4,7 +4,7 @@ using MainMenuModule.ViewModels;
 using Prism.Modularity;
 using System.Collections.Generic;
 
-namespace MainMenuOptionsModule {
+namespace LogXtreme.WinDsk.Modules {
 
     [ModuleDependency(nameof(MainMenuModule))]
     public class MainMenuOptionsModule : IModule {

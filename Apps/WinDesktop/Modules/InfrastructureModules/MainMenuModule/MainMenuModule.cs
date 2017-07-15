@@ -7,7 +7,8 @@ using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Regions;
 
-namespace MainMenuModule {
+namespace LogXtreme.WinDsk.Modules {
+
     [Module(ModuleName = nameof(MainMenuModule))]
     public class MainMenuModule : IModule {
 
@@ -30,7 +31,7 @@ namespace MainMenuModule {
             // Subscribe to Services or Events
 
             // Register Shared Services
-            this.container.RegisterType<IMenuService, MenuService.MenuService>(new ContainerControlledLifetimeManager());
+            this.container.RegisterType<IMenuService, Services.MenuService>(new ContainerControlledLifetimeManager());
 
             // Compose Views into the Shell
             regionManager.RegisterViewWithRegion(RegionNames.RegionMainMenu, typeof(MainMenuView));

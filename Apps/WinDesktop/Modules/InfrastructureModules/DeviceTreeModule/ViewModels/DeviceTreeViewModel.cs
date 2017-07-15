@@ -21,7 +21,7 @@ namespace DeviceTreeModule.ViewModels {
 
             var devices = deviceService.GetDevices();
 
-            var master = new DeviceModel();
+            var master = new DeviceModel() { Name=@"master"};
             var root = new DeviceViewModel(master);            
             var deviceViewModels = devices.Select(d => new DeviceViewModel(d));
 

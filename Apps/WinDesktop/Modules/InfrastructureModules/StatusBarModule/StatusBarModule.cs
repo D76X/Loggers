@@ -5,13 +5,8 @@ using Prism.Regions;
 using StatusBarModule.Interfaces;
 using StatusBarModule.ViewModels;
 using StatusBarModule.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace StatusBarModule {
+namespace LogXtreme.WinDsk.Modules {
 
     [Module(ModuleName = nameof(StatusBarModule))]
     public class StatusBarModule : IModule {

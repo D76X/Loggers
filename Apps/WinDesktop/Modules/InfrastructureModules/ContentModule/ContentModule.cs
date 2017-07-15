@@ -6,7 +6,7 @@ using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Regions;
 
-namespace ContentModule {
+namespace LogXtreme.WinDsk.Modules {
 
     [Module(ModuleName = nameof(ContentModule))]
     public class ContentModule : IModule {

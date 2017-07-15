@@ -1,6 +1,7 @@
 ﻿using LogXtreme.WinDsk.Infrastructure.Prism;
 using LogXtreme.WinDsk.Infrastructure.Services;
 using LogXtreme.WinDsk.Interfaces;
+using LogXtreme.WinDsk.Modules.Services;
 using LogXtreme.WinDsk.Services;
 using LogXtreme.WinDsk.ViewModels;
 using Microsoft.Practices.Unity;
@@ -29,23 +30,23 @@ namespace LogXtreme.WinDsk {
 
             // add all the modules that must be always present in the application
             this.ModuleCatalog.AddModule(new ModuleInfo() {
-                ModuleName = typeof(MainMenuModule.MainMenuModule).Name,
-                ModuleType = typeof(MainMenuModule.MainMenuModule).AssemblyQualifiedName,
+                ModuleName = typeof(Modules.MainMenuModule).Name,
+                ModuleType = typeof(Modules.MainMenuModule).AssemblyQualifiedName,
             });
 
             this.ModuleCatalog.AddModule(new ModuleInfo() {
-                ModuleName = typeof(ContentModule.ContentModule).Name,
-                ModuleType = typeof(ContentModule.ContentModule).AssemblyQualifiedName,
+                ModuleName = typeof(Modules.ContentModule).Name,
+                ModuleType = typeof(Modules.ContentModule).AssemblyQualifiedName,
             });
 
             this.ModuleCatalog.AddModule(new ModuleInfo() {
-                ModuleName = typeof(StatusBarModule.StatusBarModule).Name,
-                ModuleType = typeof(StatusBarModule.StatusBarModule).AssemblyQualifiedName,
+                ModuleName = typeof(Modules.StatusBarModule).Name,
+                ModuleType = typeof(Modules.StatusBarModule).AssemblyQualifiedName,
             });
 
             this.ModuleCatalog.AddModule(new ModuleInfo() {
-                ModuleName = typeof(DeviceTreeModule.DeviceTreeModule).Name,
-                ModuleType = typeof(DeviceTreeModule.DeviceTreeModule).AssemblyQualifiedName,
+                ModuleName = typeof(Modules.DeviceTreeModule).Name,
+                ModuleType = typeof(Modules.DeviceTreeModule).AssemblyQualifiedName,
             });
         }        
 
@@ -66,7 +67,8 @@ namespace LogXtreme.WinDsk {
             //...
 
             // register the application services
-            RegisterTypeIfMissing(typeof(IShellService), typeof(ShellService), true);          
+            RegisterTypeIfMissing(typeof(IShellService), typeof(ShellService), true);
+            RegisterTypeIfMissing(typeof(IDeviceService), typeof(DeviceService), true);
 
             // register view and view models with their interfaces
             Container.RegisterType<IShellView, Shell>();
