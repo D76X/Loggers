@@ -75,6 +75,7 @@
     <Compile Include="DeviceTreeModule.cs" />
     <Compile Include="Interfaces\IDeviceTreeView.cs" />
     <Compile Include="Interfaces\IDeviceTreeViewModel.cs" />
+    <Compile Include="Interfaces\IDeviceViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

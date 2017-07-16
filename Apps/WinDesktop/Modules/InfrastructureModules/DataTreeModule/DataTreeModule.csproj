@@ -72,7 +72,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ViewModels\DataModel.cs" />
     <Compile Include="DataTreeModule.cs" />
+    <Compile Include="ViewModels\DataViewModel.cs" />
     <Compile Include="Interfaces\IDataTreeView.cs" />
     <Compile Include="Interfaces\IDataTreeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
