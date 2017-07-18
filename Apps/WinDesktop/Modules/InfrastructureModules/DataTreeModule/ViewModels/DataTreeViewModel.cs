@@ -15,9 +15,17 @@ namespace DataTreeModule.ViewModels {
 
         public DataTreeViewModel() {
 
-            var childModel = new DataModel() { Name = "child" };
+            var childModel2 = new DataModel() { Name = "child2" };
+
+            var childModel1 = new DataModel(
+                new List<DataModel>() { new DataModel() { Name = "child11"} }) {
+                Name = "child1"
+            };
+
             var childData = new List<DataModel>();
-            childData.Add(childModel);
+            childData.Add(childModel1);
+            childData.Add(childModel2);
+
             var rootData = new DataModel(childData);
 
             _rootData = new DataViewModel(rootData);
