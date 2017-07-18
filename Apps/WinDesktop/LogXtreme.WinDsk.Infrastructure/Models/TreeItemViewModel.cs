@@ -31,7 +31,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
                      select new TreeItemViewModel<T>((Node<T>)child, this)));
         }                
 
-        #region Person Properties
+        #region Properties
 
         public bool IsExpanded {
             get { return isExpanded; }
@@ -49,6 +49,8 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
             get { return this.isSelected; }
             set { SetProperty(ref this.isSelected, value); }
         }
+
+        public string Name => "Placeholder";
 
         public IReadOnlyNotifyCollection<TreeItemViewModel<T>> Children => this.children;
 
