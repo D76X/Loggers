@@ -13,3 +13,29 @@ GIVE UP MS TEST
 https://stackoverflow.com/questions/5103964/using-mstest-with-f
 
 ===================================================================================
+
+TO GET UNQUOTE TO WORK ON TOP OF xUnit
+https://stackoverflow.com/questions/34802706/error-running-xunit-test-with-unquote-library-and-visual-studio-2015-method-no
+http://php.wekeepcoding.com/article/13289568/Error+running+xunit+test+with+unquote+library+and+Visual+Studio+2015+-+Method+not+found
+
+Add App.config to teh F# project with the assembly redirect.
+
+This will prevent the System.MissingMethodException : Method not found: 
+'Swensen.Unquote.UnquotedExpression ...
+
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="FSharp.Core"
+                          publicKeyToken="b03f5f7f11d50a3a"
+                          culture="neutral"/>
+        <bindingRedirect oldVersion="4.3.1.0"
+                         newVersion="4.4.0.0"/>
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+</configuration>
+
+===================================================================================
