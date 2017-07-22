@@ -50,7 +50,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
             set { SetProperty(ref this.isSelected, value); }
         }
 
-        public string Name => "Placeholder";
+        public T Value => this.data.Value;
 
         public IReadOnlyNotifyCollection<TreeItemViewModel<T>> Children => this.children;
 

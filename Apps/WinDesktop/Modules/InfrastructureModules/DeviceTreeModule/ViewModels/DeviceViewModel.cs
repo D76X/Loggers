@@ -10,5 +10,7 @@ namespace DeviceTreeModule.ViewModels {
 
             this.deviceModel = deviceModel;
         }
+
+        public string Name => this.deviceModel.Name;
     }
 }

@@ -5,17 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DeviceTreeModule.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-
-    <!--<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <ContentControl Content="Device TreeView" Foreground="Red"/>
-    </Grid>-->
+             d:DesignHeight="300" d:DesignWidth="300">    
 
     <TreeView ItemsSource="{Binding Path=DeviceTree.Children }">
-        <TreeView.ItemContainerStyle>
-            <!-- 
-        This Style binds a TreeViewItem to a PersonViewModel. 
-        -->
+        <TreeView.ItemContainerStyle>        
             <Style TargetType="{x:Type TreeViewItem}">
                 <Setter Property="IsExpanded"
                         Value="{Binding IsExpanded, Mode=TwoWay}" />
@@ -32,10 +25,9 @@
                 </Style.Triggers>
             </Style>
         </TreeView.ItemContainerStyle>
-
         <TreeView.ItemTemplate>
             <HierarchicalDataTemplate ItemsSource="{Binding Path=DeviceTree.Children}">
-                <TextBlock Text="{Binding Name}" />
+                <TextBlock Text="{Binding Path=Value.Name}" />
             </HierarchicalDataTemplate>
         </TreeView.ItemTemplate>
     </TreeView>
