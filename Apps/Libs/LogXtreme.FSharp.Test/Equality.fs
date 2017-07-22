@@ -31,16 +31,23 @@ let ``2 plus 2 gives 4``() =
 
 [<Fact>]
 let ``complex 1,j = complex 1,j``()= 
+    
+    // arrange
     let c1 = Complex(1.,1.)
     let c2 = Complex(1.,1.)
+    
+    // act 
     let e = (c1 = c2)
+    
+    // assert
     Assert.True(e)
     Assert.True((c1=c2))
     Assert.Equal(c1,c2)
 
 [<Fact>]
 let ``UserDetails user1 = user2``()= 
-
+    
+    // arrange
     let u1 = {
         Id = Guid "DDB4F1D5-A694-477B-9667-7660E42BFE76"
         UserName = "user1"
@@ -53,11 +60,27 @@ let ``UserDetails user1 = user2``()=
         Password = "password1"
         JoinDate = DateTime.MinValue} 
 
+    // act, assert
     Assert.True((u1=u2))
 
 [<Theory>]
 [<InlineData("AF541848-DFA4-447A-9117-C088EDD04111", "user1", "psw1", "10/10/2000")>]
 [<InlineData("BF19CD90-5423-471E-8EAD-0B1193642DCA", "user2", "psw2", "30/06/2010")>]
 let ``user returs the correct result``(id: string) (usr: string) (psw: string) (joindate: string) =
-    let getId = Guid
-    let actual = user 
+    
+    // arrange
+    let getId _ = Guid id
+    let jd _ = DateTime.Parse joindate
+
+    let expected = {
+        Id = Guid id
+        UserName = usr
+        Password = psw 
+        JoinDate = DateTime.Parse joindate}
+
+    // act
+    let actual = user getId usr psw jd
+
+    //assert
+    test <@ actual = expected @>
+
