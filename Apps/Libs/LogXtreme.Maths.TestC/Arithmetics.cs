@@ -1,6 +1,6 @@
 ﻿namespace LogXtreme.Maths.TestC
 {
-    public class Class1
+    public class Arithmetics
     {
     }
 }
