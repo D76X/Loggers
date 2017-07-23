@@ -3,7 +3,6 @@
 namespace LogXtreme.WinDsk.Infrastructure.Tests.Events {
     internal class StandardNetEventSource {
 
-        private int invokations = 0;
         private FinalizeTracker finalizeTracker;
 
         public event EventHandler Event = delegate { };

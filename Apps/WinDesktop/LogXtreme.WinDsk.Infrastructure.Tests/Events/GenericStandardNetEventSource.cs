@@ -8,7 +8,6 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Events {
     class GenericStandardNetEventSource<TEventArgs>
         where TEventArgs : EventArgs {
 
-        private int invokations = 0;
         private FinalizeTracker finalizeTracker;
 
         public event EventHandler<TEventArgs> Event = delegate { };
