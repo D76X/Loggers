@@ -7,13 +7,14 @@ using System.Linq;
 
 namespace DeviceTreeModule.ViewModels {
 
-    public class DeviceTreeViewModel : 
-        BindableBase,       
-        IDeviceTreeViewModel, 
+    public class DeviceTreeViewModel :
+        BindableBase,
+        IDeviceTreeViewModel,
         IDisposable {
 
         private readonly IDeviceService deviceService;
         private TreeItemViewModel<DeviceViewModel> deviceTree;
+        public DeviceTreeViewModel() { }
 
         public DeviceTreeViewModel(IDeviceService deviceService) {
 
@@ -21,8 +22,8 @@ namespace DeviceTreeModule.ViewModels {
 
             var devices = deviceService.GetDevices();
 
-            var master = new DeviceModel() { Name=@"master"};
-            var root = new DeviceViewModel(master);            
+            var master = new DeviceModel() { Name = @"master" };
+            var root = new DeviceViewModel(master);
             var deviceViewModels = devices.Select(d => new DeviceViewModel(d));
 
             var rootNode = new Node<DeviceViewModel>(root, null, null);

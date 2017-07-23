@@ -1,0 +1,28 @@
+===============================================================================================================
+DESIGN TIME DATA - DATACONTEXT FOR USER CONTROLS
+
+https://www.codeproject.com/Tips/879109/Using-Design-time-Databinding-While-Developing-a-W
+https://stackoverflow.com/questions/2716757/how-to-set-properties-of-a-ddesigninstance-in-xaml
+https://msdn.microsoft.com/en-us/library/ee823176.aspx
+https://joshsmithonwpf.wordpress.com/2010/04/04/design-time-data-is-still-data/
+http://blog.qmatteoq.com/the-mvvm-pattern-design-time-data/
+
+d:DesignInstance
+https://stackoverflow.com/questions/35695456/what-is-a-designinstance-in-xaml
+https://stackoverflow.com/questions/2716757/how-to-set-properties-of-a-ddesigninstance-in-xaml
+
+d:DesignData
+https://msdn.microsoft.com/en-us/library/ee823176.aspx
+
+BLENDABILITY WITH PRISM
+https://www.codeproject.com/Articles/1059235/Blendability-Adding-design-time-support-for-region
+
+===============================================================================================================
+MARKUP EXTENSIONS
+
+https://docs.microsoft.com/en-us/dotnet/framework/wpf/advanced/markup-extensions-and-wpf-xaml
+
+CREATE CUSTOM MARKUP EXTENSIONS
+http://10rem.net/blog/2011/03/09/creating-a-custom-markup-extension-in-wpf-and-soon-silverlight
+
+===============================================================================================================

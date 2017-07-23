@@ -72,6 +72,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DesignTimeViewModels\DesignTimeDeviceTreeViewModel.cs" />
     <Compile Include="DeviceTreeModule.cs" />
     <Compile Include="Interfaces\IDeviceTreeView.cs" />
     <Compile Include="Interfaces\IDeviceTreeViewModel.cs" />
