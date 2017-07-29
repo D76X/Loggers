@@ -16,7 +16,7 @@ namespace DeviceTreeModule.DesignTimeViewModels {
                 var devices = new List<DeviceModel>() {
 
                     new DeviceModel(){
-                        Name =@"device1",
+                        Name =@"Device1",
                         Address=@"add1",
                         Port=@"port1",
                         Staus=@"active",
@@ -24,7 +24,7 @@ namespace DeviceTreeModule.DesignTimeViewModels {
                     },
 
                     new DeviceModel(){
-                        Name =@"device2",
+                        Name =@"Device2",
                         Address=@"add2",
                         Port=@"port2",
                         Staus=@"active",
