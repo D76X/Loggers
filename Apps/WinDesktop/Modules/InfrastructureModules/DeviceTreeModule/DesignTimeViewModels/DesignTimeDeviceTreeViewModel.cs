@@ -35,7 +35,10 @@ namespace DeviceTreeModule.DesignTimeViewModels {
 
                 var master = new DeviceModel() { Name = @"master" };
                 var root = new DeviceViewModel(master);
-                var deviceViewModels = devices.Select(d => new DeviceViewModel(d));
+                var deviceViewModels = devices.Select(d => new DeviceViewModel(d)).ToList();
+
+                // show the details
+                deviceViewModels.ForEach(dvm => dvm.IsExpanded = true);
 
                 var rootNode = new Node<DeviceViewModel>(root, null, null);
                 var childNodes = deviceViewModels.Select(dvm => new Node<DeviceViewModel>(dvm, rootNode, null));
