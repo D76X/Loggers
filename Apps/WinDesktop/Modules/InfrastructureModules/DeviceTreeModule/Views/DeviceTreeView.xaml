@@ -8,8 +8,7 @@
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance {x:Type dvm:DesignTimeDeviceTreeViewModel}, IsDesignTimeCreatable=True}">
     <UserControl.Resources>
-        <HierarchicalDataTemplate x:Key="DeviceTemplate"
-                                  ItemsSource="{Binding Path=DeviceTree.Children}">
+        <HierarchicalDataTemplate x:Key="DeviceTemplate">
             <Grid Width="Auto"
                   Margin="3"
                   Height="Auto">
