@@ -1,10 +1,7 @@
 ﻿using DeviceTreeModule.ViewModels;
 using LogXtreme.WinDsk.Infrastructure.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DeviceTreeModule.DesignTimeViewModels {
     public class DesignTimeDeviceTreeViewModel {

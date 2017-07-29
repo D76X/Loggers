@@ -302,6 +302,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "LogXtreme.ComputationExpres
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "LogXtreme.ComputationExpressions.Test", "Apps\Libs\LogXtreme.ComputationExpressions.Test\LogXtreme.ComputationExpressions.Test.fsproj", "{A0FC9088-8F90-45AB-BFE5-1CF857105940}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackgroundWorkerServiceModule", "Apps\WinDesktop\Modules\AppServices\BackgroundWorkerServiceModule\BackgroundWorkerServiceModule.csproj", "{2486EECB-4A17-4E34-B6B3-97E62C7FCF6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -952,6 +954,14 @@ Global
 		{A0FC9088-8F90-45AB-BFE5-1CF857105940}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A0FC9088-8F90-45AB-BFE5-1CF857105940}.Release|x86.ActiveCfg = Release|Any CPU
 		{A0FC9088-8F90-45AB-BFE5-1CF857105940}.Release|x86.Build.0 = Release|Any CPU
+		{2486EECB-4A17-4E34-B6B3-97E62C7FCF6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2486EECB-4A17-4E34-B6B3-97E62C7FCF6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2486EECB-4A17-4E34-B6B3-97E62C7FCF6F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2486EECB-4A17-4E34-B6B3-97E62C7FCF6F}.Debug|x86.Build.0 = Debug|Any CPU
+		{2486EECB-4A17-4E34-B6B3-97E62C7FCF6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2486EECB-4A17-4E34-B6B3-97E62C7FCF6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2486EECB-4A17-4E34-B6B3-97E62C7FCF6F}.Release|x86.ActiveCfg = Release|Any CPU
+		{2486EECB-4A17-4E34-B6B3-97E62C7FCF6F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1075,5 +1085,6 @@ Global
 		{FB58D566-2F42-4868-9873-748A62692B35} = {B41C4F41-E9F6-4C26-B701-E6A51C4E716F}
 		{D9AF14FC-1F05-47B8-BC0C-06DBFCB41C9F} = {57F38F0E-585A-4964-B8F1-B252263FFD24}
 		{A0FC9088-8F90-45AB-BFE5-1CF857105940} = {57F38F0E-585A-4964-B8F1-B252263FFD24}
+		{2486EECB-4A17-4E34-B6B3-97E62C7FCF6F} = {B41C4F41-E9F6-4C26-B701-E6A51C4E716F}
 	EndGlobalSection
 EndGlobal
