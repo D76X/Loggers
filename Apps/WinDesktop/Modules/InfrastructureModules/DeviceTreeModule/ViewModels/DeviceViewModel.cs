@@ -21,5 +21,7 @@ namespace DeviceTreeModule.ViewModels {
         public string Port => this.deviceModel.Port;
 
         public string Staus => this.deviceModel.Staus;
+
+        public bool ShowDetails => true;
     }
 }
