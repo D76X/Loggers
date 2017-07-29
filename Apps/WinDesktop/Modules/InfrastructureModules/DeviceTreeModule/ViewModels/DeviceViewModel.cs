@@ -7,6 +7,8 @@ namespace DeviceTreeModule.ViewModels {
 
         private DeviceModel deviceModel;
 
+        private bool isExpanded;
+
         public DeviceViewModel(DeviceModel deviceModel) {
 
             this.deviceModel = deviceModel;
@@ -22,6 +24,9 @@ namespace DeviceTreeModule.ViewModels {
 
         public string Staus => this.deviceModel.Staus;
 
-        public bool IsExpanded => true;
+        public bool IsExpanded {
+            get { return this.isExpanded; }
+            set { SetProperty(ref this.isExpanded, value); }
+        }
     }
 }
