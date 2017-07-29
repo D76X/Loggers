@@ -22,6 +22,6 @@ namespace DeviceTreeModule.ViewModels {
 
         public string Staus => this.deviceModel.Staus;
 
-        public bool ShowDetails => true;
+        public bool IsExpanded => true;
     }
 }
