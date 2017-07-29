@@ -14,7 +14,6 @@ namespace DeviceTreeModule.ViewModels {
 
         private readonly IDeviceService deviceService;
         private TreeItemViewModel<DeviceViewModel> deviceTree;
-        public DeviceTreeViewModel() { }
 
         public DeviceTreeViewModel(IDeviceService deviceService) {
 
