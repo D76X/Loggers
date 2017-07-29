@@ -14,16 +14,49 @@
                   Margin="3"
                   Height="Auto">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>                    
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Expander Header="{Binding Path=Value.Name}"
                           IsExpanded="{Binding Path=Value.IsExpanded}">
-                    <StackPanel>
-                        <TextBlock Text="{Binding Path=Value.Type}" />
-                        <TextBlock Text="{Binding Path=Value.Address}" />
-                        <TextBlock Text="{Binding Path=Value.Port}" />
-                        <TextBlock Text="{Binding Path=Value.Satus}" />
-                    </StackPanel>
+                    <Grid  x:Name="Details"
+                           Height="Auto"
+                           Width="Auto"
+                           Margin="25,5,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="type:" 
+                                   Grid.Column="0"
+                                   Grid.Row="0"/>
+                        <TextBlock Text="{Binding Value.Type}"
+                                   Grid.Column="1"
+                                   Grid.Row="0" />
+                        <TextBlock Text="address:"
+                                   Grid.Column="0"
+                                   Grid.Row="1" />
+                        <TextBlock Text="{Binding Value.Address}"
+                                   Grid.Column="1"
+                                   Grid.Row="1"/>
+                        <TextBlock Text="port:"
+                                   Grid.Column="0"
+                                   Grid.Row="2" />
+                        <TextBlock Text="{Binding Value.Port}"
+                                   Grid.Column="1"
+                                   Grid.Row="2"/>
+                        <TextBlock Text="status:"
+                                   Grid.Column="0"
+                                   Grid.Row="3" />
+                        <TextBlock Text="{Binding Value.Staus}"
+                                   Grid.Column="1"
+                                   Grid.Row="4"/>
+                    </Grid>
                 </Expander>
             </Grid>
         </HierarchicalDataTemplate>
