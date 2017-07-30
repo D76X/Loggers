@@ -33,7 +33,8 @@ namespace LogXtreme.WinDsk.Infrastructure.Services {
     /// </summary>
     public class BackgroundDelegateWorker<TInput, TResult> :
         IDelegateWorker<TInput, TResult>,
-        IProgressWorker {
+        IProgressWorker,
+        ICancelWork {
         
         private BackgroundWorker bw;
 

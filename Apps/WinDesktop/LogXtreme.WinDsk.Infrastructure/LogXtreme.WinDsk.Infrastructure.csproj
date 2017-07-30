@@ -108,6 +108,7 @@
     <Compile Include="Prism\ICreateRegionManagerScope.cs" />
     <Compile Include="Prism\IRegionManagerAware.cs" />
     <Compile Include="Services\BackgroundDelegateWorker.cs" />
+    <Compile Include="Services\ICancelWork.cs" />
     <Compile Include="Services\IDataService.cs" />
     <Compile Include="Services\IDelegateWorker.cs" />
     <Compile Include="Services\IDeviceService.cs" />
