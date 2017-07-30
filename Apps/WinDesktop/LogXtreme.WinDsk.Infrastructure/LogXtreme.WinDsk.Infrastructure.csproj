@@ -111,6 +111,7 @@
     <Compile Include="Services\IDataService.cs" />
     <Compile Include="Services\IDelegateWorker.cs" />
     <Compile Include="Services\IDeviceService.cs" />
+    <Compile Include="Services\IProgressWorker.cs" />
     <Compile Include="Services\IShellService.cs" />
     <Compile Include="Models\IView.cs" />
     <Compile Include="Models\IViewModel.cs" />

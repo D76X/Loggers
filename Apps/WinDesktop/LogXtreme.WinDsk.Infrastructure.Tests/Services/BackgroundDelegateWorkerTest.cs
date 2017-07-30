@@ -1,8 +1,17 @@
 ﻿using LogXtreme.WinDsk.Infrastructure.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Threading;
 
 namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
 
+    /// <summary>
+    /// 
+    /// Refs
+    /// http://si-w.co.uk/blog/2009/09/11/unit-testing-code-that-uses-a-backgroundworker/
+    /// https://stackoverflow.com/questions/1411286/how-to-unit-test-backgroundworker-c-sharp
+    /// https://stackoverflow.com/questions/2538065/what-is-the-basic-concept-behind-waithandle
+    /// </summary>
     [TestClass]
     public class BackgroundDelegateWorkerTest {
 
@@ -12,27 +21,37 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
             // arrange
             var bdw = new BackgroundDelegateWorker();
 
-            var parameterToPass = 99;
-            var passedParameter = -1;
+            var mreOnStart = new ManualResetEvent(false);
+            var mreOnCompleted = new ManualResetEvent(false);
+
+            var initialValue = -1;
+            var valueOfPassedParameter = initialValue;
+            var valueOfParameterToPass = 99;            
             var isWorkDone = false;
-            var isCompleted = false;
+            var isWorkCompleted = false;
 
             // act
             bdw.Start<int, bool>(
                 i => {
-                    passedParameter = i;
+                    valueOfPassedParameter = i;
                     isWorkDone = true;
+                    mreOnStart.Set();
                     return true;
                 },
                 r => {
-                    isCompleted = r;
+                    isWorkCompleted = r;
+                    mreOnCompleted.Set();
                 },
-                parameterToPass);
+                valueOfParameterToPass);
 
             // assert
-            Assert.AreEqual(passedParameter, parameterToPass);
+
+            if (mreOnStart.WaitOne(new TimeSpan(0,0,1))) {};
+            Assert.AreEqual(valueOfPassedParameter, valueOfParameterToPass);
             Assert.IsTrue(isWorkDone);
-            Assert.IsTrue(isCompleted);
+
+            if (mreOnCompleted.WaitOne(new TimeSpan(0, 0, 1))) { };
+            Assert.IsTrue(isWorkCompleted);
         }
 
     }
