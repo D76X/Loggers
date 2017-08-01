@@ -34,6 +34,26 @@ let loggedWorkflow =
         return z
          }
 
-// given 1 as input use it to evaluate f x = let
-// let! x = 1 => unwrap 1 and assign the value to the symbol x
-// let! y = 2 => unwrap 2 and assign the value to the symbol y
+
+// How does all this work?
+
+// The Bind function: Bind 'b * ('b->'c) -> 'c
+// https://fsharpforfunandprofit.com/posts/computation-expressions-bind/ 
+// let! x = 43 in some expression => builder.Bind(43, (fun x -> some expression))
+// Bind takes a tuple that is two parameters
+// the first parameter is the expression (x = 43)
+// the second is a lamba fun x -> some expression where x is bound in the expression used as first parameter (in this example)
+
+// the let! is equivalent to Bind
+
+// let! x = 1 
+// let! y = 2 
+// let! z = x+y
+
+// is compiled to
+
+// Bind(1, fun x -> 
+// Bind(2, fun y -> 
+// Bind(x+y, fun z ->...))
+
+// notice that the argument are inverted between let! and the Bind
