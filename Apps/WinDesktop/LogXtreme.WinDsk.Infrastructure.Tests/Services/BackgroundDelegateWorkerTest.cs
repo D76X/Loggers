@@ -23,9 +23,10 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
             var mreOnStart = new ManualResetEvent(false);
             var mreOnCompleted = new ManualResetEvent(false);
 
-            var initialValue = -1;
-            var valueOfPassedParameter = initialValue;
-            var valueOfParameterToPass = 99;
+            const int initialValue = -1;
+            const int valueOfParameterToPass = initialValue;
+            var valueOfPassedParameter = 99;            
+
             var isWorkDone = false;
             var isWorkCompleted = false;
 
@@ -47,7 +48,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
             // assert
 
             if (mreOnStart.WaitOne(new TimeSpan(0, 0, 1))) { };
-            Assert.AreEqual(expected: valueOfParameterToPass, actual: valueOfPassedParameter);
+            Assert.AreEqual(expected: initialValue, actual: valueOfPassedParameter);
             Assert.IsTrue(isWorkDone);
 
             if (mreOnCompleted.WaitOne(new TimeSpan(0, 0, 1))) { };
@@ -65,14 +66,15 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
             var mreOnStart = new ManualResetEvent(false);
             var mreOnCompleted = new ManualResetEvent(false);
 
-            var initialValue = -1;
-            var valueOfPassedParameter = initialValue;
-            var valueOfParameterToPass = 99;
+            const int initialValue = -1;
+            const int valueOfParameterToPass = initialValue;
+            var valueOfPassedParameter = 99;
+            
             var isWorkDone = false;
             var isWorkCompleted = false;
 
-            var initialProgress = 0;
-            var finalProgress = 100;
+            const int initialProgress = 0;
+            const int finalProgress = 100;
             var progress = initialProgress;
 
             bdw.ProgressChange(p => {
@@ -96,9 +98,9 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
             bdw.StartProcess(valueOfParameterToPass);
 
             // assert
-
             if (mreOnStart.WaitOne(new TimeSpan(0, 0, 1))) { };
-            Assert.AreEqual(expected: valueOfParameterToPass, actual: valueOfPassedParameter);
+
+            Assert.AreEqual(expected: initialValue, actual: valueOfPassedParameter);
             Assert.IsTrue(isWorkDone);
             Assert.AreEqual(expected: finalProgress, actual: progress);
 
@@ -117,20 +119,21 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
             var mreOnStart = new ManualResetEvent(false);
             var mreOnCompleted = new ManualResetEvent(false);
 
-            const int valueOfParameterToPass = 99;
-            const int initialValue = -1;
-            var valueOfPassedParameter = initialValue;            
+            const int initialValue = 0;
+            var valueOfPassedParameter = 99;
+            const int valueOfParameterToPass = initialValue;               
+            
             var isWorkDone = false;
             var isWorkCompleted = false;
 
             const int initialProgress = 0;
-            const int progressSteps = 5;             
-            var progressTracker = new int[progressSteps] { 0,0,0,0,0 };           
             var progress = initialProgress;
 
-            bdw.ProgressChange(p => {
-                progress = p;
-                progressTracker[p] = progress;
+            const int progressSteps = 6;             
+            var progressTracker = new int[progressSteps] { -1,-1,-1,-1,-1, -1 };                       
+
+            bdw.ProgressChange(p => {                
+                progressTracker[p] = p;                
             });
 
             bdw.Process(
@@ -139,11 +142,13 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
                     valueOfPassedParameter = i;
 
                     var guard = 0;
-                    while (progress < progressSteps && guard < 100) {
+
+                    do {
                         ++guard;
-                        bdw.ReportProgress(++progress);
+                        bdw.ReportProgress(progress);
+                        ++progress;
                         Thread.Sleep(1);
-                    }
+                    } while (progress < progressSteps && guard < 10);                    
 
                     isWorkDone = progress == progressSteps;
                     mreOnStart.Set();
@@ -160,12 +165,11 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
             // assert
             if (mreOnStart.WaitOne(new TimeSpan(0, 0, 1))) { };
 
-            for (int i = 1; i <= progressTracker.Length; i++) {
-
-                Assert.AreEqual(expected: i, actual: progressTracker[i-1]);
+            for (int i = 0; i < progressTracker.Length; i++) {                
+                Assert.AreEqual(expected: i, actual: progressTracker[i]);
             }
 
-            Assert.AreEqual(expected: valueOfParameterToPass, actual: valueOfPassedParameter);
+            Assert.AreEqual(expected: initialValue, actual: valueOfPassedParameter);
             Assert.IsTrue(isWorkDone);
             Assert.AreEqual(expected: progressSteps, actual: progress);
 
