@@ -17,18 +17,22 @@ namespace LogXtreme.WinDsk.Infrastructure.Services {
     /// Properties: WorkerReportsProgress, WorkerSupportCancellation, CancellationPending, IsBusy
     /// Events: DoWork, RunWorkerCompleted, ProgressChanged
     /// 
-    /// BackgroundWorker basic implementation - with no progress reporting and calcellation
+    /// 1-BackgroundWorker basic implementation - with no progress reporting and calcellation
     /// 
     /// Methods: RunWorkerAsync 
     /// Events: DoWork, RunWorkerCompleted
     /// 
-    /// BackgroundWorker with reporting
+    /// 2-BackgroundWorker with reporting
     /// 
     /// Methods: ReportProgress
     /// Properties: WorkerReportsProgress
     /// Events: ProgressChanged
     /// 
-    /// BackgroundWorker with cancellation
+    /// 3-BackgroundWorker with cancellation
+    /// 
+    /// Methods: CancelAsync
+    /// Properties: WorkersSupportCancellation, CancellationPending (readonly)
+    /// Event: RunworkerCompleted
     /// 
     /// </summary>
     public class BackgroundDelegateWorker<TInput, TResult> :
@@ -36,7 +40,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Services {
         IProgressWorker,
         ICancelWork {
         
-        private BackgroundWorker bw;
+        private BackgroundWorker bw;        
 
         public BackgroundDelegateWorker() {
 
@@ -50,7 +54,13 @@ namespace LogXtreme.WinDsk.Infrastructure.Services {
             this.bw = new BackgroundWorker();
             this.bw.WorkerReportsProgress = supportReportProgress;
             this.bw.WorkerSupportsCancellation = supportCancellation;
-        }        
+        }
+
+        public bool IsCancellatioPending => this.bw.CancellationPending;
+
+        public void SignalCancellation() {
+            this.bw.CancelAsync();
+        }
 
         public void ReportProgress(int progress) {
 
@@ -72,8 +82,8 @@ namespace LogXtreme.WinDsk.Infrastructure.Services {
         }
 
         public void Process(
-            Func<TInput, TResult> toExecute,
-            Action<TResult> onComplete) {
+            Func<TInput, IDelegateWorkerResult<TResult>> toExecute,
+            Action<IDelegateWorkerResult<TResult>> onComplete) {
             
             this.InitialiseWorker(toExecute, onComplete);            
         }
@@ -83,8 +93,8 @@ namespace LogXtreme.WinDsk.Infrastructure.Services {
         }
 
         private void InitialiseWorker(
-            Func<TInput, TResult> toExecute,
-            Action<TResult> onComplete) {
+            Func<TInput, IDelegateWorkerResult<TResult>> toExecute,
+            Action<IDelegateWorkerResult<TResult>> onComplete) {
 
             this.bw.DoWork += (s, e) => {                
 
@@ -94,7 +104,11 @@ namespace LogXtreme.WinDsk.Infrastructure.Services {
             };
 
             this.bw.RunWorkerCompleted += (s, e) => {
-                onComplete?.Invoke((TResult)e.Result);
+
+                var delegateResult = (IDelegateWorkerResult<TResult>)e.Result;
+                onComplete?.Invoke(
+                    new DelegateWorkerResult<TResult>(
+                        ((IDelegateWorkerResult<TResult>)e).Result));
             };            
         }        
     }    
