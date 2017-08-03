@@ -1,4 +1,4 @@
-module public LogXtreme.ComputationExpressions.LoggingBuilderExample1
+module public LogXtreme.ComputationExpressions.Examples.LoggingBuilder1
 
 // an computation expression is a F# type 
 // it must define at least the Bind and Return members
