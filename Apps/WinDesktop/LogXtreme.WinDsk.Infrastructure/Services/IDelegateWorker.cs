@@ -27,7 +27,8 @@ namespace LogXtreme.WinDsk.Infrastructure.Services
         
         void Process(
             Func<TInput, IDelegateWorkerResult<TResult>> toExecute, 
-            Action<IDelegateWorkerResult<TResult>> onComplete);
+            Action<IDelegateWorkerResult<TResult>> onComplete,
+            Action<IDelegateWorkerResult<TResult>> onCancelled);
 
         void StartProcess(TInput initialInput);
     }

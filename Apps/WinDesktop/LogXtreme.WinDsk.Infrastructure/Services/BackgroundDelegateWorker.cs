@@ -56,7 +56,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Services {
             this.bw.WorkerSupportsCancellation = supportCancellation;
         }
 
-        public bool IsCancellatioPending => this.bw.CancellationPending;
+        public bool IsCancellationPending => this.bw.CancellationPending;
 
         public void SignalCancellation() {
             this.bw.CancelAsync();
@@ -83,9 +83,10 @@ namespace LogXtreme.WinDsk.Infrastructure.Services {
 
         public void Process(
             Func<TInput, IDelegateWorkerResult<TResult>> toExecute,
-            Action<IDelegateWorkerResult<TResult>> onComplete) {
+            Action<IDelegateWorkerResult<TResult>> onComplete = null,
+            Action<IDelegateWorkerResult<TResult>> onCancelled = null) {
             
-            this.InitialiseWorker(toExecute, onComplete);            
+            this.InitialiseWorker(toExecute, onComplete, onCancelled);            
         }
 
         public void StartProcess(TInput initialInput) {
@@ -94,8 +95,15 @@ namespace LogXtreme.WinDsk.Infrastructure.Services {
 
         private void InitialiseWorker(
             Func<TInput, IDelegateWorkerResult<TResult>> toExecute,
-            Action<IDelegateWorkerResult<TResult>> onComplete) {
+            Action<IDelegateWorkerResult<TResult>> onComplete,
+            Action<IDelegateWorkerResult<TResult>> onCancelled) {
 
+            // in this implementation of IDelegateWorker<TInput, TResult>
+            // which is based on BackgroundWorker the real type of the 
+            // arguments in the lambdas are as below
+
+            // s : BackgroundWorker 
+            // e : DoWorkEventArgs
             this.bw.DoWork += (s, e) => {                
 
                 if (toExecute != null) {
@@ -103,12 +111,26 @@ namespace LogXtreme.WinDsk.Infrastructure.Services {
                 }
             };
 
+            // s : BackgroundWorker 
+            // e : RunWorkerCompletedEventArgs
             this.bw.RunWorkerCompleted += (s, e) => {
 
-                var delegateResult = (IDelegateWorkerResult<TResult>)e.Result;
-                onComplete?.Invoke(
-                    new DelegateWorkerResult<TResult>(
-                        ((IDelegateWorkerResult<TResult>)e).Result));
+                // Contrary to the standard implementation of BackgroundWorker
+                // in this implementation the e.Result is always accessible 
+                // even when the process has been cancelled because the caller
+                // cannot access e : RunWorkerCompletedEventArgs and set the 
+                // property e.Canceled to true. When e.Canceled = true accessing
+                // the e.Result throws but in this case we retain cancellation 
+                // logic and access to the partial resullt in the onCancelled 
+                // delegate if we wish to.
+
+                var result = (IDelegateWorkerResult<TResult>)e.Result;
+
+                if(result.Cancelled) {                    
+                    onCancelled?.Invoke(result);
+                } else {
+                    onComplete?.Invoke(result);
+                }                                
             };            
         }        
     }    
