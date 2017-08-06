@@ -20,7 +20,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
             // arrange
             var bdw = new BackgroundDelegateWorker<int, bool>();
 
-            var mreOnStart = new ManualResetEvent(false);
+            var mreOnExecute = new ManualResetEvent(false);
             var mreOnCompleted = new ManualResetEvent(false);
 
             const int initialValue = -1;
@@ -34,7 +34,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
                 i => {
                     valueOfPassedParameter = i;
                     isWorkDone = true;
-                    mreOnStart.Set();
+                    mreOnExecute.Set();
                     return new DelegateWorkerResult<bool>(true);
                 },
                 r => {
@@ -47,7 +47,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
 
             // assert
 
-            if(mreOnStart.WaitOne(new TimeSpan(0, 0, 1))) { };
+            if(mreOnExecute.WaitOne(new TimeSpan(0, 0, 1))) { };
             Assert.AreEqual(expected: initialValue, actual: valueOfPassedParameter);
             Assert.IsTrue(isWorkDone);
 
@@ -63,7 +63,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
                 supportReportProgress: true,
                 supportCancellation: false);
 
-            var mreOnStart = new ManualResetEvent(false);
+            var mreOnExecute = new ManualResetEvent(false);
             var mreOnFinalProgress = new ManualResetEvent(false);
             var mreOnCompleted = new ManualResetEvent(false);
 
@@ -88,7 +88,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
                     valueOfPassedParameter = i;
                     isWorkDone = true;
                     bdw.ReportProgress(finalProgress);
-                    mreOnStart.Set();
+                    mreOnExecute.Set();
                     return new DelegateWorkerResult<bool>(true);
                 },
                 r => {
@@ -100,7 +100,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
             bdw.StartProcess(valueOfParameterToPass);
 
             // assert
-            if(mreOnStart.WaitOne(new TimeSpan(0, 0, 1)) &&
+            if(mreOnExecute.WaitOne(new TimeSpan(0, 0, 1)) &&
                 mreOnFinalProgress.WaitOne(new TimeSpan(0, 0, 1))) { };
 
             Assert.AreEqual(expected: initialValue, actual: valueOfPassedParameter);
@@ -119,7 +119,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
                 supportReportProgress: true,
                 supportCancellation: false);
 
-            var mreOnStart = new ManualResetEvent(false);
+            var mreOnExecute = new ManualResetEvent(false);
             var mreOnCompleted = new ManualResetEvent(false);
 
             const int initialValue = 0;
@@ -136,7 +136,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
             var progressTracker = new int[progressSteps] { -1, -1, -1, -1, -1, -1 };
 
             bdw.ProgressChange(p => {
-                progressTracker[p] = p;
+                progressTracker[p-1] = p;
             });
 
             bdw.Process(
@@ -147,15 +147,19 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
                     var guard = 0;
 
                     do {
+
                         ++guard;
-                        bdw.ReportProgress(progress);
-                        ++progress;
+
+                        // simulate some work for the iteration
                         Thread.Sleep(1);
+                        ++progress;                        
+                        bdw.ReportProgress(progress);
+
                     } while(progress < progressSteps && guard < 10);
 
                     isWorkDone = progress == progressSteps;
-                    mreOnStart.Set();
-                    return new DelegateWorkerResult<bool>(true);
+                    mreOnExecute.Set();
+                    return new DelegateWorkerResult<bool>(isWorkDone);
                 },
                 r => {
                     isWorkCompleted = r.Result;
@@ -166,11 +170,11 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
             bdw.StartProcess(valueOfParameterToPass);
 
             // assert
-            if(mreOnStart.WaitOne(new TimeSpan(0, 0, 1))) { };
+            if(mreOnExecute.WaitOne(new TimeSpan(0, 0, 1))) { };
 
             Assert.AreEqual(expected: progressSteps, actual: progress);
             for(int i = 0; i < progressTracker.Length; i++) {
-                Assert.AreEqual(expected: i, actual: progressTracker[i]);
+                Assert.AreEqual(expected: i+1, actual: progressTracker[i]);
             }
 
             Assert.AreEqual(expected: initialValue, actual: valueOfPassedParameter);
@@ -188,7 +192,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
                 supportReportProgress: false,
                 supportCancellation: true);
 
-            var mreOnStart = new ManualResetEvent(false);
+            var mreOnExecute = new ManualResetEvent(false);
             var mreOnCompleted = new ManualResetEvent(false);
             var mreOnCancelled = new ManualResetEvent(false);
 
@@ -235,7 +239,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
 
                     var result = new DelegateWorkerResult<bool>(isWorkAllDone);
                     result.Cancelled = bdw.IsCancellationPending;
-                    mreOnStart.Set();
+                    mreOnExecute.Set();
                     return result;
                 },
                 r => {
@@ -263,7 +267,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
 
             // assert
 
-            if(mreOnStart.WaitOne(new TimeSpan(0, 0, 1))) { };
+            if(mreOnExecute.WaitOne(new TimeSpan(0, 0, 1))) { };
             Assert.AreEqual(expected: initialValue, actual: valueOfPassedParameter);
             Assert.IsFalse(isWorkAllDone);
 
@@ -284,18 +288,15 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
             // arrange           
             var bdw = new BackgroundDelegateWorker<int, bool>(
                 supportReportProgress: true,
-                supportCancellation: false);
+                supportCancellation: true);
 
-            var mreOnStart = new ManualResetEvent(false);
+            var mreOnExecute = new ManualResetEvent(false);
             var mreOnCompleted = new ManualResetEvent(false);
             var mreOnCancelled = new ManualResetEvent(false);
 
             const int initialValue = 0;
             var valueOfPassedParameter = 99;
             const int valueOfParameterToPass = initialValue;
-
-            var isWorkDone = false;
-            var isWorkCompleted = false;
 
             var isWorkAllDone = false;
             var hasCompletedBeenCalled = false;
@@ -305,15 +306,13 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
 
             const int initialProgress = 0;
             var progress = initialProgress;
-
             const int progressSteps = 7;
             const int midStepIndex = 3;
             var progressTracker = new int[progressSteps] { -1, -1, -1, -1, -1, -1, -1 };
 
             bdw.ProgressChange(p => {
-                progressTracker[p] = p;
+                progressTracker[p-1] = p;
             });
-
 
             bdw.Process(
                 i => {
@@ -325,34 +324,79 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
                     do {
 
                         ++guard;
-                        bdw.ReportProgress(progress);
-                        ++progress;
+
+                        if(bdw.IsCancellationPending) {
+                            break;
+                        }                     
+
+                        // simulate some work done during this iteration
                         Thread.Sleep(1);
+                        ++progress;
+                        bdw.ReportProgress(progress);
 
-                        if(progress = midStepIndex) {
-
+                        // something's wrong cancel the work
+                        if(progress == midStepIndex) {
+                            bdw.SignalCancellation();
                         }
 
                     } while(progress < progressSteps && guard < 10);
 
-                    isWorkDone = progress == progressSteps;
-                    mreOnStart.Set();
-                    return new DelegateWorkerResult<bool>(true);
-                },
-                i => {
+                    isWorkAllDone = bdw.IsCancellationPending ?
+                                    false :
+                                    progress == progressSteps;
 
+                    var result = new DelegateWorkerResult<bool>(isWorkAllDone);
+                    result.Cancelled = bdw.IsCancellationPending;
+                    mreOnExecute.Set();
+                    return result;                    
                 },
-                i => {
+                r => {
 
+                    hasCompletedBeenCalled = true;
+                    mreOnCompleted.Set();
+                },
+                r => {
+
+                    hasCancelledBeenCalled = true;
+
+                    if(r.Cancelled) {
+                        isCancelled = true;
+                    } else {
+                        returnedResult = r.Result;
+                    }
+
+                    mreOnCancelled.Set();
+                    mreOnCompleted.Set();
                 });
-
 
             // act
             bdw.StartProcess(valueOfParameterToPass);
-            bdw.SignalCancellation();
 
             // assert 
-            Assert.Fail();
+            if(mreOnExecute.WaitOne(new TimeSpan(0, 0, 1))) { };
+            Assert.AreEqual(expected: initialValue, actual: valueOfPassedParameter);
+            Assert.IsFalse(isWorkAllDone);
+
+            Assert.AreEqual(expected: midStepIndex, actual: progress);
+
+            for(int i = 0; i < progressTracker.Length; i++) {
+                
+                if(i < midStepIndex) {
+                    Assert.AreEqual(expected: i+1, actual: progressTracker[i]);
+                } else {
+                    Assert.AreEqual(expected: -1, actual: progressTracker[i]);
+                }                    
+            }
+
+            if(mreOnCancelled.WaitOne(new TimeSpan(0, 0, 1))) { };
+            Assert.IsTrue(hasCancelledBeenCalled);
+
+            if(mreOnCompleted.WaitOne(new TimeSpan(0, 0, 1)) &&
+                mreOnCancelled.WaitOne(new TimeSpan(0, 0, 1))) { };
+
+            Assert.IsFalse(hasCompletedBeenCalled);
+            Assert.IsTrue(isCancelled);
+            Assert.IsFalse(returnedResult.HasValue);
         }
     }
 }
