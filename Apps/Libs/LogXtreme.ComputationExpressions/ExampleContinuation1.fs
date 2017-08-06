@@ -1,4 +1,4 @@
-module public LogXtreme.ComputationExpressions.Examples.Continuation1
+ 
 
 // In C# or other imperative languages we have something like 
 
