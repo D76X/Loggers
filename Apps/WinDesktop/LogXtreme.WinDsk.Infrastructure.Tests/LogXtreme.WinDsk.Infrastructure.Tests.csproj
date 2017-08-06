@@ -75,6 +75,7 @@
     <Compile Include="Events\StandardNetEventSource.cs" />
     <Compile Include="Events\TestReactiveWeakEvent.cs" />
     <Compile Include="Services\BackgroundDelegateWorkerTest.cs" />
+    <Compile Include="Services\TaskDelegateWorkerTest.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Events\TestWeakEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
