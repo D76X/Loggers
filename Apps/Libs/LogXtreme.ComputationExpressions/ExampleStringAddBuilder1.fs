@@ -26,9 +26,9 @@ let stringAddWorkflow x y z =
     testOp
         {
         let! a = strToInt x // unwrap the evaluation strToInt x into a
-        let! b = strToInt y
-        let! c = strToInt z
-        return a + b + c
+        let! b = strToInt y // unwrap the evaluation strToInt y into b
+        let! c = strToInt z // unwrap the evaluation strToInt z into c
+        return a + b + c    // do the maths on the unwrapped values and return a wrapped result   
         }
 
 // test
@@ -38,3 +38,5 @@ let bad = stringAddWorkflow "12" "xyz" "2"
 // reads as
 
 //Bind(let (t1,t2) = strToInt x, fun
+
+// explain here...
