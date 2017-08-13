@@ -7,7 +7,7 @@ https://mallibone.com/post/f-unit-testing-with-xunit
 IN PARTICULAR YOU MUST INSTALL THE TEST RUNNER TO SEE THE TESTS!
 PM> Install-Package xunit.runner.visualstudio -Version 2.0.1
 
-This installs the runner at solution level, then it needsto be installed by project. 
+This installs the runner at solution level, then it needs to be installed by project. 
 
 GIVE UP MS TEST
 https://stackoverflow.com/questions/5103964/using-mstest-with-f
@@ -37,5 +37,64 @@ This will prevent the System.MissingMethodException : Method not found:
     </assemblyBinding>
   </runtime>
 </configuration>
+
+===================================================================================
+
+BUT THIS ALONE IS NOT ENOUGH IF YOU WANT Unquote TO WORK NICELY IN DEBUGGER AND 
+IN THE OUTPUT WINDOW YOU MUST MATCH THE BINDING REDIRECT TO THE VERSION OF THE 
+FSharp.Core.dll
+
+As suggested at the post below
+https://stackoverflow.com/questions/7828852/unquote-what-am-i-missing
+
+In the binding redirect above of which a significant fragment is repeated below 
+for clarity
+
+<bindingRedirect oldVersion="4.3.1.0"
+                 newVersion="4.4.0.0"/>
+
+
+must be so that newVersion="4.4.0.0" matches the exact version of 
+
+C:\Program Files (x86)\Reference Assemblies\Microsoft\FSharp\.NETFramework\v4.0\
+4.4.1.0\FSharp.Core.dll
+
+Hence, in order for Unquote to work with FSharp.Core.dll 4.4.1.0 the binding redirect
+should be 
+
+<bindingRedirect oldVersion="4.3.1.0"
+                 newVersion="4.4.1.0"/>
+
+===================================================================================
+
+IT IS ALSO NECESSARY TO USE THE RIGHT VERSION OF THE .NET Framework IN CONJUNCTION 
+WITH THE INSTALLED PACKAGES.
+
+For example this is how a package.config should look like 
+
+<?xml version="1.0" encoding="utf-8"?>
+<packages>
+  <package id="System.ValueTuple" version="4.3.0" targetFramework="net452" />
+  <package id="Unquote" version="3.2.0" targetFramework="net452" />
+  <package id="xunit" version="2.2.0" targetFramework="net452" />
+  <package id="xunit.abstractions" version="2.0.1" targetFramework="net452" />
+  <package id="xunit.assert" version="2.2.0" targetFramework="net452" />
+  <package id="xunit.core" version="2.2.0" targetFramework="net452" />
+  <package id="xunit.extensibility.core" version="2.2.0" targetFramework="net452" />
+  <package id="xunit.extensibility.execution" version="2.2.0" targetFramework="net452" />
+  <package id="xunit.runner.visualstudio" version="2.2.0" targetFramework="net452" developmentDependency="true" />
+</packages>
+
+
+===================================================================================
+
+EXTENSION METHODS IN F#
+
+VISIBILITY OF EXTENSION METHODS DEFINED IN F# TO C# REQUIRE ATTRIBUTES
+http://theburningmonk.com/2012/09/f-make-extension-methods-visible-to-c/
+https://stackoverflow.com/questions/1523500/how-do-i-create-an-extension-method-f
+
+VISIBILITY OF EXTENSION METHODS DEFINED IN C# TO F#
+https://stackoverflow.com/questions/777247/using-extension-methods-defined-in-c-sharp-from-f-code
 
 ===================================================================================

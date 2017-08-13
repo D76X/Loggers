@@ -1,4 +1,4 @@
-module public LogXtreme.ComputationExpressions.Examples.ExampleTraceBuilder2
+module public LogXtreme.ComputationExpressions.Examples.ExampleTraceBuilder2WithZero
 
 // https://fsharpforfunandprofit.com/posts/computation-expressions-builder-part1/
 type TraceBuilderA() = 
@@ -23,16 +23,21 @@ let traceA = TraceBuilderA()
 // failing at compile time with "This value is not a function and cannot be applied"
 // it doesn’t make sense to have nothing at all in a computation expression!
 // it’s purpose is to chain expressions together - we need at least an expression.
-traceA {
- // This value is not a function and cannot be applied
-} |> printfn "Result for simple expression: %A" 
+//------------------------------------------------------------------------------------
+//traceA {
+// // This value is not a function and cannot be applied
+//} |> printfn "Result for simple expression: %A" 
+//------------------------------------------------------------------------------------
 
 // again failing at compile time with 
 // "This control construct may only be used if the computation expression builder defines 
 // a 'Zero' method"
-traceA { 
-    printfn "hello world"
-    } |> printfn "Result for simple expression: %A"
+
+//------------------------------------------------------------------------------------
+//traceA { 
+//    printfn "hello world"
+//    } |> printfn "Result for simple expression: %A"
+//------------------------------------------------------------------------------------
 
 // However the follwing is syntactically correct and works.
 // As shown later implemeting the member fuction Zero for a builder is required only if the builder

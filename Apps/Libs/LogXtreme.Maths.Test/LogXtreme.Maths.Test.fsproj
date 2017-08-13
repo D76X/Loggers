@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>LogXtreme.Maths.Test</RootNamespace>
     <AssemblyName>LogXtreme.Maths.Test</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <TargetFSharpCoreVersion>4.4.1.0</TargetFSharpCoreVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Name>LogXtreme.Maths.Test</Name>
@@ -71,6 +71,9 @@
     <Reference Include="System.Numerics" />
     <Reference Include="System.ValueTuple">
       <HintPath>..\..\..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="Unquote">
+      <HintPath>..\..\..\packages\Unquote.3.2.0\lib\net45\Unquote.dll</HintPath>
     </Reference>
     <Reference Include="xunit.abstractions">
       <HintPath>..\..\..\packages\xunit.abstractions.2.0.1\lib\net35\xunit.abstractions.dll</HintPath>

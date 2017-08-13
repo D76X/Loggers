@@ -58,9 +58,5 @@ trace {
     return x
     } |> printfn "Result from do: %A" 
 
-// failing 
 
-trace { 
-    printfn "hello world"
-    } |> printfn "Result for simple expression: %A" 
 

@@ -51,9 +51,19 @@
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="Library1.fs" />
     <None Include="Script.fsx" />
     <Content Include="packages.config" />
+    <Compile Include="ExampleContinuation1.fs" />
+    <Compile Include="ExampleDbResultBuilder1.fs" />
+    <Compile Include="ExampleLoggingBuilder1.fs" />
+    <Compile Include="ExampleMaybeBuilder1.fs" />
+    <Compile Include="ExampleMaybeBuilder2.fs" />
+    <Compile Include="ExampleOrElseBuilder1.fs" />
+    <Compile Include="ExampleStringAddBuilder1.fs" />
+    <Compile Include="ExampleStringAddBuilder2.fs" />
+    <Compile Include="ExampleTraceBuilder1.fs" />
+    <Compile Include="ExampleTraceBuilder2WithZero.fs" />
+    <Compile Include="ExampleTraceBuilder3WithYield.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

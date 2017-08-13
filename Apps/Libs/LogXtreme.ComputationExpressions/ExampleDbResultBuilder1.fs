@@ -7,7 +7,7 @@ module public LogXtreme.ComputationExpressions.Examples.DbResultBuilder1
 // amd Failure
 
 type DbResult<'a> = 
-    | Sucess of 'a
+    | Success of 'a
     | Error of string
 
 // a computation expression builder type is defined on which workflows can be 
@@ -28,7 +28,7 @@ type DbResultBuilder() =
     member this.Bind(m,f) = 
         match m with
         | Error _ -> m
-        | Sucess a ->
+        | Success a ->
             printfn "\tSucessful: %s" a
             f a
            

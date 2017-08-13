@@ -27,12 +27,5 @@ namespace LogXtreme.Maths.TestC {
         public void AddIntegersTheory(int val1, int val2) {
             Assert.Equal(val1 + val2, Arithmetic.add(val1, val2));
         }
-
-        //[Theory]
-        //[InlineData(1.0, -1.0)]
-        //[InlineData(2.0, -1.0)]
-        //public void AddFloatsTheory(float val1, float val2) {
-        //    Assert.Equal(val1 + val2, Arithmetic.add(val1, val2));
-        //}
     }
 }
