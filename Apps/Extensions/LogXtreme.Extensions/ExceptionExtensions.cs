@@ -17,12 +17,4 @@ namespace LogXtreme.Extensions {
             return sb.ToString();
         }
     }
-
-    public class MyClass {
-
-        public MyClass() {
-            var e = new Exception();
-            e.FullMessage();
-        }
-    }
 }

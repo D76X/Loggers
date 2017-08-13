@@ -10,14 +10,6 @@ open Swensen.Unquote
 open LogXtreme.Extensions
 
 [<Fact>]
-let ``1 plus 2 gives 3``() = 
-    Assert.Equal(3,1+2) 
-
-[<Fact>]
-let ``2 plus 2 gives 4``() = 
-    test <@ (2+2) = 4 @>
-
-[<Fact>]
 let ``Exception.FullMessage recovers 2 messages``() = 
     
     // arrange
@@ -25,7 +17,7 @@ let ``Exception.FullMessage recovers 2 messages``() =
     let im = "inner"
     let inner = new Exception(im)
     let outer = new Exception(om,inner)
-    let expected = "outer\ninner"
+    let expected = "outer\r\ninner\r\n"
     
     // act
     let actual = outer.FullMessage()    
