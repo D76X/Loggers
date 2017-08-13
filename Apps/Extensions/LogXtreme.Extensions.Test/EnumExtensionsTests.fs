@@ -1,0 +1,56 @@
+﻿module LogXreme.Extensions.Test.EnumExtensions
+
+open System
+open Xunit
+open Swensen.Unquote
+open LogXtreme.Extensions
+
+// Enumerations in F# 
+// https://fsharpforfunandprofit.com/posts/enum-types/
+
+// In F# enumerations are types declared as ordinary unions.
+// In F# values of an enumerations must be qualified with the type of the enumeration.
+
+// However there are some differences between simple unions and enumerations.
+type TestColorUnion = Red | Green | Blue // this is a union
+type TestColorEnum = Red = 1 | Green = 2 | Blue = 3
+type TestSizeEnum = Small = 1 | Medium =2 | Large = 3
+
+// Unions must declare cases with names whose first letter is uppercase.
+// Enums can declare cases whose first letter is lowercase.
+type TestEnumQuirk = Right = 1 | wrong = 2
+//type WrongUnionDeclaration = Right | wrong
+
+//F# allow for bitwise enumerations using the appropriate attribute
+[<System.FlagsAttribute>]
+type TestPermissionEnum = Read = 1 | Write = 2 | Execute = 4
+let permission1 = TestPermissionEnum.Read ||| TestPermissionEnum.Write 
+
+let TestGetName enumValue = System.Enum.GetName(enumValue.GetType(), enumValue)
+
+[<Fact>]
+let ``Enum.GetName extension method returns the name of the enum value as a string``() =
+
+    // arrange
+    let redValue = TestColorEnum.Red
+    let expected = @"Red"
+
+    // act
+    let actual = redValue.GetName()
+
+    // assert
+    test <@ actual = expected @>
+
+
+[<Fact>]
+let ``Enum.GetName extension method matches F# implemetation output`` () =
+
+    // arrange 
+    let sizeValue = TestSizeEnum.Small
+    let expected  = TestGetName sizeValue
+
+    // act 
+    let actual = sizeValue.GetName()
+
+    // assert
+    test <@ actual = expected @>

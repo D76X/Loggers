@@ -13,8 +13,8 @@ open LogXtreme.Extensions
 let ``Exception.FullMessage recovers 2 messages``() = 
     
     // arrange
-    let om = "outer"
-    let im = "inner"
+    let om = @"outer"
+    let im = @"inner"
     let inner = new Exception(im)
     let outer = new Exception(om,inner)
     let expected = "outer\r\ninner\r\n"

@@ -58,6 +58,7 @@
     <None Include="Script.fsx" />
     <Content Include="packages.config" />
     <Content Include="App.config" />
+    <Compile Include="EnumExtensionsTests.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
