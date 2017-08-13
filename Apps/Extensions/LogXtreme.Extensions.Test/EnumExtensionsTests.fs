@@ -42,10 +42,39 @@ let TestGetDescription (enumValue: Enum) =
 
     let enumValueName = enumValue.GetName()
     let fieldInfo = enumValue.GetType().GetField(enumValueName)
-    let descAttrs = fieldInfo.GetCustomAttributes(typeof<System.ComponentModel.DescriptionAttribute>,false)
-    let descAttr =  fieldInfo.FirstOrDefault()
+    let descAttrs = fieldInfo.GetCustomAttributes(typeof<System.ComponentModel.DescriptionAttribute>,false)    
     
-    ""
+    // https://stackoverflow.com/questions/2784281/firstordefault-in-f/25034371
+    // this is semantically preferable to System.Linq IEnumerable<T>.FirstOrDefault()
+    let descAttr = Seq.tryFind (fun _ -> true) descAttrs
+    
+    // https://msdn.microsoft.com/en-us/visualfsharpdocs/conceptual/casting-and-conversions-%5Bfsharp%5D
+    let result = 
+        match descAttr with 
+        | Some a -> 
+            let d = a :?> System.ComponentModel.DescriptionAttribute
+            d.Description
+        | None -> enumValueName
+
+    result
+
+[<Fact>]
+let ``TestGetDescription returns expected enumeration value descriptions``() = 
+
+    // arrange 
+    let geometryEnumValue = TestGeometryEnum.Square
+    let expectedGeometryDesc =  squareDescription
+    
+    let colorEnumValue = TestColorEnum.Blue
+    let expectedColorDesc = @"Blue" 
+
+    // act 
+    let actualGeometryDesc = TestGetDescription geometryEnumValue
+    let actualColorDesc = TestGetDescription colorEnumValue
+
+    // assert
+    test<@ actualGeometryDesc = expectedGeometryDesc @>
+    test<@ actualColorDesc = expectedColorDesc @>
 
 [<Fact>]
 let ``Enum.GetName extension method returns the name of the enum value as a string``() =
@@ -104,7 +133,15 @@ let ``Enum.GetDescription extension method returns Enum.GetValue for Enum value 
 let ``Enum.GetDescription extension method matches F# implemetation output``() = 
 
     // arrange 
+    let circleEnumValue = TestGeometryEnum.Circle
+    let largeEnumValue = TestSizeEnum.Large
+    let expectedGeometryDescription = TestGetDescription circleEnumValue
+    let expectedSizeDescription = TestGetDescription largeEnumValue
 
     // act 
+    let actualCircleEnumDesc = circleEnumValue.GetDescription()
+    let actualSizeEnumDesc = largeEnumValue.GetDescription()
 
     // assert
+    test<@ actualCircleEnumDesc = expectedGeometryDescription @>
+    test<@ actualSizeEnumDesc = expectedSizeDescription @>
