@@ -26,7 +26,26 @@ type TestEnumQuirk = Right = 1 | wrong = 2
 type TestPermissionEnum = Read = 1 | Write = 2 | Execute = 4
 let permission1 = TestPermissionEnum.Read ||| TestPermissionEnum.Write 
 
+// Enumeration type with values declaring a description with attribute
+let lineDescription: string = @"A Line"
+let squareDescription: string = @"A Square"
+let circleDescription: string = @"A Circle"
+type TestGeometryEnum =     
+    | [<System.ComponentModel.DescriptionAttribute("A Line")>] Line = 1 
+    | [<System.ComponentModel.DescriptionAttribute("A Square")>] Square = 2 
+    | [<System.ComponentModel.DescriptionAttribute("A Circle")>] Circle = 3
+
+// Test Functions
 let TestGetName enumValue = System.Enum.GetName(enumValue.GetType(), enumValue)
+
+let TestGetDescription (enumValue: Enum) =
+
+    let enumValueName = enumValue.GetName()
+    let fieldInfo = enumValue.GetType().GetField(enumValueName)
+    let descAttrs = fieldInfo.GetCustomAttributes(typeof<System.ComponentModel.DescriptionAttribute>,false)
+    let descAttr =  fieldInfo.FirstOrDefault()
+    
+    ""
 
 [<Fact>]
 let ``Enum.GetName extension method returns the name of the enum value as a string``() =
@@ -54,3 +73,38 @@ let ``Enum.GetName extension method matches F# implemetation output`` () =
 
     // assert
     test <@ actual = expected @>
+
+[<Fact>]
+let ``Enum.GetDescription extension method returns enumeration value description``() =
+
+    // arrange 
+    let expected = lineDescription
+    let lineEnumVal = TestGeometryEnum.Line
+
+    // act 
+    let actual = lineEnumVal.GetDescription()
+
+    // assert
+    test<@ actual = expected @>
+
+[<Fact>]
+let ``Enum.GetDescription extension method returns Enum.GetValue for Enum value with no description``() =
+
+    // arrange
+    let redValue = TestColorEnum.Red
+    let expected = redValue.GetName()
+
+    // act
+    let actual = redValue.GetDescription()
+
+    // assert
+    test <@ actual = expected @>
+
+[<Fact>]
+let ``Enum.GetDescription extension method matches F# implemetation output``() = 
+
+    // arrange 
+
+    // act 
+
+    // assert
