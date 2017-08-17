@@ -88,3 +88,23 @@ traceB {
     return! Some 1
     } |> printfn "Result for return! : %A"
 
+
+// Despite the fact that the member functions Yield/YieldFrom seem to semantically 
+// overlap with the  member functions Return/ReturnFrom they are used in distinct 
+// senarios. 
+
+//A workflow is always terminated when the return statement is evaluated, thus
+// no other expression is evaluated following the invokation of Return or ReturnFrom.
+
+// Workflows do not necessarily terminate when the Yield or YieldFrom is 
+// executed. However, in the example provided so far there is perfect symmetry between
+// the implementations woth Yield/YieldFrom and Return/ReunrFrom. 
+
+//---------------------------------------------------------------------------------------------------
+// The following does not compile with the DT error :
+// "This control construct may only be used if the computation expression builder defines Combine"
+// traceB {
+//     yield 1
+//     yield 2
+//     } |> printfn "Result for yield: %A"
+//---------------------------------------------------------------------------------------------------
