@@ -62,11 +62,13 @@ let fun2 m  =
 let res2 = bind(list2, fun2)
 
 // Example 3
+
 // This shows how the binf function above can be used in conjunction with the concept
 // of continuation. It takes a value from the first list and create a list by summing 
 // it to each value of the second list. The first list holds three values hence this 
 // process produces three lists one for each of the values in the first list. Finally,
 // the three list are concatenated to produce a single resulting list.  
+
 let add = 
     bind( [1;2;3], fun elem1 -> 
     bind( [10;11;12;14], fun elem2 -> 
