@@ -1,10 +1,21 @@
 module public LogXtreme.ComputationExpressions.Examples.DbResultBuilder1
 
-// this is another example of builder with a Bind member 
+// This is another example of builder with a Bind member 
 // the wrapper type is no longer the F# Option type, instead a custon type is used
-// which is similar in concept to the option type
-// the DbResult type is a discriminated union type to define the concept of Success
-// amd Failure
+// which is similar in concept to the option type. The DbResult type is a 
+// discriminated union type to define the concept of Success and Failure.
+
+//--------------------------------------------------------------------------------------------------------
+// Computation Expression Builders falls under 3 common patterns of the 
+// corresponding workflows
+
+// -1 Success/Failure ~ True/False ~ Binary Option (Some/None)
+
+// -2 Sequencial processing/ sequencial evaluation of statements
+
+// -3 Manipulation of datastructures 
+
+//--------------------------------------------------------------------------------------------------------
 
 type DbResult<'a> = 
     | Success of 'a

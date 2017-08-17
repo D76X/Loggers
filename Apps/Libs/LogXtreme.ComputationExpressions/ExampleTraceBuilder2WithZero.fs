@@ -23,21 +23,20 @@ let traceA = TraceBuilderA()
 // failing at compile time with "This value is not a function and cannot be applied"
 // it doesn’t make sense to have nothing at all in a computation expression!
 // it’s purpose is to chain expressions together - we need at least an expression.
-//------------------------------------------------------------------------------------
-//traceA {
-// // This value is not a function and cannot be applied
-//} |> printfn "Result for simple expression: %A" 
-//------------------------------------------------------------------------------------
+//-------------------------------------------------------
+// traceA {
+//  // This value is not a function and cannot be applied
+// } |> printfn "Result for simple expression: %A" 
+//-------------------------------------------------------
 
 // again failing at compile time with 
 // "This control construct may only be used if the computation expression builder defines 
 // a 'Zero' method"
-
-//------------------------------------------------------------------------------------
-//traceA { 
-//    printfn "hello world"
-//    } |> printfn "Result for simple expression: %A"
-//------------------------------------------------------------------------------------
+//-------------------------------------------------------
+// traceA { 
+//     printfn "hello world"
+//     } |> printfn "Result for simple expression: %A"
+//-------------------------------------------------------
 
 // However the follwing is syntactically correct and works.
 // As shown later implemeting the member fuction Zero for a builder is required only if the builder
@@ -55,7 +54,7 @@ traceA {
 // but in addition to that we also want to understand why adding the Zero member function fixes the 
 // problem.  
 
-// This TraceBuilder type follows the pattern "sucess-or failure".
+// This TraceBuilder type follows the pattern "sucess-failure".
 // This means that its Zero member function when implemented should return "failure".
 // In this case "failure" is indicated by the value None of the type Option. 
 
@@ -90,13 +89,21 @@ let tracewz = TraceBuilderWithZero()
 
 // Which "wrapped value" should Zero return ?
 
+//--------------------------------------------------------------------------------------------------------
 // There are 3 general workflow cases
+
 // 1- Workflow with success-or-failure style => Zero retunrs "failure".
+
 // 2- Workflow for sequential processing => Zero returns a "wrapped unit"
 //    for example Some () where Some is the wrapper around () that is Option is the wrapper type and ()
 //    "the unit" is the value - notice that this is the same as Return ().
+
 // 3- Workflow that manipulates datastructures => Zero return the "empty" data structure.
 //    For example if the datastructure is of List type then Zero should retun the empty list []
+
+//--------------------------------------------------------------------------------------------------------
+
+// these are workflow which do not explicitely retunr a value thus the Zero memeber function is necessary
 
 tracewz { 
     printfn "hello world"
