@@ -61,6 +61,8 @@
     <Content Include="App.config" />
     <Compile Include="AbstractClass.fs" />
     <Compile Include="CodeQuotations.fs" />
+    <Compile Include="Casting.fs" />
+    <Compile Include="Interfaces.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

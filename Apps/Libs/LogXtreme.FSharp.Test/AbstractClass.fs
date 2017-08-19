@@ -80,7 +80,7 @@ type AbstractClass2() =
 
 type BaseClass2() = 
     abstract member F : unit -> unit
-    default u.F() = 
+    default this.F() = 
         printf "F default implementation..."
 
 //----------------------------------------------------------------------------
