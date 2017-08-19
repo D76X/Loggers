@@ -59,7 +59,8 @@
     <None Include="Script.fsx" />
     <Content Include="packages.config" />
     <Content Include="App.config" />
-    <Compile Include="Casting.fs" />
+    <Compile Include="AbstractClass.fs" />
+    <Compile Include="CodeQuotations.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
