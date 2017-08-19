@@ -5,7 +5,7 @@ open Xunit
 open Swensen.Unquote
 
 // to make extension methods declared in C# visible to F#
-// it is necessary to open the namespace pf the extension
+// it is necessary to open the namespace of the extensions
 // https://stackoverflow.com/questions/777247/using-extension-methods-defined-in-c-sharp-from-f-code
 open LogXtreme.Extensions
 

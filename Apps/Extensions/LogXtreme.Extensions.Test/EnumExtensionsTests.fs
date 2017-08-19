@@ -35,10 +35,13 @@ type TestGeometryEnum =
     | [<System.ComponentModel.DescriptionAttribute("A Square")>] Square = 2 
     | [<System.ComponentModel.DescriptionAttribute("A Circle")>] Circle = 3
 
-// Test Functions
-let TestGetName enumValue = System.Enum.GetName(enumValue.GetType(), enumValue)
+// Test Function
+// TestGetEnumName pairs with the extension method Enum.GetName
+let TestGetEnumName (enumValue: Enum) = System.Enum.GetName(enumValue.GetType(), enumValue)
 
-let TestGetDescription (enumValue: Enum) =
+// Test Function
+// TestGetEnumDescription pairs with the extension method Enum.GetDescription
+let TestGetEnumDescription (enumValue: Enum) =
 
     let enumValueName = enumValue.GetName()
     let fieldInfo = enumValue.GetType().GetField(enumValueName)
@@ -49,6 +52,7 @@ let TestGetDescription (enumValue: Enum) =
     let descAttr = Seq.tryFind (fun _ -> true) descAttrs
     
     // https://msdn.microsoft.com/en-us/visualfsharpdocs/conceptual/casting-and-conversions-%5Bfsharp%5D
+    // https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/casting-and-conversions
     let result = 
         match descAttr with 
         | Some a -> 
@@ -59,7 +63,7 @@ let TestGetDescription (enumValue: Enum) =
     result
 
 [<Fact>]
-let ``TestGetDescription returns expected enumeration value descriptions``() = 
+let ``TestGetDescription returns expected enumeration value description``() = 
 
     // arrange 
     let geometryEnumValue = TestGeometryEnum.Square
@@ -69,8 +73,8 @@ let ``TestGetDescription returns expected enumeration value descriptions``() =
     let expectedColorDesc = @"Blue" 
 
     // act 
-    let actualGeometryDesc = TestGetDescription geometryEnumValue
-    let actualColorDesc = TestGetDescription colorEnumValue
+    let actualGeometryDesc = TestGetEnumDescription geometryEnumValue
+    let actualColorDesc = TestGetEnumDescription colorEnumValue
 
     // assert
     test<@ actualGeometryDesc = expectedGeometryDesc @>
@@ -95,7 +99,7 @@ let ``Enum.GetName extension method matches F# implemetation output`` () =
 
     // arrange 
     let sizeValue = TestSizeEnum.Small
-    let expected  = TestGetName sizeValue
+    let expected  = TestGetEnumName sizeValue
 
     // act 
     let actual = sizeValue.GetName()
@@ -135,8 +139,8 @@ let ``Enum.GetDescription extension method matches F# implemetation output``() =
     // arrange 
     let circleEnumValue = TestGeometryEnum.Circle
     let largeEnumValue = TestSizeEnum.Large
-    let expectedGeometryDescription = TestGetDescription circleEnumValue
-    let expectedSizeDescription = TestGetDescription largeEnumValue
+    let expectedGeometryDescription = TestGetEnumDescription circleEnumValue
+    let expectedSizeDescription = TestGetEnumDescription largeEnumValue
 
     // act 
     let actualCircleEnumDesc = circleEnumValue.GetDescription()
