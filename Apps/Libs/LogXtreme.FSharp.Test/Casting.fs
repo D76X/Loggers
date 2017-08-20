@@ -2,6 +2,8 @@
 
 // https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/casting-and-conversions
 // https://fsharpforfunandprofit.com/posts/inheritance/
+// https://stackoverflow.com/questions/31616761/f-casting-operators
+// https://stackoverflow.com/questions/2361851/c-sharp-and-f-casting-specifically-the-as-keyword
 
 open System
 open System.Numerics
@@ -54,5 +56,68 @@ type Circle2D(o: Point2D, p: Point2D)=
     override this.Area() = area
 
 
+[<Fact>]
+let ``can upcast Point2D to BaseGeometry``()=
+    
+    // arrange
+    let p1 = Point2D(0., 0.)
+    let p2 = Point2D(2.,2.)
+    let line = Line2D(p1, p2)
+    let expected = true
+
+    // act - upcast    
+    // https://stackoverflow.com/questions/31616761/f-casting-operators
+    let castLine = line :> BaseGeometry  
+    let otherCastLine = (upcast line : BaseGeometry)
+    let actual = castLine :? BaseGeometry
+    let otherActual = otherCastLine :? BaseGeometry
+
+    // assert
+    test<@ actual = expected@>
+    test<@ otherActual = expected@>
+
+[<Fact>]
+let ``can downcast Point2D back to Point2D``()=
+
+    // arrange 
+    let point = Point2D(0., 0.)    
+    let expectedDownTypeIsPoint2D = true;
+    let expectedUpcastTypeIsPoint2D = true;
+
+    // act - downcast
+    // https://stackoverflow.com/questions/31616761/f-casting-operators
+    // https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/casting-and-conversions
+    let downcastPoint = point :> BaseGeometry
+    let upcastPoint = downcastPoint :?> Point2D // this might throw unless you know
+    let actualDowncastTypeIsPoint2D = downcastPoint :? Point2D
+    let actualUpcastTypeIsPoint2D = upcastPoint :? Point2D 
+
+    // assert
+    test<@ actualUpcastTypeIsPoint2D = expectedUpcastTypeIsPoint2D@>
+    test<@ actualDowncastTypeIsPoint2D = expectedDownTypeIsPoint2D@>
+
+[<Fact>]
+let ``trying to upcast to wrong type throws InvalidCastException``()=
+
+    // arrange 
+    let point = Point2D(0., 0.) 
+    // https://en.wikibooks.org/wiki/F_Sharp_Programming/Reflection
+    let expectedExceptionType = typeof<InvalidCastException>
+
+    // act 
+    // https://stackoverflow.com/questions/31616761/f-casting-operators
+    // https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/casting-and-conversions
+    let downcastPoint = point :> BaseGeometry    
+
+    // assert
+    // http://hadihariri.com/2008/10/17/testing-exceptions-with-xunit/
+    // http://www.bjoernrochel.de/2010/04/19/testing-f-code-with-xunit-net-on-net-4-0/
+    //let ex = Assert.Throws<InvalidCastException>(fun () -> downcastPoint :?> Line2D)
+    let ex= Assert.Throws<InvalidCastException>(fun () -> 
+        downcastPoint :?> Line2D 
+        |> ignore)
+    let actualExceptionType = ex.GetType()
+    test<@ actualExceptionType = expectedExceptionType@>
+    
 
 

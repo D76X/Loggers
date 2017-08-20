@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.26730.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{FAFE10AF-AF2C-4D6F-82BC-81ED9863EE85}"
 EndProject
@@ -309,6 +309,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.Extensions", "Apps\Extensions\LogXtreme.Extensions\LogXtreme.Extensions.csproj", "{07A36205-C0C2-4F88-A37C-27199051A240}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "LogXtreme.Extensions.Test", "Apps\Extensions\LogXtreme.Extensions.Test\LogXtreme.Extensions.Test.fsproj", "{6E0C1AAA-A339-4AC2-8A20-4AE517EDF245}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "LogXtreme.FSharp.Utils", "Apps\Libs\LogXtreme.FSharp.Utils\LogXtreme.FSharp.Utils.fsproj", "{8DE8E34F-3749-4935-93C9-4BB6FA7FC66C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -984,6 +986,14 @@ Global
 		{6E0C1AAA-A339-4AC2-8A20-4AE517EDF245}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6E0C1AAA-A339-4AC2-8A20-4AE517EDF245}.Release|x86.ActiveCfg = Release|Any CPU
 		{6E0C1AAA-A339-4AC2-8A20-4AE517EDF245}.Release|x86.Build.0 = Release|Any CPU
+		{8DE8E34F-3749-4935-93C9-4BB6FA7FC66C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DE8E34F-3749-4935-93C9-4BB6FA7FC66C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DE8E34F-3749-4935-93C9-4BB6FA7FC66C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8DE8E34F-3749-4935-93C9-4BB6FA7FC66C}.Debug|x86.Build.0 = Debug|Any CPU
+		{8DE8E34F-3749-4935-93C9-4BB6FA7FC66C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DE8E34F-3749-4935-93C9-4BB6FA7FC66C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DE8E34F-3749-4935-93C9-4BB6FA7FC66C}.Release|x86.ActiveCfg = Release|Any CPU
+		{8DE8E34F-3749-4935-93C9-4BB6FA7FC66C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1111,5 +1121,9 @@ Global
 		{C79894C6-0C3F-4157-B567-5D1687E23A25} = {336F8F07-C586-45D4-B7E2-20FDB911D3B5}
 		{07A36205-C0C2-4F88-A37C-27199051A240} = {C79894C6-0C3F-4157-B567-5D1687E23A25}
 		{6E0C1AAA-A339-4AC2-8A20-4AE517EDF245} = {C79894C6-0C3F-4157-B567-5D1687E23A25}
+		{8DE8E34F-3749-4935-93C9-4BB6FA7FC66C} = {57F38F0E-585A-4964-B8F1-B252263FFD24}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B48A64CD-1E9D-4169-82DF-66FD7695C2D0}
 	EndGlobalSection
 EndGlobal

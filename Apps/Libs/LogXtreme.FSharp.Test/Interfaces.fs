@@ -1,5 +1,6 @@
 ﻿module LogXtreme.FSharp.Test.Interfaces
 
+// https://fsharpforfunandprofit.com/posts/interfaces/
 // https://stackoverflow.com/questions/11812250/overriding-an-inherited-member-in-f
 
 open System
