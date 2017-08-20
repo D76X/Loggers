@@ -398,5 +398,11 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
             Assert.IsTrue(isCancelled);
             Assert.IsFalse(returnedResult.HasValue);
         }
+
+        [TestMethod]
+        public void BackgroundDelegateWorker_ShouldRedesignAllTestsWithAsyncPattern() {
+
+            Assert.Fail("All the tests for BackgroundDelegateWorker should be redesigned to use async pattern in xUnit?");
+        }
     }
 }
