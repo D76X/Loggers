@@ -3,7 +3,7 @@ using System.Diagnostics.Contracts;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace LogXtreme.WinDsk.Infrastructure.Expressions {
+namespace LogXtreme.Extensions {
 
     public static partial class ExpressionExtensions {
 
@@ -19,17 +19,17 @@ namespace LogXtreme.WinDsk.Infrastructure.Expressions {
 
             var expressionBody = propertyExpression.Body as MemberExpression;
 
-            if (expressionBody == null) {
+            if(expressionBody == null) {
                 throw new ArgumentException(ErrMsgExpressionIsNotProperty);
             }
 
             var propertyInfo = expressionBody.Member as PropertyInfo;
 
-            if (propertyInfo == null) {
+            if(propertyInfo == null) {
                 throw new ArgumentException(ErrMsgNoPropertyInfoForMemberExpression);
             }
 
-            if (!propertyInfo.ReflectedType.IsAssignableFrom(type)) {
+            if(!propertyInfo.ReflectedType.IsAssignableFrom(type)) {
                 throw new ArgumentException($"The lamba expresion '{propertyExpression.ToString()}' refers to a property that is not from type {type}");
             }
 

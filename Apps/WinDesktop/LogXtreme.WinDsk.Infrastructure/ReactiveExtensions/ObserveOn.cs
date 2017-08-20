@@ -1,4 +1,4 @@
-﻿using LogXtreme.WinDsk.Infrastructure.Expressions;
+﻿using LogXtreme.Extensions;
 using System;
 using System.Collections.Specialized;
 using System.ComponentModel;
