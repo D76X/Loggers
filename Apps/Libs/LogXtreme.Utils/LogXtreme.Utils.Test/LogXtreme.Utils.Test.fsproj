@@ -5,14 +5,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>f8093c8d-8d2c-4794-8b83-2ce67cadd4f7</ProjectGuid>
+    <ProjectGuid>b781d1f8-8c74-42c7-905f-609296b1454c</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>LoXtreme.Utils.Test</RootNamespace>
-    <AssemblyName>LoXtreme.Utils.Test</AssemblyName>
+    <RootNamespace>LogXtreme.Utils.Test</RootNamespace>
+    <AssemblyName>LogXtreme.Utils.Test</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <TargetFSharpCoreVersion>4.4.1.0</TargetFSharpCoreVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Name>LoXtreme.Utils.Test</Name>
+    <Name>LogXtreme.Utils.Test</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -66,7 +66,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.ValueTuple">
-      <HintPath>..\..\..\packages\System.ValueTuple.4.3.1\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+      <HintPath>..\..\..\..\packages\System.ValueTuple.4.3.1\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
