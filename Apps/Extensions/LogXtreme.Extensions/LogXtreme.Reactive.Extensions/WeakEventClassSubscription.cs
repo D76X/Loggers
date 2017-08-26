@@ -1,7 +1,6 @@
 ﻿using System;
 
-namespace LogXtreme.WinDsk.Infrastructure.ReactiveExtensions {
-
+namespace LogXtreme.Reactive.Extensions {
     /// <summary>
     /// References
     /// Weak events in .NET using Reactive Extensions (Rx)
@@ -17,7 +16,7 @@ namespace LogXtreme.WinDsk.Infrastructure.ReactiveExtensions {
     /// </summary>
     public static partial class ObservableEx {
 
-        
+
         /// <summary>
         /// The same as the version without the weak class parameter but with the added 
         /// feature that the caller can pass a reference to an instance of a class on 
@@ -73,16 +72,16 @@ namespace LogXtreme.WinDsk.Infrastructure.ReactiveExtensions {
                 subscriber(item);
             }
         }
-       
+
         private static IDisposable InternalSubscribeWeaklyToClass<TEventPattern, TEvent, TClass>(
             this IObservable<TEventPattern> observable,
-            TEvent actionOnNext, 
+            TEvent actionOnNext,
             TClass weakClass,
             Action<TEvent, TEventPattern> onNext)
             where TEvent : class
             where TClass : class {
 
-            if (onNext.Target != null)
+            if(onNext.Target != null)
                 throw new ArgumentException(ErrMsgWeakSubscriptionHanlderMustBeStatic);
 
             // The class instance could live in a differnt place than the eventhandler. If either one is null,
@@ -96,7 +95,7 @@ namespace LogXtreme.WinDsk.Infrastructure.ReactiveExtensions {
                 var currentWeakClass = weakReferenceToClassInstance.Target as TClass;
                 var handlerForNextValue = weakReferenceToHanlder.Target as TEvent;
 
-                if (currentWeakClass != null && handlerForNextValue != null) {
+                if(currentWeakClass != null && handlerForNextValue != null) {
                     onNext(handlerForNextValue, item);
                 } else {
                     subscription.Dispose();

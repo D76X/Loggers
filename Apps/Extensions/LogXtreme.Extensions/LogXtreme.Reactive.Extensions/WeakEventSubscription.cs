@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Reactive.Linq;
 
-namespace LogXtreme.WinDsk.Infrastructure.ReactiveExtensions {
-
+namespace LogXtreme.Reactive.Extensions {
     /// <summary>
     /// References
     /// Weak events in .NET using Reactive Extensions (Rx)
@@ -30,7 +29,7 @@ namespace LogXtreme.WinDsk.Infrastructure.ReactiveExtensions {
         /// <returns>The subscription as IDisposable</returns>
         public static IDisposable SubscribeWeakly<TEventPattern>(
             this IObservable<TEventPattern> observable,
-            Action<TEventPattern> onNext) 
+            Action<TEventPattern> onNext)
             where TEventPattern : class {
 
             IDisposable subscription = null;
@@ -100,7 +99,7 @@ namespace LogXtreme.WinDsk.Infrastructure.ReactiveExtensions {
             // If the target property of the Action is not null then there exist an instance of a class 
             // to which a reference to a non static handler is held. In order to make sure that the caller
             // is not held in memory by a strong reference we must have a static handler.
-            if (onNextStaticHanlder.Target != null) {
+            if(onNextStaticHanlder.Target != null) {
                 throw new ArgumentException(ErrMsgWeakSubscriptionHanlderMustBeStatic);
             }
 
@@ -110,14 +109,14 @@ namespace LogXtreme.WinDsk.Infrastructure.ReactiveExtensions {
 
             IDisposable subscription = null;
 
-            subscription = observable.Subscribe( eventPatternValue => {
+            subscription = observable.Subscribe(eventPatternValue => {
 
                 // test the weak reference to the handler to see whether it is still in memory 
                 // and capture it in the closure of this lamba expression so that it will not
                 // die until the next value is sent to it by the static hanlder
                 var handlerForNextValue = weakReferenceToHandler.Target as TEvent;
 
-                if (handlerForNextValue != null) {
+                if(handlerForNextValue != null) {
 
                     // the handler was still alive in memory thus send the emitted value over to the static handler 
                     // so that it will pass it as an argument to the hanlder designated by the caller
@@ -129,7 +128,7 @@ namespace LogXtreme.WinDsk.Infrastructure.ReactiveExtensions {
                     // has been already garbage colleced thus the subscription can be didposed of so that this lambda
                     // will no longer be executed.
                     subscription.Dispose();
-                }                
+                }
 
             });
 

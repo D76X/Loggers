@@ -133,9 +133,6 @@
     <Compile Include="Prism\RegionAdapterStackPanel.cs" />
     <Compile Include="Prism\RegionManagerAware.cs" />
     <Compile Include="Prism\RegionManagerAwareBehavior.cs" />
-    <Compile Include="ReactiveExtensions\ObserveOn.cs" />
-    <Compile Include="ReactiveExtensions\WeakEventSubscription.cs" />
-    <Compile Include="ReactiveExtensions\WeakEventClassSubscription.cs" />
     <Compile Include="RegionNames.cs" />
     <Compile Include="Services\IMenuService.cs" />
     <Compile Include="Services\IStatusService.cs" />

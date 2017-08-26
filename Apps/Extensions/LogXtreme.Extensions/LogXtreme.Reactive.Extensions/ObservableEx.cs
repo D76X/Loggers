@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 using System.Reactive;
 using System.Reactive.Linq;
 
-namespace LogXtreme.WinDsk.Infrastructure.ReactiveExtensions {
+namespace LogXtreme.Reactive.Extensions {
 
     /// <summary>
     /// References
@@ -43,7 +43,7 @@ namespace LogXtreme.WinDsk.Infrastructure.ReactiveExtensions {
 
             Contract.Requires(source != null);
             Contract.Requires(propertyExpression != null);
-            
+
             string propertyName = propertyExpression.ToPropertyName();
 
             // http://www.introtorx.com/content/v1.0.10621.0/04_CreatingObservableSequences.html#FromEvent

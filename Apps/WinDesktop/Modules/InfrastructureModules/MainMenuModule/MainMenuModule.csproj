@@ -124,6 +124,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Extensions\LogXtreme.Extensions\LogXtreme.Reactive.Extensions\LogXtreme.Reactive.Extensions.csproj">
+      <Project>{665a2e7b-99e7-4fce-8ccf-e0c149f610d9}</Project>
+      <Name>LogXtreme.Reactive.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\LogXtreme.WinDsk.Infrastructure\LogXtreme.WinDsk.Infrastructure.csproj">
       <Project>{489706e3-c226-4d83-bb3d-c5a0d49d3835}</Project>
       <Name>LogXtreme.WinDsk.Infrastructure</Name>

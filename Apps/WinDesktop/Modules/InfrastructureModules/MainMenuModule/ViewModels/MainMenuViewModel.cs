@@ -1,5 +1,5 @@
-﻿using LogXtreme.WinDsk.Infrastructure.Menu;
-using LogXtreme.WinDsk.Infrastructure.ReactiveExtensions;
+﻿using LogXtreme.Reactive.Extensions;
+using LogXtreme.WinDsk.Infrastructure.Menu;
 using LogXtreme.WinDsk.Infrastructure.Services;
 using MainMenuModule.Interfaces;
 using MainMenuModule.Labels;

@@ -29,6 +29,11 @@ http://stackoverflow.com/questions/6213332/visual-studio-2010-keyboard-shortcut-
 ZOOM IN/OUT IN THE TEXT EDITOR
 ctrl+shift+(+/-)
 
+REMAPPING SHORTCUTS
+
+// File.SaveSelectedItems (Ctrl +S (Global))
+https://stackoverflow.com/questions/3099709/re-map-ctrls-to-file-save-in-visual-studio-2010
+
 ======================================================================================================
 
 CLEAR CACHE WHEN TEST EXPLORER DO NOT SHOW TESTS
