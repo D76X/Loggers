@@ -98,3 +98,16 @@ VISIBILITY OF EXTENSION METHODS DEFINED IN C# TO F#
 https://stackoverflow.com/questions/777247/using-extension-methods-defined-in-c-sharp-from-f-code
 
 ===================================================================================
+
+LAMBDAS AND FUNCTIONS IN F# AND C#
+
+https://stackoverflow.com/questions/3392000/interop-between-f-and-c-sharp-lambdas
+https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/functions/lambda-expressions-the-fun-keyword
+
+PowerPack
+https://stackoverflow.com/questions/13874032/how-to-pass-linq-expressions-from-f-to-c-sharp-code
+https://stackoverflow.com/questions/15322888/what-is-the-most-up-to-date-way-to-compile-code-quotations-in-f
+https://stackoverflow.com/questions/3238406/in-f-how-can-i-produce-an-expression-with-a-type-of-funcobj
+https://stackoverflow.com/questions/6524242/calling-c-sharp-functions-from-f 
+https://stackoverflow.com/questions/9914527/call-f-function-that-has-a-function-parameter-from-c-sharp
+===================================================================================

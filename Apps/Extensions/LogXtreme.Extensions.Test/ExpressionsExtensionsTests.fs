@@ -5,6 +5,8 @@ open System.Numerics
 open Xunit
 open Swensen.Unquote
 
+open LogXtreme.Extensions
+
 [<Fact>]
 let ``failing test to rember to write tests for Expression.ToPropertyInfo``()=
 

@@ -4,6 +4,8 @@
 // https://fsharpforfunandprofit.com/posts/inheritance/
 // https://stackoverflow.com/questions/31616761/f-casting-operators
 // https://stackoverflow.com/questions/2361851/c-sharp-and-f-casting-specifically-the-as-keyword
+// https://fsharpforfunandprofit.com/posts/classes/
+// https://stackoverflow.com/questions/4923666/how-do-i-create-a-class-instance-and-fill-properties-in-f?rq=1
 
 open System
 open System.Numerics

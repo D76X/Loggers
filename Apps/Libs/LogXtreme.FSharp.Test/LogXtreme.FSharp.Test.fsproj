@@ -65,6 +65,7 @@
     <Compile Include="Interfaces.fs" />
     <Compile Include="UnitOfMeasure.fs" />
     <Compile Include="ActivePatterns.fs" />
+    <Compile Include="Records.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
