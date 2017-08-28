@@ -1,4 +1,4 @@
-﻿module LogXtreme.FSharp.Utils.Casting
+﻿module LogXtreme.FSharp.UtilsCasting
 
 // https://stackoverflow.com/questions/2361851/c-sharp-and-f-casting-specifically-the-as-keyword
 // https://msdn.microsoft.com/en-us/visualfsharpdocs/conceptual/unchecked.defaultof%5B't%5D-type-function-%5Bfsharp%5D
@@ -12,3 +12,5 @@ let castAs<'T when 'T:  null> (o: obj) =
     | _ -> null
 
 // https://stackoverflow.com/questions/3151099/is-there-a-way-in-f-to-type-test-against-a-generic-type-without-specifying-the
+
+// examples

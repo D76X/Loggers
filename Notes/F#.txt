@@ -18,7 +18,7 @@ TO GET UNQUOTE TO WORK ON TOP OF xUnit
 https://stackoverflow.com/questions/34802706/error-running-xunit-test-with-unquote-library-and-visual-studio-2015-method-no
 http://php.wekeepcoding.com/article/13289568/Error+running+xunit+test+with+unquote+library+and+Visual+Studio+2015+-+Method+not+found
 
-Add App.config to teh F# project with the assembly redirect.
+Add App.config to the F# project with the assembly redirect.
 
 This will prevent the System.MissingMethodException : Method not found: 
 'Swensen.Unquote.UnquotedExpression ...
@@ -101,6 +101,9 @@ https://stackoverflow.com/questions/777247/using-extension-methods-defined-in-c-
 
 LAMBDAS AND FUNCTIONS IN F# AND C#
 
+(the question you asked on SO - pass expressions and lambdas parameter from F# code to C# code)
+https://stackoverflow.com/questions/45896796/pass-expressions-and-lambdas-parameter-to-c-sharp-extension-method-in-f1
+All other related posts
 https://stackoverflow.com/questions/3392000/interop-between-f-and-c-sharp-lambdas
 https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/functions/lambda-expressions-the-fun-keyword
 
@@ -110,4 +113,37 @@ https://stackoverflow.com/questions/15322888/what-is-the-most-up-to-date-way-to-
 https://stackoverflow.com/questions/3238406/in-f-how-can-i-produce-an-expression-with-a-type-of-funcobj
 https://stackoverflow.com/questions/6524242/calling-c-sharp-functions-from-f 
 https://stackoverflow.com/questions/9914527/call-f-function-that-has-a-function-parameter-from-c-sharp
+
+===================================================================================
+
+1- HOW TO STRUCTURE AND ORGANISE F# CODE
+https://fsharpforfunandprofit.com/posts/recipe-part3/
+
+2- THE PROBLEM OF DECLARATION OF F# TYPES WITH MUTUAL DEPENDENCIES
+https://fsharpforfunandprofit.com/posts/cyclic-dependencies/
+
+3-HOW TO ORGANISE F# FUNCTIONS - MODULES (top level & nested) & NAMEPSACES
+REMEMBER: If you realize that modules are just static classes, and that functions are static methods
+REMEMBER: Top level modules are slightly different from any other modules
+https://fsharpforfunandprofit.com/posts/organizing-functions/
+
+4-SPECIAL ATTRIBUTES USED 
+
+[<AutoOpen>]
+Used to declare global types and functions
+https://fsharpforfunandprofit.com/posts/recipe-part3/
+
+[<RequireQualifiedAccess>]
+Used to get around the problem of modules shadowing
+https://fsharpforfunandprofit.com/posts/organizing-functions/
+
+5-ACCESS CONTROL FOR MODULES, TYPES AND FUNCTIONS
+https://fsharpforfunandprofit.com/posts/organizing-functions/
+
+6-NAMEPSACES
+You can also declare a namespace implicitly by adding dots to the module name.
+Example : module Utilities.MathStuff  
+Namespaces can directly contain type declarations, but not function declarations. 
+https://fsharpforfunandprofit.com/posts/organizing-functions/
+
 ===================================================================================

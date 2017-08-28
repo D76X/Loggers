@@ -5,6 +5,7 @@ open Xunit
 open Swensen.Unquote
 
 open LogXtreme.Utils
+open LogXtreme.FSharp.UtilsFunctions
 
 // About class definition in F#
 // https://fsharpforfunandprofit.com/posts/classes/
@@ -41,15 +42,13 @@ let ``ObjectMapper.Populate maps property values from source to target``() =
     let date = new System.DateTime(1980,2,15)    
     let source = Source(name, code, date)
     let mapper = ObjectMapper<Source, Target>(source)  
-    let createId = fun n (c: int) (d: DateTime) -> n+c.ToString()+d.ToString()
-    let createIdFromSource = fun (s: Source) -> createId s.Name s.Code s.Date    
-    let expectedId = createIdFromSource source
+    let expectedId = strconc ([source.Name; source.Code; source.Date]: list<obj>) 
 
     // act     
     mapper.Populate((fun t -> t.Name), fun s -> s.Name) |> ignore
     mapper.Populate((fun t -> t.Code), fun s -> s.Code) |> ignore
     mapper.Populate((fun t -> t.Date), fun s -> s.Date) |> ignore    
-    mapper.Populate((fun t -> t.Id), fun s -> createIdFromSource s) |> ignore
+    mapper.Populate((fun t -> t.Id), fun s -> strconc ([s.Name; s.Code; s.Date]: list<obj>)) |> ignore
 
     // assert
     test<@ mapper.Target.Name = source.Name @>    
