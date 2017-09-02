@@ -146,4 +146,16 @@ Example : module Utilities.MathStuff
 Namespaces can directly contain type declarations, but not function declarations. 
 https://fsharpforfunandprofit.com/posts/organizing-functions/
 
+7-FROM OBECT ORIENTED CODE TO FUNCTIONAL ORIENTED CODE 
+https://fsharpforfunandprofit.com/posts/organizing-functions/
+Mixing types and functions in modules
+REMEMBER
+In an object oriented program, the data structure and the functions that act on it 
+would be combined in a class. However in functional-style F#, a data structure and 
+the functions that act on it are combined in a module instead.
+
+There are two common patterns for mixing types and functions together:
+1-having the type declared separately from the functions
+2-having the type declared in the same module as the functions
+
 ===================================================================================

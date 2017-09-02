@@ -6,7 +6,11 @@ module public LogXtreme.ComputationExpressions.Examples.ExampleWrapperTypes1
 // This is the classic example of builder used to construct workflows to chain
 // success-failure expressions.
 type MaybeBuilder() =
+
+    // member Bind : M<'T> * ('T -> M<'U>) -> M<'U>
     member this.Bind(m, f) = Option.bind f m
+    
+    // member Return : 'T -> M<'T>
     member this.Return(x) = Some x
 
 let maybewf = MaybeBuilder()
@@ -64,6 +68,7 @@ type DbResultBuilder() =
 
     // when f m returns Success then continue by applying teh next f to the result
     // when f m retunrns Error then inte rrupt the chain of calls and returns the Error
+    // member Bind : M<'T> * ('T -> M<'U>) -> M<'U>
     member this.Bind(m,f)=
         match m with 
         | Error _ -> m
@@ -74,6 +79,7 @@ type DbResultBuilder() =
     // when the last f m is reaches the return wraps x back
     // this suggests that between the last f m and the call to return something
     // else happens that unwraps the value from the last f m in the chain 
+    // member Return : 'T -> M<'T>
     member this.Return(x) = 
         Success x    
 
