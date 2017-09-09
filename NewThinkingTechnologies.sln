@@ -1,16 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.8
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{FAFE10AF-AF2C-4D6F-82BC-81ED9863EE85}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_FSharp", "_FSharp", "{DE568A54-66CB-490F-B05E-A68098963527}"
-	ProjectSection(SolutionItems) = preProject
-		FSharp\1_Listing_4.2.txt = FSharp\1_Listing_4.2.txt
-		FSharp\2_WorkingWithStrings.txt = FSharp\2_WorkingWithStrings.txt
-		FSharp\3_FSharp.PowerPack.dll.txt = FSharp\3_FSharp.PowerPack.dll.txt
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Composition-Examples", "Composition-Examples", "{B2EEDD0D-FA84-460D-9DBB-0F23C5AA3B06}"
 EndProject
@@ -101,6 +94,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Notes", "_Notes", "{54A549
 		Notes\GitWorkflow.png = Notes\GitWorkflow.png
 		Notes\LogXtreme.WinDsk.Notes.txt = Notes\LogXtreme.WinDsk.Notes.txt
 		Notes\PrismNotes.txt = Notes\PrismNotes.txt
+		Python.txt = Python.txt
 		Notes\SolutionNotes.txt = Notes\SolutionNotes.txt
 		Notes\WpfNotes.txt = Notes\WpfNotes.txt
 	EndProjectSection
@@ -319,6 +313,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.Reactive.Extensions", "Apps\Extensions\LogXtreme.Extensions\LogXtreme.Reactive.Extensions\LogXtreme.Reactive.Extensions.csproj", "{665A2E7B-99E7-4FCE-8CCF-E0C149F610D9}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "LogXtreme.Reactive.Extensions.Test", "Apps\Extensions\LogXtreme.Reactive.Extensions.Test\LogXtreme.Reactive.Extensions.Test.fsproj", "{47AF6288-4F28-452C-A003-DAC13EF1FF58}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PyApps", "PyApps", "{444E34AC-F19B-4C59-B3AF-50E9D23A843D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{748F5487-6460-4DA5-8BB9-1944AE12E71B}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "HelloWold1", "PyApps\Examples\HelloWold1\HelloWold1.pyproj", "{9BFCBC1D-9605-4714-A630-ED8BB51AEEAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1034,6 +1034,10 @@ Global
 		{47AF6288-4F28-452C-A003-DAC13EF1FF58}.Release|Any CPU.Build.0 = Release|Any CPU
 		{47AF6288-4F28-452C-A003-DAC13EF1FF58}.Release|x86.ActiveCfg = Release|Any CPU
 		{47AF6288-4F28-452C-A003-DAC13EF1FF58}.Release|x86.Build.0 = Release|Any CPU
+		{9BFCBC1D-9605-4714-A630-ED8BB51AEEAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BFCBC1D-9605-4714-A630-ED8BB51AEEAB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9BFCBC1D-9605-4714-A630-ED8BB51AEEAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BFCBC1D-9605-4714-A630-ED8BB51AEEAB}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1166,6 +1170,8 @@ Global
 		{B781D1F8-8C74-42C7-905F-609296B1454C} = {57F38F0E-585A-4964-B8F1-B252263FFD24}
 		{665A2E7B-99E7-4FCE-8CCF-E0C149F610D9} = {C79894C6-0C3F-4157-B567-5D1687E23A25}
 		{47AF6288-4F28-452C-A003-DAC13EF1FF58} = {C79894C6-0C3F-4157-B567-5D1687E23A25}
+		{748F5487-6460-4DA5-8BB9-1944AE12E71B} = {444E34AC-F19B-4C59-B3AF-50E9D23A843D}
+		{9BFCBC1D-9605-4714-A630-ED8BB51AEEAB} = {748F5487-6460-4DA5-8BB9-1944AE12E71B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B48A64CD-1E9D-4169-82DF-66FD7695C2D0}
