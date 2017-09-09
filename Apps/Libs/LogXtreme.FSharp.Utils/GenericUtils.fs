@@ -13,5 +13,9 @@ strconc ["one"; "two"] |> printfn "%s"
 strconc [1;2;3] |> printfn "%s"
 strconc (["one"; "two"; 3 ]: list<obj>) |> printfn "%s"
 
+
+// Quotation to read the property name...
+// http://www.contactandcoil.com/software/dotnet/getting-a-property-name-as-a-string-in-f/
+
                 
        

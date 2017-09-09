@@ -67,6 +67,8 @@
     <Compile Include="ActivePatterns.fs" />
     <Compile Include="Records.fs" />
     <Compile Include="Sequences.fs" />
+    <Compile Include="ObjectExpressions.fs" />
+    <Compile Include="Lists.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
