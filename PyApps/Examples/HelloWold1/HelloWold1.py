@@ -8,6 +8,9 @@ this is the docstring for this module
 #https://pylint.readthedocs.io/en/latest/user_guide/message-control.html
 # pylint: enable=line-too-long
 
+# pylint: disable=trailing-whitespace
+# pylint: disable=invalid-name
+
 print("Hello World!")
 
 print(f"\r\n")
@@ -67,7 +70,7 @@ two = somelist1[-2]
 print(f"one={one} ; two={two}; three={three}")
 
 somelist1.append("999")
-if ("999" in somelist1):
+if "999" in somelist1:
     idx = somelist1.index("999")
     print(f"fount 999 at index = {idx}")
 
@@ -118,8 +121,10 @@ core = somelist1[1:-1]  #leve the first take the rest leave the last
 head = somelist1[:-1]   #leave the last take the rest
 
 # use the "range" function in a for loop
+# pylint: disable=consider-using-enumerate
 for index in range(len(somelist1)):
     somelist1[index] += "0"
+# pylint: enable=consider-using-enumerate
 
 for idx, val in enumerate(somelist1):
     print(f"val={val}@idx={idx}")
@@ -131,3 +136,6 @@ print(f"\r\n")
 for index in range(0, len(somelist1)):
     somelist1[index] = somelist1[index][:-1]
     print(f"val={somelist1[index]}@index={index}")
+
+# pylint: enable=trailing-whitespace
+# pylint: enable=invalid-name
