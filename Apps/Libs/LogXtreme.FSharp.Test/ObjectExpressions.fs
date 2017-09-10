@@ -125,6 +125,31 @@ let ``Object Expression implements custom IAdder and IMulty``()=
     test<@ actualSum = expectedSum @>
     test<@ actualProduct = expectedProduct @>
 
+[<AbstractClass>]
+type Metric() = 
+    abstract member Distance : float -> float -> float
+
+[<Fact>]
+let ``Object Expression implements abstract class Metric``() =
+
+    // arrange 
+    let PwrMetric(exp: float, shift: float) = {        
+            new Metric() with
+                member this.Distance f s = (f-shift)**exp+(s-shift)**exp
+        } 
+    
+    let exp = 2.
+    let shift = 1.    
+    let uut = PwrMetric(exp, shift)
+    let first = 3 
+    let second = 5    
+    let expectedDistance = 20.
+
+    // act 
+    let actualDistance = uut.Distance (float first) (float second)
+
+    // assert
+    test<@ actualDistance = expectedDistance @>
 
 
 
