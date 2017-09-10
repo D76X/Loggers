@@ -31,13 +31,14 @@ type CombinatorBase() =
 
 // In F#, all interfaces must be explicitly implemented
 // The "this" accessor is used to declare the implementation of the interface on the
-// supporting type. This implementation is naive because the constructor may pass
+// supporting type. This implementation is naive because the constructor may pass a
+// weight o zero that would cause a divide-by-zero exception.
 type PixCombinatorNaive(w: int) = 
 
     // https://stackoverflow.com/questions/14593771/f-and-interface-implemented-members
     // by defining a member on the supporting type with the same name as the interface
     // member that is implemented the caller will no longer need the explicit upcast
-    // which is done by the implementing type. It olso possible to combine members of 
+    // which is done by the implementing type. It also possible to combine members of 
     // the iterface.
     member this.Combine (f: float) (s: float) = 
         ((this :> ICombinator).Combine f s)*(this :> ICombinator).Factor / (float)(this :> ICombinator).Weight 
@@ -61,19 +62,62 @@ type PixCombinatorNaive(w: int) =
 [<Fact>]
 let ``PixCombinatorNaive implements ICombinator``() = 
 
-        // arrange
-        let weight = 2
-        let pixCombinator = PixCombinatorNaive(weight) 
-        let first = 2.1
-        let second = 3.7        
-        let expected = first * second * Math.PI / (float)weight
+    // arrange
+    let weight = 2
+    let pixCombinator = PixCombinatorNaive(weight) 
+    let first = 2.1
+    let second = 3.7        
+    let expected = first * second * Math.PI / (float)weight
 
-        // act
-        let combined = pixCombinator.Combine first second 
+    // act
+    let combined = pixCombinator.Combine first second 
 
-        // assert
-        Assert.Equal(expected, combined)
+    // assert
+    Assert.Equal(expected, combined)
+
+[<Fact>]
+let ``PixCombinatorNaive throws divide-by-zero exception with weight = 0``() =
     
+    // arrange
+    let weight = 0
+    let pixCombinator = PixCombinatorNaive(weight) 
+    let first = 2.1
+    let second = 3.7        
+    let expected = first * second * Math.PI / (float)weight
+    
+    // See also Casting.fs
+    // https://stackoverflow.com/questions/31616761/f-casting-operators
+    let invokation = fun() -> ((pixCombinator.Combine first second) :> obj)
+    //let value = invokation() 
+    
+    // Act
+
+    // With xUnit Record.Exception 
+    // https://stackoverflow.com/questions/11013025/how-to-test-for-exceptions-thrown-using-xunit-subspec-and-fakeiteasy
+    let ex = Record.Exception(fun() -> ((pixCombinator.Combine first second) :> obj))
+
+    // act & assert
+    Assert.IsType(typeof<DivideByZeroException>, ex)
+    // this is also valid
+    //let ex2 = Assert.Throws<DivideByZeroException>(invokation)
+    //test<@ typeof<DivideByZeroException> = ex2.GetType() @>
+
+// This cobinator avoids the issue of divide-by-zero exception 
+// https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/members/constructors
+type PixCombinator(w: int) = 
+    
+    let mutable weight = if(w=0) then 1 else w 
+    
+    interface ICombinator with         
+
+        member this.Combine first second =
+            first * second
+            
+        member this.Factor: float = Math.PI           
+
+        member val Weight: int = weight with get, set 
+
+
    
 //type PipCombinator(w: float) = 
 
