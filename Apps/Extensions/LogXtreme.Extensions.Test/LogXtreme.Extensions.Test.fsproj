@@ -91,6 +91,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Libs\LogXtreme.FSharp.Utils\LogXtreme.FSharp.Utils.fsproj">
+      <Name>LogXtreme.FSharp.Utils</Name>
+      <Project>{8de8e34f-3749-4935-93c9-4bb6fa7fc66c}</Project>
+      <Private>True</Private>
+    </ProjectReference>
     <ProjectReference Include="..\LogXtreme.Extensions\LogXtreme.Extensions.csproj">
       <Name>LogXtreme.Extensions</Name>
       <Project>{07a36205-c0c2-4f88-a37c-27199051a240}</Project>
