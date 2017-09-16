@@ -69,6 +69,7 @@
     <Compile Include="Sequences.fs" />
     <Compile Include="ObjectExpressions.fs" />
     <Compile Include="Lists.fs" />
+    <Compile Include="ReferenceCells.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

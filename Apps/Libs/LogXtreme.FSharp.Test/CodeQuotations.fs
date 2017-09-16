@@ -42,6 +42,3 @@ open Microsoft.FSharp.Quotations.DerivedPatterns
 // the active pattern to add to your match expression.
 
 
-
-
-
