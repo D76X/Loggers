@@ -137,5 +137,32 @@ for index in range(0, len(somelist1)):
     somelist1[index] = somelist1[index][:-1]
     print(f"val={somelist1[index]}@index={index}")
 
+print(f"\r\n")
+
+somelist1 = [1, 2, 3, 4, 5, 6]
+
+for idx, val in enumerate(somelist1):
+    if val < 3:
+        print("continue")
+        continue
+    if idx > 4:
+        print("break")
+        break
+    print(f"val={val}")
+        
+print(f"\r\n")
+
+x = 0
+while x < 10:    
+    x += 1
+    if x < 4:
+        print("continue")
+        continue
+    else:
+        print(x)
+    
+
+print(f"\r\n")
+
 # pylint: enable=trailing-whitespace
 # pylint: enable=invalid-name
