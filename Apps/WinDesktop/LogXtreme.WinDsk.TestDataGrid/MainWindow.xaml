@@ -16,13 +16,11 @@
         <TabControl>
             <TabItem Header="DataGrid1"
                      DataContext="{Binding ViewModels[0]}">
-                <DataGrid />
+                <DataGrid ItemsSource="{Binding Items}"/>
             </TabItem>
             <TabItem Header="DataGrid2"
                      DataContext="{Binding ViewModels[1]}">
-                <ContentControl>
-                    Some other content
-                </ContentControl>
+                <DataGrid ItemsSource="{Binding Items}" />
             </TabItem>
         </TabControl>
     </Grid>
