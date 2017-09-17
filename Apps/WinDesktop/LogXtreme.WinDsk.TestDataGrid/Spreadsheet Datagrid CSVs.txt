@@ -1,0 +1,73 @@
+﻿==========================================================================
+
+POST : Reading a .csv file into WPF application (C#)
+https://stackoverflow.com/questions/21813461/reading-a-csv-file-into-wpf-application-c
+
+==========================================================================
+
+POST : Implementing a log viewer with WPF
+https://stackoverflow.com/questions/16743804/implementing-a-log-viewer-with-wpf
+
+-fast scrolling with 100.000+ lines
+-Some entries (like stacktraces) should be foldable
+-long items wrap
+-the list can be filtered by different criteria (searching, tags, etc)
+-when at the end, it should keep scrolling when new items are added
+-Line-elements can contain some sort of addition formatting like hyperlinks and occurrence counter
+
+==========================================================================
+
+POST : WPF DataGrid Practical Examples
+
+This article provides a number of practical examples which demonstrate how 
+to perform validation, styling, and DataSet integration with the new WPF DataGrid.
+
+https://www.codeproject.com/Articles/30905/WPF-DataGrid-Practical-Examples
+
+==========================================================================
+
+POST : WPF DataGrid Control
+http://www.wpftutorial.net/DataGrid.html
+
+==========================================================================
+
+POST : Displaying data table in C# WPF application
+https://stackoverflow.com/questions/6463076/displaying-data-table-in-c-sharp-wpf-application
+
+I need to display data in a spreadsheet-like format dynamically. 
+The application will be getting data outputted from a fire alarm panel.
+Why not use WPF's Datagrid control?
+
+Why not use WPF's Datagrid control?
+If you are using .Net 4.0, you can use the build in DataGrid control which you can select from the toolbox.
+
+WPF Table View
+http://tableview.codeplex.com/
+
+==========================================================================
+
+POST : How to dynamically create a grid in WPF?
+https://stackoverflow.com/questions/31269626/how-to-dynamically-create-a-grid-in-wpf
+
+I want to create a Grid dynamically to show product information like any e-commerce site.
+I am fetching product information from JSON and then want to show each product details to tiles like view.
+
+==========================================================================
+
+POST : Is there any possible way to embed the excel sheet to wpf control?
+https://social.msdn.microsoft.com/Forums/vstudio/en-US/9cd139cf-a235-429c-b4db-53075eb40a42/is-there-any-possible-way-to-embed-the-excel-sheet-to-wpf-control?forum=wpf
+Not impossible, but we need to use the WindowsFormsHost to host the ActiveX or Winform control in WPF.
+
+POST : WPF modular spreadsheet
+https://wpfsheet.codeplex.com/
+
+POST : WPF Spreadsheet - A WPF clone of Excel spreadsheet, with several doors open for extensibility.
+https://www.codeproject.com/Articles/712093/WPF-Spreadsheet
+
+POST : I need to build a spreadsheet-like control in WPF [closed]
+https://stackoverflow.com/questions/9105131/i-need-to-build-a-spreadsheet-like-control-in-wpf
+1- ListView
+2- Open source Simple Spread Sheet http://simplespreadsheet.codeplex.com/
+3- Paid option 
+
+==========================================================================

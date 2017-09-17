@@ -1,0 +1,24 @@
+﻿<Window x:Class="LogXtreme.WinDsk.TestDataGrid.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LogXtreme.WinDsk.TestDataGrid"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        
+    </Window.Resources>
+    <Grid>
+        <TabControl>
+            <TabItem Header="DataGrid1">
+                <DataGrid />
+            </TabItem>
+            <TabItem Header="DataGrid2">
+                <ContentControl>
+                    Some other content
+                </ContentControl>
+            </TabItem>
+        </TabControl>  
+    </Grid>
+</Window>

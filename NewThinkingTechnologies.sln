@@ -328,6 +328,8 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PyStudentManager1", "PyApps
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "HelloWorld4", "PyApps\Examples\HelloWorld4\HelloWorld4.pyproj", "{EBE4F41B-BA23-4470-AA94-75DB62EB7952}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.WinDsk.TestDataGrid", "Apps\WinDesktop\LogXtreme.WinDsk.TestDataGrid\LogXtreme.WinDsk.TestDataGrid.csproj", "{2ADEABAB-A1E0-446B-A0D0-3F67EB5B89CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1062,6 +1064,14 @@ Global
 		{EBE4F41B-BA23-4470-AA94-75DB62EB7952}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{EBE4F41B-BA23-4470-AA94-75DB62EB7952}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBE4F41B-BA23-4470-AA94-75DB62EB7952}.Release|x86.ActiveCfg = Release|Any CPU
+		{2ADEABAB-A1E0-446B-A0D0-3F67EB5B89CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ADEABAB-A1E0-446B-A0D0-3F67EB5B89CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ADEABAB-A1E0-446B-A0D0-3F67EB5B89CF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2ADEABAB-A1E0-446B-A0D0-3F67EB5B89CF}.Debug|x86.Build.0 = Debug|Any CPU
+		{2ADEABAB-A1E0-446B-A0D0-3F67EB5B89CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ADEABAB-A1E0-446B-A0D0-3F67EB5B89CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ADEABAB-A1E0-446B-A0D0-3F67EB5B89CF}.Release|x86.ActiveCfg = Release|Any CPU
+		{2ADEABAB-A1E0-446B-A0D0-3F67EB5B89CF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1200,6 +1210,7 @@ Global
 		{E1B792F9-1657-4C53-8FEE-21BD02854416} = {748F5487-6460-4DA5-8BB9-1944AE12E71B}
 		{EC9B83C2-28C4-4977-9856-8A06F68BF2D8} = {748F5487-6460-4DA5-8BB9-1944AE12E71B}
 		{EBE4F41B-BA23-4470-AA94-75DB62EB7952} = {748F5487-6460-4DA5-8BB9-1944AE12E71B}
+		{2ADEABAB-A1E0-446B-A0D0-3F67EB5B89CF} = {45449303-EA76-4B02-B1EE-CCBB11D41186}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B48A64CD-1E9D-4169-82DF-66FD7695C2D0}
