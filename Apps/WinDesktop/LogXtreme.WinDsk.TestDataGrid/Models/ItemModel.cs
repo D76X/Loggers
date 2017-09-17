@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 namespace LogXtreme.WinDsk.TestDataGrid.Models {
     public class ItemModel {
 
+        public ItemModel(string name, string code, int quantity, DateTime dt) {
+            this.Name = name;
+            this.Code = code;
+            this.Quantity = quantity;
+            this.Time = dt;
+        }
+
         public string Name { get; set; }
 
         public string Code { get; set; }
