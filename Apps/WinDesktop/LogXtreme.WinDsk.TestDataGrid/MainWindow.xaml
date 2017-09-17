@@ -4,21 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LogXtreme.WinDsk.TestDataGrid"
+        xmlns:vm="clr-namespace:LogXtreme.WinDsk.TestDataGrid.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Window.Resources>
-        
-    </Window.Resources>
+        Title="MainWindow"
+        Height="350"
+        Width="525">
+    <Window.DataContext>
+        <vm:MainViewModel />
+    </Window.DataContext>
     <Grid>
         <TabControl>
-            <TabItem Header="DataGrid1">
+            <TabItem Header="DataGrid1"
+                     DataContext="{Binding ViewModels[0]}">
                 <DataGrid />
             </TabItem>
-            <TabItem Header="DataGrid2">
+            <TabItem Header="DataGrid2"
+                     DataContext="{Binding ViewModels[1]}">
                 <ContentControl>
                     Some other content
                 </ContentControl>
             </TabItem>
-        </TabControl>  
+        </TabControl>
     </Grid>
 </Window>
