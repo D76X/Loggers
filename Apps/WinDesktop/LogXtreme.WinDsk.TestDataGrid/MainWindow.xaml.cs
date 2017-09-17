@@ -1,5 +1,7 @@
-﻿using System;
+﻿using LogXtreme.WinDsk.TestDataGrid.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,11 +16,15 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace LogXtreme.WinDsk.TestDataGrid {
+
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Refs
+    /// https://stackoverflow.com/questions/26218766/wpf-mvvm-binding-a-different-viewmodel-to-each-tabitem
     /// </summary>
-    public partial class MainWindow : Window {
+    public partial class MainWindow : Window {       
+
         public MainWindow() {
+            
             InitializeComponent();
         }
     }
