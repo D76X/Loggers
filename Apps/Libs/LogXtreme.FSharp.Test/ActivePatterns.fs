@@ -54,6 +54,9 @@ open System.Drawing
 
 // 6- Parameterized Active Patterns
 
+// APs act on some input data if some other parameters are passed to the in addition to the 
+// the input data the AP or PAP are said to be parameterized. 
+
 // it is interesting that the signature the |Even|Odd| AP is 
 // val (|Even|Odd|):input: int -> Choice<unit,unit>
 let (|Even|Odd|) input = if input % 2 = 0 then Even else Odd
@@ -257,5 +260,55 @@ let``Not Disjointed Partial Active Patterns |Square|_| and |Cube|_|``() =
     test<@ actualWithMinusOne = PW3 @>
     test<@ actualWithNegative = Neither @>
 
+// This is an example of Parameterized Active Pattern as in addition 
+// to the input data a paramter is also passed to the pattern.
 
+// Groups in REs
+// In Regular Expressions the term "group" is overloaded as it can 
+// mean either of the following. 
+
+// 1- a part of the regular expression pattern
+// 2- a part of the subject that matches the regular expression
+
+// Some facts about groups in REPs [RE Patterns]
+
+// 1-Every REP has at least one group - the RE itself.
+// 2-You can add groups to a pattern using complementary pairs of ()
+
+// Some examples of REPs with groups 
+
+// fish(cat)(dog)bird has 3 groups in it
+//   1-fish(cat)(dog)bird is the whole pattern and also a group
+//   2-(cat) is a group 
+//   3-(dog) is a group
+
+// fish(cat(dog))bird has 3 groups in it
+//   1-fish(cat(dog))bird is the whole pattern and also a group
+//   2-(cat(dog)) = (catdog) is a group - no nesting!
+//   3-(dog) is a group
+
+// Groups can also encompass alternations
+// fish(cat|dog)bird
+//  1-fishcatbird is the whole pattern and also a group
+//  2-fishdogbird is the alternate whole pattern and also a group
+//  3-(cat) is a group
+//  4-(dog) is a goup
+
+//  Groups with repetitions
+//  fish(cat)*bird   => look for cat repeated any number of times 
+//  fish(cat){3}bird => look for cat repeated exatly 3 times
+//  fish(cat){1,3}bird => look for cat repeated exatly any times between 1 & 3 times
+//  fish(cat){0,1}bird => look for cat repeated exatly 1 time
+//  fish(cat)?bird => look for cat repeated exatly 1 time
+//  that is fish(cat){0,1}bird = fish(cat)?bird
+
+//  The problem with the Keinie start * and the @0:0 match
+//  In REs the * is called the Kleinie Star.
+//  A RE with a * ALWAYS mathces as @0:0 that is in pos 0 with length of 0 even if the patterns is not in the subject.
+//  In order for a pattern that uses * to not match @0:0 you need to repeat the patterns in the RE.
+//  (cat)* will match @0:0 of any string subject and any sting XXXcat..cat..catXXX where cat repeats 1 or more times at the first occurrence of cat.
+//  (cat)(cat)* is the same as (cat)* but DOES NOT MATCH @0:0 of any string that does not have "cat" in it!
+//  (cat)(cat)* = (cat)+ => the + is a shot hand version of (pattern)(pattern)*
+//  Finally (pattern)* ALWAYS matches at least as @0:0
+//  While (pattern)+ only matches of the subject has "pattern" at least 1 time in it.
 
