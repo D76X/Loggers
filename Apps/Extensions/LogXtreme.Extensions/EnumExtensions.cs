@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
@@ -25,6 +26,16 @@ namespace LogXtreme.Extensions {
             return descriptionAttr == null ? 
                    enumValueName :
                    descriptionAttr.Description;
+        }
+
+        /// <summary>
+        /// Refs
+        /// https://stackoverflow.com/questions/79126/create-generic-method-constraining-t-to-an-enum
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static IEnumerable<T> GetValues<T>() where T: Enum {
+
         }
     }
 }

@@ -1,12 +1,9 @@
 ﻿using LogXtreme.WinDsk.TestDataGrid.Models;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
+
     public class DataGrid1ViewModel {
 
         ObservableCollection<ItemViewModel> items;

@@ -2,18 +2,25 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Windows.Controls;
 
 namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
-    public class DataGrid2ViewModel {
+
+    /// <summary>
+    /// Refs
+    /// https://docs.microsoft.com/en-us/dotnet/framework/winforms/how-to-implement-the-inotifypropertychanged-interface
+    /// </summary>
+    public class DataGrid2ViewModel : INotifyPropertyChanged {
 
         ObservableCollection<ItemViewModel> items;
+        public readonly IReadOnlyList<DataGridHeadersVisibility>  DataGridVisibilityOptions;
 
         public DataGrid2ViewModel() {
 
             this.items = new ObservableCollection<ItemViewModel>();
+            this.DataGridVisibilityOptions = 
 
             var model1 = new ItemModel(1,"itemX", "ss-1", 13, DateTime.Now, new Uri("http://product/itemx"));
             this.items.Add(new ItemViewModel(model1));
@@ -31,6 +38,25 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             this.items.Add(new ItemViewModel(model5));
         }
 
-        public ObservableCollection<ItemViewModel> Items => this.items;
+        public ObservableCollection<ItemViewModel> Items => this.items;       
+
+        //public string HeadersVisibility {
+
+        //    get { return this.HeadersVisibility;  }
+
+        //    set {
+
+        //        if(value != this.HeadersVisibility) {
+        //            this.hearderVisibility = value;
+        //            NotifyPropertyChanged();               
+        //        }
+        //    }
+        //} 
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "") {
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

@@ -5,10 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LogXtreme.WinDsk.TestDataGrid"
         xmlns:vm="clr-namespace:LogXtreme.WinDsk.TestDataGrid.ViewModels"
+        xmlns:conv="clr-namespace:LogXtreme.WinDsk.TestDataGrid.Converters"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="350"
         Width="525">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="Bool2Vis"/>
+        <conv:EnumToDisplayConverter x:Key="EnumToDisplayConverter" />
+    </Window.Resources>
     <Window.DataContext>
         <vm:MainViewModel />
     </Window.DataContext>
@@ -16,16 +21,37 @@
         <TabControl>
             <TabItem Header="DataGrid1"
                      DataContext="{Binding ViewModels[0]}">
-                <DataGrid ItemsSource="{Binding Items}"/>
+                <DataGrid ItemsSource="{Binding Items}" />
             </TabItem>
             <TabItem Header="DataGrid2"
                      DataContext="{Binding ViewModels[1]}">
-                <DataGrid ItemsSource="{Binding Items}" 
-                          SelectionMode="Extended"
-                          SelectionUnit="FullRow"
-                          AlternatingRowBackground="Gainsboro"
-                          AlternationCount="2"                         
-                          FrozenColumnCount="2"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox Grid.Row="0"
+                              ItemsSource="{Binding DataGridVisibilityOptions}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Converter={StaticResource EnumToDisplayConverter}}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <DataGrid Grid.Row="1"
+                              Grid.ColumnSpan="2"
+                              ItemsSource="{Binding Items}"
+                              SelectionMode="Extended"
+                              SelectionUnit="FullRow"
+                              AlternatingRowBackground="Gainsboro"
+                              AlternationCount="2"
+                              FrozenColumnCount="2" />
+                    <!--HeadersVisibility="{Binding HeadersVisibility}"/>-->
+                </Grid>                
             </TabItem>
         </TabControl>
     </Grid>
