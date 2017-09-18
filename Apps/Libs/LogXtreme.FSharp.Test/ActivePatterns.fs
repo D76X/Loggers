@@ -312,3 +312,24 @@ let``Not Disjointed Partial Active Patterns |Square|_| and |Cube|_|``() =
 //  Finally (pattern)* ALWAYS matches at least as @0:0
 //  While (pattern)+ only matches of the subject has "pattern" at least 1 time in it.
 
+// The are two ways to identify a group in a RE
+
+// 1-Ordinal Identity of grups in REs
+
+// REs with groups are numbered relatively to other groups in the same pattern.
+// There is alwys a group 0 that is the whole RE.
+// Other groups are numbered 1,2,3,etc.. according to the position of their left parenthesis
+
+// Example 1
+// fish(cat)(dog)bird => fishcatdogbird is group 0
+// fish(cat)(dog)bird => cat is gorup 1
+// fish(cat)(dog)bird => dog is group 2
+
+// Example 2
+// REs do not nest gorups
+// fish(cat(dog))bird => fishcatdogbird is group 0
+// fish(cat(dog))bird => catdog is group 1
+// fish(cat(dog))bird => dog is group 2
+
+// 2-Gruops in REs can also be identified by Name
+// ...

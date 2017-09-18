@@ -77,6 +77,20 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             }
         }
 
+        public Uri Web {
+            get {
+                return this.model.Web;
+            }
+
+            set {
+
+                if(value != this.model.Web) {
+                    this.model.Web = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "") {

@@ -20,7 +20,11 @@
             </TabItem>
             <TabItem Header="DataGrid2"
                      DataContext="{Binding ViewModels[1]}">
-                <DataGrid ItemsSource="{Binding Items}" />
+                <DataGrid ItemsSource="{Binding Items}" 
+                          SelectionMode="Extended"
+                          SelectionUnit="FullRow"
+                          AlternatingRowBackground="Gainsboro"
+                          AlternationCount="2"/>
             </TabItem>
         </TabControl>
     </Grid>
