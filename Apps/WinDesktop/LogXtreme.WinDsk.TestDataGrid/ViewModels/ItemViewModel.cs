@@ -21,6 +21,8 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             this.model = model;
         }
 
+        public int Id => this.model.Id;
+
         public string Name {
             get {
                 return this.model.Name;

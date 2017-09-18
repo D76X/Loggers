@@ -24,7 +24,8 @@
                           SelectionMode="Extended"
                           SelectionUnit="FullRow"
                           AlternatingRowBackground="Gainsboro"
-                          AlternationCount="2"/>
+                          AlternationCount="2"                         
+                          FrozenColumnCount="2"/>
             </TabItem>
         </TabControl>
     </Grid>
