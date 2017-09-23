@@ -27,15 +27,24 @@
                      DataContext="{Binding ViewModels[1]}">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="30"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="110"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <ComboBox Grid.Row="0"
-                              ItemsSource="{Binding DataGridVisibilityOptions}">
+                    <Label Grid.Row="0" 
+                           Grid.Column="0" 
+                           VerticalAlignment="Center">
+                        Headers Visibility:
+                    </Label>
+                    <ComboBox x:Name="DataGridVisibilityOptionSelector"
+                              Grid.Row="0"
+                              Grid.Column="1"
+                              ItemsSource="{Binding DataGridVisibilityOptions}"
+                              SelectedItem="{Binding SelectedDataGridVisibilityOption, Mode=TwoWay}" 
+                              VerticalAlignment="Center">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Converter={StaticResource EnumToDisplayConverter}}" />
@@ -49,9 +58,9 @@
                               SelectionUnit="FullRow"
                               AlternatingRowBackground="Gainsboro"
                               AlternationCount="2"
-                              FrozenColumnCount="2" />
-                    <!--HeadersVisibility="{Binding HeadersVisibility}"/>-->
-                </Grid>                
+                              FrozenColumnCount="2" 
+                              HeadersVisibility="{Binding ElementName=DataGridVisibilityOptionSelector, Path=SelectedItem}"/>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>

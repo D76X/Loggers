@@ -13,15 +13,19 @@ namespace LogXtreme.WinDsk.TestDataGrid.Converters {
     /// </summary>
     public class EnumToDisplayConverter : IValueConverter {
 
+        public EnumToDisplayConverter() { }
+        
         public object Convert(
             object value, 
             Type targetType, 
             object parameter, 
             CultureInfo culture) {
 
-            if(value == null) { return DependencyProperty.UnsetValue; }
+            var enumValue = value as Enum;            
 
-            return ((Enum)value).GetName();
+            return enumValue == null ?
+                DependencyProperty.UnsetValue :
+                enumValue.GetName();
         }
 
         public object ConvertBack(

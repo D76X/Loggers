@@ -1,8 +1,10 @@
-﻿using LogXtreme.WinDsk.TestDataGrid.Models;
+﻿using LogXtreme.Extensions;
+using LogXtreme.WinDsk.TestDataGrid.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Controls;
 
@@ -11,16 +13,19 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
     /// <summary>
     /// Refs
     /// https://docs.microsoft.com/en-us/dotnet/framework/winforms/how-to-implement-the-inotifypropertychanged-interface
+    /// https://stackoverflow.com/questions/20290842/converter-to-show-description-of-an-enum-and-convert-back-to-enum-value-on-sele
     /// </summary>
     public class DataGrid2ViewModel : INotifyPropertyChanged {
 
         ObservableCollection<ItemViewModel> items;
-        public readonly IReadOnlyList<DataGridHeadersVisibility>  DataGridVisibilityOptions;
+
+        private readonly IReadOnlyList<DataGridHeadersVisibility>  dataGridVisibilityOptions;
+        private DataGridHeadersVisibility selectedDataGridVisibilityOption;
 
         public DataGrid2ViewModel() {
 
             this.items = new ObservableCollection<ItemViewModel>();
-            this.DataGridVisibilityOptions = 
+            this.dataGridVisibilityOptions = EnumExtensions.GetValues<DataGridHeadersVisibility>().ToArray();
 
             var model1 = new ItemModel(1,"itemX", "ss-1", 13, DateTime.Now, new Uri("http://product/itemx"));
             this.items.Add(new ItemViewModel(model1));
@@ -38,20 +43,39 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             this.items.Add(new ItemViewModel(model5));
         }
 
-        public ObservableCollection<ItemViewModel> Items => this.items;       
+        public ObservableCollection<ItemViewModel> Items => this.items;
+
+        /// <summary>
+        /// Refs
+        /// https://stackoverflow.com/questions/20290842/converter-to-show-description-of-an-enum-and-convert-back-to-enum-value-on-sele
+        /// </summary>
+        public IReadOnlyList<DataGridHeadersVisibility> DataGridVisibilityOptions => this.dataGridVisibilityOptions;
+
+        public DataGridHeadersVisibility SelectedDataGridVisibilityOption {
+
+            get { return this.selectedDataGridVisibilityOption; }
+
+            set {
+
+                if(value != this.selectedDataGridVisibilityOption) {
+                    this.selectedDataGridVisibilityOption = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
         //public string HeadersVisibility {
 
-        //    get { return this.HeadersVisibility;  }
+        //    get { return this.HeadersVisibility; }
 
         //    set {
 
         //        if(value != this.HeadersVisibility) {
         //            this.hearderVisibility = value;
-        //            NotifyPropertyChanged();               
+        //            NotifyPropertyChanged();
         //        }
         //    }
-        //} 
+        //}
 
         public event PropertyChangedEventHandler PropertyChanged;
 
