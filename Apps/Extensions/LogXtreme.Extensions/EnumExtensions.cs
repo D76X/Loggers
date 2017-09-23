@@ -32,10 +32,16 @@ namespace LogXtreme.Extensions {
         /// Refs
         /// https://stackoverflow.com/questions/79126/create-generic-method-constraining-t-to-an-enum
         /// https://stackoverflow.com/questions/3816718/how-to-get-an-array-of-all-enum-values-in-c
+        /// https://stackoverflow.com/questions/15388072/how-to-add-extension-methods-to-enums
+        /// https://stackoverflow.com/questions/972307/can-you-loop-through-all-enum-values?rq=1
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static IEnumerable<T> GetValues<T>() {
+        public static IEnumerable<T> GetValues<T>() where T : struct, IConvertible {
+
+            if(!typeof(T).IsEnum) {
+                throw new ArgumentException($"{nameof(T)} must be an enumerated type");
+            }
 
             return Enum.GetValues(typeof(T)).Cast<T>();
         }
