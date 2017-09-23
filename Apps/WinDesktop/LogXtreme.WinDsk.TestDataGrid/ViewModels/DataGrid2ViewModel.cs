@@ -64,19 +64,6 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             }
         }
 
-        //public string HeadersVisibility {
-
-        //    get { return this.HeadersVisibility; }
-
-        //    set {
-
-        //        if(value != this.HeadersVisibility) {
-        //            this.hearderVisibility = value;
-        //            NotifyPropertyChanged();
-        //        }
-        //    }
-        //}
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "") {
