@@ -4,8 +4,7 @@ using System.Windows;
 using System.Windows.Data;
 using LogXtreme.Extensions;
 
-namespace LogXtreme.WinDsk.TestDataGrid.Converters {
-
+namespace LogXtreme.WinDsk.Infrastructure.Convertes {
     /// <summary>
     /// Refs
     /// https://stackoverflow.com/questions/20290842/converter-to-show-description-of-an-enum-and-convert-back-to-enum-value-on-sele
@@ -14,14 +13,14 @@ namespace LogXtreme.WinDsk.TestDataGrid.Converters {
     public class EnumToDisplayConverter : IValueConverter {
 
         public EnumToDisplayConverter() { }
-        
+
         public object Convert(
-            object value, 
-            Type targetType, 
-            object parameter, 
+            object value,
+            Type targetType,
+            object parameter,
             CultureInfo culture) {
 
-            var enumValue = value as Enum;            
+            var enumValue = value as Enum;
 
             return enumValue == null ?
                 DependencyProperty.UnsetValue :
@@ -29,9 +28,9 @@ namespace LogXtreme.WinDsk.TestDataGrid.Converters {
         }
 
         public object ConvertBack(
-            object value, 
-            Type targetType, 
-            object parameter, 
+            object value,
+            Type targetType,
+            object parameter,
             CultureInfo culture) {
 
             return Enum.ToObject(targetType, value);

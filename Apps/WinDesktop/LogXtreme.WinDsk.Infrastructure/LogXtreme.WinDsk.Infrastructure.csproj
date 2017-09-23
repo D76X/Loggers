@@ -94,6 +94,7 @@
   <ItemGroup>
     <Compile Include="Actions\CloseTabAction.cs" />
     <Compile Include="Commands\CommandsGlobal.cs" />
+    <Compile Include="Convertes\EnumToDisplayConverter.cs" />
     <Compile Include="Events\DeviceAttachedEvents.cs" />
     <Compile Include="Menu\IMenuItem.cs" />
     <Compile Include="Menu\MenuItemEventArgs.cs" />

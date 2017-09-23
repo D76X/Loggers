@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LogXtreme.WinDsk.TestDataGrid"
         xmlns:vm="clr-namespace:LogXtreme.WinDsk.TestDataGrid.ViewModels"
-        xmlns:conv="clr-namespace:LogXtreme.WinDsk.TestDataGrid.Converters"
+        xmlns:conv="clr-namespace:LogXtreme.WinDsk.Infrastructure.Convertes;assembly=LogXtreme.WinDsk.Infrastructure" 
         mc:Ignorable="d"
         Title="MainWindow"
         Height="350"

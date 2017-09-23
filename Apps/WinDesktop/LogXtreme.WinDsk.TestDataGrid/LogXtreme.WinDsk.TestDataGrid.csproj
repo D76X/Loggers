@@ -54,7 +54,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Converters\EnumToDisplayConverter.cs" />
     <Compile Include="ViewModels\DataGrid2ViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Page Include="MainWindow.xaml">
@@ -109,6 +108,10 @@
     <ProjectReference Include="..\..\Extensions\LogXtreme.Extensions\LogXtreme.Extensions.csproj">
       <Project>{07a36205-c0c2-4f88-a37c-27199051a240}</Project>
       <Name>LogXtreme.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogXtreme.WinDsk.Infrastructure\LogXtreme.WinDsk.Infrastructure.csproj">
+      <Project>{489706e3-c226-4d83-bb3d-c5a0d49d3835}</Project>
+      <Name>LogXtreme.WinDsk.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
