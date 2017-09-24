@@ -62,7 +62,7 @@ type TraceBuilderB() =
         printfn "Yielding an unwrapped (%A) as an option (wrapped) value"  x
         Some x
 
-    // example : yield! Some 1 => produces Some (1)
+    // example : yield! Some 1 => produces 1
     member this.YieldFrom(x) =
         printfn "Yielding an option (%A) directly"  x
         x        
@@ -93,12 +93,12 @@ traceB {
 // overlap with the  member functions Return/ReturnFrom they are used in distinct 
 // senarios. 
 
-//A workflow is always terminated when the return statement is evaluated, thus
+// A workflow is always terminated when the return statement is evaluated, thus
 // no other expression is evaluated following the invokation of Return or ReturnFrom.
 
 // Workflows do not necessarily terminate when the Yield or YieldFrom is 
 // executed. However, in the example provided so far there is perfect symmetry between
-// the implementations woth Yield/YieldFrom and Return/ReunrFrom. 
+// the implementations with Yield/YieldFrom and Return/ReunrFrom. 
 
 //---------------------------------------------------------------------------------------------------
 // The following does not compile with the DT error :

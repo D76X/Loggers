@@ -27,7 +27,7 @@ type ProductId =  ProductId of string
 // is DbResult<CustomerId>, DbResult<OrderId> and DbResult<ProductIdId>. However the wrapper type
 // DbResult is the same. This allows Bind to unwrap the output of one expression to provide the 
 // input to the following expression. Moreover, the expressions in the chain will have to be arranged
-// so that the unwrapped value from the output of the preceding ecpression id the tyep of the input 
+// so that the unwrapped value from the output of the preceding ecpression id the type of the input 
 // of the following expressions, that is 
 
 // string -> DbResult<CustomerId>
