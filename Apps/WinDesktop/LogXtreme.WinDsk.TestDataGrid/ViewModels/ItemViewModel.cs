@@ -1,11 +1,7 @@
 ﻿using LogXtreme.WinDsk.TestDataGrid.Models;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 

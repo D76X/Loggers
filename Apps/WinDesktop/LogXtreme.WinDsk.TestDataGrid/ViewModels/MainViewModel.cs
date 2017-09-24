@@ -9,6 +9,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             this.viewModels = new ObservableCollection<object>();
             this.viewModels.Add(new DataGrid1ViewModel());
             this.viewModels.Add(new DataGrid2ViewModel());
+            this.viewModels.Add(new DataSourceViewModel());
         }
 
         public ObservableCollection<object> ViewModels {
