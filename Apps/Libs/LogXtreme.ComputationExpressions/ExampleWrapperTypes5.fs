@@ -48,6 +48,32 @@ let badStrToInt = stringintwf {
 
 // Can we use List<T> or IEnumerable<T> as wrapper types?
 // Sure we can with the same provisos mentioned in relation to the previous example. 
+// This exploration provides an oppotunity to deepen our understanding of the Bind function.
+// member Bind : M<'T> * ('T -> M<'U>) -> M<'U>
+// It is been assumed that Bind will unwrap M<something> and apply a function f:('T -> M<'U>)
+// to something to return a value M<somethingelse>. However, this is not the whole story.
+// What if M<something> is a value such as List<int>. The Bind function will unwrap the input 
+// of type List<int> into something like int[] and apply the f to each of the integers in the
+// unwrapped value. 
 
+//let bind(list,f) =
+    // 1) for each element in list, apply f
+    // 2) f will return a list that is a wrapped type (as required by its signature)
+    // 3) the result is a list of lists! => PROBLEM!
 
+// PROBLEM!    
+// which means that the “list of lists” is no good. We need to turn them back into a 
+// simple “one-level” list i.e. by using List.concat.
 
+// Finally 
+
+// Bind applies the continuation function to each element of the passed in list, and then 
+// flattens the resulting list of lists into a one-level list. List.collect is a library 
+// function that does exactly that.
+
+// Return converts from unwrapped to wrapped. In this case, that just means wrapping a single 
+// element in a list.
+
+type ListWorkflowBuilder() = 
+    member this.Bind(list, f) = list |> List.collect
+    member this.Return(x) = [x]
