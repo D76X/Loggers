@@ -10,16 +10,17 @@ open System
 
 // Can non-generic wrapper types work?
 // Yes they can be used as shown in the following examples.
-// However, using non generic tyep as wrapper types is not idiomatic in F# thus should be avoided.
+// However, using non generic types as wrapper types is not idiomatic in F# thus should be avoided.
 // Cases with non generic wrappers are illustrated here only to better explain the mechanism behind
-// Binding Expressions in F#.abs
+// Binding Expressions in F#.
 
-// Example of Binding Expression in wich the wrapper type is string
-// The unwrapped type is Int32 and the wrapped type in string
+// Example of Binding Expression in which the wrapper type is string.
+// The unwrapped type is Int32 and the wrapped type in string.
 
 // https://stackoverflow.com/questions/2979178/f-string-format
-// Notice that there is a differenc between printfn and sprintfn in F# as the latter returns a string
-// while the former returns unit. String.Format may also be used in place of sprintfn non idiomatically.
+// Notice that there is a difference between printfn and sprintfn in F# as the latter returns a string
+// while the former returns unit. String.Format may also be used in place of sprintfn non idiomatically
+// but in order to do that it is necessary to use open System as above.
 type StringIntBuilder() = 
     member this.Bind(m, f) = 
         let b,i = System.Int32.TryParse(m)
@@ -62,18 +63,65 @@ let badStrToInt = stringintwf {
     // 3) the result is a list of lists! => PROBLEM!
 
 // PROBLEM!    
-// which means that the “list of lists” is no good. We need to turn them back into a 
-// simple “one-level” list i.e. by using List.concat.
+// which means that the “list of lists” cannot be used as the return value of the workflow
+// because the Computation Expression for the workflow states requires that the return value
+// must be a list of values of the type 'U in the definition of the continuation function f. 
+// We need to turn "the list of lists" into a simple “one-level” list i.e. by using List.concat.
 
 // Finally 
 
-// Bind applies the continuation function to each element of the passed in list, and then 
-// flattens the resulting list of lists into a one-level list. List.collect is a library 
+// Bind applies the continuation function to each element of the list that is passed as parameter 
+// then flattens the resulting list of lists into a one-level list. List.collect is a F# library 
 // function that does exactly that.
 
-// Return converts from unwrapped to wrapped. In this case, that just means wrapping a single 
-// element in a list.
+// Return converts from the unwrapped type to the wrapped type. In this case, that just means 
+// wrapping a single element os some type into a list.
 
 type ListWorkflowBuilder() = 
-    member this.Bind(list, f) = list |> List.collect
+    member this.Bind(list, f) = list |> List.collect f // the same as list |> List.map f |> List.concat
     member this.Return(x) = [x]
+
+let listwf = ListWorkflowBuilder()
+
+// this workflow reads the each element from the first list and in turn perfomrs the operation in the
+// return clause between this element and each of the elements of the second list. For each element in 
+// the first list a new list is obtained whose length n is the length of the second list. This produces
+// as many list as elements in the first list thus n. Lastly all the n obtained lists are concatenated 
+// into a single list holding m*n elements.
+let addListsElements = listwf {
+    let! first = [1;2;3]
+    let! second = [10;11;12]
+    return first+second
+}
+
+let multiplyListsElements = listwf {
+    let! first = [1;2;3]
+    let! second = [10;11;12]
+    return first*second
+}
+
+// We can try to improve our understanding of the mechanics of this Computation Expression 
+// by adding some traces
+type ListWorkflowBuilderWithTrace() = 
+    
+    member this.Bind(list, f) = 
+        printfn "Bind called with list = %A" list        
+        let x = List.map f list  
+        printfn "Bind List.map f %A" list
+        printfn "result x = %A" x        
+        let y = List.concat x
+        printfn "Bind List.concat x = %A" x
+        printfn "result y = %A" y              
+        y
+    
+    member this.Return(x) = 
+        printfn "Return called with x = %A" x
+        [x]
+
+let listwf = ListWorkflowBuilderWithTrace()
+
+let addListsElements = listwf {
+    let! first = [1]
+    let! second = [10;11;12]
+    return first+second
+}
