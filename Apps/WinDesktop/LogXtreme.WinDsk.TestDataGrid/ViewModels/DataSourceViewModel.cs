@@ -34,17 +34,16 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             this.sampleHeader = new ObservableCollection<string>();
             this.samples = new ObservableCollection<ISample>();
 
-            this.sampleHeader.Add(new string[3] {"CHN0", "CHN1", "CHN2" });
+            this.sampleHeader.Add("CHN0");
+            this.sampleHeader.Add("CHN1");
+            this.sampleHeader.Add("CHN2");
 
-            this.samples.Add(new Sample(new string[3] {"1", "1", "2" }));
+            this.samples.Add(new Sample(new string[3] {"2", "1", "2" }));
             this.samples.Add(new Sample(new string[3] { "2", "10", "20" }));
             this.samples.Add(new Sample(new string[3] { "3", "100", "200" }));
-
         }
 
-        public IEnumerable<string> SampleHeader {
-
-        }
+        public ObservableCollection<string> SampleHeader => this.sampleHeader;
 
         public ObservableCollection<ISample> Samples {
 
