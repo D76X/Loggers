@@ -13,7 +13,13 @@ namespace LogXtreme.WinDsk.Infrastructure.Commands {
     /// any of the assets from Prims.
     /// 
     /// Refs
+    /// 
+    /// Command
     /// https://msdn.microsoft.com/en-us/library/gg405484(v=pandp.40).aspx
+    /// https://stackoverflow.com/questions/1468791/wpf-icommand-mvvm-implementation
+    /// 
+    /// Commad implementation with CommandManager
+    /// https://stackoverflow.com/questions/2763630/how-does-commandmanager-requerysuggested-work
     /// 
     /// </summary>
     public class RelayCommand : ICommand {
