@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using LogXtreme.WinDsk.TestDataGrid.Interfaces;
+using LogXtreme.WinDsk.TestDataGrid.Models;
 
 namespace LogXtreme.WinDsk.TestDataGrid.Utils {
 
-    public class DataSource {
+    public class DataSource : ISampleSource {
+
+        public ISample GetSample() {
+
+            return new Sample(new string[3] { "X", "Y", "Z" });
+        }
     }
 }

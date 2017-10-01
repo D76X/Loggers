@@ -15,6 +15,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
     /// 
     /// Commands
     /// https://msdn.microsoft.com/en-us/library/gg405484(v=pandp.40).aspx
+    /// https://stackoverflow.com/questions/1468791/wpf-icommand-mvvm-implementation
     /// 
     /// Dynamic DataGrid
     /// https://blogs.msmvps.com/deborahk/populating-a-datagrid-with-dynamic-columns-in-a-silverlight-application-using-mvvm/
@@ -30,13 +31,17 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
     /// </summary>
     public class DataSourceViewModel : INotifyPropertyChanged {
 
+        private readonly ISampleSource sampleSource;
+
         private ObservableCollection<string> sampleHeader;
         private ObservableCollection<ISample> samples;
         private RelayCommand cmdGetOneSample;
         private ICommand cmdToggleSampleSource;
         private bool readingSamples;
 
-        public DataSourceViewModel() {
+        public DataSourceViewModel(ISampleSource sampleSource) {
+
+            this.sampleSource = sampleSource;
 
             this.sampleHeader = new ObservableCollection<string>();
             this.samples = new ObservableCollection<ISample>();
@@ -91,7 +96,10 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             return !this.readingSamples;
         }
 
-        private void ExecuteGetOneSample() { }        
+        private void ExecuteGetOneSample() {
+
+            this.samples.Add(this.sampleSource.GetSample());
+        }        
 
         private void ExecuteToggleSampleSource() {
 
