@@ -1,0 +1,84 @@
+Reactive Extensions - RX
+
+Adding RX to a project
+
+This is done via NuGet, type Reactive in the NuGet search tool and install 
+System.Reactive at solution level or project level as necessary.
+
+The Basics of RX
+https://msdn.microsoft.com/en-us/library/hh242977(v=vs.103).aspx
+https://app.pluralsight.com/library/courses/reactive-extensions/table-of-contents
+
+-------------------------------------------
+How to create an observable IObservable<T>
+-------------------------------------------
+
+In order to create an instance of IObservable<T> the System.Extension namespace makes available
+static methods on the Observable class. The basic opsions to do so are as follows.
+
+1-use range 
+IObservable<int> source = Observable.Range(1, 10);
+
+2-convert existing enumerators into observable sequences.
+
+3-convert .NET events into observable sequences.
+
+4-convert asynchronous patterns into observable sequences.
+
+
+-----------------------------------------------------------------------------------------------
+
+https://stackoverflow.com/questions/1763696/how-can-i-make-a-read-only-observablecollection-property
+1-NotifyCollection 
+Implemented in Infrastructure from ObservableCollection<T>
+We use this for the view models for tree views and other hierarchical structures.
+
+------------------------------------------------------------------------------------------------
+Weak events in .NET using Reactive Extensions (Rx)
+
+/// https://www.codeproject.com/Tips/1078183/Weak-events-in-NET-using-Reactive-Extensions-Rx
+/// Weak Events in .NET, The Easy Way
+/// https://dzone.com/articles/weak-events-net-easy-way
+/// IObservable from events
+/// http://www.introtorx.com/content/v1.0.10621.0/04_CreatingObservableSequences.html#FromEvent
+/// Observing Property changes
+/// https://github.com/LeeCampbell/RxCookbook/blob/master/Model/PropertyChange.md
+/// PropertyChangedEventHandler Delegate
+/// https://msdn.microsoft.com/en-us/library/system.componentmodel.propertychangedeventhandler(v=vs.110).aspx
+/// NotifyCollectionChangedEventHandler Delegate
+/// https://msdn.microsoft.com/en-us/library/system.collections.specialized.notifycollectionchangedeventhandler(v=vs.110).aspx 
+
+2-Extensions to RX 
+Implemented in LogXtrem.Reactive.Extensions.
+
+-----------------------------------------------------------------------------------------
+
+2.1-ObserveOn to create observables from implementation of 
+INotifyPropertyChanged & INotifyCollectionChanged
+
+These extensions make it possible to use view models that implements INotifyPropertyChanged 
+as observable sources of events that other view models can subscribe to and unsubscribe from.
+The extension methods cover simple properties and collection properties.
+When Dispose is colled on the observable returned by these extension methods the subscription 
+is removed so that the source of teh events is not kept in memory.
+
+-----------------------------------------------------------------------------------------
+
+2.2-SubscribeWeakly
+
+To create a IDisposable reference to a IObservable<T> in such a way that the reference to the
+observable source of events is weak and the subcription does not influence the lifetime of the 
+source which can be disposed by the CLR once all other hard refrences have fallen out of scope.
+
+This implemetation requires the action handling teh stream of events to be static.  
+
+-----------------------------------------------------------------------------------------
+
+2.3-Variant of SubscribeWeakly described above without the requirement of the static handler.
+
+This implementation allows the caller to pass an event handler defined on an instance of a 
+class rather than a static handler. It is otherwise the same as the one described earlier.
+
+------------------------------------------------------------------------------------------------
+
+3-

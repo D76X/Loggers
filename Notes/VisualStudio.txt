@@ -1,0 +1,4 @@
+
+Task List and TODOs
+https://stackoverflow.com/questions/15120139/strange-arrow-in-visual-studio-gutter-window
+Edit > Bookmarks > Add Task List Shortcut/Remove Task List Shortcut [Ctrl+E,H]
