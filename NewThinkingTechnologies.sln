@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{FAFE10AF-AF2C-4D6F-82BC-81ED9863EE85}"
 EndProject
@@ -94,7 +94,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Notes", "_Notes", "{54A549
 		Notes\GitWorkflow.png = Notes\GitWorkflow.png
 		Notes\LogXtreme.WinDsk.Notes.txt = Notes\LogXtreme.WinDsk.Notes.txt
 		Notes\PrismNotes.txt = Notes\PrismNotes.txt
-		Python.txt = Python.txt
+		Notes\Python.txt = Notes\Python.txt
 		Notes\SolutionNotes.txt = Notes\SolutionNotes.txt
 		Notes\WpfNotes.txt = Notes\WpfNotes.txt
 	EndProjectSection
