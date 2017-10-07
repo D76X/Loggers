@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using LogXtreme.Extensions;
+using System.Linq;
 
 namespace RegularExpressionTester {
 
@@ -8,7 +9,7 @@ namespace RegularExpressionTester {
     /// This simple program is used to test regular expressions.
     /// 
     /// ----------------------
-    /// Example 1:
+    /// Examples Series 1:
     /// 
     /// pattern=
     /// (cat)+ 
@@ -53,6 +54,71 @@ namespace RegularExpressionTester {
     /// e:exit
     /// ----------------------
     /// 
+    /// Example Series 2:
+    /// 
+    /// pattern =
+    /// (...)
+    /// subject = 
+    /// (...)
+    /// abcdefghi
+    /// True @0:3
+    ///     g0=abc
+    ///     g1=abc
+    /// True @3:3
+    ///     g0=def
+    ///     g1=def
+    /// True @6:9
+    ///     g0=ghi
+    ///     g1=ghi
+    /// 
+    /// e: exit
+    /// 
+    /// pattern = 
+    /// (...)(...)
+    /// subject =
+    /// abcdefghi
+    /// True @0:6
+    ///     g0 = abcdef
+    ///     g1 = abc
+    ///     g2 = def
+    /// 
+    /// e: exit 
+    /// 
+    /// pattern = 
+    /// (...)(...)(...)
+    /// subject =
+    /// abcdefghi
+    /// True @0:9
+    ///     g0 = abcdefghi
+    ///     g1 = abc
+    ///     g2 = def
+    ///     g3 = ghi
+    ///     
+    /// e: exit
+    /// 
+    /// pattern=
+    /// (?<One>...)(?<Two>...)
+    /// subject=
+    /// abcdefghi
+    ///
+    /// groups names: 0, One, Two
+    ///
+    /// True @0:6
+    ///        g0 = g0 = abcdef
+    ///        g1 = gOne = abc
+    ///        g2 = gTwo = def
+    ///
+    /// e: exit
+    /// 
+    /// Refs
+    /// 
+    /// .NET Regular Expressions
+    /// https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expressions 
+    /// Group Names
+    /// https://stackoverflow.com/questions/1381097/how-do-i-get-the-name-of-captured-groups-in-a-c-sharp-regex
+    /// Since .NET 4.7, there is Group.Name property available.
+    /// https://msdn.microsoft.com/en-us/library/system.text.regularexpressions.group.name(v=vs.110).aspx
+    /// 
     /// </summary>
     class Program {
 
@@ -82,8 +148,11 @@ namespace RegularExpressionTester {
 
                 var regex = new Regex(pattern);
                 var match = regex.Match(subject);
-                 
 
+                string[] groupNames = regex.GetGroupNames();
+                string gnames = groupNames.Length > 0 ? string.Join(", ",groupNames) : string.Empty;
+                Console.WriteLine($"\n\rgroups names: { gnames}\n\r" );
+                
                 while(match.Success) {
 
                     Console.WriteLine($"{match.Success} @{match.Index}:{match.Length}");
@@ -91,8 +160,9 @@ namespace RegularExpressionTester {
                     // For each match in the subject there may be also captured groups if the RE specified any.
                     // This goes through the groups that are found in the subject for the present match.
                     int gmatchCounter = -1;
-                    foreach(var g in match.Groups) {
-                        Console.WriteLine($"    g{++gmatchCounter} = {g}");
+                    foreach( Group g in match.Groups) {
+                        ++gmatchCounter;
+                        Console.WriteLine($"\tg{gmatchCounter} = g{regex.GroupNameFromNumber(gmatchCounter)} = {g}");
                     }
 
                     match = match.NextMatch();
