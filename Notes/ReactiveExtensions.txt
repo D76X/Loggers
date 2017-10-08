@@ -9,9 +9,11 @@ The Basics of RX
 https://msdn.microsoft.com/en-us/library/hh242977(v=vs.103).aspx
 https://app.pluralsight.com/library/courses/reactive-extensions/table-of-contents
 
--------------------------------------------
-How to create an observable IObservable<T>
--------------------------------------------
+--------------------------------------------------------
+Basics ways to create an observable IObservable<T> 
+more are presented leter but thsese are an introduction
+to get started.
+--------------------------------------------------------
 
 In order to create an instance of IObservable<T> the System.Extension namespace makes available
 static methods on the Observable class. The basic opsions to do so are as follows.
@@ -20,65 +22,445 @@ static methods on the Observable class. The basic opsions to do so are as follow
 IObservable<int> source = Observable.Range(1, 10);
 
 2-convert existing enumerators into observable sequences.
+IEnumerable<int> e = new List<int> { 1, 2, 3, 4, 5 };
+IObservable<int> source = e.ToObservable();
 
-3-convert .NET events into observable sequences.
+3-convert .NET events into observable sequences. 
+This is discussed more later.
 
 4-convert asynchronous patterns into observable sequences.
 
+6-use timers
+var source = Observable.
+			Timer(TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(1)).
+			Timestamp();
 
------------------------------------------------------------------------------------------------
+7-use a time Observable.Interval 
 
-https://stackoverflow.com/questions/1763696/how-can-i-make-a-read-only-observablecollection-property
-1-NotifyCollection 
-Implemented in Infrastructure from ObservableCollection<T>
-We use this for the view models for tree views and other hierarchical structures.
+// COLD observable - subscription2 gets the values from 0
+IObservable<int> source = Observable.Interval(TimeSpan.FromSeconds(1));
+IDisposable subscription1 = source.Subscribe(...)
+IDisposable subscription2 = source.Subscribe(...)
 
-------------------------------------------------------------------------------------------------
-Weak events in .NET using Reactive Extensions (Rx)
+// HOT Observable - IObservable.Publish 
+var source = Observable.Interval(TimeSpan.FromSeconds(1)); 
+IConnectableObservable<long> hot = Observable.Publish<long>(source); // becomes hot with Publish
+IDisposable subscription1 = source.Subscribe(...)
+hot.Connect(); // hot is connected to the source and starts pushing values to subscribers
+IDisposable subscription1 = hot.Subscribe(...)
 
-/// https://www.codeproject.com/Tips/1078183/Weak-events-in-NET-using-Reactive-Extensions-Rx
-/// Weak Events in .NET, The Easy Way
-/// https://dzone.com/articles/weak-events-net-easy-way
-/// IObservable from events
-/// http://www.introtorx.com/content/v1.0.10621.0/04_CreatingObservableSequences.html#FromEvent
-/// Observing Property changes
-/// https://github.com/LeeCampbell/RxCookbook/blob/master/Model/PropertyChange.md
-/// PropertyChangedEventHandler Delegate
-/// https://msdn.microsoft.com/en-us/library/system.componentmodel.propertychangedeventhandler(v=vs.110).aspx
-/// NotifyCollectionChangedEventHandler Delegate
-/// https://msdn.microsoft.com/en-us/library/system.collections.specialized.notifycollectionchangedeventhandler(v=vs.110).aspx 
+Thread.Sleep(3000);  //idle for 3 seconds or just some time goes before subscribing to hot again
 
-2-Extensions to RX 
-Implemented in LogXtrem.Reactive.Extensions.
+IDisposable subscription2 = hot.Subscribe(...) // this only gets values from the current hot value onwards
 
------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------
+In general RX provides two sets of mechanisms for the generation of IObservable<T>.
+http://www.introtorx.com/content/v1.0.10621.0/04_CreatingObservableSequences.html
 
-2.1-ObserveOn to create observables from implementation of 
-INotifyPropertyChanged & INotifyCollectionChanged
+1- The first set of mechanisms are the factory methods of teh Observable class such as
+	
+	Observable.Range
+	Observable.Timer
+	Observable.Interval
+	Observable.Create
+	Onservable.Generate
 
-These extensions make it possible to use view models that implements INotifyPropertyChanged 
-as observable sources of events that other view models can subscribe to and unsubscribe from.
-The extension methods cover simple properties and collection properties.
-When Dispose is colled on the observable returned by these extension methods the subscription 
-is removed so that the source of teh events is not kept in memory.
+	and some special cases
 
------------------------------------------------------------------------------------------
+	Observable.Empty
+	Observable.Return
+	Observable.Never
 
-2.2-SubscribeWeakly
+In particulare Observable.Generate is the most flexible of all and can be employed to replicate the 
+functionality of any of teh above.
 
-To create a IDisposable reference to a IObservable<T> in such a way that the reference to the
-observable source of events is weak and the subcription does not influence the lifetime of the 
-source which can be disposed by the CLR once all other hard refrences have fallen out of scope.
+2- The second set of mechanisms allow to use aynchronous and asynchronous .NET sources 
 
-This implemetation requires the action handling teh stream of events to be static.  
+	From delegates
+	From events
+	From Task
+	From IEnumerable
+	From APM [Asynchronous Programming Model]
+---------------------------------------------------------------------------------------------------------
 
------------------------------------------------------------------------------------------
+=====================================================================================================================================
 
-2.3-Variant of SubscribeWeakly described above without the requirement of the static handler.
+----------------------------------------------------------------------------------
+Creational Pattern in RX - create IObservable<T> from RX
+http://www.introtorx.com/content/v1.0.10621.0/04_CreatingObservableSequences.html
+----------------------------------------------------------------------------------
 
-This implementation allows the caller to pass an event handler defined on an instance of a 
-class rather than a static handler. It is otherwise the same as the one described earlier.
+// In order to produce instances of IObservable<T> we use factory memthodd defined on the Observable class.
 
-------------------------------------------------------------------------------------------------
+// The following are sort of odd ones but are used in some scenarios such as for instance unit testing
+var singleValue = Observable.Return<string>("Value");
+var empty = Observable.Empty<string>();
+var never = Observable.Never<string>();
+var throws = Observable.Throw<string>(new Exception());
 
-3-
+---------------------------------------------------------------------------------------------------------------------------
+
+// The most common factory method used is Observanle.Create<T>
+// A typical use could be the following 
+
+    // public static IObservable<TSource> Create<TSource>(Func<IObserver<TSource>, IDisposable> subscribe){...} 
+	// return an istance of IObservable<T> to a consumer so that the consumer can subscribe a IObserver<T> on it.
+	// the return value also implements IDisposable so that the consumer can invoke Dispose on it once it is done with it
+	// to clean things up such as releasing memory or unsubscribing events.
+	
+	var ob = Observable.Create<string>(
+		observer =>
+		{
+			var timer = new System.Timers.Timer();
+			timer.Interval = 1000;
+			timer.Elapsed += (s, e) => observer.OnNext("tick");
+			timer.Elapsed += OnTimerElapsed;
+			timer.Start();
+			return timer; // Timer implements IDisposable
+	});
+
+	// The is an overload 
+	// public static IObservable<TSource> Create<TSource>(Func<IObserver<TSource>, Action> subscribe){...}
+	// This return an action instead of IDisposable so that the consumer can still invoke the action to clean up
+	// even when this clean up does not happen as part of the Dispose logic.
+	
+	var ob = Observable.Create<string>(
+		observer =>
+		{
+			var timer = new System.Timers.Timer();
+			timer.Enabled = true;
+			timer.Interval = 100;
+			timer.Elapsed += OnTimerElapsed;
+			timer.Start();
+			
+			return ()=>{
+				timer.Elapsed -= OnTimerElapsed;
+				timer.Dispose();
+			};
+		});
+
+
+---------------------------------------------------------------------------------------------------------------------------
+
+In the previous examples Observable.Create returned an IObservable<T> that could produce an infinite sequence of values
+by using a timer in its definition. By replacing the timer with calls to OnNext, OnComplete, OnError of the IObserver
+instance passed as argument of the Func the IOnservable<T> may also only produce a finite number of values or even none
+at all.
+
+A simple way to create an instance of IObservable ot model a finite sequence is provided by the following example
+
+--------------------------------------
+var range = Observable.Range(10, 15);
+--------------------------------------
+
+------------------------------------------------------------------------------------------------------------
+RX provides better ways to create instances IObservable<T> that model infinite sequences of values than
+using a Timer. 
+------------------------------------------------------------------------------------------------------------
+One way could be to use soem recursive code in place of the timer as in the following illustrative example. 
+------------------------------------------------------------------------------------------------------------
+
+1- Corecursion
+   Corecursion is a function to apply to the current state to produce the next state. 
+
+	private static IEnumerable<T> Unfold<T>(T seed, Func<T, T> accumulator)
+	{
+		var nextValue = seed;
+		while (true)
+		{
+			yield return nextValue;
+			nextValue = accumulator(nextValue);
+		}
+	}
+
+	var naturalNumbers = Unfold(1, i => i + 1);
+	
+	foreach (var naturalNumber in naturalNumbers.Take(10))
+	{
+		Console.WriteLine(naturalNumber);
+	}
+
+---------------------------------------------------------------------------------------------------
+
+Observable.Generate
+
+RX provides a simple way to use corecursion to produce a IObservable.
+Observable.Generate can be used to produce either finite or infinite sequences depending on the 
+condition parameter in its signature. 
+
+public static IObservable<TResult> Generate<TState, TResult>(
+TState initialState, 
+Func<TState, bool> condition, 
+Func<TState, TState> iterate, 
+Func<TState, TResult> resultSelector)
+
+takes
+
+an initial state
+a predicate that defines when the sequence should terminate
+a function to apply to the current state to produce the next state
+a function to transform the state to the desired output
+
+Values are generated as fast as the iteration allows.
+
+------------------------------------------------------------------------------------
+Note: there is another overload of Observable.Generate to specify timing that is 
+      explained later
+------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------
+Example : definition of the Observable.Range via Observable.Generate and corecursion
+------------------------------------------------------------------------------------
+
+public static IObservable<int> Range(int start, int count)
+{
+	var max = start + count;
+	
+	return Observable.Generate(
+		start, 
+		value => value < max, 
+		value => value + 1, 
+		value => value);
+}
+
+---------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------
+Create an IObservable that models a sequence of values emitted at a fixed time interval.
+
+Most importantly the Rx operators are the preferred way of working with timers due to their ability 
+to substitute in schedulers which is desirable for easy substitution of the underlying timer. There 
+are at least three various timers you could choose from if you were to use an instance of Timer
+directly in the Observable.Create method as it was done earlier.
+
+https://stackoverflow.com/questions/10317088/why-there-are-5-versions-of-timer-classes-in-net
+https://web.archive.org/web/20150329101415/https://msdn.microsoft.com/en-us/magazine/cc164015.aspx
+
+System.Timers.Timer
+System.Threading.Timer
+System.Windows.Threading.DispatcherTimer
+
+others are 
+
+System.Windows.Forms.Timer
+System.Web.UI.Timer
+
+1-
+By abstracting the timer away via a scheduler we are able to reuse the same code for multiple
+platforms. 
+
+2-
+More importantly than being able to write platform independent code is the ability to substitute 
+in a test-double scheduler/timer to enable testing.
+
+--------------------
+Observable.Interval
+--------------------
+//  you must dispose of your subscription to stop the sequence.
+var interval = Observable.Interval(TimeSpan.FromMilliseconds(250));
+interval.Subscribe(Console.WriteLine, () => Console.WriteLine("completed"));
+
+output : 0 1 2 3...
+--------------------
+Observable.Timer
+--------------------
+// It has several overloads
+// The Observable.Timer will however only publish one value (0) after the period of time has elapsed, and then it will complete.
+// you can provide a DateTimeOffset for the dueTime parameter. This will produce the value 0 and complete at the due time.
+var timer = Observable.Timer(TimeSpan.FromSeconds(1));
+timer.Subscribe(Console.WriteLine, () => Console.WriteLine("completed"));
+
+output: 0 completed
+
+// another overload Observable.Timer(TimeSpan.Zero, period)
+// behaves like Observable.Interval but the first parameter lets you decide when to begin to 
+// produce values.
+
+-----------------------------------------------------------
+Observable.Generate overload with timing param parameters
+-----------------------------------------------------------
+
+public static IObservable<TResult> Generate<TState, TResult>(
+TState initialState, 
+Func<TState, bool> condition, 
+Func<TState, TState> iterate, 
+Func<TState, TResult> resultSelector, 
+Func<TState, TimeSpan> timeSelector)
+
+takes
+
+an initial state
+a predicate that defines when the sequence should terminate
+a function to apply to the current state to produce the next state
+a function to transform the state to the desired output
+a time value to determine when the next recursion occurs
+
+// This overload of Observable.Generate can be used to replicate the functionality of the other
+// time based overloads of the same class
+
+----------------------------------------------------------------------------
+// single valuw 0 @ dueTime and then complete
+public static IObservable<long> Timer(TimeSpan dueTime)
+{
+	return Observable.Generate(
+		0l,
+		i => i < 1,
+		i => i + 1,
+		i => i,
+		i => dueTime);
+}
+----------------------------------------------------------------------------
+// generate an infinite sequence of values starting at dueTime with 0 and
+// at "period"
+public static IObservable<long> Timer(TimeSpan dueTime, TimeSpan period)
+{
+	return Observable.Generate(
+		0l,
+		i => true,
+		i => i + 1,
+		i => i,
+		i => i == 0 ? dueTime : period);
+}
+----------------------------------------------------------------------------
+// generate an infinite sequence of interger values atrting on subscription
+// and each period afterwards
+public static IObservable<long> Interval(TimeSpan period)
+{
+	return Observable.Generate(
+		0l,
+		i => true,
+		i => i + 1,
+		i => i,
+		i => period);
+}
+----------------------------------------------------------------------------
+
+---------------------------------------------------------------------
+It is also possible to use Obserable.Generate to generate values at 
+a variable rate!
+---------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------
+
+=====================================================================================================================================
+
+----------------------------------------------------------------------------------
+http://www.introtorx.com/content/v1.0.10621.0/04_CreatingObservableSequences.html
+Creational Pattern in RX - create IObservable<T> from RX based on .NET 
+synchronous or asynchronous sources
+
+	From delegates
+	From events
+	From Task
+	From IEnumerable
+	From APM [Asynchronous Programming Model]
+----------------------------------------------------------------------------------
+
+------------------------------------
+-  IObservable from delegates
+------------------------------------
+https://msdn.microsoft.com/en-us/library/system.reactive.linq.observable.start(v=vs.103).aspx
+Observable.Start(Func<T>)
+Observable.Start(Action<T>)
+
+In this case Observable.Start gets a delegate function or action that represent the logic of a long running execution on the thread 
+pool or some aysnchronous operation and returns an IObservable instance to the caller. The function/action logic will be triggered 
+on subscription and the subscriber (caller) will get a value of type T if Observable.Start(Func<T>) was used or a special type Unit
+is Observable.Start(Action<T>). After that the IObservable is completed.
+
+------------------------------------------------------------------------
+Overall you may think of Observable.Sart as the RX way to create a Task.
+------------------------------------------------------------------------
+
+------------------------------------
+-  IObservable from .NET events
+http://www.introtorx.com/content/v1.0.10621.0/04_CreatingObservableSequences.html
+------------------------------------
+------------------------------------------------------------------
+-  Convert .NET events into observable sequences.
+https://msdn.microsoft.com/en-us/library/hh242978(v=vs.103).aspx
+------------------------------------------------------------------
+-  In the following the weak event pattern is also explored and 
+   RX provides a means to create weak subscription to events by 
+   first using the RX overloads to turn .NET events into IObservable
+   amd then using the custom exptension methods of IObservable 
+   in LogXtrem.Reactive.Extension to subscribe weakly to the 
+   observable seaquence of events.
+
+   LogXtrem.Reactive.Extension
+   IObservable.SubscribeWeakly => two variants
+
+-  A special case of of .NET events to which we often wish to 
+   subscribe weakly is the PropertyChangeEvent as it is used 
+   in WPF for view models. For this reason a weak subscription
+   to this .NET event as been formalized via an extension method 
+   on any TSource : INotifyPropertyChanged as TSource.ObserveOn.
+   There is also a variant for observable collections.
+   
+   LogXtrem.Reactive.Extension
+   INotifyPropertyChanged.ObserveOn
+   INotifyCollectionChanged.ObserveOn
+
+   These methods return respectively
+   
+   IObservable<EventPattern<PropertyChangedEventArgs>>
+   IObservable<EventPattern<NotifyCollectionChangedEventArgs>>
+
+   the listeners will unsubscribe when the IObservable is disposed 
+   by the caller and the caller only holds a weak reference to the
+   source of events such that it will not prevent it from being 
+   disposed.
+
+   This if the caller wants to stop receiving vents from the 
+   IObservable stream it disposes of it otherwise it will receive
+   events as long as the source is alive but this will not be kept
+   alive by the weak subscription.
+
+------------------------------------------------------------------
+
+Observable.FromEventPattern
+Observable.FromEventPattern<T>
+
+.NET events offer an asynchronous paradigm in .NET but lack of the ability to be composed as much it could be the case with 
+IObservables so it makes sense to have mechanism to transalte sources of events into stream of events with RX. 
+
+There exists several overloads of Observable.FromEventPatter to accomplish this and while the overloads can be confusing, 
+they key is to find out what the event's signature is.
+
+----------------------------------------------------------------------------------------------
+//Activated delegate is a simple EventHandler
+
+var appActivated = Observable.FromEventPattern(
+h => Application.Current.Activated += h,
+h => Application.Current.Activated -= h);
+----------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------
+
+// If the delegate is a sub-class of the EventHandler
+
+var propChanged = Observable.FromEventPattern
+<PropertyChangedEventHandler, PropertyChangedEventArgs>(
+handler => handler.Invoke,
+h => this.PropertyChanged += h,
+h => this.PropertyChanged -= h);
+----------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------
+// If the delegate is a sub-class of the EventHandler<T> which was introduced in .NET 2.0
+
+// FirstChanceException is EventHandler<FirstChanceExceptionEventArgs>
+
+var firstChanceException = Observable.FromEventPattern<FirstChanceExceptionEventArgs>(
+h => AppDomain.CurrentDomain.FirstChanceException += h,
+h => AppDomain.CurrentDomain.FirstChanceException -= h);  
+----------------------------------------------------------------------------------------------
+
+=====================================================================================================================================
+
+=====================================================================================================================================
+
+RX Scheduling and Threading
+http://www.introtorx.com/content/v1.0.10621.0/15_SchedulingAndThreading.html
+
+=====================================================================================================================================
