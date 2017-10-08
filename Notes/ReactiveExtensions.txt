@@ -372,14 +372,14 @@ is Observable.Start(Action<T>). After that the IObservable is completed.
 Overall you may think of Observable.Sart as the RX way to create a Task.
 ------------------------------------------------------------------------
 
-------------------------------------
+-----------------------------------------------------------------------------------
 -  IObservable from .NET events
 http://www.introtorx.com/content/v1.0.10621.0/04_CreatingObservableSequences.html
-------------------------------------
-------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 -  Convert .NET events into observable sequences.
 https://msdn.microsoft.com/en-us/library/hh242978(v=vs.103).aspx
-------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 -  In the following the weak event pattern is also explored and 
    RX provides a means to create weak subscription to events by 
    first using the RX overloads to turn .NET events into IObservable
@@ -455,6 +455,81 @@ var firstChanceException = Observable.FromEventPattern<FirstChanceExceptionEvent
 h => AppDomain.CurrentDomain.FirstChanceException += h,
 h => AppDomain.CurrentDomain.FirstChanceException -= h);  
 ----------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------
+-  IObservable from Task.
+http://www.introtorx.com/content/v1.0.10621.0/04_CreatingObservableSequences.html
+-----------------------------------------------------------------------------------
+
+Task<T>.ToObservable
+Task.Observable => overload for non generic Task to IObservable<Unit>.
+
+var t = Task.Factory.StartNew(()=>"Test");
+var source = t.ToObservable();
+source.Subscribe(Console.WriteLine,() => Console.WriteLine("completed"));
+
+if the task is already in a status of RanToCompletion then the value is added to the sequence and then the sequence completed
+if the task is Cancelled then the sequence will error with a TaskCanceledException
+if the task is Faulted then the sequence will error with the task's inner exception
+if the task has not yet completed, then a continuation is added to the task to perform the above actions appropriately
+
+There are two reasons to use the extension method:
+
+-1 From Framework 4.5, almost all I/O-bound functions return Task<T>
+
+-2 If Task<T> is a good fit, it's preferable to use it over IObservable<T>
+   The reason bing that a function that returns a single value in the future should return a Task<T>, not an IObservable<T>.
+   Then if you need to combine it with other observables, use ToObservable().
+
+-----------------------------------------------------------------------------------
+-  IObservable from IEnumerable<T>
+http://www.introtorx.com/content/v1.0.10621.0/04_CreatingObservableSequences.html
+-----------------------------------------------------------------------------------
+IEnumerable<T>.ToObservable<T>
+
+However, caution must be applied has often it does not make much sense to produce an IObservable<T> from an IEnumerable<T> and 
+perhaps all that you rally want to do is to use some overload of Observable.Generate instead.
+
+
+-----------------------------------------------------------------------------------
+-  IObservable from APM [Asynchronous Programming Model Pattern]
+http://www.introtorx.com/content/v1.0.10621.0/04_CreatingObservableSequences.html
+-----------------------------------------------------------------------------------
+
+APM is the old style of asynchronous programming that predates the introduction of the Task and Task<T> base models.
+Sometimes old APIs still expose APM only and if you need to work in an architecture that rather use IObservable then you must have a
+way to turn APM APIs into IObservable APIs.
+
+-----------------------------------------------------------------------------------
+Basic APM 
+
+//Standard Begin signature
+IAsyncResult BeginXXX(AsyncCallback callback, Object state);
+
+//Standard Begin signature with data
+IAsyncResult BeginYYY(string someParam1, AsyncCallback callback, object state);
+
+//Standard EndXXX Signature with or withput data
+TResult EndYYY(IAsyncResult asyncResult);
+
+-----------------------------------------------------------------------------------
+
+This is accomplished by any of the RX overloads of 
+
+Observable.FromAsyncPattern
+
+for example
+
+Observable.FromAsyncPattern<TInput1,...,TInputN,TResult>
+----------------------------------------------------------
+
+The first part of the generic arguments TInput1,...,TInputN are he set of types for BeginRead except for the last two 
+AsyncCallback callback, object state. TResult is the type returned by EndYYY.
+
+// example of usage on a Stream
+var read = Observable.FromAsyncPattern<byte[], int, int, int>(
+stream.BeginRead, 
+stream.EndRead);
 
 =====================================================================================================================================
 
