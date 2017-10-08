@@ -82,7 +82,7 @@
                     </Button>
                     <Button Grid.Row="0"
                             Grid.Column="1"
-                            Command="{Binding CommandToggleSampleSource}"
+                            Command="{Binding CommandReadSamplesFromSampleSource}"
                             VerticalAlignment="Center">
                         Read Samples
                     </Button>                    

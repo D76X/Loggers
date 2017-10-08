@@ -29,15 +29,16 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
     /// INotifyPropertyChanged
     /// https://docs.microsoft.com/en-us/dotnet/framework/winforms/how-to-implement-the-inotifypropertychanged-interface
     /// </summary>
-    public class DataSourceViewModel : INotifyPropertyChanged {
+    public class DataSourceViewModel : INotifyPropertyChanged, IDisposable {
 
         private readonly ISampleSource sampleSource;
 
         private ObservableCollection<string> sampleHeader;
         private ObservableCollection<ISample> samples;
         private RelayCommand cmdGetOneSample;
-        private ICommand cmdToggleSampleSource;
+        private ICommand cmdReadSamplesFromSampleSource;
         private bool readingSamples;
+        private IDisposable samplesObsevable;
 
         public DataSourceViewModel(ISampleSource sampleSource) {
 
@@ -50,7 +51,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
                 this.ExecuteGetOneSample, 
                 this.CanExecuteGetOneSample);
 
-            this.cmdToggleSampleSource = new RelayCommand(this.ExecuteToggleSampleSource);
+            this.cmdReadSamplesFromSampleSource = new RelayCommand(this.ExecuteReadSamplesFromSampleSource);
 
             this.sampleHeader.Add("CHN0");
             this.sampleHeader.Add("CHN1");
@@ -90,7 +91,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
         }
 
         public ICommand CommandGetOneSample => this.cmdGetOneSample;
-        public ICommand CommandToggleSampleSource => this.cmdToggleSampleSource;
+        public ICommand CommandReadSamplesFromSampleSource => this.cmdReadSamplesFromSampleSource;
 
         private bool CanExecuteGetOneSample() {
             return !this.readingSamples;
@@ -101,9 +102,23 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             this.samples.Add(this.sampleSource.GetSample());
         }        
 
-        private void ExecuteToggleSampleSource() {
+        private void ExecuteReadSamplesFromSampleSource() {             
 
-            this.ReadingSamples = !this.ReadingSamples;
+            if(this.samplesObsevable == null) {
+
+                this.samplesObsevable = this.sampleSource.GetSamples().
+                Subscribe(
+                    s => this.samples.Add(s),
+                    e => { },
+                    () => { });
+
+                this.ReadingSamples = true;
+
+            } else {
+                this.samplesObsevable?.Dispose();
+                this.samplesObsevable = null;
+                this.ReadingSamples = false;
+            }
         }
 
         #region INotifyPropertyChanged
@@ -114,6 +129,33 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        #endregion
+
+        #region IDisposable Support     
+
+
+        private bool disposedValue = false; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing) {
+
+            if(!disposedValue) {
+
+                if(disposing) {
+
+                    this.samplesObsevable?.Dispose();
+                    this.samplesObsevable = null;
+                }
+                
+                // free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // set large fields to null.
+
+                disposedValue = true;
+            }
+        }
+
+        public void Dispose() {
+            Dispose(true);
+        }
         #endregion
     }
 }
