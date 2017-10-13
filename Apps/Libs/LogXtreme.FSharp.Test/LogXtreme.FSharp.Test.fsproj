@@ -70,6 +70,8 @@
     <Compile Include="ObjectExpressions.fs" />
     <Compile Include="Lists.fs" />
     <Compile Include="ReferenceCells.fs" />
+    <Compile Include="Tuples.fs" />
+    <Compile Include="Generics.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

@@ -224,13 +224,15 @@ type SCBN =
 let``Not Disjointed Partial Active Patterns |Square|_| and |Cube|_|``() =
     
     // arrange
-    let isSquare x = match x with             
-                    | Square x -> true
-                    |_-> false
+    let isSquare x = 
+        match x with 
+            | Square x -> true
+            |_-> false
     
-    let isCube x = match x with             
-                    | Cube x -> true
-                    |_-> false
+    let isCube x = 
+        match x with             
+            | Cube x -> true
+            |_-> false
 
     let isSquareOrCubeOrBothIntegral x = 
          let isPw2 = isSquare x
