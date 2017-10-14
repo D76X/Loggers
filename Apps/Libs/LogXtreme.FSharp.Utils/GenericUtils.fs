@@ -23,5 +23,18 @@ let propertyName quotation =
     match quotation with 
     | PropertyGet (_,propertyInfo,_) -> propertyInfo.Name
     | _ -> System.String.Empty
-                
+
+// Generate prime numbers up to a max integer
+// https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/lists
+// if n is an integer then n = sqrt(n)^2 hence the integer round(sqrt(n))
+// is also the larger possible factor for any integer number in the range 
+// 1..n
+let getPrimesUpTo n = 
+
+    // remove from list any number with factors in factorsToRemove
+    let rec removeMultiples factorsToRemove list =
+        match factorsToRemove with
+            | head::tail -> []
+            | [] -> list
+
        

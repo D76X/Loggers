@@ -12,8 +12,25 @@ open Swensen.Unquote
 let splitHeadTail<'a> (list: 'a list) =      
         match list with 
             | head::tail -> (head, tail)
-            | _ -> (Unchecked.defaultof<'a>, [])  
-    
+            | _ -> (Unchecked.defaultof<'a>, []) 
+            
+// example of recursion on lists
+// every head goes on the stack!
+let rec sum1 list =
+    match list with 
+        | head::tail -> head + sum1 tail
+        | [] -> 0
+  
+// better with accumulator to ease the clutter on the stack
+// on long lists and avoid the possibility of stack overflow
+// the accumulator is nothing more than some state captured 
+// in the context of the function
+let sum2 list =
+    let rec loop list acc = 
+        match list with 
+            | head::tail -> loop tail (acc+head)
+            | [] -> acc
+    loop list 0
 
 [<Fact>]
 let ``List.head List.tail give head & tail of a list``()=
