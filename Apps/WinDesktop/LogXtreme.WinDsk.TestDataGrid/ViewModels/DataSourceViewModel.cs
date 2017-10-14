@@ -4,6 +4,8 @@ using LogXtreme.WinDsk.TestDataGrid.Models;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Reactive.Concurrency;
+using System.Reactive.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
@@ -28,6 +30,10 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
     /// 
     /// INotifyPropertyChanged
     /// https://docs.microsoft.com/en-us/dotnet/framework/winforms/how-to-implement-the-inotifypropertychanged-interface
+    /// 
+    /// Reactive Extensiosn 
+    /// https://stackoverflow.com/questions/44984730/rxandroid-whats-the-difference-between-subscribeon-and-observeon
+    /// 
     /// </summary>
     public class DataSourceViewModel : INotifyPropertyChanged, IDisposable {
 
@@ -106,7 +112,12 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
             if(this.samplesObsevable == null) {
 
+                // put the subscription delegate on a separate thread
+                // run the observation delegates on the dispatcher thread
+                // to satisy the STA of WPF
                 this.samplesObsevable = this.sampleSource.GetSamples().
+                SubscribeOn(ThreadPoolScheduler.Instance).
+                ObserveOn(DispatcherScheduler.Current).
                 Subscribe(
                     s => this.samples.Add(s),
                     e => { },
