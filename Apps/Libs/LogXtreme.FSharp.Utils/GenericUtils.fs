@@ -24,17 +24,30 @@ let propertyName quotation =
     | PropertyGet (_,propertyInfo,_) -> propertyInfo.Name
     | _ -> System.String.Empty
 
+//------------------------------------------------------------------------
 // Generate prime numbers up to a max integer
 // https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/lists
+//------------------------------------------------------------------------
 // if n is an integer then n = sqrt(n)^2 hence the integer round(sqrt(n))
-// is also the larger possible factor for any integer number in the range 
-// 1..n
+// is also the largest possible factor for any integer number in the range 
+// 1 to n. In other words any interger number in the range 1 to n can only 
+// have factors between 2 and round(sqtr(n)). 1 does not count because any
+// integer has 1 as divisor including primes.
 let getPrimesUpTo n = 
 
-    // remove from list any number with factors in factorsToRemove
-    let rec removeMultiples factorsToRemove list =
-        match factorsToRemove with
-            | head::tail -> []
+    // pluck a number from [2,round(sqrt(n))] and then go through the xs in [1..n]
+    // and test whether x has any factors in [2,round(sqrt(n))] if x happens to be 
+    // any of the numbers in [2,round(sqrt(n))] then keep it as it will be tested 
+    // for factors in [2,round(sqrt(n))] smaller than itself.
+    let predicate head x = head = x || x % head <> 0
+
+    // remove from list any number with factors in factors
+    let rec removeMultiples factors list =
+        match factors with
+            | head::tail -> removeMultiples tail (List.filter (predicate head)  list)
             | [] -> list
+
+    let max = int(sqrt(float n))
+    removeMultiples [2..max] [2..n]
 
        
