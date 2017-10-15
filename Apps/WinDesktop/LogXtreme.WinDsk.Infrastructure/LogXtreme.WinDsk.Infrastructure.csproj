@@ -95,8 +95,12 @@
     <Compile Include="Actions\CloseTabAction.cs" />
     <Compile Include="Commands\CommandsGlobal.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Convertes\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Convertes\BoolToHiddenVisibilityConverter.cs" />
     <Compile Include="Convertes\EnumToDisplayConverter.cs" />
+    <Compile Include="Convertes\InvertedBooleanToCollapsedVisibilityConverter.cs" />
     <Compile Include="Events\DeviceAttachedEvents.cs" />
+    <Compile Include="Exceptions\StrategyNullReferenceEception.cs" />
     <Compile Include="Menu\IMenuItem.cs" />
     <Compile Include="Menu\MenuItemEventArgs.cs" />
     <Compile Include="Models\DeviceModel.cs" />
@@ -162,6 +166,9 @@
       <Project>{07a36205-c0c2-4f88-a37c-27199051a240}</Project>
       <Name>LogXtreme.Extensions</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MarkupExtensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
