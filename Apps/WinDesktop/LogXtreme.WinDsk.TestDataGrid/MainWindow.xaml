@@ -11,8 +11,16 @@
         Height="350"
         Width="525">
     <Window.Resources>
-        <BooleanToVisibilityConverter x:Key="Bool2Vis" />
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
         <conv:EnumToDisplayConverter x:Key="EnumToDisplayConverter" />
+        <conv:BooleanToVisibilityConverter x:Key="CustomHiddenBoolToVis"
+                                           FalseVisibility="Hidden" />
+        <conv:BooleanToVisibilityConverter x:Key="CustomInvertedHiddenBoolToVis"
+                                           FalseVisibility="Hidden" 
+                                           Negate="True"/>
+        <conv:BooleanToVisibilityConverter x:Key="CustomCollapsedBoolToVis" />
+        <conv:BooleanToVisibilityConverter x:Key="CustomInvertedCollapsedBoolToVis"                                           
+                                           Negate="True" />
     </Window.Resources>
     <Window.DataContext>
         <vm:MainViewModel />
@@ -82,10 +90,18 @@
                     </Button>
                     <Button Grid.Row="0"
                             Grid.Column="1"
-                            Command="{Binding CommandReadSamplesFromSampleSource}"
+                            Command="{Binding CommandStartSampling}"
+                            Visibility="{Binding ReadingSamples, Converter={conv:BooleanToVisibilityConverter FalseVisibility=Collapsed, Negate=True}}"
                             VerticalAlignment="Center">
                         Read Samples
-                    </Button>                    
+                    </Button>
+                    <Button Grid.Row="0"
+                            Grid.Column="1"
+                            Command="{Binding CommandStopSampling}"
+                            Visibility="{Binding ReadingSamples, Converter={conv:BooleanToVisibilityConverter FalseVisibility=Collapsed, Negate=False}}"
+                            VerticalAlignment="Center">
+                        Stop Sampling
+                    </Button>
                     <DataGrid AutoGenerateColumns="False"
                               ItemsSource="{Binding Samples}"
                               Grid.Row="1"

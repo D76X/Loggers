@@ -42,7 +42,8 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
         private ObservableCollection<string> sampleHeader;
         private ObservableCollection<ISample> samples;
         private RelayCommand cmdGetOneSample;
-        private ICommand cmdReadSamplesFromSampleSource;
+        private ICommand cmdStartSampling;
+        private ICommand cmdStopSampling;
         private bool readingSamples;
         private IDisposable samplesObsevable;
 
@@ -57,7 +58,8 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
                 this.ExecuteGetOneSample, 
                 this.CanExecuteGetOneSample);
 
-            this.cmdReadSamplesFromSampleSource = new RelayCommand(this.ExecuteReadSamplesFromSampleSource);
+            this.cmdStartSampling = new RelayCommand(this.ExecuteStartSampling);
+            this.cmdStopSampling = new RelayCommand(this.ExecuteStopSampling);
 
             this.sampleHeader.Add("CHN0");
             this.sampleHeader.Add("CHN1");
@@ -66,7 +68,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             this.samples.Add(new Sample(new string[3] { "2", "1", "2" }));
             this.samples.Add(new Sample(new string[3] { "2", "10", "20" }));
             this.samples.Add(new Sample(new string[3] { "3", "100", "200" }));
-        }
+        }        
 
         public ObservableCollection<string> SampleHeader => this.sampleHeader;
 
@@ -83,21 +85,23 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             }
         }
 
-        private bool ReadingSamples {
+        public bool ReadingSamples {
 
             get { return this.readingSamples;  }
 
-            set {
+            private set {
 
                 if(value != this.readingSamples) {
                     this.readingSamples = value;
                     this.cmdGetOneSample.RaiseCanExecuteChanged();
+                    NotifyPropertyChanged();
                 }
             }
         }
 
         public ICommand CommandGetOneSample => this.cmdGetOneSample;
-        public ICommand CommandReadSamplesFromSampleSource => this.cmdReadSamplesFromSampleSource;
+        public ICommand CommandStartSampling => this.cmdStartSampling;
+        public ICommand CommandStopSampling => this.cmdStopSampling;
 
         private bool CanExecuteGetOneSample() {
             return !this.readingSamples;
@@ -108,28 +112,30 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             this.samples.Add(this.sampleSource.GetSample());
         }        
 
-        private void ExecuteReadSamplesFromSampleSource() {             
+        private void ExecuteStartSampling() {
 
-            if(this.samplesObsevable == null) {
+            this.samplesObsevable?.Dispose();
+            this.samplesObsevable = null;            
 
-                // put the subscription delegate on a separate thread
-                // run the observation delegates on the dispatcher thread
-                // to satisy the WPF STA model. 
-                this.samplesObsevable = this.sampleSource.GetSamples().
-                SubscribeOn(ThreadPoolScheduler.Instance).
-                ObserveOn(DispatcherScheduler.Current).
-                Subscribe(
-                    s => this.samples.Add(s),
-                    e => { },
-                    () => { });
+            // put the subscription delegate on a separate thread
+            // run the observation delegates on the dispatcher thread
+            // to satisy the WPF STA model. 
+            this.samplesObsevable = this.sampleSource.GetSamples().
+            SubscribeOn(ThreadPoolScheduler.Instance).
+            ObserveOn(DispatcherScheduler.Current).
+            Subscribe(
+                s => this.samples.Add(s),
+                e => { },
+                () => { });
 
-                this.ReadingSamples = true;
+            this.ReadingSamples = true;            
+        }
 
-            } else {
-                this.samplesObsevable?.Dispose();
-                this.samplesObsevable = null;
-                this.ReadingSamples = false;
-            }
+        private void ExecuteStopSampling() {
+
+            this.samplesObsevable?.Dispose();
+            this.samplesObsevable = null;
+            this.ReadingSamples = false;
         }
 
         #region INotifyPropertyChanged
