@@ -114,7 +114,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
                 // put the subscription delegate on a separate thread
                 // run the observation delegates on the dispatcher thread
-                // to satisy the STA of WPF
+                // to satisy the WPF STA model. 
                 this.samplesObsevable = this.sampleSource.GetSamples().
                 SubscribeOn(ThreadPoolScheduler.Instance).
                 ObserveOn(DispatcherScheduler.Current).

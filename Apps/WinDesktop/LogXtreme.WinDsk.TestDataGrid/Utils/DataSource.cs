@@ -1,5 +1,6 @@
 ﻿using LogXtreme.WinDsk.TestDataGrid.Interfaces;
 using LogXtreme.WinDsk.TestDataGrid.Models;
+using LogXtreme.Extensions;
 using System;
 using System.Reactive.Linq;
 
@@ -27,8 +28,12 @@ namespace LogXtreme.WinDsk.TestDataGrid.Utils {
             this.generator = new Random();            
         }        
 
-        public ISample GetSample() {            
-            return new Sample(new string[3] { "X", "Y", "Z" });
+        public ISample GetSample() {
+
+            //var sample = generator.Sequence(3, 255, 0);            
+            //return new Sample(new string[3] { "X", "Y", "Z" });
+            //return new Sample(new string[3] { sample[0].ToString(), sample[1].ToString(), sample[2].ToString() });
+            return this.DrawSample();
         }
 
         /// <summary>
@@ -41,7 +46,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.Utils {
             int initialState = 0;
             Func<int, bool> executeNextIteration = i => true;
             Func<int, int> coresursion = i => i + 1;
-            Func<int, ISample> resultSelector = i => new Sample(new string[3] { "X", "Y", "Z" });
+            Func<int, ISample> resultSelector = i => this.DrawSample();
 
             var duetime = TimeSpan.FromMilliseconds(500);
             var interval = TimeSpan.FromSeconds(1);
@@ -55,6 +60,10 @@ namespace LogXtreme.WinDsk.TestDataGrid.Utils {
                 timeSelector);
 
             return source;
+        } 
+        
+        private  ISample DrawSample() {
+            return new Sample(this.generator.Sequence(3, 255, 0).Stringify());
         }
     }
 }
