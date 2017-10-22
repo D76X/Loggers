@@ -89,6 +89,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Notes", "_Notes", "{54A549FC-CAB6-43C9-847E-FE7F3E5C50E7}"
 	ProjectSection(SolutionItems) = preProject
+		Notes\Exceptions.txt = Notes\Exceptions.txt
 		Notes\F#.txt = Notes\F#.txt
 		Notes\GitNotes.txt = Notes\GitNotes.txt
 		Notes\GitWorkflow.png = Notes\GitWorkflow.png

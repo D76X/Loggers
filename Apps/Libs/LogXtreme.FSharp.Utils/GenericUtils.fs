@@ -50,4 +50,9 @@ let getPrimesUpTo n =
     let max = int(sqrt(float n))
     removeMultiples [2..max] [2..n]
 
+    //-------------------------------------------------------------------------------------------------------
+    // Reversing a string
+    // https://stackoverflow.com/questions/4556160/is-there-more-simple-or-beautiful-way-to-reverse-a-string
+    // https://stackoverflow.com/questions/13085575/some-basic-seq-and-list-questions
+    //-------------------------------------------------------------------------------------------------------
        
