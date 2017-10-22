@@ -12,7 +12,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Services {
         private Task<TResult> task;
 
         public TaskDelegateWorker() {
-            // more work here...
+
         }
 
         public TaskDelegateWorker(

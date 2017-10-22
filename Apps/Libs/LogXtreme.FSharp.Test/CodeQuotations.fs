@@ -41,13 +41,4 @@ open Microsoft.FSharp.Quotations.DerivedPatterns
 // and is rendered by using the ToString method hich, on the Expr type, lets you know 
 // the active pattern to add to your match expression.
 
-//--------------------------------------------------------------------------------------
-// F# Code Quotations and generic functions
-
-// Inner generic functions are not permitted in quoted expressions. 
-// Consider adding some type constraints until this function is no longer 
-// generic.
-
-// https://stackoverflow.com/questions/26710818/f-code-quotations-and-generic-functions
-//--------------------------------------------------------------------------------------
 

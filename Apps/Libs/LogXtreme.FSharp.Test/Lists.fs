@@ -52,29 +52,3 @@ let ``List.head List.tail give head & tail of a list``()=
     test<@ hl = hm @>
     test<@ tm = tail @>
     test<@ tl = tm @>
-
-[<Fact>]
-let ``test List.isEmpty List.exist(2)``()=
-
-    // arrange
-    // List.exist2 only works on lists of the same length
-    let list1 = [0; 0; 1; 0]
-    let list2 = [0; 0; 1; 0]    
-    let list3 = [0; 0; 0; 0]      
-    let list4 = ["one"; "two"; "three"];
-    let list5 = ["one"; "owt"; "three"];
-    let list6 = ["1";"2";"3"]
-    let list7 = [1..3];
-
-    // simplified function to reverse the string representation of any value
-    // https://stackoverflow.com/questions/4556160/is-there-more-simple-or-beautiful-way-to-reverse-a-string
-    let reverse str = new string(str.ToString().ToCharArray() |> Array.rev) 
-
-    // act
-
-    // assert
-    test<@ List.isEmpty list1 = false @>
-    test<@ List.isEmpty List.Empty = true @>
-    test<@ List.exists (fun e -> e = 1) list1 = true @>
-    test<@ List.exists2 (fun e1 e2 -> e1 = e2) list2 list3 = false @>
-    test<@ List.exists2 (fun e1 e2 -> e1 = reverse e2) list4 list5 = true @>
