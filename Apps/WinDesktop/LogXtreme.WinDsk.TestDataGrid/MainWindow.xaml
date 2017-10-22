@@ -165,6 +165,9 @@
                 </Grid>
 
             </TabItem>
+            <TabItem Header="DataGrid4">
+                
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

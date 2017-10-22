@@ -71,11 +71,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Interfaces\ISample.cs" />
+    <Compile Include="Interfaces\ISampleDescriptor.cs" />
+    <Compile Include="Interfaces\ISampleGenerator.cs" />
     <Compile Include="Interfaces\ISampleSource.cs" />
+    <Compile Include="Models\RandomGenerator.cs" />
     <Compile Include="Models\Sample.cs" />
-    <Compile Include="Utils\DataSource.cs" />
+    <Compile Include="Models\SampleDescriptor.cs" />
+    <Compile Include="Utils\DataSource1.cs" />
+    <Compile Include="Utils\DataSource2.cs" />
     <Compile Include="ViewModels\DataGrid2ViewModel.cs" />
-    <Compile Include="ViewModels\DataSourceViewModel.cs" />
+    <Compile Include="ViewModels\DataSourceViewModel1.cs" />
+    <Compile Include="ViewModels\DataSourceViewModel2.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

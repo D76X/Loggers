@@ -1,12 +1,12 @@
-﻿using LogXtreme.WinDsk.TestDataGrid.Interfaces;
+﻿using LogXtreme.Extensions;
+using LogXtreme.WinDsk.TestDataGrid.Interfaces;
 using LogXtreme.WinDsk.TestDataGrid.Models;
-using LogXtreme.Extensions;
 using System;
 using System.Reactive.Linq;
 
 namespace LogXtreme.WinDsk.TestDataGrid.Utils {
 
-    /// <summary>
+    /// <summary> 
     /// 
     /// Refs
     /// 
@@ -20,19 +20,23 @@ namespace LogXtreme.WinDsk.TestDataGrid.Utils {
     /// https://stackoverflow.com/questions/2706500/how-do-i-generate-a-random-int-number-in-c
     /// 
     /// </summary>
-    public class DataSource : ISampleSource {
+    public class DataSource1 : ISampleSource {
+        
+        private readonly ISampleDescriptor sampleDescriptor;
+        private readonly ISampleGenerator sampleGenerator;
 
-        private readonly Random generator;
+        public DataSource1(
+            ISampleDescriptor sampleDescriptor,
+            ISampleGenerator sampleGenerator) {          
+            
+            this.sampleDescriptor = sampleDescriptor;
+            this.sampleGenerator = sampleGenerator;
+        }
 
-        public DataSource() {
-            this.generator = new Random();            
-        }        
+        public ISampleDescriptor SampleDescriptor => this.sampleDescriptor;
 
         public ISample GetSample() {
 
-            //var sample = generator.Sequence(3, 255, 0);            
-            //return new Sample(new string[3] { "X", "Y", "Z" });
-            //return new Sample(new string[3] { sample[0].ToString(), sample[1].ToString(), sample[2].ToString() });
             return this.DrawSample();
         }
 
@@ -62,8 +66,8 @@ namespace LogXtreme.WinDsk.TestDataGrid.Utils {
             return source;
         } 
         
-        private  ISample DrawSample() {
-            return new Sample(this.generator.Sequence(3, 255, 0).Stringify());
+        private  ISample DrawSample() {            
+            return this.sampleGenerator.GenerateSample(this.sampleDescriptor);
         }
     }
 }

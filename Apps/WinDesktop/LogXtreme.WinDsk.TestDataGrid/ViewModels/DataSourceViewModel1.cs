@@ -35,7 +35,9 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
     /// https://stackoverflow.com/questions/44984730/rxandroid-whats-the-difference-between-subscribeon-and-observeon
     /// 
     /// </summary>
-    public class DataSourceViewModel : INotifyPropertyChanged, IDisposable {
+    public class DataSourceViewModel1 : 
+        INotifyPropertyChanged, 
+        IDisposable {
 
         private readonly ISampleSource sampleSource;
 
@@ -47,11 +49,12 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
         private bool readingSamples;
         private IDisposable samplesObsevable;
 
-        public DataSourceViewModel(ISampleSource sampleSource) {
+        public DataSourceViewModel1(ISampleSource sampleSource) {
 
             this.sampleSource = sampleSource;
 
-            this.sampleHeader = new ObservableCollection<string>();
+            var sampleDescriptor = sampleSource.SampleDescriptor.ValueNames;
+            this.sampleHeader = new ObservableCollection<string>(sampleDescriptor);
             this.samples = new ObservableCollection<ISample>();
 
             this.cmdGetOneSample = new RelayCommand(
@@ -59,15 +62,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
                 this.CanExecuteGetOneSample);
 
             this.cmdStartSampling = new RelayCommand(this.ExecuteStartSampling);
-            this.cmdStopSampling = new RelayCommand(this.ExecuteStopSampling);
-
-            this.sampleHeader.Add("CHN0");
-            this.sampleHeader.Add("CHN1");
-            this.sampleHeader.Add("CHN2");
-
-            this.samples.Add(new Sample(new string[3] { "2", "1", "2" }));
-            this.samples.Add(new Sample(new string[3] { "2", "10", "20" }));
-            this.samples.Add(new Sample(new string[3] { "3", "100", "200" }));
+            this.cmdStopSampling = new RelayCommand(this.ExecuteStopSampling);   
         }        
 
         public ObservableCollection<string> SampleHeader => this.sampleHeader;
