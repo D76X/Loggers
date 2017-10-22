@@ -14,6 +14,6 @@ namespace LogXtreme.Extensions {
         public static IEnumerable<string> Stringify<T>(this IEnumerable<T> ienumerable) {
 
             return from v in ienumerable select v.ToString();
-        }
+        }       
     }
 }
