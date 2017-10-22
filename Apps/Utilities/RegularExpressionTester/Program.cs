@@ -97,6 +97,17 @@ namespace RegularExpressionTester {
     /// e: exit
     /// 
     /// pattern=
+    /// (...){3}
+    /// subject=
+    /// abcdefghi
+    /// groups names: 0, 1
+    /// True @0:9
+    ///        g0 = g0 = abcdefghi
+    ///        g1 = g1 = ghi
+    ///        
+    /// e: exit
+    /// 
+    /// pattern=
     /// (?<One>...)(?<Two>...)
     /// subject=
     /// abcdefghi
@@ -126,20 +137,20 @@ namespace RegularExpressionTester {
 
             bool runagain = true;
 
-            do {               
+            do {
 
                 string pattern = string.Empty;
                 string subject = string.Empty;
 
-                if(args.Length > 0) {
+                if (args.Length > 0) {
                     pattern = args[0].Replace("\\n", "\n");
                 }
 
-                if(args.Length > 1) {
+                if (args.Length > 1) {
                     subject = args[1].Replace("\\n", "\n");
                 }
 
-                if(pattern.IsBlank()) {
+                if (pattern.IsBlank()) {
                     Console.WriteLine("pattern=");
                     pattern = Console.ReadLine().Replace("\\n", "\n");
                     Console.WriteLine("subject=");
@@ -150,19 +161,35 @@ namespace RegularExpressionTester {
                 var match = regex.Match(subject);
 
                 string[] groupNames = regex.GetGroupNames();
-                string gnames = groupNames.Length > 0 ? string.Join(", ",groupNames) : string.Empty;
-                Console.WriteLine($"\n\rgroups names: { gnames}\n\r" );
-                
-                while(match.Success) {
+                string gnames = groupNames.Length > 0 ? string.Join(", ", groupNames) : string.Empty;
+                Console.WriteLine($"\n\rgroups names: { gnames}\n\r");
+
+                while (match.Success) {
 
                     Console.WriteLine($"{match.Success} @{match.Index}:{match.Length}");
 
                     // For each match in the subject there may be also captured groups if the RE specified any.
-                    // This goes through the groups that are found in the subject for the present match.
+                    // This loop goes through the groups that are found in the subject for the present match. 
+                    // Notice that the Group class does not a property Group.Name until .NET 4.7 and in order 
+                    // to find the group's name Regex.GroupNameFromNumber and the index of the group must be used.
                     int gmatchCounter = -1;
-                    foreach( Group g in match.Groups) {
+
+                    foreach (Group g in match.Groups) {
+
                         ++gmatchCounter;
-                        Console.WriteLine($"\tg{gmatchCounter} = g{regex.GroupNameFromNumber(gmatchCounter)} = {g}");
+                        var groupName = regex.GroupNameFromNumber(gmatchCounter);
+                        Console.WriteLine($"\tg{gmatchCounter} = g{groupName} = {g} last capture");
+
+                        // each group might capture multiple substrings in the subject. Normally when Group.ToString is invoked only 
+                        // the last capture of the group is obtained. If you want to find all the captures of a group you must iterate
+                        // over the Group.Capures enumeration.
+                        int captureConuter = -1;
+
+                        foreach (var capture in g.Captures) {
+
+                            ++captureConuter;
+                            Console.WriteLine($"\tg{groupName} capture[{captureConuter}] = {capture}");
+                        }
                     }
 
                     match = match.NextMatch();
@@ -171,7 +198,7 @@ namespace RegularExpressionTester {
                 Console.WriteLine("\n\re: exit");
                 runagain = !Console.ReadLine().ToLower().Trim().StartsWith("e");
 
-            } while(runagain);
+            } while (runagain);
         }
     }
 }
