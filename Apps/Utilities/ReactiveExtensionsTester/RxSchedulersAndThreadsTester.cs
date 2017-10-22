@@ -8,7 +8,8 @@ using System.Threading;
 namespace ReactiveExtensionsTester {
 
     /// <summary>
-    /// 
+    /// Illustrates the usage and properties of of schedulers with RX.
+    ///  
     /// Refs 
     /// .NET Reactive Extensions Fundamentals 1.0 by Dan Sullivan 
     /// https://app.pluralsight.com/player?course=reactive-extensions&author=dan-sullivan&name=concurrency-reactive-extensions&clip=1&mode=live
@@ -16,9 +17,7 @@ namespace ReactiveExtensionsTester {
     /// Introduction to RX book by Lee Campbell - Concurrency
     /// http://www.introtorx.com/content/v1.0.10621.0/15_SchedulingAndThreading.html
     /// </summary>
-    public class RxThreadsTester {
-
-
+    public class RxSchedulersAndThreadsTester {
         /// <summary>
         /// RX distinguishes between two kinds of delegates.
         /// RX creates these delegates for you.

@@ -14,7 +14,7 @@ namespace ReactiveExtensionsTester {
 
         private void Run() {
 
-            var rxThreadsTester = new RxThreadsTester();
+            var rxThreadsTester = new RxSchedulersAndThreadsTester();
             rxThreadsTester.Run();
         } 
     }
