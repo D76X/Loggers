@@ -13,29 +13,6 @@ More on this subject
 https://docs.microsoft.com/en-us/nuget/consume-packages/package-restore
 
 ======================================================================================================
-USEFUL SHORTCUTS
-
-TRACK FILE IN SOLUTION EXPLORER
-ctrl+[ => s
-
-DEACTIVATE TRACK ACIVE ITEM IN SOLUTION EXPLORER
-https://blogs.msdn.microsoft.com/zainnab/2010/03/29/track-active-item-in-solution-explorer/
-Tools -> Options -> Projects and Solutions -> General -> "Track Active Item in Solution Explorer"
-
-SHOW AVAILABLE OVERRIDES
-type override in a class then SPACE or TAB SPACE
-http://stackoverflow.com/questions/6213332/visual-studio-2010-keyboard-shortcut-to-override-method-in-c
-
-ZOOM IN/OUT IN THE TEXT EDITOR
-ctrl+shift+(+/-)
-
-REMAPPING SHORTCUTS
-
-// File.SaveSelectedItems (Ctrl +S (Global))
-https://stackoverflow.com/questions/3099709/re-map-ctrls-to-file-save-in-visual-studio-2010
-
-======================================================================================================
-
 CLEAR CACHE WHEN TEST EXPLORER DO NOT SHOW TESTS
 https://stackoverflow.com/questions/35103781/why-is-the-visual-studio-2015-2017-test-runner-not-discovering-my-xunit-v2-tests
 

@@ -1,4 +1,33 @@
 
+======================================================================================================
+USEFUL SHORTCUTS
+
+TRACK FILE IN SOLUTION EXPLORER
+ctrl+[ => s
+
+DEACTIVATE TRACK ACIVE ITEM IN SOLUTION EXPLORER
+https://blogs.msdn.microsoft.com/zainnab/2010/03/29/track-active-item-in-solution-explorer/
+Tools -> Options -> Projects and Solutions -> General -> "Track Active Item in Solution Explorer"
+
+SHOW AVAILABLE OVERRIDES
+type override in a class then SPACE or TAB SPACE
+http://stackoverflow.com/questions/6213332/visual-studio-2010-keyboard-shortcut-to-override-method-in-c
+
+ZOOM IN/OUT IN THE TEXT EDITOR
+ctrl+shift+(+/-)
+
+REMAPPING SHORTCUTS
+
+// File.SaveSelectedItems (Ctrl +S (TextEditor))
+https://stackoverflow.com/questions/3099709/re-map-ctrls-to-file-save-in-visual-studio-2010
+
+// File.SaveSelectedItems (Ctrl+S, Ctrl+S (Global))
+
+======================================================================================================
+
+
+==========================================================================================
 Task List and TODOs
 https://stackoverflow.com/questions/15120139/strange-arrow-in-visual-studio-gutter-window
 Edit > Bookmarks > Add Task List Shortcut/Remove Task List Shortcut [Ctrl+E,H]
+==========================================================================================
