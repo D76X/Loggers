@@ -11,19 +11,20 @@ open Xunit
 open Swensen.Unquote
 
 open System.Drawing
+open System.Text.RegularExpressions
 
 // 1- APs in General 
 
 // In F# an active pattern allows to select a brach of execution according to whether some
 // input satisfy certain condition(s) - active patterns. 
 
-// 2- APs to choose what to do according to the input and the pattern
+// 2- APs are used to choose what to do according to the input and the pattern
 
 // Active Patterns in F# are used to subdivide input data in the same way that matching
 // expression are used on discriminated unions. With discriminated union a matched expression
 // is used to select a branch according to the value of a discriminated type. With active
 // pattern this concept is broaden to inputs that are not necessarily of a discriminated 
-// union type for exaple simple types such as interger, strings or even custom types.
+// union type for example simple types such as interger, strings or even custom types.
 
 // 3- APs to achieve the decomposing of data in mutliple ways
 
@@ -37,7 +38,7 @@ open System.Drawing
 // 4- Partial active patterns
 
 // Active patterns that do not always produce a value are called partial active patterns,
-// they have a return value that is an option type. o define a partial active pattern, 
+// they have a return value that is an option type. To define a partial active pattern, 
 // you use a wildcard character (_) at the end of the list of patterns inside the banana 
 // clips. One reason an AP may not be able to produce a value given some data as its input
 // might be that the input although being of the expected type fails to match any of the 
@@ -48,13 +49,13 @@ open System.Drawing
 
 // APs and PAPs are normally used to delcare functions that can decompose or tranform the 
 // data along a specific execution path depending on the pattern the data is matched to
-// by the definition of teh APs or PAPs used in the declaration of the function. However,
+// by the definition of the APs or PAPs used in the declaration of the function. However,
 // a piece of data needs not match a single pattern that is the pattern need not always be
-// mutually exclusive that is disjointed. For example lets name val(||)
+// mutually exclusive that is disjointed. 
 
 // 6- Parameterized Active Patterns
 
-// APs act on some input data if some other parameters are passed to the in addition to the 
+// APs act on some input data if some other parameters are passed to them in addition to the 
 // the input data the AP or PAP are said to be parameterized. 
 
 // it is interesting that the signature the |Even|Odd| AP is 
@@ -115,7 +116,7 @@ let``Multiple Active Patterns |RGB|HSB|``() =
 
     // A function that combines all the active patterns.
     // As said sometimes data may be decomposed or converted in multiple ways.
-    // In this cases we may employ APs to describe the conversion or decomposotion 
+    // In this cases we may employ APs to describe the conversion or decomposition 
     // algorithms individually. Such AP can be used in isolation or combined into 
     // the definition of functions.
     let ConvertColor col =
@@ -135,7 +136,7 @@ let``Multiple Active Patterns |RGB|HSB|``() =
     test<@ actual = expected @>
 
 // This is a Partial Active Pattern [PAP].
-// The last case in the banana clip of any PAPA is the undercore.
+// The last case in the banana clip of any PAP is the undercore.
 // A PAP always returns an Option type.
 // In this PAP the input of type string has a match only if it can
 // be parsed to Int32.
@@ -220,6 +221,8 @@ type SCBN =
         | PW2PW3
         | Neither
 
+// A real number may be the square of an integer and the cube of another integer.
+// Some input may match multiple APs.
 [<Fact>]
 let``Not Disjointed Partial Active Patterns |Square|_| and |Cube|_|``() =
     
@@ -264,4 +267,66 @@ let``Not Disjointed Partial Active Patterns |Square|_| and |Cube|_|``() =
 
 // This is an example of Parameterized Active Pattern as in addition 
 // to the input data a paramter is also passed to the pattern.
+// A tipycal example is an AP that uses regular expressions to match
+// it to some parts of the subject given as its input. This AP expects
+// the subject as its input and the RE to match the subject with as its
+// parameter.
+
+// Given the RE re returns Non if there are no mathces in teh subject input.
+// If there are matches it resturns Some value with the list of matches.
+let (|ParseRegex|_|) re input = 
+    let matched = Regex(re).Match(input)
+    if matched.Success
+    then Some(List.tail [for x in matched.Groups -> x.Value])
+    else None
+
+// as usual APs, PAPs, and the Parameterised variants of both are employed to 
+// build functions with the match..with semantic as in the following. 
+// This function builds dates based from an input string that is passed to the 
+// a cascade of Parameterised PAP ParseRegex chained together in a match..with 
+// construct where each branch uses a different RE.
+// Notice that in this function we use the Integer AP defined above in the file
+// to transform (string list option) return type from the Parameterised PAP 
+// ParseRegex to the (int list option). The ParseRegex on input is automatically
+// cast to [option int option int option int] and then used to compute a DateTime.
+let parseDate input = 
+    match input with 
+        // matches 05/31/17 or 5/31/17 and returns 2017-05-31
+        // matches 5/1/17 or 5/01/17 or 05/01/17 and returns 2017-01-05
+        | ParseRegex "(\d{1,2})/(\d{1,2})/(\d{1,2})$" [Integer m; Integer d; Integer y] 
+            -> new System.DateTime(y+ 2000, m, d)
+        // matches 05/07/2017 or 05/07/017 or 05/7/2017 or 5/7/017 and returns 2017-07-05
+        | ParseRegex "(\d{1,2})/(\d{1,2})/(\d{3,4})" [Integer m; Integer d; Integer y]
+            -> new System.DateTime(y, m, d)
+        // matches 2019-3-4 and returns 2019-03-04
+        |ParseRegex "(\d{1,4})-(\d{1,2})-(\d{1,2})" [Integer y; Integer m; Integer d]
+          -> new System.DateTime(y, m, d)
+        // no matches from the previous branches 
+        | _ -> new System.DateTime()
+
+[<Fact>]
+let``Parameterised PAP parseDate``() =
+
+    // arrange
+    let subject1 = @"12/22/08"
+    let subject2 = @"1/1/2009"
+    let subject3 = @"2008-1-15"
+    let subject4 = @"1995-12-28"
+
+    let expected1 = new DateTime(2008,22,12);
+    let expected2 = new DateTime(2009,1,1);
+    let expected3 = new DateTime(2008,1,15);
+    let expected4 = new DateTime(1995,12,28);
+
+    // act 
+    let actualDate1 = parseDate subject1
+    let actualDate2 = parseDate subject2
+    let actualDate3 = parseDate subject3
+    let actualDate4 = parseDate subject4
+
+    // assert
+    test<@ actualDate1 = expected1 @>
+    test<@ actualDate2 = expected2 @>
+    test<@ actualDate3 = expected3 @>
+    test<@ actualDate4 = expected4 @>
 
