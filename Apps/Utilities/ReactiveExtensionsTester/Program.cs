@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Threading;
 
 namespace ReactiveExtensionsTester {
 
     class Program {
 
         static void Main(string[] args) {
+
+            Thread.CurrentThread.Name = "Main";
 
             var program = new Program();
             program.Run();
@@ -14,8 +17,11 @@ namespace ReactiveExtensionsTester {
 
         private void Run() {
 
-            var rxThreadsTester = new RxSchedulersAndThreadsTester();
-            rxThreadsTester.Run();
+            var rxSchedulersAndThreadsTester = new RxSchedulersAndThreadsTester();
+            rxSchedulersAndThreadsTester.Run();
+
+            var rxSchedulersAndStateTest = new RxSchedulersAndStateTest();
+            rxSchedulersAndStateTest.Run();
         } 
     }
 }

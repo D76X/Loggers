@@ -18,6 +18,7 @@ namespace ReactiveExtensionsTester {
     /// http://www.introtorx.com/content/v1.0.10621.0/15_SchedulingAndThreading.html
     /// </summary>
     public class RxSchedulersAndThreadsTester {
+        
         /// <summary>
         /// RX distinguishes between two kinds of delegates.
         /// RX creates these delegates for you.
@@ -99,7 +100,7 @@ namespace ReactiveExtensionsTester {
         /// </summary>
         public void Run() {
 
-            Thread.CurrentThread.Name = "Main";
+            Console.WriteLine($"Start {nameof(RxSchedulersAndThreadsTester.Run)}");
 
             this.ObservableOnSinlgeThread();
             Thread.Sleep(1000);
@@ -116,6 +117,8 @@ namespace ReactiveExtensionsTester {
             this.ObserveOnSubscribeOnDifferentThreads();
             Thread.Sleep(1000);
             Console.WriteLine("***");
+
+            Console.WriteLine($"End {nameof(RxSchedulersAndThreadsTester.Run)}");
         }
 
         private void StackOverflowQuestion7579237Test() {
