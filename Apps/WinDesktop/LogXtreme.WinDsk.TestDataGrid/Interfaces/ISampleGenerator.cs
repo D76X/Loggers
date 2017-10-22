@@ -2,6 +2,7 @@
 
     public interface ISampleGenerator {        
 
+        IGeneratorDescriptor Descriptor { get; }
         ISample GenerateSample(ISampleDescriptor sampleDescriptor);
     }
 }

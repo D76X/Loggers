@@ -17,7 +17,14 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             var dataSource1 = new DataSource1(sampleDescriptor1, new RandomGenerator());
             this.viewModels.Add(new DataSourceViewModel1(dataSource1));
 
-            //this.viewModels.Add(new DataSourceViewModel2(new DataSource2()));
+            // a generator has a generator descriptor 
+            // a generator descriptor can be used to create a sample descriptor
+            // a generator and a sample descriptor created from that generator descriptor are used
+            // to create a datasoure
+            // a datasource is exposed to the UI via the DataSourceViewModel
+            // user can change the sample descriptor for the generator used by the datasource using the UI
+            // users can limit the size of the datagrid via the UI
+            this.viewModels.Add(new DataSourceViewModel2(new DataSource2()));
         }
 
         public ObservableCollection<object> ViewModels {

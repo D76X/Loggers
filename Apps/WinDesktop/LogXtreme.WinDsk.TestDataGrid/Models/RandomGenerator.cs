@@ -3,6 +3,7 @@ using LogXtreme.WinDsk.TestDataGrid.Interfaces;
 using System;
 
 namespace LogXtreme.WinDsk.TestDataGrid.Models {
+
     public class RandomGenerator : ISampleGenerator {
 
         private readonly Random generator;
@@ -11,6 +12,8 @@ namespace LogXtreme.WinDsk.TestDataGrid.Models {
 
             this.generator = new Random();
         }
+
+        public IGeneratorDescriptor Descriptor => throw new NotImplementedException();
 
         public ISample GenerateSample(ISampleDescriptor sampleDescriptor) {
             var nosamples = sampleDescriptor.Length;
