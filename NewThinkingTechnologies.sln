@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{FAFE10AF-AF2C-4D6F-82BC-81ED9863EE85}"
 EndProject
@@ -342,6 +342,8 @@ EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "HelloWorld5", "PyApps\Examples\HelloWorld5\HelloWorld5.pyproj", "{E8EFE7B6-31C8-4EF0-B3E9-549276661EBE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveExtensionsTester", "Apps\Utilities\ReactiveExtensionsTester\ReactiveExtensionsTester.csproj", "{6A946E98-6923-4B13-8EFC-DE6F9123795F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.WinDsk.TestDragAndDrop", "Apps\WinDesktop\LogXtreme.WinDsk.TestDragAndDrop\LogXtreme.WinDsk.TestDragAndDrop.csproj", "{E92C7754-B0CE-4447-83CD-6E7B53E72E93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1105,6 +1107,14 @@ Global
 		{6A946E98-6923-4B13-8EFC-DE6F9123795F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6A946E98-6923-4B13-8EFC-DE6F9123795F}.Release|x86.ActiveCfg = Release|Any CPU
 		{6A946E98-6923-4B13-8EFC-DE6F9123795F}.Release|x86.Build.0 = Release|Any CPU
+		{E92C7754-B0CE-4447-83CD-6E7B53E72E93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E92C7754-B0CE-4447-83CD-6E7B53E72E93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E92C7754-B0CE-4447-83CD-6E7B53E72E93}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E92C7754-B0CE-4447-83CD-6E7B53E72E93}.Debug|x86.Build.0 = Debug|Any CPU
+		{E92C7754-B0CE-4447-83CD-6E7B53E72E93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E92C7754-B0CE-4447-83CD-6E7B53E72E93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E92C7754-B0CE-4447-83CD-6E7B53E72E93}.Release|x86.ActiveCfg = Release|Any CPU
+		{E92C7754-B0CE-4447-83CD-6E7B53E72E93}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1248,6 +1258,7 @@ Global
 		{E167737C-8071-4530-9F47-190201E8036B} = {87F805A5-DA31-43B3-AD55-1965585453F9}
 		{E8EFE7B6-31C8-4EF0-B3E9-549276661EBE} = {748F5487-6460-4DA5-8BB9-1944AE12E71B}
 		{6A946E98-6923-4B13-8EFC-DE6F9123795F} = {87F805A5-DA31-43B3-AD55-1965585453F9}
+		{E92C7754-B0CE-4447-83CD-6E7B53E72E93} = {45449303-EA76-4B02-B1EE-CCBB11D41186}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B48A64CD-1E9D-4169-82DF-66FD7695C2D0}
