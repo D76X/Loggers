@@ -1,5 +1,4 @@
 ﻿using LogXtreme.WinDsk.TestDataGrid.Models;
-using LogXtreme.WinDsk.TestDataGrid.Utils;
 using System.Collections.ObjectModel;
 
 namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
@@ -26,9 +25,8 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             var sampleDescriptor1 = new SampleDescriptor(sampleGenerator1.Descriptor);            
             var dataSource1 = new DataSource1(sampleDescriptor1, sampleGenerator1);
             this.viewModels.Add(new DataSourceViewModel1(dataSource1));
-            
-            //var 
-            //this.viewModels.Add(new DataSourceViewModel2(new DataSource2()));
+
+            this.viewModels.Add(new DataGrid4ViewModel());
         }
 
         public ObservableCollection<object> ViewModels {

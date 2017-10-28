@@ -1,7 +1,7 @@
 ﻿using System;
 using LogXtreme.WinDsk.TestDataGrid.Interfaces;
 
-namespace LogXtreme.WinDsk.TestDataGrid.Utils {
+namespace LogXtreme.WinDsk.TestDataGrid.Models {
 
     public class DataSource2 : ISampleSource {
 

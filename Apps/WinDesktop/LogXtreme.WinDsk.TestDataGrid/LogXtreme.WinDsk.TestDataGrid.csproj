@@ -72,16 +72,20 @@
     </ApplicationDefinition>
     <Compile Include="Interfaces\IGeneratorDescriptor.cs" />
     <Compile Include="Interfaces\ISample.cs" />
+    <Compile Include="Interfaces\ISampleDataGridSettings.cs" />
     <Compile Include="Interfaces\ISampleDescriptor.cs" />
     <Compile Include="Interfaces\ISampleGenerator.cs" />
     <Compile Include="Interfaces\ISampleSource.cs" />
+    <Compile Include="Models\DataGrid4SettingsModel.cs" />
     <Compile Include="Models\RandomGenerator.cs" />
     <Compile Include="Models\RandomGeneratorDescriptor.cs" />
     <Compile Include="Models\Sample.cs" />
     <Compile Include="Models\SampleDescriptor.cs" />
-    <Compile Include="Utils\DataSource1.cs" />
-    <Compile Include="Utils\DataSource2.cs" />
+    <Compile Include="Models\DataSource1.cs" />
+    <Compile Include="Models\DataSource2.cs" />
     <Compile Include="ViewModels\DataGrid2ViewModel.cs" />
+    <Compile Include="ViewModels\DataGrid4SettingsViewModel.cs" />
+    <Compile Include="ViewModels\DataGrid4ViewModel.cs" />
     <Compile Include="ViewModels\DataSourceViewModel1.cs" />
     <Compile Include="ViewModels\DataSourceViewModel2.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -133,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Extensions\LogXtreme.Extensions\LogXtreme.Extensions.csproj">

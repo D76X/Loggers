@@ -166,7 +166,18 @@
 
             </TabItem>
             <TabItem Header="DataGrid4">
-                
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        
+                    </Grid>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>

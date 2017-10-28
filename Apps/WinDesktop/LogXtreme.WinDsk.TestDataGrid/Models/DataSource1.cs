@@ -1,10 +1,8 @@
-﻿using LogXtreme.Extensions;
-using LogXtreme.WinDsk.TestDataGrid.Interfaces;
-using LogXtreme.WinDsk.TestDataGrid.Models;
+﻿using LogXtreme.WinDsk.TestDataGrid.Interfaces;
 using System;
 using System.Reactive.Linq;
 
-namespace LogXtreme.WinDsk.TestDataGrid.Utils {
+namespace LogXtreme.WinDsk.TestDataGrid.Models {
 
     /// <summary> 
     /// 
