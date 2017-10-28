@@ -18,11 +18,16 @@ BLENDABILITY WITH PRISM
 https://www.codeproject.com/Articles/1059235/Blendability-Adding-design-time-support-for-region
 
 ===============================================================================================================
-MARKUP EXTENSIONS
 
+MARKUP EXTENSIONS
 https://docs.microsoft.com/en-us/dotnet/framework/wpf/advanced/markup-extensions-and-wpf-xaml
 
 CREATE CUSTOM MARKUP EXTENSIONS
 http://10rem.net/blog/2011/03/09/creating-a-custom-markup-extension-in-wpf-and-soon-silverlight
+
+===============================================================================================================
+
+NESTED AND COMPOSITE VIEWMODELS
+https://stackoverflow.com/questions/4366728/mvvm-and-nested-view-models
 
 ===============================================================================================================

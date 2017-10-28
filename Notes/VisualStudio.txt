@@ -3,13 +3,11 @@
 USEFUL SHORTCUTS
 
 TRACK FILE IN SOLUTION EXPLORER
-ctrl+[ => s
+					[ctrl+[, s]
 
 ADD TASK TO TASK LIST PANE (NOT TODO)
-Edit > Bookmarks > Remove Task List Shortcut, 
-[Ctrl+E,H]
-[Ctrl+E,T]
-[Ctrl+E,H]
+Edit > Bookmarks > Remove Task List Shortcut, 					
+ADD TASK			[Ctrl+E,H]
 
 NAVIGATE SOLUTION
 GO TO LINE			[Ctrl+G]
@@ -17,6 +15,16 @@ FIND MEMBER			[Ctrl+1, Ctrl+M]
 FIND FILE			[Ctrl+1, Ctrl+F]
 FIND TYPE			[Ctrl+1, Ctrl+T]
 FIND SYMBOL			[Ctrl+1, Ctrl+S]
+
+REFACTOR
+RENAME				[Alt+R, Alt+R]
+
+PROJECT
+Project.SetAsStartUpProject  [Ctrl+S, Ctrl+S] (Global)
+
+FILE
+File.SaveSelectedItems	[Ctrl+S] (Text Editor)
+File.SaveAll			[Ctrl+S+Shift+S] (Global)
 
 DEACTIVATE TRACK ACIVE ITEM IN SOLUTION EXPLORER
 https://blogs.msdn.microsoft.com/zainnab/2010/03/29/track-active-item-in-solution-explorer/
@@ -31,10 +39,8 @@ ctrl+shift+(+/-)
 
 REMAPPING SHORTCUTS
 
-// File.SaveSelectedItems (Ctrl +S (TextEditor))
+// File.SaveSelectedItems	(Ctrl +S (TextEditor))
 https://stackoverflow.com/questions/3099709/re-map-ctrls-to-file-save-in-visual-studio-2010
-
-// File.SaveSelectedItems (Ctrl+S, Ctrl+S (Global))
 
 ======================================================================================================
 
