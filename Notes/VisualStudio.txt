@@ -5,6 +5,19 @@ USEFUL SHORTCUTS
 TRACK FILE IN SOLUTION EXPLORER
 ctrl+[ => s
 
+ADD TASK TO TASK LIST PANE (NOT TODO)
+Edit > Bookmarks > Remove Task List Shortcut, 
+[Ctrl+E,H]
+[Ctrl+E,T]
+[Ctrl+E,H]
+
+NAVIGATE SOLUTION
+GO TO LINE			[Ctrl+G]
+FIND MEMBER			[Ctrl+1, Ctrl+M]
+FIND FILE			[Ctrl+1, Ctrl+F]
+FIND TYPE			[Ctrl+1, Ctrl+T]
+FIND SYMBOL			[Ctrl+1, Ctrl+S]
+
 DEACTIVATE TRACK ACIVE ITEM IN SOLUTION EXPLORER
 https://blogs.msdn.microsoft.com/zainnab/2010/03/29/track-active-item-in-solution-explorer/
 Tools -> Options -> Projects and Solutions -> General -> "Track Active Item in Solution Explorer"
@@ -28,6 +41,8 @@ https://stackoverflow.com/questions/3099709/re-map-ctrls-to-file-save-in-visual-
 
 ==========================================================================================
 Task List and TODOs
+
+How to add tasks to the Task List pane [Ctrl+E,H]
 https://stackoverflow.com/questions/15120139/strange-arrow-in-visual-studio-gutter-window
 Edit > Bookmarks > Add Task List Shortcut/Remove Task List Shortcut [Ctrl+E,H]
 ==========================================================================================
