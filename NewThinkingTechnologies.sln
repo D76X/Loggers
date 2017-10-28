@@ -345,6 +345,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveExtensionsTester", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.WinDsk.TestDragAndDrop", "Apps\WinDesktop\LogXtreme.WinDsk.TestDragAndDrop\LogXtreme.WinDsk.TestDragAndDrop.csproj", "{E92C7754-B0CE-4447-83CD-6E7B53E72E93}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.WinDsk.TestPlotting", "Apps\WinDesktop\LogXtreme.WinDsk.TestPlotting\LogXtreme.WinDsk.TestPlotting.csproj", "{CCC4C227-F790-4BBB-8DFC-BC6EB749BBB3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1115,6 +1117,14 @@ Global
 		{E92C7754-B0CE-4447-83CD-6E7B53E72E93}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E92C7754-B0CE-4447-83CD-6E7B53E72E93}.Release|x86.ActiveCfg = Release|Any CPU
 		{E92C7754-B0CE-4447-83CD-6E7B53E72E93}.Release|x86.Build.0 = Release|Any CPU
+		{CCC4C227-F790-4BBB-8DFC-BC6EB749BBB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCC4C227-F790-4BBB-8DFC-BC6EB749BBB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCC4C227-F790-4BBB-8DFC-BC6EB749BBB3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CCC4C227-F790-4BBB-8DFC-BC6EB749BBB3}.Debug|x86.Build.0 = Debug|Any CPU
+		{CCC4C227-F790-4BBB-8DFC-BC6EB749BBB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCC4C227-F790-4BBB-8DFC-BC6EB749BBB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCC4C227-F790-4BBB-8DFC-BC6EB749BBB3}.Release|x86.ActiveCfg = Release|Any CPU
+		{CCC4C227-F790-4BBB-8DFC-BC6EB749BBB3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1259,6 +1269,7 @@ Global
 		{E8EFE7B6-31C8-4EF0-B3E9-549276661EBE} = {748F5487-6460-4DA5-8BB9-1944AE12E71B}
 		{6A946E98-6923-4B13-8EFC-DE6F9123795F} = {87F805A5-DA31-43B3-AD55-1965585453F9}
 		{E92C7754-B0CE-4447-83CD-6E7B53E72E93} = {45449303-EA76-4B02-B1EE-CCBB11D41186}
+		{CCC4C227-F790-4BBB-8DFC-BC6EB749BBB3} = {45449303-EA76-4B02-B1EE-CCBB11D41186}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B48A64CD-1E9D-4169-82DF-66FD7695C2D0}
