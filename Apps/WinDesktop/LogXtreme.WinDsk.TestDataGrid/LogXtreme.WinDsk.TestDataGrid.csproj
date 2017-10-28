@@ -76,6 +76,7 @@
     <Compile Include="Interfaces\ISampleGenerator.cs" />
     <Compile Include="Interfaces\ISampleSource.cs" />
     <Compile Include="Models\RandomGenerator.cs" />
+    <Compile Include="Models\RandomGeneratorDescriptor.cs" />
     <Compile Include="Models\Sample.cs" />
     <Compile Include="Models\SampleDescriptor.cs" />
     <Compile Include="Utils\DataSource1.cs" />

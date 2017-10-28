@@ -9,9 +9,9 @@ namespace LogXtreme.WinDsk.TestDataGrid.Models {
         private readonly IEnumerable<string> description;
         private readonly int lenght;
 
-        public SampleDescriptor(IEnumerable<string> sampleDescription) {
+        public SampleDescriptor(IGeneratorDescriptor generatorDescriptor) {
 
-            this.description = sampleDescription;
+            this.description = new List<string>(generatorDescriptor.SourceNames);
             this.lenght = this.description.Count();
         }
 
