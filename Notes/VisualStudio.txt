@@ -31,13 +31,24 @@ File.New				[Ctrl+N]			(Global)
 File.NewProject			[Ctrl+Shift+N]		(Global)
 File.Open				[Ctrl+O]			(Global)
 File.Print				[Ctrl+P]			(Global)
+File.SelectAll		    [Ctrl+A]			(TextEditor)
+File.SelectAllAbove?    [Ctrl+Shift+PageUp] (TextEditor) 
+File.SelectAllBelow?    [Ctrl+Shift+PageDw] (TextEditor)
 
 FILE SPECIALS
 
 https://stackoverflow.com/questions/853038/reopen-last-closed-tab-in-visual-studio
 Reopen the last closed tab			[Ctrl+-]
-Reopne recent closed file			[Alt + F, Alt + F]
+Reopen recent closed file			[Alt + F, Alt + F]
 
+WINDOW 
+
+https://stackoverflow.com/questions/21027/changing-ctrl-tab-behavior-for-moving-between-documents-in-visual-studio
+Window.NavigateToWindow					[Alt+Tab]			(Global)									
+Window.NavigateNextActiveFile			[Ctrl+Tab]			(Global)
+Window.PreviousNextActiveFile           [Ctrl+Shift+Tab]	(Global)
+Window.NextToolWindow				    [Alt+F7]			(Global)
+Window.PreviousToolWindow			    [Alt+Shift+F7]		(Global)
 
 DEACTIVATE TRACK ACIVE ITEM IN SOLUTION EXPLORER
 https://blogs.msdn.microsoft.com/zainnab/2010/03/29/track-active-item-in-solution-explorer/

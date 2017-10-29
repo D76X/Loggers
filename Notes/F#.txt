@@ -1,4 +1,9 @@
 
+F# shortcuts
+
+Execute in interactive			[Alt+Enter]
+
+
 ===================================================================================
 
 F# Community Projects
