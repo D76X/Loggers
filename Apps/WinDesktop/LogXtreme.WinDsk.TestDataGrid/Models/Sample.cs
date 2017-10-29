@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LogXtreme.WinDsk.TestDataGrid.Models {
 
-    public class Sample : ISample {
+    public class Sample : ISampleModel {
 
         private IEnumerable<string> values;
 

@@ -39,23 +39,23 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
         INotifyPropertyChanged, 
         IDisposable {
 
-        private readonly ISampleSource sampleSource;
+        private readonly ISampleSourceModel sampleSource;
 
         private ObservableCollection<string> sampleHeader;
-        private ObservableCollection<ISample> samples;
+        private ObservableCollection<ISampleModel> samples;
         private RelayCommand cmdGetOneSample;
         private ICommand cmdStartSampling;
         private ICommand cmdStopSampling;
         private bool readingSamples;
         private IDisposable samplesObsevable;
 
-        public DataSourceViewModel1(ISampleSource sampleSource) {
+        public DataSourceViewModel1(ISampleSourceModel sampleSource) {
 
             this.sampleSource = sampleSource;
 
             var sampleDescriptor = sampleSource.SampleDescriptor.ValueNames;
             this.sampleHeader = new ObservableCollection<string>(sampleDescriptor);
-            this.samples = new ObservableCollection<ISample>();
+            this.samples = new ObservableCollection<ISampleModel>();
 
             this.cmdGetOneSample = new RelayCommand(
                 this.ExecuteGetOneSample, 
@@ -67,7 +67,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
         public ObservableCollection<string> SampleHeader => this.sampleHeader;
 
-        public ObservableCollection<ISample> Samples {
+        public ObservableCollection<ISampleModel> Samples {
 
             get { return this.samples; }
 

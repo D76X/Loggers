@@ -12,9 +12,9 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
         INotifyPropertyChanged,
         IDisposable {
 
-        private readonly ISampleSource sampleSource;
+        private readonly ISampleSourceModel sampleSource;
 
-        public DataSourceViewModel2(ISampleSource sampleSource) {
+        public DataSourceViewModel2(ISampleSourceModel sampleSource) {
 
             this.sampleSource = sampleSource;
         }

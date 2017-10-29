@@ -2,7 +2,7 @@
 
 namespace LogXtreme.WinDsk.TestDataGrid.Interfaces {
 
-    public interface ISample {
+    public interface ISampleModel {
 
         IEnumerable<string> Values { get; }
     }

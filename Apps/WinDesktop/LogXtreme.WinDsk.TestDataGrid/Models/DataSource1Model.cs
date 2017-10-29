@@ -18,22 +18,22 @@ namespace LogXtreme.WinDsk.TestDataGrid.Models {
     /// https://stackoverflow.com/questions/2706500/how-do-i-generate-a-random-int-number-in-c
     /// 
     /// </summary>
-    public class DataSource1 : ISampleSource {
+    public class DataSource1Model : ISampleSourceModel {
         
-        private readonly ISampleDescriptor sampleDescriptor;
-        private readonly ISampleGenerator sampleGenerator;
+        private readonly ISampleDescriptorModel sampleDescriptor;
+        private readonly ISampleGeneratorModel sampleGenerator;
 
-        public DataSource1(
-            ISampleDescriptor sampleDescriptor,
-            ISampleGenerator sampleGenerator) {          
+        public DataSource1Model(
+            ISampleDescriptorModel sampleDescriptor,
+            ISampleGeneratorModel sampleGenerator) {          
             
             this.sampleDescriptor = sampleDescriptor;
             this.sampleGenerator = sampleGenerator;
         }
 
-        public ISampleDescriptor SampleDescriptor => this.sampleDescriptor;
+        public ISampleDescriptorModel SampleDescriptor => this.sampleDescriptor;
 
-        public ISample GetSample() {
+        public ISampleModel GetSample() {
 
             return this.DrawSample();
         }
@@ -43,12 +43,12 @@ namespace LogXtreme.WinDsk.TestDataGrid.Models {
         /// http://www.introtorx.com/content/v1.0.10621.0/04_CreatingObservableSequences.html
         /// </summary>
         /// <returns></returns>
-        public IObservable<ISample> GetSamples() {
+        public IObservable<ISampleModel> GetSamples() {
 
             int initialState = 0;
             Func<int, bool> executeNextIteration = i => true;
             Func<int, int> coresursion = i => i + 1;
-            Func<int, ISample> resultSelector = i => this.DrawSample();
+            Func<int, ISampleModel> resultSelector = i => this.DrawSample();
 
             var duetime = TimeSpan.FromMilliseconds(500);
             var interval = TimeSpan.FromSeconds(1);
@@ -64,7 +64,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.Models {
             return source;
         } 
         
-        private  ISample DrawSample() {            
+        private  ISampleModel DrawSample() {            
             return this.sampleGenerator.GenerateSample(this.sampleDescriptor);
         }
     }

@@ -9,8 +9,15 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
         public MainViewModel() {
 
             this.viewModels = new ObservableCollection<object>();
+
+            // Tab 1
             this.viewModels.Add(new DataGrid1ViewModel());
+
+            // Tab 2
             this.viewModels.Add(new DataGrid2ViewModel());
+
+            
+            // Tab 3
 
             // TODO requirements for a datasource
             // a generator has a generator descriptor 
@@ -20,13 +27,14 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             // user can change the sample descriptor for the generator used by the datasource using the UI
             // users can limit the size of the datagrid via the UI
 
-            var generatorDescriptor1 = new RandomGeneratorDescriptor(new string[] { "CHN0", "CHN1", "CHN2" });
-            var sampleGenerator1 = new RandomGenerator(generatorDescriptor1);
-            var sampleDescriptor1 = new SampleDescriptor(sampleGenerator1.Descriptor);            
-            var dataSource1 = new DataSource1(sampleDescriptor1, sampleGenerator1);
+            var generatorDescriptor1 = new RandomGeneratorDescriptorModel(new string[] { "CHN0", "CHN1", "CHN2" });
+            var sampleGenerator1 = new RandomGeneratorModel(generatorDescriptor1);
+            var sampleDescriptor1 = new SampleDescriptorModel(sampleGenerator1.Descriptor);            
+            var dataSource1 = new DataSource1Model(sampleDescriptor1, sampleGenerator1);
             this.viewModels.Add(new DataSourceViewModel1(dataSource1));
 
-            this.viewModels.Add(new DataGrid4ViewModel());
+            // Tab 4
+            this.viewModels.Add(new DataTab4ViewModel());
         }
 
         public ObservableCollection<object> ViewModels {

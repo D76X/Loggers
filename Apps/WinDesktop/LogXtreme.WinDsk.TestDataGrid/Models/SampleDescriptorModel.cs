@@ -4,12 +4,12 @@ using System.Linq;
 
 namespace LogXtreme.WinDsk.TestDataGrid.Models {
 
-    public class SampleDescriptor : ISampleDescriptor {
+    public class SampleDescriptorModel : ISampleDescriptorModel {
 
         private readonly IEnumerable<string> description;
         private readonly int lenght;
 
-        public SampleDescriptor(IGeneratorDescriptor generatorDescriptor) {
+        public SampleDescriptorModel(IGeneratorDescriptorModel generatorDescriptor) {
 
             this.description = new List<string>(generatorDescriptor.SourceNames);
             this.lenght = this.description.Count();

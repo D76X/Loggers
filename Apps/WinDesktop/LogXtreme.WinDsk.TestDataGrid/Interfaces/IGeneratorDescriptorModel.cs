@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 
 namespace LogXtreme.WinDsk.TestDataGrid.Interfaces {
+    public interface IGeneratorDescriptorModel {
 
-    public interface ISampleDescriptor {
-
-        IEnumerable<string> ValueNames { get; }   
+        IEnumerable<string> SourceNames { get; }
         int Length { get; }
     }
 }

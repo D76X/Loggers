@@ -4,20 +4,20 @@ using System;
 
 namespace LogXtreme.WinDsk.TestDataGrid.Models {
 
-    public class RandomGenerator : ISampleGenerator {
+    public class RandomGeneratorModel : ISampleGeneratorModel {
 
         private readonly Random generator;
-        private readonly IGeneratorDescriptor generatorDescriptor;
+        private readonly IGeneratorDescriptorModel generatorDescriptor;
 
-        public RandomGenerator(IGeneratorDescriptor generatorDescriptor) {
+        public RandomGeneratorModel(IGeneratorDescriptorModel generatorDescriptor) {
 
             this.generatorDescriptor = generatorDescriptor;
             this.generator = new Random();
         }
 
-        public IGeneratorDescriptor Descriptor => this.generatorDescriptor;
+        public IGeneratorDescriptorModel Descriptor => this.generatorDescriptor;
 
-        public ISample GenerateSample(ISampleDescriptor sampleDescriptor) {
+        public ISampleModel GenerateSample(ISampleDescriptorModel sampleDescriptor) {
             var nosamples = sampleDescriptor.Length;
             return new Sample(this.generator.GetIntegers(nosamples, 0 , 255).Stringify());
         }
