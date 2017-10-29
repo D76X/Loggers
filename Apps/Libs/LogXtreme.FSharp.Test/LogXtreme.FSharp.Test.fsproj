@@ -73,6 +73,7 @@
     <Compile Include="Tuples.fs" />
     <Compile Include="Generics.fs" />
     <Compile Include="RefByRefAmpersandOp.fs" />
+    <Compile Include="Printfn.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

@@ -23,8 +23,21 @@ PROJECT
 Project.SetAsStartUpProject  [Ctrl+S, Ctrl+S] (Global)
 
 FILE
-File.SaveSelectedItems	[Ctrl+S] (Text Editor)
-File.SaveAll			[Ctrl+S+Shift+S] (Global)
+File.Exit				[Alt+F4]			(Global) this shuts down Visual Studio!
+File.Close				[Ctrl+F4]			(Global) closes the current file
+File.SaveSelectedItems	[Ctrl+S]			(Text Editor)
+File.SaveAll			[Ctrl+S+Shift+S]	(Global)
+File.New				[Ctrl+N]			(Global)
+File.NewProject			[Ctrl+Shift+N]		(Global)
+File.Open				[Ctrl+O]			(Global)
+File.Print				[Ctrl+P]			(Global)
+
+FILE SPECIALS
+
+https://stackoverflow.com/questions/853038/reopen-last-closed-tab-in-visual-studio
+Reopen the last closed tab			[Ctrl+-]
+Reopne recent closed file			[Alt + F, Alt + F]
+
 
 DEACTIVATE TRACK ACIVE ITEM IN SOLUTION EXPLORER
 https://blogs.msdn.microsoft.com/zainnab/2010/03/29/track-active-item-in-solution-explorer/
