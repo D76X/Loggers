@@ -1,7 +1,7 @@
 ﻿
 namespace LogXtreme.WinDsk.TestDataGrid.Interfaces {
 
-    public interface IDataGridSettings {
+    public interface IDataGridSettingsModel {
         
         int NumberOfItemsToDisplay { get;  }
     }

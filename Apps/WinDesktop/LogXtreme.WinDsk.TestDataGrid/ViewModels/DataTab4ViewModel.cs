@@ -15,18 +15,35 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
         public DataTab4ViewModel() {
 
+            // a data source view model makes sense as we want a service that changes the data source i.e.
+            // not all channels will need to sample at all times
+            // ...
             var generatorDescriptorModel = new RandomGeneratorDescriptorModel(new string[] { "CHN0", "CHN1", "CHN2" });
             var sampleGeneratorModel = new RandomGeneratorModel(generatorDescriptorModel);
             var sampleDescriptorModel = new SampleDescriptorModel(sampleGeneratorModel.Descriptor);
-            var sampleSourceModel = new SampleSourceModel(sampleDescriptorModel, sampleGeneratorModel);
+
+            var sampleSourceModel = new SampleSourceModel(
+                sampleDescriptorModel, 
+                sampleGeneratorModel);
+
             var dataSourceModel = new DataSourceModel(sampleSourceModel);
             this.dataSourceViewModel = new DataSourceViewModel(dataSourceModel);
 
             // you need some service to bridge between the data source and the grid view
             // the serice encapsulates the logic that produces the data required by a grid 
             // view to display data from a data source.
+            // What is diplayed in the grid view might have attributes related to viewing i.e.
+            // the number could be diplayed truncated to two decimal places or in red when 
+            // over a certain limit etc.
 
-            this.DataGridViewModel = new DataGridViewModel();
+            var dataGridStructureModel = new DataGridStructureModel();
+            var dataGridSettingsModel = new DataGridSettingsModel();
+
+            var dataGridModel = new DataGridModel(
+                dataGridStructureModel,
+                dataGridSettingsModel);
+
+            this.DataGridViewModel = new DataGridViewModel(dataGridModel);
         }
 
         public DataGridViewModel DataGridViewModel {

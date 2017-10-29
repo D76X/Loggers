@@ -5,6 +5,6 @@ namespace LogXtreme.WinDsk.TestDataGrid.Interfaces {
 
         IEnumerable<IDataGridColumn> Columns { get; }
 
-        IDataGridSettings GridSettings { get; }
+        IDataGridSettingsModel GridSettings { get; }
     }
 }
