@@ -56,6 +56,10 @@
                 <ee:EmbossedEffect Color="#FFEE1717" Height="0.000900000000009" Amount="3.03"/>
             </ed:RegularPolygon.Effect>
         </ed:RegularPolygon>
+        <Button Content="Button"
+                Grid.Column="2"
+                Grid.Row="3"
+                Margin="10" />
 
     </Grid>
 </Window>
