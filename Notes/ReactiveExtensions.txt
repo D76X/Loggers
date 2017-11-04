@@ -666,3 +666,10 @@ https://stackoverflow.com/questions/44984730/rxandroid-whats-the-difference-betw
   to IObservable.Subscribe would cause the delegates to process the On
   
 =================================================================================================================================
+
+Transformation of IObservable<T>
+
+Refs
+http://www.introtorx.com/content/v1.0.10621.0/08_Transformation.html
+
+=================================================================================================================================
