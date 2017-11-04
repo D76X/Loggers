@@ -72,7 +72,7 @@
             </TabItem>
             <TabItem Header="DataGrid3"
                      DataContext="{Binding ViewModels[2]}"
-                     x:Name="SampleLayoutRoot">
+                     x:Name="SampleLayoutRootDataGrid3">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30" />
@@ -119,7 +119,7 @@
                                         <Setter Property="ContentTemplate">
                                             <Setter.Value>
                                                 <DataTemplate>
-                                                    <ItemsControl ItemsSource="{Binding DataContext.SampleHeader, ElementName=SampleLayoutRoot}">
+                                                    <ItemsControl ItemsSource="{Binding DataContext.SampleHeader, ElementName=SampleLayoutRootDataGrid3}">
                                                         <ItemsControl.ItemsPanel>
                                                             <ItemsPanelTemplate>
                                                                 <StackPanel Orientation="Horizontal">
@@ -165,19 +165,45 @@
                 </Grid>
 
             </TabItem>
-            <TabItem Header="DataGrid4">
+            <TabItem Header="DataGrid3"
+                     DataContext="{Binding ViewModels[3]}"
+                     x:Name="SampleLayoutRootDataGrid4">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
-                        
-                    </Grid>
+                    <StackPanel Grid.Column="0">
+                        <Button Grid.Row="0"
+                            Grid.Column="0"
+                            Command="{Binding CommanGetNewRow}"
+                            VerticalAlignment="Center">
+                            Get New Row
+                        </Button>
+                        <Button Grid.Row="0"
+                            Grid.Column="1"
+                            Command="{Binding CommandReadRows}"
+                            Visibility="{Binding ReadingSamples, Converter={conv:BooleanToVisibilityConverter FalseVisibility=Collapsed, Negate=True}}"
+                            VerticalAlignment="Center">
+                            Read Rows
+                        </Button>
+                        <Button Grid.Row="0"
+                            Grid.Column="1"
+                            Command="{Binding CommandStopReading}"
+                            Visibility="{Binding ReadingSamples, Converter={conv:BooleanToVisibilityConverter FalseVisibility=Collapsed, Negate=False}}"
+                            VerticalAlignment="Center">
+                            Stop Reading
+                        </Button>
+                    </StackPanel>
                     <Grid Grid.Column="1">
-                        
+                        <DataGrid AutoGenerateColumns="False"
+                              ItemsSource="{Binding Samples}"
+                              Grid.Row="1"
+                              Grid.ColumnSpan="3">
+                            ...
+                        </DataGrid>
                     </Grid>
-                </Grid>
+                </Grid>               
             </TabItem>
         </TabControl>
     </Grid>

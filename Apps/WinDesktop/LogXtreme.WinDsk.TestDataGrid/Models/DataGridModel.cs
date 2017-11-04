@@ -2,6 +2,7 @@
 using LogXtreme.WinDsk.TestDataGrid.Interfaces;
 
 namespace LogXtreme.WinDsk.TestDataGrid.Models {
+
     public class DataGridModel : IDataGridModel {
 
         private readonly IDataGridSettingsModel dataGridSettings;
@@ -15,8 +16,8 @@ namespace LogXtreme.WinDsk.TestDataGrid.Models {
             this.dataGridSettings = dataGridSettings;
         }
 
-        public IEnumerable<IDataGridColumn> Columns => throw new System.NotImplementedException();
+        public IDataGridStructureModel GridStructure => this.dataGridStructureModel;
 
-        public IDataGridSettingsModel GridSettings => throw new System.NotImplementedException();
+        public IDataGridSettingsModel GridSettings => this.dataGridSettings;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using LogXtreme.WinDsk.TestDataGrid.Interfaces;
 using LogXtreme.WinDsk.TestDataGrid.Models;
+using LogXtreme.WinDsk.TestDataGrid.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
         IDisposable  {
 
         private readonly IDataSourceViewModel dataSourceViewModel;
-        private DataGridViewModel dataGridViewModel;
+        private DataGridViewModel dataGridViewModel;      
 
         public DataTab4ViewModel() {
             
@@ -41,15 +42,23 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
             this.dataSourceViewModel = new DataSourceViewModel(dataSourceModel);
 
-            // you need some service to bridge between the data source and the grid view
-            // the serice encapsulates the logic that produces the data required by a grid 
-            // view to display data from a data source.
-            // What is diplayed in the grid view might have attributes related to viewing i.e.
-            // the number could be diplayed truncated to two decimal places or in red when 
-            // over a certain limit etc.
+            // now that we have a data source view model we can use it to 
+            // 1- read a single piece of data 
+            // 2- read a stream of data
+            // 3- stop the stream of data
+            // 4- other commands to influence the behaviour of the data source?
 
-            var dataGridStructureModel = new DataGridStructureModel();
-            var dataGridSettingsModel = new DataGridSettingsModel();
+            // we now need to display the data obtained from the data source into a data grid.
+            // the data grid controls how the data is going to be displayed.
+
+            IDataGridService dataGridService =
+                new DataGridService();
+
+            IDataGridStructureModel dataGridStructureModel =
+                dataGridService.GenerateDataGridStructureModel(dataSourceModel);
+
+            IDataGridSettingsModel dataGridSettingsModel = 
+                new DataGridSettingsModel();
 
             var dataGridModel = new DataGridModel(
                 dataGridStructureModel,

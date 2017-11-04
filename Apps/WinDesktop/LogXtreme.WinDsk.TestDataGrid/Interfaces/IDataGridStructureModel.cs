@@ -1,13 +1,12 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace LogXtreme.WinDsk.TestDataGrid.Interfaces {
+
+    /// <summary>
+    /// Describes the struture of a data grid.
+    /// </summary>
     public interface IDataGridStructureModel {
 
-        IEnumerable<IDataGridColumn> Columns { get; }
-
-        void Add(IDataGridColumn column);
-
-        IDataGridColumn Remove(IDataGridColumn column);
+        IEnumerable<IDataGridColumnModel> Columns { get; }        
     }
 }

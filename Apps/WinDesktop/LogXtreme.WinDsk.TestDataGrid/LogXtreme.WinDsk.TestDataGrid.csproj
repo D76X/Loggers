@@ -71,8 +71,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Interfaces\IDataDescriptorModel.cs" />
-    <Compile Include="Interfaces\IDataGridColumn.cs" />
+    <Compile Include="Interfaces\IDataGridColumnModel.cs" />
     <Compile Include="Interfaces\IDataGridModel.cs" />
+    <Compile Include="Interfaces\IDataGridService.cs" />
     <Compile Include="Interfaces\IDataGridStructureModel.cs" />
     <Compile Include="Interfaces\IDataGridViewModel.cs" />
     <Compile Include="Interfaces\IDataModel.cs" />
@@ -84,10 +85,12 @@
     <Compile Include="Interfaces\ISampleDescriptorModel.cs" />
     <Compile Include="Interfaces\ISampleGeneratorModel.cs" />
     <Compile Include="Interfaces\ISampleSourceModel.cs" />
+    <Compile Include="Models\DataGridColumnModel.cs" />
     <Compile Include="Models\DataGridModel.cs" />
     <Compile Include="Models\DataGridSettingsModel.cs" />
     <Compile Include="Models\DataGridStructureModel.cs" />
-    <Compile Include="Models\DataService.cs" />
+    <Compile Include="Services\DataGridService.cs" />
+    <Compile Include="Services\DataService.cs" />
     <Compile Include="Models\RandomGeneratorModel.cs" />
     <Compile Include="Models\RandomGeneratorDescriptorModel.cs" />
     <Compile Include="Models\Sample.cs" />

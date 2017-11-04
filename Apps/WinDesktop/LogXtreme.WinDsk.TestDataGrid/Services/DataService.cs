@@ -5,7 +5,7 @@ using LogXtreme.WinDsk.Infrastructure.Services;
 using LogXtreme.WinDsk.TestDataGrid.Interfaces;
 using System.Reactive.Linq;
 
-namespace LogXtreme.WinDsk.TestDataGrid.Models {
+namespace LogXtreme.WinDsk.TestDataGrid.Services {
 
     public class DataService : IDataService {
 

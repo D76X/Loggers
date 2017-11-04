@@ -2,16 +2,17 @@
 using LogXtreme.WinDsk.TestDataGrid.Interfaces;
 
 namespace LogXtreme.WinDsk.TestDataGrid.Models {
+
     public class DataGridStructureModel : IDataGridStructureModel {
 
-        public IEnumerable<IDataGridColumn> Columns => throw new System.NotImplementedException();
+        private readonly IEnumerable<IDataGridColumnModel> columns;
 
-        public void Add(IDataGridColumn column) {
-            throw new System.NotImplementedException();
+        public DataGridStructureModel(
+            IEnumerable<IDataGridColumnModel> columns) {
+
+            this.columns = columns; 
         }
 
-        public IDataGridColumn Remove(IDataGridColumn column) {
-            throw new System.NotImplementedException();
-        }
+        public IEnumerable<IDataGridColumnModel> Columns => this.columns;        
     }
 }

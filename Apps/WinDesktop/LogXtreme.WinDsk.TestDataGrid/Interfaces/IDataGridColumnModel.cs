@@ -1,7 +1,12 @@
 ﻿namespace LogXtreme.WinDsk.TestDataGrid.Interfaces {
-    public interface IDataGridColumn {
+
+    /// <summary>
+    /// Describes a column of a data grid.
+    /// </summary>
+    public interface IDataGridColumnModel {
 
         string Header { get; set; }
+
         bool IsVisible { get; set; }
     }
 }
