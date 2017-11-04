@@ -3,9 +3,9 @@
 namespace LogXtreme.WinDsk.TestDataGrid.Interfaces {
 
     /// <summary>
-    /// Model fo a sample.
+    /// Model of some data.
     /// </summary>
-    public interface ISampleModel {
+    public interface IDataModel {
 
         IEnumerable<string> Values { get; }
     }

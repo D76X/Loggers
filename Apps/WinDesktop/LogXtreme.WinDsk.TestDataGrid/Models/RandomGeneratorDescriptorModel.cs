@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace LogXtreme.WinDsk.TestDataGrid.Models {
 
+    /// <summary>
+    /// Descriptor for the random generator model. 
+    /// </summary>
     public class RandomGeneratorDescriptorModel : IGeneratorDescriptorModel {
 
         private readonly IEnumerable<string> sourceNames;

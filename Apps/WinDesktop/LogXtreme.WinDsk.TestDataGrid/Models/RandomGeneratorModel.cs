@@ -4,6 +4,9 @@ using System;
 
 namespace LogXtreme.WinDsk.TestDataGrid.Models {
 
+    /// <summary>
+    /// A generator of random values according to its desciptor.
+    /// </summary>
     public class RandomGeneratorModel : ISampleGeneratorModel {
 
         private readonly Random generator;
@@ -18,6 +21,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.Models {
         public IGeneratorDescriptorModel Descriptor => this.generatorDescriptor;
 
         public ISampleModel GenerateSample(ISampleDescriptorModel sampleDescriptor) {
+
             var nosamples = sampleDescriptor.Length;
             return new Sample(this.generator.GetIntegers(nosamples, 0 , 255).Stringify());
         }

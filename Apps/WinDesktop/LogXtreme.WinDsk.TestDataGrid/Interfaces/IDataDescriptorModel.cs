@@ -3,11 +3,12 @@
 namespace LogXtreme.WinDsk.TestDataGrid.Interfaces {
 
     /// <summary>
-    /// Describes a generator of values.
+    /// Description of some data.
     /// </summary>
-    public interface IGeneratorDescriptorModel {
+    public interface IDataDescriptorModel {
 
-        IEnumerable<string> SourceNames { get; }
+        IEnumerable<string> ValueNames { get; }
+
         int Length { get; }
     }
 }

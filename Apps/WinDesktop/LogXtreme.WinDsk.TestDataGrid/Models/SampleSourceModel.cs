@@ -16,7 +16,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.Models {
             this.sampleGenerator = sampleGenerator;
         }
 
-    public ISampleDescriptorModel SampleDescriptor => throw new NotImplementedException();
+    public ISampleDescriptorModel SampleDescriptor => this.sampleDescriptor;
 
         public ISampleModel GetSample() {
             return this.DrawSample();

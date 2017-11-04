@@ -1,6 +1,7 @@
 ﻿using LogXtreme.WinDsk.TestDataGrid.Interfaces;
 using LogXtreme.WinDsk.TestDataGrid.Models;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -14,19 +15,30 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
         private DataGridViewModel dataGridViewModel;
 
         public DataTab4ViewModel() {
+            
+            IEnumerable<string> generatorSources = 
+                new string[] { "CHN0", "CHN1", "CHN2" };
 
-            // a data source view model makes sense as we want a service that changes the data source i.e.
-            // not all channels will need to sample at all times
-            // ...
-            var generatorDescriptorModel = new RandomGeneratorDescriptorModel(new string[] { "CHN0", "CHN1", "CHN2" });
-            var sampleGeneratorModel = new RandomGeneratorModel(generatorDescriptorModel);
-            var sampleDescriptorModel = new SampleDescriptorModel(sampleGeneratorModel.Descriptor);
+            IGeneratorDescriptorModel generatorDescriptorModel = 
+                new RandomGeneratorDescriptorModel(generatorSources);
 
-            var sampleSourceModel = new SampleSourceModel(
-                sampleDescriptorModel, 
-                sampleGeneratorModel);
+            ISampleGeneratorModel sampleGeneratorModel = 
+                new RandomGeneratorModel(generatorDescriptorModel);
 
-            var dataSourceModel = new DataSourceModel(sampleSourceModel);
+            ISampleDescriptorModel sampleDescriptorModel = 
+                new SampleDescriptorModel(sampleGeneratorModel.Descriptor);
+
+            ISampleSourceModel sampleSourceModel = 
+                new SampleSourceModel(
+                    sampleDescriptorModel, 
+                    sampleGeneratorModel);
+
+            var dataService = new DataService();
+
+            IDataSourceModel dataSourceModel =
+                (dataService as DataService)
+                .GenerateDataSourceModel(sampleSourceModel);
+
             this.dataSourceViewModel = new DataSourceViewModel(dataSourceModel);
 
             // you need some service to bridge between the data source and the grid view
