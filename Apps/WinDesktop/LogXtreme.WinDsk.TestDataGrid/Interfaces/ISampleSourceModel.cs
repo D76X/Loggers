@@ -10,8 +10,8 @@ namespace LogXtreme.WinDsk.TestDataGrid.Interfaces {
 
         ISampleDescriptorModel SampleDescriptor{ get; }
 
-        ISampleModel GetSample();
+        //ISampleModel GetSample();
 
-        IObservable<ISampleModel> GetSamples();
+        IObservable<ISampleModel> GetSamples(int count);
     }
 }

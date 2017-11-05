@@ -38,6 +38,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
             var dataService = new DataService();
 
+            //TODO: this is temporary until the code in TestDataGrid is relocated to LogXtreme.WinDsk.Infrastructure
             IDataSourceModel dataSourceModel =
                 (dataService as DataService)
                 .GenerateDataSourceModel(sampleSourceModel);

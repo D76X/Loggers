@@ -30,34 +30,93 @@ namespace LogXtreme.WinDsk.TestDataGrid.Services {
 
             public IEnumerable<string> ValueNames => this.sampleDescriptorModel.ValueNames;
 
-            public int Length => this.sampleDescriptorModel.Length;            
+            public int Length => this.sampleDescriptorModel.Length;
         }
 
-        private class DataSourceModel : IDataSourceModel {            
+        private class DataSourceModel : IDataSourceModel {
 
             private readonly ISampleSourceModel sampleSourceModel;
             private readonly IDataDescriptorModel dataDescriptorModel;
 
+            private object onStartDataReadsLock = new Object();
+            private EventHandler<IObservable<IDataModel>> onStartDataReads;
+
+            private object onStopDataReadsLock = new Object();
+            private EventHandler onStopDataReads;
+
             public DataSourceModel(ISampleSourceModel sampleSourceModel) {
 
                 this.sampleSourceModel = sampleSourceModel;
-                this.dataDescriptorModel = new DataDescriptorModel(this.sampleSourceModel.SampleDescriptor);
+
+                this.dataDescriptorModel = 
+                    new DataDescriptorModel(this.sampleSourceModel.SampleDescriptor);
             }
 
             public IDataDescriptorModel DataDescriptor => this.dataDescriptorModel;
 
-            public IDataModel GetData() {
-                return new DataModel(this.sampleSourceModel.GetSample());
-            }
+            public event EventHandler OnStopDataReads;
 
-            public IObservable<IDataModel> GetDatas() {
+            event EventHandler<IObservable<IDataModel>> IDataSourceModel.OnStartDataReads {
 
-                // http://www.introtorx.com/content/v1.0.10621.0/08_Transformation.html
-                return this.sampleSourceModel
-                    .GetSamples()
+                add {
+                    lock (this.onStartDataReadsLock) {
+                        this.onStartDataReads += value;
+                    }
+                }
+
+                remove {
+                    lock (this.onStartDataReadsLock) {
+                        this.onStartDataReads += value;
+                    }
+                }
+            }             
+
+            public void StartDataReads(int count) {
+
+                var observableData = this.sampleSourceModel
+                    .GetSamples(count)
                     .Select(s => new DataModel(s));
+
+                this.onStartDataReads(this, observableData);
             }
-        }        
+
+            public void StopDataReads() {
+                this.onStopDataReads?.Invoke(this, new EventArgs());
+            }
+
+            //public IObservable<IDataModel> GetData(int count) {
+
+            //    // http://www.introtorx.com/content/v1.0.10621.0/08_Transformation.html
+            //    var observable = this.sampleSourceModel
+            //        .GetSamples(count)
+            //        .Select(s => new DataModel(s));
+
+            //    //dataRequested?.Invoke(this, observable);
+
+            //    return observable;
+            //}
+
+            //IObservable<IObservable<IDataModel>> GetData(int count) {
+
+            //    var observableData = this.sampleSourceModel
+            //        .GetSamples(count)
+            //        .Select(s => new DataModel(s));
+
+            //    return Observable.Return(observableData);
+            //}
+
+            //public IDataModel GetData() {
+            //    return new DataModel(this.sampleSourceModel.GetSample());
+            //}
+
+            //public IObservable<IDataModel> GetDatas() {
+
+            //    // http://www.introtorx.com/content/v1.0.10621.0/08_Transformation.html
+            //    return this.sampleSourceModel
+            //        .GetSamples()
+            //        .Select(s => new DataModel(s));
+            //}
+        }
 
         public IDataSourceModel GenerateDataSourceModel(
             ISampleSourceModel sampleSource) {

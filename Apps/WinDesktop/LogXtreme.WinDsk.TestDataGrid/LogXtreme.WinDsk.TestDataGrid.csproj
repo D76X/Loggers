@@ -72,6 +72,7 @@
     </ApplicationDefinition>
     <Compile Include="Interfaces\IDataDescriptorModel.cs" />
     <Compile Include="Interfaces\IDataGridColumnModel.cs" />
+    <Compile Include="Interfaces\IDataGridColumnSettingsModel.cs" />
     <Compile Include="Interfaces\IDataGridModel.cs" />
     <Compile Include="Interfaces\IDataGridService.cs" />
     <Compile Include="Interfaces\IDataGridStructureModel.cs" />

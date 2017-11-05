@@ -5,8 +5,10 @@
     /// </summary>
     public interface IDataGridColumnModel {
 
-        string Header { get; set; }
+        IHeaderModel Header { get; set; }
 
-        bool IsVisible { get; set; }
+        IDataGridColumnSettingsModel ColumnSettings { get; set; }
+
+        //bool IsVisible { get; set; }
     }
 }

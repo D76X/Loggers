@@ -22,7 +22,9 @@ namespace LogXtreme.WinDsk.TestDataGrid.Services {
                 dataGridStructureModel,
                 dGridSettingsModel);
 
-            return new DataGridViewModel(dataGridModel);
+            return new DataGridViewModel(
+                dataGridModel,
+                dataSourceModel);
         }
 
         public IDataGridStructureModel GenerateDataGridStructureModel(

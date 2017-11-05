@@ -11,13 +11,13 @@ using System.Windows.Input;
 
 namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
-    public class DataSourceViewModel : 
-        IDataSourceViewModel, 
+    public class DataSourceViewModel :
+        IDataSourceViewModel,
         INotifyPropertyChanged,
         IDisposable {
 
         private readonly IDataSourceModel dataSourceModel;
-        private IDisposable dataObsevable;
+        //private IDisposable dataObsevable;
 
         //private ObservableCollection<string> headers;
         //private ObservableCollection<IDataModel> data;
@@ -51,9 +51,9 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
         //public ObservableCollection<IDataModel> Data => 
         //    this.data;
 
-        public bool ReadingData { 
+        public bool ReadingData {
 
-            get => this.readingData; 
+            get => this.readingData;
 
             private set {
 
@@ -65,45 +65,59 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             }
         }
 
-        public ICommand CommandReadNext => 
+        public ICommand CommandReadNext =>
             this.cmdReadNext;
 
-        public ICommand CommandStartReading => 
+        public ICommand CommandStartReading =>
             this.cmdStartReading;
 
-        public ICommand CommandStopReading => 
+        public ICommand CommandStopReading =>
             this.cmdStopReading;
 
-        private bool CanExecuteExecuteReadNext() => 
+        private bool CanExecuteExecuteReadNext() =>
             !this.readingData;
 
-        private void ExecuteReadNext() =>
-            this.data.Add(this.dataSourceModel.GetData());
+        private void ExecuteReadNext() {
+
+            this.dataSourceModel.StartDataReads(1);
+        }
 
         private void ExecuteStartReading() {
-
-            this.dataObsevable?.Dispose();
-            this.dataObsevable = null;
-
-            //TODO: handle observable exceptions and completion
-            this.dataObsevable = this.dataSourceModel
-                .GetDatas()
-                .SubscribeOn(ThreadPoolScheduler.Instance)
-                .ObserveOn(DispatcherScheduler.Current)
-                .Subscribe(
-                    d => this.data.Add(d),
-                    e => { },
-                    () => { });
-
-            this.ReadingData = true;
+            this.dataSourceModel.StartDataReads(0);
         }
 
         private void ExecuteStopReading() {
-
-            this.dataObsevable?.Dispose();
-            this.dataObsevable = null;
-            this.ReadingData = false;
+            this.dataSourceModel.StopDataReads();
         }
+
+        //private void ExecuteReadNext() =>
+        //    //this.data.Add(this.dataSourceModel.GetData());
+        //    this.dataSourceModel.GetData()
+
+        //private void ExecuteStartReading() {
+
+        //    this.dataObsevable?.Dispose();
+        //    this.dataObsevable = null;
+
+        //    //TODO: handle observable exceptions and completion
+        //    this.dataObsevable = this.dataSourceModel
+        //        .GetDatas()
+        //        .SubscribeOn(ThreadPoolScheduler.Instance)
+        //        .ObserveOn(DispatcherScheduler.Current)
+        //        .Subscribe(
+        //            d => this.data.Add(d),
+        //            e => { },
+        //            () => { });
+
+        //    this.ReadingData = true;
+        //}
+
+        //private void ExecuteStopReading() {
+
+        //    this.dataObsevable?.Dispose();
+        //    this.dataObsevable = null;
+        //    this.ReadingData = false;
+        //}
 
         #region INotifyPropertyChanged
 
