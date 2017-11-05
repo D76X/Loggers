@@ -4,5 +4,9 @@
 
         IDataGridStructureModel GenerateDataGridStructureModel(
             IDataSourceModel dataSourceModel);
+
+        IDataGridViewModel CreateDataGridViewModel(
+            IDataSourceModel dataSourceModel,
+            IDataGridSettingsModel dataGridSettingsModel = null);
     }
 }

@@ -1,6 +1,5 @@
 ﻿using LogXtreme.WinDsk.Infrastructure.Commands;
 using LogXtreme.WinDsk.TestDataGrid.Interfaces;
-using LogXtreme.WinDsk.TestDataGrid.Models;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;

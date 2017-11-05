@@ -16,8 +16,10 @@ namespace LogXtreme.WinDsk.TestDataGrid.Models {
             this.dataGridSettings = dataGridSettings;
         }
 
-        public IDataGridStructureModel GridStructure => this.dataGridStructureModel;
+        public IDataGridStructureModel GridStructure => 
+            this.dataGridStructureModel;
 
-        public IDataGridSettingsModel GridSettings => this.dataGridSettings;
+        public IDataGridSettingsModel GridSettings => 
+            this.dataGridSettings;
     }
 }

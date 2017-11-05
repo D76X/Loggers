@@ -17,6 +17,8 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
         public DataTab4ViewModel() {
             
+            // first we build the data source view model
+
             IEnumerable<string> generatorSources = 
                 new string[] { "CHN0", "CHN1", "CHN2" };
 
@@ -40,34 +42,28 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
                 (dataService as DataService)
                 .GenerateDataSourceModel(sampleSourceModel);
 
-            this.dataSourceViewModel = new DataSourceViewModel(dataSourceModel);
+            this.dataSourceViewModel = 
+                new DataSourceViewModel(dataSourceModel);            
 
-            // now that we have a data source view model we can use it to 
-            // 1- read a single piece of data 
-            // 2- read a stream of data
-            // 3- stop the stream of data
-            // 4- other commands to influence the behaviour of the data source?
+            // then we bild the data grid view model 
 
-            // we now need to display the data obtained from the data source into a data grid.
-            // the data grid controls how the data is going to be displayed.
+            // we wish to display the data read by the data source into a data grid.
+            // the data grid service can be used to costruct a data view model and 
+            // hook it up to the data source.
 
             IDataGridService dataGridService =
-                new DataGridService();
+               new DataGridService();
 
-            IDataGridStructureModel dataGridStructureModel =
-                dataGridService.GenerateDataGridStructureModel(dataSourceModel);
-
-            IDataGridSettingsModel dataGridSettingsModel = 
+            IDataGridSettingsModel dataGridSettingsModel =
                 new DataGridSettingsModel();
 
-            var dataGridModel = new DataGridModel(
-                dataGridStructureModel,
-                dataGridSettingsModel);
-
-            this.DataGridViewModel = new DataGridViewModel(dataGridModel);
+            this.DataGridViewModel =
+                dataGridService.CreateDataGridViewModel(
+                    dataSourceModel,
+                    dataGridSettingsModel);
         }
 
-        public DataGridViewModel DataGridViewModel {
+        public IDataGridViewModel DataGridViewModel {
 
             get {
                 return this.dataGridViewModel;
@@ -80,7 +76,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
                     NotifyPropertyChanged();
                 }
             }
-        }     
+        } 
 
         #region INotifyPropertyChanged
 

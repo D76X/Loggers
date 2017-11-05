@@ -1,10 +1,29 @@
 ﻿using LogXtreme.WinDsk.TestDataGrid.Interfaces;
 using LogXtreme.WinDsk.TestDataGrid.Models;
+using LogXtreme.WinDsk.TestDataGrid.ViewModels;
 using System.Collections.Generic;
 
 namespace LogXtreme.WinDsk.TestDataGrid.Services {
 
     public class DataGridService : IDataGridService {
+
+        public IDataGridViewModel CreateDataGridViewModel(
+            IDataSourceModel dataSourceModel,
+            IDataGridSettingsModel dataGridSettingsModel = null) {          
+
+            IDataGridStructureModel dataGridStructureModel =
+                this.GenerateDataGridStructureModel(dataSourceModel);
+
+            IDataGridSettingsModel dGridSettingsModel =
+                dataGridSettingsModel ??
+                new DataGridSettingsModel();
+
+            var dataGridModel = new DataGridModel(
+                dataGridStructureModel,
+                dGridSettingsModel);
+
+            return new DataGridViewModel(dataGridModel);
+        }
 
         public IDataGridStructureModel GenerateDataGridStructureModel(
             IDataSourceModel dataSourceModel) {

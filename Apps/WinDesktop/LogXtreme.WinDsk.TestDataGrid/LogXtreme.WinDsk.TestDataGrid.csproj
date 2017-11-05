@@ -80,6 +80,7 @@
     <Compile Include="Interfaces\IDataSourceModel.cs" />
     <Compile Include="Interfaces\IDataSourceViewModel.cs" />
     <Compile Include="Interfaces\IGeneratorDescriptorModel.cs" />
+    <Compile Include="Interfaces\IHeaderModel.cs" />
     <Compile Include="Interfaces\ISampleModel.cs" />
     <Compile Include="Interfaces\IDataGridSettingsModel.cs" />
     <Compile Include="Interfaces\ISampleDescriptorModel.cs" />

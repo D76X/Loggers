@@ -19,8 +19,8 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
         private readonly IDataSourceModel dataSourceModel;
         private IDisposable dataObsevable;
 
-        private ObservableCollection<string> headers;
-        private ObservableCollection<IDataModel> data;
+        //private ObservableCollection<string> headers;
+        //private ObservableCollection<IDataModel> data;
 
         private readonly RelayCommand cmdReadNext;
         private readonly ICommand cmdStartReading;
@@ -32,10 +32,10 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
             this.dataSourceModel = dataSourceModel;
 
-            this.headers = new ObservableCollection<string>(
-                this.dataSourceModel.DataDescriptor.ValueNames);
+            //this.headers = new ObservableCollection<string>(
+            //    this.dataSourceModel.DataDescriptor.ValueNames);
 
-            this.data = new ObservableCollection<IDataModel>();
+            //this.data = new ObservableCollection<IDataModel>();
 
             this.cmdReadNext = new RelayCommand(
                 this.ExecuteReadNext,
@@ -45,11 +45,11 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             this.cmdStopReading = new RelayCommand(this.ExecuteStopReading);
         }
 
-        public ObservableCollection<string> Headers => 
-            this.headers;
+        //public ObservableCollection<string> Headers => 
+        //    this.headers;
 
-        public ObservableCollection<IDataModel> Data => 
-            this.data;
+        //public ObservableCollection<IDataModel> Data => 
+        //    this.data;
 
         public bool ReadingData { 
 
