@@ -5,23 +5,193 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestApp3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
+        Title="MainWindow"
+        Height="350"
+        Width="525">
+    <Window.Resources>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="Foreground"
+                    Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="Padding"
+                    Value="5" />
+            <Setter Property="HorizontalContentAlignment"
+                    Value="Left" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Top" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Label}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                Padding="{TemplateBinding Padding}"
+                                SnapsToDevicePixels="true">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              RecognizesAccessKey="True"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled"
+                                     Value="false">
+                                <Setter Property="Foreground"
+                                        Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+        </Style>
+        <SolidColorBrush x:Key="TextBox.Static.Border"
+                         Color="#FFABAdB3" />
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border"
+                         Color="#FF7EB4EA" />
+        <SolidColorBrush x:Key="TextBox.Focus.Border"
+                         Color="#FF569DE5" />
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Background"
+                    Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
+            <Setter Property="BorderBrush"
+                    Value="{StaticResource TextBox.Static.Border}" />
+            <Setter Property="Foreground"
+                    Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+            <Setter Property="BorderThickness"
+                    Value="1" />
+            <Setter Property="KeyboardNavigation.TabNavigation"
+                    Value="None" />
+            <Setter Property="HorizontalContentAlignment"
+                    Value="Left" />
+            <Setter Property="FocusVisualStyle"
+                    Value="{x:Null}" />
+            <Setter Property="AllowDrop"
+                    Value="true" />
+            <Setter Property="ScrollViewer.PanningMode"
+                    Value="VerticalFirst" />
+            <Setter Property="Stylus.IsFlicksEnabled"
+                    Value="False" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Focusable="false"
+                                          HorizontalScrollBarVisibility="Hidden"
+                                          VerticalScrollBarVisibility="Hidden" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled"
+                                     Value="false">
+                                <Setter Property="Opacity"
+                                        TargetName="border"
+                                        Value="0.56" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver"
+                                     Value="true">
+                                <Setter Property="BorderBrush"
+                                        TargetName="border"
+                                        Value="{StaticResource TextBox.MouseOver.Border}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused"
+                                     Value="true">
+                                <Setter Property="BorderBrush"
+                                        TargetName="border"
+                                        Value="{StaticResource TextBox.Focus.Border}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Margin"
+                    Value="8" />
+            <Setter Property="Padding"
+                    Value="0" />
+        </Style>
+        <DataTemplate x:Key="GamesItemTemplate">
+            <StackPanel>
+                <Image Source="{Binding CoverImage}"
+                       HorizontalAlignment="Left"
+                       Height="64"
+                       Width="64" />
+                <TextBlock Text="{Binding Name}"
+                           FontWeight="Bold" />
+                <TextBlock Text="{Binding Price, StringFormat=C}" />
+                <TextBlock Text="{Binding ReleaseDate}" />
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid DataContext="{Binding Source={StaticResource SampleDataSource}}">
         <Grid Margin="10">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="131*"/>
-                <ColumnDefinition Width="366*"/>
+                <ColumnDefinition Width="131*" />
+                <ColumnDefinition Width="366*" />
             </Grid.ColumnDefinitions>
             <Grid Background="#FFE8D0C7">
                 <Grid Margin="10">
-                    <Border BorderBrush="#FF0EF137" BorderThickness="1" CornerRadius="5"/>
+                    <Border BorderBrush="#FF0EF137"
+                            BorderThickness="1"
+                            CornerRadius="5" />
+                    <ListBox x:Name="listBox"
+                             Margin="3"
+                             BorderBrush="{x:Null}"
+                             ItemTemplate="{DynamicResource GamesItemTemplate}"
+                             ItemsSource="{Binding Games}" />
                 </Grid>
             </Grid>
-            <Grid Grid.Column="1" Background="#FFE9EAD3">
-                <Grid Margin="10"/>
-                <Border BorderBrush="#FFEE0808" BorderThickness="1" Margin="10" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" CornerRadius="5"/>
+            <Grid Grid.Column="1"
+                  Background="#FFE9EAD3">
+                <Grid />
+                <Border BorderBrush="#FFEE0808"
+                        BorderThickness="1"
+                        Margin="10"
+                        CornerRadius="5" />
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="labelName"
+                           Content="Name"
+                           Grid.Row="0" />
+                    <Label x:Name="labelPrice"
+                           Content="Price"
+                           Grid.Row="1" />
+                    <Label x:Name="labelDate"
+                           Content="Date"
+                           Grid.Row="2" />
+                    <TextBox x:Name="textBoxName"
+                             Grid.Column="1"
+                             Grid.Row="0"
+                             Text="{Binding Name, Mode=TwoWay}" />
+                    <TextBox x:Name="textBoxPrice"
+                             Grid.Column="1"
+                             Grid.Row="1"
+                             Text="TextBox" />
+                    <TextBox x:Name="textBoxDate"
+                             Grid.Column="1"
+                             Grid.Row="2"
+                             Text="TextBox" />
+                </Grid>
             </Grid>
-            <Border BorderBrush="Black" BorderThickness="3" Grid.ColumnSpan="2"/>
+            <Border BorderBrush="Black"
+                    BorderThickness="3"
+                    Grid.ColumnSpan="2"
+                    DataContext="{Binding Games}" />
         </Grid>
     </Grid>
 </Window>
