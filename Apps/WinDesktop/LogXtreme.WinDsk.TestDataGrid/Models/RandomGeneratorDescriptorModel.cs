@@ -1,4 +1,5 @@
-﻿using LogXtreme.WinDsk.TestDataGrid.Interfaces;
+﻿using LogXtreme.ContractValidators;
+using LogXtreme.WinDsk.TestDataGrid.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,6 +14,11 @@ namespace LogXtreme.WinDsk.TestDataGrid.Models {
         private readonly int length;
 
         public RandomGeneratorDescriptorModel(IEnumerable<string> sourceNames) {
+
+            //TODO: should refrence the interface and use injection, perhaps attributes?
+            var validator = new InvariantValidator();
+            validator.VerifyNonNull(sourceNames);
+
             this.sourceNames = sourceNames;
             this.length = this.sourceNames.Count();
         }

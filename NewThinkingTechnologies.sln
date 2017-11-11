@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{FAFE10AF-AF2C-4D6F-82BC-81ED9863EE85}"
 EndProject
@@ -89,16 +89,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Notes", "_Notes", "{54A549FC-CAB6-43C9-847E-FE7F3E5C50E7}"
 	ProjectSection(SolutionItems) = preProject
+		Notes\Continuous Integration and Build.txt = Notes\Continuous Integration and Build.txt
 		Notes\Exceptions.txt = Notes\Exceptions.txt
 		Notes\F#.txt = Notes\F#.txt
 		Notes\GitNotes.txt = Notes\GitNotes.txt
 		Notes\GitWorkflow.png = Notes\GitWorkflow.png
+		Notes\Licencing.txt = Notes\Licencing.txt
 		Notes\LogXtreme.WinDsk.Notes.txt = Notes\LogXtreme.WinDsk.Notes.txt
+		Notes\Markdown.txt = Notes\Markdown.txt
 		Notes\PrismNotes.txt = Notes\PrismNotes.txt
 		Notes\Python.txt = Notes\Python.txt
 		Notes\ReactiveExtensions.txt = Notes\ReactiveExtensions.txt
 		Notes\Simulators.txt = Notes\Simulators.txt
-		Notes\SolutionNotes.txt = Notes\SolutionNotes.txt
+		Notes\StylecopNotes.txt = Notes\StylecopNotes.txt
+		Notes\Updater.txt = Notes\Updater.txt
 		Notes\VisualStudio.txt = Notes\VisualStudio.txt
 		Notes\WpfNotes.txt = Notes\WpfNotes.txt
 		Notes\ZeroMQ.txt = Notes\ZeroMQ.txt
@@ -346,6 +350,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.WinDsk.TestDragAndDrop", "Apps\WinDesktop\LogXtreme.WinDsk.TestDragAndDrop\LogXtreme.WinDsk.TestDragAndDrop.csproj", "{E92C7754-B0CE-4447-83CD-6E7B53E72E93}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.WinDsk.TestPlotting", "Apps\WinDesktop\LogXtreme.WinDsk.TestPlotting\LogXtreme.WinDsk.TestPlotting.csproj", "{CCC4C227-F790-4BBB-8DFC-BC6EB749BBB3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B8DBBBFD-E4B0-4F00-80B2-97D646685BAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.ContractValidators", "Apps\Libs\LogXtreme.ContractValidators\LogXtreme.ContractValidators.csproj", "{B16746A1-1CD1-4EA4-9870-B68981BBBFBF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{86A93344-6AF8-46D0-9F98-95097E76C6C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.Ifrastructure", "Apps\Infrastructure\LogXtreme.Ifrastructure\LogXtreme.Ifrastructure.csproj", "{F919B826-9C93-4A30-A68C-ED35B35B2FA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1125,6 +1137,22 @@ Global
 		{CCC4C227-F790-4BBB-8DFC-BC6EB749BBB3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CCC4C227-F790-4BBB-8DFC-BC6EB749BBB3}.Release|x86.ActiveCfg = Release|Any CPU
 		{CCC4C227-F790-4BBB-8DFC-BC6EB749BBB3}.Release|x86.Build.0 = Release|Any CPU
+		{B16746A1-1CD1-4EA4-9870-B68981BBBFBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B16746A1-1CD1-4EA4-9870-B68981BBBFBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B16746A1-1CD1-4EA4-9870-B68981BBBFBF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B16746A1-1CD1-4EA4-9870-B68981BBBFBF}.Debug|x86.Build.0 = Debug|Any CPU
+		{B16746A1-1CD1-4EA4-9870-B68981BBBFBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B16746A1-1CD1-4EA4-9870-B68981BBBFBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B16746A1-1CD1-4EA4-9870-B68981BBBFBF}.Release|x86.ActiveCfg = Release|Any CPU
+		{B16746A1-1CD1-4EA4-9870-B68981BBBFBF}.Release|x86.Build.0 = Release|Any CPU
+		{F919B826-9C93-4A30-A68C-ED35B35B2FA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F919B826-9C93-4A30-A68C-ED35B35B2FA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F919B826-9C93-4A30-A68C-ED35B35B2FA1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F919B826-9C93-4A30-A68C-ED35B35B2FA1}.Debug|x86.Build.0 = Debug|Any CPU
+		{F919B826-9C93-4A30-A68C-ED35B35B2FA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F919B826-9C93-4A30-A68C-ED35B35B2FA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F919B826-9C93-4A30-A68C-ED35B35B2FA1}.Release|x86.ActiveCfg = Release|Any CPU
+		{F919B826-9C93-4A30-A68C-ED35B35B2FA1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1270,6 +1298,9 @@ Global
 		{6A946E98-6923-4B13-8EFC-DE6F9123795F} = {87F805A5-DA31-43B3-AD55-1965585453F9}
 		{E92C7754-B0CE-4447-83CD-6E7B53E72E93} = {45449303-EA76-4B02-B1EE-CCBB11D41186}
 		{CCC4C227-F790-4BBB-8DFC-BC6EB749BBB3} = {45449303-EA76-4B02-B1EE-CCBB11D41186}
+		{B16746A1-1CD1-4EA4-9870-B68981BBBFBF} = {57F38F0E-585A-4964-B8F1-B252263FFD24}
+		{86A93344-6AF8-46D0-9F98-95097E76C6C8} = {336F8F07-C586-45D4-B7E2-20FDB911D3B5}
+		{F919B826-9C93-4A30-A68C-ED35B35B2FA1} = {86A93344-6AF8-46D0-9F98-95097E76C6C8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B48A64CD-1E9D-4169-82DF-66FD7695C2D0}
