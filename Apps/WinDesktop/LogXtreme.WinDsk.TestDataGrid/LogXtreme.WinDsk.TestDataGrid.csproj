@@ -88,9 +88,11 @@
     <Compile Include="Interfaces\ISampleGeneratorModel.cs" />
     <Compile Include="Interfaces\ISampleSourceModel.cs" />
     <Compile Include="Models\DataGridColumnModel.cs" />
+    <Compile Include="Models\DataGridColumnSettingsModel.cs" />
     <Compile Include="Models\DataGridModel.cs" />
     <Compile Include="Models\DataGridSettingsModel.cs" />
     <Compile Include="Models\DataGridStructureModel.cs" />
+    <Compile Include="Models\HeaderModel.cs" />
     <Compile Include="Services\DataGridService.cs" />
     <Compile Include="Services\DataService.cs" />
     <Compile Include="Models\RandomGeneratorModel.cs" />
@@ -160,6 +162,10 @@
     <ProjectReference Include="..\..\Extensions\LogXtreme.Extensions\LogXtreme.Extensions.csproj">
       <Project>{07a36205-c0c2-4f88-a37c-27199051a240}</Project>
       <Name>LogXtreme.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libs\LogXtreme.ContractValidators\LogXtreme.ContractValidators.csproj">
+      <Project>{b16746a1-1cd1-4ea4-9870-b68981bbbfbf}</Project>
+      <Name>LogXtreme.ContractValidators</Name>
     </ProjectReference>
     <ProjectReference Include="..\LogXtreme.WinDsk.Infrastructure\LogXtreme.WinDsk.Infrastructure.csproj">
       <Project>{489706e3-c226-4d83-bb3d-c5a0d49d3835}</Project>

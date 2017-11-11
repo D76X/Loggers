@@ -38,10 +38,10 @@ namespace LogXtreme.WinDsk.TestDataGrid.Services {
             foreach (var valueName in dataDescriptorModel.ValueNames) {
 
                 dataGridColumns.Add(
-                    new DataGridColumnModel() {
-                        Header = valueName,
-                        IsVisible = true
-                    });
+                    new DataGridColumnModel(
+                        new HeaderModel(valueName),
+                        new DataGridColumnSettingsModel() {
+                            Visible = true}));
             }
             
             return new DataGridStructureModel(dataGridColumns);

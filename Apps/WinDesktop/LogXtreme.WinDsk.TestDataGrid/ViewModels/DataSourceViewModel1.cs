@@ -103,7 +103,16 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
         private void ExecuteGetOneSample() {
 
-            this.samples.Add(this.sampleSource.GetSample());
+            this.samplesObsevable?.Dispose();
+            this.samplesObsevable = null;
+
+            this.samplesObsevable =  this.sampleSource.GetSamples(1).
+            SubscribeOn(ThreadPoolScheduler.Instance).
+            ObserveOn(DispatcherScheduler.Current).
+            Subscribe(
+                s => this.samples.Add(s),
+                e => { },
+                () => { });
         }        
 
         private void ExecuteStartSampling() {
@@ -114,7 +123,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             // put the subscription delegate on a separate thread
             // run the observation delegates on the dispatcher thread
             // to satisy the WPF STA model. 
-            this.samplesObsevable = this.sampleSource.GetSamples().
+            this.samplesObsevable = this.sampleSource.GetSamples(0).
             SubscribeOn(ThreadPoolScheduler.Instance).
             ObserveOn(DispatcherScheduler.Current).
             Subscribe(

@@ -1,11 +1,7 @@
-﻿
-using LogXtreme.WinDsk.Infrastructure.Commands;
+﻿using LogXtreme.WinDsk.Infrastructure.Commands;
 using LogXtreme.WinDsk.TestDataGrid.Interfaces;
 using System;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Reactive.Concurrency;
-using System.Reactive.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
@@ -16,12 +12,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
         INotifyPropertyChanged,
         IDisposable {
 
-        private readonly IDataSourceModel dataSourceModel;
-        //private IDisposable dataObsevable;
-
-        //private ObservableCollection<string> headers;
-        //private ObservableCollection<IDataModel> data;
-
+        private readonly IDataSourceModel dataSourceModel;  
         private readonly RelayCommand cmdReadNext;
         private readonly ICommand cmdStartReading;
         private readonly ICommand cmdStopReading;
@@ -31,12 +22,6 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
         public DataSourceViewModel(IDataSourceModel dataSourceModel) {
 
             this.dataSourceModel = dataSourceModel;
-
-            //this.headers = new ObservableCollection<string>(
-            //    this.dataSourceModel.DataDescriptor.ValueNames);
-
-            //this.data = new ObservableCollection<IDataModel>();
-
             this.cmdReadNext = new RelayCommand(
                 this.ExecuteReadNext,
                 this.CanExecuteExecuteReadNext);
@@ -44,13 +29,6 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             this.cmdStartReading = new RelayCommand(this.ExecuteStartReading);
             this.cmdStopReading = new RelayCommand(this.ExecuteStopReading);
         }
-
-        //public ObservableCollection<string> Headers => 
-        //    this.headers;
-
-        //public ObservableCollection<IDataModel> Data => 
-        //    this.data;
-
         public bool ReadingData {
 
             get => this.readingData;
@@ -89,36 +67,6 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
         private void ExecuteStopReading() {
             this.dataSourceModel.StopDataReads();
         }
-
-        //private void ExecuteReadNext() =>
-        //    //this.data.Add(this.dataSourceModel.GetData());
-        //    this.dataSourceModel.GetData()
-
-        //private void ExecuteStartReading() {
-
-        //    this.dataObsevable?.Dispose();
-        //    this.dataObsevable = null;
-
-        //    //TODO: handle observable exceptions and completion
-        //    this.dataObsevable = this.dataSourceModel
-        //        .GetDatas()
-        //        .SubscribeOn(ThreadPoolScheduler.Instance)
-        //        .ObserveOn(DispatcherScheduler.Current)
-        //        .Subscribe(
-        //            d => this.data.Add(d),
-        //            e => { },
-        //            () => { });
-
-        //    this.ReadingData = true;
-        //}
-
-        //private void ExecuteStopReading() {
-
-        //    this.dataObsevable?.Dispose();
-        //    this.dataObsevable = null;
-        //    this.ReadingData = false;
-        //}
-
         #region INotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -139,8 +87,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
                 if (disposing) {
 
-                    this.dataObsevable?.Dispose();
-                    this.dataObsevable = null;
+                    // dispose of obsevables, etc.
                 }
 
                 // free unmanaged resources (unmanaged objects) and override a finalizer below.

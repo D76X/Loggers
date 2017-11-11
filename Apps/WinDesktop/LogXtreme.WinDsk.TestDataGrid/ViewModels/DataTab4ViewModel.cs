@@ -13,7 +13,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
         IDisposable  {
 
         private readonly IDataSourceViewModel dataSourceViewModel;
-        private DataGridViewModel dataGridViewModel;      
+        private IDataGridViewModel dataGridViewModel;      
 
         public DataTab4ViewModel() {
             
@@ -100,8 +100,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
                 if (disposing) {
 
-                    //this.samplesObsevable?.Dispose();
-                    //this.samplesObsevable = null;
+                    //dispose of observables, etc.
                 }
 
                 // free unmanaged resources (unmanaged objects) and override a finalizer below.

@@ -66,7 +66,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.Services {
 
                 remove {
                     lock (this.onStartDataReadsLock) {
-                        this.onStartDataReads += value;
+                        this.onStartDataReads -= value;
                     }
                 }
             }             
@@ -77,45 +77,12 @@ namespace LogXtreme.WinDsk.TestDataGrid.Services {
                     .GetSamples(count)
                     .Select(s => new DataModel(s));
 
-                this.onStartDataReads(this, observableData);
+                this.onStartDataReads?.Invoke(this, observableData);
             }
 
             public void StopDataReads() {
                 this.onStopDataReads?.Invoke(this, new EventArgs());
             }
-
-            //public IObservable<IDataModel> GetData(int count) {
-
-            //    // http://www.introtorx.com/content/v1.0.10621.0/08_Transformation.html
-            //    var observable = this.sampleSourceModel
-            //        .GetSamples(count)
-            //        .Select(s => new DataModel(s));
-
-            //    //dataRequested?.Invoke(this, observable);
-
-            //    return observable;
-            //}
-
-            //IObservable<IObservable<IDataModel>> GetData(int count) {
-
-            //    var observableData = this.sampleSourceModel
-            //        .GetSamples(count)
-            //        .Select(s => new DataModel(s));
-
-            //    return Observable.Return(observableData);
-            //}
-
-            //public IDataModel GetData() {
-            //    return new DataModel(this.sampleSourceModel.GetSample());
-            //}
-
-            //public IObservable<IDataModel> GetDatas() {
-
-            //    // http://www.introtorx.com/content/v1.0.10621.0/08_Transformation.html
-            //    return this.sampleSourceModel
-            //        .GetSamples()
-            //        .Select(s => new DataModel(s));
-            //}
         }
 
         public IDataSourceModel GenerateDataSourceModel(

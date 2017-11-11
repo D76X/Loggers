@@ -15,7 +15,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.Models {
 
         public RandomGeneratorDescriptorModel(IEnumerable<string> sourceNames) {
 
-            //TODO: should refrence the interface and use injection, perhaps attributes?
+            //TODO should reference the interface and use injection, perhaps attributes?
             var validator = new InvariantValidator();
             validator.VerifyNonNull(sourceNames);
 

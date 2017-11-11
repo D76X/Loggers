@@ -1,10 +1,19 @@
 ﻿using LogXtreme.WinDsk.TestDataGrid.Interfaces;
 
 namespace LogXtreme.WinDsk.TestDataGrid.Models {
+
     public class DataGridColumnModel : IDataGridColumnModel {
 
-        public string Header { get; set; }
+        public DataGridColumnModel(
+            IHeaderModel headerModel,
+            IDataGridColumnSettingsModel dataGridColumnSettingsModel) {
 
-        public bool IsVisible { get; set; }
+            this.Header = headerModel;
+            this.ColumnSettings = dataGridColumnSettingsModel;
+        }
+
+        public IDataGridColumnSettingsModel ColumnSettings { get; set; }
+
+        public IHeaderModel Header { get; set; }
     }
 }
