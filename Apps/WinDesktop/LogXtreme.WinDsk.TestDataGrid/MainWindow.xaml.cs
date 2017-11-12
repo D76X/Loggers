@@ -27,5 +27,14 @@ namespace LogXtreme.WinDsk.TestDataGrid {
             
             InitializeComponent();
         }
+
+        protected override void OnClosed(EventArgs e) {
+
+            if (this.DataContext is IDisposable disposable) {
+                disposable.Dispose();
+            }
+
+            base.OnClosed(e);
+        }
     }
 }
