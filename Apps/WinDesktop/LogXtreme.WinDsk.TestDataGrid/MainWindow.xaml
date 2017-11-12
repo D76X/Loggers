@@ -27,11 +27,11 @@
     </Window.DataContext>
     <Grid>
         <TabControl>
-            <TabItem Header="DataGrid1"
+            <TabItem Header="DataGrid0"
                      DataContext="{Binding ViewModels[0]}">
                 <DataGrid ItemsSource="{Binding Items}" />
             </TabItem>
-            <TabItem Header="DataGrid2"
+            <TabItem Header="DataGrid1"
                      DataContext="{Binding ViewModels[1]}">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -70,9 +70,9 @@
                               HeadersVisibility="{Binding ElementName=DataGridVisibilityOptionSelector, Path=SelectedItem}" />
                 </Grid>
             </TabItem>
-            <TabItem Header="DataGrid3"
+            <TabItem Header="DataGrid2"
                      DataContext="{Binding ViewModels[2]}"
-                     x:Name="SampleLayoutRootDataGrid3">
+                     x:Name="SampleLayoutRootDataGrid2">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30" />
@@ -119,7 +119,7 @@
                                         <Setter Property="ContentTemplate">
                                             <Setter.Value>
                                                 <DataTemplate>
-                                                    <ItemsControl ItemsSource="{Binding DataContext.SampleHeader, ElementName=SampleLayoutRootDataGrid3}">
+                                                    <ItemsControl ItemsSource="{Binding DataContext.SampleHeader, ElementName=SampleLayoutRootDataGrid2}">
                                                         <ItemsControl.ItemsPanel>
                                                             <ItemsPanelTemplate>
                                                                 <StackPanel Orientation="Horizontal">
@@ -167,7 +167,7 @@
             </TabItem>
             <TabItem Header="DataGrid3"
                      DataContext="{Binding ViewModels[3]}"
-                     x:Name="SampleLayoutRootDataGrid4">
+                     x:Name="SampleLayoutRootDataGrid3">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -196,10 +196,63 @@
                     </StackPanel>
                     <Grid Grid.Column="1">
                         <DataGrid AutoGenerateColumns="False"
-                                  ItemsSource="{Binding Samples}"
+                                  ItemsSource="{Binding DataContext.DataGridViewModel.Data, ElementName=SampleLayoutRootDataGrid3}"
                                   Grid.Row="1"
                                   Grid.ColumnSpan="3">
-                            ...
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Width="*">
+                                    <DataGridTemplateColumn.HeaderStyle>
+                                        <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="HorizontalAlignment"
+                                                    Value="Stretch" />
+                                            <Setter Property="VerticalAlignment"
+                                                    Value="Stretch" />
+                                            <Setter Property="Margin"
+                                                    Value="0" />
+                                            <Setter Property="ContentTemplate">
+                                                <Setter.Value>
+                                                    <DataTemplate>
+                                                        <ItemsControl ItemsSource="{Binding DataContext.DataGridViewModel.Headers, ElementName=SampleLayoutRootDataGrid3}">
+                                                            <ItemsControl.ItemsPanel>
+                                                                <ItemsPanelTemplate>
+                                                                    <StackPanel Orientation="Horizontal" />
+                                                                </ItemsPanelTemplate>
+                                                            </ItemsControl.ItemsPanel>
+                                                            <ItemsControl.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <Border Width="70">
+                                                                        <TextBlock Text="{Binding Name}"
+                                                                                   TextAlignment="Center"/>
+                                                                    </Border>
+                                                                </DataTemplate>
+                                                            </ItemsControl.ItemTemplate>
+                                                        </ItemsControl>
+                                                    </DataTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </DataGridTemplateColumn.HeaderStyle>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ItemsControl ItemsSource="{Binding Values}">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <StackPanel Orientation="Horizontal"/>
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Border Width="70">
+                                                            <TextBlock Text="{Binding}"
+                                                                       TextAlignment="Center" />
+                                                        </Border>                                                        
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>                            
+                            </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
                 </Grid>

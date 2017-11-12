@@ -20,7 +20,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             // first we build the data source view model
 
             IEnumerable<string> generatorSources = 
-                new string[] { "CHN0", "CHN1", "CHN2" };
+                new string[] { "CHN0", "CHN1", "CHN2", "CHN3" };
 
             IGeneratorDescriptorModel generatorDescriptorModel = 
                 new RandomGeneratorDescriptorModel(generatorSources);
