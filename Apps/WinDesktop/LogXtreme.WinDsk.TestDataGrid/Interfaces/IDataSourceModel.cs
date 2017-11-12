@@ -10,12 +10,6 @@ namespace LogXtreme.WinDsk.TestDataGrid.Interfaces {
 
         IDataDescriptorModel DataDescriptor { get; }
 
-        //IObservable<IObservable<IDataModel>> GetData(int count);
-
-        //IDataModel GetData();
-
-        //IObservable<IDataModel> GetData(int count);
-
         void StartDataReads(int count);
 
         void StopDataReads();

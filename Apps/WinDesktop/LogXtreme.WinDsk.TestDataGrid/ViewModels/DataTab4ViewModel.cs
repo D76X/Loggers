@@ -12,7 +12,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
         INotifyPropertyChanged,
         IDisposable  {
 
-        private readonly IDataSourceViewModel dataSourceViewModel;
+        private IDataSourceViewModel dataSourceViewModel;
         private IDataGridViewModel dataGridViewModel;      
 
         public DataTab4ViewModel() {
@@ -43,7 +43,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
                 (dataService as DataService)
                 .GenerateDataSourceModel(sampleSourceModel);
 
-            this.dataSourceViewModel = 
+            this.DataSourceViewModel = 
                 new DataSourceViewModel(dataSourceModel);            
 
             // then we bild the data grid view model 
@@ -66,9 +66,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
         public IDataGridViewModel DataGridViewModel {
 
-            get {
-                return this.dataGridViewModel;
-            }
+            get => this.dataGridViewModel;            
 
             private set {
 
@@ -78,6 +76,19 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
                 }
             }
         } 
+
+        public IDataSourceViewModel DataSourceViewModel {
+
+            get => this.dataSourceViewModel;
+
+            private set {
+
+                if (value != this.dataSourceViewModel) {
+                    this.dataSourceViewModel = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
         #region INotifyPropertyChanged
 
@@ -100,7 +111,11 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
                 if (disposing) {
 
-                    //dispose of observables, etc.
+                    this.dataGridViewModel?.Dispose();
+                    this.dataGridViewModel = null;
+
+                    this.dataSourceViewModel?.Dispose();
+                    this.dataSourceViewModel = null;
                 }
 
                 // free unmanaged resources (unmanaged objects) and override a finalizer below.

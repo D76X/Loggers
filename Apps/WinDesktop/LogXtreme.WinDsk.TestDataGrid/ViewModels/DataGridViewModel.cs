@@ -1,4 +1,5 @@
 ﻿using LogXtreme.WinDsk.TestDataGrid.Interfaces;
+using LogXtreme.WinDsk.TestDataGrid.Models;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -11,47 +12,42 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
     public class DataGridViewModel : 
         IDataGridViewModel,
-        INotifyPropertyChanged,
-        IDisposable {
+        INotifyPropertyChanged {
 
-        private readonly IDataGridModel dataGridModel;
-        private IDataSourceModel dataSourceModel;       
+        //TODO what to do with the datasource when the Grid View is recycled?
+        //TODO should IDataSourceModel inherit from IDisposable?
+        private readonly IDataSourceModel dataSourceModel;
+        private readonly IDataGridModel dataGridModel;               
 
         private ObservableCollection<IHeaderModel> headers;
         private ObservableCollection<IDataModel> data =
-            new ObservableCollection<IDataModel>();
+            new ObservableCollection<IDataModel>();       
 
         private IDisposable dataObsevable;
-        //private IObservable<IDataModel> dataObsevable;
 
         public DataGridViewModel(
             IDataGridModel dataGridModel,
             IDataSourceModel dataSourceModel = null) {
 
-            this.dataGridModel = dataGridModel;                     
+            this.dataGridModel = dataGridModel;            
 
+            // the headers of the datagrid are initially the same as those 
+            // of the undelying grid model but can be changed in the UI.
             this.headers = new ObservableCollection<IHeaderModel>(
-                dataGridModel.GridStructure.Columns.Select(c => c.Header));
+                dataGridModel.GridStructure.Columns.Select(c =>
+                new HeaderModel(c.Header.Name)));            
 
             //TODO when there's no dataSource should one be set up as default or with a setter or what?
             if (dataSourceModel == null) { return; }
 
-            // TODO should use GetData(s) to hook up the Grid to the Source
-            //dataSourceModel.GetData
-            //dataSourceModel.GetDatas
-
-            //dataSourceModel.OnDataRequested += 
-            //    DataSourceModel_DataRequested;   
+            this.dataSourceModel = dataSourceModel; 
 
             //TODO : use Event to Observable pattern to prevent leaks
-            dataSourceModel.OnStartDataReads += 
-                DataSourceModel_OnStartDataReads;
-
-            dataSourceModel.OnStopDataReads += 
-                DataSourceModel_OnStopDataReads;
+            this.dataSourceModel.OnStartDataReads += StartDataReads;
+            this.dataSourceModel.OnStopDataReads += StopDataReads;
         }
 
-        private void DataSourceModel_OnStopDataReads(
+        private void StopDataReads(
             object sender, 
             EventArgs e) {
 
@@ -59,7 +55,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             this.dataObsevable = null;
         }
 
-        private void DataSourceModel_OnStartDataReads(
+        private void StartDataReads(
             object sender, 
             IObservable<IDataModel> e) {
             
@@ -84,7 +80,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
         public IDataGridSettingsModel GridSettings => 
             this.dataGridModel.GridSettings;
-
+        
         #region INotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -38,11 +38,12 @@ namespace LogXtreme.WinDsk.TestDataGrid.Services {
             private readonly ISampleSourceModel sampleSourceModel;
             private readonly IDataDescriptorModel dataDescriptorModel;
 
+            //private readonly IObservable<DataModel>  
+
             private object onStartDataReadsLock = new Object();
             private EventHandler<IObservable<IDataModel>> onStartDataReads;
 
             private object onStopDataReadsLock = new Object();
-            private EventHandler onStopDataReads;
 
             public DataSourceModel(ISampleSourceModel sampleSourceModel) {
 
@@ -77,11 +78,11 @@ namespace LogXtreme.WinDsk.TestDataGrid.Services {
                     .GetSamples(count)
                     .Select(s => new DataModel(s));
 
-                this.onStartDataReads?.Invoke(this, observableData);
+                this.onStartDataReads?.Invoke(this, observableData);                
             }
 
             public void StopDataReads() {
-                this.onStopDataReads?.Invoke(this, new EventArgs());
+                this.OnStopDataReads?.Invoke(this, new EventArgs());
             }
         }
 

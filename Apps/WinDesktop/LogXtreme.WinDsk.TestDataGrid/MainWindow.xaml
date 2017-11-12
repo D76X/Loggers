@@ -16,10 +16,10 @@
         <conv:BooleanToVisibilityConverter x:Key="CustomHiddenBoolToVis"
                                            FalseVisibility="Hidden" />
         <conv:BooleanToVisibilityConverter x:Key="CustomInvertedHiddenBoolToVis"
-                                           FalseVisibility="Hidden" 
-                                           Negate="True"/>
+                                           FalseVisibility="Hidden"
+                                           Negate="True" />
         <conv:BooleanToVisibilityConverter x:Key="CustomCollapsedBoolToVis" />
-        <conv:BooleanToVisibilityConverter x:Key="CustomInvertedCollapsedBoolToVis"                                           
+        <conv:BooleanToVisibilityConverter x:Key="CustomInvertedCollapsedBoolToVis"
                                            Negate="True" />
     </Window.Resources>
     <Window.DataContext>
@@ -170,40 +170,39 @@
                      x:Name="SampleLayoutRootDataGrid4">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="3*" />
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0">
-                        <Button Grid.Row="0"
-                            Grid.Column="0"
-                            Command="{Binding CommanGetNewRow}"
-                            VerticalAlignment="Center">
-                            Get New Row
+                    <StackPanel Grid.Column="0"
+                                Grid.Row="0">
+                        <Button Command="{Binding DataSourceViewModel.CommandStartReadingData}"
+                                CommandParameter="1"
+                                VerticalAlignment="Center">
+                            Get Next
                         </Button>
-                        <Button Grid.Row="0"
-                            Grid.Column="1"
-                            Command="{Binding CommandReadRows}"
-                            Visibility="{Binding ReadingSamples, Converter={conv:BooleanToVisibilityConverter FalseVisibility=Collapsed, Negate=True}}"
-                            VerticalAlignment="Center">
-                            Read Rows
-                        </Button>
-                        <Button Grid.Row="0"
-                            Grid.Column="1"
-                            Command="{Binding CommandStopReading}"
-                            Visibility="{Binding ReadingSamples, Converter={conv:BooleanToVisibilityConverter FalseVisibility=Collapsed, Negate=False}}"
-                            VerticalAlignment="Center">
-                            Stop Reading
-                        </Button>
+                        <Grid>
+                            <Button Command="{Binding DataSourceViewModel.CommandStopReadingData}"
+                                    Visibility="{Binding DataSourceViewModel.ReadingData, Converter={conv:BooleanToVisibilityConverter FalseVisibility=Collapsed, Negate=False}}"
+                                    VerticalAlignment="Center">
+                                Stop Reading
+                            </Button>
+                            <Button Command="{Binding DataSourceViewModel.CommandStartReadingData}"
+                                    CommandParameter="0"
+                                    Visibility="{Binding DataSourceViewModel.ReadingData, Converter={conv:BooleanToVisibilityConverter FalseVisibility=Collapsed, Negate=True}}"
+                                    VerticalAlignment="Center">
+                                Start Reading
+                            </Button>                            
+                        </Grid>
                     </StackPanel>
                     <Grid Grid.Column="1">
                         <DataGrid AutoGenerateColumns="False"
-                              ItemsSource="{Binding Samples}"
-                              Grid.Row="1"
-                              Grid.ColumnSpan="3">
+                                  ItemsSource="{Binding Samples}"
+                                  Grid.Row="1"
+                                  Grid.ColumnSpan="3">
                             ...
                         </DataGrid>
                     </Grid>
-                </Grid>               
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>

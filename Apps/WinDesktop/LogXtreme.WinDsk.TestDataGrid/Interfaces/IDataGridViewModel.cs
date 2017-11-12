@@ -1,8 +1,9 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 
 namespace LogXtreme.WinDsk.TestDataGrid.Interfaces {
 
-    public interface IDataGridViewModel {
+    public interface IDataGridViewModel : IDisposable {
 
         ObservableCollection<IHeaderModel> Headers { get; }
 

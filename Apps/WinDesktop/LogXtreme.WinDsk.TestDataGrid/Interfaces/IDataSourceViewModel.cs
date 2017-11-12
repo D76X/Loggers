@@ -1,12 +1,14 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 
 namespace LogXtreme.WinDsk.TestDataGrid.Interfaces {
-    public interface IDataSourceViewModel {
 
-        ICommand CommandReadNext { get; }
+    public interface IDataSourceViewModel : IDisposable {       
 
-        ICommand CommandStartReading { get; }
+        ICommand CommandStartReadingData { get; }
 
-        ICommand CommandStopReading { get; }
+        ICommand CommandStopReadingData { get; }
+
+        bool ReadingData { get; }
     }
 }
