@@ -17,7 +17,6 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
         private IDisposable dataObsevable;
 
-        //private readonly RelayCommand cmdReadNext;
         private readonly RelayCommand<string> cmdStartReading;
         private readonly RelayCommand cmdStopReading;
 
@@ -29,14 +28,10 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
             //TODO replace with weak event pattern
             this.dataSourceModel.OnStartDataReads += 
-                DataSourceModel_OnStartDataReads;
+                StartDataReads;
 
             this.dataSourceModel.OnStopDataReads += 
-                DataSourceModel_OnStopDataReads;  
-
-            //this.cmdReadNext = new RelayCommand(
-            //    this.ExecuteReadNext,
-            //    this.CanExecuteExecuteReadNext);
+                StopDataReads;
 
             this.cmdStartReading = new RelayCommand<string>(
                 this.ExecuteStartReadingData,
@@ -47,7 +42,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
                 this.CanExecuteStopReadingData);           
         }
 
-        private void DataSourceModel_OnStartDataReads(
+        private void StartDataReads(
             object sender, 
             IObservable<IDataModel> e) {
 
@@ -70,7 +65,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
                     });
         }
 
-        private void DataSourceModel_OnStopDataReads(
+        private void StopDataReads(
             object sender, 
             EventArgs e) {
 
@@ -78,23 +73,6 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             this.dataObsevable = null;
             this.ReadingData = false;
         }
-
-        //public bool ReadingData {
-
-        //    get => this.readingData;
-
-        //    private set {
-
-        //        if (value != this.readingData) {
-        //            this.readingData = value;
-        //            this.cmdReadNext.RaiseCanExecuteChanged();
-        //            NotifyPropertyChanged();
-        //        }
-        //    }
-        //}
-
-        //public ICommand CommandReadNext =>
-        //    this.cmdReadNext;
 
         public bool ReadingData {
 
@@ -118,24 +96,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             this.cmdStartReading;
 
         public ICommand CommandStopReadingData =>
-            this.cmdStopReading;
-
-        //private bool CanExecuteExecuteReadNext() =>
-        //    !this.readingData;
-
-        //private void ExecuteReadNext() {
-
-        //    this.dataSourceModel.StartDataReads(1);
-        //}
-
-        //private void ExecuteStartReadingData() {
-        //    this.dataSourceModel.StartDataReads(0);
-        //}
-
-        //private void ExecuteStopReadingData() {
-        //    this.dataSourceModel.StopDataReads();
-        //}
-
+            this.cmdStopReading;    
         private void ExecuteStartReadingData(string countParam) {
 
             if (!int.TryParse(countParam, out int count) || count < 0) {
@@ -157,11 +118,6 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
         private bool CanExecuteStopReadingData() =>
             this.ReadingData;
-
-        //private void ExecuteStopReadingData() {
-        //    this.dataSourceModel.StopDataReads();
-        //}
-
         #region INotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;

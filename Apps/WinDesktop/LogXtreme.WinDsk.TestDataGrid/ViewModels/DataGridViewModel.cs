@@ -13,9 +13,6 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
     public class DataGridViewModel : 
         IDataGridViewModel,
         INotifyPropertyChanged {
-
-        //TODO what to do with the datasource when the Grid View is recycled?
-        //TODO should IDataSourceModel inherit from IDisposable?
         private readonly IDataSourceModel dataSourceModel;
         private readonly IDataGridModel dataGridModel;               
 

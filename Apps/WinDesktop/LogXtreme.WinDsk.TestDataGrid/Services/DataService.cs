@@ -37,14 +37,10 @@ namespace LogXtreme.WinDsk.TestDataGrid.Services {
 
             private readonly ISampleSourceModel sampleSourceModel;
             private readonly IDataDescriptorModel dataDescriptorModel;
-
-            //private readonly IObservable<DataModel>  
-
             private object onStartDataReadsLock = new Object();
             private EventHandler<IObservable<IDataModel>> onStartDataReads;
 
             private object onStopDataReadsLock = new Object();
-
             public DataSourceModel(ISampleSourceModel sampleSourceModel) {
 
                 this.sampleSourceModel = sampleSourceModel;
