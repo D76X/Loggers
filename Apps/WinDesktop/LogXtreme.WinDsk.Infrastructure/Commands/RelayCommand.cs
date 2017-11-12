@@ -31,7 +31,10 @@ namespace LogXtreme.WinDsk.Infrastructure.Commands {
             targetExecute = executeMethod;
         }
 
-        public RelayCommand(Action executeMethod, Func<bool> canExecute) {
+        public RelayCommand(
+            Action executeMethod, 
+            Func<bool> canExecute) {
+
             targetExecute = executeMethod;
             targetCanExecute = canExecute;
         }
@@ -80,9 +83,16 @@ namespace LogXtreme.WinDsk.Infrastructure.Commands {
             targetExecute = executeMethod;
         }
 
-        public RelayCommand(Action<T> executeMethod, Predicate<T> canExecute) {
+        public RelayCommand(
+            Action<T> executeMethod, 
+            Predicate<T> canExecute) {
+
             targetExecute = executeMethod;
             targetCanExecute = canExecute;
+        }
+
+        public void RaiseCanExecuteChanged() {
+            CanExecuteChanged(this, EventArgs.Empty);
         }
 
         #region ICommand
