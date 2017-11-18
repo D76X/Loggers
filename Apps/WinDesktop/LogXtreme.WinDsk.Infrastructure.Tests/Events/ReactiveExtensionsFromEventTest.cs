@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using LogXtreme.WinDsk.Infrastructure.Tests.Events.Models;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Diagnostics;
 using System.Reactive.Linq;
@@ -16,7 +17,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Events {
     /// https://rehansaeed.com/reactive-extensions-part2-wrapping-events/
     /// </summary>
     [TestClass]
-    public partial class TestReactiveExtensionsFromEvent {
+    public partial class ReactiveExtensionsFromEventTest {
 
         [TestMethod]
         public void FromEventActionBasedEvent() {

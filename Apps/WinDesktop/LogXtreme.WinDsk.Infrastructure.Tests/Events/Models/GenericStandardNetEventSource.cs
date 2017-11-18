@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LogXtreme.WinDsk.Infrastructure.Tests.Events {
+namespace LogXtreme.WinDsk.Infrastructure.Tests.Events.Models {
     class GenericStandardNetEventSource<TEventArgs>
         where TEventArgs : EventArgs {
 

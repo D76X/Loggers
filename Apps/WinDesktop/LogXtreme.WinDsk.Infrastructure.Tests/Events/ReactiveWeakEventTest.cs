@@ -3,6 +3,6 @@
 namespace LogXtreme.WinDsk.Infrastructure.Tests.Events {
 
     [TestClass]
-    public class TestReactiveWeakEvent {
+    public class ReactiveWeakEventTest {
     }
 }

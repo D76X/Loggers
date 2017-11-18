@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LogXtreme.WinDsk.Infrastructure.Tests.Events {
+namespace LogXtreme.WinDsk.Infrastructure.Tests.Events.Models {
 
     internal class ActionEventSource {
 

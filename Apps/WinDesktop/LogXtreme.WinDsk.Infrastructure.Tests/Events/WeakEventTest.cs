@@ -1,10 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using LogXtreme.WinDsk.Infrastructure.Tests.Events.Models;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Windows;
 
 namespace LogXtreme.WinDsk.Infrastructure.Tests.Events {
     [TestClass]
-    public class TestWeakEvent {
+    public class WeakEventTest {
 
         [TestMethod]
         public void ListenerIsGCedWhenThereAreNoRefsOtherThanWeakEvent() {
