@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TestApp3"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="350"
+        Height="350" 
         Width="525">
     <Window.Resources>
         <Style TargetType="{x:Type Label}">
@@ -58,7 +58,7 @@
             <Setter Property="Background"
                     Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
             <Setter Property="BorderBrush"
-                    Value="{StaticResource TextBox.Static.Border}" />
+                    Value="{StaticResource Brush3}" />
             <Setter Property="Foreground"
                     Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
             <Setter Property="BorderThickness"
@@ -135,31 +135,32 @@
                 <ColumnDefinition Width="131*" />
                 <ColumnDefinition Width="366*" />
             </Grid.ColumnDefinitions>
-            <Grid Background="#FFE8D0C7">
+            <Grid Background="{DynamicResource Brush1}">
                 <Grid Margin="10">
-                    <Border BorderBrush="#FF0EF137"
+                    <Border BorderBrush="{DynamicResource Brush3}"
                             BorderThickness="1"
                             CornerRadius="5" />
                     <ListBox x:Name="listBox"
                              Margin="3"
                              BorderBrush="{x:Null}"
                              ItemTemplate="{DynamicResource GamesItemTemplate}"
-                             ItemsSource="{Binding Games}" />
+                             ItemsSource="{Binding Games}" Background="{DynamicResource Brush1}" />
                 </Grid>
             </Grid>
-            <Grid Grid.Column="1"
-                  Background="#FFE9EAD3">
+            <Grid Grid.Column="1" Background="{DynamicResource Brush2}">
                 <Grid />
-                <Border BorderBrush="#FFEE0808"
+                <Border BorderBrush="{DynamicResource Brush4}"
                         BorderThickness="1"
                         Margin="10"
                         CornerRadius="5" />
-                <Grid Margin="10">
+                <Grid Margin="10" DataContext="{Binding SelectedItem, ElementName=listBox}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="127*"/>
+                        <RowDefinition Height="50*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*" />
@@ -167,25 +168,34 @@
                     </Grid.ColumnDefinitions>
                     <Label x:Name="labelName"
                            Content="Name"
-                           Grid.Row="0" />
+                           Grid.Row="0" Margin="36.818,4" />
                     <Label x:Name="labelPrice"
                            Content="Price"
-                           Grid.Row="1" />
+                           Grid.Row="1" Margin="39.856,4" />
                     <Label x:Name="labelDate"
                            Content="Date"
-                           Grid.Row="2" />
+                           Grid.Row="2" Margin="40.235,4,40.234,4" />
                     <TextBox x:Name="textBoxName"
                              Grid.Column="1"
                              Grid.Row="0"
                              Text="{Binding Name, Mode=TwoWay}" />
                     <TextBox x:Name="textBoxPrice"
                              Grid.Column="1"
-                             Grid.Row="1"
-                             Text="TextBox" />
+                             Grid.Row="1"  
+                             Text="{Binding Price, Mode=TwoWay}" />
                     <TextBox x:Name="textBoxDate"
                              Grid.Column="1"
                              Grid.Row="2"
-                             Text="TextBox" />
+                             Text="{Binding ReleaseDate, Mode=TwoWay}" />
+                    <Grid Grid.Row="5" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="button" Content="Save" Style="{DynamicResource RoundButton}" Margin="10"/>
+                        <Button x:Name="button1" Content="Button" Grid.Column="1" Margin="10" Style="{DynamicResource ShinyButton}"/>
+                    </Grid>
                 </Grid>
             </Grid>
             <Border BorderBrush="Black"

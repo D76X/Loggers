@@ -9,8 +9,17 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
 
-        <SampleDataSource:SampleDataSource x:Key="SampleDataSource"
-                                           d:IsDataSource="True" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Brushes.xaml"/>
+                <ResourceDictionary Source="Styles.xaml"/>
+                <ResourceDictionary Source="ControlTemplates.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <SampleDataSource:SampleDataSource x:Key="SampleDataSource"
+                d:IsDataSource="True" />
+
+        </ResourceDictionary>
 
     </Application.Resources>
 </Application>
