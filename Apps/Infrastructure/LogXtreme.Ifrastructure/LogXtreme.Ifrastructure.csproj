@@ -41,8 +41,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContractValidators\IInvariatValidator.cs" />
+    <Compile Include="ContractValidators\InvariantValidator.cs" />
+    <Compile Include="ContractValidators\InvariantValidatorComparisonEnum.cs" />
+    <Compile Include="ContractValidators\InvariantValidatorRangeCheckEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\Extensions\LogXtreme.Extensions\LogXtreme.Extensions.csproj">
+      <Project>{07a36205-c0c2-4f88-a37c-27199051a240}</Project>
+      <Name>LogXtreme.Extensions</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

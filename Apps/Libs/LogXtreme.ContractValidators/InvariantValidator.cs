@@ -9,6 +9,19 @@ namespace LogXtreme.ContractValidators {
     /// </summary>
     public class InvariantValidator : IInvariantValidator {
 
+        public enum Comparison {
+            EqualTo,
+            LargerThan,
+            SmallerThan,
+            LargerThanOrEqual,
+            SmallerThanOrEqual
+        }
+
+        public enum RangeCheck {
+            InRange,
+            OutOfRange
+        }
+
         /// <summary>Verify a (reference) method parameter as non-null</summary>
         /// <param name="argument">The parameter in question</param>
         /// <param name="message">Optional message to go along with the thrown exception</param>
@@ -54,6 +67,21 @@ namespace LogXtreme.ContractValidators {
             if (string.IsNullOrEmpty(target) || string.IsNullOrWhiteSpace(target)) {
                 throw new InvalidOperationException(message);
             }
+        }
+
+        public virtual void VerifyValue(
+            int value,
+            int compareTo,
+            Comparison comparison) {
+
+        }
+
+        public virtual void VerifyRange(
+            int value,
+            int left,
+            int right,
+            RangeCheck rangeCheck) {
+
         }
     }
 }
