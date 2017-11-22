@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TestApp3"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="350" 
+        Height="350"
         Width="525">
     <Window.Resources>
         <Style TargetType="{x:Type Label}">
@@ -144,57 +144,81 @@
                              Margin="3"
                              BorderBrush="{x:Null}"
                              ItemTemplate="{DynamicResource GamesItemTemplate}"
-                             ItemsSource="{Binding Games}" Background="{DynamicResource Brush1}" />
+                             ItemsSource="{Binding Games}"
+                             Background="{DynamicResource Brush1}" />
                 </Grid>
             </Grid>
-            <Grid Grid.Column="1" Background="{DynamicResource Brush2}">
+            <Grid Grid.Column="1"
+                  Background="{DynamicResource Brush2}">
                 <Grid />
                 <Border BorderBrush="{DynamicResource Brush4}"
                         BorderThickness="1"
                         Margin="10"
                         CornerRadius="5" />
-                <Grid Margin="10" DataContext="{Binding SelectedItem, ElementName=listBox}">
+                <Grid Margin="10"
+                      DataContext="{Binding SelectedItem, ElementName=listBox}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="127*"/>
-                        <RowDefinition Height="50*"/>
+                        <RowDefinition Height="31*" />
+                        <RowDefinition Height="106*" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*" />
                         <ColumnDefinition Width="2*" />
                     </Grid.ColumnDefinitions>
+                    <Slider x:Name="slider"
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Style="{DynamicResource SliderStyle1}" />
+                    <Label x:Name="labelSlider"
+                           Content="Slider"
+                           Grid.Row="3" />
                     <Label x:Name="labelName"
                            Content="Name"
-                           Grid.Row="0" Margin="36.818,4" />
+                           Grid.Row="0"
+                           Margin="36.818,4" />
                     <Label x:Name="labelPrice"
                            Content="Price"
-                           Grid.Row="1" Margin="39.856,4" />
+                           Grid.Row="1"
+                           Margin="39.856,4"
+                           d:LayoutOverrides="LeftMargin, RightMargin" />
                     <Label x:Name="labelDate"
                            Content="Date"
-                           Grid.Row="2" Margin="40.235,4,40.234,4" />
+                           Grid.Row="2"
+                           Margin="40.235,4,40.234,4"
+                           d:LayoutOverrides="LeftMargin, RightMargin" />
                     <TextBox x:Name="textBoxName"
                              Grid.Column="1"
                              Grid.Row="0"
                              Text="{Binding Name, Mode=TwoWay}" />
                     <TextBox x:Name="textBoxPrice"
                              Grid.Column="1"
-                             Grid.Row="1"  
+                             Grid.Row="1"
                              Text="{Binding Price, Mode=TwoWay}" />
                     <TextBox x:Name="textBoxDate"
                              Grid.Column="1"
                              Grid.Row="2"
                              Text="{Binding ReleaseDate, Mode=TwoWay}" />
-                    <Grid Grid.Row="5" Grid.ColumnSpan="2">
+                    <Grid Grid.Row="6"
+                          Grid.ColumnSpan="2">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="button" Content="Save" Style="{DynamicResource RoundButton}" Margin="10"/>
-                        <Button x:Name="button1" Content="Button" Grid.Column="1" Margin="10" Style="{DynamicResource ShinyButton}"/>
+                        <Button x:Name="button"
+                                Content="Save"
+                                Style="{DynamicResource RoundButton}"
+                                Margin="10" />
+                        <Button x:Name="button1"
+                                Content="Button"
+                                Grid.Column="1"
+                                Margin="10"
+                                Style="{DynamicResource ShinyButton}" />
                     </Grid>
                 </Grid>
             </Grid>
