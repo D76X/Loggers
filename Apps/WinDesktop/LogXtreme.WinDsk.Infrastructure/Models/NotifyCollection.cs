@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 namespace LogXtreme.WinDsk.Infrastructure.Models {
 
     /// <summary>
+    /// A read-only ObservableCollection
+    /// 
     /// Refs
     /// https://stackoverflow.com/questions/1763696/how-can-i-make-a-read-only-observablecollection-property
     /// </summary>

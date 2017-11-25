@@ -163,9 +163,9 @@
       <Project>{07a36205-c0c2-4f88-a37c-27199051a240}</Project>
       <Name>LogXtreme.Extensions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Libs\LogXtreme.ContractValidators\LogXtreme.ContractValidators.csproj">
-      <Project>{b16746a1-1cd1-4ea4-9870-b68981bbbfbf}</Project>
-      <Name>LogXtreme.ContractValidators</Name>
+    <ProjectReference Include="..\..\Infrastructure\LogXtreme.Ifrastructure\LogXtreme.Ifrastructure.csproj">
+      <Project>{f919b826-9c93-4a30-a68c-ed35b35b2fa1}</Project>
+      <Name>LogXtreme.Ifrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\LogXtreme.WinDsk.Infrastructure\LogXtreme.WinDsk.Infrastructure.csproj">
       <Project>{489706e3-c226-4d83-bb3d-c5a0d49d3835}</Project>

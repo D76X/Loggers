@@ -29,17 +29,13 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
             int maxSize, 
             CycleMode cycleMode = CycleMode.Flush) {
 
+            //TODO should reference the interface and use injection, perhaps attributes?
             var validator = InvariantValidator.CreateValidator();
-
             validator.VerifyValue<ArgumentException>(
                 maxSize, 
                 0, 
                 InvariantValidatorComparisonEnum.LargerThanOrEqual,
-                $"{nameof(maxSize)} must be non negative intead is {maxSize}");
-
-            //if (maxSize < 0) {
-            //    throw new ArgumentException($"{nameof(maxSize)} must be non negative intead is {maxSize}");
-            //}            
+                $"{nameof(maxSize)} must be grater than 0 intead is {maxSize}");                        
 
             this.maxSize = maxSize;
             this.cycleMode = cycleMode;
@@ -68,7 +64,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
                         base.InsertItem(this.Count, item);
                         break;
                     default:
-                        break;
+                        throw new ArgumentException($"{nameof(ResizeObservableCollection<T>)} cannot insert item because cycle mode {this.cycleMode} is not an expected mode.");
                 }
             }
             else {
