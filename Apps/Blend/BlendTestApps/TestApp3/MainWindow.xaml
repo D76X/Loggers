@@ -145,7 +145,8 @@
                              BorderBrush="{x:Null}"
                              ItemTemplate="{DynamicResource GamesItemTemplate}"
                              ItemsSource="{Binding Games}"
-                             Background="{DynamicResource Brush1}" />
+                             Background="{DynamicResource Brush1}"
+                             Style="{DynamicResource ListBoxStyle1}" />
                 </Grid>
             </Grid>
             <Grid Grid.Column="1"
@@ -173,7 +174,7 @@
                     <Slider x:Name="slider"
                             Grid.Row="3"
                             Grid.Column="1"
-                            Style="{DynamicResource SliderStyle1}" />
+                            Style="{DynamicResource SliderStyle2}" />
                     <Label x:Name="labelSlider"
                            Content="Slider"
                            Grid.Row="3" />
@@ -184,13 +185,10 @@
                     <Label x:Name="labelPrice"
                            Content="Price"
                            Grid.Row="1"
-                           Margin="39.856,4"
-                           d:LayoutOverrides="LeftMargin, RightMargin" />
+                           Margin="39.856,4" />
                     <Label x:Name="labelDate"
                            Content="Date"
-                           Grid.Row="2"
-                           Margin="40.235,4,40.234,4"
-                           d:LayoutOverrides="LeftMargin, RightMargin" />
+                           Grid.Row="2" />
                     <TextBox x:Name="textBoxName"
                              Grid.Column="1"
                              Grid.Row="0"
