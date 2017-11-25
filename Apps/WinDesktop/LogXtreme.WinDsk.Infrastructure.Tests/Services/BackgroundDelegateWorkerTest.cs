@@ -1,4 +1,5 @@
-﻿using LogXtreme.WinDsk.Infrastructure.Services;
+﻿using LogXtreme.Ifrastructure.Tests;
+using LogXtreme.WinDsk.Infrastructure.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Threading;
@@ -12,7 +13,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Services {
     /// https://stackoverflow.com/questions/2538065/what-is-the-basic-concept-behind-waithandle
     /// </summary>
     [TestClass]
-    public class BackgroundDelegateWorkerTest {
+    public class BackgroundDelegateWorkerTest : TestBase {
 
         [TestMethod]
         public void BackgroundDelegateWorker_PassesRighParam_DoesWork_Completes() {

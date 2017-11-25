@@ -1,8 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using LogXtreme.Ifrastructure.Tests;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LogXtreme.WinDsk.Infrastructure.Tests.Events {
 
     [TestClass]
-    public class ReactiveWeakEventTest {
+    public class ReactiveWeakEventTest : TestBase {
     }
 }
