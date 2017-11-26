@@ -1,5 +1,4 @@
 ﻿
-using LogXtreme.Ifrastructure.ContractValidators;
 using LogXtreme.Infrastructure.ContractValidators;
 using System;
 using System.Collections.ObjectModel;
@@ -17,25 +16,26 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
         ObservableCollection<T> {
 
         public enum CycleMode {
+            None,
             Roll,
             Flush,
             Queue
         }
 
         private readonly int maxSize;
-        private readonly CycleMode cycleMode;        
+        private readonly CycleMode cycleMode;
+
+        public ResizeObservableCollection() {
+
+            this.maxSize = 0;
+            this.cycleMode = CycleMode.None;
+        }
 
         public ResizeObservableCollection(
-            int maxSize, 
-            CycleMode cycleMode = CycleMode.Flush) {
+            int maxSize,
+            CycleMode cycleMode = CycleMode.None) {            
 
-            //TODO should reference the interface and use injection, perhaps attributes?
-            var validator = InvariantValidator.CreateValidator();
-            validator.VerifyValue<ArgumentException>(
-                maxSize, 
-                0, 
-                InvariantValidatorComparisonEnum.LargerThanOrEqual,
-                $"{nameof(maxSize)} must be grater than 0 intead is {maxSize}");                        
+            maxSize.Validate(nameof(maxSize)).GreaterThan(0);
 
             this.maxSize = maxSize;
             this.cycleMode = cycleMode;
@@ -52,7 +52,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
                 switch (this.cycleMode) {
 
                     case CycleMode.Roll:
-                        this.RemoveAt(index-1);
+                        this.RemoveAt(index - 1);
                         base.InsertItem(0, item);
                         break;
                     case CycleMode.Flush:

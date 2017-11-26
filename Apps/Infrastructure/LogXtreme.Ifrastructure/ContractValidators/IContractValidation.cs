@@ -1,39 +1,40 @@
 ﻿using System;
 
-namespace LogXtreme.Ifrastructure.ContractValidators {
+namespace LogXtreme.Infrastructure.ContractValidators {
 
     /// <summary>
     /// Refs
     /// https://www.daedtech.com/poor-mans-code-contracts/
     /// </summary>
-    public interface IInvariantValidator {
+    public interface IContractValidation {
 
-        void VerifyNonNull<TException>(
+        IContractValidation NotNull<TException>(
             object argument,
+            string argumentName,
             string message = null) where TException : Exception;
 
-        void VerifyParamsNonNull<TException>(
+        IContractValidation NotNull<TException>(
             params object[] arguments) where TException : Exception;
 
-        void VerifyNotNullOrEmpty<TException>(
+        IContractValidation NotNullOrEmpty<TException>(
             string target,
             string message = null) where TException : Exception;
 
-        void VerifyNotNullOrEmptyOrWhiteSpace<TException>(
+        IContractValidation NotNullOrEmptyOrWhiteSpace<TException>(
             string target,
             string message = null) where TException : Exception;
 
-        void VerifyValue<TException>(
+        IContractValidation VerifyValue<TException>(
             object value,
             object compareTo,
-            InvariantValidatorComparisonEnum comparison,
+            EnumComparisonOperations comparison,
             string message = null) where TException : Exception;
 
-        void VerifyRange<TException>(
+        IContractValidation VerifyRange<TException>(
             object value,
             object left,
             object right,
-            InvariantValidatorRangeCheckEnum rangeCheck,
+            EnumRangeCheck rangeCheck,
             string message = null) where TException : Exception;
     }
 }

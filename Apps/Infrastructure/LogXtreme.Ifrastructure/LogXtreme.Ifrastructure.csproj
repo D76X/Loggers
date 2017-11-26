@@ -40,10 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContractValidators\IInvariatValidator.cs" />
-    <Compile Include="ContractValidators\InvariantValidator.cs" />
-    <Compile Include="ContractValidators\InvariantValidatorComparisonEnum.cs" />
-    <Compile Include="ContractValidators\InvariantValidatorRangeCheckEnum.cs" />
+    <Compile Include="ContractValidators\IContractValidation.cs" />
+    <Compile Include="ContractValidators\ContractValidator.cs" />
+    <Compile Include="ContractValidators\EnumComparisonOperations.cs" />
+    <Compile Include="ContractValidators\EnumRangeCheck.cs" />
+    <Compile Include="ContractValidators\ValidationExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\TestBase.cs" />
   </ItemGroup>

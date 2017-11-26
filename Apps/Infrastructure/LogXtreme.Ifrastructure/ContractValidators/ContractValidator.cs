@@ -1,42 +1,68 @@
-﻿using System;
-using LogXtreme.Ifrastructure.ContractValidators;
-using LogXtreme.Extensions;
+﻿using LogXtreme.Extensions;
+using System;
 
 namespace LogXtreme.Infrastructure.ContractValidators {
 
     /// <summary>
     /// Refs
     /// https://www.daedtech.com/poor-mans-code-contracts/
+    /// https://rogerjohansson.blog/2008/05/10/followup-how-to-validate-a-methods-arguments/    
     /// </summary>
-    public class InvariantValidator : IInvariantValidator {
+    public class ContractValidator<V> : IContractValidation {
 
-        public static IInvariantValidator CreateValidator() {
-            return new InvariantValidator();
+        public readonly V Value;
+        public readonly string Name;
+
+        public static ContractValidator<V> CreateValidator(
+            V value,
+            string name) {
+
+            return new ContractValidator<V>(value, name);
         }
 
-        private InvariantValidator() { }
+        private ContractValidator(
+            V value,
+            string name){
+
+            this.Value = value;
+            this.Name = name;
+        } 
+
+        //public static IContractValidation CreateValidator() {
+        //    return new ContractValidator();
+        //}
+
+        //private ContractValidator<M>() { }
 
         /// <summary>
         /// Verifies a (reference) method parameter as non-null and throws an 
-        /// ArgumentNullException with a set or custom message if it si null.
+        /// ArgumentNullException with a set or custom message if it is null.
         /// </summary>
         /// <param name="argument">The parameter to check</param>
         /// <param name="message">Optional message to use in the exception when thrown</param>
-        public virtual void VerifyNonNull<T>(
+        public virtual IContractValidation NotNull<TException>(
             object argument,
-            string message = @"Argument cannot be null") where T : Exception {
+            string argumentName,
+            string message = null) where TException : Exception {
 
             if (argument == null) {
 
-                Type exceptionType = typeof(T);
+                Type exceptionType = typeof(TException);
 
                 if (exceptionType == typeof(ArgumentNullException)) {
-                    throw new ArgumentNullException(@"argument", message);
+
+                    if( message == null) {
+                        throw new ArgumentNullException(argumentName);
+                    }
+
+                    throw new ArgumentNullException(argumentName, message);
                 }
 
-                var exception = (T)Activator.CreateInstance(typeof(T), message);
+                var exception = (TException)Activator.CreateInstance(typeof(TException), message);
                 throw exception;
             }
+
+            return this;
         }
 
         /// <summary>
@@ -44,14 +70,16 @@ namespace LogXtreme.Infrastructure.ContractValidators {
         /// and throws an exception when one is found to be null.
         /// </summary>
         /// <param name="arguments"></param>
-        public virtual void VerifyParamsNonNull<T>(
-            params object[] arguments) where T : Exception {
+        public virtual IContractValidation NotNull<TException>(
+            params object[] arguments) where TException : Exception {
 
-            VerifyNonNull<T>(arguments);
+            NotNull<TException>((object)arguments);
 
             foreach (object myParameter in arguments) {
-                VerifyNonNull<T>(myParameter);
+                NotNull<TException>(myParameter);
             }
+
+            return this;
         }
 
         /// <summary>
@@ -59,49 +87,53 @@ namespace LogXtreme.Infrastructure.ContractValidators {
         /// </summary>
         /// <param name="target">String to check</param>
         /// <param name="message">Optional parameter for exception message</param>
-        public virtual void VerifyNotNullOrEmpty<T>(
+        public virtual IContractValidation NotNullOrEmpty<TException>(
             string target,
-            string message = @"String cannot be null or empty.") where T : Exception {
+            string message = @"String cannot be null or empty.") where TException : Exception {
 
             if (string.IsNullOrEmpty(target)) {
 
-                Type exceptionType = typeof(T);
+                Type exceptionType = typeof(TException);
 
                 if (exceptionType == typeof(ArgumentNullException)) {
                     throw new ArgumentNullException(@"argument", message);
                 }
 
-                var exception = (T)Activator.CreateInstance(typeof(T), message);
+                var exception = (TException)Activator.CreateInstance(typeof(TException), message);
                 throw exception;
             }
+
+            return this;
         }
 
         /// <summary>Verify that a string is not null or empty</summary>
         /// <param name="target">String to check</param>
         /// <param name="message">Optional parameter for exception message</param>
-        public virtual void VerifyNotNullOrEmptyOrWhiteSpace<T>(
+        public virtual IContractValidation NotNullOrEmptyOrWhiteSpace<TException>(
             string target,
-            string message = @"String cannot be null or empty or white space.") where T : Exception {
+            string message = @"String cannot be null or empty or white space.") where TException : Exception {
 
             if (string.IsNullOrEmpty(target) ||
                 string.IsNullOrWhiteSpace(target)) {
 
-                Type exceptionType = typeof(T);
+                Type exceptionType = typeof(TException);
 
                 if (exceptionType == typeof(ArgumentNullException)) {
                     throw new ArgumentNullException(@"argument", message);
                 }
 
-                var exception = (T)Activator.CreateInstance(typeof(T), message);
+                var exception = (TException)Activator.CreateInstance(typeof(TException), message);
                 throw exception;
             }
+
+            return this;
         }
 
-        public virtual void VerifyValue<T>(
+        public virtual IContractValidation VerifyValue<TException>(
             object value,
             object compareTo,
-            InvariantValidatorComparisonEnum comparison,
-            string message = null) where T : Exception {
+            EnumComparisonOperations comparison,
+            string message = null) where TException : Exception {
 
             var success = true;
 
@@ -111,13 +143,13 @@ namespace LogXtreme.Infrastructure.ContractValidators {
             if (!success) {
 
                 message = $"{nameof(VerifyValue)} cannot compare {value} of type {typeOfValue} to {compareTo} of type {outType}";
-                var exception = (T)Activator.CreateInstance(typeof(T), message);
+                var exception = (TException)Activator.CreateInstance(typeof(TException), message);
                 throw exception;
             }
 
             switch (comparison) {
 
-                case InvariantValidatorComparisonEnum.EqualTo:
+                case EnumComparisonOperations.EqualTo:
 
                     if (outType == typeof(int)) {
 
@@ -144,7 +176,7 @@ namespace LogXtreme.Infrastructure.ContractValidators {
 
                     break;
 
-                case InvariantValidatorComparisonEnum.LargerThan:
+                case EnumComparisonOperations.GreaterThan:
 
                     if (outType == typeof(int)) {
 
@@ -170,7 +202,7 @@ namespace LogXtreme.Infrastructure.ContractValidators {
 
                     break;
 
-                case InvariantValidatorComparisonEnum.SmallerThan:
+                case EnumComparisonOperations.SmallerThan:
 
                     if (outType == typeof(int)) {
 
@@ -196,7 +228,7 @@ namespace LogXtreme.Infrastructure.ContractValidators {
                         $"{value} < {compareTo} is false";
 
                     break;
-                case InvariantValidatorComparisonEnum.LargerThanOrEqual:
+                case EnumComparisonOperations.GreaterThanOrEqualTo:
 
                     if (outType == typeof(int)) {
 
@@ -223,7 +255,7 @@ namespace LogXtreme.Infrastructure.ContractValidators {
 
                     break;
 
-                case InvariantValidatorComparisonEnum.SmallerThanOrEqual:
+                case EnumComparisonOperations.SmallerThanOrEqualTo:
 
                     if (outType == typeof(int)) {
 
@@ -258,17 +290,19 @@ namespace LogXtreme.Infrastructure.ContractValidators {
 
             if (!success) {
 
-                var exception = (T)Activator.CreateInstance(typeof(T), message);
+                var exception = (TException)Activator.CreateInstance(typeof(TException), message);
                 throw exception;
             }
+
+            return this;
         }
 
-        public virtual void VerifyRange<T>(
+        public virtual IContractValidation VerifyRange<TException>(
             object value,
             object left,
             object right,
-            InvariantValidatorRangeCheckEnum rangeCheck,
-            string message = @"value range check failed") where T : Exception {
+            EnumRangeCheck rangeCheck,
+            string message = @"value range check failed") where TException : Exception {
 
             var success = true;
 
@@ -278,7 +312,7 @@ namespace LogXtreme.Infrastructure.ContractValidators {
             if (!success) {
 
                 message = $"{nameof(VerifyRange)} cannot compare {value} of type {typeOfValue} to {left} of type {outType}";
-                var exception = (T)Activator.CreateInstance(typeof(T), message);
+                var exception = (TException)Activator.CreateInstance(typeof(TException), message);
                 throw exception;
             }
 
@@ -287,13 +321,13 @@ namespace LogXtreme.Infrastructure.ContractValidators {
             if (!success) {
 
                 message = $"{nameof(VerifyRange)} cannot compare {value} of type {typeOfValue} to {right} of type {outType}";
-                var exception = (T)Activator.CreateInstance(typeof(T), message);
+                var exception = (TException)Activator.CreateInstance(typeof(TException), message);
                 throw exception;
             }
 
             switch (rangeCheck) {
 
-                case InvariantValidatorRangeCheckEnum.InRange:
+                case EnumRangeCheck.InRange:
 
                     if (outType == typeof(int)) {
 
@@ -344,7 +378,7 @@ namespace LogXtreme.Infrastructure.ContractValidators {
 
                     break;
 
-                case InvariantValidatorRangeCheckEnum.OutOfRange:
+                case EnumRangeCheck.OutOfRange:
 
                     if (outType == typeof(int)) {
 
@@ -403,9 +437,11 @@ namespace LogXtreme.Infrastructure.ContractValidators {
 
             if (!success) {
 
-                var exception = (T)Activator.CreateInstance(typeof(T), message);
+                var exception = (TException)Activator.CreateInstance(typeof(TException), message);
                 throw exception;
             }
+
+            return this;    
         }
     }
 }

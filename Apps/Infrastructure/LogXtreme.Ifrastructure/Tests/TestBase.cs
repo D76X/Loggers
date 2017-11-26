@@ -2,6 +2,7 @@
 namespace LogXtreme.Ifrastructure.Tests {
 
     /// <summary>
+    /// Base class for Unit Tests.
     /// 
     /// Refs
     /// The Right Way to do Test Cleanup
