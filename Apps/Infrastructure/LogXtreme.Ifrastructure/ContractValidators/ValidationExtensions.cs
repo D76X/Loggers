@@ -23,12 +23,15 @@ namespace LogXtreme.Infrastructure.ContractValidators {
                 validationItem.Name) as 
             ContractValidator<V>;
 
-        public static ContractValidator<V> NotNullOrEmpty<V>(
+        public static ContractValidator<V> NotEmpty<V>(
             this ContractValidator<V> validationItem) =>
-            validationItem.NotNullOrEmpty<ArgumentException>(validationItem.Value as string) as
-            ContractValidator<V>;
+            validationItem.NotNullOrEmpty<ArgumentException>(
+                validationItem.Value as string,
+                validationItem.Name,
+                $"{validationItem.Name} is an empty string") 
+            as ContractValidator<V>;
 
-        public static ContractValidator<V> NotNullOrEmptyOrWhiteSpace<V>(
+        public static ContractValidator<V> NotWhiteSpace<V>(
             this ContractValidator<V> validationItem) =>
             validationItem.NotNullOrEmptyOrWhiteSpace<ArgumentException>(validationItem.Value as string) as
             ContractValidator<V>;

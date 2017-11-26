@@ -89,15 +89,14 @@ namespace LogXtreme.Infrastructure.ContractValidators {
         /// <param name="message">Optional parameter for exception message</param>
         public virtual IContractValidation NotNullOrEmpty<TException>(
             string target,
-            string message = @"String cannot be null or empty.") where TException : Exception {
+            string argumentName,
+            string message = null) where TException : Exception {
+
+            if (target == null) {
+                throw new ArgumentNullException(argumentName);
+            }
 
             if (string.IsNullOrEmpty(target)) {
-
-                Type exceptionType = typeof(TException);
-
-                if (exceptionType == typeof(ArgumentNullException)) {
-                    throw new ArgumentNullException(@"argument", message);
-                }
 
                 var exception = (TException)Activator.CreateInstance(typeof(TException), message);
                 throw exception;

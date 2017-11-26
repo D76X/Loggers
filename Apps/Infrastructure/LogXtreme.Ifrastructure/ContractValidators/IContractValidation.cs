@@ -18,6 +18,7 @@ namespace LogXtreme.Infrastructure.ContractValidators {
 
         IContractValidation NotNullOrEmpty<TException>(
             string target,
+            string argumentName,
             string message = null) where TException : Exception;
 
         IContractValidation NotNullOrEmptyOrWhiteSpace<TException>(
