@@ -17,17 +17,19 @@ namespace LogXtreme.Infrastructure.ContractValidators {
             params object[] arguments) where TException : Exception;
 
         IContractValidation NotNullOrEmpty<TException>(
-            string target,
+            string argument,
             string argumentName,
             string message = null) where TException : Exception;
 
         IContractValidation NotNullOrEmptyOrWhiteSpace<TException>(
-            string target,
+            string argument,
+            string argumentName,
             string message = null) where TException : Exception;
 
         IContractValidation VerifyValue<TException>(
-            object value,
-            object compareTo,
+            object argument,
+            string argumentName,
+            object target,
             EnumComparisonOperations comparison,
             string message = null) where TException : Exception;
 

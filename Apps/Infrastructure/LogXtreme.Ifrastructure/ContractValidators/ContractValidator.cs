@@ -85,18 +85,18 @@ namespace LogXtreme.Infrastructure.ContractValidators {
         /// <summary>
         /// Verifies that a string is not null or empty
         /// </summary>
-        /// <param name="target">String to check</param>
+        /// <param name="argument">String to check</param>
         /// <param name="message">Optional parameter for exception message</param>
         public virtual IContractValidation NotNullOrEmpty<TException>(
-            string target,
+            string argument,
             string argumentName,
             string message = null) where TException : Exception {
 
-            if (target == null) {
+            if (argument == null) {
                 throw new ArgumentNullException(argumentName);
             }
 
-            if (string.IsNullOrEmpty(target)) {
+            if (string.IsNullOrEmpty(argument)) {
 
                 var exception = (TException)Activator.CreateInstance(typeof(TException), message);
                 throw exception;
@@ -106,20 +106,22 @@ namespace LogXtreme.Infrastructure.ContractValidators {
         }
 
         /// <summary>Verify that a string is not null or empty</summary>
-        /// <param name="target">String to check</param>
+        /// <param name="argument">String to check</param>
         /// <param name="message">Optional parameter for exception message</param>
         public virtual IContractValidation NotNullOrEmptyOrWhiteSpace<TException>(
-            string target,
-            string message = @"String cannot be null or empty or white space.") where TException : Exception {
+            string argument,
+            string argumentName,
+            string message = null) where TException : Exception {
 
-            if (string.IsNullOrEmpty(target) ||
-                string.IsNullOrWhiteSpace(target)) {
+            if (argument == null) {
+                throw new ArgumentNullException(argumentName);
+            }
 
-                Type exceptionType = typeof(TException);
+            if (string.IsNullOrEmpty(argument)) {
+                throw new ArgumentException($"{argumentName} is an empty string.");
+            }
 
-                if (exceptionType == typeof(ArgumentNullException)) {
-                    throw new ArgumentNullException(@"argument", message);
-                }
+            if (string.IsNullOrWhiteSpace(argument)) {                
 
                 var exception = (TException)Activator.CreateInstance(typeof(TException), message);
                 throw exception;
@@ -128,20 +130,36 @@ namespace LogXtreme.Infrastructure.ContractValidators {
             return this;
         }
 
+        /// <summary>
+        /// Refs
+        /// https://msdn.microsoft.com/en-us/library/system.icomparable(v=vs.110).aspx
+        /// https://stackoverflow.com/questions/34242746/difference-between-icomparable-and-icomparablet-in-this-search-method
+        /// https://stackoverflow.com/questions/7301277/icomparable-and-icomparablet   
+        /// Refs
+        /// http://www.codinghelmet.com/?path=howto/implement-icomparable-t
+        /// </summary>
+        /// <typeparam name="TException"></typeparam>
+        /// <param name="argument"></param>
+        /// <param name="argumentName"></param>
+        /// <param name="target"></param>
+        /// <param name="comparison"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
         public virtual IContractValidation VerifyValue<TException>(
-            object value,
-            object compareTo,
+            object argument,
+            string argumentName,
+            object target,
             EnumComparisonOperations comparison,
             string message = null) where TException : Exception {
 
             var success = true;
 
-            var typeOfValue = value.GetType();
-            success = typeOfValue.IsTypeOf(compareTo, out Type outType);
+            var typeOfArgument = argument.GetType();
+            success = typeOfArgument.IsTypeOf(target, out Type outType);
 
             if (!success) {
 
-                message = $"{nameof(VerifyValue)} cannot compare {value} of type {typeOfValue} to {compareTo} of type {outType}";
+                message = $"{nameof(VerifyValue)} cannot compare {argument} of type {typeOfArgument} to {target} of type {outType}";
                 var exception = (TException)Activator.CreateInstance(typeof(TException), message);
                 throw exception;
             }
@@ -150,20 +168,32 @@ namespace LogXtreme.Infrastructure.ContractValidators {
 
                 case EnumComparisonOperations.EqualTo:
 
-                    if (outType == typeof(int)) {
+                    if (outType == typeof(string)) {
 
-                        success = (int)value == (int)compareTo;
+                        success = (string)argument == (string)target;
+                    }
+                    else if (outType == typeof(int)) {
+
+                        success = (int)argument == (int)target;
 
                     }
                     else if (outType == typeof(double)) {
 
-                        success = (double)value == (double)compareTo;
+                        success = (double)argument == (double)target;
 
                     }
                     else if (outType == typeof(decimal)) {
 
-                        success = (decimal)value == (decimal)compareTo;
+                        success = (decimal)argument == (decimal)target;
 
+                    }
+                    else if (outType.IsIComparable<object>()) {
+
+                        success = ((IComparable<object>)argument).CompareTo(target) == 0;
+                    }
+                    else if (outType.IsIComparable()) {
+
+                        success = ((IComparable)argument).CompareTo(target) == 0;
                     }
                     else {
 
@@ -171,7 +201,7 @@ namespace LogXtreme.Infrastructure.ContractValidators {
                     }
 
                     message = message ??
-                        $"{value} == {compareTo} is false";
+                        $"{argument} == {target} is false";
 
                     break;
 
@@ -179,25 +209,33 @@ namespace LogXtreme.Infrastructure.ContractValidators {
 
                     if (outType == typeof(int)) {
 
-                        success = (int)value > (int)compareTo;
+                        success = (int)argument > (int)target;
 
                     }
                     else if (outType == typeof(double)) {
 
-                        success = (double)value > (double)compareTo;
+                        success = (double)argument > (double)target;
 
                     }
                     else if (outType == typeof(decimal)) {
 
-                        success = (decimal)value > (decimal)compareTo;
+                        success = (decimal)argument > (decimal)target;
 
+                    }
+                    else if (outType.IsIComparable<object>()) {
+
+                        success = ((IComparable<object>)argument).CompareTo(target) > 0;
+                    }
+                    else if (outType.IsIComparable()) {
+
+                        success = ((IComparable)argument).CompareTo(target) > 0;
                     }
                     else {
 
                         success = false;
                     }
                     message = message ??
-                        $"{value} > {compareTo} is false";
+                        $"{argument} > {target} is false";
 
                     break;
 
@@ -205,18 +243,26 @@ namespace LogXtreme.Infrastructure.ContractValidators {
 
                     if (outType == typeof(int)) {
 
-                        success = (int)value < (int)compareTo;
+                        success = (int)argument < (int)target;
 
                     }
                     else if (outType == typeof(double)) {
 
-                        success = (double)value < (double)compareTo;
+                        success = (double)argument < (double)target;
 
                     }
                     else if (outType == typeof(decimal)) {
 
-                        success = (decimal)value < (decimal)compareTo;
+                        success = (decimal)argument < (decimal)target;
 
+                    }
+                    else if (outType.IsIComparable<object>()) {
+
+                        success = ((IComparable<object>)argument).CompareTo(target) < 0;
+                    }
+                    else if (outType.IsIComparable()) {
+
+                        success = ((IComparable)argument).CompareTo(target) < 0;
                     }
                     else {
 
@@ -224,25 +270,33 @@ namespace LogXtreme.Infrastructure.ContractValidators {
                     }
 
                     message = message ??
-                        $"{value} < {compareTo} is false";
+                        $"{argument} < {target} is false";
 
                     break;
                 case EnumComparisonOperations.GreaterThanOrEqualTo:
 
                     if (outType == typeof(int)) {
 
-                        success = (int)value >= (int)compareTo;
+                        success = (int)argument >= (int)target;
 
                     }
                     else if (outType == typeof(double)) {
 
-                        success = (double)value >= (double)compareTo;
+                        success = (double)argument >= (double)target;
 
                     }
                     else if (outType == typeof(decimal)) {
 
-                        success = (decimal)value >= (decimal)compareTo;
+                        success = (decimal)argument >= (decimal)target;
 
+                    }
+                    else if (outType.IsIComparable<object>()) {
+
+                        success = ((IComparable<object>)argument).CompareTo(target) >= 0;
+                    }
+                    else if (outType.IsIComparable()) {
+
+                        success = ((IComparable)argument).CompareTo(target) >= 0;
                     }
                     else {
 
@@ -250,7 +304,7 @@ namespace LogXtreme.Infrastructure.ContractValidators {
                     }
 
                     message = message ??
-                        $"{value} >= {compareTo} is false";
+                        $"{argument} >= {target} is false";
 
                     break;
 
@@ -258,18 +312,26 @@ namespace LogXtreme.Infrastructure.ContractValidators {
 
                     if (outType == typeof(int)) {
 
-                        success = (int)value <= (int)compareTo;
+                        success = (int)argument <= (int)target;
 
                     }
                     else if (outType == typeof(double)) {
 
-                        success = (double)value <= (double)compareTo;
+                        success = (double)argument <= (double)target;
 
                     }
                     else if (outType == typeof(decimal)) {
 
-                        success = (decimal)value <= (decimal)compareTo;
+                        success = (decimal)argument <= (decimal)target;
 
+                    }
+                    else if (outType.IsIComparable<object>()) {
+
+                        success = ((IComparable<object>)argument).CompareTo(target) <= 0;
+                    }
+                    else if (outType.IsIComparable()) {
+
+                        success = ((IComparable)argument).CompareTo(target) <= 0;
                     }
                     else {
 
@@ -277,7 +339,7 @@ namespace LogXtreme.Infrastructure.ContractValidators {
                     }
 
                     message = message ??
-                        $"{value} <= {compareTo} is false";
+                        $"{argument} <= {target} is false";
 
                     break;
 

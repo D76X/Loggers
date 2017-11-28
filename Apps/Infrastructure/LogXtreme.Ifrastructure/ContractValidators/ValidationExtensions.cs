@@ -33,12 +33,17 @@ namespace LogXtreme.Infrastructure.ContractValidators {
 
         public static ContractValidator<V> NotWhiteSpace<V>(
             this ContractValidator<V> validationItem) =>
-            validationItem.NotNullOrEmptyOrWhiteSpace<ArgumentException>(validationItem.Value as string) as
-            ContractValidator<V>;
+            validationItem.NotNullOrEmptyOrWhiteSpace<ArgumentException>(
+                validationItem.Value as string,
+                validationItem.Name,
+                $"{validationItem.Name} is white space") 
+            as ContractValidator<V>;
 
         public static ContractValidator<V> EqualTo<V>(
             this ContractValidator<V> validationItem,
-            V val) => validationItem.CompareValues(EnumComparisonOperations.EqualTo, val);
+            V val) => validationItem.CompareValues(
+                EnumComparisonOperations.EqualTo, 
+                val);
 
         public static ContractValidator<V> GreaterThan<V>(
             this ContractValidator<V> validationItem,
@@ -67,9 +72,10 @@ namespace LogXtreme.Infrastructure.ContractValidators {
 
                     validationItem.VerifyValue<ArgumentException>(
                             validationItem.Value,
+                            validationItem.Name,
                             val,
                             EnumComparisonOperations.EqualTo,
-                            $"{validationItem.Name} must be equal to {val} intead is {validationItem.Value}");
+                            $"{validationItem.Name} should be equal to {val} intead is {validationItem.Value}");
 
                     break;
 
@@ -77,9 +83,10 @@ namespace LogXtreme.Infrastructure.ContractValidators {
 
                     validationItem.VerifyValue<ArgumentException>(
                             validationItem.Value,
+                            validationItem.Name,
                             val,
                             EnumComparisonOperations.GreaterThan,
-                            $"{validationItem.Name} must be greater than {val} intead is {validationItem.Value}");
+                            $"{validationItem.Name} should be greater than {val} intead is {validationItem.Value}");
 
                     break;
 
@@ -87,9 +94,10 @@ namespace LogXtreme.Infrastructure.ContractValidators {
 
                     validationItem.VerifyValue<ArgumentException>(
                             validationItem.Value,
+                            validationItem.Name,
                             val,
                             EnumComparisonOperations.GreaterThanOrEqualTo,
-                            $"{validationItem.Name} must be greater than or equal to {val} intead is {validationItem.Value}");
+                            $"{validationItem.Name} should be greater than or equal to {val} intead is {validationItem.Value}");
 
                     break;
 
@@ -97,9 +105,10 @@ namespace LogXtreme.Infrastructure.ContractValidators {
 
                     validationItem.VerifyValue<ArgumentException>(
                             validationItem.Value,
+                            validationItem.Name,
                             val,
                             EnumComparisonOperations.SmallerThan,
-                            $"{validationItem.Name} must be smaller than {val} intead is {validationItem.Value}");
+                            $"{validationItem.Name} should be smaller than {val} intead is {validationItem.Value}");
 
                     break;
                 
@@ -107,9 +116,10 @@ namespace LogXtreme.Infrastructure.ContractValidators {
 
                     validationItem.VerifyValue<ArgumentException>(
                             validationItem.Value,
+                            validationItem.Name,
                             val,
                             EnumComparisonOperations.SmallerThanOrEqualTo,
-                            $"{validationItem.Name} must be smaller than or equal to {val} intead is {validationItem.Value}");
+                            $"{validationItem.Name} should be smaller than or equal to {val} intead is {validationItem.Value}");
 
                     break;
 
