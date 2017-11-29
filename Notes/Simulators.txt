@@ -62,7 +62,7 @@ at a time.
 
 -----------------------------------------------------------------------
 If you don't ensure that the Random object is accessed in a thread-safe 
-way, calls to methods that return random numbers return 0.
+way, calls to methods that return random numbers return 0. 
 -----------------------------------------------------------------------
 
 =======================================================================

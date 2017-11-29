@@ -31,3 +31,9 @@ NESTED AND COMPOSITE VIEWMODELS
 https://stackoverflow.com/questions/4366728/mvvm-and-nested-view-models
 
 ===============================================================================================================
+
+CONTROL THE SIZE OF AN ObservableCollection
+
+https://stackoverflow.com/questions/4305623/how-to-resize-observablecollection
+
+===============================================================================================================

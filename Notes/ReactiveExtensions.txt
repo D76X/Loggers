@@ -83,6 +83,14 @@ functionality of any of teh above.
 	From APM [Asynchronous Programming Model]
 ---------------------------------------------------------------------------------------------------------
 
+The special cases
+
+Observable.Return
+When you need an observable that generates only a single value and then completes.
+For example you have an IObservable<IObservable<Something>> and want to subscribe to the external stream and change 
+the internal stream....
+https://stackoverflow.com/questions/21443398/how-to-create-an-observable-that-produces-a-single-value-and-never-completes
+
 =====================================================================================================================================
 
 ----------------------------------------------------------------------------------
