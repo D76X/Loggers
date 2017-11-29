@@ -113,6 +113,17 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Storyboard1">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
+                                                          Storyboard.TargetName="rectangle1">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3"
+                                                     Value="#7F3DF307" />
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Storyboard2" />
+                        <Storyboard x:Key="Storyboard3" />
+                    </ControlTemplate.Resources>
                     <Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
@@ -143,7 +154,8 @@
                                 <VisualState x:Name="Disabled" />
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Rectangle Fill="#FF3DF307"
+                        <Rectangle x:Name="rectangle1"
+                                   Fill="#FF3DF307"
                                    RadiusX="3"
                                    RadiusY="3" />
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -173,7 +185,12 @@
                         <Trigger Property="IsMouseOver"
                                  Value="True" />
                         <Trigger Property="IsPressed"
-                                 Value="True" />
+                                 Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="Storyboard1_BeginStoryboard"
+                                                 Storyboard="{StaticResource Storyboard2}" />
+                            </Trigger.EnterActions>
+                        </Trigger>
                         <Trigger Property="IsEnabled"
                                  Value="False" />
                     </ControlTemplate.Triggers>

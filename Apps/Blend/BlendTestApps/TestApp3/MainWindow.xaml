@@ -128,7 +128,24 @@
                 <TextBlock Text="{Binding ReleaseDate}" />
             </StackPanel>
         </DataTemplate>
+        <Storyboard x:Key="OnClick1">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)"
+                                          Storyboard.TargetName="button">
+                <EasingColorKeyFrame KeyTime="0:0:0.3"
+                                     Value="Red">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseOut" />
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
     </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click"
+                      SourceName="button">
+            <BeginStoryboard Storyboard="{StaticResource OnClick1}" />
+        </EventTrigger>
+    </Window.Triggers>
     <Grid DataContext="{Binding Source={StaticResource SampleDataSource}}">
         <Grid Margin="10">
             <Grid.ColumnDefinitions>
