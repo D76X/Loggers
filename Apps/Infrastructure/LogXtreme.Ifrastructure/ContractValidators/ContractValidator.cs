@@ -187,9 +187,11 @@ namespace LogXtreme.Infrastructure.ContractValidators {
                         success = (decimal)argument == (decimal)target;
 
                     }
-                    else if (outType.IsIComparable<object>()) {
+                    else if (outType.IsIComparable<V>()) {
 
-                        success = ((IComparable<object>)argument).CompareTo(target) == 0;
+                        IComparable<V> comparable = (IComparable<V>)argument;
+                        V comparableTarget = (V)target;
+                        success = comparable.CompareTo(comparableTarget) == 0;
                     }
                     else if (outType.IsIComparable()) {
 

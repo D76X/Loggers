@@ -7,18 +7,38 @@ namespace LogXtreme.Infrastructure.Test {
     [TestClass]
     public class ContractValidatorTest {
 
-        private class Comparable<T> : IComparable<T> {            
+        /// <summary>
+        /// Refs
+        /// https://stackoverflow.com/questions/34242746/difference-between-icomparable-and-icomparablet-in-this-search-method
+        /// </summary>
+        private class GenComparable : IComparable<GenComparable> {
 
-            public int CompareTo(T other) {
-                throw new NotImplementedException();
+            public readonly int Value;
+
+            public GenComparable(int val) {
+                this.Value = val;
             }
+
+            // with the generic IComparable<T> the CompareTo method 
+            // as a parameter whose type is explicitly declared to 
+            // be T. This is stricter at design time than the non 
+            // generic IComparable
+            public int CompareTo(GenComparable other) => 
+                this.Value.CompareTo(other.Value);
         }
 
         private class Comparable : IComparable {
 
-            public int CompareTo(object obj) {
-                throw new NotImplementedException();
+            public readonly int Value;
+
+            public Comparable(int val) {
+                this.Value = val;
             }
+
+            // this takes a parameter of type object which in turns
+            // allows this class to be compared to anything!
+            public int CompareTo(object obj) =>
+                this.Value.CompareTo(((Comparable)obj).Value);
         }
 
         [TestMethod]
@@ -211,6 +231,24 @@ namespace LogXtreme.Infrastructure.Test {
             Assert.AreEqual(exception4.Message, expectedMessage4);
 
             // arrange - IComparable<T>
+            var testParameter5 = new GenComparable(1);
+            var target5 = new GenComparable(0);
+            var paramName5 = nameof(testParameter5);
+            var validator5 = testParameter5.Validate(paramName5);
+
+            // this time we must specify the type 
+            Action actionToTest5 = () => validator5.EqualTo<GenComparable>(target5);
+
+            string expectedMessage5 = $"{paramName5} should be equal to {target5} intead is {testParameter5}";
+
+            // act & assert
+            var exception5 = Assert.ThrowsException<ArgumentException>(
+                actionToTest5,
+                expectedMessage5);
+
+            Assert.AreEqual(exception5.Message, expectedMessage5);
+
+            // arrange 
         }
 
         [TestMethod]
