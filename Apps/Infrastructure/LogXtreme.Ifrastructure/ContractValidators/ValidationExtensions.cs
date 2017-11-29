@@ -75,7 +75,7 @@ namespace LogXtreme.Infrastructure.ContractValidators {
                             validationItem.Name,
                             val,
                             EnumComparisonOperations.EqualTo,
-                            $"{validationItem.Name} should be equal to {val} intead is {validationItem.Value}");
+                            $"{validationItem.Name} should be equal to {val} instead is {validationItem.Value}");
 
                     break;
 
@@ -86,7 +86,7 @@ namespace LogXtreme.Infrastructure.ContractValidators {
                             validationItem.Name,
                             val,
                             EnumComparisonOperations.GreaterThan,
-                            $"{validationItem.Name} should be greater than {val} intead is {validationItem.Value}");
+                            $"{validationItem.Name} should be greater than {val} instead is {validationItem.Value}");
 
                     break;
 
@@ -97,7 +97,7 @@ namespace LogXtreme.Infrastructure.ContractValidators {
                             validationItem.Name,
                             val,
                             EnumComparisonOperations.GreaterThanOrEqualTo,
-                            $"{validationItem.Name} should be greater than or equal to {val} intead is {validationItem.Value}");
+                            $"{validationItem.Name} should be greater than or equal to {val} instead is {validationItem.Value}");
 
                     break;
 
@@ -108,7 +108,7 @@ namespace LogXtreme.Infrastructure.ContractValidators {
                             validationItem.Name,
                             val,
                             EnumComparisonOperations.SmallerThan,
-                            $"{validationItem.Name} should be smaller than {val} intead is {validationItem.Value}");
+                            $"{validationItem.Name} should be smaller than {val} instead is {validationItem.Value}");
 
                     break;
                 
@@ -119,7 +119,7 @@ namespace LogXtreme.Infrastructure.ContractValidators {
                             validationItem.Name,
                             val,
                             EnumComparisonOperations.SmallerThanOrEqualTo,
-                            $"{validationItem.Name} should be smaller than or equal to {val} intead is {validationItem.Value}");
+                            $"{validationItem.Name} should be smaller than or equal to {val} instead is {validationItem.Value}");
 
                     break;
 
