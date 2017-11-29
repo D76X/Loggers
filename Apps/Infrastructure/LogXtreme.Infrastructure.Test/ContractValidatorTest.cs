@@ -25,6 +25,9 @@ namespace LogXtreme.Infrastructure.Test {
             // generic IComparable
             public int CompareTo(GenComparable other) => 
                 this.Value.CompareTo(other.Value);
+
+            public override string ToString() =>
+                $"{base.ToString()} with Value = {this.Value}";
         }
 
         private class Comparable : IComparable {
@@ -39,6 +42,9 @@ namespace LogXtreme.Infrastructure.Test {
             // allows this class to be compared to anything!
             public int CompareTo(object obj) =>
                 this.Value.CompareTo(((Comparable)obj).Value);
+
+            public override string ToString() =>
+                $"{base.ToString()} with Value = {this.Value}";
         }
 
         [TestMethod]
@@ -236,7 +242,11 @@ namespace LogXtreme.Infrastructure.Test {
             var paramName5 = nameof(testParameter5);
             var validator5 = testParameter5.Validate(paramName5);
 
-            // this time we must specify the type 
+            // this time we must specify the type because IComparable<T> must 
+            // be told what the comparable type T needs to be. That is T here 
+            // is GenComparable so that the validator will know that to compare
+            // the validator's value to the target it needs to cast both to 
+            // IComparable<GenComparable>.
             Action actionToTest5 = () => validator5.EqualTo<GenComparable>(target5);
 
             string expectedMessage5 = $"{paramName5} should be equal to {target5} intead is {testParameter5}";
@@ -248,7 +258,27 @@ namespace LogXtreme.Infrastructure.Test {
 
             Assert.AreEqual(exception5.Message, expectedMessage5);
 
-            // arrange 
+            // arrange - IComparable non generic interface
+            // IComparable is the same as IComparable<object>
+            var testParameter6 = new Comparable(1);
+            var target6 = new Comparable(0);
+            var paramName6 = nameof(testParameter6);
+            var validator6 = testParameter6.Validate(paramName6);
+
+            // this time because IComparable is not a generic interface 
+            // we do not need to tell the validator the generic type it
+            // needs to cast to. It will simply cast to IComparable to 
+            // perform the comparison.
+            Action actionToTest6 = () => validator6.EqualTo(target6);
+
+            string expectedMessage6 = $"{paramName6} should be equal to {target6} intead is {testParameter6}";
+
+            // act & assert
+            var exception6 = Assert.ThrowsException<ArgumentException>(
+                actionToTest6,
+                expectedMessage6);
+
+            Assert.AreEqual(exception6.Message, expectedMessage6);
         }
 
         [TestMethod]
