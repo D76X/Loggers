@@ -8,6 +8,9 @@ namespace LogXtreme.Extensions {
 
     public static class StringExtentions {
 
+        public const string SingleSpace = @" ";
+        public const string Empty = @"";
+
         public static bool IsNullOrEmpty(this string str) {
             return string.IsNullOrEmpty(str);
         }
