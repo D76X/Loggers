@@ -11,7 +11,9 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
     public class DataSourceViewModel :
         IDataSourceViewModel,
-        INotifyPropertyChanged { 
+        INotifyPropertyChanged {
+
+        private int debug_ExecuteStartReadingData_count;
 
         private readonly IDataSourceModel dataSourceModel;
 
@@ -106,6 +108,8 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
             this.dataSourceModel.StartDataReads(count);
             this.ReadingData = true;
+
+            this.debug_ExecuteStartReadingData_count += 1;
         }
 
         private bool CanExecuteStartReadingData(string count) =>

@@ -1,6 +1,5 @@
 ﻿using LogXtreme.Infrastructure.ContractValidators;
 using LogXtreme.WinDsk.TestDataGrid.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 

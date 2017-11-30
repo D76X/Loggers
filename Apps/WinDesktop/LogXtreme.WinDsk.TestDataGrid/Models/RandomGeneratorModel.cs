@@ -23,7 +23,8 @@ namespace LogXtreme.WinDsk.TestDataGrid.Models {
         public ISampleModel GenerateSample(ISampleDescriptorModel sampleDescriptor) {
 
             var nosamples = sampleDescriptor.Length;
-            return new Sample(this.generator.GetIntegers(nosamples, 0 , 255).Stringify());
+            var sample = new Sample(this.generator.GetIntegers(nosamples, 0 , 255).StringifyItems());
+            return sample;
         }
     }
 }

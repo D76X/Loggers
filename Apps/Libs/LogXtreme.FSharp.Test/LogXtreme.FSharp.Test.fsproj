@@ -74,6 +74,7 @@
     <Compile Include="Generics.fs" />
     <Compile Include="RefByRefAmpersandOp.fs" />
     <Compile Include="Printfn.fs" />
+    <Compile Include="Functions.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

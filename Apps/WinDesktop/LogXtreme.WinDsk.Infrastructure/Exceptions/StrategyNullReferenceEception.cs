@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
 using System.Security.Permissions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LogXtreme.WinDsk.Infrastructure.Exceptions {
+
     /// <summary>
     /// Refs
     /// https://docs.microsoft.com/en-us/dotnet/framework/misc/security-and-serialization

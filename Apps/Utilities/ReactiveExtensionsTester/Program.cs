@@ -12,6 +12,10 @@ namespace ReactiveExtensionsTester {
             var program = new Program();
             program.Run();
 
+            var toRun = Console.ReadKey();
+
+            //etc.
+
             Console.ReadKey();
         }
 

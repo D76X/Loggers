@@ -54,31 +54,6 @@ namespace LogXtreme.WinDsk.TestDataGrid.Models {
             return source;
         }
 
-        //public ISampleModel GetSample() {
-        //    return this.DrawSample();
-        //}
-
-        //public IObservable<ISampleModel> GetSamples() {
-
-        //    int initialState = 0;
-        //    Func<int, bool> executeNextIteration = i => true;
-        //    Func<int, int> coresursion = i => i + 1;
-        //    Func<int, ISampleModel> resultSelector = i => this.DrawSample();
-
-        //    var duetime = TimeSpan.FromMilliseconds(500);
-        //    var interval = TimeSpan.FromSeconds(1);
-        //    Func<int, TimeSpan> timeSelector = i => i == 0 ? duetime : interval;
-
-        //    var source = Observable.Generate(
-        //        initialState,
-        //        executeNextIteration,
-        //        coresursion,
-        //        resultSelector,
-        //        timeSelector);
-
-        //    return source;
-        //}
-
         private ISampleModel DrawSample() {
             return this.sampleGenerator.GenerateSample(this.sampleDescriptor);
         }

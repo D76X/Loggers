@@ -11,13 +11,23 @@
 // Microsoft.FSharp.Quotations Namespace (F#)
 // https://msdn.microsoft.com/visualfsharpdocs/conceptual/microsoft.fsharp.quotations-namespace-%5bfsharp%5d
 
+// Functions as First-Class Values
+// https://docs.microsoft.com/en-us/dotnet/fsharp/introduction-to-functional-programming/functions-as-first-class-values
+
 open System
 open System.Numerics
 open Xunit
 open Swensen.Unquote
 
+//-------------------------------------------------------
 // You need this namespace to use F# code quotations
 open Microsoft.FSharp.Quotations
+// and offen you will need also the following
+open Microsoft.FSharp.Quotations.Patterns
+open Microsoft.FSharp.Quotations.DerivedPatterns
+open Microsoft.FSharp.Quotations.ExprShape
+//-------------------------------------------------------
+
 
 // There are several active patterns that can be used to analyze expression objects.
 open Microsoft.FSharp.Quotations.Patterns
@@ -107,8 +117,50 @@ open Microsoft.FSharp.Quotations.DerivedPatterns
 //--------------------------------------------------------------------------------------
 
 
-[<Fact>]
-let ``some quoted expression test``() =
+// println is a custom function that is contrived to display a F# expression object of type
+// Expr in a friendly format. Internally it makes use of the recusive function print. It tries
+// to match its input bound to the symbol expr using some of the active patterns available in 
+// the namespaces below. There are however many more active patterns avaible in these two modules
+// in addition to those used in this example.
+//------------------------------------------------
+// Microsoft.FSharp.Quotations.Patterns
+// Microsoft.FSharp.Quotations.DerivedPatterns
+//------------------------------------------------
+// In this example all that is done with the expressions is to translate them into a string that
+// is ultimately printed. However, other possibilities are open such as transalation of F# contructs
+// into another language i.e. SQL or another .NET language or not. In this example the last branch
+// of the match expression maps _ (anything) to expr.ToString().
+
+
+//let println expr = 
+//    let rec print expr = 
+//        match expr with 
+//        | Application(expr1, expr2) ->
+//            // https://msdn.microsoft.com/en-us/visualfsharpdocs/conceptual/patterns.application-active-pattern-%5Bfsharp%5D
+//            // https://docs.microsoft.com/en-us/dotnet/fsharp/introduction-to-functional-programming/functions-as-first-class-values
+//            // Function application
+//            print expr1
+//            printf " "
+//            print expr2
+//        | SpecificCall <@@ (+) @@> (_,_,exprList) ->
+//            // https://msdn.microsoft.com/en-us/visualfsharpdocs/conceptual/derivedpatterns.specificcall-active-pattern-%5Bfsharp%5D
+//            // Matches a call to (+). Must appear before Call pattern below.            
+//            print exprList.Head
+//            printf " + "
+//            print exprList.Tail.Head    
+//        | Call(exprOpt, methodInfo, exprList) ->
+//        | _ -> 
+//            // for anything unmatched...
+//            printf "%s" (expr.ToString())
+//    print expr
+//    printfn "%s" String.Empty
+
+//How to get the name of function argument in F#?
+
+//https://stackoverflow.com/questions/29599456/how-to-get-the-name-of-function-argument-in-f
+
+//[<Fact>]
+//let ``some quoted expression test``() =
 
     // arrange
 

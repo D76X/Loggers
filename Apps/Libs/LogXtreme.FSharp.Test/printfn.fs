@@ -3,10 +3,6 @@
 // https://fsharpforfunandprofit.com/posts/printf/
 
 open System
-open System.Numerics
-open Xunit
-open Swensen.Unquote
-
 
 //-------------------------------------------------------------------------------------
 // This is the C-style format string:
@@ -49,27 +45,31 @@ System.Console.WriteLine("A string: {0}. An int: {1}","Hello") //FormatException
 // printf supports partial application
 
 // partial application with explicit parameters
+// notice that printStringAndInt declares its parameter explicitly
 let printStringAndInt s i =  printfn "A string: %s. An int: %i" s i 
 let printHelloAndInt i = printStringAndInt "Hello" i
 do printHelloAndInt 42
 
 // partial application - point free style
+// in this case printInt does not declare its parameter %i explicitly
+let printStringAndInt2 =   printfn "A string: %s. An int: %i"
+let printHelloAndInt2 = printStringAndInt2 "Guten Tag" 
+do printHelloAndInt2 100
 
-------------------------------------------------------------
-F# printf string and TextWriterFormat<`T> 
-https://stackoverflow.com/questions/9440204/f-printf-string
-------------------------------------------------------------
+// --------------------------------------------------------------------
+// F# printf expects a paramter of type TextWriterFormat<`T> 
+// https://stackoverflow.com/questions/9440204/f-printf-string
+// --------------------------------------------------------------------
 
-Examples
+// does not work  as a string cannot convert to TextWriterFormat<`T>
+//let test = "aString"
+//let callMe = printfn test
 
-// does not work 
-// printfn expects a TextWriterFormat<`T> not a string
-// and cannot convert a string to TextWriterFormat<`T>
+// this works because the compiler knows how to convert ("%s" test) 
+// to the type TextWriterFormat<`T>
 let test = "aString"
-let callMe = printfn test
-
-// it works
-// ("%s" test) is of type TextWriterFormat<`T>
 printfn "%s" test
 
-==============================================================================================
+//---------------------------------------------------------------------
+
+

@@ -15,7 +15,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Services {
             // more work here...
         }
 
-        public TaskDelegateWorker(
+        public TaskDelegateWorker(           
            bool supportReportProgress = false,
            bool supportCancellation = false) {
 
