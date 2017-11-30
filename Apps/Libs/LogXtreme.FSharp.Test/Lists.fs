@@ -69,7 +69,6 @@ let ``test List.isEmpty List.exist(2)``()=
     // simplified function to reverse the string representation of any value
     // https://stackoverflow.com/questions/4556160/is-there-more-simple-or-beautiful-way-to-reverse-a-string
     let reverse str = new string(str.ToString().ToCharArray() |> Array.rev) 
-    //...
 
     // act
 
@@ -78,5 +77,4 @@ let ``test List.isEmpty List.exist(2)``()=
     test<@ List.isEmpty List.Empty = true @>
     test<@ List.exists (fun e -> e = 1) list1 = true @>
     test<@ List.exists2 (fun e1 e2 -> e1 = e2) list2 list3 = false @>
-    //test<@ List.exists2 (fun e1 e2 -> e1 = reverse e2) list4 list5 = true @>
-
+    test<@ List.exists2 (fun e1 e2 -> e1 = reverse e2) list4 list5 = true @>

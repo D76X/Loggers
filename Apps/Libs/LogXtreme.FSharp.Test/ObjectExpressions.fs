@@ -20,7 +20,7 @@ open Swensen.Unquote
 // Object Expressions that support multiple interfaces
 // https://stackoverflow.com/questions/5789746/can-i-use-the-use-keyword-with-object-expressions
 // https://stackoverflow.com/questions/31616761/f-casting-operators
-// An object expression can have just a single type which is the type of the first interface that
+// An object expression can have just a single type which is the type of teh first interface that
 // it implements
 
 [<Fact>]
