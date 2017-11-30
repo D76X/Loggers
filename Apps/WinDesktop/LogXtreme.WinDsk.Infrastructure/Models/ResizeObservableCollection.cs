@@ -33,7 +33,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
 
         public ResizeObservableCollection(
             int maxSize,
-            CycleMode cycleMode = CycleMode.None) {            
+            CycleMode cycleMode = CycleMode.Queue) {            
 
             maxSize.Validate(nameof(maxSize)).GreaterThan(0);
 
@@ -63,6 +63,8 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
                         this.RemoveAt(0);
                         base.InsertItem(this.Count, item);
                         break;
+                    case CycleMode.None:
+                        throw new ArgumentException($"{nameof(ResizeObservableCollection<T>)} cannot insert item because cycle mode {this.cycleMode} and {nameof(ResizeObservableCollection<T>.MaxSize)} = {MaxSize}");
                     default:
                         throw new ArgumentException($"{nameof(ResizeObservableCollection<T>)} cannot insert item because cycle mode {this.cycleMode} is not an expected mode.");
                 }
