@@ -1,4 +1,5 @@
-﻿using LogXtreme.WinDsk.TestDataGrid.Interfaces;
+﻿using LogXtreme.Extensions;
+using LogXtreme.WinDsk.TestDataGrid.Interfaces;
 using LogXtreme.WinDsk.TestDataGrid.Models;
 using System;
 using System.Collections.ObjectModel;
@@ -6,19 +7,20 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reactive.Concurrency;
 using System.Reactive.Linq;
+using System.Reactive.Subjects;
 using System.Runtime.CompilerServices;
 
 namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
-    public class DataGridViewModel : 
+    public class DataGridViewModel :
         IDataGridViewModel,
         INotifyPropertyChanged {
         private readonly IDataSourceModel dataSourceModel;
-        private readonly IDataGridModel dataGridModel;               
+        private readonly IDataGridModel dataGridModel;
 
         private ObservableCollection<IHeaderModel> headers;
         private ObservableCollection<IDataModel> data =
-            new ObservableCollection<IDataModel>();       
+            new ObservableCollection<IDataModel>();
 
         private IDisposable dataObsevable;
 
@@ -26,18 +28,18 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             IDataGridModel dataGridModel,
             IDataSourceModel dataSourceModel = null) {
 
-            this.dataGridModel = dataGridModel;            
+            this.dataGridModel = dataGridModel;
 
             // the headers of the datagrid are initially the same as those 
             // of the undelying grid model but can be changed in the UI.
             this.headers = new ObservableCollection<IHeaderModel>(
                 dataGridModel.GridStructure.Columns.Select(c =>
-                new HeaderModel(c.Header.Name)));            
+                new HeaderModel(c.Header.Name)));
 
             //TODO when there's no dataSource should one be set up as default or with a setter or what?
             if (dataSourceModel == null) { return; }
 
-            this.dataSourceModel = dataSourceModel; 
+            this.dataSourceModel = dataSourceModel;
 
             //TODO : use Event to Observable pattern to prevent leaks
             this.dataSourceModel.OnStartDataReads += StartDataReads;
@@ -45,7 +47,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
         }
 
         private void StopDataReads(
-            object sender, 
+            object sender,
             EventArgs e) {
 
             this.dataObsevable?.Dispose();
@@ -53,31 +55,33 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
         }
 
         private void StartDataReads(
-            object sender, 
-            IObservable<IDataModel> e) {
-            
-            this.dataObsevable?.Dispose();
-            this.dataObsevable = null;            
+            object sender,
+            IConnectableObservable<IDataModel> e) { 
+            this.dataObsevable = null;
 
             //TODO: handle observable exceptions and completion
-            this.dataObsevable = e
+            var connectableData = e
                 ?.SubscribeOn(ThreadPoolScheduler.Instance)
                 .ObserveOn(DispatcherScheduler.Current)
-                .Subscribe(
-                    d => this.data.Add(d),
+                .Subscribe(d => {
+                        var x = d.Values.Stringify(StringExtentions.SingleSpace);
+                        this.data.Add(d);
+                    },
                     exc => { },
                     () => { });
+
+            this.dataObsevable =  e.Connect(); 
         }
 
-        public ObservableCollection<IHeaderModel> Headers => 
+        public ObservableCollection<IHeaderModel> Headers =>
             this.headers;
 
-        public ObservableCollection<IDataModel> Data => 
+        public ObservableCollection<IDataModel> Data =>
             this.data;
 
-        public IDataGridSettingsModel GridSettings => 
+        public IDataGridSettingsModel GridSettings =>
             this.dataGridModel.GridSettings;
-        
+
         #region INotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;

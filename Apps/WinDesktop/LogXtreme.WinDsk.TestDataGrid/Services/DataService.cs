@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using LogXtreme.WinDsk.Infrastructure.Services;
 using LogXtreme.WinDsk.TestDataGrid.Interfaces;
 using System.Reactive.Linq;
+using LogXtreme.Extensions;
+using System.Reactive.Subjects;
 
 namespace LogXtreme.WinDsk.TestDataGrid.Services {
 
@@ -38,14 +40,14 @@ namespace LogXtreme.WinDsk.TestDataGrid.Services {
             private readonly ISampleSourceModel sampleSourceModel;
             private readonly IDataDescriptorModel dataDescriptorModel;
             private object onStartDataReadsLock = new Object();
-            private EventHandler<IObservable<IDataModel>> onStartDataReads;
+            private EventHandler<IConnectableObservable<IDataModel>> onStartDataReads;
 
             private object onStopDataReadsLock = new Object();
             public DataSourceModel(ISampleSourceModel sampleSourceModel) {
 
                 this.sampleSourceModel = sampleSourceModel;
 
-                this.dataDescriptorModel = 
+                this.dataDescriptorModel =
                     new DataDescriptorModel(this.sampleSourceModel.SampleDescriptor);
             }
 
@@ -53,8 +55,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.Services {
 
             public event EventHandler OnStopDataReads;
 
-            event EventHandler<IObservable<IDataModel>> IDataSourceModel.OnStartDataReads {
-
+            event EventHandler<IConnectableObservable<IDataModel>> IDataSourceModel.OnStartDataReads {
                 add {
                     lock (this.onStartDataReadsLock) {
                         this.onStartDataReads += value;
@@ -66,15 +67,24 @@ namespace LogXtreme.WinDsk.TestDataGrid.Services {
                         this.onStartDataReads -= value;
                     }
                 }
-            }             
+            }
 
             public void StartDataReads(int count) {
 
                 var observableData = this.sampleSourceModel
                     .GetSamples(count)
-                    .Select(s => new DataModel(s));
+                    .Select(s => {
 
-                this.onStartDataReads?.Invoke(this, observableData);                
+                        var dataModel = new DataModel(s);
+
+                        var x = dataModel.Values.Stringify(StringExtentions.SingleSpace);
+
+                        return dataModel;
+
+                    });
+
+                var connectableData = observableData.Publish();
+                this.onStartDataReads?.Invoke(this, connectableData);
             }
 
             public void StopDataReads() {

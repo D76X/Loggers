@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Reactive.Subjects;
 
 namespace LogXtreme.WinDsk.TestDataGrid.Interfaces {
 
@@ -14,7 +15,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.Interfaces {
 
         void StopDataReads();
 
-        event EventHandler<IObservable<IDataModel>> OnStartDataReads;
+        event EventHandler<IConnectableObservable<IDataModel>> OnStartDataReads;
 
         event EventHandler OnStopDataReads;
     }

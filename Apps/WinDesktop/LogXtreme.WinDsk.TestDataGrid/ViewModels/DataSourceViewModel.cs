@@ -11,7 +11,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
     public class DataSourceViewModel :
         IDataSourceViewModel,
-        INotifyPropertyChanged { 
+        INotifyPropertyChanged {
 
         private readonly IDataSourceModel dataSourceModel;
 
@@ -56,13 +56,9 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
                 .Subscribe(
                     d => { },
                     exc => { },
-                    () => {
-                        
-                        // on completion raise this causes the data source
-                        // to raise the stop event
-
+                    () => {        
                         this.dataSourceModel.StopDataReads();
-                    });
+                    });           
         }
 
         private void StopDataReads(
