@@ -28,10 +28,10 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
             //TODO replace with weak event pattern
             this.dataSourceModel.OnStartDataReads += 
-                StartDataReads;
+                SubscribeToDataModelsObservable;
 
             this.dataSourceModel.OnStopDataReads += 
-                StopDataReads;
+                DisposeSubscriptionToDataModelsObservable;
 
             this.cmdStartReading = new RelayCommand<string>(
                 this.ExecuteStartReadingData,
@@ -42,7 +42,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
                 this.CanExecuteStopReadingData);           
         }
 
-        private void StartDataReads(
+        private void SubscribeToDataModelsObservable(
             object sender, 
             IObservable<IDataModel> e) {
 
@@ -61,7 +61,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
                     });           
         }
 
-        private void StopDataReads(
+        private void DisposeSubscriptionToDataModelsObservable(
             object sender, 
             EventArgs e) {
 

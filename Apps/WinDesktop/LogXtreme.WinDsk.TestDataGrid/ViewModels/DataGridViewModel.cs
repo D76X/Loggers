@@ -42,11 +42,11 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             this.dataSourceModel = dataSourceModel;
 
             //TODO : use Event to Observable pattern to prevent leaks
-            this.dataSourceModel.OnStartDataReads += StartDataReads;
-            this.dataSourceModel.OnStopDataReads += StopDataReads;
+            this.dataSourceModel.OnStartDataReads += SubscribeAndConnectToDataModelsObservable;
+            this.dataSourceModel.OnStopDataReads += DisposeSubscriptionToDataModelsObservable;
         }
 
-        private void StopDataReads(
+        private void DisposeSubscriptionToDataModelsObservable(
             object sender,
             EventArgs e) {
 
@@ -54,7 +54,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             this.dataObsevable = null;
         }
 
-        private void StartDataReads(
+        private void SubscribeAndConnectToDataModelsObservable(
             object sender,
             IConnectableObservable<IDataModel> e) { 
             this.dataObsevable = null;
