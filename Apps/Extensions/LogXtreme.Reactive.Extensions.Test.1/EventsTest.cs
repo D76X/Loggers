@@ -158,19 +158,28 @@ namespace LogXtreme.Reactive.Extensions.Test._1 {
                 h => testInstance.SimpleEvent += h,
                 h => testInstance.SimpleEvent -= h);
 
-            // assert
-            //Assert.IsNull(testInstance.SimpleEvent);
+            // assert            
+            Assert.IsNull(testInstance.SimpleEventHandlersCount);
+            Assert.AreEqual(0, testInstance.SimpleEventInvokationCounter);
 
             var simpleEventWasCalled = false;
-            object sender = null;
+            object receivedSender = null;
+            object receivedArgument = null;
 
             // subscribe to the observable to 
             var subscription = observable.Subscribe(eventPattern => {
-                sender = eventPattern.Sender;
+                receivedSender = eventPattern.Sender;
+                receivedArgument = eventPattern.EventArgs;
             });
 
-            // act 
+            // assert
+            Assert.IsNull(receivedSender);
+            Assert.IsNull(receivedArgument);
+            Assert.IsNull(testInstance.SimpleEventHandlersCount);
+            Assert.AreEqual(0, testInstance.SimpleEventInvokationCounter);
 
+            // act 
+            testInstance.RaiseComplexEvent();
 
             // assert
             Assert.Fail("test not implemented");
