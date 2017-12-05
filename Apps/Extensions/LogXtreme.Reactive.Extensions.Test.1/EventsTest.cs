@@ -38,8 +38,8 @@ namespace LogXtreme.Reactive.Extensions.Test._1 {
             get => this.SimpleEvent?.GetInvocationList()?.Length;            
         }
 
-        public int ComplexEventHandlersCount {
-            get => this.ComplexEvent.GetInvocationList().Length;
+        public int? ComplexEventHandlersCount {
+            get => this.ComplexEvent?.GetInvocationList()?.Length;
         }
     }
 
@@ -90,30 +90,55 @@ namespace LogXtreme.Reactive.Extensions.Test._1 {
         }
 
         [TestMethod]
-        public void TestComplexEventIsRaisedAndHandled() {
+        public void TestComplexEventLifecycle() {
 
             // arrange 
             var testInstance = new TestClassWithEvents();
 
+            // assert
+            Assert.AreEqual(0, testInstance.ComplexEventInvokationCounter);
+            Assert.IsNull(testInstance.ComplexEventHandlersCount);
+
+            // arrange
             bool complexEventHandled = false;
             string testValue = string.Empty;
-            string expectedTestValue = @"test";
-            var payload = new TestEventArgs(expectedTestValue);
 
             EventHandler<TestEventArgs> handler = (object sender, TestEventArgs e) => {
                 complexEventHandled = true;
                 testValue = e.Value;
             };
+            
+            string expectedTestValue = @"payload 1";
+            var payload1 = new TestEventArgs(expectedTestValue);
 
-            testInstance.ComplexEvent += handler; ;
+            // act
+            testInstance.ComplexEvent += handler;
+
+            // assert
+            Assert.AreEqual(0, testInstance.ComplexEventInvokationCounter);
+            Assert.AreEqual(1, testInstance.ComplexEventHandlersCount);
 
             // act 
-            testInstance.RaiseComplexEvent(payload);
+            testInstance.RaiseComplexEvent(payload1);
 
             // assert
             Assert.IsTrue(complexEventHandled);
-            Assert.AreEqual(testInstance.ComplexEventInvokationCounter, 1);
-            Assert.AreEqual(testValue, expectedTestValue);
+            Assert.AreEqual(1, testInstance.ComplexEventInvokationCounter);
+            Assert.AreEqual(expectedTestValue, testValue);
+
+            // act
+            testInstance.ComplexEvent -= handler;
+            Assert.IsTrue(complexEventHandled);
+            Assert.AreEqual(1, testInstance.ComplexEventInvokationCounter);
+            Assert.IsNull(testInstance.ComplexEventHandlersCount);
+
+            // arrange 
+            var payload2 = new TestEventArgs(@"some payload");
+
+            // assert
+            testInstance.RaiseComplexEvent(payload2);
+            Assert.AreEqual(2, testInstance.ComplexEventInvokationCounter);
+            Assert.AreEqual(expectedTestValue, testValue);
         }
 
         /// <summary>
