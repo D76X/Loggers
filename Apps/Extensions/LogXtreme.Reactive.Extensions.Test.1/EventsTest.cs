@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Reactive;
 using System.Reactive.Linq;
 
 namespace LogXtreme.Reactive.Extensions.Test._1 {
@@ -143,12 +142,13 @@ namespace LogXtreme.Reactive.Extensions.Test._1 {
 
         /// <summary>
         /// Refs
+        /// How the Extension methods Observable.FromEventPattern are intended to be used.
         /// http://www.introtorx.com/uat/content/v1.0.10621.0/04_CreatingObservableSequences.html#FromEvent
-        /// 
+        /// A thourough explanation of the mechanics used by RX to translate .NET events into observables.
         /// https://stackoverflow.com/questions/19895373/how-to-use-observable-fromevent-instead-of-fromeventpattern-and-avoid-string-lit
         /// </summary>
         [TestMethod]
-        public void TestFromEventPattern() {
+        public void TestFromEventPatternForSimpleEvent() {
 
             // arrange 
             var testInstance = new TestClassWithEvents();
@@ -158,31 +158,70 @@ namespace LogXtreme.Reactive.Extensions.Test._1 {
                 h => testInstance.SimpleEvent += h,
                 h => testInstance.SimpleEvent -= h);
 
-            // assert            
+            // assert   
+            
+            // the event has not been raised yet
             Assert.IsNull(testInstance.SimpleEventHandlersCount);
+            
+            // the handler has not been attached yet
             Assert.AreEqual(0, testInstance.SimpleEventInvokationCounter);
 
+            // arrange
             var simpleEventWasCalled = false;
             object receivedSender = null;
             object receivedArgument = null;
 
-            // subscribe to the observable to 
+            // subscribe to the observable 
             var subscription = observable.Subscribe(eventPattern => {
                 receivedSender = eventPattern.Sender;
                 receivedArgument = eventPattern.EventArgs;
+                simpleEventWasCalled = true;
             });
 
             // assert
+
+            // an handler has been attached when the observable was 
+            // subscribed to
+            Assert.AreEqual(1,testInstance.SimpleEventHandlersCount);
+
+            // the event has not been raised yet
+            Assert.IsFalse(simpleEventWasCalled);
+            Assert.IsNull(receivedSender);
+            Assert.IsNull(receivedArgument);            
+            Assert.AreEqual(0, testInstance.SimpleEventInvokationCounter);            
+            
+            // act 
+            testInstance.RaiseSimpleEvent();
+
+            // assert
+            Assert.IsTrue(simpleEventWasCalled);
+            Assert.AreEqual(1, testInstance.SimpleEventInvokationCounter);
+            Assert.AreSame(testInstance, receivedSender);
+            Assert.IsNotNull(receivedArgument);
+            Assert.AreEqual(EventArgs.Empty, receivedArgument);
+
+            // act
+
+            // dispose to detach the handler
+            subscription.Dispose();
+
+            // assert
+
+            // the event hanlder has been removed
+            Assert.IsNull(testInstance.SimpleEventHandlersCount);
+
+            // arrange
+            receivedSender = null;
+            receivedArgument = null;
+
+            // act 
+            testInstance.RaiseSimpleEvent();
+
+            // assert
+            Assert.AreEqual(2, testInstance.SimpleEventInvokationCounter);
             Assert.IsNull(receivedSender);
             Assert.IsNull(receivedArgument);
             Assert.IsNull(testInstance.SimpleEventHandlersCount);
-            Assert.AreEqual(0, testInstance.SimpleEventInvokationCounter);
-
-            // act 
-            testInstance.RaiseComplexEvent();
-
-            // assert
-            Assert.Fail("test not implemented");
         }
     }
 }
