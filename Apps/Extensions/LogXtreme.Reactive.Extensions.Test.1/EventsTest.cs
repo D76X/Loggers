@@ -153,7 +153,11 @@ namespace LogXtreme.Reactive.Extensions.Test._1 {
             // arrange 
             var testInstance = new TestClassWithEvents();
 
+            // act
+
             // an observable of event patterns
+            // this creates a factory which support subscription
+            // at this point, there is no event subscription taking place. 
             var observable = Observable.FromEventPattern(
                 h => testInstance.SimpleEvent += h,
                 h => testInstance.SimpleEvent -= h);
@@ -170,6 +174,8 @@ namespace LogXtreme.Reactive.Extensions.Test._1 {
             var simpleEventWasCalled = false;
             object receivedSender = null;
             object receivedArgument = null;
+
+            // act 
 
             // subscribe to the observable 
             var subscription = observable.Subscribe(eventPattern => {
@@ -222,6 +228,100 @@ namespace LogXtreme.Reactive.Extensions.Test._1 {
             Assert.IsNull(receivedSender);
             Assert.IsNull(receivedArgument);
             Assert.IsNull(testInstance.SimpleEventHandlersCount);
+        }
+
+        /// <summary>
+        /// Refs
+        /// How the Extension methods Observable.FromEventPattern are intended to be used.
+        /// http://www.introtorx.com/uat/content/v1.0.10621.0/04_CreatingObservableSequences.html#FromEvent
+        /// A thourough explanation of the mechanics used by RX to translate .NET events into observables.
+        /// https://stackoverflow.com/questions/19895373/how-to-use-observable-fromevent-instead-of-fromeventpattern-and-avoid-string-lit
+        /// </summary>
+        [TestMethod]
+        public void TestFromEventPatternForComplexEvent() {
+
+            // arrange 
+            var testInstance = new TestClassWithEvents();
+            
+            // act 
+            
+            // an observable of event patterns
+            // this creates a factory which support subscription
+            // at this point, there is no event subscription taking place. 
+            var observable = Observable.FromEventPattern<TestEventArgs>(
+                h => testInstance.ComplexEvent += h,
+                h => testInstance.ComplexEvent -= h);            
+
+            // assert   
+
+            // the event has not been raised yet
+            Assert.IsNull(testInstance.ComplexEventHandlersCount);
+
+            // the handler has not been attached yet
+            Assert.AreEqual(0, testInstance.ComplexEventInvokationCounter);
+
+            // arrange
+
+            var complexEventWasCalled = false;
+            object receivedSender = null;
+            object receivedArgument = null;
+
+            // act 
+
+            // subscribe to the observable 
+            var subscription = observable.Subscribe(eventPattern => {
+                receivedSender = eventPattern.Sender;
+                receivedArgument = eventPattern.EventArgs;
+                complexEventWasCalled = true;
+            });
+
+            // assert 
+
+            // an handler has been attached when the observable was 
+            // subscribed to
+            Assert.AreEqual(1, testInstance.ComplexEventHandlersCount);
+
+            // the event has not been raised yet
+            Assert.IsFalse(complexEventWasCalled);
+            Assert.IsNull(receivedSender);
+            Assert.IsNull(receivedArgument);
+            Assert.AreEqual(0, testInstance.SimpleEventInvokationCounter);
+
+            // arrange
+            string expectedTestValue = @"payload 1";
+            var payload1 = new TestEventArgs(expectedTestValue);
+
+            // act 
+            testInstance.RaiseComplexEvent(payload1);
+
+            // assert
+            Assert.AreEqual(1, testInstance.ComplexEventHandlersCount);
+            Assert.IsTrue(complexEventWasCalled);
+            Assert.IsNotNull(receivedSender);
+            Assert.IsNotNull(receivedArgument);
+            Assert.AreSame(testInstance, receivedSender);
+            Assert.AreSame(payload1, receivedArgument);
+
+            // act
+
+            // disposing revoves the handler
+            subscription.Dispose();
+
+            // assert
+            Assert.IsNull(testInstance.ComplexEventHandlersCount);
+
+            // arrange
+            receivedArgument = null;
+            receivedSender = null;
+
+            // act
+            testInstance.RaiseComplexEvent(payload1);
+
+            // arrange
+            Assert.AreEqual(2, testInstance.ComplexEventInvokationCounter);
+            Assert.IsNull(testInstance.ComplexEventHandlersCount);
+            Assert.IsNull(receivedSender);
+            Assert.IsNull(receivedArgument);
         }
     }
 }
