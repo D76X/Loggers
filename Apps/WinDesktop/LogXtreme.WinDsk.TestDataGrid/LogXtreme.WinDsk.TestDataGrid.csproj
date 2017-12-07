@@ -163,6 +163,10 @@
       <Project>{07a36205-c0c2-4f88-a37c-27199051a240}</Project>
       <Name>LogXtreme.Extensions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Extensions\LogXtreme.Extensions\LogXtreme.Reactive.Extensions\LogXtreme.Reactive.Extensions.csproj">
+      <Project>{665a2e7b-99e7-4fce-8ccf-e0c149f610d9}</Project>
+      <Name>LogXtreme.Reactive.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Infrastructure\LogXtreme.Ifrastructure\LogXtreme.Ifrastructure.csproj">
       <Project>{f919b826-9c93-4a30-a68c-ed35b35b2fa1}</Project>
       <Name>LogXtreme.Ifrastructure</Name>
