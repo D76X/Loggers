@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:LogXtreme.WinDsk.TestDataGrid"
         xmlns:vm="clr-namespace:LogXtreme.WinDsk.TestDataGrid.ViewModels"
         xmlns:conv="clr-namespace:LogXtreme.WinDsk.Infrastructure.Convertes;assembly=LogXtreme.WinDsk.Infrastructure"
+        xmlns:markupext="clr-namespace:LogXtreme.WinDsk.Infrastructure.MarkupExtensions;assembly=LogXtreme.WinDsk.Infrastructure"
+        xmlns:infmodels="clr-namespace:LogXtreme.WinDsk.Infrastructure.Models;assembly=LogXtreme.WinDsk.Infrastructure"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="350"
@@ -193,6 +195,7 @@
                                 Start Reading
                             </Button>                            
                         </Grid>
+                        <ComboBox ItemsSource="{Binding Source={markupext:EnumBindingSource {x:Type infmodels:ResizeObservableCollectionCycleModeEnum }}}"/>
                     </StackPanel>
                     <Grid Grid.Column="1">
                         <DataGrid AutoGenerateColumns="False"
