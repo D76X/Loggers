@@ -16,7 +16,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.Services {
 
             IDataGridSettingsModel dGridSettingsModel =
                 dataGridSettingsModel ??
-                new DataGridSettingsModel();
+                new DataGridSettingsModel(0);
 
             var dataGridModel = new DataGridModel(
                 dataGridStructureModel,

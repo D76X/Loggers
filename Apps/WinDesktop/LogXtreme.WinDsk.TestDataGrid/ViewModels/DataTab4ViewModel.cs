@@ -56,7 +56,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
                new DataGridService();
 
             IDataGridSettingsModel dataGridSettingsModel =
-                new DataGridSettingsModel();
+                new DataGridSettingsModel(0);
 
             this.DataGridViewModel =
                 dataGridService.CreateDataGridViewModel(

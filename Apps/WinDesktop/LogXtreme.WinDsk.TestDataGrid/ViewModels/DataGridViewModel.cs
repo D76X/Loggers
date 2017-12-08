@@ -1,5 +1,6 @@
 ﻿using LogXtreme.Extensions;
 using LogXtreme.Reactive.Extensions;
+using LogXtreme.WinDsk.Infrastructure.Models;
 using LogXtreme.WinDsk.TestDataGrid.Interfaces;
 using LogXtreme.WinDsk.TestDataGrid.Models;
 using System;
@@ -20,8 +21,8 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
         private readonly IDataGridModel dataGridModel;
 
         private ObservableCollection<IHeaderModel> headers;
-        private ObservableCollection<IDataModel> data =
-            new ObservableCollection<IDataModel>();
+
+        private ResizeObservableCollection<IDataModel> data;           
 
         private IDisposable dataObsevable;
 
@@ -34,6 +35,8 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             IDataSourceModel dataSourceModel = null) {
 
             this.dataGridModel = dataGridModel;
+
+            this.data = new ResizeObservableCollection<IDataModel>();
 
             // the headers of the datagrid are initially the same as those 
             // of the undelying grid model but can be changed in the UI.
