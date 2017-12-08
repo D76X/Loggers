@@ -6,6 +6,11 @@ using System.Windows.Markup;
 
 namespace LogXtreme.WinDsk.Infrastructure.Convertes {
 
+    /// <summary>
+    /// Refs
+    /// http://brianlagunas.com/a-better-way-to-data-bind-enums-in-wpf/
+    /// https://app.pluralsight.com/player?course=wpf-productivity-playbook&author=brian-noyes&name=wpf-productivity-playbook-m5&clip=3&mode=live
+    /// </summary>
     public class BooleanToVisibilityConverter : 
         MarkupExtension,
         IValueConverter {
