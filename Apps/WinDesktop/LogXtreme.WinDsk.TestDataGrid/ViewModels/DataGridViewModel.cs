@@ -1,4 +1,5 @@
 ﻿using LogXtreme.Extensions;
+using LogXtreme.Reactive.Extensions;
 using LogXtreme.WinDsk.TestDataGrid.Interfaces;
 using LogXtreme.WinDsk.TestDataGrid.Models;
 using System;
@@ -24,6 +25,10 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
         private IDisposable dataObsevable;
 
+        // event subscriotions
+        private IDisposable eventSubscription_SubscribeAndConnectToDataModelsObservable;
+        private IDisposable eventSubscription_DisposeSubscriptionToDataModelsObservable;
+
         public DataGridViewModel(
             IDataGridModel dataGridModel,
             IDataSourceModel dataSourceModel = null) {
@@ -41,9 +46,21 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
             this.dataSourceModel = dataSourceModel;
 
-            //TODO : use Event to Observable pattern to prevent leaks
-            this.dataSourceModel.OnStartDataReads += SubscribeAndConnectToDataModelsObservable;
-            this.dataSourceModel.OnStopDataReads += DisposeSubscriptionToDataModelsObservable;
+            this.eventSubscription_SubscribeAndConnectToDataModelsObservable = Observable
+                .FromEventPattern<IConnectableObservable<IDataModel>>(
+                    h => this.dataSourceModel.OnStartDataReads += h,
+                    h => this.dataSourceModel.OnStartDataReads -= h)
+                .SubscribeWeakly(
+                this,
+                (target, ep) => target.SubscribeAndConnectToDataModelsObservable(ep.Sender, ep.EventArgs));
+
+            this.eventSubscription_DisposeSubscriptionToDataModelsObservable = Observable
+                .FromEventPattern(
+                    h => this.dataSourceModel.OnStopDataReads += h,
+                    h => this.dataSourceModel.OnStopDataReads -= h)
+                .SubscribeWeakly(
+                this,
+                (target, ep) => target.DisposeSubscriptionToDataModelsObservable(ep.Sender, ep.EventArgs as EventArgs));
         }
 
         private void DisposeSubscriptionToDataModelsObservable(
@@ -56,7 +73,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
         private void SubscribeAndConnectToDataModelsObservable(
             object sender,
-            IConnectableObservable<IDataModel> e) { 
+            IConnectableObservable<IDataModel> e) {
             this.dataObsevable = null;
 
             //TODO: handle observable exceptions and completion
@@ -64,13 +81,13 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
                 ?.SubscribeOn(ThreadPoolScheduler.Instance)
                 .ObserveOn(DispatcherScheduler.Current)
                 .Subscribe(d => {
-                        var x = d.Values.Stringify(StringExtentions.SingleSpace);
-                        this.data.Add(d);
-                    },
+                    var x = d.Values.Stringify(StringExtentions.SingleSpace);
+                    this.data.Add(d);
+                },
                     exc => { },
                     () => { });
 
-            this.dataObsevable =  e.Connect(); 
+            this.dataObsevable = e.Connect();
         }
 
         public ObservableCollection<IHeaderModel> Headers =>
@@ -104,6 +121,12 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
                     this.dataObsevable?.Dispose();
                     this.dataObsevable = null;
+
+                    this.eventSubscription_SubscribeAndConnectToDataModelsObservable?.Dispose();
+                    this.eventSubscription_SubscribeAndConnectToDataModelsObservable = null;
+
+                    this.eventSubscription_DisposeSubscriptionToDataModelsObservable?.Dispose();
+                    this.eventSubscription_DisposeSubscriptionToDataModelsObservable = null;
                 }
 
                 // free unmanaged resources (unmanaged objects) and override a finalizer below.
