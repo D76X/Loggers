@@ -15,25 +15,18 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
     public class ResizeObservableCollection<T> :
         ObservableCollection<T> {
 
-        public enum CycleMode {
-            None,
-            Roll,
-            Flush,
-            Queue
-        }
-
         private readonly int maxSize;
-        private readonly CycleMode cycleMode;
+        private readonly ResizeObservableCollectionCycleModeEnum cycleMode;
 
         public ResizeObservableCollection() {
 
             this.maxSize = 0;
-            this.cycleMode = CycleMode.None;
+            this.cycleMode = ResizeObservableCollectionCycleModeEnum.None;
         }
 
         public ResizeObservableCollection(
             int maxSize,
-            CycleMode cycleMode = CycleMode.Queue) {            
+            ResizeObservableCollectionCycleModeEnum cycleMode = ResizeObservableCollectionCycleModeEnum.Queue) {            
 
             maxSize.Validate(nameof(maxSize)).GreaterThan(0);
 
@@ -43,7 +36,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
 
         public int MaxSize => this.maxSize;
 
-        public CycleMode Mode => this.cycleMode;
+        public ResizeObservableCollectionCycleModeEnum Mode => this.cycleMode;
 
         protected override void InsertItem(int index, T item) {
 
@@ -51,19 +44,19 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
 
                 switch (this.cycleMode) {
 
-                    case CycleMode.Roll:
+                    case ResizeObservableCollectionCycleModeEnum.Roll:
                         this.RemoveAt(index - 1);
                         base.InsertItem(0, item);
                         break;
-                    case CycleMode.Flush:
+                    case ResizeObservableCollectionCycleModeEnum.Flush:
                         this.Items.Clear();
                         base.InsertItem(0, item);
                         break;
-                    case CycleMode.Queue:
+                    case ResizeObservableCollectionCycleModeEnum.Queue:
                         this.RemoveAt(0);
                         base.InsertItem(this.Count, item);
                         break;
-                    case CycleMode.None:
+                    case ResizeObservableCollectionCycleModeEnum.None:
                         throw new ArgumentException($"{nameof(ResizeObservableCollection<T>)} cannot insert item because cycle mode {this.cycleMode} and {nameof(ResizeObservableCollection<T>.MaxSize)} = {MaxSize}");
                     default:
                         throw new ArgumentException($"{nameof(ResizeObservableCollection<T>)} cannot insert item because cycle mode {this.cycleMode} is not an expected mode.");

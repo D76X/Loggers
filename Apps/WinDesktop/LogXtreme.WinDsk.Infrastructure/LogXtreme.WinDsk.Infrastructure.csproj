@@ -102,6 +102,7 @@
     <Compile Include="Convertes\InvertedBooleanToCollapsedVisibilityConverter.cs" />
     <Compile Include="Events\DeviceAttachedEvents.cs" />
     <Compile Include="Exceptions\StrategyNullReferenceEception.cs" />
+    <Compile Include="MarkupExtensions\EnumBindingSourceExtension.cs" />
     <Compile Include="Menu\IMenuItem.cs" />
     <Compile Include="Menu\MenuItemEventArgs.cs" />
     <Compile Include="Models\DeviceModel.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Models\Node.cs" />
     <Compile Include="Models\NotifyCollection.cs" />
     <Compile Include="Models\ResizeObservableCollection.cs" />
+    <Compile Include="Models\ResizeObservableCollectionCycleMode.cs" />
     <Compile Include="Models\TreeItemViewModel.cs" />
     <Compile Include="Prism\ICreateRegionManagerScope.cs" />
     <Compile Include="Prism\IRegionManagerAware.cs" />
@@ -173,9 +175,7 @@
       <Name>LogXtreme.Ifrastructure</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MarkupExtensions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

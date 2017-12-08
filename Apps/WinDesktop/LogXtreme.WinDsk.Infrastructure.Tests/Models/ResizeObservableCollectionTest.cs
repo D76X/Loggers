@@ -22,7 +22,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Models {
 
             Assert.AreEqual(
                 collection.Mode,
-                ResizeObservableCollection<int>.CycleMode.None);
+                ResizeObservableCollectionCycleModeEnum.None);
 
             Assert.AreEqual(collection.Count, 0);
 
@@ -109,7 +109,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Models {
 
             // assert 
             Assert.AreEqual(collection.Count, maxSize);
-            Assert.AreEqual(collection.Mode, ResizeObservableCollection<int>.CycleMode.Queue);
+            Assert.AreEqual(collection.Mode, ResizeObservableCollectionCycleModeEnum.Queue);
             Assert.AreEqual(collection.IndexOf(first), 0);
             Assert.AreEqual(collection.IndexOf(second), 1);
             Assert.AreEqual(collection.IndexOf(third), 2);
@@ -157,7 +157,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Models {
 
             var collection = new ResizeObservableCollection<int>(
                 maxSize,
-                ResizeObservableCollection<int>.CycleMode.Queue);
+                ResizeObservableCollectionCycleModeEnum.Queue);
 
             var first = 1;
             var second = 2;
@@ -174,7 +174,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Models {
 
             // assert 
             Assert.AreEqual(collection.Count, maxSize);
-            Assert.AreEqual(collection.Mode, ResizeObservableCollection<int>.CycleMode.Queue);
+            Assert.AreEqual(collection.Mode, ResizeObservableCollectionCycleModeEnum.Queue);
             Assert.AreEqual(collection.IndexOf(first), 0);
             Assert.AreEqual(collection.IndexOf(second), 1);
             Assert.AreEqual(collection.IndexOf(third), 2);
@@ -221,7 +221,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Models {
 
             var collection = new ResizeObservableCollection<int>(
                 maxSize,
-                ResizeObservableCollection<int>.CycleMode.Flush);
+                ResizeObservableCollectionCycleModeEnum.Flush);
 
             var first = 1;
             var second = 2;
@@ -238,7 +238,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Models {
 
             // assert 
             Assert.AreEqual(collection.Count, maxSize);
-            Assert.AreEqual(collection.Mode, ResizeObservableCollection<int>.CycleMode.Flush);
+            Assert.AreEqual(collection.Mode, ResizeObservableCollectionCycleModeEnum.Flush);
             Assert.AreEqual(collection.IndexOf(first), 0);
             Assert.AreEqual(collection.IndexOf(second), 1);
             Assert.AreEqual(collection.IndexOf(third), 2);
@@ -248,7 +248,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Models {
 
             // assert
             Assert.AreEqual(collection.Count, 1);
-            Assert.AreEqual(collection.Mode, ResizeObservableCollection<int>.CycleMode.Flush);
+            Assert.AreEqual(collection.Mode, ResizeObservableCollectionCycleModeEnum.Flush);
             Assert.IsFalse(collection.Contains(first));
             Assert.IsFalse(collection.Contains(second));
             Assert.IsFalse(collection.Contains(third));
@@ -289,7 +289,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Models {
 
             var collection = new ResizeObservableCollection<int>(
                 maxSize,
-                ResizeObservableCollection<int>.CycleMode.Roll);
+                ResizeObservableCollectionCycleModeEnum.Roll);
 
             var first = 1;
             var second = 2;
@@ -306,7 +306,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Models {
 
             // assert 
             Assert.AreEqual(collection.Count, maxSize);
-            Assert.AreEqual(collection.Mode, ResizeObservableCollection<int>.CycleMode.Roll);
+            Assert.AreEqual(collection.Mode, ResizeObservableCollectionCycleModeEnum.Roll);
             Assert.AreEqual(collection.IndexOf(first), 0);
             Assert.AreEqual(collection.IndexOf(second), 1);
             Assert.AreEqual(collection.IndexOf(third), 2);
