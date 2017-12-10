@@ -8,6 +8,7 @@ namespace LogXtreme.Ifrastructure.TypeConverters {
     /// <summary>
     /// Refs
     /// http://brianlagunas.com/a-better-way-to-data-bind-enums-in-wpf/
+    /// https://msdn.microsoft.com/en-us/library/ayybcxe5.aspx
     /// </summary>
     public class EnumDescriptionTypeConverter : EnumConverter {
 
