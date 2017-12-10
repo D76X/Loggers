@@ -64,26 +64,34 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Models {
             // arrange
             int maxSize = -1;
             Action actionToTest = () => new ResizeObservableCollection<int>(maxSize);
-            string expectedMesssage = $"maxSize must be grater than 0 intead is {maxSize}";
+            string expectedMesssage = $"maxSize should be greater than or equal to 0 instead is {maxSize}";
 
             // act & assert   
-            Assert.ThrowsException<ArgumentException>(
+            var exc =Assert.ThrowsException<ArgumentException>(
                 actionToTest,
                 expectedMesssage);
+
+            Assert.AreEqual(expectedMesssage, exc.Message);
         }
 
         [TestMethod]
-        public void InfiniteSizeResizeObservableCollection_Contructor_Thorws_When_MaxSize_Is_Zero() {
+        public void InfiniteSizeResizeObservableCollection_Contructor_Thorws_When_MaxSize_Is_Zero_And_Mode_Is_Not_None() {
 
             // arrange
             int maxSize = 0;
-            Action actionToTest = () => new ResizeObservableCollection<int>(maxSize);
-            string expectedMesssage = $"maxSize must be grater than 0 intead is {maxSize}";
+
+            Action actionToTest = () => new ResizeObservableCollection<int>(
+                maxSize,
+                ResizeObservableCollectionCycleModeEnum.Queue);
+
+            string expectedMesssage = $"wrong argument combination maxSize=0 and cycleMode=Queue";
 
             // act & assert   
-            Assert.ThrowsException<ArgumentException>(
+            var exc = Assert.ThrowsException<ArgumentException>(
                 actionToTest,
                 expectedMesssage);
+
+            Assert.AreEqual(expectedMesssage, exc.Message);
         }
 
         [TestMethod]

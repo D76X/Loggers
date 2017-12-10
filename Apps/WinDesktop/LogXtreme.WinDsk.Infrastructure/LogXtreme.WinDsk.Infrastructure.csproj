@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\CloseTabAction.cs" />
+    <Compile Include="Behaviours\HanldeViewLoadedEventBehaviour.cs" />
     <Compile Include="Commands\CommandsGlobal.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Convertes\BooleanToVisibilityConverter.cs" />

@@ -26,9 +26,17 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
 
         public ResizeObservableCollection(
             int maxSize,
-            ResizeObservableCollectionCycleModeEnum cycleMode = ResizeObservableCollectionCycleModeEnum.Queue) {            
+            ResizeObservableCollectionCycleModeEnum cycleMode = ResizeObservableCollectionCycleModeEnum.Queue) {
 
-            maxSize.Validate(nameof(maxSize)).GreaterThan(0);
+            maxSize.Validate(nameof(maxSize)).GreaterThanOrEqualTo(0);
+
+            if (maxSize == 0 && cycleMode != ResizeObservableCollectionCycleModeEnum.None) {
+                throw new ArgumentException($"wrong argument combination {nameof(maxSize)}={maxSize} and {nameof(cycleMode)}={cycleMode}");
+            }
+
+            if (cycleMode != ResizeObservableCollectionCycleModeEnum.None) {           
+                maxSize.Validate(nameof(maxSize)).GreaterThan(0);
+            }           
 
             this.maxSize = maxSize;
             this.cycleMode = cycleMode;

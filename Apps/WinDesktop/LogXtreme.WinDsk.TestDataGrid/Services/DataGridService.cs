@@ -1,4 +1,5 @@
-﻿using LogXtreme.WinDsk.TestDataGrid.Interfaces;
+﻿using LogXtreme.WinDsk.Infrastructure.Models;
+using LogXtreme.WinDsk.TestDataGrid.Interfaces;
 using LogXtreme.WinDsk.TestDataGrid.Models;
 using LogXtreme.WinDsk.TestDataGrid.ViewModels;
 using System.Collections.Generic;
@@ -16,7 +17,8 @@ namespace LogXtreme.WinDsk.TestDataGrid.Services {
 
             IDataGridSettingsModel dGridSettingsModel =
                 dataGridSettingsModel ??
-                new DataGridSettingsModel(0);
+                new DataGridSettingsModel(0,
+                ResizeObservableCollectionCycleModeEnum.None);
 
             var dataGridModel = new DataGridModel(
                 dataGridStructureModel,

@@ -7,7 +7,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.Interfaces {
     /// </summary>
     public interface IDataGridSettingsModel {
 
-        int NumberOfItemsToDisplay { get; }
-        ResizeObservableCollectionCycleModeEnum CycleMode  { get; }
+        int NumberOfItemsToDisplay { get; set; }
+        ResizeObservableCollectionCycleModeEnum CycleMode  { get; set; }
     }
 }

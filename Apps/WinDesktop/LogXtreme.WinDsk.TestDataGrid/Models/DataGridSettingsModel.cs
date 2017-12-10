@@ -11,8 +11,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.Models {
 
         public DataGridSettingsModel(
             int numberOfItemsToDisplay,
-            ResizeObservableCollectionCycleModeEnum cycleMode = 
-            ResizeObservableCollectionCycleModeEnum.Queue) {
+            ResizeObservableCollectionCycleModeEnum cycleMode) {
 
             numberOfItemsToDisplay
                 .Validate(nameof(numberOfItemsToDisplay))
@@ -22,7 +21,28 @@ namespace LogXtreme.WinDsk.TestDataGrid.Models {
             this.cycleMode = cycleMode;
         }
 
-        public int NumberOfItemsToDisplay => this.numberOfItemsToDisplay;
-        public ResizeObservableCollectionCycleModeEnum CycleMode => this.cycleMode;
+        public int NumberOfItemsToDisplay {
+
+            get => this.numberOfItemsToDisplay;
+
+            set {
+
+                value
+                    .Validate(nameof(NumberOfItemsToDisplay))
+                    .GreaterThanOrEqualTo(0);
+                
+                    this.numberOfItemsToDisplay = value;
+            }
+        }
+
+        public ResizeObservableCollectionCycleModeEnum CycleMode {
+
+            get => this.cycleMode;
+
+            set {
+
+                this.cycleMode = value;
+            }
+        }
     }
 }
