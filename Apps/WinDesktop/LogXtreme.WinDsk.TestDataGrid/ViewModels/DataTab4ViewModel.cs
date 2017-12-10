@@ -90,6 +90,15 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             }
         }
 
+        /// <summary>
+        /// This handler is used to test the HanldeViewLoadedEventBehaviour
+        /// and has no importance in the Data Grid test.
+        /// </summary>
+        public void OnViewLoadedHandler() {
+
+            // do some data loading here i.e. async...
+        }
+
         #region INotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;

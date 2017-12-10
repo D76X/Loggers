@@ -8,6 +8,7 @@
         xmlns:conv="clr-namespace:LogXtreme.WinDsk.Infrastructure.Convertes;assembly=LogXtreme.WinDsk.Infrastructure"
         xmlns:markupext="clr-namespace:LogXtreme.WinDsk.Infrastructure.MarkupExtensions;assembly=LogXtreme.WinDsk.Infrastructure"
         xmlns:infmodels="clr-namespace:LogXtreme.WinDsk.Infrastructure.Models;assembly=LogXtreme.WinDsk.Infrastructure"
+        xmlns:infbehaviours="clr-namespace:LogXtreme.WinDsk.Infrastructure.Behaviours;assembly=LogXtreme.WinDsk.Infrastructure"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="350"
@@ -169,7 +170,8 @@
             </TabItem>
             <TabItem Header="DataGrid3"
                      DataContext="{Binding ViewModels[3]}"
-                     x:Name="SampleLayoutRootDataGrid3">
+                     x:Name="SampleLayoutRootDataGrid3"
+                     infbehaviours:HanldeViewLoadedEventBehaviour.LoadedMethodName="OnViewLoadedHandler">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
