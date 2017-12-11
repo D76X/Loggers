@@ -35,7 +35,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             IDataSourceModel dataSourceModel = null) {
 
             this.dataGridModel = dataGridModel;
-            this.GridSettings = new DataGridSettingsViewModel(this.dataGridModel.GridSettings);  
+            this.GridSettings = new DataGridSettingsViewModel(this.dataGridModel.GridSettings);            
             
             // the headers of the datagrid are initially the same as those 
             // of the undelying grid model but can be changed in the UI.
@@ -63,6 +63,38 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
                 .SubscribeWeakly(
                 this,
                 (target, ep) => target.DisposeSubscriptionToDataModelsObservable(ep.Sender, ep.EventArgs as EventArgs));
+
+            this.CreateDataGrid();
+        }        
+
+        public ObservableCollection<IHeaderModel> Headers =>
+            this.headers;
+
+        public ObservableCollection<IDataModel> Data {
+
+            get => this.data;
+
+            set {
+
+                var collection = value as ResizeObservableCollection<IDataModel>;
+
+                if (collection == null) { return; }
+
+                this.data = collection;
+                this.NotifyPropertyChanged();
+            }
+        }            
+
+        public IDataGridSettingsViewModel GridSettings {
+            get;
+            private set;
+        }
+
+        private void CreateDataGrid() {
+
+            this.Data = new ResizeObservableCollection<IDataModel>(
+                this.GridSettings.NumberOfItemsToDisplay,
+                this.GridSettings.CycleMode);
         }
 
         private void DisposeSubscriptionToDataModelsObservable(
@@ -90,17 +122,6 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
                     () => { });
 
             this.dataObsevable = e.Connect();
-        }
-
-        public ObservableCollection<IHeaderModel> Headers =>
-            this.headers;
-
-        public ObservableCollection<IDataModel> Data 
-            => this.data;
-
-        public IDataGridSettingsViewModel GridSettings {
-            get;
-            private set;
         }
 
         #region INotifyPropertyChanged
