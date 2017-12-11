@@ -19,10 +19,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
         INotifyPropertyChanged {
 
         private readonly IDataSourceModel dataSourceModel;
-        private readonly IDataGridModel dataGridModel;
-        private readonly IDataGridSettingsModel dataGridSettingsModel;
-
-
+        private readonly IDataGridModel dataGridModel;        
         private ObservableCollection<IHeaderModel> headers;
 
         private ResizeObservableCollection<IDataModel> data;
@@ -38,9 +35,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             IDataSourceModel dataSourceModel = null) {
 
             this.dataGridModel = dataGridModel;
-            this.dataGridSettingsModel = this.dataGridModel.GridSettings;
-
-            this.BuildDataGridData();
+            this.GridSettings = new DataGridSettingsViewModel(this.dataGridModel.GridSettings);  
             
             // the headers of the datagrid are initially the same as those 
             // of the undelying grid model but can be changed in the UI.
@@ -101,50 +96,11 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             this.headers;
 
         public ObservableCollection<IDataModel> Data 
-            => this.data;            
+            => this.data;
 
-        public IDataGridSettingsModel GridSettings
-            => this.dataGridModel.GridSettings;
-
-        public int NumberOfItemsToDisplay {
-
-            get => this.dataGridSettingsModel.NumberOfItemsToDisplay;
-
-            set {
-
-                var nOfItemsToDisplay = this.dataGridSettingsModel.NumberOfItemsToDisplay;
-
-                if (value != NumberOfItemsToDisplay) {
-
-                    this.dataGridSettingsModel.NumberOfItemsToDisplay = value;
-                    this.BuildDataGridData();
-                    this.NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public ResizeObservableCollectionCycleModeEnum SelectedGridSettingCycleModel {
-
-            get => this.dataGridSettingsModel.CycleMode;
-
-            set {
-
-                var currentCycleModel = this.dataGridSettingsModel.CycleMode;
-
-                if (value != currentCycleModel) {
-
-                    this.dataGridSettingsModel.CycleMode = value;
-                    this.BuildDataGridData();
-                    this.NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private void BuildDataGridData() {
-
-            this.data = new ResizeObservableCollection<IDataModel>(
-                this.dataGridSettingsModel.NumberOfItemsToDisplay,
-                this.dataGridSettingsModel.CycleMode);            
+        public IDataGridSettingsViewModel GridSettings {
+            get;
+            private set;
         }
 
         #region INotifyPropertyChanged

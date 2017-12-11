@@ -196,9 +196,11 @@
                                     Visibility="{Binding DataSourceViewModel.ReadingData, Converter={conv:BooleanToVisibilityConverter FalseVisibility=Collapsed, Negate=True}}"
                                     VerticalAlignment="Center">
                                 Start Reading
-                            </Button>                            
+                            </Button>
                         </Grid>
-                        <StackPanel>
+                        <StackPanel>                            
+                            <ComboBox ItemsSource="{Binding Source={markupext:EnumBindingSource {x:Type infmodels:ResizeObservableCollectionCycleModeEnum }}}"
+                                      SelectedItem="{Binding DataGridViewModel.GridSettings.CycleMode}" />
                             <ComboBox SelectedItem="{Binding DataGridViewModel.GridSettings.NumberOfItemsToDisplay}">
                                 <sys:Int32>0</sys:Int32>
                                 <sys:Int32>5</sys:Int32>
@@ -206,11 +208,9 @@
                                 <sys:Int32>20</sys:Int32>
                                 <sys:Int32>50</sys:Int32>
                                 <sys:Int32>100</sys:Int32>
-                            </ComboBox>
-                            <ComboBox ItemsSource="{Binding Source={markupext:EnumBindingSource {x:Type infmodels:ResizeObservableCollectionCycleModeEnum }}}"
-                                      SelectedItem="{Binding DataGridViewModel.SelectedGridSettingCycleModel}" />
+                            </ComboBox>                            
                         </StackPanel>
-                        
+
                     </StackPanel>
                     <Grid Grid.Column="1">
                         <DataGrid AutoGenerateColumns="False"
@@ -240,7 +240,7 @@
                                                                 <DataTemplate>
                                                                     <Border Width="70">
                                                                         <TextBlock Text="{Binding Name}"
-                                                                                   TextAlignment="Center"/>
+                                                                                   TextAlignment="Center" />
                                                                     </Border>
                                                                 </DataTemplate>
                                                             </ItemsControl.ItemTemplate>
@@ -255,7 +255,7 @@
                                             <ItemsControl ItemsSource="{Binding Values}">
                                                 <ItemsControl.ItemsPanel>
                                                     <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal"/>
+                                                        <StackPanel Orientation="Horizontal" />
                                                     </ItemsPanelTemplate>
                                                 </ItemsControl.ItemsPanel>
                                                 <ItemsControl.ItemTemplate>
@@ -263,13 +263,13 @@
                                                         <Border Width="70">
                                                             <TextBlock Text="{Binding}"
                                                                        TextAlignment="Center" />
-                                                        </Border>                                                        
+                                                        </Border>
                                                     </DataTemplate>
                                                 </ItemsControl.ItemTemplate>
                                             </ItemsControl>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>                            
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
