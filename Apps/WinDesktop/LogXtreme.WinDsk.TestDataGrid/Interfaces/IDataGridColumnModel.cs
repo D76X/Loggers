@@ -8,7 +8,5 @@
         IHeaderModel Header { get; set; }
 
         IDataGridColumnSettingsModel ColumnSettings { get; set; }
-
-        //bool IsVisible { get; set; }
     }
 }
