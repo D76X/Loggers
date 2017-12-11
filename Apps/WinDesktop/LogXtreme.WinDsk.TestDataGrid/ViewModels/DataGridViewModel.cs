@@ -19,24 +19,34 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
         INotifyPropertyChanged {
 
         private readonly IDataSourceModel dataSourceModel;
-        private readonly IDataGridModel dataGridModel;        
-        private ObservableCollection<IHeaderModel> headers;
+        private readonly IDataGridModel dataGridModel;
+        private readonly IDataGridSettingsViewModel gridSettings;
 
+        private ObservableCollection<IHeaderModel> headers;
         private ResizeObservableCollection<IDataModel> data;
 
-        private IDisposable dataObsevable;
-
-        // event subscriotions
+        // subscriptions
+        private IDisposable dataObsevableSubscription;
         private IDisposable eventSubscription_SubscribeAndConnectToDataModelsObservable;
         private IDisposable eventSubscription_DisposeSubscriptionToDataModelsObservable;
+        private IDisposable eventSubscription_OnGridSettingsChanged;
 
         public DataGridViewModel(
             IDataGridModel dataGridModel,
             IDataSourceModel dataSourceModel = null) {
 
             this.dataGridModel = dataGridModel;
-            this.GridSettings = new DataGridSettingsViewModel(this.dataGridModel.GridSettings);            
-            
+
+            this.gridSettings = new DataGridSettingsViewModel(this.dataGridModel.GridSettings);
+
+            this.eventSubscription_OnGridSettingsChanged = Observable
+                .FromEventPattern(
+                    h => this.gridSettings.OnGridSettingsChanged += h,
+                    h => this.gridSettings.OnGridSettingsChanged -= h)
+                .SubscribeWeakly(
+                this,
+                (target, ep) => target.GridSettingsChangedHanlder(ep.Sender, ep.EventArgs as EventArgs));
+
             // the headers of the datagrid are initially the same as those 
             // of the undelying grid model but can be changed in the UI.
             this.headers = new ObservableCollection<IHeaderModel>(
@@ -64,8 +74,8 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
                 this,
                 (target, ep) => target.DisposeSubscriptionToDataModelsObservable(ep.Sender, ep.EventArgs as EventArgs));
 
-            this.CreateDataGrid();
-        }        
+            this.SetUpDataGrid();
+        }
 
         public ObservableCollection<IHeaderModel> Headers =>
             this.headers;
@@ -83,32 +93,39 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
                 this.data = collection;
                 this.NotifyPropertyChanged();
             }
-        }            
-
-        public IDataGridSettingsViewModel GridSettings {
-            get;
-            private set;
         }
 
-        private void CreateDataGrid() {
+        public IDataGridSettingsViewModel GridSettings
+             => this.gridSettings;
+
+        private void SetUpDataGrid() {
 
             this.Data = new ResizeObservableCollection<IDataModel>(
                 this.GridSettings.NumberOfItemsToDisplay,
                 this.GridSettings.CycleMode);
         }
 
+        private void GridSettingsChangedHanlder(
+            object sender,
+            EventArgs e) {
+
+            // save data?
+            // ...
+            this.SetUpDataGrid();
+        }      
+
         private void DisposeSubscriptionToDataModelsObservable(
             object sender,
             EventArgs e) {
 
-            this.dataObsevable?.Dispose();
-            this.dataObsevable = null;
+            this.dataObsevableSubscription?.Dispose();
+            this.dataObsevableSubscription = null;
         }
 
         private void SubscribeAndConnectToDataModelsObservable(
             object sender,
             IConnectableObservable<IDataModel> e) {
-            this.dataObsevable = null;
+            this.dataObsevableSubscription = null;
 
             //TODO: handle observable exceptions and completion
             var connectableData = e
@@ -121,7 +138,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
                     exc => { },
                     () => { });
 
-            this.dataObsevable = e.Connect();
+            this.dataObsevableSubscription = e.Connect();
         }
 
         #region INotifyPropertyChanged
@@ -130,7 +147,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "") {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }        
+        }
 
         #endregion
 
@@ -144,14 +161,19 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
                 if (disposing) {
 
-                    this.dataObsevable?.Dispose();
-                    this.dataObsevable = null;
+                    this.dataObsevableSubscription?.Dispose();
+                    this.dataObsevableSubscription = null;
 
                     this.eventSubscription_SubscribeAndConnectToDataModelsObservable?.Dispose();
                     this.eventSubscription_SubscribeAndConnectToDataModelsObservable = null;
 
                     this.eventSubscription_DisposeSubscriptionToDataModelsObservable?.Dispose();
                     this.eventSubscription_DisposeSubscriptionToDataModelsObservable = null;
+
+                    this.eventSubscription_OnGridSettingsChanged?.Dispose();
+                    this.eventSubscription_OnGridSettingsChanged = null;
+
+                    this.gridSettings?.Dispose();
                 }
 
                 // free unmanaged resources (unmanaged objects) and override a finalizer below.

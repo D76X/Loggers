@@ -51,12 +51,19 @@ namespace LogXtreme.WinDsk.TestDataGrid.Models {
             }
         }
 
+        public event EventHandler OnGridSettingsChanged;
+
+        private void RaiseOnGridSettingsChanged() {
+            this.OnGridSettingsChanged?.Invoke(this, EventArgs.Empty);
+        }
+
         #region INotifyPropertyChanged
 
-        public event PropertyChangedEventHandler PropertyChanged;        
+        public event PropertyChangedEventHandler PropertyChanged;       
 
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "") {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            this.RaiseOnGridSettingsChanged();
         }
 
         #endregion

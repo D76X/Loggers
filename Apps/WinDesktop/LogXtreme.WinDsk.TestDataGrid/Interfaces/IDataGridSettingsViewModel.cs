@@ -9,5 +9,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.Interfaces {
         int NumberOfItemsToDisplay { get; set; }
 
         ResizeObservableCollectionCycleModeEnum CycleMode { get; set; }
+
+        event EventHandler OnGridSettingsChanged;
     }
 }
