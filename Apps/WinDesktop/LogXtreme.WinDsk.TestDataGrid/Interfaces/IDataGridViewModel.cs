@@ -9,6 +9,6 @@ namespace LogXtreme.WinDsk.TestDataGrid.Interfaces {
 
         ObservableCollection<IDataModel> Data { get; }
 
-        IDataGridSettingsModel GridSettings { get; }
+        IDataGridSettingsViewModel GridSettings { get; }
     }
 }
