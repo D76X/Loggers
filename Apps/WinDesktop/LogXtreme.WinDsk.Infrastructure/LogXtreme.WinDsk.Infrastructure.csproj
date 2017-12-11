@@ -101,6 +101,7 @@
     <Compile Include="Convertes\BoolToHiddenVisibilityConverter.cs" />
     <Compile Include="Convertes\EnumToDisplayConverter.cs" />
     <Compile Include="Convertes\InvertedBooleanToCollapsedVisibilityConverter.cs" />
+    <Compile Include="Convertes\NotConverter.cs" />
     <Compile Include="Events\DeviceAttachedEvents.cs" />
     <Compile Include="Exceptions\StrategyNullReferenceEception.cs" />
     <Compile Include="MarkupExtensions\EnumBindingSourceExtension.cs" />
