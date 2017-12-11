@@ -16,6 +16,7 @@
         Width="525">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <conv:NotConverter x:Key="NotConverter" />
         <conv:EnumToDisplayConverter x:Key="EnumToDisplayConverter" />
         <conv:BooleanToVisibilityConverter x:Key="CustomHiddenBoolToVis"
                                            FalseVisibility="Hidden" />
@@ -198,7 +199,7 @@
                                 Start Reading
                             </Button>
                         </Grid>
-                        <StackPanel>                            
+                        <StackPanel IsEnabled="{Binding DataSourceViewModel.ReadingData, Converter={StaticResource NotConverter}}">                            
                             <ComboBox ItemsSource="{Binding Source={markupext:EnumBindingSource {x:Type infmodels:ResizeObservableCollectionCycleModeEnum }}}"
                                       SelectedItem="{Binding DataGridViewModel.GridSettings.CycleMode}" />
                             <ComboBox SelectedItem="{Binding DataGridViewModel.GridSettings.NumberOfItemsToDisplay}">
@@ -210,7 +211,6 @@
                                 <sys:Int32>100</sys:Int32>
                             </ComboBox>                            
                         </StackPanel>
-
                     </StackPanel>
                     <Grid Grid.Column="1">
                         <DataGrid AutoGenerateColumns="False"
