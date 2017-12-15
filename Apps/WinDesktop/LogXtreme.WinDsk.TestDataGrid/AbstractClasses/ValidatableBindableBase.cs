@@ -12,7 +12,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.AbstractClasses {
         BindableBase,
         INotifyDataErrorInfo {       
 
-        protected Func<(bool IsValid, string ErrorMessage)> ViewModelValidation {
+        protected Func<(bool IsValid, IEnumerable<string> ErrorMessages)> ViewModelValidation {
             get;
             set;
         }
@@ -43,7 +43,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.AbstractClasses {
 
             if (!result.IsValid) {
                 errors.Remove(@"ViewModelValidationError");
-                this.errors[@"ViewModelValidationError"] = new List<string>() { result.ErrorMessage };
+                this.errors[@"ViewModelValidationError"] = result.ErrorMessages.ToList();
             }
             else {
                 errors.Remove(@"ViewModelValidationError");

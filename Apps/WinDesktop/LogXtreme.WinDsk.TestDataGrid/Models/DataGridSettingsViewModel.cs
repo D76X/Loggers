@@ -2,6 +2,7 @@
 using LogXtreme.WinDsk.Infrastructure.Models;
 using LogXtreme.WinDsk.TestDataGrid.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace LogXtreme.WinDsk.TestDataGrid.Models {
@@ -87,33 +88,32 @@ namespace LogXtreme.WinDsk.TestDataGrid.Models {
         /// in combination may not amount to a valid view model. 
         /// </summary>
         /// <returns></returns>
-        private (bool IsValid, string ErrorMessage) ValidateViewModel() {
+        private (bool IsValid, IEnumerable<string> ErrorMessage) ValidateViewModel() {
 
             var isValid = false;
-            var errorMessage = string.Empty;
+            var errorMessages = new List<string>();
 
             if (this.NumberOfItemsToDisplay == 0 &&
                 this.CycleMode != ResizeObservableCollectionCycleModeEnum.None) {
 
                 isValid = false;
-                errorMessage = $"{nameof(NumberOfItemsToDisplay)} = 0 requires {nameof(CycleMode)} = {ResizeObservableCollectionCycleModeEnum.None}";
+                errorMessages.Add($"{nameof(NumberOfItemsToDisplay)} = 0 requires {nameof(CycleMode)} = {ResizeObservableCollectionCycleModeEnum.None}");
             }
             else if (this.NumberOfItemsToDisplay > 0 &&
                 this.CycleMode == ResizeObservableCollectionCycleModeEnum.None) {
 
                 isValid = false;
-                errorMessage = $"{nameof(NumberOfItemsToDisplay)} > 0 requires {nameof(CycleMode)} != {ResizeObservableCollectionCycleModeEnum.None}";
+                errorMessages.Add($"{nameof(NumberOfItemsToDisplay)} > 0 requires {nameof(CycleMode)} != {ResizeObservableCollectionCycleModeEnum.None}");
             }
             else {
                 isValid = true;
-                errorMessage = string.Empty;
             }
 
             if (isValid && !this.HasErrors) {
                 this.SetModel();
             }
 
-            return (isValid, errorMessage);
+            return (isValid, errorMessages);
         }
 
         #region IDisposable Support     
