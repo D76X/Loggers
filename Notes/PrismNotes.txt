@@ -177,3 +177,12 @@ IModule.Initialize() =>
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
+BindableBase 
+
+Refs
+https://stackoverflow.com/questions/28844518/bindablebase-vs-inotifychanged
+
+Bindablebase is an abstract class that implements INotifyPropertyChanged interface and provide SetProperty<T>.You can reduce the set method 
+to just one line also ref parameter allows you to update its value. 
+
+--------------------------------------------------------------------------------------------------------------------------------------------

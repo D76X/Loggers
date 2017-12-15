@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Reactive.Core, Version=3.0.3000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\System.Reactive.Core.3.1.1\lib\net46\System.Reactive.Core.dll</HintPath>
@@ -50,6 +51,9 @@
     </Reference>
     <Reference Include="System.Reactive.Windows.Threading, Version=3.0.1000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\System.Reactive.Windows.Threading.3.1.1\lib\net45\System.Reactive.Windows.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="System.Xml" />
@@ -70,6 +74,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AbstractClasses\BindableBase.cs" />
+    <Compile Include="AbstractClasses\ValidatableBindableBase.cs" />
+    <Compile Include="Interfaces\ICsvService.cs" />
     <Compile Include="Interfaces\IDataDescriptorModel.cs" />
     <Compile Include="Interfaces\IDataGridColumnModel.cs" />
     <Compile Include="Interfaces\IDataGridColumnSettingsModel.cs" />
@@ -77,6 +84,7 @@
     <Compile Include="Interfaces\IDataGridService.cs" />
     <Compile Include="Interfaces\IDataGridStructureModel.cs" />
     <Compile Include="Interfaces\IDataGridViewModel.cs" />
+    <Compile Include="Interfaces\IDataGridSettingsViewModel.cs" />
     <Compile Include="Interfaces\IDataModel.cs" />
     <Compile Include="Interfaces\IDataSourceModel.cs" />
     <Compile Include="Interfaces\IDataSourceViewModel.cs" />
@@ -91,8 +99,10 @@
     <Compile Include="Models\DataGridColumnSettingsModel.cs" />
     <Compile Include="Models\DataGridModel.cs" />
     <Compile Include="Models\DataGridSettingsModel.cs" />
+    <Compile Include="Models\DataGridSettingsViewModel.cs" />
     <Compile Include="Models\DataGridStructureModel.cs" />
     <Compile Include="Models\HeaderModel.cs" />
+    <Compile Include="Services\CsvService.cs" />
     <Compile Include="Services\DataGridService.cs" />
     <Compile Include="Services\DataService.cs" />
     <Compile Include="Models\RandomGeneratorModel.cs" />

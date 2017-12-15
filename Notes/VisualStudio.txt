@@ -9,7 +9,7 @@ ADD TASK TO TASK LIST PANE (NOT TODO)
 Edit > Bookmarks > Remove Task List Shortcut, 					
 ADD TASK			[Ctrl+E,H]
 
-NAVIGATE SOLUTION
+NAVIGATE SOLUTION (All Global)
 GO TO LINE			[Ctrl+G]
 FIND MEMBER			[Ctrl+1, Ctrl+M]
 FIND FILE			[Ctrl+1, Ctrl+F]

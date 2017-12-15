@@ -26,6 +26,11 @@
         <conv:BooleanToVisibilityConverter x:Key="CustomCollapsedBoolToVis" />
         <conv:BooleanToVisibilityConverter x:Key="CustomInvertedCollapsedBoolToVis"
                                            Negate="True" />
+        <ControlTemplate x:Key="validationTemplate">
+            <Border BorderBrush="Red" BorderThickness="2">
+                <AdornedElementPlaceholder />
+            </Border>                
+        </ControlTemplate>
     </Window.Resources>
     <Window.DataContext>
         <vm:MainViewModel />
@@ -199,18 +204,44 @@
                                 Start Reading
                             </Button>
                         </Grid>
-                        <StackPanel IsEnabled="{Binding DataSourceViewModel.ReadingData, Converter={StaticResource NotConverter}}">                            
-                            <ComboBox ItemsSource="{Binding Source={markupext:EnumBindingSource {x:Type infmodels:ResizeObservableCollectionCycleModeEnum }}}"
-                                      SelectedItem="{Binding DataGridViewModel.GridSettings.CycleMode}" />
-                            <ComboBox SelectedItem="{Binding DataGridViewModel.GridSettings.NumberOfItemsToDisplay}">
-                                <sys:Int32>0</sys:Int32>
-                                <sys:Int32>5</sys:Int32>
-                                <sys:Int32>10</sys:Int32>
-                                <sys:Int32>20</sys:Int32>
-                                <sys:Int32>50</sys:Int32>
-                                <sys:Int32>100</sys:Int32>
-                            </ComboBox>                            
-                        </StackPanel>
+                        <Border Padding="3">
+                            <Border.Style>
+                                <Style TargetType="{x:Type Border}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding DataGridViewModel.GridSettings.HasErrors}"
+                                                     Value="True">
+                                            <Setter Property="BorderBrush"
+                                                    Value="Red" />
+                                            <Setter Property="BorderThickness"
+                                                    Value="2" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>                                
+                            </Border.Style>
+                            <AdornerDecorator>
+                                <StackPanel IsEnabled="{Binding DataSourceViewModel.ReadingData, Converter={StaticResource NotConverter}}">
+                                    <ComboBox SelectedItem="{Binding DataGridViewModel.GridSettings.NumberOfItemsToDisplay, ValidatesOnNotifyDataErrors=True}">
+                                        <sys:Int32>-1</sys:Int32>
+                                        <sys:Int32>0</sys:Int32>
+                                        <sys:Int32>5</sys:Int32>
+                                        <sys:Int32>10</sys:Int32>
+                                        <sys:Int32>20</sys:Int32>
+                                        <sys:Int32>50</sys:Int32>
+                                        <sys:Int32>100</sys:Int32>
+                                    </ComboBox>
+                                    <ComboBox ItemsSource="{Binding Source={markupext:EnumBindingSource {x:Type infmodels:ResizeObservableCollectionCycleModeEnum }}}"
+                                              SelectedItem="{Binding DataGridViewModel.GridSettings.CycleMode}" />
+                                    <ItemsControl ItemsSource="{Binding DataGridViewModel.GridSettings.Errors}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Label Content="{Binding}"
+                                                       Foreground="Red" />
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>                                        
+                                    </ItemsControl>
+                                </StackPanel>
+                            </AdornerDecorator>                            
+                        </Border>                        
                     </StackPanel>
                     <Grid Grid.Column="1">
                         <DataGrid AutoGenerateColumns="False"

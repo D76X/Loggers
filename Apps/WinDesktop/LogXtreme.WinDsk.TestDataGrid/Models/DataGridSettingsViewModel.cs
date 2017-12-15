@@ -2,51 +2,66 @@
 using LogXtreme.WinDsk.Infrastructure.Models;
 using LogXtreme.WinDsk.TestDataGrid.Interfaces;
 using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using System.ComponentModel.DataAnnotations;
 
 namespace LogXtreme.WinDsk.TestDataGrid.Models {
 
+    /// <summary>
+    /// This view model derives from the local implementation of ValidatableBindableBase
+    /// 
+    /// INotifyDataErrorInfo
+    /// https://app.pluralsight.com/player?course=wpf-mvvm-in-depth&author=brian-noyes&name=wpf-mvvm-in-depth-m6&clip=6&mode=live
+    /// 
+    /// </summary>
     public class DataGridSettingsViewModel :
-        INotifyPropertyChanged,
+        LogXtreme.WinDsk.TestDataGrid.AbstractClasses.ValidatableBindableBase,
         IDataGridSettingsViewModel {
 
         private readonly IDataGridSettingsModel dataGridSettingsModel;
+
+        private int numberOfItemsToDisplay;
+        private ResizeObservableCollectionCycleModeEnum cycleMode;
 
         public DataGridSettingsViewModel(
             IDataGridSettingsModel dataGridSettingsModel) {
 
             this.dataGridSettingsModel = dataGridSettingsModel;
+            this.numberOfItemsToDisplay = this.dataGridSettingsModel.NumberOfItemsToDisplay;
+            this.cycleMode = this.dataGridSettingsModel.CycleMode;
+            this.ViewModelValidation = this.ValidateViewModel;
         }
 
+        [Required]
+        [Range(0, Int32.MaxValue)]
         public int NumberOfItemsToDisplay {
 
-            get => this.dataGridSettingsModel.NumberOfItemsToDisplay;
+            get => this.numberOfItemsToDisplay;
 
             set {
 
-                var nOfItemsToDisplay = this.dataGridSettingsModel.NumberOfItemsToDisplay;
+                var updated = this.SetProperty(
+                    ref this.numberOfItemsToDisplay,
+                    value);
 
-                if (value != NumberOfItemsToDisplay) {
-
-                    this.dataGridSettingsModel.NumberOfItemsToDisplay = value;                   
-                    this.NotifyPropertyChanged();
+                if (updated && !this.HasErrors) {
+                    this.RaiseOnGridSettingsChanged();
                 }
             }
         }
 
+        [Required]
         public ResizeObservableCollectionCycleModeEnum CycleMode {
 
-            get => this.dataGridSettingsModel.CycleMode;
+            get => this.cycleMode;
 
             set {
 
-                var currentCycleModel = this.dataGridSettingsModel.CycleMode;
+                var updated = this.SetProperty(
+                    ref this.cycleMode,
+                    value);
 
-                if (value != currentCycleModel) {
-
-                    this.dataGridSettingsModel.CycleMode = value;                    
-                    this.NotifyPropertyChanged();
+                if (updated && !this.HasErrors) {
+                    this.RaiseOnGridSettingsChanged();
                 }
             }
         }
@@ -57,16 +72,49 @@ namespace LogXtreme.WinDsk.TestDataGrid.Models {
             this.OnGridSettingsChanged?.Invoke(this, EventArgs.Empty);
         }
 
-        #region INotifyPropertyChanged
+        private void SetModel() {
 
-        public event PropertyChangedEventHandler PropertyChanged;       
-
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "") {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            this.RaiseOnGridSettingsChanged();
+            this.dataGridSettingsModel.NumberOfItemsToDisplay = this.NumberOfItemsToDisplay;
+            this.dataGridSettingsModel.CycleMode = this.CycleMode;
         }
 
-        #endregion
+        /// <summary>
+        /// All the validation logic that is not easy to specify via data
+        /// attributes on single properties of the view model can be dealt
+        /// by this method. For, example cross validation of properties
+        /// may be executed as the values assigned to the individual 
+        /// properties may be valid but at the same time their values taken
+        /// in combination may not amount to a valid view model. 
+        /// </summary>
+        /// <returns></returns>
+        private (bool IsValid, string ErrorMessage) ValidateViewModel() {
+
+            var isValid = false;
+            var errorMessage = string.Empty;
+
+            if (this.NumberOfItemsToDisplay == 0 &&
+                this.CycleMode != ResizeObservableCollectionCycleModeEnum.None) {
+
+                isValid = false;
+                errorMessage = $"{nameof(NumberOfItemsToDisplay)} = 0 requires {nameof(CycleMode)} = {ResizeObservableCollectionCycleModeEnum.None}";
+            }
+            else if (this.NumberOfItemsToDisplay > 0 &&
+                this.CycleMode == ResizeObservableCollectionCycleModeEnum.None) {
+
+                isValid = false;
+                errorMessage = $"{nameof(NumberOfItemsToDisplay)} > 0 requires {nameof(CycleMode)} != {ResizeObservableCollectionCycleModeEnum.None}";
+            }
+            else {
+                isValid = true;
+                errorMessage = string.Empty;
+            }
+
+            if (isValid && !this.HasErrors) {
+                this.SetModel();
+            }
+
+            return (isValid, errorMessage);
+        }
 
         #region IDisposable Support     
 
@@ -77,7 +125,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.Models {
             if (!disposedValue) {
 
                 if (disposing) {
-                    
+
                     // dispose of subscriptions, etc.
                 }
 
