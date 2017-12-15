@@ -27,10 +27,21 @@
         <conv:BooleanToVisibilityConverter x:Key="CustomInvertedCollapsedBoolToVis"
                                            Negate="True" />
         <ControlTemplate x:Key="validationTemplate">
-            <Border BorderBrush="Red" BorderThickness="2">
+            <Border BorderBrush="Red"
+                    BorderThickness="2">
                 <AdornedElementPlaceholder />
-            </Border>                
+            </Border>
         </ControlTemplate>
+        <Style TargetType="ComboBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError"
+                         Value="True">
+                    <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                                    Path=(Validation.Errors).CurrentItem.ErrorContent}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
     <Window.DataContext>
         <vm:MainViewModel />
@@ -216,7 +227,7 @@
                                                     Value="2" />
                                         </DataTrigger>
                                     </Style.Triggers>
-                                </Style>                                
+                                </Style>
                             </Border.Style>
                             <AdornerDecorator>
                                 <StackPanel IsEnabled="{Binding DataSourceViewModel.ReadingData, Converter={StaticResource NotConverter}}">
@@ -237,11 +248,11 @@
                                                 <Label Content="{Binding}"
                                                        Foreground="Red" />
                                             </DataTemplate>
-                                        </ItemsControl.ItemTemplate>                                        
+                                        </ItemsControl.ItemTemplate>
                                     </ItemsControl>
                                 </StackPanel>
-                            </AdornerDecorator>                            
-                        </Border>                        
+                            </AdornerDecorator>
+                        </Border>
                     </StackPanel>
                     <Grid Grid.Column="1">
                         <DataGrid AutoGenerateColumns="False"
