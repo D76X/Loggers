@@ -27,9 +27,8 @@ namespace LogXtreme.WinDsk.TestDataGrid.Models {
 
             set {
 
-                value
-                    .Validate(nameof(NumberOfItemsToDisplay))
-                    .GreaterThanOrEqualTo(0);
+                value.Validate(nameof(NumberOfItemsToDisplay))
+                     .GreaterThanOrEqualTo(0);
                 
                     this.numberOfItemsToDisplay = value;
             }
