@@ -33,7 +33,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.Models {
         }
 
         [Required]
-        [Range(0, Int32.MaxValue)]
+        [Range(0, Int32.MaxValue, ErrorMessage = @"Number of Items must be grater or equal to 0")]
         public int NumberOfItemsToDisplay {
 
             get => this.numberOfItemsToDisplay;
