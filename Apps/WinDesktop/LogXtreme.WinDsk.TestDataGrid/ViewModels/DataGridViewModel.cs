@@ -109,8 +109,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
             object sender,
             EventArgs e) {
 
-            // save data?
-            // ...
+            //TODO save data to disk/cloud or what? others?        
             this.SetUpDataGrid();
         }      
 
