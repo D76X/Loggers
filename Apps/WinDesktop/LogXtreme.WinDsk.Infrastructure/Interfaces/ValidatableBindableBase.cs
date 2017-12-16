@@ -98,7 +98,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Interfaces {
             this.RaisePropertyChanged(nameof(HasErrors));
             this.RaisePropertyChanged(nameof(Errors));
 
-            this.ErrorsChanged(this, new DataErrorsChangedEventArgs(propertyName));
+            this.ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
         }
 
         protected override bool SetProperty<T>(

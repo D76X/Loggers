@@ -82,7 +82,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.AbstractClasses {
             this.OnPropertyChanged(nameof(HasErrors));
             this.OnPropertyChanged(nameof(Errors));
 
-            this.ErrorsChanged(this, new DataErrorsChangedEventArgs(propertyName));
+            this.ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
         }
 
         protected override bool SetProperty<T>(
