@@ -1,11 +1,12 @@
 ﻿
 using LogXtreme.WinDsk.Infrastructure.Models;
 using LogXtreme.WinDsk.TestDataGrid.Interfaces;
+using LogXtreme.WinDsk.TestDataGrid.Validation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace LogXtreme.WinDsk.TestDataGrid.Models {
+namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
     /// <summary>
     /// This view model derives from the local implementation of ValidatableBindableBase
@@ -88,22 +89,28 @@ namespace LogXtreme.WinDsk.TestDataGrid.Models {
         /// in combination may not amount to a valid view model. 
         /// </summary>
         /// <returns></returns>
-        private (bool IsValid, IEnumerable<string> ErrorMessage) ValidateViewModel() {
-
+        private (bool IsValid, IEnumerable<ValidationData> ValidationData) ValidateViewModel() {
             var isValid = false;
-            var errorMessages = new List<string>();
+            var validationData = new List<ValidationData>();
 
             if (this.NumberOfItemsToDisplay == 0 &&
                 this.CycleMode != ResizeObservableCollectionCycleModeEnum.None) {
 
                 isValid = false;
-                errorMessages.Add($"{nameof(NumberOfItemsToDisplay)} = 0 requires {nameof(CycleMode)} = {ResizeObservableCollectionCycleModeEnum.None}");
+                validationData.Add(
+                    new ValidationData(
+                    $"{nameof(NumberOfItemsToDisplay)} = 0 requires {nameof(CycleMode)} = {ResizeObservableCollectionCycleModeEnum.None}",
+                    ValidationErrorSeverity.Error));
             }
             else if (this.NumberOfItemsToDisplay > 0 &&
                 this.CycleMode == ResizeObservableCollectionCycleModeEnum.None) {
 
                 isValid = false;
-                errorMessages.Add($"{nameof(NumberOfItemsToDisplay)} > 0 requires {nameof(CycleMode)} != {ResizeObservableCollectionCycleModeEnum.None}");
+                validationData.Add(
+                    new ValidationData(
+                    $"{nameof(NumberOfItemsToDisplay)} > 0 requires {nameof(CycleMode)} != {ResizeObservableCollectionCycleModeEnum.None}",
+                    ValidationErrorSeverity.Warning));
+
             }
             else {
                 isValid = true;
@@ -113,7 +120,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.Models {
                 this.SetModel();
             }
 
-            return (isValid, errorMessages);
+            return (isValid, validationData);
         }
 
         #region IDisposable Support     
