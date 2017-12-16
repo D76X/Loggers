@@ -37,3 +37,57 @@ CONTROL THE SIZE OF AN ObservableCollection
 https://stackoverflow.com/questions/4305623/how-to-resize-observablecollection
 
 ===============================================================================================================
+
+VALIDATION IN WPF
+
+https://blog.magnusmontin.net/2013/08/26/data-validation-in-wpf/
+https://docs.microsoft.com/en-us/dotnet/framework/wpf/data/how-to-implement-binding-validation
+
+DATA ANNOTATIONS
+https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations(v=vs.110).aspx
+
+INotifyDataErrorInfo and async (server-side) validation
+https://social.technet.microsoft.com/wiki/contents/articles/19490.wpf-4-5-validating-data-in-using-the-inotifydataerrorinfo-interface.aspx
+https://www.codeproject.com/Tips/876349/WPF-Validation-using-INotifyDataErrorInfo
+
+THE VALIDATION RULE CLASS
+https://msdn.microsoft.com/en-us/library/system.windows.controls.validationrule.aspx
+
+BINDING GROPUS FOR THE TRANSACTIONAL VALIDATION OF MULTIPLE BOUND PROPERTIES
+https://blogs.msdn.microsoft.com/vinsibal/2008/08/12/wpf-3-5-sp1-feature-bindinggroups-with-item-level-validation/
+http://blog.scottlogic.com/2008/11/28/using-bindinggroups-for-greater-control-over-input-validation.html
+
+EXCEPTION VALIDATION RULES
+https://msdn.microsoft.com/en-us/library/system.windows.controls.exceptionvalidationrule(v=vs.110).aspx
+https://stackoverflow.com/questions/2747924/exceptionvalidationrule-doesnt-react-to-exceptions
+
+===============================================================================================================
+
+ADORNERS
+
+https://docs.microsoft.com/en-us/dotnet/framework/wpf/controls/adorners-overview 
+
+AdornerDecorator
+https://social.msdn.microsoft.com/Forums/vstudio/en-US/880e8db9-ba9c-42da-83a8-dd441f2194e7/what-use-of-adornerdecorator-in-wpf?forum=wpf
+
+AdornerDecorator + TabControl + Validation Errors
+https://stackoverflow.com/questions/1369643/wpf-error-styles-only-being-rendered-properly-on-visible-tab-of-a-tab-control
+===============================================================================================================
+
+MUTLIBINDING
+
+===============================================================================================================
+
+HIT TESTING 
+
+https://docs.microsoft.com/en-us/dotnet/framework/wpf/graphics-multimedia/hit-testing-in-the-visual-layer
+
+===============================================================================================================
+
+Property Triggers + Data Triggers + Event Triggers
+
+
+Multitriggers
+http://www.wpf-tutorial.com/styles/multi-triggers-multitrigger-multidatatrigger/
+
+===============================================================================================================
