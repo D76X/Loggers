@@ -99,7 +99,7 @@
     <Compile Include="Models\DataGridColumnSettingsModel.cs" />
     <Compile Include="Models\DataGridModel.cs" />
     <Compile Include="Models\DataGridSettingsModel.cs" />
-    <Compile Include="Models\DataGridSettingsViewModel.cs" />
+    <Compile Include="ViewModels\DataGridSettingsViewModel.cs" />
     <Compile Include="Models\DataGridStructureModel.cs" />
     <Compile Include="Models\HeaderModel.cs" />
     <Compile Include="Services\CsvService.cs" />
@@ -112,6 +112,8 @@
     <Compile Include="Models\DataSource1Model.cs" />
     <Compile Include="Models\SampleSourceModel.cs" />
     <Compile Include="Utils\DataGridToCsvConverter.cs" />
+    <Compile Include="Validation\ValidationData.cs" />
+    <Compile Include="Validation\ValidationErrorSeverity.cs" />
     <Compile Include="ViewModels\DataGrid2ViewModel.cs" />
     <Compile Include="ViewModels\DataGridViewModel.cs" />
     <Compile Include="ViewModels\DataSourceViewModel.cs" />
