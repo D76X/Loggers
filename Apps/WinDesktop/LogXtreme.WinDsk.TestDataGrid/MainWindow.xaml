@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:LogXtreme.WinDsk.TestDataGrid"
+        xmlns:localValidation="clr-namespace:LogXtreme.WinDsk.TestDataGrid.Validation"
         xmlns:vm="clr-namespace:LogXtreme.WinDsk.TestDataGrid.ViewModels"
         xmlns:conv="clr-namespace:LogXtreme.WinDsk.Infrastructure.Convertes;assembly=LogXtreme.WinDsk.Infrastructure"
         xmlns:markupext="clr-namespace:LogXtreme.WinDsk.Infrastructure.MarkupExtensions;assembly=LogXtreme.WinDsk.Infrastructure"
@@ -26,12 +27,14 @@
         <conv:BooleanToVisibilityConverter x:Key="CustomCollapsedBoolToVis" />
         <conv:BooleanToVisibilityConverter x:Key="CustomInvertedCollapsedBoolToVis"
                                            Negate="True" />
+        <!--Custom control template to use in the Validation.ErrorTemplate of validated controls-->
         <ControlTemplate x:Key="validationTemplate">
             <Border BorderBrush="Red"
                     BorderThickness="2">
                 <AdornedElementPlaceholder />
             </Border>
         </ControlTemplate>
+        <!--Style to set the tooltip of a validated control when validation fails-->
         <Style TargetType="ComboBox">
             <Style.Triggers>
                 <Trigger Property="Validation.HasError"
@@ -242,14 +245,52 @@
                                     </ComboBox>
                                     <ComboBox ItemsSource="{Binding Source={markupext:EnumBindingSource {x:Type infmodels:ResizeObservableCollectionCycleModeEnum }}}"
                                               SelectedItem="{Binding DataGridViewModel.GridSettings.CycleMode}" />
+                                    <!--Messages and Warnings collected at the bottom of the stack panel-->
                                     <ItemsControl ItemsSource="{Binding DataGridViewModel.GridSettings.Errors}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Label Content="{Binding Path=Message}">
+                                                    <Label.Style>
+                                                        <Style TargetType="Label">
+                                                            <Setter Property="Foreground"
+                                                                    Value="Red" />
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding Path=Severity}"
+                                                                             Value="{x:Static localValidation:ValidationErrorSeverity.Warning}">
+                                                                    <Setter Property="Foreground"
+                                                                            Value="Orange" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Label.Style>
+                                                </Label>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                    <!--Simplified version of the above-->
+                                    <!--<ItemsControl ItemsSource="{Binding DataGridViewModel.GridSettings.Errors}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Label Content="{Binding}">
+                                                    <Label.Style>
+                                                        <Style TargetType="Label">
+                                                            <Setter Property="Foreground"
+                                                                    Value="Red" />
+                                                        </Style>                                                        
+                                                    </Label.Style>
+                                                </Label>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>                                        
+                                    </ItemsControl>-->
+                                    <!-- Simplified version of the above -->
+                                    <!--<ItemsControl ItemsSource="{Binding DataGridViewModel.GridSettings.Errors}">
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
                                                 <Label Content="{Binding}"
                                                        Foreground="Red" />
                                             </DataTemplate>
                                         </ItemsControl.ItemTemplate>
-                                    </ItemsControl>
+                                    </ItemsControl>-->
                                 </StackPanel>
                             </AdornerDecorator>
                         </Border>
