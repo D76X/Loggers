@@ -380,7 +380,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{64F0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9536517C-30D5-4170-91D8-A1A38E42C3CF}"
 	ProjectSection(SolutionItems) = preProject
-		PyApps\Scripts\Tests\words.py = PyApps\Scripts\Tests\words.py
+		PyApps\Scripts\Tests\test1_words.py = PyApps\Scripts\Tests\test1_words.py
 	EndProjectSection
 EndProject
 Global
