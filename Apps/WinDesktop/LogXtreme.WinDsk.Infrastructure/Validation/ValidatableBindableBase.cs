@@ -7,11 +7,17 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using DataAnnotations = System.ComponentModel.DataAnnotations;
 
-namespace LogXtreme.WinDsk.Infrastructure.Interfaces {
+namespace LogXtreme.WinDsk.Infrastructure.Validation {
 
     /// <summary>
     /// A abstract base class based on the Prism BindableBase which implemets
-    /// INotifyDataErrorInfo to provide validation according to .NET 4.5 standards.
+    /// INotifyDataErrorInfo to provide validation according to .NET 4.5 
+    /// standards. This implementation includes support for
+    /// 
+    /// 1-Data Annotations (Data Validation Attributes on Properties)
+    /// 2-View Model Level validation
+    /// 3-Custom Validation Data
+    /// 4-Multiple validation data per property
     ///
     /// Refs
     /// https://blog.magnusmontin.net/2013/08/26/data-validation-in-wpf/
@@ -27,6 +33,8 @@ namespace LogXtreme.WinDsk.Infrastructure.Interfaces {
     public class ValidatableBindableBase :
         BindableBase,
         INotifyDataErrorInfo {
+
+        public const string ViewModelValidationError = @"ViewModelValidationError";
 
         protected Func<(bool IsValid, IEnumerable<string> ErrorMessages)> ViewModelValidation {
             get;
@@ -58,11 +66,11 @@ namespace LogXtreme.WinDsk.Infrastructure.Interfaces {
             var result = ViewModelValidation();
 
             if (!result.IsValid) {
-                errors.Remove(@"ViewModelValidationError");
-                this.errors[@"ViewModelValidationError"] = result.ErrorMessages.ToList();
+                errors.Remove(ViewModelValidationError);
+                this.errors[ViewModelValidationError] = result.ErrorMessages.ToList();
             }
             else {
-                errors.Remove(@"ViewModelValidationError");
+                errors.Remove(ViewModelValidationError);
             }
         }
 
