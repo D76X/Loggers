@@ -11,27 +11,18 @@ namespace LogXtreme.WinDsk.TestDataGrid.AbstractClasses {
 
     public class ValidatableBindableBase :
         BindableBase,
-        INotifyDataErrorInfo {
-
-        //protected Func<(bool IsValid, IEnumerable<string> ErrorMessages)> ViewModelValidation {
-        //    get;
-        //    set;
-        //}
+        INotifyDataErrorInfo {       
 
         protected Func<(bool IsValid, IEnumerable<ValidationData> ValidationData)> ViewModelValidation {
             get;
             set;
         }
 
-        //private Dictionary<string, List<string>> errors =
-        //    new Dictionary<string, List<string>>();        
-
         private Dictionary<string, List<ValidationData>> errors =
             new Dictionary<string, List<ValidationData>>();
 
         public bool HasErrors => this.errors.Count > 0;
 
-        //public IEnumerable<string> Errors => this.errors.Values.SelectMany(v => v);
         public IEnumerable<ValidationData> Errors => this.errors.Values.SelectMany(v => v);
 
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
@@ -53,7 +44,6 @@ namespace LogXtreme.WinDsk.TestDataGrid.AbstractClasses {
 
             if (!result.IsValid) {
                 errors.Remove(@"ViewModelValidationError");
-                //this.errors[@"ViewModelValidationError"] = result.ErrorMessages.ToList();
                 this.errors[@"ViewModelValidationError"] = result.ValidationData.ToList();
             }
             else {
@@ -82,7 +72,6 @@ namespace LogXtreme.WinDsk.TestDataGrid.AbstractClasses {
 
             if (results.Any()) {
 
-                //this.errors[propertyName] = results.Select(c => c.ErrorMessage).ToList();
                 this.errors[propertyName] = results.Select(c => new ValidationData(c.ErrorMessage, ValidationErrorSeverity.Error)).ToList();
             }
             else {
