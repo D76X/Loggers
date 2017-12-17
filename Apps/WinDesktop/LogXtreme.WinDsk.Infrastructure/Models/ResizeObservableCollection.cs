@@ -1,26 +1,18 @@
 ﻿
 using LogXtreme.Infrastructure.ContractValidators;
 using System;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 
 namespace LogXtreme.WinDsk.Infrastructure.Models {
 
     /// <summary>
-    /// 
+    /// An observable collection with resizable support.
     /// Refs
     /// https://stackoverflow.com/questions/4305623/how-to-resize-observablecollection
-    /// https://stackoverflow.com/questions/2540825/c-sharp-public-enums-in-classes 
-    /// 
-    /// On the proble of effiently remove all items
-    /// https://stackoverflow.com/questions/5118513/removeall-for-observablecollections
-    /// https://stackoverflow.com/questions/224155/when-clearing-an-observablecollection-there-are-no-items-in-e-olditems
-    /// https://stackoverflow.com/questions/224155/when-clearing-an-observablecollection-there-are-no-items-in-e-olditems/9416535#9416535
-    /// 
+    /// https://stackoverflow.com/questions/2540825/c-sharp-public-enums-in-classes  
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class ResizeObservableCollection<T> :
-        ObservableCollection<T> {
+        ObservableCollectionEx<T> {
 
         private readonly int maxSize;
         private readonly ResizeObservableCollectionCycleModeEnum cycleMode;
@@ -64,8 +56,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
                         base.InsertItem(0, item);
                         break;
                     case ResizeObservableCollectionCycleModeEnum.Flush:
-                        this.Items.Clear();
-                        this.OnCollectionChanged(new System.Collections.Specialized.NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+                        this.RemoveAll();
                         base.InsertItem(0, item);
                         break;
                     case ResizeObservableCollectionCycleModeEnum.Queue:
