@@ -48,7 +48,15 @@ Note: to install and/or uninstall packages you may need to run the cmd as admin/
 
 VIRTUALENV
 
-In the cmd 
-Install virtualenv
+1-pip install virtualenv (install virtualenv globally)
 
+Create a virtual environment from the cmd in a folder (env or .virtualenv)
+2-virtualev (name of the virtual environment to crate)
+
+Activate a virtual enviroment from the cmd
+3-.(name of the VE)/bin/activate
+The prompt change to (name of the VE)
+
+Deactivate a VE
+4-
 ====================================================================================

@@ -22,7 +22,7 @@ def print_items(story_words):
     for word in story_words:
         print(word)
 
-# if you want to test this module in teh REPL as if it were 
+# if you want to test this module in the REPL as if it were 
 # as script you can use this main() - it does not need to be
 # named main()
 def main():
