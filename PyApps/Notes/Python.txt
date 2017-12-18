@@ -1,0 +1,41 @@
+
+====================================================================================
+PIP
+
+How to run PIP
+
+In the console and NOT in the REPL type pip to execute pip.exe as long it is in the 
+System Path. In the REPL you may import pip as (import pip).
+
+https://stackoverflow.com/questions/33193374/how-do-i-run-pip-on-python-for-windows
+
+Most useful PIP commands
+
+1-pip list
+2-pip show (name fo the package you want info of)
+3-pip search (name of package...)
+
+4-pip freeze => requirements.txt
+
+	prints a list of all currently installed packages and their versions and it does 
+	so in a format that pip itself can parse later. This mechanism normally used to
+	produce a file named *requirements.txt*.
+
+5-pip install -r requirements.txt
+
+	This installs all the packages and dependencies in requiremets.txt
+
+Note: The requirements.txt mechanism is designed only for setting up the packages on a
+	  developmet machine, not an end user's!
+
+https://pip.pypa.io/en/stable/reference/pip_install/#pip-install
+https://stackoverflow.com/questions/5226311/installing-specific-package-versions-with-pip
+6-pip install (name of the package to install)
+  pip install MySQL_python==1.2.2
+  pip install 'stevedore>=1.3.0,<1.4.0'  => notice the '...' which are necessary
+  pip install -Iv MySQL_python==1.2.2 (-I to ignore previous version)
+
+https://pip.pypa.io/en/stable/reference/pip_uninstall/
+7-pip uninstall (name of the package to uninstall)
+  pip uninstall -r requirements.txt => clean up!
+====================================================================================

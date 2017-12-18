@@ -381,6 +381,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9536517C-30D5-4170-91D8-A1A38E42C3CF}"
 	ProjectSection(SolutionItems) = preProject
 		PyApps\Scripts\Tests\test1_words.py = PyApps\Scripts\Tests\test1_words.py
+		PyApps\Scripts\Tests\test2_words.py = PyApps\Scripts\Tests\test2_words.py
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notes", "Notes", "{AF5A31BE-D3CE-409C-BCBA-D20FED2F8D8F}"
+	ProjectSection(SolutionItems) = preProject
+		PyApps\Notes\Python.txt = PyApps\Notes\Python.txt
 	EndProjectSection
 EndProject
 Global
@@ -1355,6 +1361,7 @@ Global
 		{ED4BE62A-1216-483C-A06B-48E4655134B1} = {444E34AC-F19B-4C59-B3AF-50E9D23A843D}
 		{64F0D418-956A-4C1C-A327-BE3C81081402} = {444E34AC-F19B-4C59-B3AF-50E9D23A843D}
 		{9536517C-30D5-4170-91D8-A1A38E42C3CF} = {64F0D418-956A-4C1C-A327-BE3C81081402}
+		{AF5A31BE-D3CE-409C-BCBA-D20FED2F8D8F} = {444E34AC-F19B-4C59-B3AF-50E9D23A843D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B48A64CD-1E9D-4169-82DF-66FD7695C2D0}
