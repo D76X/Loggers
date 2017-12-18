@@ -21,6 +21,10 @@ Most useful PIP commands
 	so in a format that pip itself can parse later. This mechanism normally used to
 	produce a file named *requirements.txt*.
 
+	The output of the pip freeze can be copied into a requirements.txt file and edited
+	i.e. the specific versions may be removed and some of the installed packages too
+	according to the case.
+
 5-pip install -r requirements.txt
 
 	This installs all the packages and dependencies in requiremets.txt
@@ -38,4 +42,13 @@ https://stackoverflow.com/questions/5226311/installing-specific-package-versions
 https://pip.pypa.io/en/stable/reference/pip_uninstall/
 7-pip uninstall (name of the package to uninstall)
   pip uninstall -r requirements.txt => clean up!
+
+Note: to install and/or uninstall packages you may need to run the cmd as admin/sudo.
+====================================================================================
+
+VIRTUALENV
+
+In the cmd 
+Install virtualenv
+
 ====================================================================================

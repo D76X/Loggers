@@ -379,15 +379,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{64F0D418-956A-4C1C-A327-BE3C81081402}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9536517C-30D5-4170-91D8-A1A38E42C3CF}"
-	ProjectSection(SolutionItems) = preProject
-		PyApps\Scripts\Tests\test1_words.py = PyApps\Scripts\Tests\test1_words.py
-		PyApps\Scripts\Tests\test2_words.py = PyApps\Scripts\Tests\test2_words.py
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notes", "Notes", "{AF5A31BE-D3CE-409C-BCBA-D20FED2F8D8F}"
 	ProjectSection(SolutionItems) = preProject
 		PyApps\Notes\Python.txt = PyApps\Notes\Python.txt
 	EndProjectSection
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonScriptsTest1", "PyApps\Scripts\Tests\PythonScriptsTest1\PythonScriptsTest1.pyproj", "{A39A8C32-EA74-41D1-AE99-DE3E0A5C55C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1203,6 +1201,10 @@ Global
 		{92D4E77A-C464-4794-857D-4A5242C9B3D1}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{92D4E77A-C464-4794-857D-4A5242C9B3D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92D4E77A-C464-4794-857D-4A5242C9B3D1}.Release|x86.ActiveCfg = Release|Any CPU
+		{A39A8C32-EA74-41D1-AE99-DE3E0A5C55C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A39A8C32-EA74-41D1-AE99-DE3E0A5C55C1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A39A8C32-EA74-41D1-AE99-DE3E0A5C55C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A39A8C32-EA74-41D1-AE99-DE3E0A5C55C1}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1362,6 +1364,7 @@ Global
 		{64F0D418-956A-4C1C-A327-BE3C81081402} = {444E34AC-F19B-4C59-B3AF-50E9D23A843D}
 		{9536517C-30D5-4170-91D8-A1A38E42C3CF} = {64F0D418-956A-4C1C-A327-BE3C81081402}
 		{AF5A31BE-D3CE-409C-BCBA-D20FED2F8D8F} = {444E34AC-F19B-4C59-B3AF-50E9D23A843D}
+		{A39A8C32-EA74-41D1-AE99-DE3E0A5C55C1} = {9536517C-30D5-4170-91D8-A1A38E42C3CF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B48A64CD-1E9D-4169-82DF-66FD7695C2D0}
