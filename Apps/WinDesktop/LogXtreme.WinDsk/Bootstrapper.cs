@@ -28,7 +28,7 @@ namespace LogXtreme.WinDsk {
 
             base.ConfigureModuleCatalog();
 
-            // add all the modules that must be always present in the application
+            // add all the modules that must always be present in the application
             this.ModuleCatalog.AddModule(new ModuleInfo() {
                 ModuleName = typeof(Modules.MainMenuModule).Name,
                 ModuleType = typeof(Modules.MainMenuModule).AssemblyQualifiedName,
