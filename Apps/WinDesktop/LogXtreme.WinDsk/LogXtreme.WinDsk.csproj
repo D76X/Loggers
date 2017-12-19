@@ -152,26 +152,6 @@
       <Project>{e9083ec0-8f0d-46cf-b145-a09e139b93df}</Project>
       <Name>DeviceServiceModule</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Modules\InfrastructureModules\ContentModule\ContentModule.csproj">
-      <Project>{6f2a2afa-717b-49a7-92fd-015122540034}</Project>
-      <Name>ContentModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\InfrastructureModules\DataTreeModule\DataTreeModule.csproj">
-      <Project>{90eef6be-2c5b-4a7b-bc32-0531ef437070}</Project>
-      <Name>DataTreeModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\InfrastructureModules\DeviceTreeModule\DeviceTreeModule.csproj">
-      <Project>{e152db85-f4cb-4864-87d2-ee408093c3fe}</Project>
-      <Name>DeviceTreeModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\InfrastructureModules\MainMenuModule\MainMenuModule.csproj">
-      <Project>{7a2c09df-62df-4d7a-a68c-f66ccc184ae4}</Project>
-      <Name>MainMenuModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\InfrastructureModules\StatusBarModule\StatusBarModule.csproj">
-      <Project>{1b4d63aa-99b8-4190-b553-c72bc114a44a}</Project>
-      <Name>StatusBarModule</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
