@@ -144,6 +144,34 @@
       <Project>{489706e3-c226-4d83-bb3d-c5a0d49d3835}</Project>
       <Name>LogXtreme.WinDsk.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Modules\AppModules\ContentModule\ContentModule.csproj">
+      <Project>{6f2a2afa-717b-49a7-92fd-015122540034}</Project>
+      <Name>ContentModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\AppModules\DataGridModule\DataGridModule.csproj">
+      <Project>{b0801c7c-3acb-4617-bb59-329d70af310a}</Project>
+      <Name>DataGridModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\AppModules\DataTreeModule\DataTreeModule.csproj">
+      <Project>{90eef6be-2c5b-4a7b-bc32-0531ef437070}</Project>
+      <Name>DataTreeModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\AppModules\DeviceTreeModule\DeviceTreeModule.csproj">
+      <Project>{e152db85-f4cb-4864-87d2-ee408093c3fe}</Project>
+      <Name>DeviceTreeModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\AppModules\MainMenuModule\MainMenuModule.csproj">
+      <Project>{7a2c09df-62df-4d7a-a68c-f66ccc184ae4}</Project>
+      <Name>MainMenuModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\AppModules\MainMenuOptionsModule\MainMenuOptionsModule.csproj">
+      <Project>{5eaf14e5-39ca-43e7-86dc-40b1de6c2252}</Project>
+      <Name>MainMenuOptionsModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\AppModules\StatusBarModule\StatusBarModule.csproj">
+      <Project>{1b4d63aa-99b8-4190-b553-c72bc114a44a}</Project>
+      <Name>StatusBarModule</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Modules\AppServices\DataServiceModule\DataServiceModule.csproj">
       <Project>{fb58d566-2f42-4868-9873-748a62692b35}</Project>
       <Name>DataServiceModule</Name>
