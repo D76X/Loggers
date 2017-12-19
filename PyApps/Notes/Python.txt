@@ -1,5 +1,77 @@
 
 ====================================================================================
+HOW TO USE THE RPL AND THE WINDOW SHELL
+
+Example 1 : PyApps/Scripts/Tests/PythonScriptsTest1/test1_words.py
+
+1-To use it as a script
+
+Open a shell or Power Shell window in the folder or cd to it.
+On the prompt type the command > python test1_words.py.
+This runs the python interpreter and pass to it the script.
+Due to the fact that when the script is interpreted __main__ == '__main__'
+the fetch_word() function is executed and the result are printed to the 
+console by design.
+
+2-To use it as a module.
+
+Any .py file is a module. To use test1_words.py as a module you need the REPL. 
+The are several ways to get a Python REPL.
+
+	1-From the Windows start button find Python and launch the REPL.
+	2-Use the Python REPL available in VS. Where you can also control 
+	  the envirinment teh REPL is executing in.
+	3-Start the REPL using the command prompt in a folder where the .py
+	  is located. To start the Python REPL type > python.
+
+	Option 2 is the most flexible.
+
+In the REPL type >>>import test1_words. 
+
+Once you have done this you will find the module test1_words listed in the second 
+drop down which shows all the modules loaded in the REPL for the session.
+
+Now that the module test1_words is loaded into the REPL you have access to all the
+exported symbols by dotting on the name os the module i.e. test1_words.fetch_words.
+
+If you type test1_words.fetch_words and return you get the address of the symbol,
+but with test1_words.fetch_words() you execute the code for the symbol and the 
+output is printed to the REPL.
+
+A module can be unloaded and reloaded from the REPL.
+https://stackoverflow.com/questions/437589/how-do-i-unload-reload-a-python-module
+
+del test1_words
+
+-------------------------------------------------------------------------------------
+
+Example 2 : PyApps/Scripts/Tests/PythonScriptsTest1/test2_words.py
+
+This script is written so that can be used as a module and as a script and when used
+as a module a main() is provided as entry point to test the functionality of the 
+module.
+
+1- To use it as script 
+
+As in Example 1 if you just type 
+
+> python test2_words.py 
+
+this executes the main() as it is __name__ == '__main__' when the files is interpreted
+by Python.
+
+2- To use it a module
+
+In the REPL
+
+>>>import test2_words
+
+This imports all the symbols in the module into teh REPL. You can access all of them
+by dotting on the name of the module i.e. test2_words.fetch_words(). There is also a 
+main() function that is provided to test the module as a whole as if it where run as
+as a script - sometimes this is useful to have.
+
+====================================================================================
 PIP
 
 How to run PIP

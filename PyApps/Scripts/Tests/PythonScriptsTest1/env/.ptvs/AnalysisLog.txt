@@ -2816,3 +2816,119 @@ C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\Ext
 2017-12-18T14:36:12: Deleting 2 files
 2017-12-18T14:36:12: Deleting "C:\GitHub\Loggers\PyApps\Scripts\Tests\PythonScriptsTest1\env\.ptvs\_dummy_threading.idb"
 2017-12-18T14:36:13: Deleting "C:\GitHub\Loggers\PyApps\Scripts\Tests\PythonScriptsTest1\env\.ptvs\_dummy__threading_local.idb"
+
+2017-12-19T13:40:47: Start analysis
+2017-12-19T13:40:47: IncludeModulesFromModulePath = win32com
+2017-12-19T13:40:49: Including c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope because rope.__init__ needs updating
+2017-12-19T13:40:49: Deleting 0 files
+2017-12-19T13:40:49: astropy.CallDepth = 0
+2017-12-19T13:40:49: delphixpy.CallDepth = 0
+2017-12-19T13:40:49: matplotlib.CallDepth = 3
+2017-12-19T13:40:49: pandas.CallDepth = 0
+2017-12-19T13:40:49: sympy.CallDepth = 0
+2017-12-19T13:40:49: Start group "c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope" with 91 files
+2017-12-19T13:40:50: Parsing complete
+2017-12-19T13:40:50: Analyzing "rope" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\__init__.py")
+2017-12-19T13:40:50: Analyzing "rope.base.arguments" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\arguments.py")
+2017-12-19T13:40:50: Analyzing "rope.base.ast" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\ast.py")
+2017-12-19T13:40:50: Analyzing "rope.base.astutils" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\astutils.py")
+2017-12-19T13:40:50: Analyzing "rope.base.builtins" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\builtins.py")
+2017-12-19T13:40:50: Analyzing "rope.base.change" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\change.py")
+2017-12-19T13:40:50: Analyzing "rope.base.codeanalyze" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\codeanalyze.py")
+2017-12-19T13:40:50: Analyzing "rope.base.default_config" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\default_config.py")
+2017-12-19T13:40:50: Analyzing "rope.base.evaluate" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\evaluate.py")
+2017-12-19T13:40:50: Analyzing "rope.base.exceptions" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\exceptions.py")
+2017-12-19T13:40:50: Analyzing "rope.base.fscommands" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\fscommands.py")
+2017-12-19T13:40:50: Analyzing "rope.base.history" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\history.py")
+2017-12-19T13:40:50: Analyzing "rope.base.libutils" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\libutils.py")
+2017-12-19T13:40:50: Analyzing "rope.base.prefs" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\prefs.py")
+2017-12-19T13:40:50: Analyzing "rope.base.project" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\project.py")
+2017-12-19T13:40:50: Analyzing "rope.base.pycore" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\pycore.py")
+2017-12-19T13:40:50: Analyzing "rope.base.pynames" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\pynames.py")
+2017-12-19T13:40:50: Analyzing "rope.base.pynamesdef" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\pynamesdef.py")
+2017-12-19T13:40:50: Analyzing "rope.base.pyobjects" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\pyobjects.py")
+2017-12-19T13:40:50: Analyzing "rope.base.pyobjectsdef" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\pyobjectsdef.py")
+2017-12-19T13:40:50: Analyzing "rope.base.pyscopes" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\pyscopes.py")
+2017-12-19T13:40:50: Analyzing "rope.base.resourceobserver" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\resourceobserver.py")
+2017-12-19T13:40:50: Analyzing "rope.base.resources" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\resources.py")
+2017-12-19T13:40:50: Analyzing "rope.base.simplify" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\simplify.py")
+2017-12-19T13:40:50: Analyzing "rope.base.stdmods" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\stdmods.py")
+2017-12-19T13:40:50: Analyzing "rope.base.taskhandle" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\taskhandle.py")
+2017-12-19T13:40:50: Analyzing "rope.base.worder" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\worder.py")
+2017-12-19T13:40:50: Analyzing "rope.base" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\__init__.py")
+2017-12-19T13:40:50: Analyzing "rope.base.oi.doa" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\oi\doa.py")
+2017-12-19T13:40:50: Analyzing "rope.base.oi.memorydb" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\oi\memorydb.py")
+2017-12-19T13:40:50: Analyzing "rope.base.oi.objectdb" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\oi\objectdb.py")
+2017-12-19T13:40:50: Analyzing "rope.base.oi.objectinfo" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\oi\objectinfo.py")
+2017-12-19T13:40:50: Analyzing "rope.base.oi.runmod" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\oi\runmod.py")
+2017-12-19T13:40:50: Analyzing "rope.base.oi.soa" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\oi\soa.py")
+2017-12-19T13:40:50: Analyzing "rope.base.oi.soi" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\oi\soi.py")
+2017-12-19T13:40:50: Analyzing "rope.base.oi.transform" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\oi\transform.py")
+2017-12-19T13:40:50: Analyzing "rope.base.oi" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\oi\__init__.py")
+2017-12-19T13:40:50: Analyzing "rope.base.oi.type_hinting.evaluate" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\oi\type_hinting\evaluate.py")
+2017-12-19T13:40:50: Analyzing "rope.base.oi.type_hinting.factory" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\oi\type_hinting\factory.py")
+2017-12-19T13:40:50: Analyzing "rope.base.oi.type_hinting.interfaces" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\oi\type_hinting\interfaces.py")
+2017-12-19T13:40:50: Analyzing "rope.base.oi.type_hinting.utils" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\oi\type_hinting\utils.py")
+2017-12-19T13:40:50: Analyzing "rope.base.oi.type_hinting" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\oi\type_hinting\__init__.py")
+2017-12-19T13:40:50: Analyzing "rope.base.oi.type_hinting.providers.composite" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\oi\type_hinting\providers\composite.py")
+2017-12-19T13:40:50: Analyzing "rope.base.oi.type_hinting.providers.docstrings" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\oi\type_hinting\providers\docstrings.py")
+2017-12-19T13:40:50: Analyzing "rope.base.oi.type_hinting.providers.inheritance" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\oi\type_hinting\providers\inheritance.py")
+2017-12-19T13:40:50: Analyzing "rope.base.oi.type_hinting.providers.interfaces" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\oi\type_hinting\providers\interfaces.py")
+2017-12-19T13:40:50: Analyzing "rope.base.oi.type_hinting.providers.numpydocstrings" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\oi\type_hinting\providers\numpydocstrings.py")
+2017-12-19T13:40:50: Analyzing "rope.base.oi.type_hinting.providers.pep0484_type_comments" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\oi\type_hinting\providers\pep0484_type_comments.py")
+2017-12-19T13:40:50: Analyzing "rope.base.oi.type_hinting.providers" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\oi\type_hinting\providers\__init__.py")
+2017-12-19T13:40:50: Analyzing "rope.base.oi.type_hinting.resolvers.composite" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\oi\type_hinting\resolvers\composite.py")
+2017-12-19T13:40:50: Analyzing "rope.base.oi.type_hinting.resolvers.interfaces" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\oi\type_hinting\resolvers\interfaces.py")
+2017-12-19T13:40:50: Analyzing "rope.base.oi.type_hinting.resolvers.types" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\oi\type_hinting\resolvers\types.py")
+2017-12-19T13:40:50: Analyzing "rope.base.oi.type_hinting.resolvers" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\oi\type_hinting\resolvers\__init__.py")
+2017-12-19T13:40:50: Analyzing "rope.base.utils.datastructures" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\utils\datastructures.py")
+2017-12-19T13:40:50: Analyzing "rope.base.utils.pycompat" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\utils\pycompat.py")
+2017-12-19T13:40:50: Analyzing "rope.base.utils" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\base\utils\__init__.py")
+2017-12-19T13:40:50: Analyzing "rope.contrib.autoimport" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\contrib\autoimport.py")
+2017-12-19T13:40:50: Analyzing "rope.contrib.changestack" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\contrib\changestack.py")
+2017-12-19T13:40:50: Analyzing "rope.contrib.codeassist" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\contrib\codeassist.py")
+2017-12-19T13:40:50: Analyzing "rope.contrib.finderrors" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\contrib\finderrors.py")
+2017-12-19T13:40:50: Analyzing "rope.contrib.findit" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\contrib\findit.py")
+2017-12-19T13:40:50: Analyzing "rope.contrib.fixmodnames" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\contrib\fixmodnames.py")
+2017-12-19T13:40:50: Analyzing "rope.contrib.fixsyntax" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\contrib\fixsyntax.py")
+2017-12-19T13:40:50: Analyzing "rope.contrib.generate" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\contrib\generate.py")
+2017-12-19T13:40:50: Analyzing "rope.contrib" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\contrib\__init__.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor.change_signature" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\change_signature.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor.encapsulate_field" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\encapsulate_field.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor.extract" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\extract.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor.functionutils" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\functionutils.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor.inline" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\inline.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor.introduce_factory" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\introduce_factory.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor.introduce_parameter" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\introduce_parameter.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor.localtofield" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\localtofield.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor.method_object" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\method_object.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor.move" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\move.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor.multiproject" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\multiproject.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor.occurrences" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\occurrences.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor.patchedast" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\patchedast.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor.rename" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\rename.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor.restructure" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\restructure.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor.similarfinder" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\similarfinder.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor.sourceutils" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\sourceutils.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor.suites" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\suites.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor.topackage" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\topackage.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor.usefunction" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\usefunction.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor.wildcards" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\wildcards.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\__init__.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor.importutils.actions" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\importutils\actions.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor.importutils.importinfo" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\importutils\importinfo.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor.importutils.module_imports" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\importutils\module_imports.py")
+2017-12-19T13:40:50: Analyzing "rope.refactor.importutils" ("c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope\refactor\importutils\__init__.py")
+2017-12-19T13:40:50: Starting analysis of 91 modules
+2017-12-19T13:41:01: Analysis complete
+2017-12-19T13:41:01: Saving group "c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope"
+2017-12-19T13:41:02: [ERROR] rope.base.utils.pycompat.execfile: Unknown has no name
+2017-12-19T13:41:02: [ERROR] rope.base.resources.Resource.Resource: Unknown has no name
+2017-12-19T13:41:02: [ERROR] rope.base.project.Project.Project: Unknown has no name
+2017-12-19T13:41:02: [ERROR] rope.base.builtins.BuiltinFunction.BuiltinFunction: GetTypeName(builtins, (null))
+2017-12-19T13:41:02: End of group "c:\github\loggers\pyapps\scripts\tests\pythonscriptstest1\env\lib\site-packages\rope"
+2017-12-19T13:41:03: Deleting 0 files
+
+2017-12-19T14:33:16: Start analysis
+2017-12-19T14:33:16: IncludeModulesFromModulePath = win32com
+2017-12-19T14:33:17: Deleting 91 files
