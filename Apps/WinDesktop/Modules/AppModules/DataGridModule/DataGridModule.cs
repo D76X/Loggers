@@ -5,6 +5,8 @@ using Microsoft.Practices.Unity;
 using LogXtreme.WinDsk.Infrastructure.Services;
 using DataGridModule.Interfaces;
 using LogXtreme.WinDsk.Infrastructure;
+using DataGridModule.ViewModels;
+using DataGridModule.Views;
 
 namespace LogXtreme.WinDsk.Modules {
 
@@ -38,7 +40,8 @@ namespace LogXtreme.WinDsk.Modules {
             // Register Shared Services
 
             // Compose Views into the Shell
-            regionManager.RegisterViewWithRegion(RegionNames.WorkspaceTabControl, typeof(DataGridView));
+            //regionManager.RegisterViewWithRegion(RegionNames.WorkspaceTabControl, typeof(DataGridView));
+            regionManager.RegisterViewWithRegion(RegionNames.RegionWorkspace, typeof(DataGridView));
         }
     }
 }

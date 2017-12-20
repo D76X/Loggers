@@ -1,6 +1,6 @@
-﻿using LogXtreme.WinDsk.Infrastructure.Models;
+﻿using DataGridModule.Interfaces;
 
 namespace DataGridModule.ViewModels {
-    public class DataGridViewModel : IViewModel {
+    public class DataGridViewModel : IDataGridViewModel {
     }
 }
