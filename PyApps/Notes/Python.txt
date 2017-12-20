@@ -123,12 +123,40 @@ VIRTUALENV
 1-pip install virtualenv (install virtualenv globally)
 
 Create a virtual environment from the cmd in a folder (env or .virtualenv)
-2-virtualev (name of the virtual environment to crate)
+Normally on Windows the folder is env and on Linux it is .virtualenv
+2-virtualev (name of the virtual environment to create - normally the name of the project)
 
 Activate a virtual enviroment from the cmd
-3-.(name of the VE)/bin/activate
+3 Linux -.(name of the VE)/bin/activate 
 The prompt change to (name of the VE)
 
+3 Windows - myproject\Scripts\activate
+For example
+>cd C:\GitHub\Loggers\PyApps\Scripts\Tests\PythonScriptsTest1\env\Scripts
+>activate
+This runs the script activate.py and the prompt changes to
+
+(env) C:\GitHub\Loggers\PyApps\Scripts\Tests\PythonScriptsTest1\env\Scripts
+
+to signal that python is now running on the virtual environment created for the 
+project. You can now issue commands, import modules, etc. and all is done in the 
+VE.
+
 Deactivate a VE
-4-
+4 Linux- .(name of the VE)/bin/deactivate
+4 Windows- (name of the VE)/.../Scripts/deactivate
+
+When a VE is activate the system path changes to use the path ...env.
+You can easily verify this in two ways
+
+--------------------------------------------
+
+Check sys.path
+
+1-In the cmd activate a VE
+2-type >python to start the REPL in the cmd
+3-type >>> import sys
+4-type >>> sys.path 
+--------------------------------------------
+
 ====================================================================================
