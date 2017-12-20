@@ -8,10 +8,10 @@ namespace LogXtreme.WinDsk.Modules.Services {
 
         public void AddMenuItem(IMenuItem menuItem) {
 
-            this.AddMenuItemEvent?.Invoke(null, new MenuItemEventArgs(menuItem));
+            this.OnMenuItemAdded?.Invoke(null, new MenuItemEventArgs(menuItem));
         }
 
-        public event EventHandler<MenuItemEventArgs> AddMenuItemEvent;
+        public event EventHandler<MenuItemEventArgs> OnMenuItemAdded;
 
         public IMenuItem GetMenuItem(string header) {
             throw new NotImplementedException();
