@@ -14,6 +14,7 @@ namespace LogXtreme.WinDsk.Modules.Services {
         public event EventHandler<MenuItemEventArgs> OnMenuItemAdded;
 
         public IMenuItem GetMenuItem(string header) {
+            //TODO Implement MenuService.GetMenuItem
             throw new NotImplementedException();
         }    
     }
