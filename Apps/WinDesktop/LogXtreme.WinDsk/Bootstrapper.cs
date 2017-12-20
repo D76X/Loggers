@@ -53,6 +53,11 @@ namespace LogXtreme.WinDsk {
                 ModuleName = typeof(Modules.DataTreeModule).Name,
                 ModuleType = typeof(Modules.DataTreeModule).AssemblyQualifiedName,
             });
+
+            this.ModuleCatalog.AddModule(new ModuleInfo() {
+                ModuleName = typeof(Modules.DataGridModule).Name,
+                ModuleType = typeof(Modules.DataGridModule).AssemblyQualifiedName,
+            });
         }        
 
         /// <summary>
