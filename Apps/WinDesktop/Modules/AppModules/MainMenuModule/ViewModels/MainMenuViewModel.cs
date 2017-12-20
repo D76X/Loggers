@@ -11,26 +11,29 @@ using System.Reactive.Linq;
 
 namespace MainMenuModule.ViewModels {
 
-    public class MainMenuViewModel : BindableBase, IMainMenuViewModel, IDisposable {
+    public class MainMenuViewModel :
+        BindableBase,
+        IMainMenuViewModel,
+        IDisposable {
 
         private readonly IMenuService menuService;
 
         private ObservableCollection<IMenuItem> menuItems;
 
-        private IDisposable subscriptionToAddMenuItem;
+        private IDisposable eventsubscription_AddMenuItemObservable;
 
         public MainMenuViewModel(IMenuService menuService) {
 
-            this.menuService = menuService;           
+            this.menuService = menuService;
 
-            this.subscriptionToAddMenuItem = Observable.FromEventPattern<MenuItemEventArgs>(
-                h => this.menuService.AddMenuItemEvent += h,
-                h => this.menuService.AddMenuItemEvent -= h)
+            this.eventsubscription_AddMenuItemObservable = Observable.FromEventPattern<MenuItemEventArgs>(
+                h => this.menuService.OnMenuItemAdded += h,
+                h => this.menuService.OnMenuItemAdded -= h)
                 .SubscribeWeakly(
                     this,
                     (target, eventPattern) => {
-                    target.AddMenuItemEventHanlder(eventPattern.Sender, eventPattern.EventArgs);
-                });
+                        target.AddMenuItemEventHanlder(eventPattern.Sender, eventPattern.EventArgs);
+                    });
 
             var menuItems = new List<IMenuItem>();
 
@@ -81,21 +84,28 @@ namespace MainMenuModule.ViewModels {
 
         #region IDisposable
 
-        public void Dispose() {
-            this.Dispose(true);
-            GC.SuppressFinalize(this);
-        }
+        private bool disposedValue = false; // To detect redundant calls         
 
         protected virtual void Dispose(bool disposing) {
 
-            if (disposing) {
+            if (!disposedValue) {
 
-                if (this.subscriptionToAddMenuItem != null) {
+                if (disposing) {
 
-                    this.subscriptionToAddMenuItem.Dispose();
-                    this.subscriptionToAddMenuItem = null;
+                    this.eventsubscription_AddMenuItemObservable?.Dispose();
+                    this.eventsubscription_AddMenuItemObservable = null;
                 }
+
+                // free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // set large fields to null.
+
+                disposedValue = true;
             }
+        }
+
+        public void Dispose() {
+            this.Dispose(true);
+            //GC.SuppressFinalize(this);
         }
 
         #endregion
