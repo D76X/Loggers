@@ -31,7 +31,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Behaviours {
     /// Refs
     /// https://app.pluralsight.com/player?course=wpf-mvvm-in-depth&author=brian-noyes&name=wpf-mvvm-in-depth-m4&clip=4&mode=live
     /// </summary>
-    public class HanldeViewLoadedEventBehaviour {
+    public class HanldeViewLoadedEventBehavior {
 
         public static string GetLoadedMethodName(DependencyObject obj) {
             return (string)obj.GetValue(LoadedMethodNameProperty);
@@ -51,7 +51,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Behaviours {
             DependencyProperty.RegisterAttached(
                 "LoadedMethodName", 
                 typeof(string), 
-                typeof(HanldeViewLoadedEventBehaviour), 
+                typeof(HanldeViewLoadedEventBehavior), 
                 new PropertyMetadata(null, OnLoadedMethodNameChanged));
 
         /// <summary>
