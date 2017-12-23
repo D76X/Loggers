@@ -160,3 +160,96 @@ Check sys.path
 --------------------------------------------
 
 ====================================================================================
+
+Docstrings for functions
+
+def fetch_words():
+    """fetches some text from a test URL and stick it into a list word by word"""
+
+
+def print_items(items):
+    """
+    prints a list of strings to the console
+    
+    Args:
+        items: the collection of items to print.
+
+    Returns:
+        nothing.
+    """
+    for item in items:
+        print(item)
+
+These are all examples of Docstrings. Docstrings are useful to query how a function 
+declared in a module works. In order to query for a docstring do something like the
+following in the REPL.
+
+>>> import test2_words
+>>> help(test2_words.print_items)
+
+You get the following output
+
+Help on function print_items in module test2_words:
+
+---------------------------------------------------
+print_items(items)
+    prints a list of strings to the console.
+    
+    Args:
+        items: the collection of items to print.
+    
+    Returns:
+        nothing.
+---------------------------------------------------
+
+This is also the recommended style of Docstring.
+
+------------------------------------------------------------------------------------
+
+Docstring for modules
+
+"""
+This is the docstring for this module.
+
+Usage:
+    its is used to showcase and test some basic aspect of Python and its 
+    toolchain.
+"""
+
+-------------------------------------------------
+
+It is also possible to obtain help on a module.
+
+>>> import test2_words
+>>> help(test2_words)
+Help on module test2_words:
+
+NAME
+    test2_words - This is the docstring for this module.
+
+DESCRIPTION
+    Usage:
+        its is used to showcase and test some basic aspect of Python and its 
+        toolchain.
+
+FUNCTIONS
+    fetch_words()
+        fetches some text from a test URL and stick it into a list word by word
+    
+    main()
+        this is the main funtion of this module
+    
+    print_items(items)
+        prints a list of strings to the console.
+        
+        Args:
+            items: the collection of items to print.
+        
+        Returns:
+            nothing.
+
+====================================================================================
+
+Import and unload modules in the REPL
+
+====================================================================================

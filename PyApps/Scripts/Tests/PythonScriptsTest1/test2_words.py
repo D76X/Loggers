@@ -1,5 +1,9 @@
 """
-this is the docstring for this module
+This is the docstring for this module.
+
+Usage:
+    its is used to showcase and test some basic aspect of Python and its 
+    toolchain.
 """
 from urllib.request import urlopen
 
@@ -17,10 +21,18 @@ def fetch_words():
                 story_words.append(word)
     return story_words
 
-def print_items(story_words):
-    """prints a list of strings to the console"""
-    for word in story_words:
-        print(word)
+def print_items(items):
+    """
+    prints a list of strings to the console.
+    
+    Args:
+        items: the collection of items to print.
+
+    Returns:
+        nothing.
+    """
+    for item in items:
+        print(item)
 
 # if you want to test this module in the REPL as if it were 
 # as script you can use this main() - it does not need to be
