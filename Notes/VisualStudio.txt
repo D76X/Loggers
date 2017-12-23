@@ -76,3 +76,17 @@ How to add tasks to the Task List pane [Ctrl+E,H]
 https://stackoverflow.com/questions/15120139/strange-arrow-in-visual-studio-gutter-window
 Edit > Bookmarks > Add Task List Shortcut/Remove Task List Shortcut [Ctrl+E,H]
 ==========================================================================================
+
+Create a code snippet in Visual Studio
+http://www.c-sharpcorner.com/article/create-custom-code-snippet-in-visual-studio-2015/
+https://stackoverflow.com/questions/19514413/using-a-code-snippet-for-inotifypropertychanged
+https://msdn.microsoft.com/en-us/library/z41h7fat.aspx
+https://msdn.microsoft.com/en-us/library/ms165394.aspx
+
+Where you store your code snippets
+C:\Users\davidespano\Documents\Visual Studio 2017\Code Snippets\Visual C#\My Code Snippets
+
+You can either use the Tools>Snippets Manager tool in Visual Studio to import the snippet
+template to this folder or you may simply copy the .snippet file to it manually which is 
+easier.
+==========================================================================================

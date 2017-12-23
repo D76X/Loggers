@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>Notify Property Changed Method</Title>
+    <Author>Davide</Author>
+    <Shortcut>inpch</Shortcut>
+    <Description>Add the OnPropertyChanged method for INPC</Description>
+    <SnippetTypes>
+      <SnippetType>SurroundsWith</SnippetType>
+      <SnippetType>Expansion</SnippetType>
+    </SnippetTypes>
+  </Header>  
+  <Snippet>
+    <!--<References>
+      <Reference>
+        <Assembly>ystem.ComponentModel.DataAnnotations.dll</Assembly>
+      </Reference>
+    </References>-->
+    <Imports>
+      <Import>
+        <Namespace>System.Runtime.CompilerServices</Namespace>
+      </Import>
+    </Imports>
+    <Code Language="CSharp">
+      <![CDATA[#region INotifyPropertyChanged
+
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
+        
+        private void OnPropertyChanged([CallerMemberName] string propertyName = "") {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));            
+        }        
+        #endregion]]>
+    </Code>
+  </Snippet>
+</CodeSnippet>
