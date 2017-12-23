@@ -186,3 +186,66 @@ Bindablebase is an abstract class that implements INotifyPropertyChanged interfa
 to just one line also ref parameter allows you to update its value. 
 
 --------------------------------------------------------------------------------------------------------------------------------------------
+
+REGION, REGION ADAPTERS AND VIEWS
+
+A Region in Prism is an attached property that may be applied to a control to indicate to Prism that the XAML element to which the AP is 
+applied defines a Region and will therefore host some views as its children in the visual tree.
+
+For example
+
+<ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionMainMenu}" Grid.Row="0"/>
+
+Declares that that specifc element of the VT that is a ContentControl is a named region.
+
+For a XAML element to be able to act as a region there must exist a Region Adapter. A Region Adapter is an implementation of an abstract
+class RegionAdapterBase<T> where T is the type of XAML element that we would like to act as a region. There is an implementation of a 
+custom region RegionAdapterStackPanel in the solution for illustrative purposes. In practice the logic in the Region Adapter specifies two
+things.
+
+1-What kind of Region that XAML item is supposed to be. => the RegionAdapterBase.CreateRegion
+2-Some logic that handles the addition and removal of views into the XAML element of the region. => RegionAdapterBase.Adapt
+
+In relation to (1) there are really only three types of Region in Prism
+1-AllActiveRegion		=> all the views in the region are active i.e. ContentControl has an adapter of this kind.
+2-SingleActiveRegion	=> only a single view in the region can be active at any one time i.e. ItemsControl has an adapter of this kind.
+3-Region				=> this region allows for multiple active views i.e. controls that derive from teh Selector Class. 
+
+Views in Prism must eventually become visible on the GUI by being associated to a Prism Region. There are three mechanisms by means of which 
+a view can be displayed into a region.
+
+1-View Discovery		(automatic injection of views into defined regions of the shell)
+2-View Injection		(programmatic injection of views into defined regions of the shell)
+
+1-View Discovery Example	(automatic injection of views into defined regions of the shell)
+
+// In the IModule.initialize regiter a view with a region in the shell and Prism will instantiate
+// the view and inject it in the region for you. This is a good mechanism for some parts of the GUI 
+// that are permanent. This mechanism does not afford explicit control an when to load and display 
+// a view in a region.
+public void Initialize() {
+            regionManager.RegisterViewWithRegion(RegionNames.RegionContent, typeof(ContentView));
+}
+
+2-View Injection	(programmatic injection of views into defined regions of the shell)
+
+IRegionManager rm = manager;
+rm.Regions["RegionName"].Add(view,name)
+
+or 
+
+var viewModelForView = container.Resolve(IMyViewModel)
+IRegion region = manager.Regions["RegionName"];
+var activeView = region.ActiveViews[0];
+....
+region.Add(viewModelForView.View)
+
+you may need to Activate/Deactive the view(s) in the region. For example, if a defined Prism region has a ContentControl has its host then
+it must be of type SingleActiveRegion. You may inject multiple view into such region but only one can be active at any time and you must do
+this programmatically. Deactivate the current view, inject the new view and activate it to show it othervwise you won't see it. 
+
+With View Injection you can also remove views from a Region.
+The region must exists prior to injecting views into it, you must checj that the region has already being created before you try to inject 
+any view into it.
+
+--------------------------------------------------------------------------------------------------------------------------------------------
