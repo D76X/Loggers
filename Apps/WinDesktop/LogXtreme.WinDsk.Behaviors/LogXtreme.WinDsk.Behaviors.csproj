@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3A2D46F2-91F8-4AEC-BC99-3495E8E3709A}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>LogXtreme.WinDsk</RootNamespace>
-    <AssemblyName>LogXtreme.WinDsk</AssemblyName>
+    <ProjectGuid>{BF7BFBB7-F795-4CED-9410-2B33EB34836B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>LogXtreme.WinDsk.Behaviors</RootNamespace>
+    <AssemblyName>LogXtreme.WinDsk.Behaviors</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,9 +32,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Expression.Controls, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -62,29 +58,8 @@
       <HintPath>..\..\..\packages\Microsoft.SDK.Expression.Blend.1.0.0\lib\net45\Microsoft.Expression.Prototyping.SketchControls.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.SDK.Expression.Blend, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.SDK.Expression.Blend.1.0.0\lib\net45\Microsoft.SDK.Expression.Blend.dll</HintPath>
-    </Reference>
-    <Reference Include="Prism, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Prism.Core.6.3.0\lib\net45\Prism.dll</HintPath>
-    </Reference>
-    <Reference Include="Prism.Unity.Wpf, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Prism.Unity.6.3.0\lib\net45\Prism.Unity.Wpf.dll</HintPath>
-    </Reference>
-    <Reference Include="Prism.Wpf, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Prism.Wpf.6.3.0\lib\net45\Prism.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -110,10 +85,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Settings.cs" />
-    <Compile Include="Services\ShellService.cs" />
-    <Compile Include="ViewModels\ShellViewModel.cs" />
-    <Page Include="Shell.xaml">
+    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -121,11 +93,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Bootstrapper.cs" />
-    <Compile Include="Interfaces\IShellView.cs" />
-    <Compile Include="Interfaces\IShellViewModel.cs" />
-    <Compile Include="Shell.xaml.cs">
-      <DependentUpon>Shell.xaml</DependentUpon>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -154,58 +123,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Instrumentation\SemanticLogging\SemanticLogging.csproj">
-      <Project>{724fb395-9f33-4f4c-993f-2b004425bfc3}</Project>
-      <Name>SemanticLogging</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Instrumentation\SlabManagementTools\SlabManagementTools.csproj">
-      <Project>{c92cf373-0901-4db0-9c82-daf9e9a09ffa}</Project>
-      <Name>SlabManagementTools</Name>
-    </ProjectReference>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\LogXtreme.WinDsk.Infrastructure\LogXtreme.WinDsk.Infrastructure.csproj">
       <Project>{489706e3-c226-4d83-bb3d-c5a0d49d3835}</Project>
       <Name>LogXtreme.WinDsk.Infrastructure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\AppModules\ContentModule\ContentModule.csproj">
-      <Project>{6f2a2afa-717b-49a7-92fd-015122540034}</Project>
-      <Name>ContentModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\AppModules\DataGridModule\DataGridModule.csproj">
-      <Project>{b0801c7c-3acb-4617-bb59-329d70af310a}</Project>
-      <Name>DataGridModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\AppModules\DataTreeModule\DataTreeModule.csproj">
-      <Project>{90eef6be-2c5b-4a7b-bc32-0531ef437070}</Project>
-      <Name>DataTreeModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\AppModules\DeviceTreeModule\DeviceTreeModule.csproj">
-      <Project>{e152db85-f4cb-4864-87d2-ee408093c3fe}</Project>
-      <Name>DeviceTreeModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\AppModules\MainMenuModule\MainMenuModule.csproj">
-      <Project>{7a2c09df-62df-4d7a-a68c-f66ccc184ae4}</Project>
-      <Name>MainMenuModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\AppModules\MainMenuOptionsModule\MainMenuOptionsModule.csproj">
-      <Project>{5eaf14e5-39ca-43e7-86dc-40b1de6c2252}</Project>
-      <Name>MainMenuOptionsModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\AppModules\StatusBarModule\StatusBarModule.csproj">
-      <Project>{1b4d63aa-99b8-4190-b553-c72bc114a44a}</Project>
-      <Name>StatusBarModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\AppServices\DataServiceModule\DataServiceModule.csproj">
-      <Project>{fb58d566-2f42-4868-9873-748a62692b35}</Project>
-      <Name>DataServiceModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\AppServices\DeviceServiceModule\DeviceServiceModule.csproj">
-      <Project>{e9083ec0-8f0d-46cf-b145-a09e139b93df}</Project>
-      <Name>DeviceServiceModule</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
