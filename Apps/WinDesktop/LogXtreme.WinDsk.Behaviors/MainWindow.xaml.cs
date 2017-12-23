@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LogXtreme.WinDsk.Behaviors.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,7 @@ namespace LogXtreme.WinDsk.Behaviors {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
+            this.DataContext = new MainWindowViewModel();
         }
     }
 }

@@ -47,7 +47,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Behaviours {
                 "Message", 
                 typeof(string), 
                 typeof(ShowNotificationMessageBehavior), 
-                new PropertyMetadata(0, OnMessageChanged));
+                new PropertyMetadata(string.Empty, OnMessageChanged));
 
         /// <summary>
         /// 
