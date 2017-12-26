@@ -91,3 +91,10 @@ Multitriggers
 http://www.wpf-tutorial.com/styles/multi-triggers-multitrigger-multidatatrigger/
 
 ===============================================================================================================
+
+Behaviors
+
+Add Microsoft.SDK.Expression.Blend to project
+https://stackoverflow.com/questions/46469674/cant-find-the-gotostateaction-behaviour-in-blend-2017
+
+===============================================================================================================
