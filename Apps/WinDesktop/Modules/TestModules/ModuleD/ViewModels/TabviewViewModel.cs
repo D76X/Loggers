@@ -11,8 +11,7 @@ namespace ModuleD.ViewModels {
     public class TabviewViewModel :
         ViewModelBase,
         ITabviewViewModel,
-        IRegionManagerAware
-    {
+        IRegionManagerAware {
 
         private readonly IUnityContainer container;
 
@@ -33,7 +32,7 @@ namespace ModuleD.ViewModels {
 
             this.RegionManager.RequestNavigate(
                 RegionNamesModuleD.RegionTabview,
-                new Uri(viewName, UriKind.Relative));               
+                new Uri(viewName, UriKind.Relative));
         }
     }
 }
