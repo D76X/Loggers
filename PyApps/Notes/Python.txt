@@ -250,6 +250,24 @@ FUNCTIONS
 
 ====================================================================================
 
-Import and unload modules in the REPL
+The Shebang
+#!/usr/bin/env python3
 
+https://app.pluralsight.com/player?course=python-fundamentals&author=robert-smallshire&name=python-fundamentals-m03-modularity&clip=9&mode=live
+https://stackoverflow.com/questions/6908143/should-i-put-shebang-in-python-scripts-and-what-form-should-it-take
+
+Place the special line above on top of the module file mymodule.py. This is an 
+instruction that makes a .py file executable in the console without having to invoke
+the Python interpreter first passing the name of the module/script as its argument.
+
+For example
+
+> python mymodule.py
+or
+> python myscript.py
+
+become simply
+
+>mymodule.py
+>myscript.py
 ====================================================================================

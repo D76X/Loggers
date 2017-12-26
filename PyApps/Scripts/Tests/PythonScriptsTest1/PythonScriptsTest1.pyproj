@@ -25,6 +25,9 @@
     <Compile Include="PythonScriptsTest1.py" />
     <Compile Include="test1_words.py" />
     <Compile Include="test2_words.py" />
+    <Compile Include="test3_classes_functions.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
