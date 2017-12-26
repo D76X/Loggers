@@ -184,7 +184,7 @@
     <Compile Include="Services\IStatusService.cs" />
     <Compile Include="Services\IToolService.cs" />
     <Compile Include="Services\TaskDelegateWorker.cs" />
-    <Compile Include="Unity\UnityExtensios.cs" />
+    <Compile Include="Unity\UnityExtensions.cs" />
     <Compile Include="Utils\SearchVisualTree.cs" />
     <Compile Include="Models\ViewModelBase.cs" />
     <Compile Include="Validation\ValidationData.cs" />
