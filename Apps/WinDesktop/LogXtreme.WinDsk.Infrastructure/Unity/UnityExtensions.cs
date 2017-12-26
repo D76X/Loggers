@@ -2,7 +2,7 @@
 
 namespace LogXtreme.WinDsk.Infrastructure.Unity {
 
-    public static class UnityExtensios {
+    public static class UnityExtensions {
 
         /// <summary>
         /// This extension method is to make it easier and more explicit to register views 

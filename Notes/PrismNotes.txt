@@ -196,7 +196,9 @@ For example
 
 <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionMainMenu}" Grid.Row="0"/>
 
-Declares that that specifc element of the VT that is a ContentControl is a named region.
+Declares that that specifc element of the VT that is a ContentControl is a named region. The named region is registered with the global
+RegionManager (an instance of IRegionManager) which is a Prism service that can be injected into view models. This allows view models to
+inject views into region programmatically.
 
 For a XAML element to be able to act as a region there must exist a Region Adapter. A Region Adapter is an implementation of an abstract
 class RegionAdapterBase<T> where T is the type of XAML element that we would like to act as a region. There is an implementation of a 
@@ -245,7 +247,67 @@ it must be of type SingleActiveRegion. You may inject multiple view into such re
 this programmatically. Deactivate the current view, inject the new view and activate it to show it othervwise you won't see it. 
 
 With View Injection you can also remove views from a Region.
-The region must exists prior to injecting views into it, you must checj that the region has already being created before you try to inject 
+The region must exists prior to injecting views into it, you must check that the region has already being created before you try to inject 
 any view into it.
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+NAVIGATION
+
+There are two kinds of navigation in Prism
+
+1-STATE BASE NAVIGATION (Easy to implement)
+
+Navigation is accomplished by applying state changes to existing controls of a view i.e. hiding or changing visibility or styles or applying
+animations to controls. The key is that in this kind of navigation a view is not rrplaced by another view instead the view is updated. The 
+state changes for the view are normally reflected in the backing view model. Often state changes are driven by user interaction but there 
+may be other mechanisms as well.
+
+Normally STATE BASED NAVIGATION is apporpriate when there is the need to present roughly the same information as the current view but with 
+some changes in style rather than content. In some cases a view needs to change when the user initiates some kind fo interaction with it that
+places the view in a new state for the duration of the interaction i.e. importing new data or processing the current data in trhe view, etc.
+
+2-VIEW BASED NAVIGATION with NAVIGATION SERVICES
+
+In view based navigation a view is replaced with a new view or an existing view. A navigation request is initiated by invoking the 
+*INavigateAsync.RequestNavigate*. Despite its name *INavigateAsync.RequestNavigate* is NOT async instead it returns synchronously 
+following the completion of a navigation operation or while a navigation is still pending as in those cases where the navigation 
+needs support for confirmation/cancellation.
+
+Example1: navigation via IRegion (IRegion derives from INavigateAsync)
+
+IRegion region = (grab a region i.e. via the RegionManager)
+region.RequestNavigate(new Uri("MyView", UriKind.Relative));
+
+Example2: navigation via RegionManager
+
+IRegionManager regionManager = ...;
+regionManager.RequestNavigate(RegionNames.SomeRegion, new Uri("MyView", UriKind.Relative));
+
+REGISTERING VIEWS TO ENABLE VIEW BASED NAVIGATION
+
+Standard registration
+Container.RegisterType<HomeView>("HomeView");
+Container.RegisterType<IHomeView, HomeView>("HomeView");
+
+Registration for view based navigation
+Container.RegisterType<object, HomeView>("HomeView");
+Container.RegisterType(typeof(object), typeof(HomeView), "HomeView");
+
+The latter is necessary because when the Region Navigation Service is asked to create a view 
+it requests a type of Object from the contsainer where the name matches the name supplied in 
+the navigation Uri 
+
+BASIC REGION NAVIGATION
+
+VIEW & ViewModel PARTICIPATION IN NAVIGATION
+
+PASSING PARAMETERS
+
+NAVIGATION TO EXISTING VIEWS
+
+CONFIRMING OR CANCELLING NAVIGATION
+
+THE NAVIGATION JOURNAL
 
 --------------------------------------------------------------------------------------------------------------------------------------------
