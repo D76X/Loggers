@@ -74,7 +74,6 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
         /// In INavigationAware.OnNavigatedFrom state, data or teardown, etc. related 
         /// to the active view can be implemented to take place before navigation to 
         /// another view occurs.
-        /// occours.
         /// </summary>
         /// <param name="navigationContext"></param>
         public virtual void OnNavigatedFrom(NavigationContext navigationContext) {
@@ -83,11 +82,11 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
 
         /// <summary>
         /// 
-        /// INavigationAware.OnNavigatedtO
+        /// INavigationAware.OnNavigatedTo
         /// 
         /// When a Navigation Request is made to the RegionManager and a view is the 
         /// selected target of the navigation OnNavigatedTo is invoked. OnNavigatedTo
-        /// may be used to execute initialisation and/or use oarameter available on
+        /// may be used to execute initialisation and/or use parameter available on
         /// the NavigationContext.
         /// </summary>
         /// <param name="navigationContext"></param>
