@@ -296,13 +296,124 @@ Container.RegisterType(typeof(object), typeof(HomeView), "HomeView");
 
 The latter is necessary because when the Region Navigation Service is asked to create a view 
 it requests a type of Object from the contsainer where the name matches the name supplied in 
-the navigation Uri 
+the navigation Uri.
+
+I have added an extension method IUnityContainer.RegisterTypeForNavigation to make it easier
+to register views for navigation. Notice that the name of teh view is set to the fully qualified
+name of the corresponding class.
+
+--------------------------------------------------------------------------------------------
+public static void RegisterTypeForNavigation<T>(this IUnityContainer container) {
+            container.RegisterType(typeof(object), typeof(T), typeof(T).FullName);
+        }
+--------------------------------------------------------------------------------------------
+
+The preceeding examples are all based on teh View-First approach where the navigation request is
+to the view. However, it is alos possible to adopt a ViewModel approach inn which case the registration
+and Uri should be that of the ViewModel.
 
 BASIC REGION NAVIGATION
 
+Example1: see WinDsk.TestApp1/Shell.xaml
+
+<MenuItem Header="Navigate to ViewA"
+            Command="{Binding NavigateCommand}"
+            CommandParameter="ModuleD.Views.ViewA" />
+<MenuItem Header="Navigate to ViewB"
+            Command="{Binding NavigateCommand}"
+            CommandParameter="ModuleD.Views.ViewB" />
+<MenuItem Header="Navigate to Tabview"
+            Command="{Binding NavigateCommand}"
+            CommandParameter="ModuleD.Views.TabView" />
+
+In the ShellViewModel
+
+this.NavigateCommand = new DelegateCommand<string>(Navigate);
+
+private void Navigate(string viewName) {
+
+this.RegionManager.RequestNavigate(
+    RegionNames.RegionContent, 
+    new Uri(viewName, UriKind.Relative),
+    NavigateComplete);
+}
+
+private void NavigateComplete(NavigationResult navigationResult) {
+    this.StatusMessage = navigationResult.Context.Uri.ToString();
+}
+
 VIEW & ViewModel PARTICIPATION IN NAVIGATION
 
+Our ViewModelBase is designed to support the interface *IConfirmNavigationRequest:INavigationAware*
+
+void IConfirmNavigationRequest.ConfirmNavigationRequest(
+	NavigationContext navigationContext, 
+	Action<bool> continuationCallback)
+
+bool INavigationAware.IsNavigationTarget(NavigationContext navigationContext)	// see ViewModelBase
+void INavigationAware.OnNavigatedFrom(NavigationContext navigationContext)		// called before navigation takes place
+void INavigationAware.OnNavigatedTo(NavigationContext navigationContext)		// called after navigation is completed
+
+----------------------------------------------------------------------------
+View Navigation Workflow for both the View and the corresponding ViewModel.
+In the navigation interaction Prism checks whether the view implements the 
+INavigationAware if it does it calls the contract methods on the view as in
+the workflow below. If the view does not implement INavigationAware then 
+Prism chacks whether its DataContext that is VoewModel does and if this is 
+the case it calls the workflow on the VM.
+----------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------------------------
+RequestNavigate => OnNavigatedFrom => IsNavigationTarget => Resolve the View => OnNavigatedTo => NavigationComplete
+-------------------------------------------------------------------------------------------------------------------
+
+CONTROL THE LIFETIME OF THE VIEW WITH IRegionMemberLifetime
+
+Our ViewModelBase implements IRegionMemberLifetime.
+
+bool IRegionMemberLifetime.KeepAlive
+
+Tells Prism whether the view once deativated i.e. it has been navigated from, should be dereferenced by the containing 
+region and GCed. The next time the same view is navigated to Prism container will resolve a new istance instead of 
+recycling one.
+
 PASSING PARAMETERS
+
+To pass parameters use domething like this in your view model.
+
+this.NavigateCommand = new DelegateCommand<string>(Navigate);
+
+private void Navigate(string viewName) {
+
+            var parameters = new NavigationParameters();
+            parameters.Add(NavigationRequestParametersBase.KeyNavigationRequestedBy, this);
+            
+            this.RegionManager.RequestNavigate(
+                RegionNames.RegionContent,
+                new Uri(viewName, UriKind.Relative),
+                NavigateComplete,
+                parameters);
+        }
+
+In the recepient view model that is the view model of the view that it is navigated to there are two hooks
+on the INavigationAware interface or its descendent IConfirmNavigationRequest. ViewModelBase implements the 
+latter.
+
+public override bool IsNavigationTarget(NavigationContext navigationContext) {
+
+    var sender = navigationContext.Parameters[NavigationRequestParametersBase.KeyNavigationRequestedBy];
+    // use the params here to decide whether to return true or false.
+    // true to tell prism to reuse this view model and the corresponding view to satisfy the navigation request.
+    // false to tell prism to satisfy the navigation request by creating a new view and view model. 
+
+    return false;
+}
+
+public override void OnNavigatedTo(NavigationContext navigationContext) {
+
+    var navigationRequestedBy = navigationContext.Parameters[NavigationRequestParametersBase.KeyNavigationRequestedBy];
+    // do something with this information
+}
 
 NAVIGATION TO EXISTING VIEWS
 
