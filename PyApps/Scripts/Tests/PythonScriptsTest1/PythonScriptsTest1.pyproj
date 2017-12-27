@@ -25,6 +25,7 @@
     <Compile Include="PythonScriptsTest1.py" />
     <Compile Include="test1_words.py" />
     <Compile Include="test2_words.py" />
+    <Compile Include="test5_classes_functions_dictionaries.py" />
     <Compile Include="test4_classes_functions.py" />
     <Compile Include="test3_classes_functions.py">
       <SubType>Code</SubType>
