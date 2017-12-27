@@ -26,12 +26,13 @@ class ClassWithInstanceMethod:
 # __init__ is normally used to enforce class invariance.
 class Flight:
     """This class models a flight"""
-    def __init__(self, number):
+    def __init__(self, number, aircraft):
         """
         Flight initializer
         
         Args:            
             number: the flight number i.e. 'NZ1234'.
+            aircraft: the aircraft of the flight.
 
         Returns: nothing
         """
@@ -42,9 +43,22 @@ class Flight:
             raise ValueError("Invalid airline code in '{}'".format(number))
 
         if not (number[2:].isdigit() and int(number[2:]) <= 9999):
-            raise ValueError("Invalid route number in '{}'".format(number))            
+            raise ValueError("Invalid route number in '{}'".format(number))           
 
         self._number = number
+
+        self._aircraft = aircraft
+
+    # the law of demeter or principle of least knowledge
+    # do not expose the whole aircraft.
+    # make available only the bits of teh aircraft that are required.
+    def aircraft_model(self):
+        """
+        The aircraft model.
+
+        Returns: the aircraft model.
+        """
+        return self._aircraft.model()
 
     def number(self):
         """
