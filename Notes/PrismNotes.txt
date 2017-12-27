@@ -417,8 +417,55 @@ public override void OnNavigatedTo(NavigationContext navigationContext) {
 
 NAVIGATION TO EXISTING VIEWS
 
+This is controlled by implementing the INavigationAware.IsNavigationTarget as above.
+
 CONFIRMING OR CANCELLING NAVIGATION
+
+This is controlled by implementing IConfirmNavigationRequest.confirmNavigationRequest. 
+ViewModelBase implements IConfirmNavigationRequest and you may override it.
+The workflow of the navigation logic gains an additional step - (ConfirmNavigationRequest).
+-------------------------------------------------------------------------------------------------------------------
+RequestNavigate => 
+(ConfirmNavigationRequest)
+OnNavigatedFrom => IsNavigationTarget => Resolve the View => OnNavigatedTo => NavigationComplete
+-------------------------------------------------------------------------------------------------------------------
+
+Example
+
+public override void ConfirmNavigationRequest(
+            NavigationContext navigationContext,
+            Action<bool> continuationCallback) {
+
+var isNavigationConfirmed = false;
+
+if (this.IsConfirmNavigationActive) {
+
+    MessageBoxResult messageResult = MessageBox.Show("Confirm navigation?", "Navigation", MessageBoxButton.YesNoCancel);
+
+    if (messageResult == MessageBoxResult.Yes) {
+        // save or persist state or do something before Navigation accurs...
+        isNavigationConfirmed = true;
+    }
+    else {
+        isNavigationConfirmed = false;
+    }
+}
+else {
+    isNavigationConfirmed = true;
+}  
+
+isNavigationConfirmed = isNavigationConfirmed && this.IsClosable;
+
+continuationCallback(isNavigationConfirmed);
+}
 
 THE NAVIGATION JOURNAL
 
+1-It is stack-based
+2-Only works with Region Navigation Services
+3-Accessed from NavigationService.Hournal property
+4-the NavigationService is accessible via the NavigationContext that is passed to all of the methods of 
+  INavigationAware & IConfirmNavigationRequest
+5-You can grab a reference to the NavigationService in the VM's INavigationAware.OnVavigatedTo override
+6-Use the NavigationService.Journs.GoBack()/CanGoBach()/GoForward()/CanGoForward()/etc.
 --------------------------------------------------------------------------------------------------------------------------------------------
