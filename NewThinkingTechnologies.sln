@@ -394,6 +394,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeSnippets", "CodeSnippet
 		CodeSnippets\propc.snippet = CodeSnippets\propc.snippet
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.WinDsk.Docking", "Apps\WinDesktop\LogXtreme.WinDsk.Docking\LogXtreme.WinDsk.Docking.csproj", "{6538DEA4-9699-4750-B28F-811145FA8A8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1228,6 +1230,14 @@ Global
 		{BF7BFBB7-F795-4CED-9410-2B33EB34836B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BF7BFBB7-F795-4CED-9410-2B33EB34836B}.Release|x86.ActiveCfg = Release|Any CPU
 		{BF7BFBB7-F795-4CED-9410-2B33EB34836B}.Release|x86.Build.0 = Release|Any CPU
+		{6538DEA4-9699-4750-B28F-811145FA8A8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6538DEA4-9699-4750-B28F-811145FA8A8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6538DEA4-9699-4750-B28F-811145FA8A8B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6538DEA4-9699-4750-B28F-811145FA8A8B}.Debug|x86.Build.0 = Debug|Any CPU
+		{6538DEA4-9699-4750-B28F-811145FA8A8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6538DEA4-9699-4750-B28F-811145FA8A8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6538DEA4-9699-4750-B28F-811145FA8A8B}.Release|x86.ActiveCfg = Release|Any CPU
+		{6538DEA4-9699-4750-B28F-811145FA8A8B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1390,6 +1400,7 @@ Global
 		{1B4D63AA-99B8-4190-B553-C72BC114A44A} = {54A6C670-22E2-4D00-BCD9-D42D60C9C5E4}
 		{B0801C7C-3ACB-4617-BB59-329D70AF310A} = {54A6C670-22E2-4D00-BCD9-D42D60C9C5E4}
 		{BF7BFBB7-F795-4CED-9410-2B33EB34836B} = {45449303-EA76-4B02-B1EE-CCBB11D41186}
+		{6538DEA4-9699-4750-B28F-811145FA8A8B} = {45449303-EA76-4B02-B1EE-CCBB11D41186}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B48A64CD-1E9D-4169-82DF-66FD7695C2D0}
