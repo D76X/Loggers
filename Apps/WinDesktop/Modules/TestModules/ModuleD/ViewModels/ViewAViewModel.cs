@@ -7,6 +7,7 @@ using ModuleD.Navigation;
 using Prism.Commands;
 using Prism.Regions;
 using System;
+using System.Windows;
 
 namespace ModuleD.ViewModels {
     public class ViewAViewModel : 
@@ -20,6 +21,7 @@ namespace ModuleD.ViewModels {
         public string Title => nameof(ViewAViewModel);
 
         private bool isClosable = true;
+        private bool isConfirmNavigationActive = false;
 
         public ViewAViewModel() {
 
@@ -29,6 +31,11 @@ namespace ModuleD.ViewModels {
         public bool IsClosable {
             get { return this.isClosable; }
             set { SetProperty(ref this.isClosable, value); }
+        }
+
+        public bool IsConfirmNavigationActive {
+            get { return this.isConfirmNavigationActive; }
+            set { SetProperty(ref this.isConfirmNavigationActive, value); }
         }
 
         public bool CreateRegionManagerScope => true;
@@ -53,7 +60,27 @@ namespace ModuleD.ViewModels {
             NavigationContext navigationContext,
             Action<bool> continuationCallback) {
 
-            continuationCallback(this.IsClosable);
+            var isNavigationConfirmed = false;
+
+            if (this.IsConfirmNavigationActive) {
+
+                MessageBoxResult messageResult = MessageBox.Show("Confirm navigation?", "Navigation", MessageBoxButton.YesNoCancel);
+
+                if (messageResult == MessageBoxResult.Yes) {
+                    // save or persist state or do something before Navigation accurs...
+                    isNavigationConfirmed = true;
+                }
+                else {
+                    isNavigationConfirmed = false;
+                }
+            }
+            else {
+                isNavigationConfirmed = true;
+            }  
+
+            isNavigationConfirmed = isNavigationConfirmed && this.IsClosable;
+
+            continuationCallback(isNavigationConfirmed);
         }
 
         private void Navigate() {

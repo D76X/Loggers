@@ -13,6 +13,8 @@
                    FontSize="40" />
         <CheckBox IsChecked="{Binding IsClosable}" 
                   Content="IsClosable"/>
+        <CheckBox IsChecked="{Binding IsConfirmNavigationActive}"
+                  Content="IsConfirmNavigationActive" />
         <ContentControl prism:RegionManager.RegionName="{x:Static localNames:RegionNamesModuleD.RegionChildRegion}"/>
     </StackPanel>    
 </UserControl>
