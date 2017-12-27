@@ -38,7 +38,19 @@ namespace ModuleD.ViewModels {
         public bool CreateRegionManagerScope => true;
 
         public override bool IsNavigationTarget(NavigationContext navigationContext) {
+
+            var sender = navigationContext.Parameters[NavigationRequestParametersBase.KeyNavigationRequestedBy];
+            // use the params here to decide whether to return true or false.
+            // true to tell prism to reuse this view model and the corresponding view to satisfy the navigation request.
+            // false to tell prism to satisfy the navigation request by creating a new view and view model. 
+
             return false;
+        }
+
+        public override void OnNavigatedTo(NavigationContext navigationContext) {
+
+            var navigationRequestedBy = navigationContext.Parameters[NavigationRequestParametersBase.KeyNavigationRequestedBy];
+            // do something with this information
         }
 
         public override void ConfirmNavigationRequest(
@@ -57,11 +69,6 @@ namespace ModuleD.ViewModels {
                 RegionNames.RegionContent,
                 ViewNamesModuleD.ViewA,
                 parameters);
-        }
-
-        public override void OnNavigatedTo(NavigationContext navigationContext) {
-
-            var navigationRequestedBy = navigationContext.Parameters[NavigationRequestParametersBase.KeyNavigationRequestedBy];
-        }
+        }        
     }
 }

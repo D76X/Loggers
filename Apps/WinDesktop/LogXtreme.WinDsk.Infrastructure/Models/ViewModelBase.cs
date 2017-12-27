@@ -61,7 +61,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
         /// <param name="navigationContext"></param>
         /// <returns>TRUE to activate the view, FALSE otherwise</returns>
         public virtual bool IsNavigationTarget(NavigationContext navigationContext) {
-            // check the NavigationContext
+            // check the NavigationContext for paramters and implement custom logic
             return true;
         }
 

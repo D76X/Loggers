@@ -29,6 +29,12 @@ namespace ModuleD.ViewModels {
             this.NavigateCommand = new DelegateCommand<string>(Navigate);
         }
 
+        public override void OnNavigatedTo(NavigationContext navigationContext) {
+
+            var navigationRequestedBy = navigationContext.Parameters[NavigationRequestParametersBase.KeyNavigationRequestedBy];
+            // do something with this information
+        }
+
         private void Navigate(string viewName) {
 
             var parameters = new NavigationParameters();
@@ -38,11 +44,6 @@ namespace ModuleD.ViewModels {
                 RegionNamesModuleD.RegionTabview,
                 new Uri(viewName, UriKind.Relative), 
                 parameters);
-        }
-
-        public override void OnNavigatedTo(NavigationContext navigationContext) {
-
-            var navigationRequestedBy = navigationContext.Parameters[NavigationRequestParametersBase.KeyNavigationRequestedBy];
-        }
+        }       
     }
 }
