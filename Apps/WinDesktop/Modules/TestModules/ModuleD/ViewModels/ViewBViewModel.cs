@@ -3,6 +3,7 @@ using LogXtreme.WinDsk.Infrastructure.Models;
 using LogXtreme.WinDsk.Infrastructure.Prism;
 using LogXtreme.WinDsk.Modules.TestModules.ModuleD.Names;
 using ModuleD.Interfaces;
+using ModuleD.Navigation;
 using Prism.Commands;
 using Prism.Regions;
 using System;
@@ -13,7 +14,7 @@ namespace ModuleD.ViewModels {
         ViewModelBase,
         IViewBViewModel,
         IRegionManagerAware,
-        ICreateRegionManagerScope {       
+        ICreateRegionManagerScope {        
 
         public DelegateCommand NavigateCommand { get; private set; }
         public IRegionManager RegionManager { get; set; }
@@ -48,9 +49,19 @@ namespace ModuleD.ViewModels {
         }
 
         private void Navigate() {
+
+            var parameters = new NavigationParameters();
+            parameters.Add(NavigationRequestParametersBase.KeyNavigationRequestedBy, this);
+
             this.RegionManager.RequestNavigate(
                 RegionNames.RegionContent,
-                ViewNamesModuleD.ViewA);
+                ViewNamesModuleD.ViewA,
+                parameters);
+        }
+
+        public override void OnNavigatedTo(NavigationContext navigationContext) {
+
+            var navigationRequestedBy = navigationContext.Parameters[NavigationRequestParametersBase.KeyNavigationRequestedBy];
         }
     }
 }

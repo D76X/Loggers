@@ -3,6 +3,7 @@ using LogXtreme.WinDsk.Infrastructure.Prism;
 using LogXtreme.WinDsk.Modules.TestModules.ModuleD.Names;
 using Microsoft.Practices.Unity;
 using ModuleD.Interfaces;
+using ModuleD.Navigation;
 using Prism.Commands;
 using Prism.Regions;
 using System;
@@ -30,9 +31,18 @@ namespace ModuleD.ViewModels {
 
         private void Navigate(string viewName) {
 
+            var parameters = new NavigationParameters();
+            parameters.Add(NavigationRequestParametersBase.KeyNavigationRequestedBy, this);
+
             this.RegionManager.RequestNavigate(
                 RegionNamesModuleD.RegionTabview,
-                new Uri(viewName, UriKind.Relative));
+                new Uri(viewName, UriKind.Relative), 
+                parameters);
+        }
+
+        public override void OnNavigatedTo(NavigationContext navigationContext) {
+
+            var navigationRequestedBy = navigationContext.Parameters[NavigationRequestParametersBase.KeyNavigationRequestedBy];
         }
     }
 }

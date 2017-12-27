@@ -87,6 +87,7 @@
     <Compile Include="Interfaces\IViewAViewModel.cs" />
     <Compile Include="Interfaces\IViewB.cs" />
     <Compile Include="Interfaces\IViewBViewModel.cs" />
+    <Compile Include="Navigation\NavigationRequestParametersBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
