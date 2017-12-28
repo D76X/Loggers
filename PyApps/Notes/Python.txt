@@ -271,3 +271,18 @@ become simply
 >mymodule.py
 >myscript.py
 ====================================================================================
+
+Pretty Printing module example
+https://docs.python.org/3.3/library/pprint.html
+
+>>> from pprint import pprint as pp
+>>> from test5_classes_functions_dictionaries import *
+>>> f = Flight("AB1234", Aircraft("REG123","AibsusX",22,6))
+>>> f.allocate_seat('12A','Davide Spano')
+>>> f.allocate_seat('12A','Davide Spano')
+>>> f.allocate_seat('15F','Cinzia Nava')
+>>> f.allocate_seat('15E','Lorentz Spano')
+>>> f.allocate_seat('E27','Mark Truss')
+>>> pp(f._seating)
+
+====================================================================================

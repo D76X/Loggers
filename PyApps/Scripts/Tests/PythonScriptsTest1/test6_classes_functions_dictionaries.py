@@ -149,18 +149,19 @@ class Flight:
         return self._number[2:]
 
 
-    def allocate_seat(self, seat, passenger):
+    # any function or class method non meant for public 
+    # consumption is preceded by underscore by convention
+    def _parse_seat(self, seat):
         """
-        Allocate a seat to a passenger.
-        
+        Parse a seat designator into a valid row and letter.
+
         Args:
             seat: A seat designator such as '12C' or '21F'.
-            passenger: The passenger name.
 
-        Raises:
-            ValueError: If the seat is unavailable.
+        Returns:
+            A tuple containing an integer and a string for row and seat.
         """
-        rows, seat_letters = self._aircraft.seating_plan()
+        rows_numbers, seat_letters = self._aircraft.seating_plan()
 
         letter = seat[-1]
         if letter not in seat_letters:
@@ -172,13 +173,83 @@ class Flight:
         except ValueError:
             raise ValueError("Invalid seat row {}".format(row_text))
 
-        if row not in rows:
+        if row not in rows_numbers:
             raise ValueError("Invalid row number {}".format(row))
+
+        return row, letter
+    
+   
+    def allocate_seat(self, seat, passenger):
+        """
+        Allocate a seat to a passenger.
+        
+        Args:
+            seat: A seat designator such as '12C' or '21F'.
+            passenger: The passenger name.
+
+        Raises:
+            ValueError: If the seat is unavailable.
+        """
+        row, letter = self._parse_seat(seat)
 
         if self._seating[row][letter] is not None:
             raise ValueError("Seat {} already occupied".format(seat))
-
+        
         self._seating[row][letter] = passenger
+        
+    def relocate_passenger(self, from_seat, to_seat):
+        """
+        Relocate passengers to a different seat.
+
+        Args:
+            from_seat: The existing seat designator for the 
+                       passenger to be moved.
+
+            to_seat: The new seat designator.
+
+        Raises:
+            ValueError if the from seat is not yet assigned.
+            Value Error if the destibnation seat is already taken.
+        """
+        from_row, from_letter = self._parse_seat(from_seat)
+        if self._seating[from_row][from_letter] is None:
+            raise ValueError("No passenger to relocate in seat {}".format(from_seat))
+
+        to_row, to_letter = self._parse_seat(to_seat)
+        if self._seating[to_row][to_letter] is not None:
+            raise ValueError("Seat {} is already occupied".format(to_seat))
+       
+        self._seating[to_row][to_letter] = self._seating[from_row][from_letter]
+        self._seating[from_row][from_letter] = None
+
+    
+    def num_available_seats(self):
+        """
+        Counts the number of seats on the flight that have not yet been assigned to pasengers.
+
+        Returns:
+            The number of available seats on the flight.
+        """  
+        # the seating is a list of dictionaries with one dictionary 
+        # for each row. The fiest element of teh list in None so that
+        # the first meaningful index is 1 instead of 0. Each dictionay
+        # as keys that are the letters from ABCDEFGHJK according to 
+        # the number of seats per row of the airplane for the flight. 
+        # we go through the list self._seating except the first item 
+        # that is None and per each of the dictinaries we look at the 
+        # values and sum 1 when the seat is not assigned that is the 
+        # value is None. Then we sum over the rows.
+        return sum(sum(1 for s in row.values() if s is None)
+                   for row in self._seating
+                   if row is not None)                 
 
 
-
+# this is a module-level conveninece function to easily test the module.
+def create_test_flight():
+    f = Flight("AB1234", Aircraft("REG123","AibsusX",num_rows=22,num_seats_per_row=6))
+    f.allocate_seat('12A','Davide Spano') 
+    f.allocate_seat('15F','Cinzia Nava')
+    f.allocate_seat('15E','Lorentz Spano')
+    f.allocate_seat('10B','Mark Truss')
+    f.allocate_seat('18C','Bob Thames')
+    return f
