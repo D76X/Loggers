@@ -218,6 +218,7 @@ a view can be displayed into a region.
 
 1-View Discovery		(automatic injection of views into defined regions of the shell)
 2-View Injection		(programmatic injection of views into defined regions of the shell)
+3-Navigation			Prism built-in mechanism.
 
 1-View Discovery Example	(automatic injection of views into defined regions of the shell)
 
