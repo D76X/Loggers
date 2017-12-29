@@ -285,4 +285,11 @@ https://docs.python.org/3.3/library/pprint.html
 >>> f.allocate_seat('E27','Mark Truss')
 >>> pp(f._seating)
 
+>>> from test7_polymorphism_duck_typing import *
+>>> f, g = create_test_flights()
+>>> f.aircraft_model()
+>>> g.aircraft_model()
+>>> f.num_available_seats()
+>>> g.num_available_seats()
+
 ====================================================================================
