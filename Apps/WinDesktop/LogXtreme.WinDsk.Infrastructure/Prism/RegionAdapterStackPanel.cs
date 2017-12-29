@@ -6,7 +6,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
 
     /// <summary>    /// 
     /// A RegionAdapter<T> sits between the Region and the Host Control of type T.
-    /// When Prism injects a view into or remove a view from a Region a RegionAdapter 
+    /// When Prism injects a view into or removes a view from a Region a RegionAdapter 
     /// provides the logic for the underlying control of type T for the Region. 
     /// 
     /// Refs
@@ -36,7 +36,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
                     foreach (FrameworkElement element in e.NewItems) {
 
                         // the RegionAdapter adds the elements to the StackPanel Host Control when a View is 
-                        // added to the corresponding region Region 
+                        // added to the corresponding region 
                         regionTarget.Children.Add(element);
                     }
 
