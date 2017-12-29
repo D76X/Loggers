@@ -60,7 +60,8 @@ class Aircraft:
         The seating plan for the aircraft.
 
         Returns:
-            a tuple modelling the seating plan as a range and a string of seat letters. 
+            a tuple modelling the seating plan as an integer range for rows 
+            and a string of seat letters i.e (1..20, "ABCDEF"). 
         """
         # in "ABCDEFGHJK" the char I is skipped on purpose to avoid mistakes with 1.
         return (range(1, self._number_rows+1), "ABCDEFGHJK"[:self._num_seats_per_row])
@@ -241,7 +242,34 @@ class Flight:
         # value is None. Then we sum over the rows.
         return sum(sum(1 for s in row.values() if s is None)
                    for row in self._seating
-                   if row is not None)                 
+                   if row is not None)     
+    
+    def _passenger_seats(self):
+        """
+        An iterable of passenger seating allocations.
+
+        Returns:
+            An interable of the form ("John Kussack", "16F").
+        """
+        # decompose the tuple i.e (1..20, "ABCDEF") into 1..20 & "ABCDEF"
+        row_numbers, seat_letters = self._aircraft.seating_plan()
+        # go through all the seats and create yield an iterable of the 
+        # booked seats
+        for row in row_numbers:
+            for letter in seat_letters:
+                passenger = self._seating[row][letter]
+                if passenger is not None:
+                    yield (passenger, "{}{}".format(row,letter))
+
+    def make_boarding_cards(self, card_printer):
+        """
+        Given a printer function it prints a boarding card for each passenger seat.
+
+        Args:
+            card_printer: the printer function to use i.e. to console or html, etc.
+        """
+        for passenger, seat in sorted(self._passenger_seats()):
+            card_printer(passenger, seat, self.number(), self.aircraft_model())
 
 
 # this is a module-level conveninece function to easily test the module.
@@ -253,3 +281,21 @@ def create_test_flight():
     f.allocate_seat('10B','Mark Truss')
     f.allocate_seat('18C','Bob Thames')
     return f
+
+
+# notice the continuation \ used to split code over several lines.
+# notice that this function does not know anything about the classes above.
+# Other printer functions may be designed to print to outputs other than console.
+def console_card_printer(passenger, seat, flight_number, aircraft):
+    output = "| Name: {0}"      \
+             "  Flight: {1}"    \
+             "  Seat: {2}"      \
+             "  Aircraft: {3}"  \
+             " |".format(passenger, flight_number, seat, aircraft)
+    banner = '+' + '-' * (len(output)-2) + '+'
+    border = '|' + ' ' * (len(output)-2) + '|'
+    lines = [banner, border, output, border, banner]
+    card = '\n'.join(lines)
+    print(card)
+    print()
+             
