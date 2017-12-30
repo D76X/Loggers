@@ -1,0 +1,10 @@
+TestSpellingChecker
+set_config
+_tokenize_str
+CheckerTestCase
+astroid
+Message
+spelling
+spell_dict
+pytest
+enchant

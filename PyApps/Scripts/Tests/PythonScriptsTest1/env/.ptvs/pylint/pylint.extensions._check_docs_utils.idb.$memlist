@@ -1,0 +1,16 @@
+astroid
+SphinxDocstring
+utils
+re
+GoogleDocstring
+space_indentation
+Docstring
+docstringify
+absolute_import
+possible_exc_types
+get_setters_property
+print_function
+EpytextDocstring
+get_setters_property_name
+returns_something
+NumpyDocstring

@@ -4,7 +4,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>a39a8c32-ea74-41d1-ae99-de3e0a5c55c1</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>PythonScriptsTest1.py</StartupFile>
+    <StartupFile>
+    </StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,7 +23,6 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="PythonScriptsTest1.py" />
     <Compile Include="test1_words.py" />
     <Compile Include="test2_words.py" />
     <Compile Include="test5_classes_functions_dictionaries.py" />

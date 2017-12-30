@@ -22,9 +22,9 @@ class Aircraft:
     """This class models an aircraft"""
     def __init__(self, registration, model, num_rows, num_seats_per_row):
         """
-        Aircraft initializer
+        Aircraft initializer.
         
-        Args:            
+        Args:
             registration: the reg number of the aircraft.
             model: the model of the aircraft.
             num_rows: the number of rows of the aircraft.
@@ -60,7 +60,7 @@ class Aircraft:
         The seating plan for the aircraft.
 
         Returns:
-            a tuple modelling the seating plan as a range and a string of seat letters. 
+            a tuple modelling the seating plan as a range and a string of seat letters.
         """
         # in "ABCDEFGHJK" the char I is skipped on purpose to avoid mistakes with 1.
         return (range(1, self._number_rows+1), "ABCDEFGHJK"[:self._num_seats_per_row])
@@ -75,9 +75,9 @@ class Flight:
     """This class models a flight"""
     def __init__(self, number, aircraft: Aircraft):
         """
-        Flight initializer
+        Flight initializer.
         
-        Args:            
+        Args:
             number: the flight number i.e. 'NZ1234'.
             aircraft: the aircraft of the flight.
 
@@ -90,7 +90,7 @@ class Flight:
             raise ValueError("Invalid airline code in '{}'".format(number))
 
         if not (number[2:].isdigit() and int(number[2:]) <= 9999):
-            raise ValueError("Invalid route number in '{}'".format(number))           
+            raise ValueError("Invalid route number in '{}'".format(number))
 
         if not isinstance(aircraft, Aircraft):
             raise TypeError("Invalid type parameter")
@@ -103,12 +103,12 @@ class Flight:
 
         # use a list comprehention to build a list of dictionaries
         # the first index = 0 is left to None and is unused
-        # the are as many list indexes starting from 1 as rows in the aircraft 
+        # the are as many list indexes starting from 1 as rows in the aircraft
         # for each row there is a dictionary with as many entries as the number of seats per row
         # the keys of each dictionary are the letter of the seats
         # the value for each key of each dictionary is initilized to None
         # {letter: None for letter in seats} is a dictionary comprehension
-        self._seating = [None] + [ {letter: None for letter in seats} for _ in rows]
+        self._seating = [None] + [{letter: None for letter in seats} for _ in rows]
 
     # the law of demeter or principle of least knowledge
     # do not expose the whole aircraft.
@@ -179,6 +179,3 @@ class Flight:
             raise ValueError("Seat {} already occupied".format(seat))
 
         self._seating[row][letter] = passenger
-
-
-

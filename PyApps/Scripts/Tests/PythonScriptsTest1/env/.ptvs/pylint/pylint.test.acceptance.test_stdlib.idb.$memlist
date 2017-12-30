@@ -1,0 +1,9 @@
+is_package
+zipfile
+os
+pytest
+MODULES_TO_CHECK
+is_module
+LIB_DIRS
+pylint
+MODULES_NAMES

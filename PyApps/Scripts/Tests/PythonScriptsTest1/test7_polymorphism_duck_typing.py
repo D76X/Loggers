@@ -51,18 +51,22 @@ class Aircraft:
 class AirbusA319(Aircraft):
     """This class model a AirbusA319"""
     def model(self):
+        """The model of aircraft."""
         return "Airbus A319"
 
     def seating_plan(self):
+        """The seating plan."""
         return range(1, 23), "ABCDEF"
 
 
 class Boing777(Aircraft):
     """This class model a Boing777"""
     def model(self):
+        """The model of aircraft."""
         return "Boing 777"
 
     def seating_plan(self):
+        """The seating plan."""
         return range(1, 56), "ABCDEFGHJK"
 
 
@@ -157,7 +161,7 @@ class Flight:
         # the keys of each dictionary are the letter of the seats
         # the value for each key of each dictionary is initilized to None
         # {letter: None for letter in seats} is a dictionary comprehension
-        self._seating = [None] + [ {letter: None for letter in seats} for _ in rows]
+        self._seating = [None] + [{letter: None for letter in seats} for _ in rows]
 
     # the law of demeter or principle of least knowledge
     # do not expose the whole aircraft.
@@ -307,7 +311,7 @@ class Flight:
             for letter in seat_letters:
                 passenger = self._seating[row][letter]
                 if passenger is not None:
-                    yield (passenger, "{}{}".format(row,letter))
+                    yield (passenger, "{}{}".format(row, letter))
 
     def make_boarding_cards(self, card_printer):
         """
@@ -322,20 +326,20 @@ class Flight:
 
 # this is a module-level conveninece function to easily test the module.
 def create_test_flights():
-    
+    """Creates test flights."""
     f = Flight("AB1234", AirbusA319("REG123"))
-    f.allocate_seat('12A','Davide Spano') 
-    f.allocate_seat('15F','Cinzia Nava')
-    f.allocate_seat('15E','Lorentz Spano')
-    f.allocate_seat('10B','Mark Truss')
-    f.allocate_seat('18C','Bob Thames')
+    f.allocate_seat('12A', 'Davide Spano') 
+    f.allocate_seat('15F', 'Cinzia Nava')
+    f.allocate_seat('15E', 'Lorentz Spano')
+    f.allocate_seat('10B', 'Mark Truss')
+    f.allocate_seat('18C', 'Bob Thames')
     
     g = Flight("AB1234", Boing777("REG909"))
-    g.allocate_seat('43A','Micky Mouse') 
-    g.allocate_seat('34F','Popeye')
-    g.allocate_seat('11K','Olivia')
-    g.allocate_seat('7J','Donald Duck')
-    g.allocate_seat('27D','Pluto')
+    g.allocate_seat('43A', 'Micky Mouse') 
+    g.allocate_seat('34F', 'Popeye')
+    g.allocate_seat('11K', 'Olivia')
+    g.allocate_seat('7J', 'Donald Duck')
+    g.allocate_seat('27D', 'Pluto')
 
     return f, g
 
@@ -344,6 +348,7 @@ def create_test_flights():
 # notice that this function does not know anything about the classes above.
 # Other printer functions may be designed to print to outputs other than console.
 def console_card_printer(passenger, seat, flight_number, aircraft):
+    """Print a boarding card to the console."""
     output = "| Name: {0}"      \
              "  Flight: {1}"    \
              "  Seat: {2}"      \

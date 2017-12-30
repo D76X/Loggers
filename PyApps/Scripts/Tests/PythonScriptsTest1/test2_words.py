@@ -3,7 +3,7 @@
 This is the docstring for this module.
 
 Usage:
-    its is used to showcase and test some basic aspect of Python and its 
+    its is used to showcase and test some basic aspect of Python and its
     toolchain.
 """
 from urllib.request import urlopen
@@ -25,7 +25,6 @@ def fetch_words():
 def print_items(items):
     """
     prints a list of strings to the console.
-    
     Args:
         items: the collection of items to print.
 
@@ -35,7 +34,7 @@ def print_items(items):
     for item in items:
         print(item)
 
-# if you want to test this module in the REPL as if it were 
+# if you want to test this module in the REPL as if it were
 # as script you can use this main() - it does not need to be
 # named main()
 def main():

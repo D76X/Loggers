@@ -1,0 +1,13 @@
+MyClass
+Mapping
+SomeMixin
+NotMapping
+CustomMapping
+HasDynamicGetattr
+BaseThing
+print_function
+Thing
+AbstractThing
+dict_comp
+dict_value
+test

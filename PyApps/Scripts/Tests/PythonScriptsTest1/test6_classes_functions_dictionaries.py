@@ -22,9 +22,8 @@ class Aircraft:
     """This class models an aircraft"""
     def __init__(self, registration, model, num_rows, num_seats_per_row):
         """
-        Aircraft initializer
-        
-        Args:            
+        Aircraft initializer.        
+        Args:
             registration: the reg number of the aircraft.
             model: the model of the aircraft.
             num_rows: the number of rows of the aircraft.
@@ -60,8 +59,8 @@ class Aircraft:
         The seating plan for the aircraft.
 
         Returns:
-            a tuple modelling the seating plan as an integer range for rows 
-            and a string of seat letters i.e (1..20, "ABCDEF"). 
+            a tuple modelling the seating plan as an integer range for rows
+            and a string of seat letters i.e (1..20, "ABCDEF").
         """
         # in "ABCDEFGHJK" the char I is skipped on purpose to avoid mistakes with 1.
         return (range(1, self._number_rows+1), "ABCDEFGHJK"[:self._num_seats_per_row])
@@ -76,9 +75,8 @@ class Flight:
     """This class models a flight"""
     def __init__(self, number, aircraft: Aircraft):
         """
-        Flight initializer
-        
-        Args:            
+        Flight initializer.        
+        Args:
             number: the flight number i.e. 'NZ1234'.
             aircraft: the aircraft of the flight.
 
@@ -91,7 +89,7 @@ class Flight:
             raise ValueError("Invalid airline code in '{}'".format(number))
 
         if not (number[2:].isdigit() and int(number[2:]) <= 9999):
-            raise ValueError("Invalid route number in '{}'".format(number))           
+            raise ValueError("Invalid route number in '{}'".format(number))   
 
         if not isinstance(aircraft, Aircraft):
             raise TypeError("Invalid type parameter")
@@ -104,12 +102,12 @@ class Flight:
 
         # use a list comprehention to build a list of dictionaries
         # the first index = 0 is left to None and is unused
-        # the are as many list indexes starting from 1 as rows in the aircraft 
+        # the are as many list indexes starting from 1 as rows in the aircraft
         # for each row there is a dictionary with as many entries as the number of seats per row
         # the keys of each dictionary are the letter of the seats
         # the value for each key of each dictionary is initilized to None
         # {letter: None for letter in seats} is a dictionary comprehension
-        self._seating = [None] + [ {letter: None for letter in seats} for _ in rows]
+        self._seating = [None] + [{letter: None for letter in seats} for _ in rows]
 
     # the law of demeter or principle of least knowledge
     # do not expose the whole aircraft.
@@ -150,7 +148,7 @@ class Flight:
         return self._number[2:]
 
 
-    # any function or class method non meant for public 
+    # any function or class method non meant for public
     # consumption is preceded by underscore by convention
     def _parse_seat(self, seat):
         """
@@ -179,7 +177,6 @@ class Flight:
 
         return row, letter
     
-   
     def allocate_seat(self, seat, passenger):
         """
         Allocate a seat to a passenger.
@@ -231,14 +228,14 @@ class Flight:
         Returns:
             The number of available seats on the flight.
         """  
-        # the seating is a list of dictionaries with one dictionary 
+        # the seating is a list of dictionaries with one dictionary
         # for each row. The fiest element of teh list in None so that
         # the first meaningful index is 1 instead of 0. Each dictionay
-        # as keys that are the letters from ABCDEFGHJK according to 
-        # the number of seats per row of the airplane for the flight. 
-        # we go through the list self._seating except the first item 
-        # that is None and per each of the dictinaries we look at the 
-        # values and sum 1 when the seat is not assigned that is the 
+        # as keys that are the letters from ABCDEFGHJK according to
+        # the number of seats per row of the airplane for the flight.
+        # we go through the list self._seating except the first item
+        # that is None and per each of the dictinaries we look at the
+        # values and sum 1 when the seat is not assigned that is the
         # value is None. Then we sum over the rows.
         return sum(sum(1 for s in row.values() if s is None)
                    for row in self._seating
@@ -259,7 +256,7 @@ class Flight:
             for letter in seat_letters:
                 passenger = self._seating[row][letter]
                 if passenger is not None:
-                    yield (passenger, "{}{}".format(row,letter))
+                    yield (passenger, "{}{}".format(row, letter))
 
     def make_boarding_cards(self, card_printer):
         """
@@ -274,12 +271,13 @@ class Flight:
 
 # this is a module-level conveninece function to easily test the module.
 def create_test_flight():
-    f = Flight("AB1234", Aircraft("REG123","AibsusX",num_rows=22,num_seats_per_row=6))
-    f.allocate_seat('12A','Davide Spano') 
-    f.allocate_seat('15F','Cinzia Nava')
-    f.allocate_seat('15E','Lorentz Spano')
-    f.allocate_seat('10B','Mark Truss')
-    f.allocate_seat('18C','Bob Thames')
+    """Create a test flight"""
+    f = Flight("AB1234", Aircraft("REG123", "AibsusX", num_rows=22, num_seats_per_row=6))
+    f.allocate_seat('12A', 'Davide Spano')
+    f.allocate_seat('15F', 'Cinzia Nava')
+    f.allocate_seat('15E', 'Lorentz Spano')
+    f.allocate_seat('10B', 'Mark Truss')
+    f.allocate_seat('18C', 'Bob Thames')
     return f
 
 
@@ -287,6 +285,7 @@ def create_test_flight():
 # notice that this function does not know anything about the classes above.
 # Other printer functions may be designed to print to outputs other than console.
 def console_card_printer(passenger, seat, flight_number, aircraft):
+    """Print a boarding card to the console."""
     output = "| Name: {0}"      \
              "  Flight: {1}"    \
              "  Seat: {2}"      \

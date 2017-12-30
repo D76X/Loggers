@@ -2,10 +2,10 @@ Struct
 unpack
 _clearcache
 __all__
-calcsize
+__doc__
 pack
 error
 unpack_from
 pack_into
 iter_unpack
-__doc__
+calcsize

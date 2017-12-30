@@ -1,6 +1,6 @@
 
 ====================================================================================
-HOW TO USE THE RPL AND THE WINDOW SHELL
+HOW TO USE THE REPL AND THE WINDOW SHELL
 
 Example 1 : PyApps/Scripts/Tests/PythonScriptsTest1/test1_words.py
 

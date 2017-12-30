@@ -1,7 +1,7 @@
 exists
 UF_NOUNLINK
-FILE_ATTRIBUTE_OFFLINE
 S_IFDIR
+range
 Exception
 FILE_ATTRIBUTE_ARCHIVE
 supports_unicode_filenames
@@ -11,7 +11,7 @@ S_IWRITE
 ImportError
 ST_UID
 realpath
-S_IFWHT
+ST_ATIME
 ST_INO
 BytesWarning
 S_IEXEC
@@ -33,7 +33,7 @@ FILE_ATTRIBUTE_SYSTEM
 ST_SIZE
 bytes
 isfile
-S_IFREG
+S_IXGRP
 UF_IMMUTABLE
 S_IRUSR
 lexists
@@ -42,14 +42,14 @@ curdir
 sep
 FILE_ATTRIBUTE_ENCRYPTED
 ST_CTIME
-S_IXGRP
+ST_GID
 OSError
 FILE_ATTRIBUTE_SPARSE_FILE
 filemode
 S_IWOTH
 S_IFBLK
 SF_APPEND
-split
+SF_ARCHIVED
 S_ISLNK
 FILE_ATTRIBUTE_READONLY
 samestat
@@ -63,8 +63,8 @@ splitdrive
 AttributeError
 FILE_ATTRIBUTE_INTEGRITY_STREAM
 S_IFLNK
-range
 pathsep
+FILE_ATTRIBUTE_OFFLINE
 S_ISCHR
 _get_colon
 FILE_ATTRIBUTE_REPARSE_POINT
@@ -75,7 +75,7 @@ isinstance
 isabs
 pardir
 S_ISGID
-ST_ATIME
+S_IFWHT
 isdir
 S_ISDOOR
 FILE_ATTRIBUTE_DEVICE
@@ -98,7 +98,7 @@ commonprefix
 len
 S_IMODE
 UF_OPAQUE
-S_ISPORT
+S_IFREG
 S_IFSOCK
 S_IRWXO
 str
@@ -107,13 +107,13 @@ splitext
 altsep
 os
 S_IFIFO
-ST_GID
+S_ISPORT
 ST_MTIME
 abspath
 ST_MODE
 FILE_ATTRIBUTE_VIRTUAL
 defpath
-SF_ARCHIVED
+split
 S_ENFMT
 S_ISDIR
 S_IFMT

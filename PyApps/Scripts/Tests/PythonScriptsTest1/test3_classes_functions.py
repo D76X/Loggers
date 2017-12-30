@@ -28,9 +28,9 @@ class Flight:
     """This class models a flight"""
     def __init__(self, number):
         """
-        Flight initializer
+        Flight initializer.
         
-        Args:            
+        Args:
             number: the flight number i.e. 'NZ1234'.
 
         Returns: nothing
@@ -42,7 +42,7 @@ class Flight:
             raise ValueError("Invalid airline code in '{}'".format(number))
 
         if not (number[2:].isdigit() and int(number[2:]) <= 9999):
-            raise ValueError("Invalid route number in '{}'".format(number))            
+            raise ValueError("Invalid route number in '{}'".format(number))
 
         self._number = number
 
@@ -76,9 +76,9 @@ class Aircraft:
     """This class models an aircraft"""
     def __init__(self, registration, model, num_rows, num_seats_per_row):
         """
-        Aircraft initializer
+        Aircraft initializer.
         
-        Args:            
+        Args:
             registration: the reg number of the aircraft.
             model: the model of the aircraft.
             num_rows: the number of rows of the aircraft.
@@ -113,7 +113,7 @@ class Aircraft:
         The seating plan for the aircraft.
 
         Returns:
-            a tuple modelling the seating plan as a range and a string of seat letters. 
+            a tuple modelling the seating plan as a range and a string of seat letters.
         """
         # in "ABCDEFGHJK" the char I is skipped on purpose to avoid mistakes with 1.
         return (range(1, self._number_rows+1), "ABCDEFGHJK"[:self._num_seats_per_row])
