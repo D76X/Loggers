@@ -42,8 +42,7 @@ namespace LogXtreme.WinDsk {
         }
 
         /// <summary>
-        /// This properties holds a reference to the scoped region manager for the instance of 
-        /// the Shell supported by this instance of the ShellViewModel.
+        /// A reference to the region manager for the shell.        
         /// </summary>
         public IRegionManager RegionManager { get; set; }
 
