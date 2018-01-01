@@ -29,11 +29,13 @@ namespace LogXtreme.WinDsk {
         public int ShellCreatedCount => this.shellCreatedCount;
 
         /// <summary>
-        /// Resolve and show a new Shell and set the value of the property Shell.RegionManager to an instance 
-        /// of a scoped RegionManager. If a URI to a view is provided it also requests navigation to that view
+        /// Resolve a new Shell and sets the value of the attached property 
+        /// Shell.RegionManager to an instance of a scoped RegionManager. 
+        /// If a URI to a view is provided it also requests navigation to 
+        /// that view in order to show the view when the shell is shown.
         /// prior to showing it.
         /// </summary>
-        /// <param name="uri">The URI to a view to show</param>
+        /// <param name="uri">The URI to a view to show in the shell when the shell is shown</param>
         public DependencyObject CreateShell(IRegionManager regionManager) {            
 
             var shell = this.container.Resolve<Shell>();
@@ -54,7 +56,17 @@ namespace LogXtreme.WinDsk {
             return shell;
         }
 
-        public void ShowShell(DependencyObject shellDependencyObject, string uri = null) {
+        /// <summary>
+        /// Given a shell window as a DependencyObject it shows it.
+        /// It also checks whether the shell implements navigation
+        /// and if it does and a Uri to a view is given it invokes
+        /// a navigation request to the given Uri. 
+        /// </summary>
+        /// <param name="shellDependencyObject">A reference to the shell</param>
+        /// <param name="uri">The Uri of a view to navigate to when the shell is shown</param>
+        public void ShowShell(
+            DependencyObject shellDependencyObject, 
+            string uri = null) {
 
             var shell = shellDependencyObject as Shell;
 
