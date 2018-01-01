@@ -4,6 +4,7 @@ using LogXtreme.WinDsk.Infrastructure.Models;
 using LogXtreme.WinDsk.Infrastructure.Prism;
 using LogXtreme.WinDsk.Infrastructure.Services;
 using LogXtreme.WinDsk.Interfaces;
+using ModuleD.Navigation;
 using Prism.Commands;
 using Prism.Regions;
 using System;
@@ -68,10 +69,14 @@ namespace LogXtreme.WinDsk {
 
         private void Navigate(string viewName) {
 
+            var parameters = new NavigationParameters();
+            parameters.Add(NavigationRequestParametersBase.KeyNavigationRequestedBy, this);
+            
             this.RegionManager.RequestNavigate(
-                RegionNames.RegionContent, 
+                RegionNames.RegionContent,
                 new Uri(viewName, UriKind.Relative),
-                NavigateComplete);
+                NavigateComplete,
+                parameters);
         }
 
         private void NavigateComplete(NavigationResult navigationResult) {
