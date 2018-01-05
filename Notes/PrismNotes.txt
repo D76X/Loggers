@@ -103,7 +103,7 @@ Method 2 - use IRegionManager.CreateRegionManager() to obtained a scope region
 
 IRegionManager scopedRegion = regionManager.CreateRegionManager();
 View view = container.Resolve<View>();
-ResionManager.SetRegionManager(voew, scopedRegion)
+ResionManager.SetRegionManager(view, scopedRegion)
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -469,4 +469,27 @@ THE NAVIGATION JOURNAL
   INavigationAware & IConfirmNavigationRequest
 5-You can grab a reference to the NavigationService in the VM's INavigationAware.OnVavigatedTo override
 6-Use the NavigationService.Journs.GoBack()/CanGoBach()/GoForward()/CanGoForward()/etc.
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+SOME USEFUL TOOLS IN PRISM
+
+01-How to get a reference to the region attached to a control.
+   How to remove contents from a region.
+
+Refs
+https://app.pluralsight.com/player?course=prism-mastering-tabcontrol&author=brian-lagunas&name=prism-mastering-tabcontrol-m3&clip=9&mode=live
+
+// this examples shows how to correctly remove a tab item from a TabControl
+// to which a Prism region is attached
+var tabControl = ...
+IRegion region = RegionManager.GetObservableRegion(tabControl).Value;
+if(region == null) {...}
+else if(region.Views.Contains(tabControl.Content)){
+	
+	// once there's a ref to a region the IRegion.Remove must be used to 
+	// remove content. Prims handles all the logic for ItemsControl as well.
+	region.Remove(tabItem.Content)
+}
+
+02-
 --------------------------------------------------------------------------------------------------------------------------------------------

@@ -293,3 +293,203 @@ https://docs.python.org/3.3/library/pprint.html
 >>> g.num_available_seats()
 
 ====================================================================================
+
+MODULEs AND PACKAGEs AND sys.path
+
+1-Any .py file is a module.
+  A module may be made globally available to the Python interpreter when its path 
+  is added to sys.path.
+
+2-to add a path to sys.path directly
+>>> import sys
+>>> sys.path.append('C:\....\folder whare your module(s) are')
+
+3-there is another way to add a modules to sys.path that does require direct 
+  mainipulation of sys.path. The PYTHONPATH environment variable is a set of 
+  path added to sys.path when Python starts. It uses the same format of the 
+  OS environment variable PATH.
+
+  In Windows
+  set PYTHONPATH=%PYTHONPATH%;C:\My_python_lib
+  Or use the GUI...
+  https://stackoverflow.com/questions/3701646/how-to-add-to-the-pythonpath-in-windows-7
+
+4- to test whether a folder is in sys.path
+>>>import sys
+>>>[p for p in sys.path if 'folder_name' in p]
+
+5-Once a module in in sys.path it is globally available to Python interpreter and
+  to use it at the REPL or in a script just import it as in teh following examples
+  import module_name
+  import module_name as m
+  from module_name import *
+  from module_name import a_function
+  etc.
+
+------------------------------------------------------------------------------------
+PACKAGES
+
+Packages are themeselves modules.
+
+6-Packages are directories with a __init__.py in it and as many modules as you like.
+
+7-The file __init__.py is often called the package init file, and it is what make a 
+  package also a module.
+
+8-A package is a special kind of module as it can contain other modules including 
+  other packages.
+
+9-For a Package to globally available to Python the path to the directory of the 
+  Package must be in sys.path.
+
+---------------------------------------------
+Test of a sample package in the console. 
+Shows how to import a package into the REPL.
+Refs
+https://app.pluralsight.com/player?course=python-beyond-basics&author=austin-bingham&name=python-beyond-basics-m01&clip=2&mode=live
+---------------------------------------------
+
+C:\GitHub\Loggers\PyApps\Examples\Packages
+Python 3.6.3 (v3.6.3:2c5fed8, Oct  3 2017, 18:11:49) [MSC v.1900 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import Package1
+>>> Package1.__file__
+'C:\\GitHub\\Loggers\\PyApps\\Scripts\\Packages\\Package1\\__init__.py'
+
+The PackageExample.__file__ points to the __init__ of the package's directory. This
+is the file that is actually imported into teh Python runtime when the module/apckage
+is imported. The __init__ is executed as any other module but it is executed first.
+
+
+---------------------------------------------
+Test of a sample package in the console. 
+Read the file that defines the class Reader
+Refs
+https://app.pluralsight.com/player?course=python-beyond-basics&author=austin-bingham&name=python-beyond-basics-m01&clip=2&mode=live
+---------------------------------------------
+
+C:\GitHub\Loggers\PyApps\Examples\Packages
+Python 3.6.3 (v3.6.3:2c5fed8, Oct  3 2017, 18:11:49) [MSC v.1900 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import Package1.reader
+>>> Package1.__file__
+'C:\\GitHub\\Loggers\\PyApps\\Scripts\\Packages\\Package1\\__init__.py'
+>>> r=Package1.reader.Reader('Package1/reader.py')
+>>> r.read()
+"....THE CONTENT OF THE FILE reader.py..."
+>>>r.close()
+
+
+---------------------------------------------
+Test of a sample package in the console. 
+Read the file that defines the class Reader
+Refs
+https://app.pluralsight.com/player?course=python-beyond-basics&author=austin-bingham&name=python-beyond-basics-m01&clip=2&mode=live
+---------------------------------------------
+C:\GitHub\Loggers\PyApps\Examples\Packages>python
+Python 3.6.3 (v3.6.3:2c5fed8, Oct  3 2017, 18:11:49) [MSC v.1900 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import Package1.module2
+>>> Package1.__file__
+'C:\\GitHub\\Loggers\\PyApps\\Examples\\Packages\\Package1\\__init__.py'
+>>> one, two = Package1.module2.create_crazy_stuff()
+>>> one.tell_me_how_crazy_you_are()
+I am crazy at level 7
+>>> two.tell_me_how_crazy_you_are()
+I am crazy at level all out
+>>>
+
+---------------------------------------------
+Test of a sample package in the console. 
+Read the file that defines the class Reader
+Refs
+https://app.pluralsight.com/player?course=python-beyond-basics&author=austin-bingham&name=python-beyond-basics-m01&clip=2&mode=live
+---------------------------------------------
+C:\GitHub\Loggers\PyApps\Examples\Packages>python
+Python 3.6.3 (v3.6.3:2c5fed8, Oct  3 2017, 18:11:49) [MSC v.1900 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import Package1.module2
+>>> Package1.__file__
+'C:\\GitHub\\Loggers\\PyApps\\Examples\\Packages\\Package1\\__init__.py'
+>>> one, two = Package1.module2.create_crazy_stuff()
+>>> one.tell_me_how_crazy_you_are()
+I am crazy at level 7
+>>> two.tell_me_how_crazy_you_are()
+I am crazy at level all out
+>>> import Package1.module1
+>>> Package1.module1.printSomething()
+somethig!
+>>>
+
+====================================================================================
+
+----------------------------
+Test test8_callable_objects
+----------------------------
+In the REPL for PythonScriptsTest1 do the following
+
+>>> import socket
+>>> socket.gethostbyname('google.com')
+'172.217.23.14'
+>>> socket.gethostbyname('sixty-north.com')
+'93.93.131.30'
+>>> 
+
+Then compare it to the following
+
+>>> import socket
+>>> socket.gethostbyname('google.com')
+'172.217.23.14'
+>>> socket.gethostbyname('sixty-north.com')
+'93.93.131.30'
+>>> from test8_callable_objects import Resolver
+>>> resolver('sixty-north.com')
+'93.93.131.30'
+>>> resolver('google.com')
+'216.58.210.46'
+>>> resolver._cache
+{'sixty-north.com': '93.93.131.30', 'google.com': '216.58.210.46'}
+>>> 
+
+----------------------------------------------------------
+Test in the REPL using the module level test function
+----------------------------------------------------------
+>>> import test8_callable_objects as t
+>>> t.test_resolver()
+{'google.com': '216.58.213.110', 'sixty-north.com': '93.93.131.30', 'bbc.co.uk': '151.101.64.81'}
+>>> import pprint as pp
+>>> pp.pprint(t.test_resolver())
+{'bbc.co.uk': '151.101.64.81',
+ 'google.com': '216.58.213.110',
+ 'sixty-north.com': '93.93.131.30'}
+>>> 
+
+====================================================================================
+
+Use of the timeit module
+https://docs.python.org/2/library/timeit.html
+
+----------------------------------------------------------------------------------
+Example1
+https://stackoverflow.com/questions/8220801/how-to-use-timeit-module
+----------------------------------------------------------------------------------
+
+In the REPL we time how long it takes to generate 1000 random chars and sort them. 
+
+>>> import timeit
+>>> setup = '''
+... import random
+... 
+... random.seed('slartibartfast')
+... s = [random.random() for i in range(1000)]
+... timsort = list.sort
+... '''
+>>> print(min(timeit.Timer('a=s[:]; timsort(a)', setup=setup).repeat(7, 1000)))
+0.21482576029353018
+>>> 
+
+----------------------------------------------------------------------------------
+Example2
+----------------------------------------------------------------------------------
+
+====================================================================================

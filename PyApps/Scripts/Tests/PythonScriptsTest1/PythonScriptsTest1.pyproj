@@ -32,6 +32,7 @@
     <Compile Include="test3_classes_functions.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="test8_callable_objects.py" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">

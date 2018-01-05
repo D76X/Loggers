@@ -324,7 +324,7 @@ class Flight:
             card_printer(passenger, seat, self.number(), self.aircraft_model())
 
 
-# this is a module-level conveninece function to easily test the module.
+# this is a module-level convenience function to easily test the module.
 def create_test_flights():
     """Creates test flights."""
     f = Flight("AB1234", AirbusA319("REG123"))
