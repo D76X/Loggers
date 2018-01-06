@@ -94,6 +94,7 @@ namespace LogXtreme.WinDsk.TestDataGrid.AbstractClasses {
 
             var propertyValueChanged = base.SetProperty(ref storage, value, propertyName);
             ValidateProperty(propertyName, value);          
+            //TODO add support for server side validation (async)
             return propertyValueChanged;
         }
     }

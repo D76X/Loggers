@@ -37,6 +37,8 @@ let ``List.head List.tail give head & tail of a list``()=
 
     // arrrange
     // illustrates the usage of the List operators :: and @ 
+    // the operator :: attach an element to a list
+    // the operator @ concatenates two lists
     let headval = 1
     let head = [headval]
     let tail = 2 :: [3; 4; 5; 6;]

@@ -74,7 +74,7 @@ namespace LogXtreme.WinDsk {
             base.ConfigureContainer();
 
             // replace Prism services with custom services
-            //...
+            Container.RegisterType<IRegionNavigationContentLoader, ScopedRegionNavigationContentLoader>(new ContainerControlledLifetimeManager());
 
             // register the application services
             RegisterTypeIfMissing(typeof(IShellService), typeof(ShellService), true);

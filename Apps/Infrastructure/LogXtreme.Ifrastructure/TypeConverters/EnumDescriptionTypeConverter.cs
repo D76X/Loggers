@@ -6,6 +6,10 @@ using System.Reflection;
 namespace LogXtreme.Ifrastructure.TypeConverters {
 
     /// <summary>
+    /// Coverts the value of enumeration type to the string set by the 
+    /// description attribute if one is found. If no description attribute
+    /// is found for the enumerated value then the string literal of the 
+    /// value is returned instead.
     /// Refs
     /// http://brianlagunas.com/a-better-way-to-data-bind-enums-in-wpf/
     /// https://msdn.microsoft.com/en-us/library/ayybcxe5.aspx

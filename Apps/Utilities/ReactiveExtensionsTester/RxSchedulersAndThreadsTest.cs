@@ -17,8 +17,10 @@ namespace ReactiveExtensionsTester {
     /// Introduction to RX book by Lee Campbell - Concurrency
     /// http://www.introtorx.com/content/v1.0.10621.0/15_SchedulingAndThreading.html
     /// </summary>
-    public class RxSchedulersAndThreadsTester {
-        
+    public class RxSchedulersAndThreadsTest : IRxExampleBaseTest {
+
+        public string Description => @"Illustrates the usage and properties of of schedulers with RX.";
+
         /// <summary>
         /// RX distinguishes between two kinds of delegates.
         /// RX creates these delegates for you.
@@ -31,14 +33,15 @@ namespace ReactiveExtensionsTester {
         /// --------------------------
         /// 
         /// A subscription delegate is the delegate that gets the next value from an
-        /// observable sequence. 
+        /// observable sequence. It is good practice to have subscription delegates to 
+        /// return quickly.
         /// 
         /// --------------------------
         /// 2-Observation delegates
         /// --------------------------
         /// 
-        /// Observation delegates are the delagates OnNext, OnError, OnComplete.
-        /// It is good practice to have subscription delegates to return quickly.
+        /// Observation delegates are the delegates OnNext, OnError, OnComplete.
+        /// 
         /// If the values from the observable need processing that should happen
         /// in the subscription delegate. 
         /// 
@@ -100,7 +103,7 @@ namespace ReactiveExtensionsTester {
         /// </summary>
         public void Run() {
 
-            Console.WriteLine($"Start {nameof(RxSchedulersAndThreadsTester.Run)}");
+            Console.WriteLine($"Start {nameof(RxSchedulersAndThreadsTest.Run)}");
 
             this.ObservableOnSinlgeThread();
             Thread.Sleep(1000);
@@ -118,7 +121,7 @@ namespace ReactiveExtensionsTester {
             Thread.Sleep(1000);
             Console.WriteLine("***");
 
-            Console.WriteLine($"End {nameof(RxSchedulersAndThreadsTester.Run)}");
+            Console.WriteLine($"End {nameof(RxSchedulersAndThreadsTest.Run)}");
         }
 
         private void StackOverflowQuestion7579237Test() {
@@ -191,7 +194,7 @@ namespace ReactiveExtensionsTester {
 
         /// <summary>
         /// 1- The thread on which the observable is created 
-        /// is different from the thread that calls .ToBservable
+        /// is different from the thread that calls .ToObservable
         /// 2- The thread that calls .ToObservable is no longer
         /// blocked by the call to .Subcribe
         /// </summary>

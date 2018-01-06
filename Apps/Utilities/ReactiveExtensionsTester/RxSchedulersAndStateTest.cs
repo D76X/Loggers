@@ -10,7 +10,7 @@ namespace ReactiveExtensionsTester {
     /// Refs
     /// http://www.introtorx.com/content/v1.0.10621.0/15_SchedulingAndThreading.html
     /// </summary>
-    public class RxSchedulersAndStateTest {
+    public class RxSchedulersAndStateTest : IRxExampleBaseTest {
 
         private class State<T> {
 
@@ -27,6 +27,8 @@ namespace ReactiveExtensionsTester {
                 return this.value.ToString();
             }
         }
+
+        public string Description => @"Illustrates passing state with scheduler in RX.";
 
         public void Run() {
 

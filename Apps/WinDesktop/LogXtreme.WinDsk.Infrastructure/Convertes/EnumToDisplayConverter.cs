@@ -6,6 +6,7 @@ using LogXtreme.Extensions;
 
 namespace LogXtreme.WinDsk.Infrastructure.Convertes {
     /// <summary>
+    /// ???
     /// Refs
     /// https://stackoverflow.com/questions/20290842/converter-to-show-description-of-an-enum-and-convert-back-to-enum-value-on-sele
     /// https://app.pluralsight.com/player?course=wpf-productivity-playbook&author=brian-noyes&name=wpf-productivity-playbook-m5&clip=3&mode=live
