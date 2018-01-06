@@ -6,6 +6,7 @@ Usage:
 """
 
 import socket 
+import timeit
 #from timeit import timeit 
 
 class Resolver:
@@ -38,10 +39,9 @@ def test():
     for i in range(100):
         L.append(i)
 
+#print(timeit.timeit("t.test()", setup="from __main__ import test8_callable_objects as t"))
+#timeit(setup="import Resolver resolver = Resolver()", stmt="resolver('python.org')", number=1)
 def test_lookup_time():
-    import timeit
-    print(timeit.timeit("test()", setup="from __main__ import test"))
-    #timeit(setup="import Resolver resolver = Resolver()", stmt="resolver('python.org')", number=1)
-
-
-    
+    #import timeit
+    timeit.Timer("test")    
+        

@@ -33,6 +33,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="test8_callable_objects.py" />
+    <Compile Include="test9_timeit.py" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
