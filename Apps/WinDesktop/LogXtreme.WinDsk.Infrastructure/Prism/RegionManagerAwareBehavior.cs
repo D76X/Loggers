@@ -6,15 +6,22 @@ using System;
 namespace LogXtreme.WinDsk.Infrastructure.Prism {
 
 
-    /// <summary>
+    /// <summary> 
+    /// This is a custom Prism region behaviour and must be registered with the Bootstrapper 
+    /// to be invoked in the life cycle of a Prism application.
+    ///  
+    /// This modified behavior solves the problem of cross-shell navigation in Prims 
+    /// applications that might have multiple shels each having its own RegionManager.
     /// 
-    /// This class is a custom region behaviour and must be registered with the Bootstrapper 
-    /// to be invoked in the life cycle of teh Prism application.
+    /// This behavior looks at the changes of Active Views of a region and when a view is added 
+    /// to a region the view's RegionManager is used as values of the view model's property 
+    /// IRegionManagerAware.RegionManager when the view model implements IRegionManagerAware. 
+    /// This should be the cases for any view model in a Prism application with multiple shells.
     /// 
-    /// This behavior looks at the changes of Active Views of a region and when the view or
-    /// its view model implement IAwareBehavior it uses ... to set the IAwareBehavior.RegionManager
-    /// property value to...
-    /// 
+    /// In this way the view model can retain a reference to the RegionManager of the corresponding
+    /// view and this can be used when a navigation request is made instead of the global 
+    /// RegionManager that in general is the RegionManager of the first shell created.
+    ///     
     /// </summary>
     public class RegionManagerAwareBehavior : RegionBehavior {
 
@@ -27,7 +34,12 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
         /// <summary>
         /// OnAttach is called when the Behavior is attached to its region adapter.
         /// In OnAttach it is possible to get references to the Region or the RegionAdapter
-        /// and register handlers for the events on the Region or the RegionAdapter.
+        /// and register handlers for the events on the Region or the RegionAdapter. 
+        /// In OnAttach the RegionBehavior has access to the public API of the Region or 
+        /// RegionAdapter thus it is possible to subscribe to events or access properties.
+        /// It is also possible to test the type of Region or RegionAdapter and perform
+        /// action only of some specific type(s) so that the RegionBehavior is specific 
+        /// to those Region or RegionAdapter type(s).
         /// </summary>
         protected override void OnAttach() {
 
@@ -38,25 +50,31 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
         /// Any time a new view is added to the collection of views of a region it is tested whether
         /// the view has a value for the attached property RegionManager.RegionManagerProperty and if 
         /// this is the case a refence to this region manager is tempoarily stored and passed to the 
-        /// the next call to InvokeOnRegionManagerAwareElement. In this call it checked whether the 
-        /// view model for the view implements IRegionManagerAware and when this is the case the 
-        /// IRegionManagerAware.RegionManager of the view model is also set to the same regionmanager 
-        /// as its view.
-        /// 
-        /// This is useful as a view in Prism my be added to a region using an override of the method
-        /// IRegionManager.Add(IRegion,VIEWNAME,BOOL) where the last parameter when TRUE causes a 
-        /// scoped region be created that is 
-        /// ...
+        /// the next call to InvokeOnRegionManagerAwareElement with an action that sets the property
+        /// IRegionManagerAware.RegionManager to the scope region of  . 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ActiveViewsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e) {
+        private void ActiveViewsCollectionChanged(
+            object sender, 
+            NotifyCollectionChangedEventArgs e) {
 
             if (e.Action == NotifyCollectionChangedAction.Add) {
 
                 foreach (var item in e.NewItems) {
 
-                    // get the global region manager 
+                    // A view must have a RegionAdapter in order to be a region in Prism.
+                    // A RegionAdapter can hold one ore more RegionBehaviors.
+                    // When a view is created it is given a RegionManager.
+                    // The RegionManager of the view may be the global Prism RegionManager that is that of the first shell
+                    // or a scoped region when the view is in a secondary shell created after bootstrapping.
+                    // Initally we get a reference to the Region manager of the region that may be the global Prism RegionManager.
+                    // Then we try to get the region manager of the view.
+                    // The goal is to get the DataContext that is the VM of the view to get a reference to a scoped RegionManager
+                    // when the view has one and the DataContext/VM is an implementation of IRegionManagerAware.
+                    // In this way when commands on the VM to request navigation are actioned the VM can use the scoped RegionManager
+                    // instead of the global RegionManager and navigation happens only in the shell of containing the view instance 
+                    // that invoked the command. This solve the problem of cross-shell navigation from views. 
                     IRegionManager regionManager = Region.RegionManager;
 
                     // is this is a view?
@@ -82,19 +100,30 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
                 foreach (var item in e.OldItems) {
 
                     // properly clear IRegionManagerAware.RegionManager property on view and/or ViewModel 
+                    // this makes usre that the scoped region manager can be disposed of when no longer 
+                    // referenced.
                     InvokeOnRegionManagerAwareElement(item, x => x.RegionManager = null);
                 }
             }
         }
 
         /// <summary>
-        /// 
+        /// Given item it is tested whether the item is an instance of IRegionManagerAware. 
+        /// This may be the case when it is chosen to have the view to implement this interface.
+        /// However, more commonly item will be a FrameworkElement that is a view whose DataContext
+        /// my be an implementation of IRegionManagerAware. In any case when an implementation of 
+        /// IRegionManagerAware the given action is performed. It si also possible that both the 
+        /// view and the corresponding VM (DataContext) amy be implementation of IRegionManagerAware
+        /// is which case the given action is invoked for both.
         /// </summary>
-        /// <param name="item">aon object that might be a view implementing IRegionManagerAware</param>
+        /// <param name="item">an object that might be a view implementing IRegionManagerAware or a view with a VM that implements IRegionManagerAware</param>
         /// <param name="invocation">The action to perform on IRegionManagerAware</param>
-        static void InvokeOnRegionManagerAwareElement(object item, Action<IRegionManagerAware> invocation) {
+        static void InvokeOnRegionManagerAwareElement(
+            object item, 
+            Action<IRegionManagerAware> invocation) {
            
             var rmAwareItem = item as IRegionManagerAware;
+
             if (rmAwareItem != null) {
                 invocation(rmAwareItem);
             }
@@ -134,8 +163,8 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
                         }
                     }
 
-                    // here we are sure that the view has its own DataContext and that it is a inplementation 
-                    // of IRegionManagerAware thus we can invoke the action to either set or null the 
+                    // here we are sure that the view has its own DataContext and that it is a implementation 
+                    // of IRegionManagerAware thus we can invoke the action to either set or null the property
                     // IRegionManagerAware.RegionManager
                     invocation(rmAwareDataContext);
                 }
