@@ -14,11 +14,7 @@ namespace ModuleD.ViewModels {
         ViewModelBase,
         IViewAViewModel,
         IRegionManagerAware,
-        ICreateRegionManagerScope {
-
-        public IRegionManager RegionManager { get; set; }
-        public DelegateCommand NavigateCommand { get; private set; }
-        public string Title => nameof(ViewAViewModel);
+        ICreateRegionManagerScope {        
 
         private bool isClosable = true;
         private bool isConfirmNavigationActive = false;
@@ -27,18 +23,29 @@ namespace ModuleD.ViewModels {
 
             this.NavigateCommand = new DelegateCommand(Navigate);
         }
+        
+        public string Title => nameof(ViewAViewModel);
 
         public bool IsClosable {
             get { return this.isClosable; }
             set { SetProperty(ref this.isClosable, value); }
         }
 
-        public bool IsConfirmNavigationActive {
-            get { return this.isConfirmNavigationActive; }
-            set { SetProperty(ref this.isConfirmNavigationActive, value); }
-        }
+        /// <summary>
+        /// Property defined on supported interface IRegionManagerAware.
+        /// This is necessary to support displaying the view in TabItems.
+        /// </summary>
+        public IRegionManager RegionManager { get; set; }
 
+        /// <summary>
+        /// Indicates to the implemenation of IRegionNavigationContentLoader
+        /// whether a scope region must be created when a view for this VM
+        /// is instantiated as a result of a navigation request.
+        /// This is necessary to support displaying the view in TabItems.
+        /// </summary>
         public bool CreateRegionManagerScope => true;
+
+        public DelegateCommand NavigateCommand { get; private set; }        
 
         public override bool IsNavigationTarget(NavigationContext navigationContext) {
 
@@ -54,6 +61,11 @@ namespace ModuleD.ViewModels {
 
             var navigationRequestedBy = navigationContext.Parameters[NavigationRequestParametersBase.KeyNavigationRequestedBy];
             // do something with this information
+        }
+
+        public bool IsConfirmNavigationActive {
+            get { return this.isConfirmNavigationActive; }
+            set { SetProperty(ref this.isConfirmNavigationActive, value); }
         }
 
         public override void ConfirmNavigationRequest(
@@ -86,8 +98,10 @@ namespace ModuleD.ViewModels {
         private void Navigate() {
 
             var parameters = new NavigationParameters();
-            parameters.Add(NavigationRequestParametersBase.KeyNavigationRequestedBy, this);            
+            parameters.Add(NavigationRequestParametersBase.KeyNavigationRequestedBy, this);
 
+            // do not check for null on RegionManager it must be set when a navigation 
+            // request has been made to the VM
             this.RegionManager.RequestNavigate(
                 RegionNames.RegionContent,
                 ViewNamesModuleD.ViewB, 

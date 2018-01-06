@@ -10,16 +10,21 @@ using System;
 
 namespace ModuleD.ViewModels {
 
+    /// <summary>
+    /// View Model that can hold a reference to a scoped region manager if one is created 
+    /// for the corresponding view. The View Model tells the implementation of the interface
+    /// IRegionNavigationContentLoader that a scoped region manager must be created for the 
+    /// corresponding view when a request navigation happens by returning true fpr the prop
+    /// CreateRegionManagerScope. The implementation of IRegionNavigationContentLoader then 
+    /// sets the scoped region manager on the view and/or the view model when it is found 
+    /// that they are implentations of IRegionManagerAware.
+    /// </summary>
     public class ViewBViewModel : 
         ViewModelBase,
         IViewBViewModel,
         IRegionManagerAware,
-        ICreateRegionManagerScope {        
-
-        public DelegateCommand NavigateCommand { get; private set; }
-        public IRegionManager RegionManager { get; set; }
-        public string Title => nameof(ViewBViewModel);
-
+        ICreateRegionManagerScope {   
+        
         private bool isClosable = true;
 
         /// <summary>
@@ -28,13 +33,27 @@ namespace ModuleD.ViewModels {
         /// </summary>
         public ViewBViewModel() {       
             this.NavigateCommand = new DelegateCommand(Navigate);
-        }
+        }        
+
+        public string Title => nameof(ViewBViewModel);
 
         public bool IsClosable {
             get { return this.isClosable; }
             set { SetProperty(ref this.isClosable, value); }
         }
 
+        /// <summary>
+        /// Property defined on supported interface IRegionManagerAware.
+        /// This is necessary to support displaying the view in TabItems.
+        /// </summary>
+        public IRegionManager RegionManager { get; set; }
+
+        /// <summary>
+        /// Indicates to the implemenation of IRegionNavigationContentLoader
+        /// whether a scope region must be created when a view for this VM
+        /// is instantiated as a result of a navigation request.
+        /// This is necessary to support displaying the view in TabItems.
+        /// </summary>
         public bool CreateRegionManagerScope => true;
 
         public override bool IsNavigationTarget(NavigationContext navigationContext) {
@@ -46,6 +65,8 @@ namespace ModuleD.ViewModels {
 
             return false;
         }
+
+        public DelegateCommand NavigateCommand { get; private set; }
 
         public override void OnNavigatedTo(NavigationContext navigationContext) {
 
