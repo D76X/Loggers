@@ -489,7 +489,21 @@ In the REPL we time how long it takes to generate 1000 random chars and sort the
 >>> 
 
 ----------------------------------------------------------------------------------
-Example2
+Example2 : test009_timeit.py
+https://docs.python.org/2/library/timeit.html
 ----------------------------------------------------------------------------------
+>>> import timeit
+>>> timeit.timeit("t.function_to_test()", setup="import test9_timeit as t")
+11.92169682342347
+
+----------------------------------------------------------------------------------
+Example3 : test010_timeit.py
+https://docs.python.org/2/library/timeit.html
+Like test009_timeit.py but the timing function is exposed on the module.
+----------------------------------------------------------------------------------
+>>> import test010_timeit
+>>> test010_timeit.time_of_function_to_test()
+0.04928050341063623
+>>> 
 
 ====================================================================================

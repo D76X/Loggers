@@ -5,9 +5,7 @@ Usage:
     Run...
 """
 
-import socket 
-import timeit
-#from timeit import timeit 
+import socket  
 
 class Resolver:
     """
@@ -33,15 +31,11 @@ def test_resolver():
     resolver.__call__('bbc.co.uk')
     return resolver._cache
 
-def test():
-    """Stupid test function"""
-    L = []
-    for i in range(100):
-        L.append(i)
+def test_resolver_caching():
+    pass
 
-#print(timeit.timeit("t.test()", setup="from __main__ import test8_callable_objects as t"))
-#timeit(setup="import Resolver resolver = Resolver()", stmt="resolver('python.org')", number=1)
-def test_lookup_time():
-    #import timeit
-    timeit.Timer("test")    
+def time_test_resolver():
+    import timeit
+    t = timeit.timeit("test008_callable_objects.test_resolver_caching", setup="from __main__ import test008_callable_objects")    
+    return t
         
