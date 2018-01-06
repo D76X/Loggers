@@ -13,6 +13,9 @@ namespace LogXtreme.WinDsk.Infrastructure.Actions {
     /// element within the button to declare a i:EventTrigger EventName="Click" and
     /// within it a declaration to the CloseTabAction.
     /// 
+    /// Refs
+    /// https://app.pluralsight.com/player?course=prism-mastering-tabcontrol&author=brian-lagunas&name=prism-mastering-tabcontrol-m3&clip=12&mode=live
+    /// 
     /// Example
     /// 
     // xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
@@ -62,11 +65,13 @@ namespace LogXtreme.WinDsk.Infrastructure.Actions {
                 return;
             }
 
-            this.RemoveItemFromrRegion(tabItem.Content, region);
+            this.RemoveItemFromRegion(tabItem.Content, region);
         }
 
-        private void RemoveItemFromrRegion(object item, IRegion region) {
+        private void RemoveItemFromRegion(object item, IRegion region) {
 
+            // a NavigationContext is provided with the NavigationService of the region
+            // from which the item is to be removed the Uri does not matter.
             var navigationContext = new NavigationContext(region.NavigationService, null); 
 
             if (this.CanRemove(item, navigationContext)) {
@@ -79,6 +84,9 @@ namespace LogXtreme.WinDsk.Infrastructure.Actions {
         private bool CanRemove(object item, NavigationContext navigationContext) {
 
             bool canRemove = true;
+
+            // the IConfirmNavigationRequest may be implemented on either the View or its 
+            // ViewModel thus both are checked.
 
             var confirmRequestItem = item as IConfirmNavigationRequest;
 
