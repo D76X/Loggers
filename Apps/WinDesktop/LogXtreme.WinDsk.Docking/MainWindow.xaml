@@ -3,10 +3,72 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
         xmlns:local="clr-namespace:LogXtreme.WinDsk.Docking"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Row="0">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Open" />
+                    <MenuItem Header="_Close" />
+                    <MenuItem Header="_Save" />
+                </MenuItem>
+            </Menu>
+            <StackPanel></StackPanel>
+        </DockPanel>
+
+        <DockPanel Grid.Row="2">
+            <StatusBar DockPanel.Dock="Bottom">
+                <StatusBarItem>
+                    <TextBlock Name="lblCursorPosition" Text="Status: OK"/>
+                </StatusBarItem>
+            </StatusBar>            
+        </DockPanel>
+
+        <xcad:DockingManager Grid.Row="1"                            
+                             AllowMixedOrientation="True"
+                             BorderBrush="Black"
+                             BorderThickness="1">
+            <xcad:DockingManager.DocumentHeaderTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding IconSource}"
+                               Margin="0,0,4,0" />
+                        <TextBlock Text="{Binding Title}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </xcad:DockingManager.DocumentHeaderTemplate>
+            <xcad:LayoutRoot x:Name="_layoutRoot">
+                <xcad:LayoutPanel Orientation="Horizontal">
+                    <xcad:LayoutPanel Orientation="Horizontal">
+                        <xcad:LayoutAnchorablePane DockWidth="200">
+                            <xcad:LayoutAnchorable ContentId="properties"
+                                                   Title="Properties"
+                                                   CanHide="False"
+                                                   CanClose="False"
+                                                   AutoHideWidth="240"
+                                                   IconSource="Images/property-blue.png">
+                                
+                            </xcad:LayoutAnchorable>
+                        </xcad:LayoutAnchorablePane>
+                        <xcad:LayoutDocumentPaneGroup>
+                            
+                        </xcad:LayoutDocumentPaneGroup>
+                        <xcad:LayoutAnchorablePaneGroup DockWidth="125">
+                            
+                        </xcad:LayoutAnchorablePaneGroup>                        
+                    </xcad:LayoutPanel>
+                </xcad:LayoutPanel>
+            </xcad:LayoutRoot>
+        </xcad:DockingManager>
     </Grid>
 </Window>
