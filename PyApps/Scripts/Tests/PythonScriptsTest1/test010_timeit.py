@@ -13,6 +13,7 @@ def function_to_test():
         L.append(i)
 
 def time_of_function_to_test():
+    """"Module level test function"""
     import timeit
     t = timeit.timeit("test010_timeit.function_to_test", setup="from __main__ import test010_timeit") 
     return t

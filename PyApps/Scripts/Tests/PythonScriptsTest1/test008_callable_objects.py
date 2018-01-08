@@ -31,11 +31,15 @@ def test_resolver():
     resolver.__call__('bbc.co.uk')
     return resolver._cache
 
-def test_resolver_caching():
-    pass
+# constant for testing
+testResolverInstance = Resolver()
 
-def time_test_resolver():
+def time_resolver_without_and_with_caching():
+    """Shows the improvement obtained by caching."""
     import timeit
-    t = timeit.timeit("test008_callable_objects.test_resolver_caching", setup="from __main__ import test008_callable_objects")    
-    return t
+    import pprint as pp    
+    t1 = timeit.timeit("t.testResolverInstance('google.com')", setup="from __main__ import test008_callable_objects as t")
+    print(t1)
+    t2 = timeit.timeit("t.testResolverInstance('google.com')", setup="from __main__ import test008_callable_objects as t")
+    print(t2)
         
