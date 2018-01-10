@@ -36,6 +36,9 @@
     <Compile Include="test008_callable_objects.py" />
     <Compile Include="test009_timeit.py" />
     <Compile Include="test011_timeit.py" />
+    <Compile Include="test012_classes_are_callables.py" />
+    <Compile Include="test013_conditional_expressions.py" />
+    <Compile Include="test014_lambdas.py" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
