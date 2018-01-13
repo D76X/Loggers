@@ -6,8 +6,11 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
         xmlns:local="clr-namespace:LogXtreme.WinDsk.Docking"
+        xmlns:s="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow"
+        Height="350"
+        Width="525">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -29,12 +32,13 @@
         <DockPanel Grid.Row="2">
             <StatusBar DockPanel.Dock="Bottom">
                 <StatusBarItem>
-                    <TextBlock Name="lblCursorPosition" Text="Status: OK"/>
+                    <TextBlock Name="lblCursorPosition"
+                               Text="Status: OK" />
                 </StatusBarItem>
-            </StatusBar>            
+            </StatusBar>
         </DockPanel>
 
-        <xcad:DockingManager Grid.Row="1"                            
+        <xcad:DockingManager Grid.Row="1"
                              AllowMixedOrientation="True"
                              BorderBrush="Black"
                              BorderThickness="1">
@@ -43,7 +47,7 @@
                     <StackPanel Orientation="Horizontal">
                         <Image Source="{Binding IconSource}"
                                Margin="0,0,4,0" />
-                        <TextBlock Text="{Binding Title}"/>
+                        <TextBlock Text="{Binding Title}" />
                     </StackPanel>
                 </DataTemplate>
             </xcad:DockingManager.DocumentHeaderTemplate>
@@ -57,17 +61,80 @@
                                                    CanClose="False"
                                                    AutoHideWidth="240"
                                                    IconSource="Images/property-blue.png">
-                                
+
                             </xcad:LayoutAnchorable>
                         </xcad:LayoutAnchorablePane>
                         <xcad:LayoutDocumentPaneGroup>
-                            
+                            <xcad:LayoutDocumentPane>
+                                <xcad:LayoutDocument ContentId="document1"
+                                                     Title="Document1"
+                                                     IconSource="Images/document.png">
+                                    <Button Content="Document 1 Content"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center" />
+                                </xcad:LayoutDocument>
+                                <xcad:LayoutDocument ContentId="document2"
+                                                     Title="Document2"
+                                                     IconSource="Images/document.png">
+                                    <Button Content="Document 2 Content"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center" />
+                                </xcad:LayoutDocument>
+                            </xcad:LayoutDocumentPane>
                         </xcad:LayoutDocumentPaneGroup>
                         <xcad:LayoutAnchorablePaneGroup DockWidth="125">
-                            
-                        </xcad:LayoutAnchorablePaneGroup>                        
+                            <xcad:LayoutAnchorablePane>
+                                <xcad:LayoutAnchorable ContentId="alarms"
+                                                       Title="Allarms"
+                                                       IconSource="Images/alarm-clock-blue.png">
+                                    <ListBox>
+                                        <s:String>Alarm1</s:String>
+                                        <s:String>Alarm2</s:String>
+                                        <s:String>Alarm3</s:String>
+                                    </ListBox>                                    
+                                </xcad:LayoutAnchorable>
+                                <xcad:LayoutAnchorable ContentId="journal" Title="Journal">
+                                    <RichTextBox>
+                                        <FlowDocument>
+                                            <Paragraph FontSize="14"
+                                                       FontFamily="Segoe">
+                                                This is the content of the Journal Pane.
+                                                <LineBreak />
+                                                A
+                                                <Bold>RichTextBox</Bold> has been added here
+                                            </Paragraph>
+                                        </FlowDocument>
+                                    </RichTextBox>
+                                </xcad:LayoutAnchorable>
+                            </xcad:LayoutAnchorablePane>                                                    
+                        </xcad:LayoutAnchorablePaneGroup>
                     </xcad:LayoutPanel>
                 </xcad:LayoutPanel>
+
+                <xcad:LayoutRoot.LeftSide>
+                    <xcad:LayoutAnchorSide>
+                        <xcad:LayoutAnchorGroup>
+                            <xcad:LayoutAnchorable Title="Agenda"
+                                                   ContentId="agenda"
+                                                   IconSource="Images/address-book-open.png">
+                                <TextBlock Text="Agenda Content"
+                                           Margin="10"
+                                           FontSize="18"
+                                           FontWeight="Black"
+                                           TextWrapping="Wrap" />
+                            </xcad:LayoutAnchorable>
+                            <xcad:LayoutAnchorable Title="Contacts"
+                                                   ContentId="contacts"
+                                                   IconSource="Images/address-book--pencil.png">
+                                <TextBlock Text="Contacts Content"
+                                           Margin="10"
+                                           FontSize="18"
+                                           FontWeight="Black"
+                                           TextWrapping="Wrap" />
+                            </xcad:LayoutAnchorable>
+                        </xcad:LayoutAnchorGroup>
+                    </xcad:LayoutAnchorSide>
+                </xcad:LayoutRoot.LeftSide>
             </xcad:LayoutRoot>
         </xcad:DockingManager>
     </Grid>
