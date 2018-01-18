@@ -39,6 +39,7 @@
     <Compile Include="test012_classes_are_callables.py" />
     <Compile Include="test013_conditional_expressions.py" />
     <Compile Include="test014_lambdas.py" />
+    <Compile Include="test020_duck_tail_transpose_pattern.py" />
     <Compile Include="test019_forwarding_arguments.py" />
     <Compile Include="test018_extended_call_syntax.py" />
     <Compile Include="test017_extended_formal_args.py" />
