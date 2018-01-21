@@ -521,3 +521,27 @@ https://docs.python.org/2/library/timeit.html
 ----------------------------------------------------------------------------------
 
 ====================================================================================
+
+The LEGB rule
+
+1-Local scope
+2-Enclosing scope
+3-Global scope
+4-Built-in scope
+
+Names are resolved that is bound to some value which might be any valid value such
+as functions, literals, etc. by looking for the value from the point in the code 
+where the symbol is defined according to the sequence 1 >> 2 >> 3 >> 4.
+
+For example for a variable declared in teh definition of a function.
+
+scope of the declaring function >> 
+scope of the first containg function including its paramters>>
+scope of the second containg function including its paramters>>
+...
+scope of the n-th containg function including its paramters>>
+scope of the containg module function including its paramters>>
+...
+global scope.
+
+====================================================================================
