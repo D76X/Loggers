@@ -61,7 +61,19 @@
                                                    CanClose="False"
                                                    AutoHideWidth="240"
                                                    IconSource="Images/property-blue.png">
-
+                                <xctk:PropertyGrid NameColumnWidth="110"
+                                                   SelectedObject="{Binding ElementName=_layoutRoot LastFocusedDocument.Content}"
+                                                   AutoGenerateProperties="False">
+                                    <xctk:PropertyGrid.PropertyDefinitions>
+                                        <xctk:PropertyDefinition TargetProperties="Background" />
+                                        <xctk:PropertyDefinition TargetProperties="BorderBrush" />
+                                        <xctk:PropertyDefinition TargetProperties="BorderThickness" />
+                                        <xctk:PropertyDefinition TargetProperties="FontSize" />
+                                        <xctk:PropertyDefinition TargetProperties="FontStyle" />
+                                        <xctk:PropertyDefinition TargetProperties="Width" />
+                                        <xctk:PropertyDefinition TargetProperties="Height" />
+                                    </xctk:PropertyGrid.PropertyDefinitions>
+                                </xctk:PropertyGrid>
                             </xcad:LayoutAnchorable>
                         </xcad:LayoutAnchorablePane>
                         <xcad:LayoutDocumentPaneGroup>
@@ -91,9 +103,10 @@
                                         <s:String>Alarm1</s:String>
                                         <s:String>Alarm2</s:String>
                                         <s:String>Alarm3</s:String>
-                                    </ListBox>                                    
+                                    </ListBox>
                                 </xcad:LayoutAnchorable>
-                                <xcad:LayoutAnchorable ContentId="journal" Title="Journal">
+                                <xcad:LayoutAnchorable ContentId="journal"
+                                                       Title="Journal">
                                     <RichTextBox>
                                         <FlowDocument>
                                             <Paragraph FontSize="14"
@@ -106,7 +119,7 @@
                                         </FlowDocument>
                                     </RichTextBox>
                                 </xcad:LayoutAnchorable>
-                            </xcad:LayoutAnchorablePane>                                                    
+                            </xcad:LayoutAnchorablePane>
                         </xcad:LayoutAnchorablePaneGroup>
                     </xcad:LayoutPanel>
                 </xcad:LayoutPanel>
