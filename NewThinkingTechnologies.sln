@@ -385,7 +385,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatusBarModule", "Apps\Win
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGridModule", "Apps\WinDesktop\Modules\AppModules\DataGridModule\DataGridModule.csproj", "{B0801C7C-3ACB-4617-BB59-329D70AF310A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.WinDsk.Behaviors", "Apps\WinDesktop\LogXtreme.WinDsk.Behaviors\LogXtreme.WinDsk.Behaviors.csproj", "{BF7BFBB7-F795-4CED-9410-2B33EB34836B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.WinDsk.TestBehaviors", "Apps\WinDesktop\LogXtreme.WinDsk.Behaviors\LogXtreme.WinDsk.TestBehaviors.csproj", "{BF7BFBB7-F795-4CED-9410-2B33EB34836B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeSnippets", "CodeSnippets", "{22249F72-6EEE-466C-972A-2B209D415EAE}"
 	ProjectSection(SolutionItems) = preProject
@@ -393,7 +393,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeSnippets", "CodeSnippet
 		CodeSnippets\propc.snippet = CodeSnippets\propc.snippet
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.WinDsk.Docking", "Apps\WinDesktop\LogXtreme.WinDsk.Docking\LogXtreme.WinDsk.Docking.csproj", "{6538DEA4-9699-4750-B28F-811145FA8A8B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.WinDsk.TestDocking", "Apps\WinDesktop\LogXtreme.WinDsk.Docking\LogXtreme.WinDsk.TestDocking.csproj", "{6538DEA4-9699-4750-B28F-811145FA8A8B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Packages", "Packages", "{02BA593E-2AF8-495D-A554-FD604CAA2F60}"
 EndProject
@@ -412,6 +412,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Package2", "Package2", "{52
 		PyApps\Examples\Packages\Package2\module2.py = PyApps\Examples\Packages\Package2\module2.py
 		PyApps\Examples\Packages\Package2\reader.py = PyApps\Examples\Packages\Package2\reader.py
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OpenCV", "OpenCV", "{96AB46D0-F5AB-41DD-8A66-DDAD58BB93B1}"
+	ProjectSection(SolutionItems) = preProject
+		OpenCV\OpenCV.txt = OpenCV\OpenCV.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{5185DBB7-F0B5-4EEA-A0A9-0312B84F1D30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1421,6 +1428,7 @@ Global
 		{02BA593E-2AF8-495D-A554-FD604CAA2F60} = {748F5487-6460-4DA5-8BB9-1944AE12E71B}
 		{436A019D-182E-46FC-960C-7657B18B3482} = {02BA593E-2AF8-495D-A554-FD604CAA2F60}
 		{52265141-A1FB-4A41-B4DB-B6681B478C75} = {02BA593E-2AF8-495D-A554-FD604CAA2F60}
+		{5185DBB7-F0B5-4EEA-A0A9-0312B84F1D30} = {96AB46D0-F5AB-41DD-8A66-DDAD58BB93B1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B48A64CD-1E9D-4169-82DF-66FD7695C2D0}
