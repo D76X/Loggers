@@ -1,5 +1,5 @@
 """
-This module illustrates local functions in Python.
+This module illustrates the local functions Python.
 It also illustrates the LEGB rule.
 
 Usage:
