@@ -24,6 +24,9 @@
   <ItemGroup>
     <Compile Include="test022_closures.py" />
     <Compile Include="test023_function_factories.py" />
+    <Compile Include="test024_global_nonlocal.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
