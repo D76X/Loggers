@@ -21,19 +21,28 @@ namespace LogXtreme.WinDsk.Behaviors.ViewModels {
         public object ChildViewModel { get; set; }
 
 
-        private string _NotificationMessage;
+        private string notificationMessage;
 
         public string NotificationMessage {
 
-            get => _NotificationMessage;
+            get => notificationMessage;
 
             set {
 
-                if (value != _NotificationMessage) {
-                    _NotificationMessage = value;
+                if (value != notificationMessage) {
+                    notificationMessage = value;
                     OnPropertyChanged();
                 }
             }
+        }
+
+        /// <summary>
+        /// This handler is used to test the HanldeViewLoadedEventBehaviour
+        /// and has no importance in the Data Grid test.
+        /// </summary>
+        public void OnViewLoadedHandler() {
+
+            // do some data loading here i.e. async...
         }
 
         #region INotifyPropertyChanged
