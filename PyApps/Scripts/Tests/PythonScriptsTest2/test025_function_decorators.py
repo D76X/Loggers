@@ -42,7 +42,9 @@ def escape_unicode(f):
     # a decorator function must return a function (a callable abject).
     return wrap
 
-# here we use the decorator
+# here we use the decorator to enhance/modify a function that would 
+# normally just return the input string in round brackets so that all
+# the non ASCII chars are also escaped.
 @escape_unicode
 def add_round_brackets(word):
     """
@@ -52,4 +54,8 @@ def add_round_brackets(word):
 
 def test_module():
     """Module-level tests."""
+    
     german_words = ["groß", "über", "läßt"]
+    
+    for w in german_words:
+        print("{w} => {r}".format(w=w,r=add_round_brackets(w)))
