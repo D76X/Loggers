@@ -79,8 +79,8 @@ def hello(name):
 
 class Trace:
     """
-    A class that can be used as a decorator to trace the calls to 
-    the decorated funtion.
+    A class that whose instances can be used as a decorator 
+    to trace the calls to the decorated funtion.
     """
     def __init__(self):
         self.enabled = True
