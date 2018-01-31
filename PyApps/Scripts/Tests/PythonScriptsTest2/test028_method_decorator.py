@@ -8,6 +8,12 @@ Usage:
 
     import test028_method_decorator as t
     t.test_module()    
+
+    input=some text
+    calling <function TextTool.add_round_brackets at 0x000001706084F1E0> for the 1 time
+    output=(some text)
+    calling <function TextTool.remove_round_brackets at 0x000001706084F2F0> for the 1 time
+    output=some text
     
 """ 
 
