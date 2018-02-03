@@ -48,6 +48,12 @@
     <Compile Include="test031_class_attributes.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="test032_static_methods.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="test033_class_methods.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
