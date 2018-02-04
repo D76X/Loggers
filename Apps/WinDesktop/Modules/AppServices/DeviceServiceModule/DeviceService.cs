@@ -6,6 +6,8 @@ namespace LogXtreme.WinDsk.Modules.Services {
 
     public class DeviceService : IDeviceService {
 
+        public DeviceService() { }
+
         public IEnumerable<DeviceModel> GetDevices() {
 
                 return new List<DeviceModel>() {

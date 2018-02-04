@@ -142,6 +142,7 @@
     <Compile Include="Prism\ModuleLoadingModeAttribute.cs" />
     <Compile Include="Prism\RegionAdapterDockingManager.cs" />
     <Compile Include="Prism\RegionAdapterLayoutAnchorable.cs" />
+    <Compile Include="Services\IBackgroundWorkerService.cs" />
     <Compile Include="Validation\ValidatableBindableBase.cs" />
     <Compile Include="MarkupExtensions\EnumBindingSourceExtension.cs" />
     <Compile Include="Menu\IMenuItem.cs" />
