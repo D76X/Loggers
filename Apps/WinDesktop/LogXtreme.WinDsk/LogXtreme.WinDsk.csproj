@@ -88,6 +88,18 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Reactive.Core, Version=3.0.3000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Reactive.Core.3.1.1\lib\net46\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces, Version=3.0.1000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Reactive.Interfaces.3.1.1\lib\net45\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq, Version=3.0.3000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Reactive.Linq.3.1.1\lib\net46\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices, Version=3.0.3000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Reactive.PlatformServices.3.1.1\lib\net46\System.Reactive.PlatformServices.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.SDK.Expression.Blend.1.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -159,6 +171,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Extensions\LogXtreme.Extensions\LogXtreme.Reactive.Extensions\LogXtreme.Reactive.Extensions.csproj">
+      <Project>{665a2e7b-99e7-4fce-8ccf-e0c149f610d9}</Project>
+      <Name>LogXtreme.Reactive.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Instrumentation\SemanticLogging\SemanticLogging.csproj">
       <Project>{724fb395-9f33-4f4c-993f-2b004425bfc3}</Project>
       <Name>SemanticLogging</Name>
@@ -171,34 +187,6 @@
       <Project>{489706e3-c226-4d83-bb3d-c5a0d49d3835}</Project>
       <Name>LogXtreme.WinDsk.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Modules\AppModules\ContentModule\ContentModule.csproj">
-      <Project>{6f2a2afa-717b-49a7-92fd-015122540034}</Project>
-      <Name>ContentModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\AppModules\DataGridModule\DataGridModule.csproj">
-      <Project>{b0801c7c-3acb-4617-bb59-329d70af310a}</Project>
-      <Name>DataGridModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\AppModules\DataTreeModule\DataTreeModule.csproj">
-      <Project>{90eef6be-2c5b-4a7b-bc32-0531ef437070}</Project>
-      <Name>DataTreeModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\AppModules\DeviceTreeModule\DeviceTreeModule.csproj">
-      <Project>{e152db85-f4cb-4864-87d2-ee408093c3fe}</Project>
-      <Name>DeviceTreeModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\AppModules\MainMenuModule\MainMenuModule.csproj">
-      <Project>{7a2c09df-62df-4d7a-a68c-f66ccc184ae4}</Project>
-      <Name>MainMenuModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\AppModules\MainMenuOptionsModule\MainMenuOptionsModule.csproj">
-      <Project>{5eaf14e5-39ca-43e7-86dc-40b1de6c2252}</Project>
-      <Name>MainMenuOptionsModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\AppModules\StatusBarModule\StatusBarModule.csproj">
-      <Project>{1b4d63aa-99b8-4190-b553-c72bc114a44a}</Project>
-      <Name>StatusBarModule</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Modules\AppServices\DataServiceModule\DataServiceModule.csproj">
       <Project>{fb58d566-2f42-4868-9873-748a62692b35}</Project>
       <Name>DataServiceModule</Name>
@@ -207,6 +195,9 @@
       <Project>{e9083ec0-8f0d-46cf-b145-a09e139b93df}</Project>
       <Name>DeviceServiceModule</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,5 +1,25 @@
 --------------------------------------------------------------------------------------------------------------------------------------------
 
+SETTING UP AN APPLICATION TO WORK WITH PRISM i.e. LogXtreme.WinDsk or LogXtreme.WinDsk.TestDocking.Prism
+
+1-Reference the Prism library with the NuGet Manager choose Prism.Unity.Wpf which includes the Unity DI container.
+
+2-Reference the following projects	
+	LogXtreme.WinDsk.Infrastructure
+	SemanticLogging						>> Refer to LogXtreme.WinDsk.Notes.txt for how to set up
+	SlabManagementTools					>> Refer to LogXtreme.WinDsk.Notes.txt for how to set up
+
+3-In App.xaml remove the StartupUri attribute from the Window XAML as the Bootstrapper will initialise and show the Shell instead.
+
+4-In App.xaml.cs override the Application.OnStartup and Application.OnExit in which the Bootstrapper is instantiated and the 
+  Semantic logging is set up.
+
+5-In Bootstrapper.cs add the statement [using Microsoft.Practices.Unity;] the Container.Resolve<T>
+
+6-In Bootstrapper.cs use Application.Current.MainWindow = (Window)Shell; in the override of Bootstrapper.InitializeShell() to cast the 
+  dependency object to the application window.
+--------------------------------------------------------------------------------------------------------------------------------------------
+
 THE BOOTSTRAPPER
 
 Initialises the application
@@ -20,12 +40,42 @@ Initialise Modules
 
 TO GET THE BOOTSTRAPPER TO WORK YOU MUST
 
-Remove the StartupUri attribute from the Window XAML as the Bootstrapper will initialise and show the Shell instead
-Override the Application.OnStartup in which the Bootstrapper must be instantiated.
-Add the statement [using Microsoft.Practices.Unity;] to the Bootstrapper.cs for the Container.Resolve<T>
+1-Remove the StartupUri attribute from the Window XAML as the Bootstrapper will initialise and show the Shell instead
+2-Override the Application.OnStartup in which the Bootstrapper must be instantiated.
+3-Add the statement [using Microsoft.Practices.Unity;] to the Bootstrapper.cs for the Container.Resolve<T>
+4-use Application.Current.MainWindow = (Window)Shell; in the override of Bootstrapper.InitializeShell() to cast the dependency object to the 
+  application window.
 
-use Application.Current.MainWindow = (Window)Shell; in the override of Bootstrapper.InitializeShell() to cast 
-the dependency object to the application window.
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+SETTING UP THE FOLDER FOR THE APPLICATION MODULES AND THE BOOSTRAPPER TO FIND THE MODULES FOLDER
+
+Modules of a Prims application can be referenced in a number of ways
+	1-Take a direct reference
+	2-Copy the module to a folder and set the Boostrapper.cs so that Prism looks in that folder to find its modules
+	3-Use config files to set up >> the same as 4 but has the problem of no syntax intelligence thus it is flaky
+	4-Use XAML files to set up...
+
+In Prism 6 for Wpf there are several breaking changes and apparently not all the options that used to be available in the past to load
+modules into catalogs are still available. Notably
+
+1-AggregateModuleCatalog seems to have gone!
+2-Only DirectoryModuleCatalog and ConfigurationModuleCatalog seems to be available
+3-App.config seems to be the only remaining means to work with explicit configuration. The XAML file seems to be no longer supported. 
+
+The simplest option that avoids taking direct references to the module assemlies from the consumer application is therefore to use the
+either DirectoryModuleCatalog or ConfigurationModuleCatalog. The former controls the order of loading using attributes on the Module class
+for all the modules that are copied to a predifined folder accessible to the executable assembly. The latter is more verbose and prone to
+syntax errors but you get to control the order in which the modules are loaded and the location as well and still can use attributes on the
+Module class if required.
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+SET UP THE Modules FOLDER AND THE MODULES PROJECTS TO COPY THEIR OUTPUT TO IT 
+
+This is an example of how Application modules are copied to the Module folder for a shell application
+
+copy /Y "$(TargetDir)$(ProjectName).*" "$(SolutionDir)\Apps\WinDesktop\LogXtreme.WinDsk\bin\Debug\Modules\"
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 

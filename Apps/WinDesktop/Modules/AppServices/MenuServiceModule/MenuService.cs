@@ -6,6 +6,8 @@ namespace LogXtreme.WinDsk.Modules.Services {
 
     public class MenuService : IMenuService {
 
+        public MenuService() { }
+
         public void AddMenuItem(IMenuItem menuItem) {
 
             this.OnMenuItemAdded?.Invoke(null, new MenuItemEventArgs(menuItem));

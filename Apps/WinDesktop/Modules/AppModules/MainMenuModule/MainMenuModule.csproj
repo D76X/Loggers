@@ -136,10 +136,6 @@
       <Project>{489706e3-c226-4d83-bb3d-c5a0d49d3835}</Project>
       <Name>LogXtreme.WinDsk.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\AppServices\MenuServiceModule\MenuServiceModule.csproj">
-      <Project>{B83968E6-57AB-4457-94B3-635D693E4686}</Project>
-      <Name>MenuServiceModule</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\MainMenuView.xaml">

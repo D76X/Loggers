@@ -11,6 +11,21 @@ https://social.msdn.microsoft.com/Forums/vstudio/en-US/c7edafe9-d4ac-4bd8-ac25-f
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
+------------------------------------
+ENABLE LOGGING TO A CONSOLE WINDOW
+------------------------------------
+
+Once the references to the projects SemanticLogging and SlabManagementTools have been added the output of the semantic logger can be 
+directed to a console window by changing the properties of the project. 
+
+1-Select the project in solution explorer and the Properties
+2-In the Application tab set the Output type to Console Application regardless that is even if the app has a GUI
+
+Now when the app is lauched a console window opens first and the output of the semantic logger may be directed to this window.
+In order to do so you must set up the semantic logger in the App.xaml.cs file or equivalent start up file by overriding the OnStartup and
+OnExit event.
+
+--------------------------------------------------------------------------------------------------------------------------------------------
 LogXtreme.WinDsk.Infrastructure 
 
 It's a WPF User Control Library so that the Add item menu displays WPF related items.

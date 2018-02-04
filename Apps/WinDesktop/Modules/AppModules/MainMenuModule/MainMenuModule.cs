@@ -31,7 +31,6 @@ namespace LogXtreme.WinDsk.Modules {
             // Subscribe to Services or Events
 
             // Register Shared Services
-            this.container.RegisterType<IMenuService, Services.MenuService>(new ContainerControlledLifetimeManager());
 
             // Compose Views into the Shell
             regionManager.RegisterViewWithRegion(RegionNames.RegionMainMenu, typeof(MainMenuView));
