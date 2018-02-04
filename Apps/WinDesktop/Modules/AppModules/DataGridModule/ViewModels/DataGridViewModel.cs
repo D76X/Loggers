@@ -5,5 +5,7 @@ namespace DataGridModule.ViewModels {
     public class DataGridViewModel :
         ViewModelBase,
         IDataGridViewModel {
+
+        public DataGridViewModel() { }
     }
 }

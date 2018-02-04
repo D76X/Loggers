@@ -1,17 +1,16 @@
-﻿using Prism.Modularity;
-using LogXtreme.WinDsk.Infrastructure.Menu;
-using Prism.Regions;
-using Microsoft.Practices.Unity;
-using LogXtreme.WinDsk.Infrastructure.Services;
-using DataGridModule.Interfaces;
-using LogXtreme.WinDsk.Infrastructure;
+﻿using DataGridModule.Interfaces;
 using DataGridModule.ViewModels;
 using DataGridModule.Views;
+using LogXtreme.WinDsk.Infrastructure;
+using LogXtreme.WinDsk.Infrastructure.Services;
+using Microsoft.Practices.Unity;
+using Prism.Modularity;
+using Prism.Regions;
 
 namespace LogXtreme.WinDsk.Modules {
 
     [Module(ModuleName = nameof(DataGridModule))]
-    [ModuleDependency(nameof(MainMenuModule))]
+    [ModuleDependency(nameof(MainMenuModule))]    
     public class DataGridModule : IModule {
 
         private readonly IUnityContainer container;
