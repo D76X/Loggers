@@ -32,11 +32,12 @@ namespace LogXtreme.WinDsk {
         /// <returns></returns>
         protected override IModuleCatalog CreateModuleCatalog() {
 
-            // Prism 6 for WPF no longer support AggregateModuleCatalog. 
+            // Prism 6 for WPF no longer supports AggregateModuleCatalog. 
+            // Prism 6 for WPF no longer supports XAML catalogs. 
 
-            // In Prim 6 there are only two options
+            // In Prim 6 there are only two options left for module catalogs
             // 1-use a DirectoryModuleCatalog
-            //return new DirectoryModuleCatalog() { ModulePath = Settings.ModulePath };
+            // return new DirectoryModuleCatalog() { ModulePath = Settings.ModulePath };
             // 2-use App.config 
             // https://stackoverflow.com/questions/11921590/app-config-file-and-section-type
             return new ConfigurationModuleCatalog();
@@ -112,13 +113,6 @@ namespace LogXtreme.WinDsk {
             // register the application services
             RegisterTypeIfMissing(typeof(IShellService), typeof(ShellService), true);
 
-            //RegisterTypeIfMissing(
-            //    typeof(IMenuService), 
-            //    typeof(LogXtreme.WinDsk.Modules.Services.MenuService), true);
-            
-            //RegisterTypeIfMissing(typeof(IDeviceService), typeof(DeviceService), true);
-            //RegisterTypeIfMissing(typeof(IDataService), typeof(DataService), true);
-
             // register view and view models with their interfaces
             Container.RegisterType<IShellView, Shell>();
             Container.RegisterType<IShellViewModel, ShellViewModel>();
@@ -130,7 +124,6 @@ namespace LogXtreme.WinDsk {
             mappings.RegisterMapping(typeof(StackPanel), Container.Resolve<RegionAdapterStackPanel>());
 
             return mappings;
-
         }
 
         protected override IRegionBehaviorFactory ConfigureDefaultRegionBehaviors() {
