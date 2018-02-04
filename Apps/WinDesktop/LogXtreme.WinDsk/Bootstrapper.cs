@@ -1,7 +1,6 @@
 ﻿using LogXtreme.WinDsk.Infrastructure.Prism;
 using LogXtreme.WinDsk.Infrastructure.Services;
 using LogXtreme.WinDsk.Interfaces;
-using LogXtreme.WinDsk.Modules.Services;
 using LogXtreme.WinDsk.Services;
 using LogXtreme.WinDsk.ViewModels;
 using Microsoft.Practices.Unity;
@@ -131,7 +130,6 @@ namespace LogXtreme.WinDsk {
             IRegionBehaviorFactory behaviors = base.ConfigureDefaultRegionBehaviors();
             behaviors.AddIfMissing(RegionManagerAwareBehavior.BehaviorKey, typeof(RegionManagerAwareBehavior));
             return behaviors;
-
         }
 
         protected override void RegisterFrameworkExceptionTypes() {

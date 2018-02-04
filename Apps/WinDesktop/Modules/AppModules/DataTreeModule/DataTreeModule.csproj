@@ -119,4 +119,7 @@
     </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /Y "$(TargetDir)$(ProjectName).*" "$(SolutionDir)\Apps\WinDesktop\LogXtreme.WinDsk\bin\Debug\Modules\"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 namespace LogXtreme.WinDsk.Modules {
 
+    [Module(ModuleName = nameof(MainMenuOptionsModule))]
     [ModuleDependency(nameof(MainMenuModule))]
     public class MainMenuOptionsModule : IModule {
 
