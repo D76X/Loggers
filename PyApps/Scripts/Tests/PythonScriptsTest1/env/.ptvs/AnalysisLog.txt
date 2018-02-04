@@ -6809,3 +6809,7 @@ System.FormatException: Input string was not in a correct format.
 2017-12-30T13:38:12: Deleting 2 files
 2017-12-30T13:38:12: Deleting "C:\GitHub\Loggers\PyApps\Scripts\Tests\PythonScriptsTest1\env\.ptvs\_dummy_threading.idb"
 2017-12-30T13:38:12: Deleting "C:\GitHub\Loggers\PyApps\Scripts\Tests\PythonScriptsTest1\env\.ptvs\_dummy__threading_local.idb"
+
+2018-02-03T17:31:06: Start analysis
+2018-02-03T17:31:07: IncludeModulesFromModulePath = win32com
+2018-02-03T17:31:16: Deleting 0 files
