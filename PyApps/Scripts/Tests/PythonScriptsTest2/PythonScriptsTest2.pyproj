@@ -54,6 +54,10 @@
     <Compile Include="test033_class_methods.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="test035_static_methods_inheritance.py" />
+    <Compile Include="test034_static_methods_inheritance.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
