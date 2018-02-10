@@ -1,4 +1,4 @@
-﻿using LogXtreme.WinDsk.TestDataGrid.Validation;
+﻿using LogXtreme.WinDsk.Infrastructure.Wpf;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,11 +7,19 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using DataAnnotations = System.ComponentModel.DataAnnotations;
 
-namespace LogXtreme.WinDsk.TestDataGrid.AbstractClasses {
+namespace LogXtreme.WinDsk.Infrastructure.Validation {
 
-    public class ValidatableBindableBase :
-        BindableBase,
-        INotifyDataErrorInfo {       
+    /// <summary>
+    /// A class that supports validation and error reporting according to INotifyDataErrorInfo.
+    /// and INotifyPropertyChanged via the NotifyPropertyChangedBase. This is the same as the 
+    /// ValidatableBindableBase but its bindable implementation does not rely on the class
+    /// Prism.BindableBase instead it uses NotifyPropertyChangedBase which is provides the same
+    /// function as Prism.BindableBase without requiring a reference to Prism by the consumer
+    /// code.
+    /// </summary>
+    public class ValidatableNotifyPropertyChangedBase :
+        NotifyPropertyChangedBase,
+        INotifyDataErrorInfo {
 
         protected Func<(bool IsValid, IEnumerable<ValidationData> ValidationData)> ViewModelValidation {
             get;
@@ -86,16 +94,19 @@ namespace LogXtreme.WinDsk.TestDataGrid.AbstractClasses {
             this.ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
         }
 
-        protected override bool SetProperty<T>(
+        protected override bool SetPropertyBase<T>(
             ref T storage,
             T value,
-            [CallerMemberName]
-            string propertyName = null) {
+            [CallerMemberName] string propertyName = null) {
 
-            var propertyValueChanged = base.SetProperty(ref storage, value, propertyName);
-            ValidateProperty(propertyName, value);          
+            // call the base.SetPropertyBase to set the value and get the return value
+            // avoid stack overflow do not use this.SetPropertyBase of course.
+            var propertyValueChanged = base.SetPropertyBase(ref storage, value, propertyName);
+            ValidateProperty(propertyName, value);
+            
             //TODO add support for server side validation (async)
             return propertyValueChanged;
         }
     }
 }
+

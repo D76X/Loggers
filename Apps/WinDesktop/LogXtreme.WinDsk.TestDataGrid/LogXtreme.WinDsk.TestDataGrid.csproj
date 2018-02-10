@@ -74,8 +74,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AbstractClasses\BindableBase.cs" />
-    <Compile Include="AbstractClasses\ValidatableBindableBase.cs" />
     <Compile Include="Interfaces\ICsvService.cs" />
     <Compile Include="Interfaces\IDataDescriptorModel.cs" />
     <Compile Include="Interfaces\IDataGridColumnModel.cs" />
@@ -112,8 +110,6 @@
     <Compile Include="Models\DataSource1Model.cs" />
     <Compile Include="Models\SampleSourceModel.cs" />
     <Compile Include="Utils\DataGridToCsvConverter.cs" />
-    <Compile Include="Validation\ValidationData.cs" />
-    <Compile Include="Validation\ValidationErrorSeverity.cs" />
     <Compile Include="ViewModels\DataGrid2ViewModel.cs" />
     <Compile Include="ViewModels\DataGridViewModel.cs" />
     <Compile Include="ViewModels\DataSourceViewModel.cs" />

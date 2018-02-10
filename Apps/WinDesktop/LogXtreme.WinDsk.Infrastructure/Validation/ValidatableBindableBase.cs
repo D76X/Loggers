@@ -10,7 +10,7 @@ using DataAnnotations = System.ComponentModel.DataAnnotations;
 namespace LogXtreme.WinDsk.Infrastructure.Validation {
 
     /// <summary>
-    /// A abstract base class based on the Prism BindableBase which implemets
+    /// A base class based on the Prism BindableBase which implemets
     /// INotifyDataErrorInfo to provide validation according to .NET 4.5 
     /// standards. This implementation includes support for
     /// 
@@ -31,7 +31,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Validation {
     /// 
     /// </summary>
     public class ValidatableBindableBase :
-        BindableBase,
+        BindableBase,        
         INotifyDataErrorInfo {
 
         public const string ViewModelValidationError = @"ViewModelValidationError";
@@ -117,6 +117,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Validation {
 
             var propertyValueChanged = base.SetProperty(ref storage, value, propertyName);
             ValidateProperty(propertyName, value);
+            //TODO add support for server side validation (async)
             return propertyValueChanged;
         }
     }

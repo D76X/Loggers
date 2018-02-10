@@ -4,13 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        xmlns:local="clr-namespace:LogXtreme.WinDsk.TestDataGrid"
-        xmlns:localValidation="clr-namespace:LogXtreme.WinDsk.TestDataGrid.Validation"
+        xmlns:local="clr-namespace:LogXtreme.WinDsk.TestDataGrid"        
+        xmlns:infValidation="clr-namespace:LogXtreme.WinDsk.Infrastructure.Validation;assembly=LogXtreme.WinDsk.Infrastructure"
         xmlns:vm="clr-namespace:LogXtreme.WinDsk.TestDataGrid.ViewModels"
         xmlns:conv="clr-namespace:LogXtreme.WinDsk.Infrastructure.Convertes;assembly=LogXtreme.WinDsk.Infrastructure"
         xmlns:markupext="clr-namespace:LogXtreme.WinDsk.Infrastructure.MarkupExtensions;assembly=LogXtreme.WinDsk.Infrastructure"
         xmlns:infmodels="clr-namespace:LogXtreme.WinDsk.Infrastructure.Models;assembly=LogXtreme.WinDsk.Infrastructure"
-        xmlns:infbehaviours="clr-namespace:LogXtreme.WinDsk.Infrastructure.Behaviours;assembly=LogXtreme.WinDsk.Infrastructure"
+        xmlns:infbehaviours="clr-namespace:LogXtreme.WinDsk.Infrastructure.Behaviors;assembly=LogXtreme.WinDsk.Infrastructure"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="350"
@@ -256,7 +256,7 @@
                                                                     Value="Red" />
                                                             <Style.Triggers>
                                                                 <DataTrigger Binding="{Binding Path=Severity}"
-                                                                             Value="{x:Static localValidation:ValidationErrorSeverity.Warning}">
+                                                                             Value="{x:Static infValidation:ValidationErrorSeverity.Warning}">
                                                                     <Setter Property="Foreground"
                                                                             Value="Orange" />
                                                                 </DataTrigger>

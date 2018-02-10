@@ -1,7 +1,7 @@
 ﻿
 using LogXtreme.WinDsk.Infrastructure.Models;
+using LogXtreme.WinDsk.Infrastructure.Validation;
 using LogXtreme.WinDsk.TestDataGrid.Interfaces;
-using LogXtreme.WinDsk.TestDataGrid.Validation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,17 +9,16 @@ using System.ComponentModel.DataAnnotations;
 namespace LogXtreme.WinDsk.TestDataGrid.ViewModels {
 
     /// <summary>
-    /// This view model derives from the local implementation of ValidatableBindableBase
-    /// 
+    /// VM for the grid settings with support for validation errors.
+    /// Refs
     /// INotifyDataErrorInfo
     /// https://app.pluralsight.com/player?course=wpf-mvvm-in-depth&author=brian-noyes&name=wpf-mvvm-in-depth-m6&clip=6&mode=live
     /// 
     /// </summary>
     public class DataGridSettingsViewModel :
-        LogXtreme.WinDsk.TestDataGrid.AbstractClasses.ValidatableBindableBase,
+        ValidatableNotifyPropertyChangedBase,
         IDataGridSettingsViewModel {
-
-        private readonly IDataGridSettingsModel dataGridSettingsModel;
+                private readonly IDataGridSettingsModel dataGridSettingsModel;
 
         private int numberOfItemsToDisplay;
         private ResizeObservableCollectionCycleModeEnum cycleMode;
