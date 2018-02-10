@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace LogXtreme.WinDsk.Infrastructure.Behaviours {
+namespace LogXtreme.WinDsk.Infrastructure.Behaviors {
 
     /// <summary>
     /// Attached Behaviours that can be used on a view to add logic in the 
@@ -61,8 +61,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Behaviours {
         /// mmodel for the view. For example, the named method of the view model
         /// specified as value of the attached property may be executed to load 
         /// data only when the view to display it has already been loaded instead 
-        /// of in the constructor of the view model
-        /// event.
+        /// of in the constructor of the view model.
         /// </summary>
         /// <param name="d"></param>
         /// <param name="e"></param>

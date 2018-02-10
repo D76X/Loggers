@@ -125,8 +125,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\CloseTabAction.cs" />
-    <Compile Include="Behaviours\HanldeViewLoadedEventBehavior.cs" />
-    <Compile Include="Behaviours\ShowNotificationMessageBehavior.cs" />
+    <Compile Include="Behaviors\BindVisualStateBehavior.cs" />
+    <Compile Include="Behaviors\ClickBehavior.cs" />
+    <Compile Include="Behaviors\HanldeViewLoadedEventBehavior.cs" />
+    <Compile Include="Behaviors\ShowNotificationMessageBehavior.cs" />
+    <Compile Include="Behaviors\WatermarkTextBehavior.cs" />
     <Compile Include="Commands\CommandsGlobal.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Convertes\BooleanToVisibilityConverter.cs" />
@@ -136,6 +139,7 @@
     <Compile Include="Convertes\NotConverter.cs" />
     <Compile Include="Events\DeviceAttachedEvents.cs" />
     <Compile Include="Exceptions\StrategyNullReferenceEception.cs" />
+    <Compile Include="Interfaces\IBindableBase.cs" />
     <Compile Include="Models\ObservableCollectionEx.cs" />
     <Compile Include="Prism\DockingManagerDocumentsSourceSyncBehavior.cs" />
     <Compile Include="Prism\ModuleInitializer.cs" />
@@ -143,6 +147,7 @@
     <Compile Include="Prism\RegionAdapterDockingManager.cs" />
     <Compile Include="Prism\RegionAdapterLayoutAnchorable.cs" />
     <Compile Include="Services\IBackgroundWorkerService.cs" />
+    <Compile Include="TriggerActions\ClickTriggerAction.cs" />
     <Compile Include="Validation\ValidatableBindableBase.cs" />
     <Compile Include="MarkupExtensions\EnumBindingSourceExtension.cs" />
     <Compile Include="Menu\IMenuItem.cs" />
@@ -193,8 +198,10 @@
     <Compile Include="Unity\UnityExtensions.cs" />
     <Compile Include="Utils\SearchVisualTree.cs" />
     <Compile Include="Models\ViewModelBase.cs" />
+    <Compile Include="Validation\ValidatableNotifyPropertyChangedBase.cs" />
     <Compile Include="Validation\ValidationData.cs" />
     <Compile Include="Validation\ValidationErrorSeverity.cs" />
+    <Compile Include="Wpf\NotifyPropertyChangedBase.cs" />
     <EmbeddedResource Include="Properties\Resource.it.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -221,7 +228,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AttachedEvents\" />
-    <Folder Include="Interfaces\" />
     <Folder Include="RoutedEvents\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

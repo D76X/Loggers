@@ -2,17 +2,17 @@
 using System.Windows.Controls;
 using System.Windows.Interactivity;
 
-namespace LogXtreme.WinDsk.Infrastructure.Behaviours {
+namespace LogXtreme.WinDsk.Infrastructure.Behaviors {
 
     /// <summary>
     /// This is an example of how to implement custom Blend behaviours.
-    /// The generic parameter of Behaviour<T> is the base class on which
+    /// The generic parameter of Behavior<T> is the base class on which
     /// the behavior is intended to be used. Adding a behaviour to an 
     /// element can be done in the visual designer either in Blend or VS
     /// by dragging and dropping the behaviour from the Assets/Behaviors
     /// pane to the element in the visual tree shown in the Document
     /// Outline pane. This metaphor of dragging and dropping a behavior
-    /// from an assets section onto a elemnt of teh visual tree is one
+    /// from an assets section onto a element of the visual tree is one
     /// of the reasons why Blend Behaviors are sometimes preferable to 
     /// Attached Behaviors which are declared using static classes and 
     /// static method for which there's no such metaphor in the designers
@@ -21,9 +21,16 @@ namespace LogXtreme.WinDsk.Infrastructure.Behaviours {
     /// collection of Behaviours so any visual element can have mutiple 
     /// behaviors.
     /// 
-    /// A Behavior will 
+    /// In general a Blend Behavior will 
+    /// 
     /// 1-declare one or more DPs with changed handlers.
-    /// 2-override 
+    /// 2-override OnAttached/OnDetatching
+    /// 3-declare DPs which may be databound to the VM
+    /// 4-access the object to which the behavior is attached to via the 
+    ///   Behavior<T>.AssociatedObject. The AssociatedObject is always 
+    ///   available in OnAttached/OnDetatching and it is set to null only
+    ///   when OnDetatching has run.
+    /// 
     /// Refs
     /// https://app.pluralsight.com/player?course=wpf-mvvm-in-depth&author=brian-noyes&name=wpf-mvvm-in-depth-m4&clip=8&mode=live
     /// http://briannoyesblog.azurewebsites.net/2012/12/20/attached-behaviors-vs-attached-properties-vs-blend-behaviors/
@@ -88,6 +95,10 @@ namespace LogXtreme.WinDsk.Infrastructure.Behaviours {
                 if(senderControl == null) { return; }
                 senderControl.Visibility = Visibility.Collapsed;
             };
+        }
+
+        protected override void OnDetaching() {
+            base.OnDetaching();
         }
     }
 }
