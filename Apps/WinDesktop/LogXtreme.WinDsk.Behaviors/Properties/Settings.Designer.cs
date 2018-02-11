@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LogXtreme.WinDsk.Behaviors.Properties {
+namespace LogXtreme.WinDsk.TestBehaviors.Properties {
 
 
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

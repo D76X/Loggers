@@ -2,37 +2,82 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LogXtreme.WinDsk.Behaviors"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-        xmlns:infbehaviours="clr-namespace:LogXtreme.WinDsk.Infrastructure.Behaviours;assembly=LogXtreme.WinDsk.Infrastructure"
-        x:Class="LogXtreme.WinDsk.Behaviors.MainWindow"
+        xmlns:infbehaviours="clr-namespace:LogXtreme.WinDsk.Infrastructure.Behaviors;assembly=LogXtreme.WinDsk.Infrastructure"
+        x:Class="LogXtreme.WinDsk.TestBehaviors.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="350"
         Width="525">
     <Grid>
         <TabControl>
-            <TabItem Header="1"
+            <TabItem Name="TabItem1"
+                     DataContext="{Binding Tab1ViewModel}"
+                     Header="Tab1"
                      infbehaviours:HanldeViewLoadedEventBehavior.LoadedMethodName="OnViewLoadedHandler">
-                <Grid>
+                <Grid ShowGridLines="True">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <ContentControl Content="ContentControl">
+                    <ContentControl Content="Timed Message"
+                                    Grid.Row="0"
+                                    FontSize="30"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center">
+                        <!--
+                        The behavior can be placed anywhere in the visual tree as long as the data context to 
+                        which it has to be bound to is reachable.
+                        -->
                         <i:Interaction.Behaviors>
                             <infbehaviours:ShowNotificationMessageBehavior Message="{Binding NotificationMessage}" />
+                            <!--<infbehaviours:ShowNotificationMessageBehavior 
+                            Message="{Binding ElementName=TabItem1, Path=DataContext.NotificationMessage}" />-->
                         </i:Interaction.Behaviors>
+                    </ContentControl>
+                    <ContentControl Grid.Row="1"
+                                    FontSize="30"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center">
+                        <ContentControl.Style>
+                            <Style TargetType="ContentControl">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsComponentLoaded}"
+                                                 Value="Flase">
+                                        <Setter Property="Content"
+                                                Value="Loading Report" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsComponentLoaded}"
+                                                 Value="True">
+                                        <Setter Property="Content"
+                                                Value="Component loaded" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsDataLoading}"
+                                                 Value="True">
+                                        <Setter Property="Content"
+                                                Value="Loading data..." />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsDataLoaded}"
+                                                 Value="True">
+                                        <Setter Property="Content"
+                                                Value="Data loaded" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ContentControl.Style>
                     </ContentControl>
                 </Grid>
             </TabItem>
-            <TabItem Header="2">
+            <TabItem DataContext="Tab2ViewModel"
+                     Header="Tab2">
                 <Grid>
                     <ContentControl Content="ContentControl"
                                     Grid.Row="1" />
                 </Grid>
             </TabItem>
-            <TabItem Header="3" />
+            <TabItem DataContext="Tab3ViewModel"
+                     Header="Tab3">
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

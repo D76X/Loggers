@@ -1,58 +1,19 @@
-﻿using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Timers;
+﻿using LogXtreme.WinDsk.Infrastructure.Wpf;
+using System.Collections;
 
-namespace LogXtreme.WinDsk.Behaviors.ViewModels {
+namespace LogXtreme.WinDsk.TestBehaviors.ViewModels {
 
-    public class MainWindowViewModel : INotifyPropertyChanged {
+    public class MainWindowViewModel : NotifyPropertyChangedBase {
 
-        private Timer timer = new Timer(5000);
+        ArrayList viewModels = new ArrayList();
 
-        public MainWindowViewModel() {
+        public MainWindowViewModel() {            
 
-            // some child view model
-            this.ChildViewModel = new object();
-
-            timer.Elapsed += (s, e) => NotificationMessage = $"Time is {DateTime.Now}";
-            timer.Start();
+            // Tab1
+            this.viewModels.Add(new Tab1ViewModel());
         }
 
-        public object ChildViewModel { get; set; }
-
-
-        private string notificationMessage;
-
-        public string NotificationMessage {
-
-            get => notificationMessage;
-
-            set {
-
-                if (value != notificationMessage) {
-                    notificationMessage = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>
-        /// This handler is used to test the HanldeViewLoadedEventBehaviour
-        /// and has no importance in the Data Grid test.
-        /// </summary>
-        public void OnViewLoadedHandler() {
-
-            // do some data loading here i.e. async...
-        }
-
-        #region INotifyPropertyChanged
-
-        public event PropertyChangedEventHandler PropertyChanged = delegate { };
-
-        private void OnPropertyChanged([CallerMemberName] string propertyName = "") {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion  
-
+        public Tab1ViewModel Tab1ViewModel =>
+            (Tab1ViewModel)this.viewModels[0];
     }
 }

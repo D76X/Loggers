@@ -1,4 +1,4 @@
-﻿using LogXtreme.WinDsk.Behaviors.ViewModels;
+﻿using LogXtreme.WinDsk.TestBehaviors.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LogXtreme.WinDsk.Behaviors {
+namespace LogXtreme.WinDsk.TestBehaviors {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
