@@ -54,6 +54,7 @@
     <Compile Include="test033_class_methods.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="test038_class_properties.py" />
     <Compile Include="test037_class_methods_inheritance.py" />
     <Compile Include="test036_class_methods_inheritance.py" />
     <Compile Include="test035_static_methods_inheritance.py" />
