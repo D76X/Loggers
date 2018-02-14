@@ -26,6 +26,8 @@ class ContainerBase:
         self._boxed_volume = self._volume    
 
     # the @property defines a getter 
+    # a getter can be used to convert btween an internal representation
+    # and an external representation.
     @property
     def sizex(self):
         return self._sizex
@@ -59,11 +61,11 @@ class ContainerBase:
 
     @classmethod
     def create_cylinder(cls, radius, height, *args, **kwargs):
-        return cls(sizex=2*radius, sizey=2*radius, sizez=height, *args, **kwargs)
+        return cls(radius=radius, height=height, *args, **kwargs)
 
     @classmethod
     def create_unit_cylinder(cls, *args, **kwargs):
-        return cls(radius=0.5, height=1, *args, **kwargs)
+        return cls(radius=1, height=1, *args, **kwargs)
     
     def print(self):
         return "{cn} size x={x} y={y} z={z} volume={v} boxed_volume = {bv}".format(
@@ -95,13 +97,13 @@ class Cylinder(ContainerBase):
 
 def test_module():
     """Module-level tests."""
-    box1 = ContainerBase.create_box(size=2);
+    box1 = Box.create_box(size=2);
     box2 = Box(sizex=1,sizey=2,sizez=3)
-    box3 = ContainerBase.create_unit_box();
+    box3 = Box.create_unit_box();
     
-    cylinder1 = ContainerBase.create_cylinder(radius=3,height=2)
+    cylinder1 = Cylinder.create_cylinder(radius=3,height=2)
     cylinder2 = Cylinder(radius=6,height=4)
-    cylinder3 = ContainerBase.create_unit_cylinder()  
+    cylinder3 = Cylinder.create_unit_cylinder()  
 
     print(box1.print())
     print(box2.print())
