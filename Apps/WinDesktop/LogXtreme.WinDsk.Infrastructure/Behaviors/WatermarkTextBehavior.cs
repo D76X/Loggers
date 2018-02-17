@@ -48,19 +48,33 @@ namespace LogXtreme.WinDsk.Infrastructure.Behaviors {
         }
 
         /// <summary>
-        /// This readonly property is applied to the TextBox and indicates whether the watermark
-        /// is currently being displayed.  It allows a style to change the visual appearance of 
-        /// the TextBox. 
+        /// Important!
+        /// The Key for a read only attached property must be declared before 
+        /// the corresponding public DP. The reason is that static declarations 
+        /// are run in the order they are declared in the source prior to the 
+        /// creation of the first instance of the class in which the static code 
+        /// is defined or on the first invokation of static code. When the 
+        /// IsWatermarkedProperty is read the Key must be already available 
+        /// or a NullReference exception is thrown.
         /// </summary>
-        public static readonly DependencyProperty IsWatermarkedProperty =
-            IsWatermarkedPropertyKey.DependencyProperty;
-
         static readonly DependencyPropertyKey IsWatermarkedPropertyKey =
             DependencyProperty.RegisterAttachedReadOnly(
                 "IsWatermarked",
                 typeof(bool),
                 typeof(WatermarkTextBehavior),
-                new PropertyMetadata(0));
+                new FrameworkPropertyMetadata(false));
+
+        /// <summary>
+        /// This readonly property is applied to the TextBox and indicates whether the watermark
+        /// is currently being applied to the target of the behavior.  It allows to take actions
+        /// according to whther IsWatermarked is set to true or false. The logic that sets this 
+        /// read-only property to either ftrue or false is completely encapsulated in the behavior
+        /// and for example a style can be used to change the visual appearance of the target
+        /// TexBox by means of property triggers.
+        /// the TextBox. 
+        /// </summary>
+        public static readonly DependencyProperty IsWatermarkedProperty =
+            IsWatermarkedPropertyKey.DependencyProperty;        
 
         protected override void OnAttached() {
             base.OnAttached();
