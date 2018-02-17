@@ -9,6 +9,10 @@
         Title="MainWindow"
         Height="350"
         Width="525">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+        </Style>
+    </Window.Resources>
     <Grid>
         <TabControl>
             <TabItem Name="TabItem1"
@@ -68,11 +72,58 @@
                     </ContentControl>
                 </Grid>
             </TabItem>
-            <TabItem DataContext="Tab2ViewModel"
-                     Header="Tab2">
-                <Grid>
-                    <ContentControl Content="ContentControl"
-                                    Grid.Row="1" />
+            <TabItem DataContext="{Binding Tab2ViewModel}"
+                     Header="Tab2"
+                     Name="Tab2">
+                <Grid ShowGridLines="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0"
+                               Content="Watermarked TextBox"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               FontSize="20">
+                        </Label>
+                        <TextBox Grid.Row="1"
+                                 BorderThickness="3"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center">
+                            <TextBox.Style>
+                                <Style TargetType="TextBox"
+                                       BasedOn="{StaticResource {x:Type TextBox}}">
+                                    <Style.Triggers>
+                                        <Trigger Property="infbehaviours:WatermarkTextBehavior.IsWatermarked"
+                                                 Value="True">
+                                            <Setter Property="Foreground"
+                                                    Value="Gray" />
+                                            <Setter Property="FontStyle"
+                                                    Value="Italic" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBox.Style>
+                            <i:Interaction.Behaviors>
+                                <infbehaviours:WatermarkTextBehavior Text="The watermark text..." />
+                            </i:Interaction.Behaviors>
+                        </TextBox>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <ContentControl Content="ContentControl"
+                                        Name="FocusGrabber">
+                            <i:Interaction.Behaviors>
+                                <infbehaviours:KeyboardFocusBehavior />
+                            </i:Interaction.Behaviors>
+                        </ContentControl>
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem DataContext="Tab3ViewModel"
