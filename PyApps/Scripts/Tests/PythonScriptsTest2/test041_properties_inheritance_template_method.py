@@ -65,15 +65,13 @@ class BoundState(StateBase):
 
     def __init__(self, state_low, state_high, value):
         self._state_low = state_low
-        self._state_high = state_high  
-        self._state = state_low
-        # this is how the setter can be reused in the __init__
-        self.state = value
+        self._state_high = state_high         
+        self.state(value)
     
     @StateBase.state.setter
     def state(self, value):
-        self._state = self._state_low if value <= self._state_low else self._state_high
-        self._state = value if self._state_low <= value <= self._state_high else self._state
+        self._state = state_low if value <= state_low else state_high
+        self._state = value if state_low <= value <= state_high else self._state
 
     def print(self):
         return "{cn} with state = {s} low = {l} high = {h}".format(
@@ -110,19 +108,3 @@ class BinaryState(StateBase):
 
 def test_module():
     """Module-level tests."""
-    state_base = StateBase("some_state")    
-    state_cumulative = CumulativeState(0)
-    state_bound_1 = BoundState(-10,+10,-9)
-    state_bound_2 = BoundState(-10,+10,-11)
-    state_bound_3 = BoundState(-10,+10,99)
-    state_binary_1 = BinaryState(0,1)
-    state_binary_2 = BinaryState("up","down")
-
-    print(state_base.print())
-    print(state_cumulative.print())
-    print(state_bound_1.print())
-    print(state_bound_2.print())
-    print(state_bound_3.print())
-    print(state_binary_1.print())
-    print(state_binary_2.print())
-

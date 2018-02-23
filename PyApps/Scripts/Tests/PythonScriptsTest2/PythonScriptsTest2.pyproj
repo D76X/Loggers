@@ -61,6 +61,10 @@
     <Compile Include="test034_static_methods_inheritance.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="test040_template_method.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="test041_properties_inheritance_template_method.py" />
     <Compile Include="test039_properties_inheritance.py">
       <SubType>Code</SubType>
     </Compile>
