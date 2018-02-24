@@ -4,6 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:infbehaviours="clr-namespace:LogXtreme.WinDsk.Infrastructure.Behaviors;assembly=LogXtreme.WinDsk.Infrastructure"
+        xmlns:inftriggeracts="clr-namespace:LogXtreme.WinDsk.Infrastructure.TriggerActions;assembly=LogXtreme.WinDsk.Infrastructure"
         x:Class="LogXtreme.WinDsk.TestBehaviors.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow"
@@ -189,8 +190,39 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem DataContext="Tab3ViewModel"
-                     Header="Tab3">
+            <TabItem DataContext="{Binding Tab3ViewModel}"
+                     Header="Tab3"
+                     Name="Tab3">
+                <Grid ShowGridLines="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <ContentControl Content="{Binding Message}">                            
+                        </ContentControl>
+                    </Grid>
+                    <Border Grid.Row="1"
+                            Margin="10"
+                            CornerRadius="20">
+                        <Border.Style>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="LightGreen" />
+                                    </Setter.Value>
+                                </Setter>                                
+                            </Style>
+                        </Border.Style>
+                        <!--<i:Interaction.Behaviors>
+                            <inftriggeracts:InvokeCommandTriggerAction Command="{Binding SendMessageCommand}" />
+                        </i:Interaction.Behaviors>-->
+                        <ContentControl HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
+                           Enter this area
+                        </ContentControl>
+                    </Border>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>
