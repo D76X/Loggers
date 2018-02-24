@@ -47,7 +47,7 @@
                             <Style TargetType="ContentControl">
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding IsComponentLoaded}"
-                                                 Value="Flase">
+                                                 Value="False">
                                         <Setter Property="Content"
                                                 Value="Loading Report" />
                                     </DataTrigger>
@@ -117,11 +117,74 @@
                         </TextBox>
                     </Grid>
                     <Grid Grid.Row="1">
-                        <ContentControl Content="ContentControl"
-                                        Name="FocusGrabber">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <ContentControl Content="Focus Grabber"
+                                        Name="FocusGrabber"
+                                        Grid.Column="0"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
                             <i:Interaction.Behaviors>
                                 <infbehaviours:KeyboardFocusBehavior />
                             </i:Interaction.Behaviors>
+                        </ContentControl>
+                        <ContentControl Name="Button"
+                                        Grid.Column="1">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid ShowGridLines="True">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding Message}"
+                                               Grid.Column="0"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center">
+                                    </TextBlock>
+                                    <CheckBox IsChecked="{Binding Enabled}"
+                                              Grid.Column="1"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center">
+                                        Enabled
+                                    </CheckBox>
+                                </Grid>
+                                <Border Grid.Row="1"
+                                        Margin="10"
+                                        CornerRadius="3">
+                                    <Border.Style>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="Background">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="LightGreen" />
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Enabled}"
+                                                             Value="False">
+                                                    <Setter Property="Background">
+                                                        <Setter.Value>
+                                                            <SolidColorBrush Color="LightGray" />
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                    <i:Interaction.Behaviors>
+                                        <infbehaviours:ClickBehavior Command="{Binding SendMessageCommand}" />
+                                    </i:Interaction.Behaviors>
+                                    <ContentControl HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center">
+                                        This is a made up button
+                                    </ContentControl>
+                                </Border>
+                            </Grid>
                         </ContentControl>
                     </Grid>
                 </Grid>

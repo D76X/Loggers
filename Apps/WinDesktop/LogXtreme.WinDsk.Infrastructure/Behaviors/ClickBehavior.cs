@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interactivity;
 
@@ -9,6 +10,9 @@ namespace LogXtreme.WinDsk.Infrastructure.Behaviors {
     /// click of a control of base type Button. It exposes a DP of type ICommand to 
     /// bind a command on a VM to be invoked when the UIElement instance raises the
     /// OnMouseDown event.
+    /// 
+    /// Refs
+    /// https://serialseb.com/blog/2007/01/25/attached-events-by-example-adding/
     /// </summary>
     public class ClickBehavior : Behavior<UIElement> {
 
@@ -24,8 +28,8 @@ namespace LogXtreme.WinDsk.Infrastructure.Behaviors {
 
         public static readonly DependencyProperty CommandProperty =
             DependencyProperty.Register(
-                "Command", 
-                typeof(ICommand), 
+                "Command",
+                typeof(ICommand),
                 typeof(ClickBehavior));
 
         /// <summary>
@@ -34,7 +38,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Behaviors {
         protected override void OnAttached() {
 
             base.OnAttached();
-            this.AssociatedObject.MouseDown += this.MouseDown;            
+            this.AssociatedObject.MouseDown += this.MouseDown;
         }
 
         /// <summary>
@@ -43,7 +47,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Behaviors {
         protected override void OnDetaching() {
 
             base.OnDetaching();
-            this.AssociatedObject.MouseDown -= this.MouseDown;            
+            this.AssociatedObject.MouseDown -= this.MouseDown;
         }
 
         /// <summary>
@@ -52,21 +56,22 @@ namespace LogXtreme.WinDsk.Infrastructure.Behaviors {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void MouseDown(
-            object sender, 
+            object sender,
             MouseButtonEventArgs e) {
-
-            // invoke the command?
+            
             var cmd = this.Command;
 
-            if (cmd == null) { return; }
-
-            if (cmd.CanExecute(null)) {
-
+            // need DP for payload
+            if (cmd != null && cmd.CanExecute(null)) {
                 this.Command.Execute(null);
-                // raise an event?
             }
 
-            // raise an event?
+            // raise the attached event Button.ClickEvent as if
+            // the target of the behavior were a Button. This 
+            // attached event can then be handled by some other
+            // UIElement in the cisual tree if so chosen.
+            (sender as UIElement)?
+            .RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
         }
     }
 }
