@@ -36,7 +36,7 @@ namespace LogXtreme.Reactive.Extensions {
             // left the target will be collected and the subscription disposed of.
             var weakReferenceToTarget = new WeakReference(target);           
 
-            // crate a closure to a static handler
+            // create a closure to a static handler
             subscription = observable.Subscribe(eventPattern => {
 
                 var currentTarget = weakReferenceToTarget.Target as TTarget;
