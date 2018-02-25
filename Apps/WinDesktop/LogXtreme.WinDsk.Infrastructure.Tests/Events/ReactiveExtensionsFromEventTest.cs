@@ -173,7 +173,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Tests.Events {
             Assert.IsFalse(listenerFinalizeTracker2.IsFinalzed);
 
             // act
-            subscription.Dispose(); // this couse the handlers to get detached from the source
+            subscription.Dispose(); // this causes the handlers to get detached from the source
             eventSource = null;
             listener1 = null;
             Utils.TriggerGC();
