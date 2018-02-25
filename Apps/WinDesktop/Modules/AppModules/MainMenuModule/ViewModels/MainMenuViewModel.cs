@@ -24,16 +24,15 @@ namespace MainMenuModule.ViewModels {
 
         public MainMenuViewModel(IMenuService menuService) {
 
-            this.menuService = menuService;
+            this.menuService = menuService;           
 
-            this.eventsubscription_AddMenuItemObservable = Observable.FromEventPattern<MenuItemEventArgs>(
+            this.eventsubscription_AddMenuItemObservable = Observable
+                .FromEventPattern<MenuItemEventArgs>(
                 h => this.menuService.OnMenuItemAdded += h,
                 h => this.menuService.OnMenuItemAdded -= h)
                 .SubscribeWeakly(
-                    this,
-                    (target, eventPattern) => {
-                        target.AddMenuItemEventHanlder(eventPattern.Sender, eventPattern.EventArgs);
-                    });
+                this,
+                (target, ep) => target.AddMenuItemEventHanlder(ep.Sender, ep.EventArgs));
 
             var menuItems = new List<IMenuItem>();
 

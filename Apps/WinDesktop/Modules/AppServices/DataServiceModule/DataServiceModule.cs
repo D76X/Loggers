@@ -15,7 +15,9 @@ namespace LogXtreme.WinDsk.Modules.Services {
 
             // Register types
             // Here we register the service(s) with the container.
-            this.container.RegisterType<IDataService, DataService>();
+            this.container
+                .RegisterType<IDataService, DataService>(
+                new ContainerControlledLifetimeManager());
 
             // Subscribe to Services or Events
 

@@ -16,7 +16,9 @@ namespace LogXtreme.WinDsk.Modules.Services {
 
             // Register types
             // Here we register the service(s) with the container.
-            this.container.RegisterType<IBackgroundWorkerService, BackgroundWorkerService>();
+            this.container
+                .RegisterType<IBackgroundWorkerService, BackgroundWorkerService>(
+                new ContainerControlledLifetimeManager());
 
             // Subscribe to Services or Events
 
