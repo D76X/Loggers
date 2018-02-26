@@ -1,6 +1,6 @@
 """
 This module illustrates class properties inheritance in Python. 
-It shows hoe to override property getters and seeters.
+It shows how to override property getters and setters.
 
 Usage:
     
@@ -28,7 +28,7 @@ Usage:
 
 class StateBase:
     """
-    A class that store some state in the form of a single value.
+    A class that stores some state in the form of a single value.
     """
     
     def __init__(self, value):
@@ -111,7 +111,7 @@ class BinaryState(StateBase):
     def __init__(self, state_one, state_two):
         self._state_one = state_one
         self._state_two = state_two
-        self._state = state_one  
+        self.state = state_one  
 
     # it is also possible to override the setter alone
     @StateBase.state.setter
