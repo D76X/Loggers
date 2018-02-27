@@ -101,6 +101,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Notes", "_Notes", "{54A549
 		Notes\ReactiveExtensions.txt = Notes\ReactiveExtensions.txt
 		Notes\Simulators.txt = Notes\Simulators.txt
 		Notes\StylecopNotes.txt = Notes\StylecopNotes.txt
+		Notes\ToDo.md = Notes\ToDo.md
 		Notes\Updater.txt = Notes\Updater.txt
 		Notes\VisualStudio.txt = Notes\VisualStudio.txt
 		Notes\WpfNotes.txt = Notes\WpfNotes.txt
