@@ -68,4 +68,26 @@ These map to **\<ol>** and **\<li>** tags.
 
 ### Links
 
+Links and Images can both be written in two styles, either inline syntax or 
+reference syntax.
+
+- Inline syntax means that all the information about the link or image is written in one 
+spot.
+
+- Reference syntax means is in two parts. A piece that indicate the location in the document
+where the asset must be shown. The other piece that reference the link or image to show.  
+
+This is an inline link [BBC News](http://www.bbc.co.uk/news). It can be any valid URL pointing 
+to either any local or remote resource. 
+
+Links such \[CLICK HERE](http://someresource.html) are rendered to **\<a>CLICK HERE\<\a>** in 
+HTML with its **'href'** arrtibute value set to the given URL. 
+
 ### Images
+
+The markdown syntax for images is the same as for links but a ! is used in front of the square
+brakets.
+
+![Git workflow](/files/GitWokflow.png)
+![Bomb](/04.png)
+![NTT](/Assets/Icons/ntt_logo.png)
