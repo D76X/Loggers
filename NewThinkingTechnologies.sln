@@ -436,6 +436,8 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonScriptsTest2", "PyApp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackgroundWorkerServiceModule", "Apps\WinDesktop\Modules\AppServices\BackgroundWorkerServiceModule\BackgroundWorkerServiceModule.csproj", "{E3A5B1D6-B32E-49B8-BA8D-AD5D4AA3A4C8}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonScriptsTest3", "PyApps\Scripts\Tests\PythonScriptsTest3\PythonScriptsTest3.pyproj", "{EC08FEAC-5BD9-4FAB-AC9E-6923CD8216AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1290,6 +1292,10 @@ Global
 		{E3A5B1D6-B32E-49B8-BA8D-AD5D4AA3A4C8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E3A5B1D6-B32E-49B8-BA8D-AD5D4AA3A4C8}.Release|x86.ActiveCfg = Release|Any CPU
 		{E3A5B1D6-B32E-49B8-BA8D-AD5D4AA3A4C8}.Release|x86.Build.0 = Release|Any CPU
+		{EC08FEAC-5BD9-4FAB-AC9E-6923CD8216AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC08FEAC-5BD9-4FAB-AC9E-6923CD8216AF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EC08FEAC-5BD9-4FAB-AC9E-6923CD8216AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC08FEAC-5BD9-4FAB-AC9E-6923CD8216AF}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1458,6 +1464,7 @@ Global
 		{A39A8C32-EA74-41D1-AE99-DE3E0A5C55C1} = {9536517C-30D5-4170-91D8-A1A38E42C3CF}
 		{0A1D668B-2F66-411D-BE30-7CCBCC9AAF1C} = {9536517C-30D5-4170-91D8-A1A38E42C3CF}
 		{E3A5B1D6-B32E-49B8-BA8D-AD5D4AA3A4C8} = {B41C4F41-E9F6-4C26-B701-E6A51C4E716F}
+		{EC08FEAC-5BD9-4FAB-AC9E-6923CD8216AF} = {9536517C-30D5-4170-91D8-A1A38E42C3CF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B48A64CD-1E9D-4169-82DF-66FD7695C2D0}
