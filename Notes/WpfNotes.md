@@ -21,6 +21,7 @@ Thus Decorator is the most primitive element that can contain another element.
 
 [WPF - how do I bind a control's position to the current mouse position?](https://stackoverflow.com/questions/6714663/wpf-how-do-i-bind-a-controls-position-to-the-current-mouse-position)  
 [Is WPF Decorator class useful?](https://stackoverflow.com/questions/2529719/is-wpf-decorator-class-useful)  
+[How to write Decorator XAML custom control for Windows Runtime?](https://stackoverflow.com/questions/27020326/how-to-write-decorator-xaml-custom-control-for-windows-runtime)  
 
 ***
 
