@@ -1,3 +1,19 @@
+# Resources
+
+[The GitHub Markdown Tutorial](https://www.markdowntutorial.com/)  
+[Writing Content With Markdown - Pluralsight course](https://app.pluralsight.com/library/courses/writing-content-with-markdown/table-of-contents)  
+[Markdown Editor for Visual Studio](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.MarkdownEditor)  
+
+***
+
+# How to force a break
+
+In order to force a break in Markdown type two white spaces at the end of the line like 
+below. This is different from ordered and unordered lists.  
+  
+FirstLine  
+Second line  
+
 Structured Enhanced L1 Header Style
 ==
 Structured Enhanced L2 Header Style
@@ -83,11 +99,32 @@ to either any local or remote resource.
 Links such \[CLICK HERE](http://someresource.html) are rendered to **\<a>CLICK HERE\<\a>** in 
 HTML with its **'href'** arrtibute value set to the given URL. 
 
-### Images
+### Images (and styles)
 
-The markdown syntax for images is the same as for links but a ! is used in front of the square
-brakets.
+The markdown syntax for images is the same as for links but a **!** is used in front of the square
+brakets. The followig example also shows how to add local styles to the markdown. For example the 
+image here is floated to the left anf the text floats to its right. 
+![Image](http://octodex.github.com/images/octdrey-catburn.jpg){: style="width:30%; float: left"}
 
-![Git workflow](/files/GitWokflow.png)
-![Bomb](/04.png)
-![NTT](/Assets/Icons/ntt_logo.png)
+***
+
+Styles may be defined locally in the markdown file or may be defined in a stylesheet to which the 
+markdown referes. This is dependent upon the specific implementation of the markdoen plugin.  
+
+With the [Markdown Editor for Visual Studio](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.MarkdownEditor)
+you just need to have a file named **md-styles.css** in the same folder as the markdown files to 
+style with it.
+
+</br>
+</br>
+</br>
+</br>
+
+### Local image
+
+Embedding local images is just slightly trickier as the syntax for the URL may be difficult to guess
+and depends on the specific markdown pluging. With the  [Markdown Editor for Visual Studio](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.MarkdownEditor)
+there is a trick to get it right. Just drag and drop the image from the folder onto the markdown 
+document and the plugin generates the right syntaxt for you, then you can make changes to it as desired.  
+
+![Bomb](Bomb.png)
