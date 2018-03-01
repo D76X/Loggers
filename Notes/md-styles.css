@@ -5,3 +5,7 @@
     This is the stylesheet for the markdown notes used by the Markdown Editor plugin
     for Visual Studio.
 */
+
+p {
+    text-align: justify
+}
