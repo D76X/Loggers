@@ -34,8 +34,8 @@ namespace LogXtreme.WinDsk.Infrastructure.Behaviors {
         /// Retrieves the current watermarked state of the TextBox.
         /// </summary>
         public bool IsWatermarked {
-            get { return GetIsWatermarked(AssociatedObject); }
-            private set { AssociatedObject.SetValue(IsWatermarkedPropertyKey, value); }
+            get => GetIsWatermarked(AssociatedObject); 
+            private set => AssociatedObject.SetValue(IsWatermarkedPropertyKey, value); 
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Behaviors {
         /// IsWatermarkedProperty is read the Key must be already available 
         /// or a NullReference exception is thrown.
         /// </summary>
-        static readonly DependencyPropertyKey IsWatermarkedPropertyKey =
+        private static readonly DependencyPropertyKey IsWatermarkedPropertyKey =
             DependencyProperty.RegisterAttachedReadOnly(
                 "IsWatermarked",
                 typeof(bool),
