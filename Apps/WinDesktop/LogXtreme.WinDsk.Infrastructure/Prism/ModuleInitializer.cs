@@ -111,7 +111,8 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
         protected virtual IModule CreateModule(string typeName) {
             Type moduleType = Type.GetType(typeName);
             if (moduleType == null) {
-                throw new ModuleInitializeException(string.Format(CultureInfo.CurrentCulture, Properties.Resources.FailedToGetType, typeName));
+                //throw new ModuleInitializeException(string.Format(CultureInfo.CurrentCulture, Properties.Resources.FailedToGetType, typeName));
+                throw new ModuleInitializeException(string.Format(CultureInfo.CurrentCulture, @"failed to get type", typeName));
             }
 
             return (IModule)this.serviceLocator.GetInstance(moduleType);
