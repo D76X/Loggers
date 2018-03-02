@@ -119,4 +119,3 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
         }
     }
 }
-}
