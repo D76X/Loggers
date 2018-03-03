@@ -14,14 +14,61 @@ https://wpftutorial.net/Home.html
 
 ## WPF Decorators
 
-Provides a base class for elements that apply effects onto or around a single child element,
+A Decorator class is responsible for wrapping a UI element to support additional behavior.
+
+Decorator provides a base class for elements that apply effects onto or around a single child element,
 for example the Border class derives from decorator. Decorator inherits from FrameworkElement, 
 and implements a Child property (of type UIElement), as well as implements the IAddChild interface. 
-Thus Decorator is the most primitive element that can contain another element.
+Decorator is the most primitive element that can contain another element.
+
+When you subclass a Decorator, you can expose some useful DependencyProperties to customize it.
+For example, the Border class exposes properties like BorderBrush, BorderThickness, and CornerRadius 
+that all affect how the border is drawn around its child content.
 
 [WPF - how do I bind a control's position to the current mouse position?](https://stackoverflow.com/questions/6714663/wpf-how-do-i-bind-a-controls-position-to-the-current-mouse-position)  
 [Is WPF Decorator class useful?](https://stackoverflow.com/questions/2529719/is-wpf-decorator-class-useful)  
 [How to write Decorator XAML custom control for Windows Runtime?](https://stackoverflow.com/questions/27020326/how-to-write-decorator-xaml-custom-control-for-windows-runtime)  
+
+***
+
+## WPF Adorner
+
+Adorners are rendered in an AdornerLayer, which is a rendering surface that is always on top of the 
+adorned element or a collection of adorned elements.  Rendering of an adorner is independent from 
+rendering of the UIElement that the adorner is bound to. An adorner is typically positioned relative 
+to the element to which it is bound, using the standard 2-D coordinate origin located at the upper-left 
+of the adorned element.
+
+While a Decorator is responsible for drawing decoration around the outside of a piece of child content, 
+the Adorner class allows you to overlay visuals on top of existing visual elements. An easy way to think 
+of adorners is that they are secondary interactive visuals that provide additional means to interact with 
+the primary visual i.e. widgets such as rezising or rotation handles. Those are a secondary visual that 
+sit on top of the elements that they are adorning and provide additional functionality and interaction.
+
+Common applications for adorners include:
+
+- Adding functional handles to a UIElement that enable a user to manipulate the element in some way 
+(resize, rotate, reposition, etc.).
+
+- Provide visual feedback to indicate various states, or in response to various events.
+
+- Overlay visual decorations on a UIElement.
+
+- Visually mask or override part or all of a UIElement.
+
+## AdornerDecorator
+
+Adorner classes work in conjunction with the AdornerDecorator, which is an invisible surface on which the 
+adorners rest. To be part of the visual tree, adorners have to have a container. The AdornerDecorator acts 
+as this container.
+
+https://docs.microsoft.com/en-us/dotnet/framework/wpf/controls/adorners-overview
+
+***
+
+## AdornerDecorator + TabControl + Validation Errors
+
+https://stackoverflow.com/questions/1369643/wpf-error-styles-only-being-rendered-properly-on-visible-tab-of-a-tab-control
 
 ***
 
@@ -97,14 +144,7 @@ https://stackoverflow.com/questions/2747924/exceptionvalidationrule-doesnt-react
 
 ***
 
-## Adorners
-
-https://docs.microsoft.com/en-us/dotnet/framework/wpf/controls/adorners-overview   
-
-### AdornerDecorator
-https://social.msdn.microsoft.com/Forums/vstudio/en-US/880e8db9-ba9c-42da-83a8-dd441f2194e7/what-use-of-adornerdecorator-in-wpf?forum=wpf
-
-### AdornerDecorator + TabControl + Validation Errors
+## AdornerDecorator + TabControl + Validation Errors
 
 https://stackoverflow.com/questions/1369643/wpf-error-styles-only-being-rendered-properly-on-visible-tab-of-a-tab-control
 
