@@ -218,8 +218,8 @@
                         </Border.Style>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseEnter">
-                                <inftriggeracts:CommandAction Command="{Binding NotifyCommand}" 
-                                                              CommandParameter="{MousePosition!}"/>
+                                <inftriggeracts:CommandAction Command="{Binding NotifyCommand}" />
+                                <!--CommandParameter="{MousePosition!}"/>-->
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                         <ContentControl HorizontalAlignment="Center"

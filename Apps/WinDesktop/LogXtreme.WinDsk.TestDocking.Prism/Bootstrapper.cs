@@ -1,6 +1,7 @@
 ﻿using LogXtreme.WinDsk.Infrastructure.Prism;
 using LogXtreme.WinDsk.Infrastructure.Services;
 using LogXtreme.WinDsk.TestDocking.Prism.Interfaces;
+using LogXtreme.WinDsk.TestDocking.Prism.Properties;
 using LogXtreme.WinDsk.TestDocking.Prism.Services;
 using LogXtreme.WinDsk.TestDocking.Prism.ViewModels;
 using Microsoft.Practices.Unity;
@@ -19,8 +20,7 @@ namespace LogXtreme.WinDsk.TestDocking.Prism {
 
         protected override IModuleCatalog CreateModuleCatalog() {
 
-            //return new DirectoryModuleCatalog() { ModulePath = Settings.ModulePath };
-
+            return new DirectoryModuleCatalog() { ModulePath = Settings.Default.ModulePath };
         }
 
         protected override void ConfigureModuleCatalog() {

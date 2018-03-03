@@ -18,7 +18,7 @@ open Swensen.Unquote
 // -4 It support partial application.
 //-------------------------------------------------------------------------------------
 
-printfn "A string: %s. An int: %i. A float: %f. A bool: %b" "hello" 42 3.14 true
+//printfn "A string: %s. An int: %i. A float: %f. A bool: %b" "hello" 42 3.14 true
 
 //-------------------------------------------------------------------------------------
 
@@ -55,21 +55,21 @@ do printHelloAndInt 42
 
 // partial application - point free style
 
-------------------------------------------------------------
-F# printf string and TextWriterFormat<`T> 
-https://stackoverflow.com/questions/9440204/f-printf-string
-------------------------------------------------------------
+//------------------------------------------------------------
+//F# printf string and TextWriterFormat<`T> 
+//https://stackoverflow.com/questions/9440204/f-printf-string
+//------------------------------------------------------------
 
-Examples
+//Examples
 
 // does not work 
 // printfn expects a TextWriterFormat<`T> not a string
 // and cannot convert a string to TextWriterFormat<`T>
 let test = "aString"
-let callMe = printfn test
+//let callMe = printfn test
 
 // it works
 // ("%s" test) is of type TextWriterFormat<`T>
-printfn "%s" test
+//printfn "%s" test
 
-==============================================================================================
+//==============================================================================================

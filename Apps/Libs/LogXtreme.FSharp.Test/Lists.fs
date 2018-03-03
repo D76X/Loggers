@@ -79,4 +79,4 @@ let ``test List.isEmpty List.exist(2)``()=
     test<@ List.isEmpty List.Empty = true @>
     test<@ List.exists (fun e -> e = 1) list1 = true @>
     test<@ List.exists2 (fun e1 e2 -> e1 = e2) list2 list3 = false @>
-    test<@ List.exists2 (fun e1 e2 -> e1 = reverse e2) list4 list5 = true @>
+    //test<@ List.exists2 (fun e1 e2 -> e1 = reverse e2) list4 list5 = true @>
