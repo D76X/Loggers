@@ -61,11 +61,11 @@ namespace LogXtreme.WinDsk.Infrastructure.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Failed to get type.
         /// </summary>
-        internal static string String1 {
+        internal static string FailedToGetType {
             get {
-                return ResourceManager.GetString("String1", resourceCulture);
+                return ResourceManager.GetString("FailedToGetType", resourceCulture);
             }
         }
     }
