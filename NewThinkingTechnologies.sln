@@ -104,8 +104,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Notes", "_Notes", "{54A549
 		Notes\StylecopNotes.txt = Notes\StylecopNotes.txt
 		Notes\ToDo.md = Notes\ToDo.md
 		Notes\Updater.txt = Notes\Updater.txt
-		Notes\VisualStudio.txt = Notes\VisualStudio.txt
+		Notes\VisualStudio.md = Notes\VisualStudio.md
 		Notes\WpfNotes.md = Notes\WpfNotes.md
+		Notes\XAML.md = Notes\XAML.md
 		Notes\ZeroMQ.txt = Notes\ZeroMQ.txt
 	EndProjectSection
 EndProject
