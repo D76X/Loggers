@@ -12,13 +12,13 @@ namespace LogXtreme.WinDsk.TestBehaviors.ViewModels {
     public class Tab3ViewModel : NotifyPropertyChangedBase {
 
         private string message = @"I have not been triggered yet...";
-        private RelayCommand notifyCommand;
+        private RelayCommand<object> notifyCommand;
         private bool enabled;
         private int clickCounts;
 
         public Tab3ViewModel() {
 
-            this.notifyCommand = new RelayCommand(
+            this.notifyCommand = new RelayCommand<object>(
             this.ExecuteSomeCommand,
             this.CanExecuteSomeCommand);
 
@@ -43,11 +43,11 @@ namespace LogXtreme.WinDsk.TestBehaviors.ViewModels {
         public ICommand NotifyCommand =>
             this.notifyCommand;
 
-        private void ExecuteSomeCommand() {
+        private void ExecuteSomeCommand(object param) {
 
             this.Message = $"I was triggered on {DateTime.Now}";
         }
 
-        private bool CanExecuteSomeCommand() => this.enabled;
+        private bool CanExecuteSomeCommand(object param) => this.enabled;
     }
 }

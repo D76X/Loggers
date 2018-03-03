@@ -3,6 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:infdecorators="clr-namespace:LogXtreme.WinDsk.Infrastructure.Decorators;assembly=LogXtreme.WinDsk.Infrastructure"
         xmlns:infbehaviours="clr-namespace:LogXtreme.WinDsk.Infrastructure.Behaviors;assembly=LogXtreme.WinDsk.Infrastructure"
         xmlns:inftriggeracts="clr-namespace:LogXtreme.WinDsk.Infrastructure.TriggerActions;assembly=LogXtreme.WinDsk.Infrastructure"
         x:Class="LogXtreme.WinDsk.TestBehaviors.MainWindow"
@@ -195,38 +196,40 @@
                      Name="Tab3">
                 <Grid ShowGridLines="True">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
                         <ContentControl Content="{Binding Message}"
                                         HorizontalAlignment="Center"
-                                        VerticalAlignment="Center">                            
+                                        VerticalAlignment="Center">
                         </ContentControl>
                     </Grid>
-                    <Border Grid.Row="1"
-                            Margin="10"
-                            CornerRadius="20">
-                        <Border.Style>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="Background">
-                                    <Setter.Value>
-                                        <SolidColorBrush Color="LightGreen" />
-                                    </Setter.Value>
-                                </Setter>                                
-                            </Style>
-                        </Border.Style>
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseEnter">
-                                <inftriggeracts:CommandAction Command="{Binding NotifyCommand}" />
-                                <!--CommandParameter="{MousePosition!}"/>-->
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                        <ContentControl HorizontalAlignment="Center"
-                                        VerticalAlignment="Center">
-                           Enter this area
-                        </ContentControl>
-                    </Border>
+                    <infdecorators:MouseTrackerDecorator x:Name="mouseTracker"
+                                                         Grid.Row="1">
+                        <Border Margin="10"
+                                CornerRadius="20">
+                            <Border.Style>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <SolidColorBrush Color="LightGreen" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Border.Style>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseEnter">
+                                    <inftriggeracts:CommandAction Command="{Binding NotifyCommand}"
+                                                                  CommandParameter="{Binding ElementName=mouseTracker, Path=MousePosition}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <ContentControl HorizontalAlignment="Center"
+                                            VerticalAlignment="Center">
+                                Enter this area
+                            </ContentControl>
+                        </Border>
+                    </infdecorators:MouseTrackerDecorator>
                 </Grid>
             </TabItem>
         </TabControl>
