@@ -3,47 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace LogXtreme.WinDsk.Infrastructure.Decorators
-{
-
-    public class MouseTrackerDecorator : Decorator
-    {
-        static readonly DependencyProperty MousePositionProperty;
-        static MouseTrackerDecorator()
-        {
-            MousePositionProperty = DependencyProperty.Register("MousePosition", typeof(Point), typeof(MouseTrackerDecorator));
-        }
-
-        public override UIElement Child {
-            get {
-                return base.Child;
-            }
-            set {
-                if (base.Child != null)
-                    base.Child.MouseMove -= _controlledObject_MouseMove;
-                base.Child = value;
-                base.Child.MouseMove += _controlledObject_MouseMove;
-            }
-        }
-
-        public Point MousePosition {
-            get {
-                return (Point)GetValue(MouseTrackerDecorator.MousePositionProperty);
-            }
-            set {
-                SetValue(MouseTrackerDecorator.MousePositionProperty, value);
-            }
-        }
-
-        void _controlledObject_MouseMove(object sender, MouseEventArgs e)
-        {
-            Point p = e.GetPosition(base.Child);
-
-            // Here you can add some validation logic
-            MousePosition = p;
-        }
-    }
-
-    //public class MouseTrackerDecorator : Decorator { }
+{      
 
     /// <summary>
     /// 
@@ -61,46 +21,49 @@ namespace LogXtreme.WinDsk.Infrastructure.Decorators
     /// Refs
     /// https://stackoverflow.com/questions/6714663/wpf-how-do-i-bind-a-controls-position-to-the-current-mouse-position
     /// </summary>
-    //public class MouseTrackerDecorator : Decorator
-    //{
-    //    public Point MousePosition {
-    //        get => (Point)GetValue(MousePositionProperty);
-    //        private set => SetValue(MousePositionPropertyKey, value);
-    //    }
+    public class MouseTrackerDecorator : Decorator
+    {
+        public Point MousePosition {
+            get => (Point)GetValue(MousePositionProperty);
+            private set => SetValue(MousePositionPropertyKey, value);
+        }
 
-    //    public static readonly DependencyProperty MousePositionProperty =
-    //        MousePositionPropertyKey.DependencyProperty;
+        // the declaration of the key must come before tha of the dependency
+        // property that uses it otherwise the XAML designer fails to build
+        // an istance of this class. 
+        private static readonly DependencyPropertyKey MousePositionPropertyKey =
+            DependencyProperty.RegisterAttachedReadOnly(
+                @"MousePosition",
+                typeof(Point),
+                typeof(MouseTrackerDecorator),
+                new FrameworkPropertyMetadata(new Point(0, 0)));
 
-    //    private static readonly DependencyPropertyKey MousePositionPropertyKey =
-    //        DependencyProperty.RegisterAttachedReadOnly(
-    //            @"MousePosition",
-    //            typeof(Point),
-    //            typeof(MouseTrackerDecorator),
-    //            new FrameworkPropertyMetadata(new Point(0, 0)));
+        public static readonly DependencyProperty MousePositionProperty =
+            MousePositionPropertyKey.DependencyProperty;
 
-    //    public override UIElement Child {
+        public override UIElement Child {
 
-    //        get => base.Child;
+            get => base.Child;
 
-    //        set {
+            set {
 
-    //            if (base.Child != null)
-    //            {
-    //                base.Child.MouseMove -= OnMouseMove;
-    //            }
+                if (base.Child != null)
+                {
+                    base.Child.MouseMove -= OnMouseMove;
+                }
 
-    //            base.Child = value;
-    //            base.Child.MouseMove += OnMouseMove;
-    //        }
-    //    }
+                base.Child = value;
+                base.Child.MouseMove += OnMouseMove;
+            }
+        }
 
-    //    private void OnMouseMove(object sender, MouseEventArgs e)
-    //    {
+        private void OnMouseMove(object sender, MouseEventArgs e)
+        {
 
-    //        Point p = e.GetPosition(base.Child);
+            Point p = e.GetPosition(base.Child);
 
-    //        // Here you can add some validation logic
-    //        MousePosition = p;
-    //    }
-    //}
+            // Here you can add some validation logic
+            MousePosition = p;
+        }
+    }
 }
