@@ -133,6 +133,7 @@
     <Compile Include="Behaviors\ClickBehavior.cs" />
     <Compile Include="Behaviors\HanldeViewLoadedEventBehavior.cs" />
     <Compile Include="Behaviors\KeyboardFocusBehavior.cs" />
+    <Compile Include="Behaviors\MouseCaptureBehavior.cs" />
     <Compile Include="Decorators\MouseTrackerDecorator.cs" />
     <Compile Include="Behaviors\ShowNotificationMessageBehavior.cs" />
     <Compile Include="Behaviors\WatermarkTextBehavior.cs" />
@@ -144,8 +145,10 @@
     <Compile Include="Convertes\InvertedBooleanToCollapsedVisibilityConverter.cs" />
     <Compile Include="Convertes\NotConverter.cs" />
     <Compile Include="Events\DeviceAttachedEvents.cs" />
+    <Compile Include="Events\MouseCaptureEventArgs.cs" />
     <Compile Include="Exceptions\StrategyNullReferenceEception.cs" />
     <Compile Include="Interfaces\IBindableBase.cs" />
+    <Compile Include="Interfaces\IMouseCapture.cs" />
     <Compile Include="MarkupExtensions\LinearGradientMarkupExtension.cs" />
     <Compile Include="Models\ObservableCollectionEx.cs" />
     <Compile Include="Prism\DockingManagerDocumentsSourceSyncBehavior.cs" />
