@@ -1,6 +1,7 @@
 ﻿using LogXtreme.WinDsk.Infrastructure.Commands;
 using LogXtreme.WinDsk.Infrastructure.Wpf;
 using System;
+using System.Windows;
 using System.Windows.Input;
 
 namespace LogXtreme.WinDsk.TestBehaviors.ViewModels {
@@ -45,7 +46,18 @@ namespace LogXtreme.WinDsk.TestBehaviors.ViewModels {
 
         private void ExecuteSomeCommand(object param) {
 
-            this.Message = $"I was triggered on {DateTime.Now}";
+            string triggeredOn = $" {DateTime.Now}";
+            string triggeredAt = $"x=?, y=?";
+
+            if (param is Point) {
+
+                Point p = (Point) param;
+
+                triggeredAt = $"x={p.X}, y={p.Y}";
+            }
+
+
+            this.Message = $"Triggered on {triggeredOn} at {triggeredAt}";
         }
 
         private bool CanExecuteSomeCommand(object param) => this.enabled;
