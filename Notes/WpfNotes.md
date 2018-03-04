@@ -176,3 +176,44 @@ http://www.wpf-tutorial.com/styles/multi-triggers-multitrigger-multidatatrigger/
 [Add Microsoft.SDK.Expression.Blend to project](https://stackoverflow.com/questions/46469674/cant-find-the-gotostateaction-behaviour-in-blend-2017)  
 
 ***
+
+## Readonly Attached Properties - a catch!
+
+When a readonly attached property or dependency property is created it is important to get the 
+order of the key and the property right as explained in the examples below.  
+
+### This code breaks the XAML designer 
+
+The following code breaks the XAML designer because the MousePositionPropertyKey is not yet
+declared when MousePositionProperty uses it.
+
+```cs
+public static readonly DependencyProperty MousePositionProperty =
+    MousePositionPropertyKey.DependencyProperty;
+
+private static readonly DependencyPropertyKey MousePositionPropertyKey =
+            DependencyProperty.RegisterAttachedReadOnly(
+                @"MousePosition",
+                typeof(Point),
+                typeof(MouseTrackerDecorator),
+                new FrameworkPropertyMetadata(new Point(0, 0)));
+```
+
+### This code works
+
+The dependency property MousePositionProperty is declared __following__ the declaration of the
+corresponding MousePositionPropertyKey which avoids the problem in the XAML designer.
+
+```cs
+private static readonly DependencyPropertyKey MousePositionPropertyKey =
+            DependencyProperty.RegisterAttachedReadOnly(
+                @"MousePosition",
+                typeof(Point),
+                typeof(MouseTrackerDecorator),
+                new FrameworkPropertyMetadata(new Point(0, 0)));
+
+public static readonly DependencyProperty MousePositionProperty =
+    MousePositionPropertyKey.DependencyProperty;
+```
+
+***
