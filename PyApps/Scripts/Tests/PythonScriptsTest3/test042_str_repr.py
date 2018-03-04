@@ -1,7 +1,7 @@
 """
 This module illustrates the use of __str__ and __repr__ in Python.
 
-Uasge:
+Usage:
 
     import test042_str_repr as t
     t.test_module()  
