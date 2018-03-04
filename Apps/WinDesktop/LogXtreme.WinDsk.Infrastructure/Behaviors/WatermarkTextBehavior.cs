@@ -67,11 +67,10 @@ namespace LogXtreme.WinDsk.Infrastructure.Behaviors {
         /// <summary>
         /// This readonly property is applied to the TextBox and indicates whether the watermark
         /// is currently being applied to the target of the behavior.  It allows to take actions
-        /// according to whther IsWatermarked is set to true or false. The logic that sets this 
-        /// read-only property to either ftrue or false is completely encapsulated in the behavior
-        /// and for example a style can be used to change the visual appearance of the target
-        /// TexBox by means of property triggers.
-        /// the TextBox. 
+        /// according to whether IsWatermarked is set to true or false. The logic that sets this 
+        /// read-only property to either true or false is completely encapsulated in this behavior.
+        /// For example a style can be set in XAML to change the visual appearance of the target
+        /// TexBox by means of property triggers when IsWatermarked = true/false. 
         /// </summary>
         public static readonly DependencyProperty IsWatermarkedProperty =
             IsWatermarkedPropertyKey.DependencyProperty;        

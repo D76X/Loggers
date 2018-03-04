@@ -3,8 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace LogXtreme.WinDsk.Infrastructure.Decorators
-{      
-
+{  
     /// <summary>
     /// 
     /// A decorator to capture the mouse position within its child element.
