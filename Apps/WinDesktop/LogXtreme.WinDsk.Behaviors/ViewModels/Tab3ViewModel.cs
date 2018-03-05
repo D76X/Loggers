@@ -15,7 +15,6 @@ namespace LogXtreme.WinDsk.TestBehaviors.ViewModels {
         private string message = @"I have not been triggered yet...";
         private RelayCommand<object> notifyCommand;
         private bool enabled;
-        private int clickCounts;
 
         public Tab3ViewModel() {
 

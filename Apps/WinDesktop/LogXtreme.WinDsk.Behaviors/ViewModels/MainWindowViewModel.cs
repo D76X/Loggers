@@ -17,6 +17,9 @@ namespace LogXtreme.WinDsk.TestBehaviors.ViewModels {
 
             // Tab3
             this.viewModels.Add(new Tab3ViewModel());
+
+            // Tab4
+            this.viewModels.Add(new Tab4ViewModel());
         }
 
         public Tab1ViewModel Tab1ViewModel =>
@@ -27,5 +30,8 @@ namespace LogXtreme.WinDsk.TestBehaviors.ViewModels {
 
         public Tab3ViewModel Tab3ViewModel =>
             (Tab3ViewModel)this.viewModels[2];
+
+        public Tab4ViewModel Tab4ViewModel =>
+            (Tab4ViewModel)this.viewModels[3];
     }
 }

@@ -206,7 +206,7 @@
                                         FontSize="15">
                         </ContentControl>
                     </Grid>
-                    <infdecorators:MouseTrackerDecorator x:Name="mouseTracker"
+                    <infdecorators:MouseTrackerDecorator x:Name="mouseTrackerTab3"
                                                          Grid.Row="1">
                         <Border Margin="10"
                                 CornerRadius="20">
@@ -222,7 +222,7 @@
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="MouseEnter">
                                     <inftriggeracts:CommandAction Command="{Binding NotifyCommand}"
-                                                                  CommandParameter="{Binding ElementName=mouseTracker, Path=MousePosition}" />
+                                                                  CommandParameter="{Binding ElementName=mouseTrackerTab3, Path=MousePosition}" />
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                             <ContentControl HorizontalAlignment="Center"
@@ -231,6 +231,60 @@
                             </ContentControl>
                         </Border>
                     </infdecorators:MouseTrackerDecorator>
+                </Grid>
+            </TabItem>
+            <TabItem DataContext="{Binding Tab4ViewModel}"
+                     Header="Tab4"
+                     Name="Tab4">
+                <Grid ShowGridLines="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="2*" />
+                    </Grid.RowDefinitions>                    
+                    <Border Grid.Row="0"
+                            x:Name="mouseTrackedRegionTab4"
+                            Margin="10"
+                            CornerRadius="20">                        
+                        <Border.Style>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="LightCoral" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Border.Style>
+                        <i:Interaction.Behaviors>
+                            <infbehaviours:MouseCaptureBehavior MouseCaptureProxy="{Binding MouseCaptureProxy}"/>
+                        </i:Interaction.Behaviors>
+                        <ContentControl HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
+                            Mouse Tracked Region                            
+                        </ContentControl>
+                    </Border>
+                    <Grid Grid.Row="1">                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>                        
+                        <Button Grid.Column="0"
+                                Margin="3">                            
+                            Start Capture
+                        </Button>
+                        <Button Grid.Column="1"
+                                Margin="3">
+                            Stop Capture
+                        </Button>
+                    </Grid>
+                    <Grid Grid.Row="2"
+                          x:Name="statusBarTab4">
+                        <ContentControl Content="{Binding Message}"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="15">
+                        </ContentControl>
+                    </Grid>
                 </Grid>
             </TabItem>
         </TabControl>
