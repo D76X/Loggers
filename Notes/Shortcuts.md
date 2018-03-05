@@ -34,7 +34,15 @@
 
 | Keys			    | Command			                                                    |
 | -------------     | ----------------------------------------------------------------------|
+| SHIFT+10       	| Right click (see notes below)                                         |
 | Ctrl+\,Ctrl+M 	| Team.TfsTeamExplorer                                                  |
 | Ctrl+0,Ctrl+G	    | Team.Git.GoToGitChanges                                               |
+
+### Notes
+
+The key [SHIFT+10] is useful in conjunction with the selection of files in the tree of changes 
+in order to stage the selection only. Slect a bunch of file in the Changes tree and then SHIFT+F10 then fom the menu select stage or ALT+S to stage the selection.
+
+>[“Right Click” keyboard short cut for Visual Studio?](https://stackoverflow.com/questions/559251/right-click-keyboard-short-cut-for-visual-studio)
 
 ***
