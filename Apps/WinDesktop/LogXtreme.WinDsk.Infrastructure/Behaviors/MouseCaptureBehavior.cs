@@ -17,35 +17,53 @@ namespace LogXtreme.WinDsk.Infrastructure.Behaviors {
     /// </summary>
     public class MouseCaptureBehavior : Behavior<FrameworkElement> {
 
-        public IMouseCapture MouseCapture {
-            get => GetMouseCapture(AssociatedObject);            
+        public static void SetMouseCaptureProxy(
+            DependencyObject source, 
+            IMouseCapture
+            value) {
+
+            source.SetValue(MouseCaptureProxyProperty, value);
         }
 
-        public static IMouseCapture GetMouseCapture(DependencyObject obj) {
-            return (IMouseCapture)obj.GetValue(MouseCaptureProperty);
+        public static IMouseCapture GetMouseCaptureProxy(DependencyObject source) {
+            return (IMouseCapture)source.GetValue(MouseCaptureProxyProperty);
         }
 
-        private static void SetMouseCapture(
-            DependencyObject obj,
-            IMouseCapture value) {
+        public static readonly DependencyProperty MouseCaptureProxyProperty = DependencyProperty.RegisterAttached(
+        "MouseCaptureProxy",
+        typeof(IMouseCapture),
+        typeof(MouseCaptureBehavior),
+        new PropertyMetadata(null, OnMouseCaptureProxyChanged));        
 
-            obj.SetValue(MouseCaptureProperty, value);
-        }
+        //public IMouseCapture MouseCapture {
+        //    get => GetMouseCapture(AssociatedObject);            
+        //}
 
-        public static readonly DependencyPropertyKey MouseCapturePropertyKey =
-            DependencyProperty.RegisterAttachedReadOnly(
-                @"MouseCaptureProperty", 
-                typeof(IMouseCapture), 
-                typeof(MouseCaptureBehavior), 
-                new PropertyMetadata(null, OnMouseCaptureChanged));
+        //public static IMouseCapture GetMouseCapture(DependencyObject obj) {
+        //    return (IMouseCapture)obj.GetValue(MouseCaptureProperty);
+        //}
 
-        // The declarration of the key must come first otherwise the XAML 
-        // designer breaks as it fails to construct an instance of the 
-        // behavior.
-        public static readonly DependencyProperty MouseCaptureProperty =
-            MouseCapturePropertyKey.DependencyProperty;
+        //private static void SetMouseCapture(
+        //    DependencyObject obj,
+        //    IMouseCapture value) {
 
-        private static void OnMouseCaptureChanged(
+        //    obj.SetValue(MouseCaptureProperty, value);
+        //}
+
+        //public static readonly DependencyPropertyKey MouseCapturePropertyKey =
+        //    DependencyProperty.RegisterAttachedReadOnly(
+        //        @"MouseCaptureProperty", 
+        //        typeof(IMouseCapture), 
+        //        typeof(MouseCaptureBehavior), 
+        //        new PropertyMetadata(null, OnMouseCaptureChanged));
+
+        //// The declarration of the key must come first otherwise the XAML 
+        //// designer breaks as it fails to construct an instance of the 
+        //// behavior.
+        //public static readonly DependencyProperty MouseCaptureProperty =
+        //    MouseCapturePropertyKey.DependencyProperty;
+
+        private static void OnMouseCaptureProxyChanged(
             DependencyObject d, 
             DependencyPropertyChangedEventArgs e) {
 
@@ -107,7 +125,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Behaviors {
 
         private void OnMouseDown(object sender, MouseButtonEventArgs e) {
 
-            var mouseCapture = GetMouseCapture(this);
+            var mouseCapture = GetMouseCaptureProxy(this);
 
             if (mouseCapture == null) { return; }
 
@@ -122,7 +140,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Behaviors {
 
         private void OnMouseMove(object sender, MouseEventArgs e) {
 
-            var mouseCapture = GetMouseCapture(this);
+            var mouseCapture = GetMouseCaptureProxy(this);
 
             if (mouseCapture == null) { return; }
 
@@ -137,7 +155,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Behaviors {
 
         private void OnMouseUp(object sender, MouseButtonEventArgs e) {
 
-            var mouseCapture = GetMouseCapture(this);
+            var mouseCapture = GetMouseCaptureProxy(this);
 
             if (mouseCapture == null) { return; }
 
