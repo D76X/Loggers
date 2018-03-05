@@ -82,7 +82,7 @@ These map to **\<ul>** and **\<li>** tags.
 
 These map to **\<ol>** and **\<li>** tags.
 
-### Links
+## Links
 
 Links and Images can both be written in two styles, either inline syntax or 
 reference syntax.
@@ -99,12 +99,24 @@ to either any local or remote resource.
 Links such \[CLICK HERE](http://someresource.html) are rendered to **\<a>CLICK HERE\<\a>** in 
 HTML with its **'href'** arrtibute value set to the given URL. 
 
-### Images (and styles)
+## Images (and styles)
 
-The markdown syntax for images is the same as for links but a **!** is used in front of the square
-brakets. The followig example also shows how to add local styles to the markdown. For example the 
-image here is floated to the left anf the text floats to its right. 
+Adding images to markdown can be tricky. The markdown syntax for images is the same as for links but a **!** is used in front of the square brakets. The following example also shows how to add local styles 
+to the markdown. For example here the image is floated to the left anf the text floats to its right. 
+
+```
 ![Image](http://octodex.github.com/images/octdrey-catburn.jpg){: style="width:30%; float: left"}
+```
+
+The code above works well with in [Markdown Editor for Visual Studio](https://marketplace.visualstudio.com/items?) as it understands the syntax __`{: style="width:30%; float: left"}`__ but does not in VSCODE which appears unable to undertand local styles. In order to make it work the simplest course is to just embed the image by using teh html tag.
+
+</br>
+
+<img src="http://octodex.github.com/images/octdrey-catburn.jpg" width="200" height="200" />
+
+***
+
+In VSCODE you the Strict default setting is applied and might cause remote images to not display in the preview. You may change the settings either for the workspace or at user level.   
 
 ***
 
@@ -116,9 +128,6 @@ you just need to have a file named **md-styles.css** in the same folder as the m
 style with it.
 
 </br>
-</br>
-</br>
-</br>
 
 ### Local image
 
@@ -128,3 +137,25 @@ there is a trick to get it right. Just drag and drop the image from the folder o
 document and the plugin generates the right syntaxt for you, then you can make changes to it as desired.  
 
 ![Bomb](Bomb.png)
+
+***
+
+## Tables
+
+These are ways to display contents in a tabular form. Unfortunately, this works in VSCODE but not in VS2017 with the [Markdown Editor for Visual Studio](https://marketplace.visualstudio.com/items?).
+
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+
+</br>
+
+| Command | Description |
+| --- | --- |
+| git status | List all new or modified files |
+| git diff | Show file differences that haven't been staged |
+
+
+***
+
