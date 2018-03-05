@@ -8,7 +8,8 @@
 | CTRL + 1 to 8	    | Switch to the tab of the corresponding number from left to right.     |
 | CTRL + PageUp     | Navigate tabs left to right                                           |
 | CTRL + PageDown   | Navigate tabs right to left                                           |
-| CTRL + N          | Open new incognito session.     
+| CTRL + N          | Open new incognito session.                                           |
+| ALT + D           | Set focus on the search bar.                                          |
                 
 ***
 

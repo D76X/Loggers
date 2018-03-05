@@ -36,5 +36,14 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 [Point2D(x=0, y=0), Point2D(x=0, y=1), Point2D(x=0, y=2), Point2D(x=0, y=3), Point2D(x=0, y=4), Point2D(x=0, y=5), ...]
 
-
 ***
+
+## Clear the Python REPL
+
+[How to clear the interpreter console?](https://stackoverflow.com/questions/517970/how-to-clear-the-interpreter-console)
+
+> import os  
+> clear = lambda: os.system('cls')  
+> clear()
+
+****
