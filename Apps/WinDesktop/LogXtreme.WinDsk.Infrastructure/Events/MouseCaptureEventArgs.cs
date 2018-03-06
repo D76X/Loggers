@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LogXtreme.WinDsk.Infrastructure.Interfaces;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -9,7 +10,9 @@ namespace LogXtreme.WinDsk.Infrastructure.Events {
     /// Refs
     /// https://stackoverflow.com/questions/34984093/mouse-position-with-respect-to-image-in-wpf-using-mvvm/34984467#34984467
     /// </summary>
-    public class MouseCaptureEventArgs : EventArgs {
+    public class MouseCaptureEventArgs :          
+        EventArgs,
+        IMouseCaptureState {
 
         public MouseCaptureEventArgs() { }
 
@@ -21,13 +24,17 @@ namespace LogXtreme.WinDsk.Infrastructure.Events {
 
             this.X = position.X;
             this.Y = position.Y;
+
             this.LeftButton = (e.LeftButton == MouseButtonState.Pressed);
             this.RightButton = (e.RightButton == MouseButtonState.Pressed);
+            this.MiddleButton = (e.MiddleButton == MouseButtonState.Pressed);            
         }
 
         public double X { get; set; }
         public double Y { get; set; }
+
         public bool LeftButton { get; set; }
         public bool RightButton { get; set; }
+        public bool MiddleButton { get; set; }        
     }
 }

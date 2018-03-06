@@ -14,29 +14,44 @@ namespace LogXtreme.WinDsk.TestBehaviors.ViewModels {
     /// </summary>
     public class Tab4ViewModel : NotifyPropertyChangedBase, IMouseCapture {
 
-        private string message = @"No mouse capture yet";
-        //private IMouseCapture mouseCapture;
+        private string message = @"No mouse capture yet";       
         
-        //private RelayCommand<object> notifyCommand;
-        //private bool enabled;
-        //private int clickCounts;
+        private RelayCommand<object> startCaptureCommand;
+        private RelayCommand<object> stopCaptureCommand;
+        private bool startCaptureEnabled;
+        private Point mouseDownPoint = new Point();
+        private Point mouseMovePoint = new Point();
+        private Point mouseUpPoint = new Point();
 
         public Tab4ViewModel() {
 
-            //this.notifyCommand = new RelayCommand<object>(
-            //this.ExecuteSomeCommand,
-            //this.CanExecuteSomeCommand);
+            this.startCaptureCommand = new RelayCommand<object>(
+            this.ExecuteStartCapureCommand,
+            this.CanExecuteStartCaptureCommand);
 
-            //this.Enabled = true;
-        }
-
-        private void OnCapture(object sender, EventArgs e) {
-            throw new NotImplementedException();
+            this.stopCaptureCommand = new RelayCommand<object>(
+            this.ExecuteStopCapureCommand,
+            this.CanExecuteStopCaptureCommand);
         }
 
         public string Message {
             get => this.message;
             set => this.SetProperty<string>(ref this.message, value);
+        }
+
+        public Point MouseDownPoint {
+            get => this.mouseDownPoint;
+            set => this.SetProperty<Point>(ref this.mouseDownPoint, value);
+        }
+
+        public Point MouseMovePoint {
+            get => this.mouseMovePoint;
+            set => this.SetProperty<Point>(ref this.mouseMovePoint, value);
+        }
+
+        public Point MouseUpPoint {
+            get => this.mouseUpPoint;
+            set => this.SetProperty<Point>(ref this.mouseUpPoint, value);
         }
 
         /// <summary>
@@ -46,7 +61,6 @@ namespace LogXtreme.WinDsk.TestBehaviors.ViewModels {
         /// </summary>
         public IMouseCapture MouseCaptureProxy {
             get => this;
-            //set => this.SetProperty<IMouseCapture>(ref this.mouseCapture, value);
         }
 
         #region IMouseCapture
@@ -57,51 +71,105 @@ namespace LogXtreme.WinDsk.TestBehaviors.ViewModels {
         // the events from the implementation of IMouseCapture causes the behavior
         // to invoke the UIElement.CaptureMouse(), UIElement.ReleaseMouseCapture() 
         // respectively.
-        public event EventHandler Capture = delegate { };
-        public event EventHandler Release = delegate { };
+        public event EventHandler CaptureMouse = delegate { };
+        public event EventHandler ReleaseMouseCapture = delegate { };
 
-        public void OnMouseDown(object sender, MouseCaptureEventArgs e) {
-            throw new NotImplementedException();
+        /// <summary>
+        /// The behavior sends OnMouseDown events to the IMouseCapture proxy
+        /// which in this case is the whole View Model but in general it needs 
+        /// not to be.
+        /// </summary>
+        /// <param name="sender">an isntace of the MouseCaptureBehavior</param>
+        /// <param name="e">an instance of MouseCaptureEventArgs</param>
+        public void OnMouseDown(
+            object sender, 
+            MouseCaptureEventArgs e) {
+
+            this.MouseDownPoint = new Point(e.X, e.Y);
         }
 
-        public void OnMouseMove(object sender, MouseCaptureEventArgs e) {
-            throw new NotImplementedException();
+        /// <summary>
+        /// The behavior sends OnMouseMove events to the IMouseCapture proxy
+        /// which in this case is the whole View Model but in general it needs 
+        /// not to be.
+        /// </summary>
+        /// <param name="sender">an isntace of the MouseCaptureBehavior</param>
+        /// <param name="e">an instance of MouseCaptureEventArgs</param>
+        public void OnMouseMove(
+            object sender, 
+            MouseCaptureEventArgs e) {
+
+            this.MouseMovePoint = new Point(e.X, e.Y);
         }
 
-        public void OnMouseUp(object sender, MouseCaptureEventArgs e) {
-            throw new NotImplementedException();
-        } 
+        /// <summary>
+        /// The behavior sends OnMouseDown events to the IMouseCapture proxy
+        /// which in this case is the whole View Model but in general it needs 
+        /// not to be.
+        /// </summary>
+        /// <param name="sender">an isntace of the MouseCaptureBehavior</param>
+        /// <param name="e">an instance of MouseCaptureEventArgs</param>
+        public void OnMouseUp(
+            object sender, 
+            MouseCaptureEventArgs e) {
+
+            this.MouseUpPoint = new Point(e.X, e.Y);
+        }
         #endregion
 
-        //public bool Enabled {
+        public bool StartCaptureEnabled {
 
-        //    get { return this.enabled; }
+            get { return this.startCaptureEnabled; }
 
-        //    set {
-        //        this.SetProperty<bool>(ref this.enabled, value);
-        //        this.notifyCommand.RaiseCanExecuteChanged();
-        //    }
-        //}
+            set {
 
-        //public ICommand NotifyCommand =>
-        //    this.notifyCommand;
+                this.SetProperty<bool>(ref this.startCaptureEnabled, value);
+                this.startCaptureCommand.RaiseCanExecuteChanged();
 
-        //private void ExecuteSomeCommand(object param) {
+                if (value) {
+                    this.ResetMouseCapturePoints();
+                }
+            }
+        }
 
-        //    string triggeredOn = $" {DateTime.Now}";
-        //    string triggeredAt = $"x=?, y=?";
+        public ICommand StartCaptureCommand =>
+            this.startCaptureCommand;
 
-        //    if (param is Point) {
+        private void ExecuteStartCapureCommand(object param) {
 
-        //        Point p = (Point) param;
+            // When an object captures the mouse, all mouse related events are treated 
+            // as if the object with mouse capture perform the event, even if the mouse 
+            // pointer is over another object. In this case it is relevant because this 
+            // behavior implies that its AssociateObject is the UIElement that captures
+            // the mouse events thus it is important that this behavior is applied to 
+            // the right UIElement in the visual tree (in the XAML).
+            this.CaptureMouse?.Invoke(this, EventArgs.Empty);
 
-        //        triggeredAt = $"x={p.X}, y={p.Y}";
-        //    }
+            this.StartCaptureEnabled = false;
+        }
+
+        private bool CanExecuteStartCaptureCommand(object param) => 
+            this.startCaptureEnabled;
+
+        public ICommand StopCaptureCommand =>
+            this.startCaptureCommand;
+
+        private void ExecuteStopCapureCommand(object param) {
+
+            this.ReleaseMouseCapture?.Invoke(this, EventArgs.Empty);
+
+            this.StartCaptureEnabled = true;
+        }
+
+        private bool CanExecuteStopCaptureCommand(object param) =>
+            this.startCaptureEnabled;
 
 
-        //    this.Message = $"Triggered on {triggeredOn} at {triggeredAt}";
-        //}
+        private void ResetMouseCapturePoints() {
 
-        //private bool CanExecuteSomeCommand(object param) => this.enabled;
+            this.MouseDownPoint = new Point();
+            this.MouseMovePoint = new Point();
+            this.MouseUpPoint = new Point();
+        }
     }
 }

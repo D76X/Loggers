@@ -12,12 +12,14 @@ namespace LogXtreme.WinDsk.Infrastructure.Behaviors {
     /// 
     /// Refs
     /// https://stackoverflow.com/questions/34984093/mouse-position-with-respect-to-image-in-wpf-using-mvvm/34984467#34984467
+    /// On UIElemet.MouseCapture and UIElement.ReleaseMouseCapture.
+    /// https://stackoverflow.com/questions/12148158/to-use-or-not-to-use-releasemousecapture
     /// https://msdn.microsoft.com/en-us/library/system.windows.uielement.capturemouse(v=vs.110).aspx
     /// https://msdn.microsoft.com/en-us/library/system.windows.uielement.releasemousecapture(v=vs.110).aspx
     /// </summary>
     public class MouseCaptureBehavior : Behavior<FrameworkElement> {
 
-        public static void SetMouseCaptureProxy(
+            public static void SetMouseCaptureProxy(
             DependencyObject source, 
             IMouseCapture
             value) {
@@ -68,12 +70,12 @@ namespace LogXtreme.WinDsk.Infrastructure.Behaviors {
             DependencyPropertyChangedEventArgs e) {
 
             if (e.OldValue is IMouseCapture) {
-                (e.OldValue as IMouseCapture).Capture -= OnCapture;
-                (e.OldValue as IMouseCapture).Release -= OnRelease;
+                (e.OldValue as IMouseCapture).CaptureMouse -= OnCapture;
+                (e.OldValue as IMouseCapture).ReleaseMouseCapture -= OnRelease;
             }
             if (e.NewValue is IMouseCapture) {
-                (e.NewValue as IMouseCapture).Capture += OnCapture;
-                (e.NewValue as IMouseCapture).Release += OnRelease;
+                (e.NewValue as IMouseCapture).CaptureMouse += OnCapture;
+                (e.NewValue as IMouseCapture).ReleaseMouseCapture += OnRelease;
             }
         }        
 
@@ -105,6 +107,12 @@ namespace LogXtreme.WinDsk.Infrastructure.Behaviors {
 
             if (behavior == null) { return; }
 
+            // When an object captures the mouse, all mouse related events are treated 
+            // as if the object with mouse capture perform the event, even if the mouse 
+            // pointer is over another object. In this case it is relevant because this 
+            // behavior implies that its AssociateObject is the UIElement that captures
+            // the mouse events thus it is important that this behavior is applied to 
+            // the right UIElement in the visual tree (in the XAML).
             behavior.AssociatedObject.CaptureMouse();
         }
 

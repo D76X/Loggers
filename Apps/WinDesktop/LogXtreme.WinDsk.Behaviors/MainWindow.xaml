@@ -240,12 +240,12 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="10*" />
                         <RowDefinition Height="2*" />
-                        <RowDefinition Height="2*" />
-                    </Grid.RowDefinitions>                    
+                        <RowDefinition Height="4*" />
+                    </Grid.RowDefinitions>
                     <Border Grid.Row="0"
                             x:Name="mouseTrackedRegionTab4"
                             Margin="10"
-                            CornerRadius="20">                        
+                            CornerRadius="20">
                         <Border.Style>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="Background">
@@ -256,34 +256,95 @@
                             </Style>
                         </Border.Style>
                         <i:Interaction.Behaviors>
-                            <infbehaviours:MouseCaptureBehavior MouseCaptureProxy="{Binding MouseCaptureProxy}"/>
+                            <infbehaviours:MouseCaptureBehavior MouseCaptureProxy="{Binding MouseCaptureProxy}" />
                         </i:Interaction.Behaviors>
                         <ContentControl HorizontalAlignment="Center"
                                         VerticalAlignment="Center">
-                            Mouse Tracked Region                            
+                            Mouse Tracked Region
                         </ContentControl>
                     </Border>
-                    <Grid Grid.Row="1">                        
+                    <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition />
-                        </Grid.ColumnDefinitions>                        
+                        </Grid.ColumnDefinitions>
                         <Button Grid.Column="0"
-                                Margin="3">                            
+                                Command="{Binding StartCaptureCommand}"
+                                Margin="3">
                             Start Capture
                         </Button>
                         <Button Grid.Column="1"
+                                Command="{Binding StopCaptureCommand}"
                                 Margin="3">
                             Stop Capture
                         </Button>
                     </Grid>
                     <Grid Grid.Row="2"
                           x:Name="statusBarTab4">
-                        <ContentControl Content="{Binding Message}"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        FontSize="15">
-                        </ContentControl>
+                        <UniformGrid Rows="2"
+                                     Columns="3">
+                            <UniformGrid.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="BorderBrush"
+                                            Value="Black" />
+                                    <Setter Property="BorderThickness"
+                                            Value="1" />
+                                    <Setter Property="Margin"
+                                            Value="1" />
+                                </Style>
+                                <DataTemplate x:Key="MousePointDataTemplate">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <ContentControl Content="X = " />
+                                            <ContentControl Content="{Binding X}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <ContentControl Content="Y = " />
+                                            <ContentControl Content="{Binding Y}" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </UniformGrid.Resources>
+                            <Border Grid.Row="0">
+                                <ContentControl HorizontalAlignment="Center"
+                                                VerticalAlignment="Center">
+                                    OnMouseDown
+                                </ContentControl>
+                            </Border>
+                            <Border Grid.Row="0">
+                                <ContentControl HorizontalAlignment="Center"
+                                                VerticalAlignment="Center">
+                                    OnMouseMove
+                                </ContentControl>
+                            </Border>
+                            <Border Grid.Row="0">
+                                <ContentControl HorizontalAlignment="Center"
+                                                VerticalAlignment="Center">
+                                    OnMouseUp
+                                </ContentControl>
+                            </Border>
+                            <Border Grid.Row="1">
+                                <ContentControl ContentTemplate="{StaticResource MousePointDataTemplate}">
+                                    <ContentControl.Content>
+                                        <Binding Path="MouseDownPoint" />
+                                    </ContentControl.Content>
+                                </ContentControl>
+                            </Border>
+                            <Border Grid.Row="1">
+                                <ContentControl ContentTemplate="{StaticResource MousePointDataTemplate}">
+                                    <ContentControl.Content>
+                                        <Binding Path="MouseMovePoint" />
+                                    </ContentControl.Content>
+                                </ContentControl>
+                            </Border>
+                            <Border Grid.Row="1">
+                                <ContentControl ContentTemplate="{StaticResource MousePointDataTemplate}">
+                                    <ContentControl.Content>
+                                        <Binding Path="MouseUpPoint" />
+                                    </ContentControl.Content>
+                                </ContentControl>
+                            </Border>
+                        </UniformGrid>
                     </Grid>
                 </Grid>
             </TabItem>

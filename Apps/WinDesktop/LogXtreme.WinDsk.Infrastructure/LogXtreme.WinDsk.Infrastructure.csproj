@@ -149,7 +149,11 @@
     <Compile Include="Exceptions\StrategyNullReferenceEception.cs" />
     <Compile Include="Interfaces\IBindableBase.cs" />
     <Compile Include="Interfaces\IMouseCapture.cs" />
+    <Compile Include="Interfaces\IMouseCaptureState.cs" />
     <Compile Include="MarkupExtensions\LinearGradientMarkupExtension.cs" />
+    <Compile Include="Models\MouseCaptureProxyBase.cs" />
+    <Compile Include="Models\MouseCaptureState.cs" />
+    <Compile Include="Models\MouseCaptureStateBase.cs" />
     <Compile Include="Models\ObservableCollectionEx.cs" />
     <Compile Include="Prism\DockingManagerDocumentsSourceSyncBehavior.cs" />
     <Compile Include="Prism\ModuleInitializer.cs" />
