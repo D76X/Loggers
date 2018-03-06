@@ -10,7 +10,7 @@ Use __CTLR+SHIFT+P__ type Python and find the option "start REPL".
 
 ## Excerpt from the VSCODE Python REPL
 
-In the following it is shown how to check and change the working directory of the Python REPL whic is alos repeated here [How do I "cd" in Python?](https://stackoverflow.com/questions/431684/how-do-i-cd-in-python)
+In the following it is shown how to check and change the working directory of the Python REPL whic is also repeated here [How do I "cd" in Python?](https://stackoverflow.com/questions/431684/how-do-i-cd-in-python)
 
 Windows PowerShell
 Copyright (C) Microsoft Corporation. All rights reserved.
@@ -45,5 +45,14 @@ Type "help", "copyright", "credits" or "license" for more information.
 > import os  
 > clear = lambda: os.system('cls')  
 > clear()
+
+## Reload a module in the REPL after having made changes to it
+
+https://stackoverflow.com/questions/684171/how-to-re-import-an-updated-package-while-in-python-interpreter
+
+In the REPL for Python 3
+
+>import imp  
+>imp.reload(theModuleImportName)
 
 ****
