@@ -22,12 +22,12 @@ class Point2D:
     """A class that models a point on a geometrical plane."""
 
     def __init__(self, x, y):
-        self._x = x 
+        self._x = x         
         self._y = y
 
     def _get_x(self):
         return self._x
-
+                                
     @property
     def x(self):
         return self._get_x()
