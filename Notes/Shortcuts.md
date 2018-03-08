@@ -2,6 +2,7 @@
 
 | Keys			    | Results			                                                    |
 | -------------     | ----------------------------------------------------------------------|
+| u     		    | Custom search engine see notes below.                                 |
 | CTRL + T		    | Open a New Tab.                                                       |
 | CTRL + W		    | Close current tab.                                                    |
 | CTRL + SHIFT + W  | Close current window!                                                 |
@@ -10,7 +11,13 @@
 | CTRL + PageDown   | Navigate tabs right to left                                           |
 | CTRL + N          | Open new incognito session.                                           |
 | ALT + D           | Set focus on the search bar.                                          |
-                
+
+## Move the focus from the address bar to the page
+
+With the shortcut [Alt+d] it is possible to focus the address bar. Normally, then you either type a new search or copy the URL to be pasted somewhere into another document. However, at some point you may want to move the focus back from the search bar to the page. In order to do that a custom search engine may be used. I have added one to my Chrome Settings as descibed in the article below. 
+
+[How to leave the address bar](http://xavierchow.github.io/2016/03/07/vimium-leave-address-bar/)
+
 ***
 
 # VSCODE shortcuts
