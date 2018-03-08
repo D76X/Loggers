@@ -43,6 +43,7 @@ namespace LogXtreme.WinDsk.TestBehaviors.ViewModels {
             get => isDataLodaed;
             private set => SetProperty<bool>(ref isDataLodaed, value);
         }
+
         /// <summary>
         /// This handler is used to test the HanldeViewLoadedEventBehaviour
         /// and has no importance in the Data Grid test.
