@@ -4,6 +4,11 @@ using System;
 namespace LogXtreme.WinDsk.Infrastructure.Interfaces {
 
     /// <summary>
+    /// A marker interface.
+    /// </summary>
+    public interface IMouseCaptureLogic { }
+
+    /// <summary>
     /// Interface that formalizes mouse interaction on the UI.
     /// Refs
     /// https://stackoverflow.com/questions/34984093/mouse-position-with-respect-to-image-in-wpf-using-mvvm/34984467#34984467
@@ -14,11 +19,20 @@ namespace LogXtreme.WinDsk.Infrastructure.Interfaces {
     /// </summary>
     public interface IMouseCapture {
 
+        /// <summary>
+        /// May hold a reference to the object that implements IMouseCapture
+        /// that is that provides the logic for <see cref="IMouseCapture"/>.
+        /// </summary>
+        IMouseCaptureLogic MouseCaptureLogic { get; set; }
+
         event EventHandler CaptureMouse;
+        void RaiseCaptureMouse(IMouseCaptureLogic sender, MouseCaptureEventArgs e);
+
         event EventHandler ReleaseMouseCapture;
+        void RaiseReleaseMouseCapture(IMouseCaptureLogic sender, MouseCaptureEventArgs e);
 
         void OnMouseDown(object sender, MouseCaptureEventArgs e);
         void OnMouseMove(object sender, MouseCaptureEventArgs e);
         void OnMouseUp(object sender, MouseCaptureEventArgs e);
-    }
+    }    
 }

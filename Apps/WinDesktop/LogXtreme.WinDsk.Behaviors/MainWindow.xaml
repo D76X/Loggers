@@ -234,16 +234,17 @@
                 </Grid>
             </TabItem>
             <TabItem DataContext="{Binding Tab4ViewModel}"
+                     infbehaviours:HanldeViewLoadedEventBehavior.LoadedMethodName="OnViewLoadedHandler"
                      Header="Tab4"
                      Name="Tab4">
                 <Grid ShowGridLines="True">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="10*" />
-                        <RowDefinition Height="2*" />
-                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Border Grid.Row="0"
-                            x:Name="mouseTrackedRegionTab4"
+                            x:Name="theFrameworkElementWithTheMouseCaptureBehaviorTab4"
                             Margin="10"
                             CornerRadius="20">
                         <Border.Style>
@@ -264,26 +265,27 @@
                         </ContentControl>
                     </Border>
                     <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0"
-                                Command="{Binding StartCaptureCommand}"
-                                Margin="3">
-                            Start Capture
-                        </Button>
-                        <Button Grid.Column="1"
-                                Command="{Binding StopCaptureCommand}"
-                                Margin="3">
-                            Stop Capture
-                        </Button>
+                        <Border BorderThickness="3"
+                                BorderBrush="Green">
+                            <ContentControl HorizontalAlignment="Center"
+                                            VerticalAlignment="Center">
+                                Mouse Capture Summary
+                            </ContentControl>
+                        </Border>                        
                     </Grid>
                     <Grid Grid.Row="2"
                           x:Name="statusBarTab4">
-                        <UniformGrid Rows="2"
-                                     Columns="3">
-                            <UniformGrid.Resources>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="BorderBrush"
                                             Value="Black" />
@@ -296,55 +298,73 @@
                                     <StackPanel>
                                         <StackPanel Orientation="Horizontal">
                                             <ContentControl Content="X = " />
-                                            <ContentControl Content="{Binding X}"/>
+                                            <ContentControl Content="{Binding X}" />
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal">
                                             <ContentControl Content="Y = " />
                                             <ContentControl Content="{Binding Y}" />
                                         </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <ContentControl Content="L = " />
+                                            <ContentControl Content="{Binding LeftButton}" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <ContentControl Content="R = " />
+                                            <ContentControl Content="{Binding RightButton}" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <ContentControl Content="M = " />
+                                            <ContentControl Content="{Binding MiddleButton}" />
+                                        </StackPanel>
                                     </StackPanel>
                                 </DataTemplate>
-                            </UniformGrid.Resources>
-                            <Border Grid.Row="0">
+                            </Grid.Resources>
+                            <Border Grid.Row="0"
+                                    Grid.Column="0">
                                 <ContentControl HorizontalAlignment="Center"
                                                 VerticalAlignment="Center">
                                     OnMouseDown
                                 </ContentControl>
                             </Border>
-                            <Border Grid.Row="0">
+                            <Border Grid.Row="0"
+                                    Grid.Column="1">
                                 <ContentControl HorizontalAlignment="Center"
                                                 VerticalAlignment="Center">
                                     OnMouseMove
                                 </ContentControl>
                             </Border>
-                            <Border Grid.Row="0">
+                            <Border Grid.Row="0"
+                                    Grid.Column="2">
                                 <ContentControl HorizontalAlignment="Center"
                                                 VerticalAlignment="Center">
                                     OnMouseUp
                                 </ContentControl>
                             </Border>
-                            <Border Grid.Row="1">
+                            <Border Grid.Row="1"
+                                    Grid.Column="0">
                                 <ContentControl ContentTemplate="{StaticResource MousePointDataTemplate}">
                                     <ContentControl.Content>
                                         <Binding Path="MouseDownPoint" />
                                     </ContentControl.Content>
                                 </ContentControl>
                             </Border>
-                            <Border Grid.Row="1">
+                            <Border Grid.Row="1"
+                                    Grid.Column="1">
                                 <ContentControl ContentTemplate="{StaticResource MousePointDataTemplate}">
                                     <ContentControl.Content>
                                         <Binding Path="MouseMovePoint" />
                                     </ContentControl.Content>
                                 </ContentControl>
                             </Border>
-                            <Border Grid.Row="1">
+                            <Border Grid.Row="1"
+                                    Grid.Column="2">
                                 <ContentControl ContentTemplate="{StaticResource MousePointDataTemplate}">
                                     <ContentControl.Content>
                                         <Binding Path="MouseUpPoint" />
                                     </ContentControl.Content>
                                 </ContentControl>
                             </Border>
-                        </UniformGrid>
+                        </Grid>
                     </Grid>
                 </Grid>
             </TabItem>
