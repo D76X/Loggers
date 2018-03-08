@@ -15,14 +15,30 @@
 
 # VSCODE shortcuts
 
-| Keys			    | Results			                                                    |
-| -------------     | ----------------------------------------------------------------------|
-| CTRL + SHIFT + P	| Commands.                                                             |
-| CTRL + TAB	    | Cycle through open tabs and worksets.                                 |
-| CTRL + SHIST + E	| Files.                                                                |
-| CTRL + SHIST + F	| Search.                                                               |
-| CTRL + SHIST + G	| Debug.                                                                |
-| CTRL + SHIST + X	| Extensions.                                                           |
+| Keys			        | Results			                                                    |
+| -------------         | ----------------------------------------------------------------------|
+| CTRL + SHIFT + P	    | Commands.                                                             |
+| CTRL + P      	    | File Navigation.                                                      |
+| CTRL + TAB    	    | Group navigation.                                                     |
+| CTRL + PgUu/PgDown    | Cycle through open tabs - like chrome.                                |
+| CTRL + K, CTRL + V    | Splits the view.                                                      |
+| CTRL + SHIFT + P ?	| Shows all available commands.                                         |
+| CTRL + SHIFT + P >	| Runs a commands i.e. > git                                            |
+| CTRL + SHIFT + P @	| Go to symbol                                                          |
+| CTRL + SHIFT + P @:	| Go to symbol with list ordered by cathegory.                          |
+| CTRL + TAB	        | Cycle through open tabs and worksets.                                 |
+| CTRL + SHIST + E	    | Files.                                                                |
+| CTRL + 1/2/3  	    | Cycle through the opne views.                                         |
+| CTRL + W          	| Close current file/view.                                              |
+| CTRL + SHIST + F	    | Search.                                                               |
+| CTRL + SHIST + G	    | Debug.                                                                |
+| CTRL + SHIST + X	    | Extensions.                                                           |
+| CTRL + P, CTRL + P	| View Previous File in History.                                        |
+
+## VSCODE Notes
+
+### VSCODE Accordion View
+Open three files in the editor and extend one of the views to its max width. Then by clicking any of teh views in teh editor it automatically expands the selected view to the same max width while minimizing the width of the remaining two views open in the editor. It is possible to cycle through the three views suing the shortcut CTRL+1, CTRL+2, CTRL+3.
 
 ***
 

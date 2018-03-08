@@ -2,7 +2,6 @@
 
 http://www.wpf-tutorial.com/  
 http://drwpf.com/blog/  
-https://wpftutorial.net/Home.html
 
 ***
 
@@ -217,3 +216,13 @@ public static readonly DependencyProperty MousePositionProperty =
 ```
 
 ***
+
+## WPF Drag & Drop
+
+D&D in WPF can be difficult to implement correctly. Below there are a number of useful resources which address this problem.
+
+1. [The WPF Drag & Dprop Gong library](https://github.com/punker76/gong-wpf-dragdrop) 
+2. [WPF Drag & Drop end to end](https://blogs.msdn.microsoft.com/jaimer/2007/07/12/drag-amp-drop-in-wpf-explained-end-to-end/)
+
+
+
