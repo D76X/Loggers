@@ -151,7 +151,6 @@
     <Compile Include="Interfaces\IMouseCapture.cs" />
     <Compile Include="Interfaces\IMouseCaptureState.cs" />
     <Compile Include="MarkupExtensions\LinearGradientMarkupExtension.cs" />
-    <Compile Include="Models\MouseCaptureProxyBase.cs" />
     <Compile Include="Models\MouseCaptureState.cs" />
     <Compile Include="Models\MouseCaptureStateBase.cs" />
     <Compile Include="Models\ObservableCollectionEx.cs" />
