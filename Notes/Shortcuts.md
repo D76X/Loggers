@@ -26,8 +26,9 @@ With the shortcut [Alt+d] it is possible to focus the address bar. Normally, the
 | -------------         | ----------------------------------------------------------------------|
 | CTRL + SHIFT + P	    | Commands.                                                             |
 | CTRL + P      	    | File Navigation.                                                      |
-| CTRL + TAB    	    | Group navigation.                                                     |
-| CTRL + PgUu/PgDown    | Cycle through open tabs - like chrome.                                |
+| CTRL + 1/2/..    	    | Select vie group.                                                     |
+| CTRL + TAB    	    | Group navigation dropdown to choose the tab to view in the group.     |
+| CTRL + PgUp/PgDown    | Cycle through open tabs - like chrome.                                |
 | CTRL + K, CTRL + V    | Splits the view.                                                      |
 | CTRL + SHIFT + P ?	| Shows all available commands.                                         |
 | CTRL + SHIFT + P >	| Runs a commands i.e. > git                                            |
@@ -41,8 +42,22 @@ With the shortcut [Alt+d] it is possible to focus the address bar. Normally, the
 | CTRL + SHIST + G	    | Debug.                                                                |
 | CTRL + SHIST + X	    | Extensions.                                                           |
 | CTRL + P, CTRL + P	| View Previous File in History.                                        |
+| SHIFT + ALT + F   	| Format file.                                                          |
+
+# VSCODE overridden and custom shortcuts
+
+| Keys			        | Results			                                                    |
+| -------------         | ----------------------------------------------------------------------|
+| CTRL + .	            | Go to tesrminal if focus is not on terminal.                          |
+| CTRL + .	            | Go to last view if focus is on terminal.                              |
+| Alt  + .	            | Toggle collapse lower tab.                                            |
 
 ## VSCODE Notes
+
+### VSCODE Keyboard shortcut editor
+
+[VSCODE Keybindings](https://code.visualstudio.com/docs/getstarted/keybindings)  
+[Add a custom keybinding](https://stackoverflow.com/questions/42796887/switch-focus-between-editor-and-integrated-terminal-in-visual-studio-code)
 
 ### VSCODE Accordion View
 Open three files in the editor and extend one of the views to its max width. Then by clicking any of teh views in teh editor it automatically expands the selected view to the same max width while minimizing the width of the remaining two views open in the editor. It is possible to cycle through the three views suing the shortcut CTRL+1, CTRL+2, CTRL+3.
