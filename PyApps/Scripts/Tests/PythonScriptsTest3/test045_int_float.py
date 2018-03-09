@@ -3,22 +3,27 @@ This module illustrates of the int and float built-in types in Python.
 
 Usage:
 
+    # Copy and paste all these commands in the terminal to see the outputs.
+    import os; os.chdir("C:\\GitHub\\Loggers\\PyApps\\Scripts\\Tests\\PythonScriptsTest3"); clear = lambda: os.system('cls'); import imp; import test045_int_float as t45; t45.test_module()
+
+    # The last two commands are specific to this module.
+    import test045_int_float as t45
+    t45.test_module()    
+
+    # Reload the module into the REPL after you make any changes to it.
+    import imp
+    imp.reload(t45)
+
+    # clear th REPL
+    clear = lambda: os.system('cls')  
+    clear() 
+
     # set the working directory in the REPL
     import os
     os.chdir("C:\\GitHub\\Loggers\\PyApps\\Scripts\\Tests\\PythonScriptsTest3")
-    os.getcwd()
+    os.getcwd()  
     
-    # clear th REPL
-    clear = lambda: os.system('cls')  
-    clear()   
-    
-    # load the module and run the test function
-    import test045_int_float as t
-    t.test_module()
-
-    # if you make changes reload the module and re-run the test function
-    import imp
-    imp.reload(t)  
+Results: 
 
     93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000
     sys.float_info(max=1.7976931348623157e+308, max_exp=1024, max_10_exp=308, min=2.2250738585072014e-308, min_exp=-1021, min_10_exp=-307, dig=15, mant_dig=53, epsilon=2.220446049250313e-16, radix=2, rounds=1)
@@ -60,8 +65,13 @@ from math import factorial as fact
 def test_module():   
     """Module-level tests."""
     # a very large integer!
+    print()
+    print("Python can handle integers of any size limited only by memory and manipulation time.")
     print(fact(100))    
+
     # the limits of float
+    print()
+    print("The available range of floating numbers.")
     print(sys.float_info)
     print("min_float={}".format(sys.float_info.min))
     print("max_float={}".format(sys.float_info.max))
@@ -72,3 +82,24 @@ def test_module():
     print()
     print("any conversion int => float for number larger than 2^53 will be wrong!")
     print("2^53+1={i} => float(2**53+1)={f}".format(i=2**53+1,f=float(2**53+1)))
+
+    # float supports Infinity, -Infinity and NaN
+    print()
+    print("float also supports Infinity, -Infinity and NaN and they perform as expected in aritmethics.")
+    nan = float('Nan')
+    print("float('Nan')={}".format(nan))
+    inf = float('Infinity')
+    minf = float('-Infinity')
+    print("float('Infinity') = {} , float('-Infinity') = {}".format(inf, minf))
+    print("1+nan={}".format(1+nan))
+    print("1+inf={}".format(1+inf))
+    print("-inf+1={}".format(minf+1))
+
+    # some interesting things with integers
+    # oddities with decimals
+    print()
+    print("some things to watch out!")
+    print("(-7) % 3 = {}".format((-7) % 3))
+    print("-9 is the first divisor of 3 that is smaller of -7 hence reminder = -7 - (-9) = 2")
+
+    

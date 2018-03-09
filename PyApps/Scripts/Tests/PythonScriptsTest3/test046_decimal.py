@@ -3,28 +3,29 @@ This module illustrates of the Decimal type class of the decimal built-in module
 
 Usage:
 
-    # all together!
-    import os; os.chdir("C:\\GitHub\\Loggers\\PyApps\\Scripts\\Tests\\PythonScriptsTest3"); clear = lambda: os.system('cls'); import imp;
+    # Copy and paste all these commands in the terminal to see the outputs.
+    import os; os.chdir("C:\\GitHub\\Loggers\\PyApps\\Scripts\\Tests\\PythonScriptsTest3"); clear = lambda: os.system('cls'); import imp; import test046_decimal as t46; t46.test_module()
+
+    # The last two commands are specific to this module.
+    import test046_decimal as t46
+    t46.test_module()
+
+    # Reload the module into the REPL after you make any changes to it.
+    import imp
+    imp.reload(t46)
+
+    # clear th REPL
+    clear = lambda: os.system('cls')  
+    clear() 
 
     # set the working directory in the REPL
     import os
     os.chdir("C:\\GitHub\\Loggers\\PyApps\\Scripts\\Tests\\PythonScriptsTest3")
-    os.getcwd()
-    
-    # clear th REPL
-    clear = lambda: os.system('cls')  
-    clear()   
-    
-    # load the module and run the test function
-    import test046_decimal as t
-    t.test_module()
-
-    # if you make changes reload the module and re-run the test function
-    import imp
-    imp.reload(t)  
+    os.getcwd()  
     
 """
 
+import sys
 import decimal
 from decimal import Decimal
 
@@ -38,6 +39,8 @@ def test_module():
     """Module-level tests."""
     
     # retrieve the configuration for Decimal.
+    print()
+    print("These are the default settings for the decimal module.")
     print(decimal.getcontext())
 
     # With floats 0.8-0.7 is not 0.1 because neither 0.7 nor 0.8 can be represented 
@@ -92,3 +95,46 @@ def test_module():
     print("{}*2={}".format(three_0, 2*three_0))
     print("{}*2={}".format(three_1, 2*three_1))
     print("{}*2={}".format(three_2, 2*three_2))
+
+    # decimal like float supports Infinity, -Infinity and NaN
+    print()    
+    print()
+    print("decimal also supports Infinity, -Infinity and NaN and they perform as expected in aritmethics.")
+    nan = Decimal('Nan')
+    print("Decimal('Nan')={}".format(nan))
+    inf = Decimal('Infinity')
+    minf = Decimal('-Infinity')
+    print("Decimal('Infinity') = {} , Decimal('-Infinity') = {}".format(inf, minf))
+    print("1+nan={}".format(1+nan))
+    print("1+inf={}".format(1+inf))
+    print("-inf+1={}".format(minf+1))
+
+    # decimal can be useed in arithmetics with any integer 
+    # however decimals cannot be used in arithmetics with float
+    print()
+    try:
+        Decimal(1.0)+1.0
+    except TypeError:
+        print("cannot do Decimal(1.0)+1.0 because 1.0 is a float.")
+        print("Unexpected error:", sys.exc_info()[0])
+
+    # oddities with decimals when compared to integers
+    # some interesting things with integers
+    # oddities with decimals
+    print()
+    print("with integers we have already seen this")
+    print("(-7) % 3 = {}".format((-7) % 3))
+    print("-9 is the first divisor of 3 that is smaller of -7 hence reminder = -7 - (-9) = 2")
+
+    print()
+    print("the same thing but this time with decimals gives -1 the remainder instead of 2 as in the case of the op with integers!")
+    print("Decimal(-7) % Decimal(3) = {}".format(Decimal(-7) % Decimal(3)))
+    print("with the decimal -6 is considered as the largest divisor of decimal 3 that is smaller than decimal -7 hence reminder = -7 - (-6)")
+    print('this is because Decimal is designed to adhere to IEEE854 decimal floating point standard.')
+    print('this is a problem as it might lead to differences in the behavior of functions with the same code but different numeric types')
+
+    # exemple of a function that behaves differently for integer and floats with respect to decimals
+    print()
+    def is_odd(n):
+        """Test whether a number is odd."""
+        return n % 2 == 1

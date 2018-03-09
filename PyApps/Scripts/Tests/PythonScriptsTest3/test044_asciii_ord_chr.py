@@ -2,7 +2,7 @@
 This module illustrates the use of the Python built-in functions
 ascii(), ord(), chr().
 
-Usage:
+    Usage:
 
     import test044_asciii_ord_chr as t
     t.test_module()  
