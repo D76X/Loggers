@@ -33,10 +33,10 @@ namespace LogXtreme.WinDsk.TestDocking.Prism {
             //    ModuleType = typeof(Modules.MainMenuModule).AssemblyQualifiedName,
             //});
 
-            //this.ModuleCatalog.AddModule(new ModuleInfo() {
-            //    ModuleName = typeof(Modules.ContentModule).Name,
-            //    ModuleType = typeof(Modules.ContentModule).AssemblyQualifiedName,
-            //});
+            this.ModuleCatalog.AddModule(new ModuleInfo() {
+                ModuleName = typeof(Modules.ContentModule).Name,
+                ModuleType = typeof(Modules.ContentModule).AssemblyQualifiedName,
+            });
 
             //this.ModuleCatalog.AddModule(new ModuleInfo() {
             //    ModuleName = typeof(Modules.StatusBarModule).Name,
