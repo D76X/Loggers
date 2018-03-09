@@ -11,12 +11,30 @@ using Xceed.Wpf.AvalonDock;
 namespace LogXtreme.WinDsk.Infrastructure.Prism {
 
     /// <summary>
+    /// This RegionBehavior is used to turn AvaloDock control into a Prism region.
+    /// 
     /// Refs
+    /// 
+    /// This is a course where it is explained how to design and use a Prism RegionBehavior
+    /// in relation to the TabControl. 
+    /// https://app.pluralsight.com/player?course=prism-mastering-tabcontrol&author=brian-lagunas&name=prism-mastering-tabcontrol-m4&clip=7&mode=live
+    /// 
+    /// These are two GitHub public repos where this is exact behavior is used. 
+    /// https://github.com/miseeger/MashedVVM/blob/master/Prism/RegionAdapter/AvalonDock/DockingManagerDocumentsSourceSyncBehavior.cs
+    /// https://github.com/alfredoperez/Central/blob/master/Central.Infrastructure/Behaviors/DockingManagerDocumentsSourceSyncBehavior.cs
+    /// 
+    /// This is the original thread where the issue of enhancing AvalonDock into a Prism region 
+    /// was discussed.
     /// http://avalondock.codeplex.com/discussions/390255
+    /// 
+    /// 
     /// https://stackoverflow.com/questions/17297581/get-hostcontrol-from-region-in-prism
+    /// 
     /// Refs on binding
     /// https://msdn.microsoft.com/en-us/library/system.windows.data.bindingoperations.setbinding(v=vs.110).aspx
     /// https://docs.microsoft.com/en-us/dotnet/framework/wpf/data/how-to-create-a-binding-in-code
+    /// https://www.codeproject.com/Articles/483507/AvalonDock-Tutorial-Part-Adding-a-Tool-Windo
+    /// https://github.com/Dirkster99/Edi
     /// </summary>
     public class DockingManagerDocumentsSourceSyncBehavior :
         RegionBehavior,
@@ -30,7 +48,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
 
         /// <summary>
         /// We want to turn a DockingManager into a region, thus the HostControl must be an instance 
-        /// of DockingManager. The Region Adapter that attaches thi behaviors must set the host 
+        /// of DockingManager. The Region Adapter that attaches this behaviors must set the host 
         /// control on it before adding to its collection of region behaviors.
         /// </summary>
         public DependencyObject HostControl {
