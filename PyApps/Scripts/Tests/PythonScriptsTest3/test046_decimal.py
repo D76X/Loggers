@@ -138,3 +138,51 @@ def test_module():
     def is_odd(n):
         """Test whether a number is odd."""
         return n % 2 == 1
+    print("the function is_odd tests numbers with (n % 2 == 1)")
+    print("it works as expected with int and float but not with decimal")
+    print("is_odd(1)={}".format(is_odd(1)))
+    print("is_odd(-1)={}".format(is_odd(-1)))
+    print("is_odd(2)={}".format(is_odd(2)))
+    print("is_odd(-2)={}".format(is_odd(-2)))
+    print("is_odd(1.0)={}".format(is_odd(1.0)))
+    print("is_odd(-1.0)={}".format(is_odd(-1.0)))
+    print("is_odd(2.0)={}".format(is_odd(2.0)))
+    print("is_odd(-2.0)={}".format(is_odd(-2.0)))
+
+    print()
+    print("with decimals is_odd gives the wrong answer on negatives!")
+    print("is_odd(Decimal('1'))={}".format(is_odd(Decimal('1'))))
+    print("is_odd(Decimal('-1'))={}".format(is_odd(Decimal('-1'))))
+    print("is_odd(Decimal('2'))={}".format(is_odd(Decimal('2'))))
+    print("is_odd(Decimal('-2'))={}".format(is_odd(Decimal('-2'))))
+    
+    print()
+    print("is_odd(Decimal('-1'))=False is wrong!")
+    print("This happens because Decimal(-1) % 2 = {} instead of 1".format(Decimal(-1) % 2))
+
+    # this can be fixed by rewriting is_odd to take into account of the way the module
+    # operator % works on decimals which is different than the way it works with int and
+    # floats
+    def is_odd_fixed(n):
+        """Tests whether a number is odd."""
+        return n % 2 != 0
+
+    print()
+    print("use is_odd_fixed instead of is_odd")
+    print("is_odd_fixed(1)={}".format(is_odd_fixed(1)))
+    print("is_odd_fixed(-1)={}".format(is_odd_fixed(-1)))
+    print("is_odd_fixed(2)={}".format(is_odd_fixed(2)))
+    print("is_odd_fixed(-2)={}".format(is_odd_fixed(-2)))
+    print("is_odd_fixed(1.0)={}".format(is_odd_fixed(1.0)))
+    print("is_odd_fixed(-1.0)={}".format(is_odd_fixed(-1.0)))
+    print("is_odd_fixed(2.0)={}".format(is_odd_fixed(2.0)))
+    print("is_odd_fixed(-2.0)={}".format(is_odd_fixed(-2.0)))
+
+    print()
+    print("is_odd_fixed works well with decimals too!")
+    print("is_odd_fixed(Decimal('1'))={}".format(is_odd_fixed(Decimal('1'))))
+    print("is_odd_fixed(Decimal('-1'))={}".format(is_odd_fixed(Decimal('-1'))))
+    print("is_odd_fixed(Decimal('2'))={}".format(is_odd_fixed(Decimal('2'))))
+    print("is_odd_fixed(Decimal('-2'))={}".format(is_odd_fixed(Decimal('-2'))))
+
+
