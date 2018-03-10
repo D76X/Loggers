@@ -106,11 +106,53 @@
     </ApplicationDefinition>
     <Compile Include="Interfaces\IContentView.cs" />
     <Compile Include="Interfaces\IContentViewModel.cs" />
+    <Compile Include="Interfaces\IDataGridView.cs" />
+    <Compile Include="Interfaces\IDataGridViewModel.cs" />
+    <Compile Include="Interfaces\IDataTreeView.cs" />
+    <Compile Include="Interfaces\IDataTreeViewModel.cs" />
+    <Compile Include="Interfaces\IDeviceTreeView.cs" />
+    <Compile Include="Interfaces\IDeviceTreeViewModel.cs" />
+    <Compile Include="Interfaces\IMainMenuView.cs" />
+    <Compile Include="Interfaces\IMainMenuViewModel.cs" />
+    <Compile Include="Interfaces\IPlottingView.cs" />
+    <Compile Include="Interfaces\IPlottingViewModel.cs" />
+    <Compile Include="Interfaces\IStatusBarView.cs" />
+    <Compile Include="Interfaces\IStatusBarViewModel.cs" />
     <Compile Include="Modules\ContentModule.cs" />
+    <Compile Include="Modules\DataGridModule.cs" />
+    <Compile Include="Modules\DataTreeModule.cs" />
+    <Compile Include="Modules\DeviceTreeModule.cs" />
+    <Compile Include="Modules\MainMenuModule.cs" />
+    <Compile Include="Modules\PlottingModule.cs" />
+    <Compile Include="Modules\StatusBarModule.cs" />
     <Compile Include="ViewModels\ContentViewModel.cs" />
+    <Compile Include="ViewModels\DataGridViewModel.cs" />
+    <Compile Include="ViewModels\DataTreeViewModel.cs" />
+    <Compile Include="ViewModels\DeviceTreeViewModel.cs" />
+    <Compile Include="ViewModels\MainMenuViewModel.cs" />
+    <Compile Include="ViewModels\PlottingViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="ViewModels\StatusBarViewModel.cs" />
     <Compile Include="Views\ContentView.xaml.cs">
       <DependentUpon>ContentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DataGridView.xaml.cs">
+      <DependentUpon>DataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DataTreeView.xaml.cs">
+      <DependentUpon>DataTreeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DeviceTreeView.xaml.cs">
+      <DependentUpon>DeviceTreeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainMenuView.xaml.cs">
+      <DependentUpon>MainMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlottingView.xaml.cs">
+      <DependentUpon>PlottingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatusBarView.xaml.cs">
+      <DependentUpon>StatusBarView.xaml</DependentUpon>
     </Compile>
     <Page Include="Shell.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -129,6 +171,30 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\ContentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DataGridView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DataTreeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DeviceTreeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PlottingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatusBarView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -11,9 +11,13 @@
              xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
              mc:Ignorable="d">
     <!--
+    
+    Iteration0
+    
     This was the original layout without AvalonDock support. It is based on three named Prism
     regions left, center and right. In substance we would like to replicate the same using 
     AvalonDock as a region.
+    
     -->
     <!--<Grid>
         <Grid.ColumnDefinitions>
@@ -38,7 +42,15 @@
         <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionRightPanels}"
                         Grid.Column="4" />
     </Grid>-->
-    <Grid>
+    
+    <!--
+    Iteration 1
+    
+    This is the simplest structure of the page that makes use of AvalonDock controls.
+    It's a DockingManger used as a Prism region with a contained LayoutAnchorable 
+    used as Prism region by menas of the attached property AvalonDockRegion.Name.
+    -->
+    <!--<Grid>
         <xcad:DockingManager x:Name="dockingManager"
                              prism:RegionManager.RegionName="DockingManagerRegion">
             <xcad:LayoutRoot x:Name="_layoutRoot">
@@ -50,5 +62,11 @@
                 </xcad:LayoutPanel>
             </xcad:LayoutRoot>
         </xcad:DockingManager>  
-    </Grid>
+    </Grid>-->
+    
+    <!--
+    Iteration 3
+    
+    Here we try to copy and paste the code of the main window of WinDsk.TestDocking
+    -->
 </UserControl>
