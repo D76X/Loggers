@@ -21,6 +21,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="test048_decimal_math.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="test042_str_repr.py" />
     <Compile Include="test043_reprlib.py">
       <SubType>Code</SubType>
@@ -28,6 +31,9 @@
     <Compile Include="test044_asciii_ord_chr.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="test045_int_float.py" />
+    <Compile Include="test046_decimal.py" />
+    <Compile Include="test047_decimal_settings.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
