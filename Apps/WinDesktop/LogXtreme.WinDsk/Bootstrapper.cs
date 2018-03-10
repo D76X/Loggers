@@ -3,6 +3,7 @@ using LogXtreme.WinDsk.Infrastructure.Services;
 using LogXtreme.WinDsk.Interfaces;
 using LogXtreme.WinDsk.Services;
 using LogXtreme.WinDsk.ViewModels;
+using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
 using Prism.Logging;
 using Prism.Modularity;
@@ -10,6 +11,8 @@ using Prism.Regions;
 using Prism.Unity;
 using System.Windows;
 using System.Windows.Controls;
+using Xceed.Wpf.AvalonDock;
+using Xceed.Wpf.AvalonDock.Layout;
 
 namespace LogXtreme.WinDsk {
 
@@ -119,8 +122,21 @@ namespace LogXtreme.WinDsk {
 
         protected override RegionAdapterMappings ConfigureRegionAdapterMappings() {
 
+            // configure all the default RegionAdapters of the Prism library
             RegionAdapterMappings mappings = base.ConfigureRegionAdapterMappings();
+
+            // register all the custom RegionAdapters with Prism.
             mappings.RegisterMapping(typeof(StackPanel), Container.Resolve<RegionAdapterStackPanel>());
+
+            // region adapters for the AvalonDock controls
+            mappings.RegisterMapping(
+                typeof(DockingManager),
+                new RegionAdapterDockingManager(ServiceLocator.Current.GetInstance<RegionBehaviorFactory>()));
+
+            mappings.RegisterMapping(
+                typeof(LayoutAnchorable),
+                new RegionAdapterLayoutAnchorable(ServiceLocator.Current.GetInstance<RegionBehaviorFactory>()));
+
 
             return mappings;
         }
