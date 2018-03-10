@@ -6,8 +6,16 @@
              xmlns:local="clr-namespace:LogXtreme.WinDsk.TestDocking.Prism.Views"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:inf="clr-namespace:LogXtreme.WinDsk.Infrastructure;assembly=LogXtreme.WinDsk.Infrastructure"
+             xmlns:infprism="clr-namespace:LogXtreme.WinDsk.Infrastructure.Prism;assembly=LogXtreme.WinDsk.Infrastructure"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
              mc:Ignorable="d">
-    <Grid>
+    <!--
+    This was the original layout without AvalonDock support. It is based on three named Prism
+    regions left, center and right. In substance we would like to replicate the same using 
+    AvalonDock as a region.
+    -->
+    <!--<Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="0.5" />
@@ -29,5 +37,18 @@
                       BorderBrush="Black" />
         <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionRightPanels}"
                         Grid.Column="4" />
+    </Grid>-->
+    <Grid>
+        <xcad:DockingManager x:Name="dockingManager"
+                             prism:RegionManager.RegionName="DockingManagerRegion">
+            <xcad:LayoutRoot x:Name="_layoutRoot">
+                <xcad:LayoutPanel Orientation="Horizontal">
+                    <xcad:LayoutDocumentPane />
+                    <xcad:LayoutAnchorablePane DockWidth="150">
+                        <xcad:LayoutAnchorable infprism:AvalonDockRegion.Name="SampleToolRegion" />                        
+                    </xcad:LayoutAnchorablePane>
+                </xcad:LayoutPanel>
+            </xcad:LayoutRoot>
+        </xcad:DockingManager>  
     </Grid>
 </UserControl>
