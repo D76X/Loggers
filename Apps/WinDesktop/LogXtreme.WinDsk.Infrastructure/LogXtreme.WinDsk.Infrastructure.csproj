@@ -154,6 +154,7 @@
     <Compile Include="Models\MouseCaptureState.cs" />
     <Compile Include="Models\MouseCaptureStateBase.cs" />
     <Compile Include="Models\ObservableCollectionEx.cs" />
+    <Compile Include="Prism\AvalonDockRegion.cs" />
     <Compile Include="Prism\DockingManagerDocumentsSourceSyncBehavior.cs" />
     <Compile Include="Prism\ModuleInitializer.cs" />
     <Compile Include="Prism\ModuleLoadingModeAttribute.cs" />
