@@ -74,7 +74,7 @@ Open three files in the editor and extend one of the views to its max width. The
 | Keys			    | Command			                                                    |
 | -------------     | ----------------------------------------------------------------------|
 | SHIFT+10       	| Right click (see notes below)                                         |
-| Ctrl+\,Ctrl+M 	| Team.TfsTeamExplorer                                                  |
+| Ctrl+\,Ctrl+M 	| View.TfsTeamExplorer                                                  |
 | Ctrl+0,Ctrl+G	    | Team.Git.GoToGitChanges                                               |
 
 ### Notes

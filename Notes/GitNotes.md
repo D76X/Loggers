@@ -2,6 +2,7 @@
 ## How to stach changes
 
 https://git-scm.com/book/en/v1/Git-Tools-Stashing  
+https://stackoverflow.com/questions/5737002/how-to-delete-a-stash-created-with-git-stash-create  
 
 Imagine that you have been working on a branch for some time and you have a bunch of uncommitted changes for it that are important but not yet in a state where you can commit them. However, for some region you need to switch branch i.e. you need to fix an urgent bug on master while the changes are on feature1 branch. In these cases before switching from feature1 to master you may want to stash the local changes. It is a sort of shelveset.
 

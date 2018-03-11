@@ -1,5 +1,9 @@
 # Extended WPF Toolkit by Exceed 
 
+## AvalonDoc Documentation
+
+- [Welcome to Xceed Toolkit Plus for WPF v3.6](https://xceed.com/wp-content/documentation/xceed-toolkit-plus-for-wpf/webframe.html#Welcome.html)  
+
 ## AvalonDock
 
 AvalonDock is one of the free components in the Extended WPF Toolkit. 
