@@ -32,20 +32,20 @@ namespace LogXtreme.WinDsk.TestDocking.Prism {
             base.ConfigureModuleCatalog();
 
             // add all the modules that must always be present in the application
-            //this.ModuleCatalog.AddModule(new ModuleInfo() {
-            //    ModuleName = typeof(Modules.MainMenuModule).Name,
-            //    ModuleType = typeof(Modules.MainMenuModule).AssemblyQualifiedName,
-            //});
+            this.ModuleCatalog.AddModule(new ModuleInfo() {
+                ModuleName = typeof(Modules.MainMenuModule).Name,
+                ModuleType = typeof(Modules.MainMenuModule).AssemblyQualifiedName,
+            });
 
             this.ModuleCatalog.AddModule(new ModuleInfo() {
                 ModuleName = typeof(Modules.ContentModule).Name,
                 ModuleType = typeof(Modules.ContentModule).AssemblyQualifiedName,
             });
 
-            //this.ModuleCatalog.AddModule(new ModuleInfo() {
-            //    ModuleName = typeof(Modules.StatusBarModule).Name,
-            //    ModuleType = typeof(Modules.StatusBarModule).AssemblyQualifiedName,
-            //});
+            this.ModuleCatalog.AddModule(new ModuleInfo() {
+                ModuleName = typeof(Modules.StatusBarModule).Name,
+                ModuleType = typeof(Modules.StatusBarModule).AssemblyQualifiedName,
+            });
 
             //this.ModuleCatalog.AddModule(new ModuleInfo() {
             //    ModuleName = typeof(Modules.DeviceTreeModule).Name,

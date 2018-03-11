@@ -67,6 +67,17 @@
     <!--
     Iteration 3
     
-    Here we try to copy and paste the code of the main window of WinDsk.TestDocking
+    In this iteration we only place the Prism ContentRegion as a single central 
+    block that is sandwiched between the MainMenuRegion on top and the StatusBarRegion
+    at the bottom.
     -->
+    <!--<Grid>
+        <Grid Background="LightCoral">
+            <ContentControl VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            FontSize="25">
+                ContentRegion
+            </ContentControl>
+        </Grid>
+    </Grid>-->
 </UserControl>
