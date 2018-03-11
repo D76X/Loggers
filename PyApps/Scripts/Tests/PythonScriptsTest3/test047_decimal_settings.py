@@ -1,5 +1,6 @@
 """
-This module illustrates of the Decimal type class of the decimal built-in module in Python.
+This module illustrates the Decimal type class of the decimal built-in module in Python.
+In particular it illusstrates how to change the settings for the decimal module. 
 
 Usage:
 
