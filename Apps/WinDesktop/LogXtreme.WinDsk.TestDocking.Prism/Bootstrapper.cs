@@ -47,15 +47,15 @@ namespace LogXtreme.WinDsk.TestDocking.Prism {
                 ModuleType = typeof(Modules.StatusBarModule).AssemblyQualifiedName,
             });
 
-            //this.ModuleCatalog.AddModule(new ModuleInfo() {
-            //    ModuleName = typeof(Modules.DeviceTreeModule).Name,
-            //    ModuleType = typeof(Modules.DeviceTreeModule).AssemblyQualifiedName,
-            //});
+            this.ModuleCatalog.AddModule(new ModuleInfo() {
+                ModuleName = typeof(Modules.DeviceTreeModule).Name,
+                ModuleType = typeof(Modules.DeviceTreeModule).AssemblyQualifiedName,
+            });
 
-            //this.ModuleCatalog.AddModule(new ModuleInfo() {
-            //    ModuleName = typeof(Modules.DataTreeModule).Name,
-            //    ModuleType = typeof(Modules.DataTreeModule).AssemblyQualifiedName,
-            //});
+            this.ModuleCatalog.AddModule(new ModuleInfo() {
+                ModuleName = typeof(Modules.DataTreeModule).Name,
+                ModuleType = typeof(Modules.DataTreeModule).AssemblyQualifiedName,
+            });
 
             //this.ModuleCatalog.AddModule(new ModuleInfo() {
             //    ModuleName = typeof(Modules.DataGridModule).Name,
