@@ -116,26 +116,26 @@
                     </xcad:DockingManager.DocumentHeaderTemplate>
                     <xcad:LayoutRoot x:Name="layoutRoot">
                         <xcad:LayoutPanel Orientation="Horizontal">
-                            <xcad:LayoutAnchorablePane x:Name="LeftAnchorablePaneInTheDockManager"
+                            <xcad:LayoutAnchorablePane x:Name="leftLayoutAnchorablePane"
                                                        DockWidth="200">
                                 <xcad:LayoutAnchorable infprism:AvalonDockRegion.Name="{Binding Source={x:Static inf:RegionNames.RegionDeviceTree}}"
                                                        ContentId="DeviceTree"
                                                        Title="Device Tree">
                                 </xcad:LayoutAnchorable>
                             </xcad:LayoutAnchorablePane>
-                            <xcad:LayoutDocumentPaneGroup x:Name="CentralDocumentPaneGroupInTheDockManager">
-                                <xcad:LayoutDocumentPane x:Name="CentralDocumentPaneInTheDockManager">
-                                    <xcad:LayoutDocument ContentId="DataGrid"
+                            <xcad:LayoutDocumentPaneGroup x:Name="centralDocumentPaneGroup">
+                                <xcad:LayoutDocumentPane x:Name="CentralDocumentPane">
+                                    <xcad:LayoutDocument ContentId="dataGridDocument"
                                                          Title="DataGrid"
                                                          IconSource="../Images/datagrid.png">
-                                        <ContentControl>
-                                            
-                                        </ContentControl>
+                                        <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionDataGrid}"
+                                                        x:Name="dataGrid"/>
                                     </xcad:LayoutDocument>
-                                    <xcad:LayoutDocument ContentId="Plotting"
+                                    <xcad:LayoutDocument ContentId="PlottingDocument"
                                                          Title="Plotting"
                                                          IconSource="../Images/plotting.png">
-
+                                        <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionPlotting}"
+                                                        x:Name="plotting" />
                                     </xcad:LayoutDocument>
                                 </xcad:LayoutDocumentPane>
                             </xcad:LayoutDocumentPaneGroup>

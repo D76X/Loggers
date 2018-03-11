@@ -57,10 +57,15 @@ namespace LogXtreme.WinDsk.TestDocking.Prism {
                 ModuleType = typeof(Modules.DataTreeModule).AssemblyQualifiedName,
             });
 
-            //this.ModuleCatalog.AddModule(new ModuleInfo() {
-            //    ModuleName = typeof(Modules.DataGridModule).Name,
-            //    ModuleType = typeof(Modules.DataGridModule).AssemblyQualifiedName,
-            //});
+            this.ModuleCatalog.AddModule(new ModuleInfo() {
+                ModuleName = typeof(Modules.DataGridModule).Name,
+                ModuleType = typeof(Modules.DataGridModule).AssemblyQualifiedName,
+            });
+
+            this.ModuleCatalog.AddModule(new ModuleInfo() {
+                ModuleName = typeof(Modules.PlottingModule).Name,
+                ModuleType = typeof(Modules.PlottingModule).AssemblyQualifiedName,
+            });
         }
 
         /// <summary>
