@@ -34,6 +34,7 @@
     <Compile Include="test045_int_float.py" />
     <Compile Include="test046_decimal.py" />
     <Compile Include="test047_decimal_settings.py" />
+    <Compile Include="test049_rationals_fractions.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

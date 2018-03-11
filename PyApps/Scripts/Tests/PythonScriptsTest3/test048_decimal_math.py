@@ -24,3 +24,21 @@ Usage:
     os.getcwd()  
     
 """
+
+import sys
+import decimal
+from decimal import Decimal
+import math
+
+def test_module(): 
+    """Module-level tests."""
+    # The functions of the math module CANNOT be use with the decimal type!
+    # Some alternatives are provided as methods on the Decimal class.
+    print("The functions of the math module CANNOT be use with the decimal type!")
+    print("Some alternatives are provided as methods on the Decimal class.")
+
+    # example
+    print("Decimal('0.81').sqrt()={}".format(Decimal('0.81').sqrt()))
+
+    # more example here https://docs.python.org/3/library/decimal.html
+    # ...
