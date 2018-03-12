@@ -380,9 +380,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9536517C-30D5-4170-91D8-A1A38E42C3CF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notes", "Notes", "{AF5A31BE-D3CE-409C-BCBA-D20FED2F8D8F}"
-	ProjectSection(SolutionItems) = preProject
-		PyApps\Notes\Python.txt = PyApps\Notes\Python.txt
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentModule", "Apps\WinDesktop\Modules\AppModules\ContentModule\ContentModule.csproj", "{6F2A2AFA-717B-49A7-92FD-015122540034}"
 EndProject
