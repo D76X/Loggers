@@ -22,7 +22,41 @@ Usage:
     # set the working directory in the REPL
     import os
     os.chdir("C:\\GitHub\\Loggers\\PyApps\\Scripts\\Tests\\PythonScriptsTest3")
-    os.getcwd()  
+    os.getcwd()
+
+Results:
+
+    Python can construct complex number from literals
+    2j = 2j
+    3+4j = (3+4j)
+    type(3+4j) = <class 'complex'>
+
+    The Complex conctructor can also be used
+    parenthesis arond the complex string are optionals that is 'a+jb'='(a+jb)'
+    no spaces are allowed that is complex('a + jb') produces ValueError
+    complex('2+3j') = (2+3j)
+    complex('(2+3j)') = (2+3j)
+    the components of a complex number are stored as floats!
+    (3+5j)
+    z1.real = 3.0
+    z1.imag = 5.0
+    conjugates!
+    (3-5j)
+    z1.conjugate() = (3-5j)
+
+    cmath.sqrt(-1) = 1j
+    cmath.pase(1+1j) = 0.7853981633974483
+    the module of a complex number is obtained by using the standard function abs
+    abs(1+1j) = 1.4142135623730951
+    cmath.polar(z1) = (1.4142135623730951, 0.7853981633974483)
+    can use tuple unpacking
+    m, p = cmath.polar(z1) => m = 1.4142135623730951 , p = 0.7853981633974483
+    z2 = cmath.rect(m, p) = (1.0000000000000002+1.0000000000000002j)
+
+    calculate the impedance Z of a LRC circuit
+    impedance([inductive(10), resistive(10), capacitive(5)]) = (10+5j)
+    m, p = cmath.polar(Z) => m = 11.180339887498949 , p = 0.4636476090008061
+    math.degrees(p) = 26.5650  
     
 """
 
@@ -30,6 +64,23 @@ Usage:
 # the c math module is provided which defines functions that takes complex 
 # args and return complex values
 import cmath
+import math
+
+# sample application
+def inductive(ohms):
+    """Returns 0+j*ohms=ZL"""
+    return complex(0.0, ohms)
+
+def capacitive(ohms):
+    """Returns 0-j*ohms=ZC"""
+    return complex(0.0, -ohms)
+
+def resistive(ohms):
+    """Returns ohms-j*0=ZC"""
+    return complex(ohms)
+
+def impedance(components):
+    return sum(components)
 
 def test_module(): 
     """Module-level tests."""
@@ -83,3 +134,12 @@ def test_module():
     z2 = cmath.rect(m, p)
     print("z2 = cmath.rect(m, p) = {}".format(z2))
 
+    # calculate the impedance Z of a LRC circuit
+    print()
+    print("calculate the impedance Z of a LRC circuit")
+    Z = impedance([inductive(10), resistive(10), capacitive(5)])
+    print("impedance([inductive(10), resistive(10), capacitive(5)]) = {}".format(Z))
+    m, p = cmath.polar(Z)
+    print("m, p = cmath.polar(Z) => m = {m} , p = {p}".format(m=m, p=p))
+    print("math.degrees(p) = {}".format(math.degrees(p)))
+    print("m = {}".format(m))
