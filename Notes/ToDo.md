@@ -25,6 +25,7 @@
 - Karnaugh Maps
 - RaspberryPi
 - C/C++
+- MAX11300
 
 # Learn or Refresh
 

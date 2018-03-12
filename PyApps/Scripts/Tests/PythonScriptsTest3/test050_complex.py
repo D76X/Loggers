@@ -26,6 +26,11 @@ Usage:
     
 """
 
+# the functions of the math module cannot be used with complex numbers so 
+# the c math module is provided which defines functions that takes complex 
+# args and return complex values
+import cmath
+
 def test_module(): 
     """Module-level tests."""
     
@@ -45,3 +50,36 @@ def test_module():
     print("no spaces are allowed that is complex('a + jb') produces ValueError")
     print("complex('2+3j') = {}".format(complex('2+3j')))
     print("complex('(2+3j)') = {}".format(complex('(2+3j)')))
+
+    # the components of a complex number are stored as floats!
+    print("the components of a complex number are stored as floats!")
+    z1 = 3+5j
+    print(z1)
+    print("z1.real = {}".format(z1.real))
+    print("z1.imag = {}".format(z1.imag))
+    # conjugates!
+    z2 = z1.conjugate()
+    print("conjugates!")
+    print(z2)    
+    print("z1.conjugate() = {}".format(z2))
+
+    # the functions of the math module cannot be used with complex numbers so 
+    # the c math module is provided which defines functions that takes complex 
+    # args and return complex values
+    print()
+    print("cmath.sqrt(-1) = {}".format(cmath.sqrt(-1)))
+    z1 = 1+1j
+    print("cmath.pase(1+1j) = {}".format(cmath.phase(z1)))
+    # the module of a complex number is obtained by using the standard function abs
+    print("the module of a complex number is obtained by using the standard function abs")
+    print("abs(1+1j) = {}".format(abs(z1)))
+    print("cmath.polar(z1) = {}".format(cmath.polar(z1)))
+    # can use tuple unpacking
+    print("can use tuple unpacking")
+    m, p = cmath.polar(z1)
+    print("m, p = cmath.polar(z1) => m = {m} , p = {p}".format(m=m, p=p))
+    # the reverse operation of cmath.polar is cmath.rect
+    # but there might be floating point rounding errors
+    z2 = cmath.rect(m, p)
+    print("z2 = cmath.rect(m, p) = {}".format(z2))
+
