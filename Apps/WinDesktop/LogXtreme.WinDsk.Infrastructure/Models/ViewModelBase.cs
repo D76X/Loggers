@@ -1,4 +1,5 @@
 ﻿using System;
+using Prism;
 using Prism.Mvvm;
 using Prism.Regions;
 
@@ -10,11 +11,14 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
     /// IConfirmNavigationRequest inherits from INavigationAware.
     /// 
     /// </summary>
-    public class ViewModelBase : 
-        BindableBase, 
-        IViewModelBase, 
-        IConfirmNavigationRequest, 
+    public class ViewModelBase :
+        BindableBase,
+        IActiveAware,
+        IViewModelBase,
+        IConfirmNavigationRequest,
         IRegionMemberLifetime {
+
+        private bool isActive;
 
         /// <summary>
         /// When a Navigation Request is made to the RegionManager and a view becomes the 
@@ -25,6 +29,36 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
         /// the view and view model are kept in memory.
         /// </summary>
         public virtual bool KeepAlive => true;
+
+        /// <summary>
+        /// IActiveAware.IsActive
+        /// Used by Prism to determine whether the view corresponding to this 
+        /// view model is the active view in the region it is hosted by. 
+        /// Override to implements csutom logic on the view model when the 
+        /// state of the view changes from active to non active or viceversa. 
+        /// </summary>
+        public virtual bool IsActive {
+            get => this.isActive;
+            set {
+
+                // do something here
+
+                if (SetProperty<bool>(ref isActive, value)) {
+
+                    this.IsActiveChanged?.Invoke(this, EventArgs.Empty);
+
+                    // or do something here
+
+                    // for example 
+                    // unload /load data
+                    // store/retrieve state
+                    // pack/unpack data
+                    // etc.
+                }
+            }
+        }
+
+        public event EventHandler IsActiveChanged;
 
         /// <summary> 
         /// IConfirmNavigationRequest inherits from INavigationAware.
@@ -39,7 +73,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
         /// <param name="navigationContext"></param>
         /// <param name="continuationCallback"></param>
         public virtual void ConfirmNavigationRequest(
-            NavigationContext navigationContext, 
+            NavigationContext navigationContext,
             Action<bool> continuationCallback) {
             // check NavigationContext...
             // check state and data...
@@ -53,7 +87,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
         /// When a Navigation Request is made to the RegionManager the IsNavigationTarget
         /// of each view instance implementing INavigationAware that exists in the target 
         /// region will be checked. If there is a INavigationAware instance that returns 
-        /// true that view is navigated to and beocomes the active view. If all the views 
+        /// true that view is navigated to and becomes the active view. If all the views 
         /// implementing INavigationAware in the target region retun false from their
         /// IsNavigationTarget a new instance of the requested type is resolved by the DI
         /// and becomes the acive view.
