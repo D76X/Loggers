@@ -41,6 +41,9 @@
     <Compile Include="test051_built_in_functions.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="test052_base_conversion.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

@@ -46,22 +46,46 @@ This post present an agebraic chain of identities that shows how to interpret th
 3. [Minimizing the expected loss](https://stats.stackexchange.com/questions/50783/minimizing-the-expected-loss?rq=1)
 
 4. [Explain how Pr(dx,dy) appears in the derivation of the expected prediction error](https://stats.stackexchange.com/questions/256669/explain-how-prdx-dy-appears-in-the-derivation-of-the-expected-prediction-error?rq=1)  
+[Expected Error Prediction Derivation](https://stats.stackexchange.com/questions/189560/expected-error-prediction-derivation)  
 
 ***
 
-## Reinforcement learning
+## Other kinds of learning algorithms
 
-- [Lecture 1 | Machine Learning (Stanford)](https://www.youtube.com/watch?v=UzxYlbK2c7E&t=3009s)  
-Professor Andrew Ng
-
-***
-
-### Unsupervised algorithms
+### Unsupervised learning algorithms
 
 [(ML 1.3) What is unsupervised learning?](https://www.youtube.com/watch?v=lANt56UOaSk&index=3&list=PLD0F06AA0D2E8FFBA)
 - Clustering
 - Dessity estimation
 - Dimensionality reduction
+
+### Semi-supervised learning algorithms & Psudo-labeling
+
+[(ML 1.4) Variations on supervised and unsupervised](https://www.youtube.com/watch?v=pytUuJPOnVI&list=PLD0F06AA0D2E8FFBA&index=4)  
+[Semi-supervised Learning explained](https://www.youtube.com/watch?v=b-yhKUINb7o)  
+
+### Active learning algorithms
+
+[(ML 1.4) Variations on supervised and unsupervised](https://www.youtube.com/watch?v=pytUuJPOnVI&list=PLD0F06AA0D2E8FFBA&index=4)  
+
+### Decision theory based on loss functions
+
+[(ML 1.4) Variations on supervised and unsupervised](https://www.youtube.com/watch?v=pytUuJPOnVI&list=PLD0F06AA0D2E8FFBA&index=4)  
+
+### Reinforcement learning (sequence of decisions)
+
+[(ML 1.4) Variations on supervised and unsupervised](https://www.youtube.com/watch?v=pytUuJPOnVI&list=PLD0F06AA0D2E8FFBA&index=4)  
+maximise the effects of a sequence of decisions 
+[Lecture 1 | Machine Learning (Stanford)](https://www.youtube.com/watch?v=UzxYlbK2c7E&t=3009s)  
+Professor Andrew Ng  
+example of good dog/bad dog  
+
+***
+## Approaches to machine learning
+
+### Generative vs Degenerative 
+
+[(ML 1.5) Generative vs discriminative models](https://www.youtube.com/watch?v=oTtow2Ui8vg&list=PLD0F06AA0D2E8FFBA&index=5)  
 
 ***
 
