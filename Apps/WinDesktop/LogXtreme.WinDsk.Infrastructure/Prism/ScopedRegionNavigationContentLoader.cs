@@ -27,7 +27,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
     /// The solution to the problem is described here.
     /// https://app.pluralsight.com/player?course=prism-mastering-tabcontrol&author=brian-lagunas&name=prism-mastering-tabcontrol-m4&clip=4&mode=live
     /// 
-    /// In this implementation add supports for scoped regions to the original implementation. 
+    /// This implementation add supports for scoped regions to the original implementation. 
     /// A view model may implement the custom interface <see cref="ICreateRegionManagerScope"/> and indicate to Prism 
     /// whether it needs to create a scoped region when it is diplayed. If a scoped region is requested one is created
     /// when the view is created and then the view and the view model are tested for IRegionManagerAware so that they
@@ -40,10 +40,10 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
     /// Problem 1 - avoiding collisions on named region on a the same region manager.        
     /// 
     /// The names of the regions added to a region manager must be unique. If an attempt to add a named region to a 
-    /// region manager in which such name alerady exists is made Prism crashes with an exception.
+    /// region manager in which such name already exists is made Prism crashes with an exception.
     /// 
-    /// This is important in general crucial when working with the TabControl as a Prism region. In such case any time 
-    /// a new tab is added to the TabControl we want a new scoped region to be created for the view that is displayed in 
+    /// This is crucial when working with the TabControl as a Prism region. In such case any time a new tab is added 
+    /// to the TabControl we want a new scoped region to be created for the view that is displayed in 
     /// each tab individual tab. This is necassary when the view in a tab of the tab control defines its own regions.
     /// Lets assume Tab 1 displays ViewA/ViewModelA and that ViewA declares a control that is made into a Prism named 
     /// region using the attached property RegionManager.RegionName="SomeChildRegionName" then when a new tab for the 
@@ -59,15 +59,15 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
     /// IRegionNavigationContentLoader.LoadContent below. Here it is checked for ICreateRegionManagerScope and if the
     /// view or view model implements it a decision can be made whether or not the new view needs a scoped region. 
     /// All the view models of views that should be displayed in a TabControl should support ICreateRegionManagerScope
-    /// and request a scoped region especially of they have child regions defined in them and multiple instances of the 
-    /// same view should be siplayed in the same TabControl.
+    /// and request a scoped region especially if they have child regions defined in them and multiple instances of the 
+    /// same view should be diplayed in the same TabControl.
     /// 
     /// Problems 2 - navigation from a child view within a tab of a tab control.
     /// 
     /// We need the the view or/and the view model of the view of a tab item in TabControl control to retain a reference
-    /// to the scoped region manager of the tab item in order to properly issue navigation requests within it.The solution 
+    /// to the scoped region manager of the tab item in order to properly issue navigation requests within it. The solution 
     /// to this problem is the custom Prism infrastructure based on IRegionManagerAware and RegionManagerAwareBehavior to
-    /// which it is referred to fo the details.
+    /// which it is referred to for all the details.
     /// 
     /// </summary>
     public class ScopedRegionNavigationContentLoader : IRegionNavigationContentLoader {
