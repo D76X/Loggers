@@ -10,17 +10,18 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
     /// This is a custom Prism region behaviour and must be registered with the Bootstrapper 
     /// to be invoked in the life cycle of a Prism application.
     ///  
-    /// This modified behavior solves the problem of cross-shell navigation in Prims 
-    /// applications that might have multiple shels each having its own RegionManager.
+    /// This modified behavior solves the problem of cross-shell navigation in Prism
+    /// applications that might have multiple shells each having its own RegionManager.
     /// 
     /// This behavior looks at the changes of Active Views of a region and when a view is added 
-    /// to a region the view's RegionManager is used as values of the view model's property 
+    /// to a region the view's RegionManager is used as value of the view model's property 
     /// IRegionManagerAware.RegionManager when the view model implements IRegionManagerAware. 
-    /// This should be the cases for any view model in a Prism application with multiple shells.
+    /// This should be the case for any view model in a Prism application with multiple shells.
     /// 
-    /// In this way the view model can retain a reference to the RegionManager of the corresponding
-    /// view and this can be used when a navigation request is made instead of the global 
-    /// RegionManager that in general is the RegionManager of the first shell created.
+    /// In this way the view model can retain a reference to the RegionManager of the 
+    /// corresponding view and this can be used when a navigation request is made instead of the 
+    /// global RegionManager that in general is the RegionManager of the first shell created
+    /// when the application starts in the Bootstrapper.
     ///     
     /// </summary>
     public class RegionManagerAwareBehavior : RegionBehavior {
