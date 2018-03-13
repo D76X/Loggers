@@ -6,7 +6,7 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:inf="clr-namespace:LogXtreme.WinDsk.Infrastructure;assembly=LogXtreme.WinDsk.Infrastructure"
-             xmlns:actions="clr-namespace:LogXtreme.WinDsk.Infrastructure.Actions;assembly=LogXtreme.WinDsk.Infrastructure"
+             xmlns:triggeractions="clr-namespace:LogXtreme.WinDsk.Infrastructure.TriggerActions;assembly=LogXtreme.WinDsk.Infrastructure"
              xmlns:localNames="clr-namespace:LogXtreme.WinDsk.Modules.TestModules.ModuleD.Names"
              mc:Ignorable="d">
 
@@ -32,7 +32,7 @@
                                     Grid.Column="1">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
-                                        <actions:CloseTabAction />
+                                        <triggeractions:CloseTabAction />
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </Button>

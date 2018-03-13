@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Interactivity;
 
-namespace LogXtreme.WinDsk.Infrastructure.Actions {
+namespace LogXtreme.WinDsk.Infrastructure.TriggerActions {
 
     /// <summary>
     /// This is an implementation of TriggerAction<T> that can be used with an T=Button.
