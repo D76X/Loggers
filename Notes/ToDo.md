@@ -20,6 +20,7 @@
 
 # Firmware
 
+- VOLTERA PCB PRINTER
 - Updates to DS PCB 7.1 to >= 8.0
 - State Machine
 - FPGAs
@@ -89,7 +90,7 @@
 # Specials
 
 - Blog
-- Pluralsight courses
+- Pluralsight courses => ZEROMQ + Machine Learning + Phaser + Pixijs + ReactiveUI
 - Youtube channel
 - Fayman
 - Conto arancio
