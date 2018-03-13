@@ -10,6 +10,8 @@
 |                           | GIT, writing & editing some docs                             |
 |                           | Recovered complete system crash from Macrium backup          |
 |                           | Updates to Macrium 7.0 on Lorentz and Cinzia's PC `          |
+|                           | German every day                                             |
 | 12/03/2018                | TabControl+Docking prototype, ML work, Python, .NET Ecosystem|
-|                           | searched new domain name                                     |
+|                           | searched new domain name for new game site                   |
+|                           | German                                                       |
 | 13/03/2018                |     |
