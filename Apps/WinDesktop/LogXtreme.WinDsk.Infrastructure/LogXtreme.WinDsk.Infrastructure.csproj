@@ -128,7 +128,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Actions\CloseTabAction.cs" />
+    <Compile Include="TriggerActions\CloseTabAction.cs" />
     <Compile Include="Behaviors\BindVisualStateBehavior.cs" />
     <Compile Include="Behaviors\ClickBehavior.cs" />
     <Compile Include="Behaviors\HanldeViewLoadedEventBehavior.cs" />
