@@ -4,7 +4,10 @@ using System;
 
 namespace LogXtreme.WinDsk.TestDocking.Prism.ViewModels {
 
-    public class ContentViewModel : BindableBase, IContentViewModel, IDisposable {
+    public class ContentViewModel : 
+        BindableBase, 
+        IContentViewModel, 
+        IDisposable {
 
         public ContentViewModel() { }
 

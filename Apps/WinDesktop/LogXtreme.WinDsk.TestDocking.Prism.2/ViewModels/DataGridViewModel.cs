@@ -3,7 +3,10 @@ using Prism.Mvvm;
 using System;
 
 namespace LogXtreme.WinDsk.TestDocking.Prism.ViewModels {
-    public class DataGridViewModel : BindableBase, IDataGridViewModel, IDisposable {
+    public class DataGridViewModel : 
+        BindableBase, 
+        IDataGridViewModel, 
+        IDisposable {
 
         public DataGridViewModel() { }
 

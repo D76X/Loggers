@@ -12,15 +12,42 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"
                            MinHeight="10" />
+            <!--
+            to simplify the logic for navigation in this demo we 
+            embed the menu in the shell hence the extra row below.
+            This spares the pain to have to create the menu dinamically
+            from the modules.
+            -->
+            <RowDefinition Height="Auto"
+                           MinHeight="10" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto"
                            MinHeight="10" />
         </Grid.RowDefinitions>
         <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionMainMenu}"
                         Grid.Row="0" />
+        <DockPanel Grid.Row="1" x:Name="menuEmbeddedInTheShell">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Open Shell"
+                          Command="{Binding OpenShellCommand}"
+                          CommandParameter="DeviceTree" />
+                <MenuItem Header="Open Device Tree"
+                          Command="{Binding NavigateCommand}"
+                          CommandParameter="DeviceTree" />
+                <MenuItem Header="Open Data Tree"
+                          Command="{Binding NavigateCommand}"
+                          CommandParameter="DataTree" />
+                <MenuItem Header="Open Data Grid"
+                          Command="{Binding NavigateCommand}"
+                          CommandParameter="DataGrid" />
+                <MenuItem Header="Open Plotting"
+                          Command="{Binding NavigateCommand}"
+                          CommandParameter="Plotting" />
+            </Menu>
+        </DockPanel>
         <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionContent}"
-                        Grid.Row="1" />
-        <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionStatusBar}"
                         Grid.Row="2" />
+        <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionStatusBar}"
+                        Grid.Row="3" />
     </Grid>
 </Window>

@@ -10,7 +10,7 @@
         <ContentControl VerticalAlignment="Center"
                         HorizontalAlignment="Left"
                         FontSize="25">
-            MainMenuRegion
+            MainMenuRegionPlaceholderOnlyForShow
         </ContentControl>
     </Grid>
 </UserControl>
