@@ -128,6 +128,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\IShellView.cs" />
+    <Compile Include="Models\IShellViewModel.cs" />
+    <Compile Include="Prism\ShellServiceBase.cs" />
     <Compile Include="TriggerActions\CloseTabAction.cs" />
     <Compile Include="Behaviors\BindVisualStateBehavior.cs" />
     <Compile Include="Behaviors\ClickBehavior.cs" />
