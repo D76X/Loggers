@@ -1,6 +1,6 @@
-﻿using LogXtreme.WinDsk.Infrastructure.Prism;
+﻿using LogXtreme.WinDsk.Infrastructure.Models;
+using LogXtreme.WinDsk.Infrastructure.Prism;
 using LogXtreme.WinDsk.Infrastructure.Services;
-using LogXtreme.WinDsk.TestDocking.Prism.Interfaces;
 using LogXtreme.WinDsk.TestDocking.Prism.Properties;
 using LogXtreme.WinDsk.TestDocking.Prism.Services;
 using LogXtreme.WinDsk.TestDocking.Prism.ViewModels;
