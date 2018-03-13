@@ -1,7 +1,6 @@
 ﻿using LogXtreme.WinDsk.Infrastructure.Models;
 using LogXtreme.WinDsk.Infrastructure.Prism;
 using LogXtreme.WinDsk.Infrastructure.Services;
-using LogXtreme.WinDsk.Interfaces;
 using Prism.Regions;
 
 namespace LogXtreme.WinDsk.ViewModels {

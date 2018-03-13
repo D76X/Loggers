@@ -1,6 +1,6 @@
-﻿using LogXtreme.WinDsk.Infrastructure.Prism;
+﻿using LogXtreme.WinDsk.Infrastructure.Models;
+using LogXtreme.WinDsk.Infrastructure.Prism;
 using LogXtreme.WinDsk.Infrastructure.Services;
-using LogXtreme.WinDsk.Interfaces;
 using LogXtreme.WinDsk.Services;
 using LogXtreme.WinDsk.ViewModels;
 using Microsoft.Practices.ServiceLocation;

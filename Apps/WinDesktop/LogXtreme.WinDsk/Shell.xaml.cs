@@ -1,5 +1,4 @@
 ﻿using LogXtreme.WinDsk.Infrastructure.Models;
-using LogXtreme.WinDsk.Interfaces;
 using System.Windows;
 
 namespace LogXtreme.WinDsk {
