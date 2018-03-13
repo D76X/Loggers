@@ -1,5 +1,5 @@
 """
-This module illustrates the use of some of the most useful built-in functions in Python.
+This module illustrates the use of some of the built-in base conversion functions in Python.
 
 Remember
 
@@ -34,6 +34,18 @@ Usage:
     os.getcwd()
 
 Results:
+
+    0b101010=42
+    bin(b)=0b101010
+
+    0o52=42
+    oct(0o52)=0o52
+
+    0x2a=42
+    hex(0x2a)=0x2a
+
+    use slicing to remove the prefixes 0x, 0b, 0o
+    hs[2:]=2a
 
 """
 

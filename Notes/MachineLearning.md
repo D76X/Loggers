@@ -1,4 +1,4 @@
-# Machine Learning
+# Machine Learning & AI
 
 ## Resouces
 
@@ -13,6 +13,8 @@ Professor Andrew Ng
 
 4. [Introduction to Convolutional Neural Networks for Visual Recognition](https://www.youtube.com/watch?v=vT1JzLTH4G4)  
 Stanford University School of Engineering
+
+5. [Machine Learning Gorup at Microsoft Research](https://www.microsoft.com/en-us/research/group/machine-learning-research-group/)  
 
 ***
 
@@ -67,6 +69,7 @@ This post present an agebraic chain of identities that shows how to interpret th
 ### Active learning algorithms
 
 [(ML 1.4) Variations on supervised and unsupervised](https://www.youtube.com/watch?v=pytUuJPOnVI&list=PLD0F06AA0D2E8FFBA&index=4)  
+[Active Learning and Annotations - Microsoft Research](https://www.youtube.com/watch?v=FE1r7_SQq6Y)
 
 ### Decision theory based on loss functions
 
