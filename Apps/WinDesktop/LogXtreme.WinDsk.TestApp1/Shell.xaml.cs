@@ -1,6 +1,4 @@
-﻿using LogXtreme.WinDsk.Infrastructure;
-using System.Windows;
-using LogXtreme.WinDsk.Interfaces;
+﻿using System.Windows;
 using LogXtreme.WinDsk.Infrastructure.Models;
 
 namespace LogXtreme.WinDsk {

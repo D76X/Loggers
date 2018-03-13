@@ -9,10 +9,11 @@ using LogXtreme.WinDsk.Infrastructure;
 using LogXtreme.WinDsk.Modules.TestModules.ModuleA;
 using LogXtreme.WinDsk.Modules.TestModules.ModuleB;
 using LogXtreme.WinDsk.Modules.TestModules.ModuleC;
-using LogXtreme.WinDsk.Interfaces;
 using LogXtreme.WinDsk.Modules.TestModules.ModuleD;
 using LogXtreme.WinDsk.Infrastructure.Prism;
 using LogXtreme.WinDsk.Infrastructure.Services;
+using LogXtreme.WinDsk.Infrastructure.Models;
+using LogXtreme.WinDsk.Services;
 
 namespace LogXtreme.WinDsk {
     public class Bootstrapper: UnityBootstrapper {        
