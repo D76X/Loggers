@@ -5,11 +5,14 @@
 1. [Probabilistic Systems Analysis and Applied Probability](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-041-probabilistic-systems-analysis-and-applied-probability-fall-2010/)  
 MIT OpenCourseWare
 
-
-2. [Introduction to Convolutional Neural Networks for Visual Recognition](https://www.youtube.com/watch?v=vT1JzLTH4G4)  
-Stanford University School of Engineering
+2. [Lecture 1 | Machine Learning (Stanford)](https://www.youtube.com/watch?v=UzxYlbK2c7E&t=3009s)  
+Professor Andrew Ng  
+[Lecture Notes](http://cs229.stanford.edu/notes/cs229-notes1.pdf)
 
 3. [Machine Learning - overview and applications](https://www.youtube.com/watch?v=yDLKJtOVx5c&list=PLD0F06AA0D2E8FFBA) 
+
+4. [Introduction to Convolutional Neural Networks for Visual Recognition](https://www.youtube.com/watch?v=vT1JzLTH4G4)  
+Stanford University School of Engineering
 
 ***
 
@@ -43,6 +46,22 @@ This post present an agebraic chain of identities that shows how to interpret th
 3. [Minimizing the expected loss](https://stats.stackexchange.com/questions/50783/minimizing-the-expected-loss?rq=1)
 
 4. [Explain how Pr(dx,dy) appears in the derivation of the expected prediction error](https://stats.stackexchange.com/questions/256669/explain-how-prdx-dy-appears-in-the-derivation-of-the-expected-prediction-error?rq=1)  
+
+***
+
+## Reinforcement learning
+
+- [Lecture 1 | Machine Learning (Stanford)](https://www.youtube.com/watch?v=UzxYlbK2c7E&t=3009s)  
+Professor Andrew Ng
+
+***
+
+### Unsupervised algorithms
+
+[(ML 1.3) What is unsupervised learning?](https://www.youtube.com/watch?v=lANt56UOaSk&index=3&list=PLD0F06AA0D2E8FFBA)
+- Clustering
+- Dessity estimation
+- Dimensionality reduction
 
 ***
 

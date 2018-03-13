@@ -30,6 +30,8 @@
 
 # Learn or Refresh
 
+- StyleCop
+- Wix
 - 3D Printing
 - Moq
 - Apache Cordova
@@ -86,4 +88,10 @@
 
 # Specials
 
+- Blog
+- Pluralsight courses
+- Youtube channel
 - Fayman
+- Conto arancio
+- Investments
+- W10 on laptop
