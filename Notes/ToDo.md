@@ -20,6 +20,7 @@
 
 # Firmware
 
+- Updates to DS PCB 7.1 to >= 8.0
 - State Machine
 - FPGAs
 - Karnaugh Maps
@@ -32,6 +33,7 @@
 - 3D Printing
 - Moq
 - Apache Cordova
+- Android
 - VSCODE
 - git
 - Markdown
@@ -41,7 +43,7 @@
 - Expression Blend
 - ReactiveUI
 - RX
-- .NET
+- .NET Internals
 - Reflection
 - ASP.NET Core
 - OSWAP
