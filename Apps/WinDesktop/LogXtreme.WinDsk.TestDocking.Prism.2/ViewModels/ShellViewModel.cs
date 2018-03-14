@@ -1,4 +1,5 @@
-﻿using LogXtreme.WinDsk.Infrastructure.Models;
+﻿using LogXtreme.WinDsk.Infrastructure;
+using LogXtreme.WinDsk.Infrastructure.Models;
 using LogXtreme.WinDsk.Infrastructure.Prism;
 using LogXtreme.WinDsk.Infrastructure.Services;
 using Prism.Commands;
@@ -18,6 +19,7 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.ViewModels {
         public DelegateCommand<string> NavigateCommand { get; private set; }
 
         private int id;
+        private string lastUriNavigatedTo;
 
         public ShellViewModel(IShellService shellService) {
 
@@ -38,8 +40,9 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.ViewModels {
             private set { this.SetProperty(ref this.id, value); }
         }
 
-        private void Navigate(string viewName) {
-            throw new NotImplementedException();
+        public string LastUriNavigatedTo {
+            get { return this.lastUriNavigatedTo; }
+            set { SetProperty(ref this.lastUriNavigatedTo, value); }
         }
 
         private void OpenShell(string viewName) {
@@ -47,5 +50,22 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.ViewModels {
             var shell = this.shellService.CreateShell();
             this.shellService.ShowShell(shell, viewName);
         }
+
+        private void Navigate(string viewName) {
+
+            var parameters = new NavigationParameters();
+            parameters.Add(NavigationRequestParametersBase.KeyNavigationRequestedBy, this);
+
+            this.RegionManager.RequestNavigate(
+                RegionNames.RegionContent,
+                new Uri(viewName, UriKind.Relative),
+                NavigateComplete,
+                parameters);
+        }        
+
+        private void NavigateComplete(NavigationResult navigationResult) {
+
+            this.LastUriNavigatedTo = navigationResult.Context.Uri.ToString();
+        }        
     }
 }

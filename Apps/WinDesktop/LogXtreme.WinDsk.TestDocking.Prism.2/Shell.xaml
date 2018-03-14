@@ -21,6 +21,13 @@
             <RowDefinition Height="Auto"
                            MinHeight="10" />
             <RowDefinition Height="*" />
+            
+            <!--
+            This row hosts the last navigated to URI.
+            -->
+            <RowDefinition Height="Auto"
+                           MinHeight="10" />
+            
             <RowDefinition Height="Auto"
                            MinHeight="10" />
         </Grid.RowDefinitions>
@@ -30,20 +37,26 @@
             <Menu DockPanel.Dock="Top">
                 
                 <!--
-                When a new Shell is open the command must tell the 
-                shell service which view the new shell is supposed 
-                to set as active view as soon as teh shell is ready.
-                This view must be one of the views that are registered
-                by the modules of the applications. The simplest is 
-                to set the ContentView from the ContentModule as the
-                active view for the nely created Shell. This is done
-                by setting CommandParameter="ContentView" which is 
-                eventually passed down to the ShellService.
-                -->
+                When a new Shell is open the command must tell the shell service which view the 
+                new shell is supposed to set as active view as soon as teh shell is ready.
+                This view must be one of the views that are registered by the modules of the 
+                applications. The simplest is to set the ContentView from the ContentModule as 
+                the active view for the nely created Shell. This is done by setting 
+                CommandParameter="ContentView" which is  eventually passed down to the ShellService.
+                -->              
                 <MenuItem Header="Open Shell"
                           Command="{Binding OpenShellCommand}"
                           CommandParameter="ContentView" />
-                
+
+                <!--
+                The CommandParameter for the command bound to the menu items must be the full name 
+                of one of the views that are registered by the modules i.e. ModuleS.Views.SomeView.
+                Typically the menu is built dynamically by coding the modules to register their own
+                menu items with a menu service that is available at application level. In this
+                prototype we have simplified the implementation by giving up on this aspect so to 
+                better focus on the composition of the views into AvalonDock and the navigation to 
+                the region.
+                -->
                 <MenuItem Header="Open Device Tree"
                           Command="{Binding NavigateCommand}"
                           CommandParameter="DeviceTreeView" />
@@ -65,7 +78,9 @@
         -->
         <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionContent}"
                         Grid.Row="2" />
+        <ContentControl Grid.Row="3" Content="{Binding LastUriNavigatedTo}">            
+        </ContentControl>
         <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionStatusBar}"
-                        Grid.Row="3" />
+                        Grid.Row="4" />
     </Grid>
 </Window>
