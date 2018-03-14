@@ -54,8 +54,11 @@ With the shortcut [Alt+d] it is possible to focus the address bar. Normally, the
 | CTRL + .	            | Go to tesrminal if focus is not on terminal.                          |
 | CTRL + .	            | Go to last view if focus is on terminal.                              |
 | Alt  + .	            | Toggle collapse lower tab.                                            |
+| CTRL + Alt  + .	    | git.commit.                                                           |
 
 ## VSCODE Notes
+
+- Use  shif+F10 as in visula studio to show the context sensitive menu on selection of any item i.e. select an item in the list of files with changes then shift+F10 then stage.
 
 ### VSCODE Keyboard shortcut editor
 
