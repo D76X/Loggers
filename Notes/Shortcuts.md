@@ -27,6 +27,7 @@ With the shortcut [Alt+d] it is possible to focus the address bar. Normally, the
 | CTRL + SHIFT + P	    | Commands.                                                             |
 | CTRL + P      	    | File Navigation.                                                      |
 | CTRL + 1/2/..    	    | Select vie group.                                                     |
+| ALT + << >>           | Change group selection.                                               |
 | CTRL + TAB    	    | Group navigation dropdown to choose the tab to view in the group.     |
 | CTRL + PgUp/PgDown    | Cycle through open tabs - like chrome.                                |
 | CTRL + K, CTRL + V    | Splits the view.                                                      |
@@ -43,6 +44,8 @@ With the shortcut [Alt+d] it is possible to focus the address bar. Normally, the
 | CTRL + SHIST + X	    | Extensions.                                                           |
 | CTRL + P, CTRL + P	| View Previous File in History.                                        |
 | SHIFT + ALT + F   	| Format file.                                                          |
+| CTRL + /              | Comment row.                                                          |
+| ALT + UP/DOWN         | Move row up/down.                                                     |
 
 # VSCODE overridden and custom shortcuts
 
