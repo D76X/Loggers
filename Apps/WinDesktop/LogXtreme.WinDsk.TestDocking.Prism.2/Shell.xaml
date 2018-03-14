@@ -28,23 +28,41 @@
                         Grid.Row="0" />
         <DockPanel Grid.Row="1" x:Name="menuEmbeddedInTheShell">
             <Menu DockPanel.Dock="Top">
+                
+                <!--
+                When a new Shell is open the command must tell the 
+                shell service which view the new shell is supposed 
+                to set as active view as soon as teh shell is ready.
+                This view must be one of the views that are registered
+                by the modules of the applications. The simplest is 
+                to set the ContentView from the ContentModule as the
+                active view for the nely created Shell. This is done
+                by setting CommandParameter="ContentView" which is 
+                eventually passed down to the ShellService.
+                -->
                 <MenuItem Header="Open Shell"
                           Command="{Binding OpenShellCommand}"
-                          CommandParameter="DeviceTree" />
+                          CommandParameter="ContentView" />
+                
                 <MenuItem Header="Open Device Tree"
                           Command="{Binding NavigateCommand}"
-                          CommandParameter="DeviceTree" />
+                          CommandParameter="DeviceTreeView" />
                 <MenuItem Header="Open Data Tree"
                           Command="{Binding NavigateCommand}"
-                          CommandParameter="DataTree" />
+                          CommandParameter="DataTreeView" />
                 <MenuItem Header="Open Data Grid"
                           Command="{Binding NavigateCommand}"
-                          CommandParameter="DataGrid" />
+                          CommandParameter="DataGridView" />
                 <MenuItem Header="Open Plotting"
                           Command="{Binding NavigateCommand}"
-                          CommandParameter="Plotting" />
+                          CommandParameter="PlottingView" />
             </Menu>
         </DockPanel>
+        <!--
+        The Shell hosts the region named RegionNames.RegionContent. When a new shell is created
+        the module that registers its view with the region named RegionNames.RegionContent gets 
+        to inject its view into the region. This module is by convention the ContentModule.
+        -->
         <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionContent}"
                         Grid.Row="2" />
         <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionStatusBar}"
