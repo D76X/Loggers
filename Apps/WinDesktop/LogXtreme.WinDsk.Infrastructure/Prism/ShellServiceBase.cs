@@ -60,22 +60,21 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
         }
 
         /// <summary>
-        /// Given a shell window as a DependencyObject it shows it.
-        /// It also checks whether the shell implements navigation
-        /// and if it does and a Uri to a view is given it invokes
-        /// a navigation request to the given Uri. 
+        /// Given a shell window as a DependencyObject it shows it. It also checks whether the shell 
+        /// implements navigation and if it does and a Uri to a view is given it invokesa navigation 
+        /// request to the given Uri.
+        /// 
+        /// In this implementation it is assumed that the given Uri is the URI for a view that is 
+        /// contained within the region named <see cref="RegionNames.RegionContent"/>. This implies 
+        /// that by convention it is expected that the application is expected to load a ContentModule 
+        /// which defines a view ContentView which is registered against the 
+        /// <see cref="RegionNames.RegionContent"/> in the module's initialization.
         /// </summary>
         /// <param name="shellDependencyObject">A reference to the shell</param>
         /// <param name="uri">The Uri of a view to navigate to when the shell is shown</param>
         public void ShowShell(
             DependencyObject shellDependencyObject,
             string uri = null) {
-
-            //var shell = shellDependencyObject as T;            
-
-            //if (shell == null) {
-            //    return;
-            //}
 
             IShellView shell = shellDependencyObject is IShellView ?
                 (IShellView)shellDependencyObject :
@@ -97,7 +96,6 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
                 scopedRegionManager.RequestNavigate(RegionNames.RegionContent, uri);
             }
 
-            //shell.Show();
             (shell as Window)?.Show();           
         }
     }
