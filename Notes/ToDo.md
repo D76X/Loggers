@@ -20,6 +20,7 @@
 
 # Firmware
 
+- [PID Improving the Beginner’s PID – Introduction](http://brettbeauregard.com/blog/2011/04/improving-the-beginners-pid-introduction/)
 - VOLTERA PCB PRINTER
 - Updates to DS PCB 7.1 to >= 8.0
 - State Machine
