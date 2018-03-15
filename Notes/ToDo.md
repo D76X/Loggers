@@ -68,7 +68,7 @@
 - JavaScript
 - TypeScript
 - HTML5
-- CSS3
+- CSS3/Semantic UI 2.0/Bootstrap
 - ionic
 - Electron
 - ReactJS

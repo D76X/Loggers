@@ -60,6 +60,8 @@ folder.
 - [Dynamically add DockablePanes](https://stackoverflow.com/questions/36737689/dynamically-add-dockablepanes)
 - [DockingManager](https://github.com/xceedsoftware/wpftoolkit/wiki/DockingManager)
 - [AvalonDock add tab dynamically](https://stackoverflow.com/questions/9324816/avalondock-add-tab-dynamically)  
+- [AvalonDock with Prism Region Adapter
+](https://stackoverflow.com/questions/10905238/avalondock-with-prism-region-adapter)
 ***
 
 
