@@ -21,21 +21,22 @@
             <RowDefinition Height="Auto"
                            MinHeight="10" />
             <RowDefinition Height="*" />
-            
+
             <!--
             This row hosts the last navigated to URI.
             -->
             <RowDefinition Height="Auto"
                            MinHeight="10" />
-            
+
             <RowDefinition Height="Auto"
                            MinHeight="10" />
         </Grid.RowDefinitions>
         <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionMainMenu}"
                         Grid.Row="0" />
-        <DockPanel Grid.Row="1" x:Name="menuEmbeddedInTheShell">
+        <DockPanel Grid.Row="1"
+                   x:Name="menuEmbeddedInTheShell">
             <Menu DockPanel.Dock="Top">
-                
+
                 <!--
                 When a new Shell is open the command must tell the shell service which view the 
                 new shell is supposed to set as active view as soon as teh shell is ready.
@@ -43,7 +44,7 @@
                 applications. The simplest is to set the ContentView from the ContentModule as 
                 the active view for the nely created Shell. This is done by setting 
                 CommandParameter="ContentView" which is  eventually passed down to the ShellService.
-                -->              
+                -->
                 <MenuItem Header="Open Shell"
                           Command="{Binding OpenShellCommand}"
                           CommandParameter="ContentView" />
@@ -78,7 +79,8 @@
         -->
         <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionContent}"
                         Grid.Row="2" />
-        <ContentControl Grid.Row="3" Content="{Binding LastUriNavigatedTo}">            
+        <ContentControl Grid.Row="3"
+                        Content="{Binding LastUriNavigatedTo}">
         </ContentControl>
         <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionStatusBar}"
                         Grid.Row="4" />
