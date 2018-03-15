@@ -56,6 +56,7 @@ With the shortcut [Alt+d] it is possible to focus the address bar. Normally, the
 | CTRL + .	            | Go to last view if focus is on terminal.                              |
 | Alt  + .	            | Toggle collapse lower tab.                                            |
 | CTRL + Enter  	    | git.commit when the edit box of the Source Git Control pane is focus  |
+| CTRL + shift + . 	    | git.sync when the edit box of the Source Git Control pane is focus    |
 | CTRL + SHIFT + G	    | workbench.view.scm focus on  Source Git Control edit box is focus     |
 
 ## VSCODE Notes
