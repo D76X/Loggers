@@ -26,6 +26,7 @@ With the shortcut [Alt+d] it is possible to focus the address bar. Normally, the
 | -------------         | ----------------------------------------------------------------------|
 | CTRL + SHIFT + P	    | Commands.                                                             |
 | CTRL + P      	    | File Navigation.                                                      |
+| CTRL + B              | "command": "workbench.action.toggleSidebarVisibility" }               |
 | CTRL + 1/2/..    	    | Select vie group.                                                     |
 | ALT + << >>           | Change group selection.                                               |
 | CTRL + TAB    	    | Group navigation dropdown to choose the tab to view in the group.     |
