@@ -165,6 +165,96 @@
     <!--
     Iteration 5
     
+    In this iteration we have verified that we can created the main frame that is
+    the window with the regions for menu, status bar and content. In the content 
+    region a barebone DockingManager region is also placed that is with nothing in 
+    it thus no instances of LayoutDocument and/or LayoutAnchorable. 
+    The DockingManager structure in its LayoutRoot includes panes and pane groups.
+    
+    1- a LayoutPanel just under LayoutRoot Orientation="Horizontal" which contains 
+       anything else. Notice that as the Orientation is set to Horizontal any 
+    visual added inside it is placed left to right in the order these are declared
+    in the XAML.
+    
+    2- a LayoutAnchorablePane that comes first in the visual structure hence it is 
+    placed on the left side of the DockingManager by the LayoutPanel above. In this
+    LayoutAnchorablePane we would like to place the DeviceTreeView from the module
+    DeviceTree.
+    
+    3- LayoutDocumentPaneGroup which create a gorup for a bunch of LayoutDocumentPane 
+    instances. This is placed immediately to the right of the LatoutAnchorablePane 
+    descibed in above.
+    
+    4- In the LayoutDocumentPaneGroup we place a single LayoutDocumentPane that should
+    become the recipient of instances of LayoutDocument, although none are added in this 
+    iteration. We would like to be able to create 2 instances of LayoutDocument dynamically
+    and in them display respectively the DataGridView from the DataGridModule and the 
+    PlottingView from the PlottingModule.
+    
+    5-LayoutAnchorablePaneGroup is placed to the right of the LayoutDocumentPaneGroup 
+    hence any content in it should show to the right edge of the DockingManager. It 
+    contains an empty LayoutAnchorablePane that should become recipient of a LayoutAnchorable
+    instance that should eventually display the DataTreeView from the DataTreeModule.
+    
+    -->
+    <!--<Grid>
+        <Grid Background="LightCoral">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ContentControl Grid.Row="0"
+                            FontSize="1"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                This is the ContentRegion
+            </ContentControl>
+            <Grid Grid.Row="1"
+                  x:Name="gridWithAvalonDockControls">
+                <xcad:DockingManager x:Name="dockingManager"
+                                     prism:RegionManager.RegionName="{Binding Source={x:Static inf:RegionNames.RegionDockingManager}}"
+                                     AllowMixedOrientation="True"
+                                     BorderBrush="Black"
+                                     BorderThickness="1">
+                    <xcad:DockingManager.DocumentHeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding IconSource}"
+                                       Margin="0,0,4,0" />
+                                <TextBlock Text="{Binding Title}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </xcad:DockingManager.DocumentHeaderTemplate>
+                    <xcad:LayoutRoot x:Name="layoutRoot">
+                        <xcad:LayoutPanel Orientation="Horizontal">
+                            <xcad:LayoutAnchorablePane x:Name="leftLayoutAnchorablePane"
+                                                       DockWidth="200">                                
+                            </xcad:LayoutAnchorablePane>
+                            <xcad:LayoutDocumentPaneGroup x:Name="centralDocumentPaneGroup">
+                                <xcad:LayoutDocumentPane x:Name="CentralDocumentPane">                                   
+                                </xcad:LayoutDocumentPane>
+                            </xcad:LayoutDocumentPaneGroup>
+                            <xcad:LayoutAnchorablePaneGroup x:Name="RightAnchorablePaneGroupInTheDockManager"
+                                                            DockWidth="125">
+                                <xcad:LayoutAnchorablePane x:Name="RightAnchorablePaneInTheDockManager">                                   
+                                </xcad:LayoutAnchorablePane>
+                            </xcad:LayoutAnchorablePaneGroup>
+                        </xcad:LayoutPanel>
+
+                        <xcad:LayoutRoot.LeftSide>
+                            <xcad:LayoutAnchorSide>
+                                <xcad:LayoutAnchorGroup>
+                                </xcad:LayoutAnchorGroup>
+                            </xcad:LayoutAnchorSide>
+                        </xcad:LayoutRoot.LeftSide>
+                    </xcad:LayoutRoot>
+                </xcad:DockingManager>
+            </Grid>
+        </Grid>
+    </Grid>-->
+    <!--
+    Iteration 6
+    
     In this iteration we are going to take control of the dinamic injection and removal
     or contents into respective regions and of the navigation to views through the Prism 
     navigation API.
@@ -202,34 +292,14 @@
                         <xcad:LayoutPanel Orientation="Horizontal">
                             <xcad:LayoutAnchorablePane x:Name="leftLayoutAnchorablePane"
                                                        DockWidth="200">
-                                <!--<xcad:LayoutAnchorable infprism:AvalonDockRegion.Name="{Binding Source={x:Static inf:RegionNames.RegionDeviceTree}}"
-                                                       ContentId="DeviceTree"
-                                                       Title="Device Tree">
-                                </xcad:LayoutAnchorable>-->
                             </xcad:LayoutAnchorablePane>
                             <xcad:LayoutDocumentPaneGroup x:Name="centralDocumentPaneGroup">
                                 <xcad:LayoutDocumentPane x:Name="CentralDocumentPane">
-                                    <!--<xcad:LayoutDocument ContentId="dataGridDocument"
-                                                         Title="DataGrid"
-                                                         IconSource="../Images/datagrid.png">
-                                        <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionDataGrid}"
-                                                        x:Name="dataGrid" />
-                                    </xcad:LayoutDocument>-->
-                                    <!--<xcad:LayoutDocument ContentId="PlottingDocument"
-                                                         Title="Plotting"
-                                                         IconSource="../Images/plotting.png">
-                                        <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.RegionPlotting}"
-                                                        x:Name="plotting" />
-                                    </xcad:LayoutDocument>-->
                                 </xcad:LayoutDocumentPane>
                             </xcad:LayoutDocumentPaneGroup>
                             <xcad:LayoutAnchorablePaneGroup x:Name="RightAnchorablePaneGroupInTheDockManager"
                                                             DockWidth="125">
                                 <xcad:LayoutAnchorablePane x:Name="RightAnchorablePaneInTheDockManager">
-                                    <!--<xcad:LayoutAnchorable infprism:AvalonDockRegion.Name="{Binding Source={x:Static inf:RegionNames.RegionDataTree}}"
-                                                           ContentId="DataTree"
-                                                           Title="Data Tree">
-                                    </xcad:LayoutAnchorable>-->
                                 </xcad:LayoutAnchorablePane>
                             </xcad:LayoutAnchorablePaneGroup>
                         </xcad:LayoutPanel>
@@ -237,7 +307,6 @@
                         <xcad:LayoutRoot.LeftSide>
                             <xcad:LayoutAnchorSide>
                                 <xcad:LayoutAnchorGroup>
-
                                 </xcad:LayoutAnchorGroup>
                             </xcad:LayoutAnchorSide>
                         </xcad:LayoutRoot.LeftSide>
