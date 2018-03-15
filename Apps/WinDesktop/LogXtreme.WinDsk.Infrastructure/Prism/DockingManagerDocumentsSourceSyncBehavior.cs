@@ -11,7 +11,34 @@ using Xceed.Wpf.AvalonDock;
 namespace LogXtreme.WinDsk.Infrastructure.Prism {
 
     /// <summary>
-    /// This RegionBehavior is used to turn AvaloDock control into a Prism region.
+    /// This RegionBehavior is used to turn AvaloDock DockingManager control into a Prism region.
+    /// 
+    /// The role of <see cref="DockingManagerDocumentsSourceSyncBehavior"/> is to provide 
+    /// synchronization logic between the underlying control DockingManager and the corresponding
+    /// Prism region. Prism sees the the underlying DockingManager instance a name region thus
+    /// it needs to decide what to do when instances of LayoutAnchorable or LayoutDocument are 
+    /// added to or removed from the underlying instance of DockingManager. 
+    /// 
+    /// In the OnAttached override for this behavior.
+    /// 
+    /// 1- a binding is set between the DP DocumentsSourceProperty on the underlying control 
+    /// DockingManager and the Documents property on the behavior.
+    /// 
+    /// 2- the behaviors subscribes and provides an an handler for the event that 
+    /// DockingManager.ActiveContentChanged so that the Prism region can correctly set the active 
+    /// view when the active document or anchorable in the underlying DockingManager instance
+    /// changes.
+    /// 
+    /// 3- the behaviors subscribes and provides an an handler for the event 
+    /// this.Region.ActiveViews.CollectionChanged so that when the active view in the region for 
+    /// the underlying DockingManager instance the DockingManager synchs its ActiveContent
+    /// property to the corresponding item.
+    ///       
+    /// 4- the behaviors subscribes and provides an an handler for the event 
+    /// this.Region.Views.CollectionChanged so that whan a region internal to the underlying 
+    /// DockingManager instance is added or removed from the Region for the DockingManager instance 
+    /// the underlying DockingManager instance can synch its own document property to reflect 
+    /// such addition/removal. 
     /// 
     /// Refs
     /// 
