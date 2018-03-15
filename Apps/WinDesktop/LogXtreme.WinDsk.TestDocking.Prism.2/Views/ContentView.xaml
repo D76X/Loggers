@@ -255,10 +255,25 @@
     <!--
     Iteration 6
     
-    In this iteration we are going to take control of the dinamic injection and removal
-    or contents into respective regions and of the navigation to views through the Prism 
-    navigation API.
+    In this iteration we are going to take control of the dynamic injection and removal
+    of content into the DockingManager. In this pilot the DockManager is turned into a Prism 
+    region by vistue of
     
+    1-The RegionManager.RegionName attached property declared on it in the XAML. 
+    
+    2-The implementation LogXtreme.WinDsk.Infrastructure.Prism.RegionAdapterDockingManager
+    which is used to provide a specialized Prism Region Adapter for the control type 
+    DockingManager. The RegionAdapterDockingManager also laches up the custom behavior
+    DockingManagerDocumentsSourceSyncBehavior to the DockingManager region which provides
+    the logic to sync the documents and anchorables in the DockingManager with any Prism
+    named region that is internal child of the region associated to the DockingManager.
+    
+    3- The LogXtreme.WinDsk.Infrastructure.Prism.AvalonDockRegion. 
+    Which provides the attached property NameProperty which when used on any element of 
+    type LayoutAnchorable causes the attached property changed handler to create a 
+    corresponding Prims region adapter RegionAdapterLayoutAnchorable which manages the 
+    synch logic between the child regions in the region of the LayoutAnchorable instance 
+    and contents of the LayoutAnchorable instance. 
     -->
     <Grid>
         <Grid Background="LightCoral">
