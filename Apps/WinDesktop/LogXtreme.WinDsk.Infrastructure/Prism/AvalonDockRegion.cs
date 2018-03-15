@@ -12,8 +12,11 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
     /// be used on XAML elements from the AvalonDock namespace to define their
     /// name as Prism regions.
     /// Refs
+    /// 
     /// See the AvalonDockTestApps solution.
     /// https://github.com/D76X/AvalonDockTestApps
+    /// AvalonDock with Prism Region Adapter
+    /// https://stackoverflow.com/questions/10905238/avalondock-with-prism-region-adapter
     /// </summary>
     public class AvalonDockRegion : DependencyObject {
 
@@ -51,13 +54,12 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
         /// <see cref="RegionAdapterDockingManager"/> 
         /// <see cref="RegionAdapterLayoutAnchorable"/>
         /// 
-        /// When the XAML processor process the XAML of a file where one of the 
-        /// AvalonDock control is used and on which this attached property is 
-        /// aslo defined to mark it as a Prism named region, the logic of the
-        /// callback <see cref="OnNameChanged"/> of the attached property 
-        /// <see cref="NameProperty"/> is executed and eventually this method
-        /// <see cref="CreateRegion"/> beomes responsible for the instantiation 
-        /// of the right region adapter for the named region.
+        /// When the XAML processor processes the XAML and encounters an instance
+        /// of LayoutAnchorable controls on which this attached property is set
+        /// the logic in the callback handler <see cref="OnNameChanged"/> of the 
+        /// attached property <see cref="NameProperty"/> is executed and eventually
+        /// <see cref="CreateRegion"/> instantiates of the right region adapter for
+        /// for the named region.
         /// 
         /// The region adapter for the region depends on the type of the control
         /// on which the attached property <see cref="NameProperty"/> is used.
