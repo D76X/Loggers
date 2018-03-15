@@ -33,6 +33,12 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
 
         }
 
+        /// <summary>
+        /// Provides events handlers to sych the region views with the 
+        /// content of the underlying instance of <see cref="LayoutAnchorable"/>        /// 
+        /// </summary>
+        /// <param name="region">The Prism region for the instance of <see cref="LayoutAnchorable"/></param>
+        /// <param name="regionTarget">the instance of <see cref="LayoutAnchorable"/></param>
         protected override void Adapt(
             IRegion region,
             LayoutAnchorable regionTarget) {
