@@ -46,7 +46,7 @@ Results:
     datetime.date.fromtimestamp(1000000000)=2001-09-09
 
     create a date from a from 01/01/0001
-datetime.date.fromordinal(720669)=1974-02-15
+    datetime.date.fromordinal(720669)=1974-02-15
 
 """
 
@@ -109,6 +109,27 @@ print("create a date from a from 01/01/0001")
 days_from_01010001 = datetime.date.fromordinal(720669)
 print("datetime.date.fromordinal(720669)={}".format(days_from_01010001))
 
+# the time class is used to represent time without date information
+# time = hour minutes seconds microseconds
+print()
+time1 = datetime.time(3)
+print("datetime.time(3)={}".format(time1))
+time2 = datetime.time(3, 1)
+print("datetime.time(3, 1)={}".format(time2))
+time3 = datetime.time(3, 1 , 2)
+print("datetime.time(3, 1, 2)={}".format(time3))
+time4 = datetime.time(3, 1 , 2, 232)
+print("datetime.time(3, 1, 2, 232)={}".format(time4))
 
+print()
+print("the last representable instant of any date")
+last_representable_instant_of_any_date = datetime.time(hour=23, minute=59, second=59, microsecond=999999)
+print("datetime.time(hour=23, minute=59, second=59, microsecond=999999)={}".format(last_representable_instant_of_any_date))
 
+print()
+t = last_representable_instant_of_any_date
+print("t.hour = {h}, t.minute={m}, t.second={s}, ut.microsecond={us}".format(h=t.hour, m=t.minute, s=t.second, us=t.microsecond))
+
+# ISO representation of time is 
+print()
 
