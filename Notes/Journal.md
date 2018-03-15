@@ -19,4 +19,7 @@
 | 13/03/2018                | bought gamerambo.com, TabControl+Docking prototype, ML work, |
 |                           | Python, .NET Ecosystem, Probability to lesson 16 ,German     |
 |                           | German, Athena's work, ZEORMQ                                |
-| 14/03/2018                | TabControl+Docking prototype   |
+| 14/03/2018                | TabControl+Docking prototype, Python, ZEROMQ, .NET Ecosystem |
+|                           | ASP.NET Core 2, Using VSCODE for ASP.NET Core projects       |
+|                           | German, Athena's work, ML, Probability                       |
+| 15/03/2018                |  |

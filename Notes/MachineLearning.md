@@ -16,6 +16,8 @@ Stanford University School of Engineering
 
 5. [Machine Learning Gorup at Microsoft Research](https://www.microsoft.com/en-us/research/group/machine-learning-research-group/)  
 
+6. [Machine Learning Carnegie Mellon University](http://www.cs.cmu.edu/~ninamf/courses/601sp15/lectures.shtml)
+
 ***
 
 ## Probability Theory & Statistics 
@@ -89,6 +91,21 @@ example of good dog/bad dog
 ### Generative vs Degenerative 
 
 [(ML 1.5) Generative vs discriminative models](https://www.youtube.com/watch?v=oTtow2Ui8vg&list=PLD0F06AA0D2E8FFBA&index=5)  
+[What is the difference between a Generative and Discriminative Algorithm?](https://stackoverflow.com/questions/879432/what-is-the-difference-between-a-generative-and-discriminative-algorithm)  
+[On Discriminative vs. Generative
+classifiers: A comparison of logistic
+regression and naive Bayes](http://papers.nips.cc/paper/2020-on-discriminative-vs-generative-classifiers-a-comparison-of-logistic-regression-and-naive-bayes.pdf)  
+[Generative Learning algorithms Andrew Ng](http://cs229.stanford.edu/notes/cs229-notes2.pdf)
+[Generative vs. discriminative](https://stats.stackexchange.com/questions/12421/generative-vs-discriminative?newreg=939980896bbc40688e3a7a33a888fcdf)
+
+Here the is one answer from [What is the difference between a Generative and Discriminative Algorithm?](https://stackoverflow.com/questions/879432/what-is-the-difference-between-a-generative-and-discriminative-algorithm)  
+that is particular useful to gain an intuitive sense of teh difference between generative and discriminative learning models.
+
+> imagine your task is to classify a speech to a language, you can do it either by:
+> 1) Learning each language and then classifying it using the knowledge you just gained
+> 2) Determining the difference in the linguistic models without learning the languages and then classifying the speech.  
+
+> the first one is the generative approach and the second one is the discriminative approach.
 
 ***
 
