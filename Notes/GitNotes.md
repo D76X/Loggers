@@ -7,16 +7,26 @@ https://stackoverflow.com/questions/5737002/how-to-delete-a-stash-created-with-g
 Imagine that you have been working on a branch for some time and you have a bunch of uncommitted changes for it that are important but not yet in a state where you can commit them. However, for some region you need to switch branch i.e. you need to fix an urgent bug on master while the changes are on feature1 branch. In these cases before switching from feature1 to master you may want to stash the local changes. It is a sort of shelveset.
 
 
-| Command		            | Results			                                                    |
-| -------------             | ----------------------------------------------------------------------|
-| ```git stash```	        | Create a stash with the uncommitted changes on the current branch and                                removes the local changes                                             |
+| Command		            | Results			                                                                              |
+| -------------             | ------------------------------------------------------------------------------------------------|
+| ```git stash```	        | Create a stash with the uncommitted changes on the current branch and removes the local changes.| 
+| stash & keep              | See below.                                                                                      |
 | ```git stash list```	    | List all the stashes on the server.                                   |
 | ```git stash apply```	    | Apply the most recent stash changes toi the current branch.           |
 | ```git stash apply```	    | Removes the most recent stash.                                        |
 
 ## [Stash changes while keeping the changes in the working directory in Git](https://stackoverflow.com/questions/17843384/stash-changes-while-keeping-the-changes-in-the-working-directory-in-git)
 
-This is basically the sequence ```git stash; git stash apply```.
+This is basically the sequence ```git stash; git stash apply``` or the alternative below.
+
+```
+$ git add modified-file.txt
+$ git stash save --keep-index
+```
+This two git commands are equivante to 
+
+1. Stage the changes you want to stash
+2. Stash with the --keep-index option which means all changes already added to the index are left intact.
 
 ***
 
