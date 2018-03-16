@@ -22,4 +22,7 @@
 | 14/03/2018                | TabControl+Docking prototype, Python, ZEROMQ, .NET Ecosystem |
 |                           | ASP.NET Core 2, Using VSCODE for ASP.NET Core projects       |
 |                           | German, Athena's work, ML, Probability                       |
-| 15/03/2018                |  |
+| 15/03/2018                | German, TabControl+Docking prototype, Python, VSCODE         |
+|                           | Using VSCODE for ASP.NET Core projects, Probability          |
+|                           | Meeting with Yossi                                           |
+| 16/03/2018                | TabControl+Docking prototype fixed bug                       |

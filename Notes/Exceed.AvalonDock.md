@@ -60,8 +60,10 @@ folder.
 - [Dynamically add DockablePanes](https://stackoverflow.com/questions/36737689/dynamically-add-dockablepanes)
 - [DockingManager](https://github.com/xceedsoftware/wpftoolkit/wiki/DockingManager)
 - [AvalonDock add tab dynamically](https://stackoverflow.com/questions/9324816/avalondock-add-tab-dynamically)  
-- [AvalonDock with Prism Region Adapter
-](https://stackoverflow.com/questions/10905238/avalondock-with-prism-region-adapter)
+- [AvalonDock with Prism Region Adapter](https://stackoverflow.com/questions/10905238/avalondock-with-prism-region-adapter)
+- [PRISM 5 MEF AvalonDock 2.0 DataAdapter Registered Views and Parent IsSelected](https://stackoverflow.com/questions/25393850/prism-5-mef-avalondock-2-0-dataadapter-registered-views-and-parent-isselected)
+- [Prism navigation - how to handle child view initialisation and cleanup?](https://stackoverflow.com/questions/18618114/prism-navigation-how-to-handle-child-view-initialisation-and-cleanup)
+- [Prism 6 Region Manager RequestNavigate fails to navigate for some regions](https://stackoverflow.com/questions/44577082/prism-6-region-manager-requestnavigate-fails-to-navigate-for-some-regions)
 ***
 
 

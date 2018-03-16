@@ -14,6 +14,9 @@ Imagine that you have been working on a branch for some time and you have a bunc
 | ```git stash apply```	    | Apply the most recent stash changes toi the current branch.           |
 | ```git stash apply```	    | Removes the most recent stash.                                        |
 
+## [Stash changes while keeping the changes in the working directory in Git](https://stackoverflow.com/questions/17843384/stash-changes-while-keeping-the-changes-in-the-working-directory-in-git)
+
+This is basically the sequence ```git stash; git stash apply```.
 
 ***
 

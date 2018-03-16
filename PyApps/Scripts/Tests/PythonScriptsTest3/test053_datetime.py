@@ -70,66 +70,84 @@ import datetime
 
 def test_module(): 
     """Module-level tests."""
-print()
-date1 = datetime.date(2014, 1, 6)
-date2 = datetime.date(year=2015, month=2, day=7)
-# datetime has a number of factory methods
-today = datetime.date.today()
-print("datetime.date.today()={}".format(today))
+    print()
+    date1 = datetime.date(2014, 1, 6)
+    date2 = datetime.date(year=2015, month=2, day=7)
+    # datetime has a number of factory methods
+    today = datetime.date.today()
+    print("datetime.date.today()={}".format(today))
 
-print()
-print("some useful instance methods")
-print("date.year={y}, date.month={m}, date.day={d}".format(y=today.year, m=today.month, d=today.day))
-print("today.weekday()={}".format(today.weekday()))
-print("today.isoweekday()={}".format(today.isoweekday()))
-print("today.isoformat()={}".format(today.isoformat()))
+    print()
+    print("some useful instance methods")
+    print("date.year={y}, date.month={m}, date.day={d}".format(y=today.year, m=today.month, d=today.day))
+    print("today.weekday()={}".format(today.weekday()))
+    print("today.isoweekday()={}".format(today.isoweekday()))
+    print("today.isoformat()={}".format(today.isoformat()))
 
-# use strftime to format dates, times and datetimes
-print()
-print("use strftime")
-print("d.strftime('%A %d %B %Y)={}".format(today.strftime('%A %d %B %Y')))
+    # use strftime to format dates, times and datetimes
+    print()
+    print("use strftime")
+    print("d.strftime('%A %d %B %Y)={}".format(today.strftime('%A %d %B %Y')))
 
-print()
-print("the output of format si OS dependent")
-print("today = {:'%A %d %B %Y'}".format(today))
+    print()
+    print("the output of format si OS dependent")
+    print("today = {:'%A %d %B %Y'}".format(today))
 
-print()
-print("better way, more pythonic way as it is explicit!")
-print("{date:%A} {date.day} {date:%B} {date.year}".format(date=today))
+    print()
+    print("better way, more pythonic way as it is explicit!")
+    print("{date:%A} {date.day} {date:%B} {date.year}".format(date=today))
 
-# create a date from a POSIX timestamp - the number of seconds from 01/01/1970
-print()
-print("create a date from a POSIX timestamp - the number of seconds from 01/01/1970")
-posix_1_billion = datetime.date.fromtimestamp(1000000000)
-print("datetime.date.fromtimestamp(1000000000)={}".format(posix_1_billion))
+    # create a date from a POSIX timestamp - the number of seconds from 01/01/1970
+    print()
+    print("create a date from a POSIX timestamp - the number of seconds from 01/01/1970")
+    posix_1_billion = datetime.date.fromtimestamp(1000000000)
+    print("datetime.date.fromtimestamp(1000000000)={}".format(posix_1_billion))
 
-# create a date from 01/01/0001
-print()
-print("create a date from a from 01/01/0001")
-days_from_01010001 = datetime.date.fromordinal(720669)
-print("datetime.date.fromordinal(720669)={}".format(days_from_01010001))
+    # create a date from 01/01/0001
+    print()
+    print("create a date from a from 01/01/0001")
+    days_from_01010001 = datetime.date.fromordinal(720669)
+    print("datetime.date.fromordinal(720669)={}".format(days_from_01010001))
 
-# the time class is used to represent time without date information
-# time = hour minutes seconds microseconds
-print()
-time1 = datetime.time(3)
-print("datetime.time(3)={}".format(time1))
-time2 = datetime.time(3, 1)
-print("datetime.time(3, 1)={}".format(time2))
-time3 = datetime.time(3, 1 , 2)
-print("datetime.time(3, 1, 2)={}".format(time3))
-time4 = datetime.time(3, 1 , 2, 232)
-print("datetime.time(3, 1, 2, 232)={}".format(time4))
+    # the time class is used to represent time without date information
+    # time = hour minutes seconds microseconds
+    print()
+    time1 = datetime.time(3)
+    print("datetime.time(3)={}".format(time1))
+    time2 = datetime.time(3, 1)
+    print("datetime.time(3, 1)={}".format(time2))
+    time3 = datetime.time(3, 1 , 2)
+    print("datetime.time(3, 1, 2)={}".format(time3))
+    time4 = datetime.time(3, 1 , 2, 232)
+    print("datetime.time(3, 1, 2, 232)={}".format(time4))
 
-print()
-print("the last representable instant of any date")
-last_representable_instant_of_any_date = datetime.time(hour=23, minute=59, second=59, microsecond=999999)
-print("datetime.time(hour=23, minute=59, second=59, microsecond=999999)={}".format(last_representable_instant_of_any_date))
+    print()
+    print("the last representable instant of any date")
+    last_representable_instant_of_any_date = datetime.time(hour=23, minute=59, second=59, microsecond=999999)
+    print("datetime.time(hour=23, minute=59, second=59, microsecond=999999)={}".format(last_representable_instant_of_any_date))
 
-print()
-t = last_representable_instant_of_any_date
-print("t.hour = {h}, t.minute={m}, t.second={s}, ut.microsecond={us}".format(h=t.hour, m=t.minute, s=t.second, us=t.microsecond))
+    print()
+    t = last_representable_instant_of_any_date
+    print("better way, more pythonic way as it is explicit!")
+    print("t.hour = {h}, t.minute={m}, t.second={s}, ut.microsecond={us}".format(h=t.hour, m=t.minute, s=t.second, us=t.microsecond))
 
-# ISO representation of time is 
-print()
+    # ISO 8602 representation of time and dates is 1 based as oposed to 0 based
+    print()
+    print("ISO 8602 representation of time and dates is 1 based as oposed to 0 based.")
+    print("t.isoformat()={}".format(t.isoformat()))
+    
+    # with time and dates avoid using strftime because its output depends on how the machine is configured
+    print()
+    print("with time and dates avoid using strftime because its output depends on how the machine is configured")
+    print("t.strftime('%Hh%Mm%Ss')={}".format(t.strftime('%Hh%Mm%Ss')))
 
+    print()    
+    print("better way, more pythonic way as it is explicit!")
+    print("{t.hour}h{t.minute}m{t.second}s{t.microsecond}us".format(t=t))
+
+    ## min max and resolution of time
+    print()
+    print("min max and resolution of time")
+    print("datetime.time.min={}".format(datetime.time.min))
+    print("datetime.time.max={}".format(datetime.time.max))
+    print("datetime.time.resolution={}".format(datetime.time.resolution))
