@@ -63,7 +63,8 @@ Results:
 # these two are two good alternatives now dt and Datetime are symbols bound to the class
 # datetime.datetime. In production you should choose either but not both or use the fully qualified 
 # access to teh class name as datetime.datetime.
-from datetime import datetime as dt
+
+#from datetime import datetime as dt
 from datetime import datetime as Datetime
 #----------------------------------------------------------------------------------------------------
 
@@ -90,6 +91,9 @@ def test_module():
     print()
     date1 = datetime.date(2014, 1, 6)
     date2 = datetime.date(year=2015, month=2, day=7)
+    print("datetime.date(2014, 1, 6)={}".format(date1))
+    print("datetime.date(year=2015, month=2, day=7)={}".format(date2))
+
     # datetime has a number of factory methods
     today = datetime.date.today()
     print("datetime.date.today()={}".format(today))
@@ -177,3 +181,58 @@ def test_module():
     print("create a datetime.datetime instance using teh fully qualified class name.")
     datettime1 = datetime.datetime(2003, 5, 12, 14, 33, 22, 245323)
     print("datetime.datetime(2003, 5, 12, 14, 33, 22, 245323)={}".format(datettime1))
+    print()
+    datettime2 = Datetime(2004, 6, 11, 12, 31, 20, 245322)
+    print("Datetime(2004, 6, 11, 12, 31, 20, 245322)={}".format(datettime2))
+    print()
+    datettime3 = Datetime(2005, 5, 10, 12, 30, 29, 123456)
+    print("Datetime(2005, 5, 10, 12, 30, 29, 123456)={}".format(datettime3))
+
+    # today and now according to local time (machine time)
+    print()
+    print("today and now according to local time (machine time)")
+    today = datetime.datetime.today()
+    print("today = datetime.datetime.today()={}".format(today))
+
+    # now
+    print()
+    now = datetime.datetime.now()
+    print("datetime.datetime.now()={}".format(now))
+    
+    # UTC now takes into account the locale
+    print()
+    print("UTC now takes into account the locale")
+    print("this is a naive datetime object")
+    print("A naive object does not contain enough information to unambiguously locate itself relative to other date/time objects.")
+    print("datetime.datetime.utcnow()={}".format(datetime.datetime.utcnow()))
+
+    # others
+    print()
+    print("this are all naive datetime objects")
+    print("datetime.datetime.fromordinal(5)={}".format(datetime.datetime.fromordinal(5)))
+    print("datetime.datetime.fromtimestamp(456789)={}".format(datetime.datetime.fromtimestamp(456789)))
+    print("datetime.datetime.utcfromtimestamp(456789)={}".format(datetime.datetime.utcfromtimestamp(456789)))
+
+    # combining datetime instances
+    print()
+    print("make up the datetime 8:15 am today from time+date...")
+    td = datetime.date.today()
+    t = datetime.time(8, 15)
+    tdt = datetime.datetime.combine(td, t)
+    print("datetime.date.today()={td} => datetime.time(8, 15)={t} => datetime.datetime.combine(td, t)={c}".format(td=td, t=t, c=tdt))
+
+    # create datetime objects from formatted string
+    print()
+    print("create datetime objects from formatted string with strptime")
+    dt = datetime.datetime.strptime("Monday 6 January 2014, 12:13:31", "%A %d %B %Y, %H:%M:%S")
+    print("datetime.datetime.strptime(""Monday 6 January 2014, 12:13:31"", ""%A %d %B %Y, %H:%M:%S"")={}".format(dt))
+
+    # splitting up datetime objects
+    print()
+    print("splitting up datetime objects")
+    now = datetime.datetime.now()
+    print("datetime.datetime.now().date()={}".format(now.date()))
+    print("datetime.datetime.now().time()={}".format(now.time()))
+    print("datetime.datetime.now().day={}".format(today.day))
+    print("datetime.datetime.now().month={}".format(today.month))
+    print("datetime.datetime.now().isoformat={}".format(today.isoformat()))
