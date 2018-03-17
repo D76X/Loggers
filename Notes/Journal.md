@@ -25,4 +25,7 @@
 | 15/03/2018                | German, TabControl+Docking prototype, Python, VSCODE         |
 |                           | Using VSCODE for ASP.NET Core projects, Probability          |
 |                           | Meeting with Yossi                                           |
-| 16/03/2018                | TabControl+Docking prototype fixed bug                       |
+| 16/03/2018                | TabControl+Docking prototype fixed bug. Probability, GIT, ML |
+|                           | Using VSCODE for ASP.NET Core projects                       |
+|                           | summary of meeting for Yossi                                 |
+| 17/03/2018                | TabControl+Docking prototype fixed bug.  |
