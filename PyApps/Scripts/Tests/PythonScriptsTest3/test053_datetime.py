@@ -50,6 +50,23 @@ Results:
 
 """
 
+#----------------------------------------------------------------------------------------------------
+# do not do this!
+# from datetime import datetime
+
+# The reason is that dattetime.datetime in Python is the class datetime in the module datetime. 
+# Such class is a composite type of time+date all packaged in one class. If you import the class
+# datetime.datetime as above the symbol datetime remains bound to the class datetime.datetime and 
+# as a consequence you lose access to thw module level methods available on the module object datetime
+# as this symbol is now bound to the class datetime.datetime. 
+
+# these two are two good alternatives now dt and Datetime are symbols bound to the class
+# datetime.datetime. In production you should choose either but not both or use the fully qualified 
+# access to teh class name as datetime.datetime.
+from datetime import datetime as dt
+from datetime import datetime as Datetime
+#----------------------------------------------------------------------------------------------------
+
 import datetime
 
 # datetime values are immutable
@@ -145,9 +162,18 @@ def test_module():
     print("better way, more pythonic way as it is explicit!")
     print("{t.hour}h{t.minute}m{t.second}s{t.microsecond}us".format(t=t))
 
-    ## min max and resolution of time
+    # min max and resolution of time
     print()
     print("min max and resolution of time")
     print("datetime.time.min={}".format(datetime.time.min))
     print("datetime.time.max={}".format(datetime.time.max))
     print("datetime.time.resolution={}".format(datetime.time.resolution))
+
+    # here we show how to use the class datetime.datetime
+    # we can aslo use the aliases dt or Datetime as descrimbed above when the import declarations for this
+    # module are given.
+
+    print()
+    print("create a datetime.datetime instance using teh fully qualified class name.")
+    datettime1 = datetime.datetime(2003, 5, 12, 14, 33, 22, 245323)
+    print("datetime.datetime(2003, 5, 12, 14, 33, 22, 245323)={}".format(datettime1))

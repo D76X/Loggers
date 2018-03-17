@@ -100,6 +100,7 @@ in order to stage the selection only. Slect a bunch of file in the Changes tree 
 | Keys			    | Command			                                                    |
 | -------------     | ----------------------------------------------------------------------|
 | CTRL+T,CTRL+I     | [Tasklist.ToggleTaskListItem](https://stackoverflow.com/questions/15120139/strange-arrow-in-visual-studio-gutter-window) |
+| F9                | set/toggle a new breakpoint on the line.                              |
 | Ctrl+X,Ctrl+X	    | Some.Other.Command                                                    |
 
 
