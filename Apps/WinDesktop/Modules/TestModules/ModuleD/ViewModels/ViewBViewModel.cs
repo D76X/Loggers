@@ -13,7 +13,7 @@ namespace ModuleD.ViewModels {
     /// View Model that can hold a reference to a scoped region manager if one is created 
     /// for the corresponding view. The View Model tells the implementation of the interface
     /// IRegionNavigationContentLoader that a scoped region manager must be created for the 
-    /// corresponding view when a request navigation happens by returning true fpr the prop
+    /// corresponding view when a request navigation happens by returning true for the prop
     /// CreateRegionManagerScope. The implementation of IRegionNavigationContentLoader then 
     /// sets the scoped region manager on the view and/or the view model when it is found 
     /// that they are implentations of IRegionManagerAware.
@@ -45,7 +45,10 @@ namespace ModuleD.ViewModels {
         /// Property defined on supported interface IRegionManagerAware.
         /// This is necessary to support displaying the view in TabItems.
         /// </summary>
-        public IRegionManager RegionManager { get; set; }
+        public IRegionManager RegionManager {
+            get;
+            set;
+        }
 
         /// <summary>
         /// Indicates to the implemenation of IRegionNavigationContentLoader

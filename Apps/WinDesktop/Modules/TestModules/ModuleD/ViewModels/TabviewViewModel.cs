@@ -21,7 +21,10 @@ namespace ModuleD.ViewModels {
         /// A reference to the region manager of the shell in which the view 
         /// of this view model in displayed.
         /// </summary>
-        public IRegionManager RegionManager { get; set; }
+        public IRegionManager RegionManager {
+            get;
+            set;
+        }
 
         public TabviewViewModel(IUnityContainer container) {
             this.container = container;

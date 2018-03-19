@@ -30,7 +30,7 @@ namespace LogXtreme.WinDsk.Modules.TestModules.ModuleD {
             this.container.RegisterType<IViewAViewModel, ViewAViewModel>();
             this.container.RegisterType<IViewBViewModel, ViewBViewModel>();
 
-            // resiter the view with the container so that it is possible to navigate to them
+            // regiter the view with the container so that it is possible to navigate to them
             this.container.RegisterTypeForNavigation<TabView>();
             this.container.RegisterTypeForNavigation<ViewA>();
             this.container.RegisterTypeForNavigation<ViewB>();

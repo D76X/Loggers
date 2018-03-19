@@ -34,7 +34,10 @@ namespace ModuleD.ViewModels {
         /// Property defined on supported interface IRegionManagerAware.
         /// This is necessary to support displaying the view in TabItems.
         /// </summary>
-        public IRegionManager RegionManager { get; set; }
+        public IRegionManager RegionManager {
+            get;
+            set;
+        }
 
         /// <summary>
         /// Indicates to the implemenation of IRegionNavigationContentLoader
