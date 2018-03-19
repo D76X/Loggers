@@ -18,6 +18,9 @@ Stanford University School of Engineering
 
 6. [Machine Learning Carnegie Mellon University](http://www.cs.cmu.edu/~ninamf/courses/601sp15/lectures.shtml)
 
+7. [Towards Data Science - sharing concept, ideas and code](https://towardsdatascience.com/)
+
+8. [OpenAI - Discovering and ancting the path to safe AGI Artificial General Intelligence](https://openai.com/)
 ***
 
 ## Probability Theory & Statistics 
@@ -132,6 +135,8 @@ Not suitable for large data sets
 44:34/1:16:15  
 Not suitable for large data sets
 
+[Difference between Batch Gradient Descnt and Tochastic Gradient Descent](https://towardsdatascience.com/difference-between-batch-gradient-descent-and-stochastic-gradient-descent-1187f1291aa1)  
+This is an interesting article about the difference between the two algorithms which shows it in simple Python code.
 ***
 
 

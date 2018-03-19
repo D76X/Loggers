@@ -53,6 +53,9 @@ folder.
 
 This is not easy to get it right!
 
+ScopedRegionNavigationContentLoader
+ShellServiceBase
+
 ### Partition of the Shell UI
 
 - The main window or Shell.
