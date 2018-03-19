@@ -1,4 +1,5 @@
 ﻿using LogXtreme.WinDsk.Infrastructure;
+using LogXtreme.WinDsk.Infrastructure.Unity;
 using LogXtreme.WinDsk.TestDocking.Prism.Interfaces;
 using LogXtreme.WinDsk.TestDocking.Prism.ViewModels;
 using LogXtreme.WinDsk.TestDocking.Prism.Views;
@@ -31,7 +32,10 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.Modules {
             // Register Shared Services
 
             // Compose Views into the Shell
-            regionManager.RegisterViewWithRegion(RegionNames.RegionPlotting, typeof(PlottingView));
+            // regionManager.RegisterViewWithRegion(RegionNames.RegionPlotting, typeof(PlottingView));
+
+            // Register the View for navigation only
+            this.container.RegisterTypeForNavigation<PlottingView>();
         }
     }
 }
