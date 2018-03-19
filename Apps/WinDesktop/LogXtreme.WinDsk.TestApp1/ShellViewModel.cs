@@ -3,7 +3,6 @@ using LogXtreme.WinDsk.Infrastructure.Commands;
 using LogXtreme.WinDsk.Infrastructure.Models;
 using LogXtreme.WinDsk.Infrastructure.Prism;
 using LogXtreme.WinDsk.Infrastructure.Services;
-using ModuleD.Navigation;
 using Prism.Commands;
 using Prism.Regions;
 using System;
