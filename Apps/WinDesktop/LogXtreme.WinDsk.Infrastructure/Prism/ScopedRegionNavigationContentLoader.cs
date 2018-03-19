@@ -16,10 +16,10 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
     /// This is a modified implementation from 
     /// https://github.com/PrismLibrary/Prism/blob/master/Source/Wpf/Prism.Wpf/Regions/RegionNavigationContentLoader.cs
     /// 
-    /// The original purpose of this class is to implement IRegionNavigationContentLoader. When a region is navigated 
-    /// to this implementatiuon loads the content into it after examining the provided navigation context. This class 
-    /// alters only slightly the original in order to allow Child Navigation within the TabControl when it is used as 
-    /// a region.
+    /// The original purpose of this class is to implement <see cref="IRegionNavigationContentLoader"/>. When a region 
+    /// is navigated to this implementation loads the content into it after examining the provided navigation context. 
+    /// This class alters only slightly the original in order to allow Child Navigation within the TabControl when it 
+    /// is used as a region.
     /// 
     /// The problem is described here 
     /// https://app.pluralsight.com/player?course=prism-mastering-tabcontrol&author=brian-lagunas&name=prism-mastering-tabcontrol-m4&clip=3&mode=live
@@ -37,7 +37,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
     /// 
     /// The are two problems at play when a TabControl is used as a region in Prism.
     /// 
-    /// Problem 1 - avoiding collisions on named region on a the same region manager.        
+    /// Problem 1 - avoiding collisions on named region within the same region manager.        
     /// 
     /// The names of the regions added to a region manager must be unique. If an attempt to add a named region to a 
     /// region manager in which such name already exists is made Prism crashes with an exception.
@@ -45,7 +45,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
     /// This is crucial when working with the TabControl as a Prism region. In such case any time a new tab is added 
     /// to the TabControl we want a new scoped region to be created for the view that is displayed in 
     /// each tab individual tab. This is necassary when the view in a tab of the tab control defines its own regions.
-    /// Lets assume Tab 1 displays ViewA/ViewModelA and that ViewA declares a control that is made into a Prism named 
+    /// Lets assume Tab1 displays ViewA/ViewModelA and that ViewA declares a control that is made into a Prism named 
     /// region using the attached property RegionManager.RegionName="SomeChildRegionName" then when a new tab for the 
     /// same ViewA/ViewModelA is added to the TabControl an additional named child region "SomeChildRegionName" should
     /// also be added to the RegionManager of the TabControl, but this is not possible as the names of the region in 
