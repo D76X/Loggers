@@ -1,15 +1,24 @@
-﻿using LogXtreme.WinDsk.TestDocking.Prism.Interfaces;
-using Prism.Mvvm;
+﻿using LogXtreme.WinDsk.Infrastructure.Models;
+using LogXtreme.WinDsk.Infrastructure.Prism;
+using LogXtreme.WinDsk.TestDocking.Prism.Interfaces;
+using Prism.Regions;
 using System;
 
 namespace LogXtreme.WinDsk.TestDocking.Prism.ViewModels {
 
-    public class MainMenuViewModel : 
-        BindableBase, 
-        IMainMenuViewModel, 
+    public class MainMenuViewModel :
+        ViewModelBase, 
+        IMainMenuViewModel,
+        IRegionManagerAware,
         IDisposable {
 
         public MainMenuViewModel() { }
+
+        private IRegionManager scopedRegionManager;
+        public IRegionManager RegionManager {
+            get => this.scopedRegionManager;
+            set => this.scopedRegionManager = value;
+        }
 
         #region IDisposable
 

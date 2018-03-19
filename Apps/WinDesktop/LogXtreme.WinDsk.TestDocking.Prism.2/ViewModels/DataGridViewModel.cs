@@ -1,14 +1,23 @@
-﻿using LogXtreme.WinDsk.TestDocking.Prism.Interfaces;
-using Prism.Mvvm;
+﻿using LogXtreme.WinDsk.Infrastructure.Models;
+using LogXtreme.WinDsk.Infrastructure.Prism;
+using LogXtreme.WinDsk.TestDocking.Prism.Interfaces;
+using Prism.Regions;
 using System;
 
 namespace LogXtreme.WinDsk.TestDocking.Prism.ViewModels {
-    public class DataGridViewModel : 
-        BindableBase, 
-        IDataGridViewModel, 
+    public class DataGridViewModel :
+        ViewModelBase, 
+        IDataGridViewModel,
+        IRegionManagerAware,
         IDisposable {
 
         public DataGridViewModel() { }
+
+        private IRegionManager scopedRegionManager;
+        public IRegionManager RegionManager {
+            get => this.scopedRegionManager;
+            set => this.scopedRegionManager = value;
+        }
 
         #region IDisposable
 
