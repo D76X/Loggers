@@ -1,7 +1,8 @@
-﻿using LogXtreme.WinDsk.TestDocking.Prism.Interfaces;
+﻿using LogXtreme.WinDsk.Infrastructure;
+using LogXtreme.WinDsk.Infrastructure.Unity;
+using LogXtreme.WinDsk.TestDocking.Prism.Interfaces;
 using LogXtreme.WinDsk.TestDocking.Prism.ViewModels;
 using LogXtreme.WinDsk.TestDocking.Prism.Views;
-using LogXtreme.WinDsk.Infrastructure;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Regions;
@@ -32,6 +33,9 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.Modules {
 
             // Compose Views into the Shell
             regionManager.RegisterViewWithRegion(RegionNames.RegionStatusBar, typeof(StatusBarView));
+
+            // Register the View for navigation
+            // this.container.RegisterTypeForNavigation<StatusBarView>();
         }
     }
 }
