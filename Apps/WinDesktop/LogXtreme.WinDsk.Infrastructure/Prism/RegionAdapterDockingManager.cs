@@ -25,9 +25,14 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
     /// 
     /// Refs
     /// http://avalondock.codeplex.com/discussions/390255
+    /// https://stackoverflow.com/questions/25393850/prism-5-mef-avalondock-2-0-dataadapter-registered-views-and-parent-isselected
     /// </summary>
     public class RegionAdapterDockingManager : RegionAdapterBase<DockingManager> {
 
+        /// <summary>
+        /// This ties the adapter into the base region factory.
+        /// </summary>
+        /// <param name="factory">The factory that determines where the modules will go.</param>
         public RegionAdapterDockingManager(IRegionBehaviorFactory regionBehaviorFactory)
             : base(regionBehaviorFactory) {
 
