@@ -1,11 +1,12 @@
-﻿using System;
+﻿using LogXtreme.Extensions;
+using Prism.Regions;
+using Prism.Regions.Behaviors;
+using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Windows;
 using System.Windows.Data;
-using Prism.Regions;
-using Prism.Regions.Behaviors;
 using Xceed.Wpf.AvalonDock;
 
 namespace LogXtreme.WinDsk.Infrastructure.Prism {
@@ -99,9 +100,14 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
         /// </summary>
         protected override void OnAttach() {
 
-            bool itemsSourceIsSet = this.dockingManager.DocumentsSource != null;
+            var documentSource = this.dockingManager.DocumentsSource;
 
-            if (itemsSourceIsSet) {
+            if (documentsSource != null &&
+                documentsSource.ToList<object>().Any()) {
+
+                // we want to begin the synch from the state where the DockingManager
+                // does not have documents bound to it. 
+                // Is this really necessary?
                 throw new InvalidOperationException();
             }
 
