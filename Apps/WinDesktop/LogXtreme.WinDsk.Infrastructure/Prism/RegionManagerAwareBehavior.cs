@@ -44,6 +44,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
         /// </summary>
         protected override void OnAttach() {
 
+            Region.ActiveViews.CollectionChanged -= ActiveViewsCollectionChanged;
             Region.ActiveViews.CollectionChanged += ActiveViewsCollectionChanged;
         }
 
