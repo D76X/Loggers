@@ -31,7 +31,9 @@ With the shortcut [Alt+d] it is possible to focus the address bar. Normally, the
 | ALT + << >>           | Change group selection.                                               |
 | CTRL + TAB    	    | Group navigation dropdown to choose the tab to view in the group.     |
 | CTRL + PgUp/PgDown    | Cycle through open tabs - like chrome.                                |
-| CTRL + K, CTRL + V    | Splits the view.                                                      |
+| CTRL + K then V       | Open the preview to the side i.e. for Markdown                        |
+| CTRL + \              | Open a new gorup view to teh right.                                   |
+| CTRL + /              | Comment the selected row.                                             |
 | CTRL + SHIFT + P ?	| Shows all available commands.                                         |
 | CTRL + SHIFT + P >	| Runs a commands i.e. > git                                            |
 | CTRL + SHIFT + P @	| Go to symbol                                                          |
@@ -45,7 +47,6 @@ With the shortcut [Alt+d] it is possible to focus the address bar. Normally, the
 | CTRL + SHIST + X	    | Extensions.                                                           |
 | CTRL + P, CTRL + P	| View Previous File in History.                                        |
 | SHIFT + ALT + F   	| Format file.                                                          |
-| CTRL + /              | Comment row.                                                          |
 | ALT + UP/DOWN         | Move row up/down.                                                     |
 
 # VSCODE overridden and custom shortcuts
@@ -60,6 +61,10 @@ With the shortcut [Alt+d] it is possible to focus the address bar. Normally, the
 | CTRL + SHIFT + G	    | workbench.view.scm focus on  Source Git Control edit box is focus     |
 
 ## VSCODE Notes
+
+- Use CTRL+SHIFT+P to get to the command palette. Notice that the command palette shows the > caret to indicate that commands can be entered and executed.
+
+- Use CTRL+P to get to the palette which is not the command palette. From the palette you cab navigate to any file open in the editor by typing its name. The palette can be turned into the command palette by typing the > caret in it after which you can find and execute any commands.
 
 - Use  shif+F10 as in visula studio to show the context sensitive menu on selection of any item i.e. select an item in the list of files with changes then shift+F10 then stage.
 

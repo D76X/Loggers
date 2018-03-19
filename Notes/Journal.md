@@ -32,4 +32,7 @@
 |                           | Using VSCODE for ASP.NET Core projects, Athena's work        |
 |                           | email to Yossi with meeting summary                          |
 | 18/03/2018                | email to Yossi with meeting summary                          |
-|                           | Athena's work                                                |
+|                           | completed Athena's work                                      |
+|                           | Using VSCODE for ASP.NET Core projects, ZEROMQ, Probability  |
+|                           | ML                                                           |
+| 19/03/2018                | TabControl+Docking prototype |

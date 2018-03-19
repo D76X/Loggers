@@ -90,6 +90,8 @@ example of good dog/bad dog
 
 ### Generative vs Degenerative 
 
+[Generative Models - The Math of Intellligence #8](https://www.youtube.com/watch?v=HyuBTMaKFmU)
+
 [(ML 1.5) Generative vs discriminative models](https://www.youtube.com/watch?v=oTtow2Ui8vg&list=PLD0F06AA0D2E8FFBA&index=5)  
 [What is the difference between a Generative and Discriminative Algorithm?](https://stackoverflow.com/questions/879432/what-is-the-difference-between-a-generative-and-discriminative-algorithm)  
 [On Discriminative vs. Generative
@@ -109,5 +111,27 @@ that is particular useful to gain an intuitive sense of teh difference between g
 
 ***
 
+## Classification problems
+
+[(ML 1.6) k-Nearest Neighbor classification algorithm](https://www.youtube.com/watch?v=4ObVzTuFivY&index=6&list=PLD0F06AA0D2E8FFBA)  
+Deterministic and probabilistic interpretations.
+This is a discriminative algorithm.
+
+***
+# Algorithms
+
+## Batch gradient descent
+
+[Lecture 2 | Machine Learning (Stanford)](https://www.youtube.com/watch?v=5u4G23_OohI)  
+44:34/1:16:15  
+Not suitable for large data sets
+
+## Stocastic gradient descent or Incremental gradient descent
+
+[Lecture 2 | Machine Learning (Stanford)](https://www.youtube.com/watch?v=5u4G23_OohI)  
+44:34/1:16:15  
+Not suitable for large data sets
+
+***
 
 

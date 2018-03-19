@@ -49,21 +49,9 @@ folder.
 
 ***
 
-## Navigation to region and child regions within the Avalon Docking Manager
+## Navigation to region and child regions within the Avalon Docking Manager with multiple shells
 
-- [AvalonDock 2.0 and MVVM](http://lostindetails.com/blog/post/AvalonDock-2.0-with-MVVM)
-- [WPF Based Dynamic DataTemplateSelector](https://www.codeproject.com/Articles/418250/WPF-Based-Dynamic-DataTemplateSelector)  
-- [AvalonDock 2.0 Tutorial In 5 Parts](https://www.codeproject.com/Articles/483507/AvalonDock-Tutorial-Part-Adding-a-Tool-Windo)
-- [AvalonDock and MVVM Code Project](https://www.codeproject.com/Articles/239342/AvalonDock-and-MVVM)  
-- [AvalonDock (docking window control)](https://github.com/xceedsoftware/wpftoolkit/wiki/AvalonDock)
-- [Sample code to show how to use Avalondock in an MVVM application](https://stackoverflow.com/questions/23406451/sample-code-to-show-how-to-use-avalondock-in-an-mvvm-application)
-- [Dynamically add DockablePanes](https://stackoverflow.com/questions/36737689/dynamically-add-dockablepanes)
-- [DockingManager](https://github.com/xceedsoftware/wpftoolkit/wiki/DockingManager)
-- [AvalonDock add tab dynamically](https://stackoverflow.com/questions/9324816/avalondock-add-tab-dynamically)  
-- [AvalonDock with Prism Region Adapter](https://stackoverflow.com/questions/10905238/avalondock-with-prism-region-adapter)
-- [PRISM 5 MEF AvalonDock 2.0 DataAdapter Registered Views and Parent IsSelected](https://stackoverflow.com/questions/25393850/prism-5-mef-avalondock-2-0-dataadapter-registered-views-and-parent-isselected)
-- [Prism navigation - how to handle child view initialisation and cleanup?](https://stackoverflow.com/questions/18618114/prism-navigation-how-to-handle-child-view-initialisation-and-cleanup)
-- [Prism 6 Region Manager RequestNavigate fails to navigate for some regions](https://stackoverflow.com/questions/44577082/prism-6-region-manager-requestnavigate-fails-to-navigate-for-some-regions)
+This is not easy to get it right!
 
 ### Partition of the Shell UI
 
@@ -79,6 +67,22 @@ For each of the Shell regions above the corresponding UI is injected from a corr
 - the Content region is filled with the ContentView from the ContentModule.  
 
 ### Partition of the Content region UI
+
+***
+
+- [AvalonDock 2.0 and MVVM](http://lostindetails.com/blog/post/AvalonDock-2.0-with-MVVM)
+- [WPF Based Dynamic DataTemplateSelector](https://www.codeproject.com/Articles/418250/WPF-Based-Dynamic-DataTemplateSelector)  
+- [AvalonDock 2.0 Tutorial In 5 Parts](https://www.codeproject.com/Articles/483507/AvalonDock-Tutorial-Part-Adding-a-Tool-Windo)
+- [AvalonDock and MVVM Code Project](https://www.codeproject.com/Articles/239342/AvalonDock-and-MVVM)  
+- [AvalonDock (docking window control)](https://github.com/xceedsoftware/wpftoolkit/wiki/AvalonDock)
+- [Sample code to show how to use Avalondock in an MVVM application](https://stackoverflow.com/questions/23406451/sample-code-to-show-how-to-use-avalondock-in-an-mvvm-application)
+- [Dynamically add DockablePanes](https://stackoverflow.com/questions/36737689/dynamically-add-dockablepanes)
+- [DockingManager](https://github.com/xceedsoftware/wpftoolkit/wiki/DockingManager)
+- [AvalonDock add tab dynamically](https://stackoverflow.com/questions/9324816/avalondock-add-tab-dynamically)  
+- [AvalonDock with Prism Region Adapter](https://stackoverflow.com/questions/10905238/avalondock-with-prism-region-adapter)
+- [PRISM 5 MEF AvalonDock 2.0 DataAdapter Registered Views and Parent IsSelected](https://stackoverflow.com/questions/25393850/prism-5-mef-avalondock-2-0-dataadapter-registered-views-and-parent-isselected)
+- [Prism navigation - how to handle child view initialisation and cleanup?](https://stackoverflow.com/questions/18618114/prism-navigation-how-to-handle-child-view-initialisation-and-cleanup)
+- [Prism 6 Region Manager RequestNavigate fails to navigate for some regions](https://stackoverflow.com/questions/44577082/prism-6-region-manager-requestnavigate-fails-to-navigate-for-some-regions)
 
 
 ### Sequence of loading
