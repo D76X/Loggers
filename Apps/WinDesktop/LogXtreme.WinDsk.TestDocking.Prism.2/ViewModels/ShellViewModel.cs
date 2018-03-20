@@ -11,7 +11,8 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.ViewModels {
     public class ShellViewModel :
         ViewModelBase,
         IShellViewModel,
-        IRegionManagerAware {
+        IRegionManagerAware,
+        IDisposable {
 
         private IShellService shellService;
 
@@ -28,12 +29,16 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.ViewModels {
 
             this.OpenShellCommand = new DelegateCommand<string>(OpenShell);
             this.NavigateCommand = new DelegateCommand<string>(Navigate);
-        }       
+        }
 
         /// <summary>
         /// A reference to the region manager for the shell.        
         /// </summary>
-        public IRegionManager RegionManager { get; set; }
+        private IRegionManager scopedRegionManager;
+        public IRegionManager RegionManager {
+            get => this.scopedRegionManager;
+            set => this.scopedRegionManager = value;
+        }
 
         public int Id {
             get { return this.id; }
@@ -51,14 +56,18 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.ViewModels {
             this.shellService.ShowShell(shell, viewName);
         }
 
-        private void Navigate(string viewName) {
+        private void Navigate(string navigationUri) {
 
             var parameters = new NavigationParameters();
             parameters.Add(NavigationRequestParametersBase.KeyNavigationRequestedBy, this);
 
+            var navigationAddress = this.ExtractTargetRegionFromNavigationUri(navigationUri);
+            var uri = new Uri(navigationAddress.ViewName, UriKind.Relative);
+            var regionName = navigationAddress.RegionName ?? RegionNames.RegionContent;
+
             this.RegionManager.RequestNavigate(
-                RegionNames.RegionContent,
-                new Uri(viewName, UriKind.Relative),
+                regionName,
+                uri,
                 NavigateComplete,
                 parameters);
         }        
@@ -66,6 +75,35 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.ViewModels {
         private void NavigateComplete(NavigationResult navigationResult) {
 
             this.LastUriNavigatedTo = navigationResult.Context.Uri.ToString();
-        }        
+        }
+
+        private (string RegionName, string ViewName) ExtractTargetRegionFromNavigationUri(string navigationUri) {
+
+            string[] split = navigationUri.Split('|');
+            int length = split.Length;
+
+            if (length > 2 || length == 0) {
+                throw new ArgumentException($"{navigationUri} is not a valid URI");
+            };
+
+            if(length == 1) { return (RegionName: null, ViewName: split[0]); }
+
+            return (RegionName: split[0], ViewName: split[1]);
+        }
+
+        #region IDisposable
+
+        public void Dispose() {
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing) {
+
+            if (disposing) {
+                // dispose of subcriptions, etc.               
+            }
+        }
+        #endregion
     }
 }
