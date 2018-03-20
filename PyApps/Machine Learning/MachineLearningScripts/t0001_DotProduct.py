@@ -3,14 +3,7 @@ This module illustrates the dot priduct in Python.
 
 Refs
 
-Elementary Matrix Operations In Python
-https://www.ibm.com/developerworks/community/blogs/jfp/entry/Elementary_Matrix_Operations_In_Python?lang=en
-
-https://docs.python.org/3/whatsnew/3.5.html#whatsnew-pep-465
-https://stackoverflow.com/questions/34142485/difference-between-numpy-dot-and-python-3-5-matrix-multiplication
-https://stackoverflow.com/questions/5919530/what-is-the-pythonic-way-to-calculate-dot-product
-https://stackoverflow.com/questions/4093989/dot-product-in-python
-http://www.pradeepadiga.me/blog/2017/04/18/finding-dot-product-in-python-without-using-numpy/
+https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.dot.html
 
 Usage:
 
@@ -36,13 +29,14 @@ Usage:
 
 """
 
-from array import array
+# get numpy via Anaconda or PIP.
+import numpy as np
 
 def test_module(): 
     """
     Module-level tests.
     """
-    v1 = array([1,2,3])
-    v2 = array([-1,0,3])
-    v1_dot_v2 = v1 @ v1
-    print("{v1} @ {v2} = {dp}".format(v1=v1, v2=v2, d=v1_dot_v2)) 
+    v1 = [1,2,3]
+    v2 = [-1,0,3]
+    v1_dot_v2 = np.dot(v1, v2)
+    print("np.dot(v1, v2) = {dp}".format(v1=v1, v2=v2, dp=v1_dot_v2))

@@ -4,13 +4,14 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>8c27430b-6d38-401c-8d73-0541dec2120b</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>t0001_GradientDescends.py</StartupFile>
+    <StartupFile>t0002_GradientDescends.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>MachineLearningScripts</Name>
     <RootNamespace>MachineLearningScripts</RootNamespace>
+    <InterpreterId>MSBuild|Anaconda 5.1.0|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,10 +22,21 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="t0001_GradientDescends.py" />
-    <Compile Include="t0002_DotProduct.py">
+    <Compile Include="t0002_GradientDescends.py" />
+    <Compile Include="t0001_DotProduct.py">
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="Anaconda 5.1.0\">
+      <Id>Anaconda 5.1.0</Id>
+      <Version>3.6</Version>
+      <Description>Anaconda 5.1.0 (Anaconda 5.1.0)</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

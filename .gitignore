@@ -247,3 +247,4 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/PyApps/Machine Learning/MachineLearningScripts/Anaconda 5.1.0

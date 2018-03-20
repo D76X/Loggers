@@ -64,3 +64,51 @@ In the REPL for Python 3
 >imp.reload(theModuleImportName)
 
 ****
+
+## Python simple web server
+
+Python 2 and 3 both come with a simple HTTP server embedded in it that can be useful for some types of development i.e. HTML5+JavaScript etc. I used it for development of games with Pahser.
+
+[Phaser Getting Started - Part 2 - Installing a web server](https://phaser.io/tutorials/getting-started-phaser3/part2)  
+
+With Python 3 in order to start the HTTP server use any of the following in a command shell or PowerShell window open at the root folder of the site whose files are to serve. In order to stop the HTTP server use **CTRL+C** in the same shell window.
+
+``` 
+python -m http.server
+python -m http.server 7888 
+
+```
+
+In order to see the content of the site in your browser in the address type any URL like below. If you do not specify the port number the assumed default is 80 as customary.
+
+```
+http://localhost:7888
+http://127.0.0.1:7888
+```
+
+***
+
+# Anaconda for Machine Learning, AI and Data Science.
+
+- Installs Anaconda to get lots of useful packages bundled up in one sigle installer. This installer defaults to installng anaconda on a user basis thus in might end up into [C:\username\Anaconda](). You might want to have install it at system level instead so that it is [C:\Anaconda]() instead.  
+
+- In order to get VSCODE to work with Anaconda the best option is to install the **Anaconda Extension**. This should sort out the problems with setting up the anaconda env as an option to VSCODE and the paths.
+
+- In VCODE when you want to run a script that uses one of teh packages in the Anaconda env you must first switch to the Anaconda env CTRL+SHIFT+P to get to the command palette then Python: Select environment and you should see the Anaconda version X.X.X as an option.
+
+- To check teh packages in the REPL got to CRTL+SHIP+P >Python: REPL then in the REPL help("modules") to list all the modules available in the selected venv. If it is Anaconda you should at least see Numpy.
+
+
+## Some problems you might come accross
+
+- [No module named numpy in VSCODE](https://stackoverflow.com/questions/40185437/no-module-named-numpy-visual-studio-code)  
+The best option is to just install the Anaconda Extension for VSCODE.
+
+
+
+***
+
+
+
+
+
