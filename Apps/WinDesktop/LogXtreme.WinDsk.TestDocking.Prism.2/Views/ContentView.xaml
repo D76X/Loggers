@@ -291,6 +291,9 @@
                   x:Name="gridWithAvalonDockControls">
                 <xcad:DockingManager x:Name="dockingManager"
                                      prism:RegionManager.RegionName="{Binding Source={x:Static inf:RegionNames.RegionDockingManager}}"
+                                     DocumentsSource="{Binding Documents}"
+                                     AnchorablesSource="{Binding Anchorables}"
+                                     ActiveContent="{Binding ActiveContent, Mode=TwoWay}"
                                      AllowMixedOrientation="True"
                                      BorderBrush="Black"
                                      BorderThickness="1">
@@ -307,6 +310,11 @@
                         <xcad:LayoutPanel Orientation="Horizontal">
                             <xcad:LayoutAnchorablePane x:Name="leftLayoutAnchorablePane"
                                                        DockWidth="200">
+                                <xcad:LayoutAnchorable x:Name="deviceTreeName"
+                                                       ContentId="DeviceTree"
+                                                       Title="Device Tree *"
+                                                       infprism:AvalonDockRegion.Name="{Binding Source={x:Static inf:RegionNames.RegionDeviceTree}}">
+                                </xcad:LayoutAnchorable>
                             </xcad:LayoutAnchorablePane>
                             <xcad:LayoutDocumentPaneGroup x:Name="centralDocumentPaneGroup">
                                 <xcad:LayoutDocumentPane x:Name="CentralDocumentPane">
@@ -330,4 +338,70 @@
             </Grid>
         </Grid>
     </Grid>
+
+    <!--
+    Navigation to a top-level named Prims region without DockingManager.
+    
+    In this example we just embed in the ContentView a ContentControl designated as the 
+    region named RegionDeviceTree. Then we request navigation to this region. The Prism 
+    infrastructure and Navigation logic then injects the view for the device tree into 
+    the region RegionDeviceTree. It is important to notice that in this example the
+    region RegionDeviceTree is NOT a child region!
+    --><!--
+    <Grid Background="Yellow">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <ContentControl FontSize="5">
+            Some Content
+        </ContentControl>
+        <ContentControl prism:RegionManager.RegionName="RegionDeviceTree"
+                        Grid.Row="1"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        FontSize="3">
+            
+        </ContentControl>
+    </Grid>-->
+
+    <!--
+    Navigation to a child region named Prims region without DockingManager.
+    
+    In this example we just embed in the ContentView a ContentControl designated as the 
+    region named RegionDockingManager. In reality it is not a DockingManager instead it
+    is a mere ContentControl made into a Prims region named RegionDockingManager.
+    
+    We use the region RegionDockingManager as the parent of a child region named 
+    RegionDeviceTree to study the mechanism of navigation to child regions. 
+    
+    We request navigation to this the child region named RegionDeviceTree. The Prism 
+    infrastructure and Navigation logic should inject the view for the device tree 
+    into the child region RegionDeviceTree. 
+    -->
+    <!--<Grid Background="Yellow">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <ContentControl FontSize="5">
+            Some Content
+        </ContentControl>
+        <ContentControl prism:RegionManager.RegionName="RegionDockingManager"
+                        Grid.Row="1"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        FontSize="3">
+        </ContentControl>
+    </Grid>-->
+
 </UserControl>
+
+<!--<xcad:LayoutAnchorable infprism:AvalonDockRegion.Name="{Binding Source={x:Static inf:RegionNames.RegionDeviceTree}}"
+                                                       ContentId="DeviceTree"
+                                                       Title="Device Tree">                                    
+                                </xcad:LayoutAnchorable>-->
+<!--<xcad:LayoutAnchorable infprism:AvalonDockRegion.Name="RegionDeviceTree"
+                                                       ContentId="DeviceTree"
+                                                       Title="Device Tree">                                    
+                                </xcad:LayoutAnchorable>-->
