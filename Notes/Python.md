@@ -1,4 +1,12 @@
+
 # Python
+
+
+## Run Python scripts in Visual Studio
+
+Use the Python interactive and its dropdown to select the Environment that teh REPL should target. The type the import statement for the module to use in the REPL i.e. import t0001_SomeModule. Make sure that the name of teh file and thus of teh module starts with an alphabetic character i.e. 0001_SomeModule would not be a valid module name while t0001_SomeModule is.
+
+***
 
 ## Run Python scripts in VSCODE
 

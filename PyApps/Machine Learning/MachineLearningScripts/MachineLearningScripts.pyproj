@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>8c27430b-6d38-401c-8d73-0541dec2120b</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>0001.GradientDescends.py</StartupFile>
+    <StartupFile>t0001_GradientDescends.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,8 +21,8 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="0001.GradientDescends.py" />
-    <Compile Include="0002.DotProduct.py">
+    <Compile Include="t0001_GradientDescends.py" />
+    <Compile Include="t0002_DotProduct.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
