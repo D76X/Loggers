@@ -100,7 +100,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
         /// </summary>
         protected override void OnAttach() {
 
-            var documentSource = this.dockingManager.DocumentsSource;
+            var documentsSource = this.dockingManager.DocumentsSource;
 
             if (documentsSource != null &&
                 documentsSource.ToList<object>().Any()) {
