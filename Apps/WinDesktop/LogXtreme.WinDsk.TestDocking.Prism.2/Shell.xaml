@@ -60,16 +60,16 @@
                 -->
                 <MenuItem Header="Open Device Tree"
                           Command="{Binding NavigateCommand}"
-                          CommandParameter="DeviceTreeView" />
+                          CommandParameter="RegionDeviceTree|LogXtreme.WinDsk.TestDocking.Prism.Views.DeviceTreeView" />
                 <MenuItem Header="Open Data Tree"
                           Command="{Binding NavigateCommand}"
-                          CommandParameter="DataTreeView" />
+                          CommandParameter="RegionDataTree|LogXtreme.WinDsk.TestDocking.Prism.Views.DataTreeView" />
                 <MenuItem Header="Open Data Grid"
                           Command="{Binding NavigateCommand}"
-                          CommandParameter="DataGridView" />
+                          CommandParameter="?|LogXtreme.WinDsk.TestDocking.Prism.Views.DataGridView" />
                 <MenuItem Header="Open Plotting"
                           Command="{Binding NavigateCommand}"
-                          CommandParameter="PlottingView" />
+                          CommandParameter="?|LogXtreme.WinDsk.TestDocking.Prism.Views.PlottingView" />
             </Menu>
         </DockPanel>
         <!--
