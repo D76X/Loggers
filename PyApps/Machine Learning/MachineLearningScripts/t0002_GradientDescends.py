@@ -11,15 +11,15 @@ References:
 Usage:
 
     # Copy and paste all these commands in the terminal to see the outputs.
-    import os; os.chdir("C:\\GitHub\\Loggers\\PyApps\\Scripts\\Tests\\PythonScriptsTest3"); clear = lambda: os.system('cls'); import imp; import test051_built_in_functions as t51; t51.test_module()
+    import os; os.chdir("C:\\GitHub\\Loggers\\PyApps\\Scripts\\Tests\\PythonScriptsTest3"); clear = lambda: os.system('cls'); import imp; import t0002_GradientDescends as t2; t2.test_module()
 
     # The last two commands are specific to this module.
-    import test051_bilt_in_functions as t51
-    t51.test_module()
+    import t0002_GradientDescends as t2
+    t2.test_module()
 
     # Reload the module into the REPL after you make any changes to it.
     import imp
-    imp.reload(t51)
+    imp.reload(t2)
 
     # clear th REPL
     clear = lambda: os.system('cls')  
@@ -34,9 +34,7 @@ Results:
 """
 
 # after you install Anaconda you may use this
-# import numpy
-
-
+import numpy as np
 
 def gradientDescent(X, y, theta, alpha, iterations):
     """
@@ -63,7 +61,7 @@ def gradientDescent(X, y, theta, alpha, iterations):
                    to converge   
     """
     # m is the number of points in the training set.
-    m = y.size
-    for i in range(iterations):
-        # y_hat is a column vector [m,1] [p,m]*
-        y_hat = np.dot(X, theta)
+    # m = y.size
+    # for i in range(iterations):
+    #     # y_hat is a column vector [m,1] [p,m]*
+    #     y_hat = np.dot(X, theta)

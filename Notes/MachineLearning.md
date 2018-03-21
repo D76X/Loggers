@@ -9,6 +9,11 @@ MIT OpenCourseWare
 Professor Andrew Ng  
 [Lecture Notes](http://cs229.stanford.edu/notes/cs229-notes1.pdf)
 
+3. [Deeplearning.ai](https://www.youtube.com/channel/UCcIXc5mJsHVYTZR1maL5l9w)  
+Professor Andrew Ng 
+
+3. [Artificial Intelligence Courses](https://www.youtube.com/user/aicourses/videos)  
+
 3. [Machine Learning - overview and applications](https://www.youtube.com/watch?v=yDLKJtOVx5c&list=PLD0F06AA0D2E8FFBA) 
 
 4. [Introduction to Convolutional Neural Networks for Visual Recognition](https://www.youtube.com/watch?v=vT1JzLTH4G4)  
@@ -135,8 +140,23 @@ Not suitable for large data sets
 44:34/1:16:15  
 Not suitable for large data sets
 
+[2. Stochastic Gradient Descent](https://www.youtube.com/watch?v=UfNU3Vhv5CA)  
+Video from Coursera - Standford University - Course: Machine Learning:
+
 [Difference between Batch Gradient Descnt and Tochastic Gradient Descent](https://towardsdatascience.com/difference-between-batch-gradient-descent-and-stochastic-gradient-descent-1187f1291aa1)  
 This is an interesting article about the difference between the two algorithms which shows it in simple Python code.
+
+[What's the difference between gradient descent and stochastic gradient descent?](https://www.quora.com/Whats-the-difference-between-gradient-descent-and-stochastic-gradient-descent)  
+This is an excellent post on Quora.
+
+[Gradient Descent vs Stochastic Gradient Descent algorithms](https://stackoverflow.com/questions/35711315/gradient-descent-vs-stochastic-gradient-descent-algorithms)
+This is a good post on Stackoverflow.
+
+## Gradient descent wit Momentum
+
+[Gradient descent wit Momentum](https://www.youtube.com/watch?v=k8fTYJPd3_I)  
+Deeplearning.ai
+
 ***
 
 

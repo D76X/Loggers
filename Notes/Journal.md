@@ -34,5 +34,8 @@
 | 18/03/2018                | email to Yossi with meeting summary                          |
 |                           | completed Athena's work                                      |
 |                           | Using VSCODE for ASP.NET Core projects, ZEROMQ, Probability  |
-|                           | ML                                                           |
-| 19/03/2018                | TabControl+Docking prototype |
+|                           | ML, German                                                   |
+| 19/03/2018                | TabControl+Docking prototype, Probability. ML, German, Phaser|
+|                           | ZEROMQ, Python/Anaconda                                      |
+| 20/03/2018                | TabControl+Docking prototype, Probability. ML, German, Phaser|
+|                           | Python/Anaconda                                              |
