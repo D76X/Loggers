@@ -10,7 +10,7 @@
         <ContentControl VerticalAlignment="Center"
                         HorizontalAlignment="Center"
                         FontSize="25">
-            DeviceTreeRegion
+            DataTreeRegion
         </ContentControl>
     </Grid>
 </UserControl>
