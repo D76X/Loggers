@@ -16,7 +16,8 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
     /// <see cref="LayoutAnchorable"/>. 
     /// 
     /// It provides the logic to add or remove FrameworkElements from the underilying 
-    /// control when views are injected or removed from the region respectively. 
+    /// control when views are injected or removed from the region respectively. This
+    /// is done in the override <see cref="Adapt"/>.
     /// 
     /// It also tells Prism what kind of region it is. In this case the override 
     /// <see cref="CreateRegion"/> returns an instance of <see cref="SingleActiveRegion"/>
@@ -35,7 +36,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
 
         /// <summary>
         /// Provides events handlers to sych the region views with the 
-        /// content of the underlying instance of <see cref="LayoutAnchorable"/>        /// 
+        /// content of the underlying instance of <see cref="LayoutAnchorable"/>         
         /// </summary>
         /// <param name="region">The Prism region for the instance of <see cref="LayoutAnchorable"/></param>
         /// <param name="regionTarget">the instance of <see cref="LayoutAnchorable"/></param>
@@ -49,16 +50,23 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
                 throw new InvalidOperationException();
             }
 
+            // monitor when views are injectedinto or removed from the region.
             region.Views.CollectionChanged += (s, e) => {
 
                 if (e.Action == NotifyCollectionChangedAction.Add &&
                                 region.ActiveViews.Count() == 0) {
 
+                    // a view has been injeted into the region.
+                    // the injected view must be set to be the active view for the region.
+                    // this type of region can only have one view in it at any time.
                     region.Activate(e.NewItems[0]);
                 }
                 else if (e.Action == NotifyCollectionChangedAction.Remove) {
 
-                    // should I do anything here?
+                    // Is this right?
+                    // test it!
+                    region.Deactivate(e.OldItems[0]);
+                    region.Remove(e.OldItems[0]);
                 }
             };
 
@@ -71,7 +79,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
         /// <summary>
         /// Only a sinlge view can be active in the region at any one time.
         /// </summary>
-        /// <returns></returns>
+        /// <returns><see cref="IRegion"/></returns>
         protected override IRegion CreateRegion() =>
             new SingleActiveRegion();
     }
