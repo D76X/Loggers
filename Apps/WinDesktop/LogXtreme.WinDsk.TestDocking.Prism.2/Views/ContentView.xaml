@@ -57,7 +57,7 @@
                 <xcad:LayoutPanel Orientation="Horizontal">
                     <xcad:LayoutDocumentPane />
                     <xcad:LayoutAnchorablePane DockWidth="150">
-                        <xcad:LayoutAnchorable infprism:AvalonDockRegion.Name="SampleToolRegion" />                        
+                        <xcad:LayoutAnchorable infprism:AvalonRegion.Name="SampleToolRegion" />                        
                     </xcad:LayoutAnchorablePane>
                 </xcad:LayoutPanel>
             </xcad:LayoutRoot>
@@ -118,7 +118,7 @@
                         <xcad:LayoutPanel Orientation="Horizontal">
                             <xcad:LayoutAnchorablePane x:Name="leftLayoutAnchorablePane"
                                                        DockWidth="200">
-                                <xcad:LayoutAnchorable infprism:AvalonDockRegion.Name="{Binding Source={x:Static inf:RegionNames.RegionDeviceTree}}"
+                                <xcad:LayoutAnchorable infprism:AvalonRegion.Name="{Binding Source={x:Static inf:RegionNames.RegionDeviceTree}}"
                                                        ContentId="DeviceTree"
                                                        Title="Device Tree">
                                 </xcad:LayoutAnchorable>
@@ -142,7 +142,7 @@
                             <xcad:LayoutAnchorablePaneGroup x:Name="RightAnchorablePaneGroupInTheDockManager"
                                                             DockWidth="125">
                                 <xcad:LayoutAnchorablePane x:Name="RightAnchorablePaneInTheDockManager">
-                                    <xcad:LayoutAnchorable infprism:AvalonDockRegion.Name="{Binding Source={x:Static inf:RegionNames.RegionDataTree}}"
+                                    <xcad:LayoutAnchorable infprism:AvalonRegion.Name="{Binding Source={x:Static inf:RegionNames.RegionDataTree}}"
                                                            ContentId="DataTree"
                                                            Title="Data Tree">
                                     </xcad:LayoutAnchorable>
@@ -280,6 +280,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <ContentControl Grid.Row="0"
                             FontSize="1"
@@ -310,19 +311,27 @@
                         <xcad:LayoutPanel Orientation="Horizontal">
                             <xcad:LayoutAnchorablePane x:Name="leftLayoutAnchorablePane"
                                                        DockWidth="200">
-                                <xcad:LayoutAnchorable x:Name="deviceTreeName"
+                                <xcad:LayoutAnchorable x:Name="regionDeviceTree"
                                                        ContentId="DeviceTree"
-                                                       Title="Device Tree *"
-                                                       infprism:AvalonDockRegion.Name="{Binding Source={x:Static inf:RegionNames.RegionDeviceTree}}">
+                                                       Title="Device Tree"                                                       
+                                                       infprism:AvalonRegion.Name="{Binding Source={x:Static inf:RegionNames.RegionDeviceTree}}">
                                 </xcad:LayoutAnchorable>
                             </xcad:LayoutAnchorablePane>
-                            <xcad:LayoutDocumentPaneGroup x:Name="centralDocumentPaneGroup">
-                                <xcad:LayoutDocumentPane x:Name="CentralDocumentPane">
+                            <xcad:LayoutDocumentPaneGroup x:Name="layoutDocumentPaneGroup">
+                                <xcad:LayoutDocumentPane x:Name="layoutDocumentPane"
+                                                         infprism:AvalonRegion.Name="{Binding Source={x:Static inf:RegionNames.RegionDocumentPane}}">
+                                    <!--<xcad:LayoutDocument>                                        
+                                    </xcad:LayoutDocument>-->
                                 </xcad:LayoutDocumentPane>
                             </xcad:LayoutDocumentPaneGroup>
-                            <xcad:LayoutAnchorablePaneGroup x:Name="RightAnchorablePaneGroupInTheDockManager"
+                            <xcad:LayoutAnchorablePaneGroup x:Name="rightAnchorablePaneGroupInTheDockManager"
                                                             DockWidth="125">
-                                <xcad:LayoutAnchorablePane x:Name="RightAnchorablePaneInTheDockManager">
+                                <xcad:LayoutAnchorablePane x:Name="rightAnchorablePaneInTheDockManager">
+                                    <xcad:LayoutAnchorable x:Name="regionDataTree"
+                                                           ContentId="DataTree"
+                                                           Title="Data Tree"
+                                                           infprism:AvalonRegion.Name="{Binding Source={x:Static inf:RegionNames.RegionDataTree}}">
+                                    </xcad:LayoutAnchorable>
                                 </xcad:LayoutAnchorablePane>
                             </xcad:LayoutAnchorablePaneGroup>
                         </xcad:LayoutPanel>
@@ -335,6 +344,14 @@
                         </xcad:LayoutRoot.LeftSide>
                     </xcad:LayoutRoot>
                 </xcad:DockingManager>
+            </Grid>
+            <Grid Grid.Row="2" x:Name="testArea">
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="ShowDeviceTree"
+                            Click="Button_Click_ShowDeviceTree"/>
+                    <Button Content="ShowDataTree"
+                            Click="Button_Click_ShowDataTree" />
+                </StackPanel>
             </Grid>
         </Grid>
     </Grid>
@@ -396,12 +413,3 @@
     </Grid>-->
 
 </UserControl>
-
-<!--<xcad:LayoutAnchorable infprism:AvalonDockRegion.Name="{Binding Source={x:Static inf:RegionNames.RegionDeviceTree}}"
-                                                       ContentId="DeviceTree"
-                                                       Title="Device Tree">                                    
-                                </xcad:LayoutAnchorable>-->
-<!--<xcad:LayoutAnchorable infprism:AvalonDockRegion.Name="RegionDeviceTree"
-                                                       ContentId="DeviceTree"
-                                                       Title="Device Tree">                                    
-                                </xcad:LayoutAnchorable>-->
