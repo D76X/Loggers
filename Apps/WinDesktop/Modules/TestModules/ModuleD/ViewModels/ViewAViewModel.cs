@@ -59,11 +59,15 @@ namespace ModuleD.ViewModels {
             return false;
         }
 
+        public override void OnNavigatedFrom(NavigationContext navigationContext) {
+            base.OnNavigatedFrom(navigationContext);
+        }
+
         public override void OnNavigatedTo(NavigationContext navigationContext) {
 
             var navigationRequestedBy = navigationContext.Parameters[NavigationRequestParametersBase.KeyNavigationRequestedBy];
             // do something with this information
-        }
+        }        
 
         public bool IsConfirmNavigationActive {
             get { return this.isConfirmNavigationActive; }

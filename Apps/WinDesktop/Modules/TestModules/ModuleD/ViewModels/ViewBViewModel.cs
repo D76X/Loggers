@@ -70,6 +70,10 @@ namespace ModuleD.ViewModels {
 
         public DelegateCommand NavigateCommand { get; private set; }
 
+        public override void OnNavigatedFrom(NavigationContext navigationContext) {
+            base.OnNavigatedFrom(navigationContext);
+        }
+
         public override void OnNavigatedTo(NavigationContext navigationContext) {
 
             var navigationRequestedBy = navigationContext.Parameters[NavigationRequestParametersBase.KeyNavigationRequestedBy];
