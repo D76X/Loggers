@@ -11,7 +11,7 @@
     <OutputPath>.</OutputPath>
     <Name>MachineLearningScripts</Name>
     <RootNamespace>MachineLearningScripts</RootNamespace>
-    <InterpreterId>MSBuild|Anaconda 5.1.0|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>Global|ContinuumAnalytics|Anaconda36-64</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,15 +28,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Interpreter Include="Anaconda 5.1.0\">
-      <Id>Anaconda 5.1.0</Id>
-      <Version>3.6</Version>
-      <Description>Anaconda 5.1.0 (Anaconda 5.1.0)</Description>
-      <InterpreterPath>Scripts\python.exe</InterpreterPath>
-      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
-      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
-      <Architecture>X64</Architecture>
-    </Interpreter>
+    <InterpreterReference Include="Global|ContinuumAnalytics|Anaconda36-64" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
