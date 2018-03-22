@@ -24,8 +24,8 @@
                           Command="{Binding NavigateCommand}"
                           CommandParameter="ModuleD.Views.TabView" />
                 <MenuItem Header="Save Session"
-                          Command="{x:Static infcommands:CommandsGlobal.SaveSession}"
-                          CommandParameter="SomeParameter" />
+                          Command="{x:Static infcommands:GlobalCommands.SaveSession}"
+                          CommandParameter="SomeParameter"/>               
             </Menu>
             <StatusBar DockPanel.Dock="Bottom">
                 <StatusBarItem>

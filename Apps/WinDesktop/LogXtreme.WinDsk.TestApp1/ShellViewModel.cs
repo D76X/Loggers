@@ -31,7 +31,7 @@ namespace LogXtreme.WinDsk {
             this.NavigateCommand = new DelegateCommand<string>(Navigate);
 
             this.SaveSessionCommand = new DelegateCommand<string>(SaveSession, CanSaveSession);
-            CommandsGlobal.SaveSession.RegisterCommand(SaveSessionCommand);            
+            GlobalCommands.SaveSession.RegisterCommand(SaveSessionCommand);            
         }
 
         public int Id {
