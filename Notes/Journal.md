@@ -39,3 +39,4 @@
 |                           | ZEROMQ, Python/Anaconda                                      |
 | 20/03/2018                | TabControl+Docking prototype, Probability. ML, German, Phaser|
 |                           | Python/Anaconda                                              |
+|                           | Investigation of ASP.NET Core + Angular X and other options  |
