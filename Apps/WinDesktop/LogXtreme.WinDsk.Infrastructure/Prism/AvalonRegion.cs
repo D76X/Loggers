@@ -9,8 +9,8 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
 
     /// <summary>
     /// Exposes the attached property <see cref="NameProperty"/> which should 
-    /// be used on XAML elements from the AvalonDock namespace to define their
-    /// name as Prism regions.
+    /// be used on LayoutAnchorable XAML elements from the AvalonDock namespace 
+    /// to define their name as Prism regions.
     /// Refs
     /// 
     /// See the AvalonDockTestApps solution.
@@ -18,7 +18,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
     /// AvalonDock with Prism Region Adapter
     /// https://stackoverflow.com/questions/10905238/avalondock-with-prism-region-adapter
     /// </summary>
-    public class AvalonDockRegion : DependencyObject {
+    public class AvalonRegion : DependencyObject {
 
         public static string GetName(DependencyObject obj) {
             return (string)obj.GetValue(NameProperty);
@@ -35,14 +35,14 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
             DependencyProperty.RegisterAttached(
                 "Name", 
                 typeof(string), 
-                typeof(AvalonDockRegion), 
+                typeof(AvalonRegion), 
                 new FrameworkPropertyMetadata(null, new PropertyChangedCallback(OnNameChanged)));
 
         private static void OnNameChanged(
             DependencyObject d, 
             DependencyPropertyChangedEventArgs e) {
-
-            CreateRegion((LayoutAnchorable)d, (string)e.NewValue);
+            
+            CreateRegion(d, (string)e.NewValue);
         }
 
         /// <summary>
@@ -66,11 +66,25 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
         /// </summary>
         /// <param name="element"></param>
         /// <param name="regionName"></param>
-        private static void CreateRegion(LayoutAnchorable element, string regionName) {
+        private static void CreateRegion(
+            DependencyObject element, 
+            string regionName) {
 
             if (element == null) {
                 throw new ArgumentException(nameof(element));
             }
+
+            Type elementType = null;
+
+            if (element is LayoutAnchorable) {
+                elementType = ((LayoutAnchorable)element).GetType();
+            }
+            else if (element is LayoutDocumentPane) {
+                elementType = ((LayoutDocumentPane)element).GetType();
+            }
+            else {
+                throw new ArgumentException(nameof(element));
+            }             
 
             // In design mode there is no main window so there is no reason to try
             // to create a Prism region for the anchorable element.
@@ -93,7 +107,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
 
                 if (mappings == null) { return; }
 
-                IRegionAdapter regionAdapter = mappings.GetMapping(element.GetType());
+                IRegionAdapter regionAdapter = mappings.GetMapping(elementType);
 
                 if (regionAdapter == null) { return; }
 
