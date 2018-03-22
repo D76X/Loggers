@@ -57,7 +57,7 @@
                 <xcad:LayoutPanel Orientation="Horizontal">
                     <xcad:LayoutDocumentPane />
                     <xcad:LayoutAnchorablePane DockWidth="150">
-                        <xcad:LayoutAnchorable infprism:AvalonDockRegion.Name="SampleToolRegion" />                        
+                        <xcad:LayoutAnchorable infprism:AvalonRegion.Name="SampleToolRegion" />                        
                     </xcad:LayoutAnchorablePane>
                 </xcad:LayoutPanel>
             </xcad:LayoutRoot>
@@ -118,7 +118,7 @@
                         <xcad:LayoutPanel Orientation="Horizontal">
                             <xcad:LayoutAnchorablePane x:Name="leftLayoutAnchorablePane"
                                                        DockWidth="200">
-                                <xcad:LayoutAnchorable infprism:AvalonDockRegion.Name="{Binding Source={x:Static inf:RegionNames.RegionDeviceTree}}"
+                                <xcad:LayoutAnchorable infprism:AvalonRegion.Name="{Binding Source={x:Static inf:RegionNames.RegionDeviceTree}}"
                                                        ContentId="DeviceTree"
                                                        Title="Device Tree">
                                 </xcad:LayoutAnchorable>
@@ -142,7 +142,7 @@
                             <xcad:LayoutAnchorablePaneGroup x:Name="RightAnchorablePaneGroupInTheDockManager"
                                                             DockWidth="125">
                                 <xcad:LayoutAnchorablePane x:Name="RightAnchorablePaneInTheDockManager">
-                                    <xcad:LayoutAnchorable infprism:AvalonDockRegion.Name="{Binding Source={x:Static inf:RegionNames.RegionDataTree}}"
+                                    <xcad:LayoutAnchorable infprism:AvalonRegion.Name="{Binding Source={x:Static inf:RegionNames.RegionDataTree}}"
                                                            ContentId="DataTree"
                                                            Title="Data Tree">
                                     </xcad:LayoutAnchorable>
