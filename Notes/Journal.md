@@ -40,3 +40,9 @@
 | 20/03/2018                | TabControl+Docking prototype, Probability. ML, German, Phaser|
 |                           | Python/Anaconda                                              |
 |                           | Investigation of ASP.NET Core + Angular X and other options  |
+| 21/03/2018                | TabControl+Docking prototype in particular LayoutDocumentPane|
+|                           | Probability. ML, German, Phaser, Python/Anaconda.            |
+|                           | Sorting out undelivered low meltiong point solder paste      |
+|                           | Tried to replace car battery and ordered new one.            |
+| 22/03/2018                | TabControl+Docking prototype in particular LayoutDocumentPane|
+|                           | Reordered solder paste from Somerset Solder Ltd.             |

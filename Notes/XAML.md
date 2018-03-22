@@ -30,7 +30,7 @@ I succeded in fixing the propblem by deleting the folder below.
 
 C:\Users\davidespano\AppData\Local\Microsoft\VisualStudio  
 
-Probably it would have also worked by simply deleting just the folder for the XAM designer cache.
+Probably it would have also worked by simply deleting just the folder for the XAML designer cache.
 
 C:\Users\davidespano\AppData\Local\Microsoft\VisualStudio\...\Designer
 
