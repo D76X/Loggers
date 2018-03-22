@@ -131,6 +131,7 @@
     <Compile Include="Models\IShellView.cs" />
     <Compile Include="Models\IShellViewModel.cs" />
     <Compile Include="Prism\NavigationRequestParametersBase.cs" />
+    <Compile Include="Prism\RegionAdapterLayoutDocumentPane.cs" />
     <Compile Include="Prism\ShellServiceBase.cs" />
     <Compile Include="TriggerActions\CloseTabAction.cs" />
     <Compile Include="Behaviors\BindVisualStateBehavior.cs" />
@@ -141,7 +142,7 @@
     <Compile Include="Decorators\MouseTrackerDecorator.cs" />
     <Compile Include="Behaviors\ShowNotificationMessageBehavior.cs" />
     <Compile Include="Behaviors\WatermarkTextBehavior.cs" />
-    <Compile Include="Commands\CommandsGlobal.cs" />
+    <Compile Include="Commands\GlobalCommands.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Convertes\BooleanToVisibilityConverter.cs" />
     <Compile Include="Convertes\BoolToHiddenVisibilityConverter.cs" />
@@ -158,7 +159,7 @@
     <Compile Include="Models\MouseCaptureState.cs" />
     <Compile Include="Models\MouseCaptureStateBase.cs" />
     <Compile Include="Models\ObservableCollectionEx.cs" />
-    <Compile Include="Prism\AvalonDockRegion.cs" />
+    <Compile Include="Prism\AvalonRegion.cs" />
     <Compile Include="Prism\DockingManagerDocumentsSourceSyncBehavior.cs" />
     <Compile Include="Prism\ModuleInitializer.cs" />
     <Compile Include="Prism\ModuleLoadingModeAttribute.cs" />
