@@ -109,7 +109,11 @@ namespace LogXtreme.WinDsk.TestDocking.Prism {
 
             mappings.RegisterMapping(
                 typeof(LayoutAnchorable), 
-                new RegionAdapterLayoutAnchorable(ServiceLocator.Current.GetInstance<RegionBehaviorFactory>()));          
+                new RegionAdapterLayoutAnchorable(ServiceLocator.Current.GetInstance<RegionBehaviorFactory>()));
+
+            mappings.RegisterMapping(
+                typeof(LayoutDocumentPane),
+                new RegionAdapterLayoutDocumentPane(ServiceLocator.Current.GetInstance<RegionBehaviorFactory>()));
 
             return mappings;
 
