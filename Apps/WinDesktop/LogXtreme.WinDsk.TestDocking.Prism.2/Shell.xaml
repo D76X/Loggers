@@ -7,7 +7,7 @@
         xmlns:prism="http://prismlibrary.com/"
         xmlns:inf="clr-namespace:LogXtreme.WinDsk.Infrastructure;assembly=LogXtreme.WinDsk.Infrastructure"
         mc:Ignorable="d"
-        Title="{Binding Path=Id, StringFormat='Test Docking with Prism Shell v2 - Shell {0}'}">
+        Title="{Binding Path=Id, StringFormat='Test Docking with Prism Shell v2 - Shell {0}'}">   
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"
@@ -66,10 +66,11 @@
                           CommandParameter="RegionDataTree|LogXtreme.WinDsk.TestDocking.Prism.Views.DataTreeView" />
                 <MenuItem Header="Open Data Grid"
                           Command="{Binding NavigateCommand}"
-                          CommandParameter="?|LogXtreme.WinDsk.TestDocking.Prism.Views.DataGridView" />
+                          CommandParameter="RegionDocumentPane|LogXtreme.WinDsk.TestDocking.Prism.Views.DataGridView" />
                 <MenuItem Header="Open Plotting"
                           Command="{Binding NavigateCommand}"
-                          CommandParameter="?|LogXtreme.WinDsk.TestDocking.Prism.Views.PlottingView" />
+                          CommandParameter="RegionDocumentPane|LogXtreme.WinDsk.TestDocking.Prism.Views.PlottingView" />                
+                </MenuItem>
             </Menu>
         </DockPanel>
         <!--
