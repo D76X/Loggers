@@ -44,7 +44,11 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.ViewModels {
             set {
                 this.SetProperty<object>(ref activeContent, value);
             }
-        }       
+        }
+
+        public override void OnNavigatedFrom(NavigationContext navigationContext) {
+            base.OnNavigatedFrom(navigationContext);
+        }
 
         public override void OnNavigatedTo(NavigationContext navigationContext) {
             base.OnNavigatedTo(navigationContext);
