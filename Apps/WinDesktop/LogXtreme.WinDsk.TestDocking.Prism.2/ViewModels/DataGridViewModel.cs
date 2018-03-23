@@ -19,6 +19,14 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.ViewModels {
             set => this.scopedRegionManager = value;
         }
 
+        public override void OnNavigatedFrom(NavigationContext navigationContext) {
+            base.OnNavigatedFrom(navigationContext);
+        }
+
+        public override void OnNavigatedTo(NavigationContext navigationContext) {
+            base.OnNavigatedTo(navigationContext);
+        }
+
         #region IDisposable
 
         public void Dispose() {
