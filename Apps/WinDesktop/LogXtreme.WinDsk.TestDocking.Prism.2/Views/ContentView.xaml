@@ -318,7 +318,7 @@
                                 </xcad:LayoutAnchorable>
                             </xcad:LayoutAnchorablePane>
                             <xcad:LayoutDocumentPaneGroup x:Name="layoutDocumentPaneGroup">
-                                <xcad:LayoutDocumentPane x:Name="layoutDocumentPane"
+                                <xcad:LayoutDocumentPane x:Name="regionLayoutDocumentPane"
                                                          infprism:AvalonRegion.Name="{Binding Source={x:Static inf:RegionNames.RegionDocumentPane}}">
                                     <!--<xcad:LayoutDocument>                                        
                                     </xcad:LayoutDocument>-->
