@@ -36,6 +36,10 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
         /// view model is the active view in the region it is hosted by. 
         /// Override to implements csutom logic on the view model when the 
         /// state of the view changes from active to non active or viceversa. 
+        /// 
+        /// Refs
+        /// http://prismlibrary.github.io/docs/wpf/Navigation.html
+        /// http://briannoyesblog.azurewebsites.net/2009/12/08/detecting-the-active-view-in-a-prism-app/
         /// </summary>
         public virtual bool IsActive {
             get => this.isActive;
@@ -58,6 +62,12 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
             }
         }
 
+        /// <summary>
+        /// Refs
+        /// http://prismlibrary.github.io/docs/wpf/Navigation.html
+        /// http://briannoyesblog.azurewebsites.net/2009/12/08/detecting-the-active-view-in-a-prism-app/
+
+        /// </summary>
         public event EventHandler IsActiveChanged;
 
         /// <summary> 
