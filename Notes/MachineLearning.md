@@ -38,7 +38,7 @@ Explains the difference that exists between any linear combination of indipenden
 
 ***
 
-### The concept of Loss Function and ots optimization problems
+### The concept of Loss Function and optimization problems
 
 1. [Is minimizing squared error equivalent to minimizing absolute error? Why squared error is more popular than the latter?](https://stats.stackexchange.com/questions/147001/is-minimizing-squared-error-equivalent-to-minimizing-absolute-error-why-squared)  
 [The concept of loss function on Wikipedia]([https://en.wikipedia.org/wiki/Loss_function#Selecting_a_loss_function)  
@@ -59,6 +59,15 @@ This post present an agebraic chain of identities that shows how to interpret th
 
 4. [Explain how Pr(dx,dy) appears in the derivation of the expected prediction error](https://stats.stackexchange.com/questions/256669/explain-how-prdx-dy-appears-in-the-derivation-of-the-expected-prediction-error?rq=1)  
 [Expected Error Prediction Derivation](https://stats.stackexchange.com/questions/189560/expected-error-prediction-derivation)  
+
+***
+### The concept of Loss Function and ots optimization problems with categorical variables.
+
+- [How does the classification using the 0-1 loss matrix method work?](https://math.stackexchange.com/questions/2623072/how-does-the-classification-using-the-0-1-loss-matrix-method-work)
+
+- [Introduction to Machine Learning IITM](https://www.youtube.com/watch?time_continue=28&v=pFtiNSmJuoE)
+
+- [0-1 Loss Function explanation](https://stats.stackexchange.com/questions/284028/0-1-loss-function-explanation)
 
 ***
 

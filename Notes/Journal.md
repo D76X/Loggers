@@ -46,3 +46,6 @@
 |                           | Tried to replace car battery and ordered new one.            |
 | 22/03/2018                | TabControl+Docking prototype in particular LayoutDocumentPane|
 |                           | Reordered solder paste from Somerset Solder Ltd.             |
+|                           | German, ML, Probaility, Python, ASP.NET+Angular research     |
+| 23/03/2018                | TabControl+Docking prototype in particular LayoutDocumentPane|
+|                           | ASP.NET+Angular research                                     |
