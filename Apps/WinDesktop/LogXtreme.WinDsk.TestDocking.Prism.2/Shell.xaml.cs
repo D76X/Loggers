@@ -1,5 +1,4 @@
 ﻿using LogXtreme.WinDsk.Infrastructure.Models;
-using LogXtreme.WinDsk.TestDocking.Prism.Interfaces;
 using System.Windows;
 
 namespace LogXtreme.WinDsk.TestDocking.Prism {
