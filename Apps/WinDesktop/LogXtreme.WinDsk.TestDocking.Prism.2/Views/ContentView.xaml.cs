@@ -101,7 +101,8 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.Views {
         private void SetRegionManagerOnChildRegions(object sender, RoutedEventArgs e) {
 
             PrismRegions.RegionManager.SetRegionManager(regionDeviceTree, this.RegionManager);
-            PrismRegions.RegionManager.SetRegionManager(regionDataTree, this.RegionManager);            
+            PrismRegions.RegionManager.SetRegionManager(regionDataTree, this.RegionManager);
+            PrismRegions.RegionManager.SetRegionManager(regionLayoutDocumentPane, this.RegionManager);
         }
 
         private void Button_Click_ShowDataTree(object sender, RoutedEventArgs e) {
