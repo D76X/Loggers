@@ -70,7 +70,6 @@
                 <MenuItem Header="Open Plotting"
                           Command="{Binding NavigateCommand}"
                           CommandParameter="RegionDocumentPane|LogXtreme.WinDsk.TestDocking.Prism.Views.PlottingView" />                
-                </MenuItem>
             </Menu>
         </DockPanel>
         <!--
