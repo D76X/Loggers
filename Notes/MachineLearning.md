@@ -36,6 +36,19 @@ Stanford University School of Engineering
 
 Explains the difference that exists between any linear combination of indipendent RVs which leads to the convolution formula and the distinct concept of **mixed RVs** which leads to a linear function of expected values etc.
 
+### The definition and meaning of the joint probability density function
+
+1. [Expected value of joint probability density functions](https://math.stackexchange.com/questions/344128/expected-value-of-joint-probability-density-functions)
+
+Provides a nice explanation  of what the joint PDF is and an example where it is used.
+
+### Prior and Posterior probabilities.
+
+1. [Prior And Posterior - Intro to Statistics](https://www.youtube.com/watch?v=o2Tpws5C2Eg)
+2. [26 - Prior and posterior predictive distributions - an introduction](https://www.youtube.com/watch?v=R9NQY2Hyl14)
+3. [MIT - Bayesian Updating with Continuous Priors](https://ocw.mit.edu/courses/mathematics/18-05-introduction-to-probability-and-statistics-spring-2014/readings/MIT18_05S14_Reading13a.pdf)  
+I have copy if this document that gives a detailed explanation.
+4. [Prior and Posterior Distributions](https://www.youtube.com/watch?v=BqBuCpHN9u8)
 ***
 
 ### The concept of Loss Function and optimization problems

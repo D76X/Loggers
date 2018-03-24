@@ -125,6 +125,14 @@ http://127.0.0.1:7888
 
 ***
 
+## Some tips and tricks to keep in mind when working with Python
+
+### Escape the brackets { }
+- In ```string.format``` that is something like ```print("{this is the value}={v}").fromat(v=value)``` the {} in the string "{this is the value}" will be misinterpreted that is Python will think that you want to use them as in {v}. To escape the {} just double them like so
+```print("{{this is the value}}={v}").fromat(v=value)```
+
+***
+
 # Anaconda for Machine Learning, AI and Data Science.
 
 - Install Anaconda to get lots of useful packages bundled up in one sigle installer. This installer defaults to installng anaconda on a user basis thus in might end up into [C:\username\Anaconda](). You might want to have install it at system level instead so that it is [C:\Anaconda]() instead. I installed for all users and it is in [C:\ProgramData\Anaconda3]().
@@ -159,11 +167,4 @@ http://127.0.0.1:7888
 - [No module named numpy in VSCODE](https://stackoverflow.com/questions/40185437/no-module-named-numpy-visual-studio-code)  
 The best option is to just install the Anaconda Extension for VSCODE.
 
-
-
 ***
-
-
-
-
-
