@@ -48,4 +48,6 @@
 |                           | Reordered solder paste from Somerset Solder Ltd.             |
 |                           | German, ML, Probaility, Python, ASP.NET+Angular research     |
 | 23/03/2018                | TabControl+Docking prototype in particular LayoutDocumentPane|
-|                           | ASP.NET+Angular research                                     |
+|                           | ASP.NET+Angular + Angular CLI, German, Phaser, CSS, Python   |
+|                           | Planning for websites, investigation of infinite scrolling   |
+| 24/03/2018                | Improvements to Docking, CSS, German, |
