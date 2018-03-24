@@ -48,6 +48,8 @@
     <Compile Include="ContractValidators\EnumComparisonOperations.cs" />
     <Compile Include="ContractValidators\EnumRangeCheck.cs" />
     <Compile Include="ContractValidators\ValidationExtensions.cs" />
+    <Compile Include="Enums\DeviceEventEnum.cs" />
+    <Compile Include="Interfaces\IDevice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\TestBase.cs" />
     <Compile Include="TypeConverters\EnumDescriptionTypeConverter.cs" />

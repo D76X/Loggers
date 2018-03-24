@@ -128,6 +128,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Events\DeviceEventArgs.cs" />
     <Compile Include="Models\IShellView.cs" />
     <Compile Include="Models\IShellViewModel.cs" />
     <Compile Include="Prism\NavigationRequestParametersBase.cs" />
@@ -149,7 +150,7 @@
     <Compile Include="Convertes\EnumToDisplayConverter.cs" />
     <Compile Include="Convertes\InvertedBooleanToCollapsedVisibilityConverter.cs" />
     <Compile Include="Convertes\NotConverter.cs" />
-    <Compile Include="Events\DeviceAttachedEvents.cs" />
+    <Compile Include="Events\DeviceEvent.cs" />
     <Compile Include="Events\MouseCaptureEventArgs.cs" />
     <Compile Include="Exceptions\StrategyNullReferenceEception.cs" />
     <Compile Include="Interfaces\IBindableBase.cs" />
