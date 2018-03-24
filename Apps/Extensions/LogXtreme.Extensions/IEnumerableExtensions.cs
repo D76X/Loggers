@@ -6,6 +6,20 @@ namespace LogXtreme.Extensions {
 
     public static class IEnumerableExtensions {
 
+        /// <summary>
+        /// Returns a List<typeparamref name="T"/> from an IEnumerable.
+        /// Refs
+        /// https://stackoverflow.com/questions/7617771/converting-from-ienumerable-to-list?rq=1
+        /// </summary>
+        /// <typeparam name="T">The type to cast to</typeparam>
+        /// <param name="ienumerable">the IEnumerable</param>
+        /// <returns></returns>
+        public static List<T> ToList<T>(this System.Collections.IEnumerable enumerable) 
+            where T: class {
+
+            return enumerable.Cast<T>().ToList();
+        }
+
         /// <summary>      
         /// Refs
         /// https://stackoverflow.com/questions/9697332/how-can-i-override-tostring-method-for-all-ienumerableint32
