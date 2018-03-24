@@ -69,33 +69,70 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
                         document.Content = item;
 
                         // apply some metadata!
-                        document.Title = view.GetType().ToString();
+                        document.Title = view.GetType().ToString();                        
 
-                        document.Closed += (sender, args) => {
-
-                            // from CloseTabAction.cs
-
-                            RemoveItemFromRegion(sender, region);
-                        };
-
+                        // the region target is the underlying instance of LayoutDocumentPane
+                        // add the view to it to let the pane create the tab to host the view
+                        // then make this last added view active. Multiple views can be active
+                        // at the same time in the same LayoutDocument instance.
                         regionTarget.Children.Add(document);
-                        document.IsActive = true;
+                        region.Activate(view);
+
+                        // the LayoutDocument.Close event happens when the user click on the 
+                        // x button on the document tab. This is one of the possible ways a 
+                        // view may be removed from the instance of LayoutDocument. We need 
+                        // to make sure that the view is olso removed from the associated 
+                        // Prism region.
+                        document.Closed += (sender, args) => {
+                            RemoveItemFromRegionWhenTheDocumentIsClosed(sender, region);
+                        };
                     }
 
                 }
                 else if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove) {
 
-                    var x = e.NewItems;
-                    var y = e.OldItems;
-                    // ? what to do here ?
+                    // the removal of views from the instance of LayoutDocument to which a Prism region 
+                    // is associated may not always be triggered by the user interaction of a user that 
+                    // clicks on the x button on the corresponding document tab. For example we might 
+                    // have a command or another event to trigger the removal.
+
+                    var viewToRemove = e.OldItems[0];
+
+                    if (viewToRemove == null) { return; }                    
+
+                    // chek that the view to remove is still in the region before trying to remove it.
+                    // when the removal is triggered by the user by clicking on teh x of teh document 
+                    // tab a specific hanlder might have already removed it.
+                    if (!region.Views.Contains(viewToRemove)) { return; }
+
+                    region.Remove(viewToRemove);
                 }
+            };
+
+            region.ActiveViews.CollectionChanged += (s, e) => {
+
+                // handle the changes of active views
+                var activeViews = region.ActiveViews;
             };
         }
 
-        private void RemoveItemFromRegion(object item, IRegion region) {
+        /// <summary>
+        /// This event handlers removes the view from the region associated to the instance of 
+        /// <see cref="LayoutDocument"/> when the user clicks the x on the corresponding tab.
+        /// </summary>
+        /// <param name="item">the instance of <see cref="LayoutDocument"/></param>
+        /// <param name="region">the region associated with the <see cref="LayoutDocument"/> instance</param>
+        private void RemoveItemFromRegionWhenTheDocumentIsClosed(
+            object item, 
+            IRegion region) {
 
             // some more navigation logic here...
-            region.Remove(item);
+            LayoutDocument document = item as LayoutDocument;
+
+            if (document == null || document.Content == null) { return; }            
+
+            // this should remove the view from the region.
+            region.Remove(document.Content);
         }
 
         /// <summary>
