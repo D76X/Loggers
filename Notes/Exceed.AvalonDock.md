@@ -49,9 +49,13 @@ folder.
 
 ***
 
-## Navigation to region and child regions within the Avalon Docking Manager with multiple shells
+## Using AvalonDock DockingManager with Prism
 
-This is not easy to get it right!
+This is not an easy subject and it is difficult to achieve a functional and correct implementation as there are several aspects at play and the information available on teh Internet is sparse and not cohesive. The following presents one implementation strategy that solve some problems in a specific context. It might not necessarily fits all applications but may be used as a jumping point for improved and/or revised versions applicable in different contexts.
+
+  
+
+***
 
 ScopedRegionNavigationContentLoader
 ShellServiceBase
@@ -122,21 +126,3 @@ logic by means of event handlers.
 
 
 ***
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

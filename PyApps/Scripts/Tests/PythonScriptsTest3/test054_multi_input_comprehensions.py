@@ -28,6 +28,7 @@ Results:
 """
 
 from math import factorial
+from pprint import pprint as pp
 
 def test_module(): 
     """Module-level tests."""
@@ -84,3 +85,119 @@ def test_module():
     print("Warning")
     print("In Python the type <set> is an unordered container!")
     
+    # dictionary comprehensions
+    print()
+    print("there are various ways to create a dictionary in Python")
+    print("one of them is by dictionary  comprehensions syntax")
+    print("but it is not the only way...")      
+
+    # by using the { } expression on a list of tuples
+    print()
+    print("by using the { } expression on a list of tuples")
+    print("d = {(key, value) for (key, value) in iterable)}")
+    d1 = {(str(value), value) for value in range(10)}
+    pp(d1)
+    
+    # by using the dict contructor on a list of tuples
+    print()
+    print("from a zipped iterable of tuples and the dict contructor")
+    
+    values = [i for i in range(5)]    
+    keys = [str(i) for i in values] 
+    
+    # Warning!!!!!
+    # Contrary to Python 2 in Python3 the zip contructor returns a Generator that ia a lazily evaluated iterable 
+    # thus the first time the generator is run through by the invokation of the dict contructor it is consumed
+    # and trying to iterate on it again will not produce any more tuple - this behaviors my catch you by surprise 
+    # if you do not know about it. 
+
+    # zipped is "generator"
+    zipped = zip(keys, values)    
+    
+    # this will print only the ID of the generator object!
+    print(zipped)
+
+    # the content of zipped cannot be printed beacuse it is not callable object!
+    # print("zip(keys, values) = {}".format(zipped(keys, values))) # 
+
+    # the dict contructor will consume the generator zipped!
+    d2 = dict(("@"+key, -value) for (key, value) in zipped)
+    print("dict((""@""+key, -value) for (key, value) in zipped)")
+    pp(d2)
+
+    # in general you may convert a generator into an in-memory iterable although it is not advisable, of course.
+    # if you try to just that on the consumed generator you get an empty iterable.
+    print()
+    print("cannot rewind a generator!")
+    list_from_coinsumed_generator = list(zipped)
+    print("list(zipped) = {}".format(list_from_coinsumed_generator))
+
+    print()
+    print("let's remake the generator")
+    zipped = zip(keys, values) 
+    print("the pairwise dict contructor syntax can be used to build a dictionary straight from an iterable.")
+    print("dict(zipped) = {}".format(dict(zipped)))
+
+    print()
+    print("the syntax for dictionary comprehensions depends on the iterable.")
+    
+    # by using comprehension syntax from a list
+    print()
+    print("by using comprehension syntax on a list where the key for the dictionary is built as an expression of the value") 
+    print("{expr(val):expr(val) for val in iterable}")
+    d3 = {"&"+str(v+10)+"*":v+10 for v in range(10, 0, -1)}    
+    pp(d3)
+
+    # by using comprehension syntax from a list of tuples
+    print()
+    print("by using comprehension syntax from a list of tuples you may use either which way you want")
+    
+    # remake the generator
+    print()
+    print("the keys of a dictinary must be immutable and hashable, strings and numbers can always be used as keys.")
+    
+    print()
+    zipped = zip(keys, values) 
+    print("a dictionary with integer keys")
+    d4 = {int(k) :v-1 for k, v in zipped}  
+    print("{{int(k) :v-1 for k, v in zipped}} = {}".format(d4))
+    
+    print()
+    zipped = zip(keys, values) 
+    print("a dictionary with keys of types string")
+    d4 = {k :v-1 for k, v in zipped}  
+    print("{{int(k) :v-1 for k, v in zipped}} = {}".format(d4))
+
+    # remake the generator
+    print()
+    zipped = zip(keys, values) 
+    # the same as above but with the () this time it does not matter
+    d4 = {int(k): v-1 for (k, v) in zipped} 
+    print("{{int(k): v-1 for (k, v) in zipped}} = {}".format(d4))
+    
+    print()
+    zipped = zip(keys, values) 
+    # the same as above but with the () this time it does not matter
+    d4 = {k: v-1 for (k, v) in zipped}
+    print("{{k: v-1 for (k, v) in zipped}} = {}".format(d4))
+
+    # remake the generator
+    zipped = zip(keys, values)
+    d4 = {v+1111: v-1 for (k, v) in list(zipped)}
+    print("{{v+1111: v-1 for (k, v) in list(zipped)}} = {}".format(d4))
+
+    # inversion of dictionaries by means of the dictionary comprehensions    
+    print()
+    print("Inversion of dictionaries by means of the dictionary comprehensions")
+    print("this operation is easy in Python thanks to the dictionary comprehension syntax!")
+    print("let's try to invert the following dictionary")
+    print(d3)
+    d5 = {value: key for key, value in d3.items()} 
+    print("{{value: key for key, value in d3.items()}} = {}".format(d5))
+    print("notice that we must use d.items() on the dictionary")
+    print("to iterate on its key-values")
+
+    print()
+    print("invert the same dictionary back this time iterating on it by the key")
+    d6 = {d5[key]: key for key in d5}
+    print("{{d5[key]: key for key in d5}} = {}".format(d6))

@@ -50,4 +50,6 @@
 | 23/03/2018                | TabControl+Docking prototype in particular LayoutDocumentPane|
 |                           | ASP.NET+Angular + Angular CLI, German, Phaser, CSS, Python   |
 |                           | Planning for websites, investigation of infinite scrolling   |
-| 24/03/2018                | Improvements to Docking, CSS, German, |
+| 24/03/2018                | Improvements to Docking, CSS Positioning, German, Angular CLI|
+|                           | Probability/ML, Python, Phaser                               |
+| 25/03/2018                | Improvements to Docking, |
