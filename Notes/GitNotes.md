@@ -13,7 +13,7 @@ Imagine that you have been working on a branch for some time and you have a bunc
 | stash & keep              | See below.                                                                                      |
 | ```git stash list```	    | List all the stashes on the server.                                   |
 | ```git stash apply```	    | Apply the most recent stash changes toi the current branch.           |
-| ```git stash apply```	    | Removes the most recent stash.                                        |
+| ```git stash drop```	    | Removes the most recent stash.                                        |
 
 ## [Stash changes while keeping the changes in the working directory in Git](https://stackoverflow.com/questions/17843384/stash-changes-while-keeping-the-changes-in-the-working-directory-in-git)
 
