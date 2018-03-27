@@ -29,6 +29,7 @@ Results:
 
 from math import factorial
 from pprint import pprint as pp
+from ntt_utils import isPrime
 
 def test_module(): 
     """Module-level tests."""
@@ -201,3 +202,14 @@ def test_module():
     print("invert the same dictionary back this time iterating on it by the key")
     d6 = {d5[key]: key for key in d5}
     print("{{d5[key]: key for key in d5}} = {}".format(d6))
+
+    # when a dictionary comprehension is used to build a dictionary if the key appears 
+    # multiple times in the comprehension expression only the last of the key-valure 
+    # # pairs is retained 
+    print()
+    print(words)    
+    d7 = {w[0]: w for w in words}
+    print("{w[0]: w for w in words} = {}".format(d7))
+
+    # filtering with predicates
+    print()

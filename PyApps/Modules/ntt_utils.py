@@ -47,6 +47,12 @@ def sign(x):
     """
     return (x > 0) - (x < 0)
 
+def isPrime(n):
+    """
+    Test whther the input is a prime number.
+    """
+    pass
+
 def test_module(): 
     """Module-level tests."""
     print()
