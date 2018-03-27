@@ -29,11 +29,11 @@ Results:
 
 from math import factorial
 from pprint import pprint as pp
-from ntt_utils import isPrime
+import ntt_
 
 def test_module(): 
     """Module-level tests."""
-
+    
     # Python defines teh comprhension syntax
     print()
     print("Python has special syntax called comprehension syntax to build some iterable objetcs in a declarative fashion.")
