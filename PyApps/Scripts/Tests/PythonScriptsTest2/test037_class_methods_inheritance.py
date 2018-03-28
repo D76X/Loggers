@@ -97,9 +97,9 @@ class Cylinder(ContainerBase):
 
 def test_module():
     """Module-level tests."""
-    box1 = Box.create_box(size=2);
+    box1 = Box.create_box(size=2)
     box2 = Box(sizex=1,sizey=2,sizez=3)
-    box3 = Box.create_unit_box();
+    box3 = Box.create_unit_box()
     
     cylinder1 = Cylinder.create_cylinder(radius=3,height=2)
     cylinder2 = Cylinder(radius=6,height=4)
@@ -112,3 +112,24 @@ def test_module():
     print(cylinder1.print())
     print(cylinder2.print())
     print(cylinder3.print())
+
+
+# ##########################################################################################
+
+# 1-Run the file in Python as a script.
+
+# if __name__ = '__main__' the files is executed as a script 
+# to execute the file as a scrip in the cmd use : python filename.py
+
+# 2-Import the module into the Python REPL.
+
+# when  filename.py is imported into the Python REPL as in the following
+# python
+# import filename
+# the __name__ variable is set to the name of the module that by default is filename
+
+print("__name__ = {}".format(__name__))
+if __name__ == '__main__':
+    test_module()
+
+# ##########################################################################################

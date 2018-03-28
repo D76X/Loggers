@@ -4,7 +4,7 @@
     Usage:
 
     # Copy and paste all these commands in the terminal to see the outputs.
-    import os; os.chdir("C:\\GitHub\\Loggers\\PyApps\\Modules"); clear = lambda: os.system('cls'); import imp; import ntt_utils as nttutils; nttutils.test_module()
+    import os; os.chdir("C:\\GitHub\\Loggers\\PyApps"); clear = lambda: os.system('cls'); import imp; import ntt_utils as nttutils; nttutils.test_module()
 
     # The last two commands are specific to this module.
     import ntt_utils as nttutils
@@ -20,10 +20,12 @@
 
     # set the working directory in the REPL
     import os
-    os.chdir("C:\\GitHub\\Loggers\\PyApps\\Modules")
+    os.chdir("C:\\GitHub\\Loggers\\PyApps")
     os.getcwd()
 
 """   
+
+from math import sqrt
 
 def sign(x):
     """
@@ -49,16 +51,43 @@ def sign(x):
 
 def isPrime(n):
     """
-    Test whther the input is a prime number.
+    Test whether the input is a prime number.
+    (very crude implementation)
     """
-    pass
+    if n < 2:
+        return False
+    for i in range(2, int(sqrt(n)+1)):
+        if n % i == 0:
+            return False
+    return True
 
 def test_module(): 
     """Module-level tests."""
-    print()
+    print()    
     print("ntt_utils tests...")
     print("sign(1)={}".format(sign(1)))
     print("sign(1.6)={}".format(sign(1.06)))
     print("sign(-1)={}".format(sign(-1)))
     print("sign(-1.01)={}".format(sign(-1.01)))
-    print("sign(0)={}".format(sign(0)))
+    print("sign(0)={}".format(sign(0)))    
+
+
+# ##########################################################################################
+
+# 1-Run the file in Python as a script.
+
+# if __name__ = '__main__' the files is executed as a script 
+# to execute the file as a scrip in the cmd use : python filename.py
+
+# 2-Import the module into the Python REPL.
+
+# when  filename.py is imported into the Python REPL as in the following
+# python
+# import filename
+# the __name__ variable is set to the name of the module that by default is filename
+
+print("__name__ = {}".format(__name__))
+if __name__ == '__main__':
+    test_module()
+
+# ##########################################################################################

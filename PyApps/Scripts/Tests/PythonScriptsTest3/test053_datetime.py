@@ -407,3 +407,24 @@ def test_module():
     print("meeting = datetime.datetime(year=2014, month=1, day=7, hour=13, minute=5, tzinfo=datetime.timezone.utc) ={}".format(meeting))
     print("the tzinfo=datetime.timezone.utc causes the 'meeting' date to be UTC and infact it prints as +00:00 that is London Time!")
     print("use pytz or python.dateutils for anything of real-worlkd complexity that mus account for daylight savings as well.")
+
+    
+# ##########################################################################################
+
+# 1-Run the file in Python as a script.
+
+# if __name__ = '__main__' the files is executed as a script 
+# to execute the file as a scrip in the cmd use : python filename.py
+
+# 2-Import the module into the Python REPL.
+
+# when  filename.py is imported into the Python REPL as in the following
+# python
+# import filename
+# the __name__ variable is set to the name of the module that by default is filename
+
+print("__name__ = {}".format(__name__))
+if __name__ == '__main__':
+    test_module()
+
+# ##########################################################################################

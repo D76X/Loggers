@@ -29,7 +29,7 @@ Results:
 
 from math import factorial
 from pprint import pprint as pp
-import ntt_
+from ntt_utils import isPrime
 
 def test_module(): 
     """Module-level tests."""
@@ -211,5 +211,32 @@ def test_module():
     d7 = {w[0]: w for w in words}
     print("{w[0]: w for w in words} = {}".format(d7))
 
-    # filtering with predicates
+    # filtering with predicates - the predicate comes last in the comprehension syntax
     print()
+    # a simple list comprehension - notice the syntax [ ]
+    primes_in_first_100_int = [p for p in range(101) if isPrime(p)]
+    print("[p for p in range(101) if isPrime(p)] = {}".format(primes_in_first_100_int))
+    # also with dictionary comprehensions - notice the { : } syntax
+    prime_square_divisors = {p*p:(1, p, p*p) for p in range(101) if isPrime(p)}
+    print("{p*p:(1, p, p*p) for p in range(101) if isPrime(p)} = {}".format(prime_square_divisors))
+
+    
+# ##########################################################################################
+
+# 1-Run the file in Python as a script.
+
+# if __name__ = '__main__' the files is executed as a script 
+# to execute the file as a scrip in the cmd use : python filename.py
+
+# 2-Import the module into the Python REPL.
+
+# when  filename.py is imported into the Python REPL as in the following
+# python
+# import filename
+# the __name__ variable is set to the name of the module that by default is filename
+
+print("__name__ = {}".format(__name__))
+if __name__ == '__main__':
+    test_module()
+
+# ##########################################################################################

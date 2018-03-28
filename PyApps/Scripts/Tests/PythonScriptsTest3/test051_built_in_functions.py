@@ -197,3 +197,24 @@ def test_module():
     print("this happens due to teh fact that the literal decimal 2.675 cannot have an exact binary representation as a float")
     print("the only way to fix this kind of problems is to use Decimal")
     print("round(Decimal('2.675'), 2)={}".format(round(Decimal('2.675'), 2)))
+
+    
+# ##########################################################################################
+
+# 1-Run the file in Python as a script.
+
+# if __name__ = '__main__' the files is executed as a script 
+# to execute the file as a scrip in the cmd use : python filename.py
+
+# 2-Import the module into the Python REPL.
+
+# when  filename.py is imported into the Python REPL as in the following
+# python
+# import filename
+# the __name__ variable is set to the name of the module that by default is filename
+
+print("__name__ = {}".format(__name__))
+if __name__ == '__main__':
+    test_module()
+
+# ##########################################################################################
