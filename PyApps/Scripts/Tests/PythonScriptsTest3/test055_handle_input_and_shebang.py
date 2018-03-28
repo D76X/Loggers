@@ -1,5 +1,11 @@
+#!/usr/bin/env python3
 """
-This module illustrates how to capture user input from teh console in Python.
+This module illustrates the basics of how to capture user input from the console in Python.
+
+It also add the shebang #!/usr/bin/env python3 on top of the *.py file. 
+On both linux and windows the shebang is used to document which interpreter version the 
+script is meant to be run by and when run it is used by the OS to execute it with the right
+interpreter if present on the machine.
 
 Usage:
 
@@ -14,7 +20,7 @@ Usage:
 
     # Reload the module into the REPL after you make any changes to it.
     import imp
-    imp.reload(t55)
+    imp.reload(t55)     
 
     # clear th REPL
     clear = lambda: os.system('cls')  
