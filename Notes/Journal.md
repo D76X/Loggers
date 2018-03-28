@@ -52,4 +52,11 @@
 |                           | Planning for websites, investigation of infinite scrolling   |
 | 24/03/2018                | Improvements to Docking, CSS Positioning, German, Angular CLI|
 |                           | Probability/ML, Python, Phaser                               |
-| 25/03/2018                | Improvements to Docking, |
+| 25/03/2018                | Improvements to Docking, CSS Positioning, German,            |
+|                           | Probability/ML, Python, Phaser.                              |
+|                           | setting up the dev-env for websites                          |
+| 26/03/2018                | Improvements to Docking, setting up the dev-env for websites |
+|                           | Probability, Python, ML, German                              |
+| 27/03/2018                | Improvements to Docking, Probability, Python, ZEROMQ         |
+|                           | finished setting up the dev-env for websites, German         |
+| 28/03/2018                |       |
