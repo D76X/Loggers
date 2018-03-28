@@ -51,6 +51,9 @@
     <Compile Include="test054_multi_input_comprehensions.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="test055_handle_input.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|ContinuumAnalytics|Anaconda36-64" />
