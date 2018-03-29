@@ -167,4 +167,57 @@ http://127.0.0.1:7888
 - [No module named numpy in VSCODE](https://stackoverflow.com/questions/40185437/no-module-named-numpy-visual-studio-code)  
 The best option is to just install the Anaconda Extension for VSCODE.
 
+## Anaconda: Permanently include external packages (like in PYTHONPATH)
+
+When you want the Python interpreter to find modules that are in a specific folder on your system on the **import** statements there are a number of available option.
+
+- The following code may be used at the start of the ```*.py``` file where the **import** statement of a custom module is inserted. This extends the values in the variable **sys.path** to include the folder ```/path/to/my/package```. the variable **sys.path** is used by the Python interpreter as a list of folder on the system in which to look for the imports. The first file that matches the name of the module is loaded by the interpreter in the current execution memory. This technique alos work with the **Anaconda** distribution.
+```
+import sys
+sys.path.append(r'/path/to/my/package')
+``` 
+
+- It is also possible to make use of the environmet variable **PYTHONPATH**. The Python interpreter looks up this variable when it loads and add all the folders that are set as its value to the **sys.path**. Unfortunately, this **dies not work with the Anaconda distribution**.
+
+- Refer to the following posts which address the problem in teh context of teh Anaconda distribution.
+  - [Anaconda: Permanently include external packages (like in PYTHONPATH)](https://stackoverflow.com/questions/37006114/anaconda-permanently-include-external-packages-like-in-pythonpath)  
+  - [What is setup.py?](https://stackoverflow.com/questions/1471994/what-is-setup-py)
+
+There are basically three ways to accomplish this.
+
+1. Place the modules in the **site-packages** folder of the **Anaconda** distribution.
+2. Add a file with extension **pth** i.e. ```imports.pth``` in the **site-packages** folder of the **Anaconda** distribution.
+3. Install the packages and/or modules with **PIP**.
+
+The best solution would be to install the modules as packages in **pip** as explained by the second of these references. However, this is usually done as a part of a process where the pacKages and modules to import are production ready. In development it is probably the most flexible of the three options.
+
+In order to find the **site-packages** folder of the **Anaconda** distribution and to interrogate PIP for it start a session of **Anaconda Prompt**. You may have to run it as admin if you are prompted to upgrade pip.
+
+```
+python
+import sys; from pprint import pprint as pp; pp(sys.path) 
+```
+will show the folders that are on ``sys.path`` of the Python interpreter for the Anaconda distribution. 
+
+To exit the python REPL and go back to the Anaconda Prompt.
+
+```
+exit()
+```
+To see what is installed with PIP.
+```
+pip --version
+pip --help
+pip list
+```
+### Use the *.pth option
+
+This is very simple, in the folder ```C:\ProgramData\Anaconda3\Lib\site-packages``` I have added a ```imports.pth``` file with the following content.
+
+```
+C:\GitHub\Loggers\PyApps
+```
+
+After having done this the path to PyApp is prepended to the ``sys.path`` of the Python interpreter of the **Anaconda** distribution.
+
 ***
