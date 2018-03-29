@@ -7,7 +7,7 @@
     <ProjectGuid>{FB58D566-2F42-4868-9873-748A62692B35}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataServiceModule</RootNamespace>
+    <RootNamespace>LogXtreme.WinDsk.Modules.Services</RootNamespace>
     <AssemblyName>DataServiceModule</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

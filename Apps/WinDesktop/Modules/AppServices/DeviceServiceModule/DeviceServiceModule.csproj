@@ -7,7 +7,7 @@
     <ProjectGuid>{E9083EC0-8F0D-46CF-B145-A09E139B93DF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DeviceServiceModule</RootNamespace>
+    <RootNamespace>LogXtreme.WinDsk.Modules.Services</RootNamespace>
     <AssemblyName>DeviceServiceModule</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
