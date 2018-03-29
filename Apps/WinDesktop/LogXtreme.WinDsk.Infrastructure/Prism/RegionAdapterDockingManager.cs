@@ -1,4 +1,5 @@
 ﻿using LogXtreme.Infrastructure.ContractValidators;
+using LogXtreme.WinDsk.Infrastructure.Services;
 using Prism.Regions;
 using Xceed.Wpf.AvalonDock;
 
@@ -29,13 +30,18 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
     /// </summary>
     public class RegionAdapterDockingManager : RegionAdapterBase<DockingManager> {
 
+        private IAvalonDockService avalonDockService;
+
         /// <summary>
         /// This ties the adapter into the base region factory.
         /// </summary>
         /// <param name="factory">The factory that determines where the modules will go.</param>
-        public RegionAdapterDockingManager(IRegionBehaviorFactory regionBehaviorFactory)
+        public RegionAdapterDockingManager(
+            IRegionBehaviorFactory regionBehaviorFactory,
+            IAvalonDockService avalonDockService)
             : base(regionBehaviorFactory) {
 
+            this.avalonDockService = avalonDockService;           
         }
 
         /// <summary>
@@ -53,13 +59,11 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
         protected override void AttachBehaviors(
             IRegion region,
             DockingManager regionTarget) {
-
+            
             region.Validate(nameof(region)).NotNull();
-
-            // Add the behavior that syncs the items source items with the rest of the items.
             region.Behaviors.Add(
                 DockingManagerDocumentsSourceSyncBehavior.BehaviorKey,
-                new DockingManagerDocumentsSourceSyncBehavior() {
+                new DockingManagerDocumentsSourceSyncBehavior(this.avalonDockService) {
                     HostControl = regionTarget
                 });
 
