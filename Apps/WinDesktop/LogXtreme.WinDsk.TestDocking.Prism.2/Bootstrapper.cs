@@ -1,6 +1,7 @@
 ﻿using LogXtreme.WinDsk.Infrastructure.Models;
 using LogXtreme.WinDsk.Infrastructure.Prism;
 using LogXtreme.WinDsk.Infrastructure.Services;
+using LogXtreme.WinDsk.Modules.Services;
 using LogXtreme.WinDsk.TestDocking.Prism.Properties;
 using LogXtreme.WinDsk.TestDocking.Prism.Services;
 using LogXtreme.WinDsk.TestDocking.Prism.ViewModels;
@@ -86,6 +87,7 @@ namespace LogXtreme.WinDsk.TestDocking.Prism {
 
             // register the application services
             RegisterTypeIfMissing(typeof(IShellService), typeof(ShellService), true);
+            RegisterTypeIfMissing(typeof(IAvalonDockService), typeof(AvalonDockService), true);
             //RegisterTypeIfMissing(typeof(IDeviceService), typeof(DeviceService), true);
             //RegisterTypeIfMissing(typeof(IDataService), typeof(DataService), true);
 
@@ -101,19 +103,25 @@ namespace LogXtreme.WinDsk.TestDocking.Prism {
 
             // register all the custom RegionAdapters with Prism.
             mappings.RegisterMapping(typeof(StackPanel), Container.Resolve<RegionAdapterStackPanel>());
-            
+
             // region adapters for the AvalonDock controls
             mappings.RegisterMapping(
-                typeof(DockingManager), 
-                new RegionAdapterDockingManager(ServiceLocator.Current.GetInstance<RegionBehaviorFactory>()));
+                typeof(DockingManager),
+                new RegionAdapterDockingManager(
+                    ServiceLocator.Current.GetInstance<RegionBehaviorFactory>(),
+                    Container.Resolve<IAvalonDockService>()));
 
             mappings.RegisterMapping(
-                typeof(LayoutAnchorable), 
-                new RegionAdapterLayoutAnchorable(ServiceLocator.Current.GetInstance<RegionBehaviorFactory>()));
+                typeof(LayoutAnchorable),
+                new RegionAdapterLayoutAnchorable(
+                    ServiceLocator.Current.GetInstance<RegionBehaviorFactory>(),
+                    Container.Resolve<IAvalonDockService>()));
 
             mappings.RegisterMapping(
                 typeof(LayoutDocumentPane),
-                new RegionAdapterLayoutDocumentPane(ServiceLocator.Current.GetInstance<RegionBehaviorFactory>()));
+                new RegionAdapterLayoutDocumentPane(
+                    ServiceLocator.Current.GetInstance<RegionBehaviorFactory>(),
+                    Container.Resolve<IAvalonDockService>()));
 
             return mappings;
 
@@ -122,7 +130,7 @@ namespace LogXtreme.WinDsk.TestDocking.Prism {
         protected override IRegionBehaviorFactory ConfigureDefaultRegionBehaviors() {
 
             IRegionBehaviorFactory behaviors = base.ConfigureDefaultRegionBehaviors();
-            behaviors.AddIfMissing(RegionManagerAwareBehavior.BehaviorKey, typeof(RegionManagerAwareBehavior));
+            behaviors.AddIfMissing(RegionManagerAwareBehavior.BehaviorKey, typeof(RegionManagerAwareBehavior));            
             return behaviors;
 
         }
