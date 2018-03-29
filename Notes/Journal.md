@@ -59,4 +59,6 @@
 |                           | Probability, Python, ML, German                              |
 | 27/03/2018                | Improvements to Docking, Probability, Python, ZEROMQ         |
 |                           | finished setting up the dev-env for websites, German         |
-| 28/03/2018                |       |
+| 28/03/2018                | Improvements to Docking, Probability, Python, German         |
+|                           | Angular CLI                                                  |
+| 29/03/2018                | Improvements to Docking, German, |
