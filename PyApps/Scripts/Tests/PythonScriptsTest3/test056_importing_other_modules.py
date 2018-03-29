@@ -31,6 +31,11 @@ import sys
 from pprint import pprint as pp
 
 # this module imports a function from custom module!
+# The Python interpreter must know where to find this module.
+# There are several possibilities.
+# 1-Install it with PIP - this is usually what is done for production-ready packages.False
+# 2-add the folder that contains the module or package to sys.path using any of the available methods i.e. *.pth in Anaconda, etc.False
+# 3-add the folder that contains the module or package to the PYTHONPATH environment variable on your system. 
 from ntt_utils import isPrime
 
 def test_module(): 
