@@ -461,6 +461,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestApps", "TestApps", "{E1
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "MachineLearningScripts", "PyApps\Machine Learning\MachineLearningScripts\MachineLearningScripts.pyproj", "{8C27430B-6D38-401C-8D73-0541DEC2120B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvalonDockService", "Apps\WinDesktop\Modules\AppServices\AvalonDockService\AvalonDockService.csproj", "{D3C72916-55A5-4532-A1E3-4058ABEE0A28}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1331,6 +1333,14 @@ Global
 		{8C27430B-6D38-401C-8D73-0541DEC2120B}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{8C27430B-6D38-401C-8D73-0541DEC2120B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C27430B-6D38-401C-8D73-0541DEC2120B}.Release|x86.ActiveCfg = Release|Any CPU
+		{D3C72916-55A5-4532-A1E3-4058ABEE0A28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3C72916-55A5-4532-A1E3-4058ABEE0A28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3C72916-55A5-4532-A1E3-4058ABEE0A28}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D3C72916-55A5-4532-A1E3-4058ABEE0A28}.Debug|x86.Build.0 = Debug|Any CPU
+		{D3C72916-55A5-4532-A1E3-4058ABEE0A28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3C72916-55A5-4532-A1E3-4058ABEE0A28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3C72916-55A5-4532-A1E3-4058ABEE0A28}.Release|x86.ActiveCfg = Release|Any CPU
+		{D3C72916-55A5-4532-A1E3-4058ABEE0A28}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1505,6 +1515,7 @@ Global
 		{6135526A-B7FA-4E87-A6D3-CA2B31319937} = {45449303-EA76-4B02-B1EE-CCBB11D41186}
 		{E1E230CA-8EA5-4CCC-8CCD-4EDB2F468243} = {EFCD865F-B980-4120-AC0B-20F5BA860D0E}
 		{8C27430B-6D38-401C-8D73-0541DEC2120B} = {ADEC704F-C61B-4B74-AA13-463FE53F3C35}
+		{D3C72916-55A5-4532-A1E3-4058ABEE0A28} = {B41C4F41-E9F6-4C26-B701-E6A51C4E716F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B48A64CD-1E9D-4169-82DF-66FD7695C2D0}
