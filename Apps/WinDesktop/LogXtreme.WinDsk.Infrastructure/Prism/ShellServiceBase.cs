@@ -92,11 +92,13 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
 
             var scopedRegionManager = regionManagerAwareShellViewModel.RegionManager;
 
+            // show the window before navigation to the content region so that all
+            // controls will have a window with a scoped region manager to refer to.
+            (shell as Window)?.Show();
+
             if (scopedRegionManager != null && !string.IsNullOrEmpty(uri)) {
                 scopedRegionManager.RequestNavigate(RegionNames.RegionContent, uri);
-            }
-
-            (shell as Window)?.Show();           
+            }                      
         }
     }
 }
