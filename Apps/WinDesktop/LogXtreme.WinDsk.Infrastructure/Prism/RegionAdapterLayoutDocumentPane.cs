@@ -1,4 +1,7 @@
-﻿using LogXtreme.Infrastructure.ContractValidators;
+﻿using LogXtreme.Ifrastructure.Enums;
+using LogXtreme.Infrastructure.ContractValidators;
+using LogXtreme.WinDsk.Infrastructure.Events;
+using LogXtreme.WinDsk.Infrastructure.Services;
 using Prism.Regions;
 using System.Windows;
 using Xceed.Wpf.AvalonDock.Layout;
@@ -40,8 +43,15 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
     /// </summary>
     public class RegionAdapterLayoutDocumentPane : RegionAdapterBase<LayoutDocumentPane> {
 
-        public RegionAdapterLayoutDocumentPane(IRegionBehaviorFactory regionBehaviorFactory)
-            : base(regionBehaviorFactory) { }
+        private IAvalonDockService avalonDockService;
+
+        public RegionAdapterLayoutDocumentPane(
+            IRegionBehaviorFactory regionBehaviorFactory,
+            IAvalonDockService avalonDockService)
+            : base(regionBehaviorFactory) {
+
+            this.avalonDockService = avalonDockService;
+        }
 
         /// <summary>
         /// Provides events handlers to sych the region views with the 
@@ -55,8 +65,10 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
 
             regionTarget.Validate(nameof(regionTarget)).NotNull();
 
+            this.avalonDockService.RegisterRegionName<LayoutDocument>(region.Name);
+
             // monitor when views are injectedinto or removed from the region. 
-            region.Views.CollectionChanged += (s, e) => {
+            region.Views.CollectionChanged += (s, e) => {               
 
                 if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add) {
 
@@ -107,12 +119,22 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
 
                     region.Remove(viewToRemove);
                 }
+
+                this.avalonDockService
+                    .RaiseDockingManagerChanged(this, new AvalonDockEventArgs(
+                        e,
+                        AvalonDockEventEnum.ViewsCollectionChanged));
             };
 
-            region.ActiveViews.CollectionChanged += (s, e) => {
-
+            region.ActiveViews.CollectionChanged += (s, e) => {               
+                
                 // handle the changes of active views
                 var activeViews = region.ActiveViews;
+
+                this.avalonDockService
+                    .RaiseDockingManagerChanged(this, new AvalonDockEventArgs(
+                        e,
+                        AvalonDockEventEnum.ActiveViewsCollectionChanged));
             };
         }
 
