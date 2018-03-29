@@ -128,12 +128,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Events\AvalonDockEventArgs.cs" />
     <Compile Include="Events\DeviceEventArgs.cs" />
     <Compile Include="Models\IShellView.cs" />
     <Compile Include="Models\IShellViewModel.cs" />
     <Compile Include="Prism\NavigationRequestParametersBase.cs" />
     <Compile Include="Prism\RegionAdapterLayoutDocumentPane.cs" />
     <Compile Include="Prism\ShellServiceBase.cs" />
+    <Compile Include="Services\IAvalonDockService.cs" />
     <Compile Include="TriggerActions\CloseTabAction.cs" />
     <Compile Include="Behaviors\BindVisualStateBehavior.cs" />
     <Compile Include="Behaviors\ClickBehavior.cs" />
@@ -150,7 +152,7 @@
     <Compile Include="Convertes\EnumToDisplayConverter.cs" />
     <Compile Include="Convertes\InvertedBooleanToCollapsedVisibilityConverter.cs" />
     <Compile Include="Convertes\NotConverter.cs" />
-    <Compile Include="Events\DeviceEvent.cs" />
+    <Compile Include="Events\PubSubEvents.cs" />
     <Compile Include="Events\MouseCaptureEventArgs.cs" />
     <Compile Include="Exceptions\StrategyNullReferenceEception.cs" />
     <Compile Include="Interfaces\IBindableBase.cs" />
@@ -168,6 +170,7 @@
     <Compile Include="Prism\RegionAdapterLayoutAnchorable.cs" />
     <Compile Include="Services\IBackgroundWorkerService.cs" />
     <Compile Include="TriggerActions\CommandAction.cs" />
+    <Compile Include="Utils\PrismUtils.cs" />
     <Compile Include="Validation\ValidatableBindableBase.cs" />
     <Compile Include="MarkupExtensions\EnumBindingSourceExtension.cs" />
     <Compile Include="Menu\IMenuItem.cs" />
@@ -240,6 +243,10 @@
     <ProjectReference Include="..\..\Extensions\LogXtreme.Extensions\LogXtreme.Extensions.csproj">
       <Project>{07a36205-c0c2-4f88-a37c-27199051a240}</Project>
       <Name>LogXtreme.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extensions\LogXtreme.Extensions\LogXtreme.Reactive.Extensions\LogXtreme.Reactive.Extensions.csproj">
+      <Project>{665A2E7B-99E7-4FCE-8CCF-E0C149F610D9}</Project>
+      <Name>LogXtreme.Reactive.Extensions</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Infrastructure\LogXtreme.Ifrastructure\LogXtreme.Ifrastructure.csproj">
       <Project>{f919b826-9c93-4a30-a68c-ed35b35b2fa1}</Project>
