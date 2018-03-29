@@ -29,6 +29,8 @@ Results:
 
 from math import factorial
 from pprint import pprint as pp
+
+# this module imports a function from custom module!
 from ntt_utils import isPrime
 
 def test_module(): 

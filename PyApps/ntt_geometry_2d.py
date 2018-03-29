@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
     This modules defines some utilities functions for 2D geometry. 
 
@@ -154,4 +155,3 @@ if __name__ == '__main__':
     test_module()
     
 # ##########################################################################################
-

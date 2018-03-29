@@ -51,7 +51,8 @@
     <Compile Include="test054_multi_input_comprehensions.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="test055_handle_input.py">
+    <Compile Include="test055_handle_input_and_shebang.py" />
+    <Compile Include="test056_importing_other_modules.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
