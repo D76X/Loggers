@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LogXtreme.WinDsk.Infrastructure.Events;
+using LogXtreme.WinDsk.Infrastructure.Services;
+using System;
 using System.Collections.Generic;
 using Xceed.Wpf.AvalonDock.Layout;
 
