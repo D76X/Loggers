@@ -13,13 +13,20 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LogXtreme.WinDsk.Infrastructure.Models;
+using LogXtreme.WinDsk.Infrastructure.Prism;
 using LogXtreme.WinDsk.TestDocking.Prism.Interfaces;
+using Prism.Regions;
 
 namespace LogXtreme.WinDsk.TestDocking.Prism.Views {
     /// <summary>
     /// Interaction logic for StatusBarView.xaml
     /// </summary>
-    public partial class StatusBarView : UserControl, IStatusBarView {
+    public partial class StatusBarView : 
+        UserControl, 
+        IStatusBarView,
+        IRegionManagerAware {
+
+        private IRegionManager regionManager;
 
         public StatusBarView(IStatusBarViewModel viewModel) {
             InitializeComponent();
@@ -27,12 +34,17 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.Views {
         }
 
         public IViewModel ViewModel {
-            get {
-                return (IStatusBarViewModel)this.DataContext;
-            }
+            get => (IStatusBarViewModel)this.DataContext;
+            set => this.DataContext = value;
+        }
+
+        public IRegionManager RegionManager {
+
+            get => this.scopedRegionManager;
 
             set {
-                this.DataContext = value;
+                if (this.scopedRegionManager != null) { return; }
+                this.scopedRegionManager = value;
             }
         }
     }

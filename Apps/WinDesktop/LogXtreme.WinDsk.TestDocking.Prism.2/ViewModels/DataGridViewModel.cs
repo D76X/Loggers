@@ -11,12 +11,18 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.ViewModels {
         IRegionManagerAware,
         IDisposable {
 
-        public DataGridViewModel() { }
-
         private IRegionManager scopedRegionManager;
+
+        public DataGridViewModel() { }
+        
         public IRegionManager RegionManager {
+
             get => this.scopedRegionManager;
-            set => this.scopedRegionManager = value;
+
+            set {
+                if (this.scopedRegionManager != null) { return; }
+                this.scopedRegionManager = value;
+            }
         }
 
         public override void OnNavigatedFrom(NavigationContext navigationContext) {

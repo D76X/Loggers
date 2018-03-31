@@ -11,12 +11,18 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.ViewModels {
         IRegionManagerAware,
         IDisposable {
 
+        private IRegionManager scopedRegionManager;
+
         public StatusBarViewModel() { }
 
-        private IRegionManager scopedRegionManager;
         public IRegionManager RegionManager {
+
             get => this.scopedRegionManager;
-            set => this.scopedRegionManager = value;
+
+            set {
+                if (this.scopedRegionManager != null) { return; }
+                this.scopedRegionManager = value;
+            }
         }
 
         #region IDisposable

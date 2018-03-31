@@ -13,26 +13,40 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LogXtreme.WinDsk.Infrastructure.Models;
+using LogXtreme.WinDsk.Infrastructure.Prism;
+using LogXtreme.WinDsk.Infrastructure.Utils;
 using LogXtreme.WinDsk.TestDocking.Prism.Interfaces;
+using Prism.Regions;
 
 namespace LogXtreme.WinDsk.TestDocking.Prism.Views {
     /// <summary>
     /// Interaction logic for DeviceTreeView.xaml
     /// </summary>
-    public partial class DeviceTreeView : UserControl, IDeviceTreeView {
+    public partial class DeviceTreeView : 
+        UserControl, 
+        IDeviceTreeView,
+        IRegionManagerAware {
+
+        IRegionManager regionManager;
 
         public DeviceTreeView(IDeviceTreeViewModel viewModel) {
+
             InitializeComponent();
-            this.ViewModel = viewModel;
+            this.ViewModel = viewModel;                        
         }
 
         public IViewModel ViewModel {
-            get {
-                return (IDeviceTreeViewModel)this.DataContext;
-            }
+            get => (IDeviceTreeViewModel)this.DataContext;
+            set => this.DataContext = value;
+        }
+
+        public IRegionManager RegionManager {
+
+            get => this.scopedRegionManager;
 
             set {
-                this.DataContext = value;
+                if (this.scopedRegionManager != null) { return; }
+                this.scopedRegionManager = value;
             }
         }
     }

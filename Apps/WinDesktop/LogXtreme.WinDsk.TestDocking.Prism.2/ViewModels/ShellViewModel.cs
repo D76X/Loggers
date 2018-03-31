@@ -15,6 +15,7 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.ViewModels {
         IDisposable {
 
         private IShellService shellService;
+        private IRegionManager scopedRegionManager;
 
         public DelegateCommand<string> OpenShellCommand { get; private set; }
         public DelegateCommand<string> NavigateCommand { get; private set; }
@@ -33,25 +34,23 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.ViewModels {
 
         /// <summary>
         /// A reference to the region manager for the shell.        
-        /// </summary>
-        private IRegionManager scopedRegionManager;
+        /// </summary>        
         public IRegionManager RegionManager {
             get => this.scopedRegionManager;
             set => this.scopedRegionManager = value;
         }
 
         public int Id {
-            get { return this.id; }
-            private set { this.SetProperty(ref this.id, value); }
+            get => this.id;
+            private set => this.SetProperty(ref this.id, value);
         }
 
         public string LastUriNavigatedTo {
-            get { return this.lastUriNavigatedTo; }
-            set { SetProperty(ref this.lastUriNavigatedTo, value); }
+            get => this.lastUriNavigatedTo;
+            set => SetProperty(ref this.lastUriNavigatedTo, value);
         }
 
         private void OpenShell(string viewName) {
-
             var shell = this.shellService.CreateShell();
             this.shellService.ShowShell(shell, viewName);
         }
