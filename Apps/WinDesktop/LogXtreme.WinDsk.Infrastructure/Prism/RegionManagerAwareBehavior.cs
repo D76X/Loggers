@@ -1,7 +1,13 @@
-﻿using System.Collections.Specialized;
+﻿using LogXtreme.Infrastructure.ContractValidators;
+using LogXtreme.Reactive.Extensions;
+using LogXtreme.WinDsk.Infrastructure.Utils;
 using Prism.Regions;
-using System.Windows;
 using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Linq;
+using System.Reactive.Linq;
+using System.Windows;
 
 namespace LogXtreme.WinDsk.Infrastructure.Prism {
 
@@ -24,7 +30,11 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
     /// when the application starts in the Bootstrapper.
     ///     
     /// </summary>
-    public class RegionManagerAwareBehavior : RegionBehavior {
+    public class RegionManagerAwareBehavior : 
+        RegionBehavior,
+        IDisposable {
+
+        private List<IDisposable> eventsubscriptions_ViewLoaded = new List<IDisposable>();
 
         /// <summary>
         /// A unique key on a RegionBehavior is necessary in order to register the 
@@ -44,8 +54,85 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
         /// </summary>
         protected override void OnAttach() {
 
+            var regionName = Region.Name;
+            var views = Region.Views;
+            var count = views.ToList().Count;
+
             Region.ActiveViews.CollectionChanged -= ActiveViewsCollectionChanged;
             Region.ActiveViews.CollectionChanged += ActiveViewsCollectionChanged;
+
+            // secondary shells when instantiated might already have views in 
+            // their regions hence the event handlers on the region's active 
+            // views might not fire. To make sure that also the views already
+            // present in the regions of the secondary shells get their scoped
+            // region manager set to that of the shell they are contained in 
+            // a weak event hanlder is attached to their loaded event to be sure 
+            // that the containing window has already been shown by then.
+
+            foreach (var view in Region.Views) {
+                FrameworkElement element = view as FrameworkElement;
+                if (element == null) { return; }
+                this.SubscribeToViewLoadedEvent(element);               
+            }
+        }
+
+        private void OnElementLoaded(
+            object sender,
+            RoutedEventArgs e) {
+
+            this.TryToSetRegionManager(sender);            
+        }
+
+        private void TryToSetRegionManager(object item) {
+
+            IRegionManager regionManager = Region.RegionManager;
+
+            FrameworkElement element = item as FrameworkElement;
+
+            if (element == null) { return; }
+
+            // the view might have already its attached property value set to its scoped region manager             
+            IRegionManager scopedRegionManager = element.GetValue(RegionManager.RegionManagerProperty) as IRegionManager;
+
+            if (scopedRegionManager != null) {
+                regionManager = scopedRegionManager;
+            }
+            else {
+
+                // if a scoped region manager could not be found on the view try to look it up from the containing shell.
+                regionManager = PrismUtils.GetScopedRegionManager(element);
+            }
+
+            // if a RegionManager instance for this element could not yet be found subscribe to its loaded event
+            // to re-attempt the process later when the view is in a shell that has its region manager set.
+            if (regionManager == null) {
+                this.SubscribeToViewLoadedEvent(element);
+                return;
+            }
+
+            // properly set the IRegionManagerAware.RegionManager property on view and/or ViewModel 
+            InvokeOnRegionManagerAwareElement(item, x => x.RegionManager = regionManager);            
+        }
+
+        /// <summary>
+        /// Subcribes weakly to the Loaded event of the view so that on this
+        /// event an hanlder is run to try to set the RegionManager property
+        /// if either the view or view model or both implements IRegionManagerAware.
+        /// </summary>
+        /// <param name="element">the element to subscribe to the Loaded event</param>
+        private void SubscribeToViewLoadedEvent(FrameworkElement element) {
+
+            element.Validate(nameof(element)).NotNull();
+            
+            var subscription = Observable
+                    .FromEventPattern<RoutedEventHandler, RoutedEventArgs>(
+                    h => element.Loaded += h,
+                    h => element.Loaded -= h)
+                    .SubscribeWeakly(
+                    this,
+                    (target, ep) => target.OnElementLoaded(ep.Sender, ep.EventArgs));
+
+            this.eventsubscriptions_ViewLoaded.Add(subscription);
         }
 
         /// <summary>
@@ -58,51 +145,21 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ActiveViewsCollectionChanged(
-            object sender, 
+            object sender,
             NotifyCollectionChangedEventArgs e) {
 
             if (e.Action == NotifyCollectionChangedAction.Add) {
 
                 foreach (var item in e.NewItems) {
-
-                    // A view must have a RegionAdapter in order to be a region in Prism.
-                    // A RegionAdapter can hold one ore more RegionBehaviors.
-                    // When a view is created it is given a RegionManager.
-                    // The RegionManager of the view may be the global Prism RegionManager that is that of the first shell
-                    // or a scoped region when the view is in a secondary shell created after bootstrapping.
-                    // Initally we get a reference to the Region manager of the region that may be the global Prism RegionManager.
-                    // Then we try to get the region manager of the view.
-                    // The goal is to get the DataContext that is the VM of the view to get a reference to a scoped RegionManager
-                    // when the view has one and the DataContext/VM is an implementation of IRegionManagerAware.
-                    // In this way when commands on the VM to request navigation are actioned the VM can use the scoped RegionManager
-                    // instead of the global RegionManager and navigation happens only in the shell of containing the view instance 
-                    // that invoked the command. This solve the problem of cross-shell navigation from views. 
-                    IRegionManager regionManager = Region.RegionManager;
-
-                    // is this is a view?
-                    // Normally it will be a view.
-                    FrameworkElement element = item as FrameworkElement;
-
-                    if (element != null) {
-
-                        // the view might have its attached property value set its scoped region manager 
-                        IRegionManager scopedRegionManager = element.GetValue(RegionManager.RegionManagerProperty) as IRegionManager;
-
-                        if (scopedRegionManager != null) {
-                            regionManager = scopedRegionManager;
-                        }
-
-                        // properly set the IRegionManagerAware.RegionManager property on view and/or ViewModel 
-                        InvokeOnRegionManagerAwareElement(item, x => x.RegionManager = regionManager);
-                    }
+                    this.TryToSetRegionManager(item);                    
                 }
-
-            } else if (e.Action == NotifyCollectionChangedAction.Remove) {
+            }
+            else if (e.Action == NotifyCollectionChangedAction.Remove) {
 
                 foreach (var item in e.OldItems) {
 
                     // properly clear IRegionManagerAware.RegionManager property on view and/or ViewModel 
-                    // this makes usre that the scoped region manager can be disposed of when no longer 
+                    // this makes sure that the scoped region manager can be disposed of when no longer 
                     // referenced.
                     InvokeOnRegionManagerAwareElement(item, x => x.RegionManager = null);
                 }
@@ -121,9 +178,9 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
         /// <param name="item">an object that might be a view implementing IRegionManagerAware or a view with a VM that implements IRegionManagerAware</param>
         /// <param name="invocation">The action to perform on IRegionManagerAware</param>
         static void InvokeOnRegionManagerAwareElement(
-            object item, 
+            object item,
             Action<IRegionManagerAware> invocation) {
-           
+
             var rmAwareItem = item as IRegionManagerAware;
 
             if (rmAwareItem != null) {
@@ -160,7 +217,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
                                 // The view inherits the DataContext from the parent view in the visual tree
                                 // we do not want to perform any action on IRegionManagerAware.RegionManager
                                 // of the parents.
-                                return; 
+                                return;
                             }
                         }
                     }
@@ -172,5 +229,36 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
                 }
             }
         }
+
+        #region IDisposable
+
+        private bool disposedValue = false; // To detect redundant calls         
+
+        protected virtual void Dispose(bool disposing) {
+
+            if (!disposedValue) {
+
+                if (disposing) {
+
+                    foreach (var subscription in this.eventsubscriptions_ViewLoaded) {
+                        subscription?.Dispose();
+                    }
+
+                    this.eventsubscriptions_ViewLoaded = null;
+                }
+
+                // free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // set large fields to null.
+
+                disposedValue = true;
+            }
+        }
+
+        public void Dispose() {
+            this.Dispose(true);
+            //GC.SuppressFinalize(this);
+        }
+
+        #endregion
     }
 }
