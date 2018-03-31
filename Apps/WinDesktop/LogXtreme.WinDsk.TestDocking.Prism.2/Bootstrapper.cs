@@ -130,7 +130,11 @@ namespace LogXtreme.WinDsk.TestDocking.Prism {
         protected override IRegionBehaviorFactory ConfigureDefaultRegionBehaviors() {
 
             IRegionBehaviorFactory behaviors = base.ConfigureDefaultRegionBehaviors();
-            behaviors.AddIfMissing(RegionManagerAwareBehavior.BehaviorKey, typeof(RegionManagerAwareBehavior));            
+
+            behaviors.AddIfMissing(
+                RegionManagerAwareBehavior.BehaviorKey, 
+                typeof(RegionManagerAwareBehavior));
+
             return behaviors;
 
         }
