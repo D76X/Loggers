@@ -209,9 +209,12 @@ def test_module():
     # multiple times in the comprehension expression only the last of the key-valure 
     # # pairs is retained 
     print()
-    print(words)    
-    d7 = {w[0]: w for w in words}
-    print("{w[0]: w for w in words} = {}".format(d7))
+    print("words={}".format(words))
+    list_of_words = words.split()
+    print("list_of_words = words.split() = {}".format(list_of_words))    
+    d7 = {w[0]: w for w in list_of_words}
+    print("{{w[0]: w for w in list_of_words}} = {}".format(d7))
+    print("notice that the key 't' is assigned the last value 'test' found for that key in the source iterable for the dictionary comprehension")
 
     # filtering with predicates - the predicate comes last in the comprehension syntax
     print()
@@ -220,7 +223,7 @@ def test_module():
     print("[p for p in range(101) if isPrime(p)] = {}".format(primes_in_first_100_int))
     # also with dictionary comprehensions - notice the { : } syntax
     prime_square_divisors = {p*p:(1, p, p*p) for p in range(101) if isPrime(p)}
-    print("{p*p:(1, p, p*p) for p in range(101) if isPrime(p)} = {}".format(prime_square_divisors))
+    pp("{{p*p:(1, p, p*p) for p in range(101) if isPrime(p)}} = {}".format(prime_square_divisors))
 
     
 # ##########################################################################################
