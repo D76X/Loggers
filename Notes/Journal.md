@@ -61,4 +61,7 @@
 |                           | finished setting up the dev-env for websites, German         |
 | 28/03/2018                | Improvements to Docking, Probability, Python, German         |
 |                           | Angular CLI                                                  |
-| 29/03/2018                | Improvements to Docking, German, |
+| 29/03/2018                | Improvements to Docking, German, Probability, Python         |
+|                           | CSS Grid, ASP.NET Foundamentals                              |
+| 30/03/2018                | Improvements to Docking, German, Probability, Python         |
+|                           | CSS Grid, ASP.NET Foundamentals, PRISM Ribbon                |

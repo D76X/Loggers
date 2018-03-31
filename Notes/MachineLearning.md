@@ -3,7 +3,12 @@
 ## Resouces
 
 1. [Probabilistic Systems Analysis and Applied Probability](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-041-probabilistic-systems-analysis-and-applied-probability-fall-2010/)  
-MIT OpenCourseWare
+MIT OpenCourseWare  
+Instructor: John Tsitsiklis
+
+2. [Probabilistic Systems Analysis and Applied Probability](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-041sc-probabilistic-systems-analysis-and-applied-probability-fall-2013/)  
+MIT OpenCourseWare  
+Instructor: Qing He
 
 2. [Lecture 1 | Machine Learning (Stanford)](https://www.youtube.com/watch?v=UzxYlbK2c7E&t=3009s)  
 Professor Andrew Ng  
@@ -36,11 +41,21 @@ Stanford University School of Engineering
 
 Explains the difference that exists between any linear combination of indipendent RVs which leads to the convolution formula and the distinct concept of **mixed RVs** which leads to a linear function of expected values etc.
 
+***
+
 ### The definition and meaning of the joint probability density function
 
 1. [Expected value of joint probability density functions](https://math.stackexchange.com/questions/344128/expected-value-of-joint-probability-density-functions)
 
 Provides a nice explanation  of what the joint PDF is and an example where it is used.
+
+***
+
+### Difference between Bernoulli, Poisson and exponential distributions and processes
+
+1. [Bernoulli Process Practice -MIT MIT 6.041SC Probabilistic Systems Analysis and Applied Probability, Fall 2013](https://www.youtube.com/watch?v=i0Jom_gR0t4)
+
+***
 
 ### Prior and Posterior probabilities.
 
