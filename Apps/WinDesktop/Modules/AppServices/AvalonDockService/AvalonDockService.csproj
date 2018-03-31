@@ -78,7 +78,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AvalonDockEventArgs.cs" />
     <Compile Include="AvalonDockService.cs" />
     <Compile Include="AvalonDockServiceModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
