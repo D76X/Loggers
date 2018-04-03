@@ -48,6 +48,9 @@
     <Compile Include="ContractValidators\EnumComparisonOperations.cs" />
     <Compile Include="ContractValidators\EnumRangeCheck.cs" />
     <Compile Include="ContractValidators\ValidationExtensions.cs" />
+    <Compile Include="Enums\AvalonDockViewAnchorEnum.cs" />
+    <Compile Include="Enums\AvalonDockViewTypeEnum.cs" />
+    <Compile Include="Enums\AvalonDockEventEnum.cs" />
     <Compile Include="Enums\DeviceEventEnum.cs" />
     <Compile Include="Interfaces\IDevice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

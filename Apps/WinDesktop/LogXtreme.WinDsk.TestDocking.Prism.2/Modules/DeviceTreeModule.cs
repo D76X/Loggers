@@ -32,7 +32,7 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.Modules {
             // Register Shared Services
 
             // Compose the Views directly into the Shell targeting an existing named Prism region.
-            regionManager.RegisterViewWithRegion(RegionNames.RegionDeviceTree, typeof(DeviceTreeView));
+            // regionManager.RegisterViewWithRegion(RegionNames.RegionDeviceTree, typeof(DeviceTreeView));
             
             // Register the View for navigation
             this.container.RegisterTypeForNavigation<DeviceTreeView>();

@@ -275,7 +275,7 @@
     synch logic between the child regions in the region of the LayoutAnchorable instance 
     and contents of the LayoutAnchorable instance. 
     -->
-    <Grid>
+    <!--<Grid>
         <Grid Background="LightCoral">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -320,8 +320,6 @@
                             <xcad:LayoutDocumentPaneGroup x:Name="layoutDocumentPaneGroup">
                                 <xcad:LayoutDocumentPane x:Name="regionLayoutDocumentPane"
                                                          infprism:AvalonRegion.Name="{Binding Source={x:Static inf:RegionNames.RegionDocumentPane}}">
-                                    <!--<xcad:LayoutDocument>                                        
-                                    </xcad:LayoutDocument>-->
                                 </xcad:LayoutDocumentPane>
                             </xcad:LayoutDocumentPaneGroup>
                             <xcad:LayoutAnchorablePaneGroup x:Name="rightAnchorablePaneGroupInTheDockManager"
@@ -354,7 +352,7 @@
                 </StackPanel>
             </Grid>
         </Grid>
-    </Grid>
+    </Grid>-->
 
     <!--
     Navigation to a top-level named Prims region without DockingManager.
@@ -364,7 +362,8 @@
     infrastructure and Navigation logic then injects the view for the device tree into 
     the region RegionDeviceTree. It is important to notice that in this example the
     region RegionDeviceTree is NOT a child region!
-    --><!--
+    -->
+    <!--
     <Grid Background="Yellow">
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -411,5 +410,70 @@
                         FontSize="3">
         </ContentControl>
     </Grid>-->
+
+    <!--
+    The simplest possible model...
+    -->
+    <Grid>
+        <Grid Background="LightCoral">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <ContentControl Grid.Row="0"
+                            FontSize="1"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                This is the ContentRegion
+            </ContentControl>
+            <Grid Grid.Row="1"
+                  x:Name="gridWithAvalonDockControls">
+                <xcad:DockingManager x:Name="dockingManager"
+                                     prism:RegionManager.RegionName="{Binding Source={x:Static inf:RegionNames.RegionDockingManager}}"
+                                     AllowMixedOrientation="True"
+                                     BorderBrush="Black"
+                                     BorderThickness="1">
+                    <xcad:DockingManager.DocumentHeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding IconSource}"
+                                       Margin="0,0,4,0" />
+                                <TextBlock Text="{Binding Title}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </xcad:DockingManager.DocumentHeaderTemplate>
+                    <xcad:LayoutRoot x:Name="layoutRoot">
+                        <xcad:LayoutPanel x:Name="layoutPanel"
+                                          Orientation="Horizontal">
+                            <xcad:LayoutAnchorablePaneGroup x:Name="leftLayoutAnchorablePaneGroup"
+                                                            DockWidth="125">
+                                <xcad:LayoutAnchorablePane x:Name="leftLayoutAnchorablePane">
+                                </xcad:LayoutAnchorablePane>
+                            </xcad:LayoutAnchorablePaneGroup>
+                            <xcad:LayoutDocumentPaneGroup x:Name="layoutDocumentPaneGroup">
+                                <xcad:LayoutDocumentPane x:Name="layoutDocumentPane">
+                                </xcad:LayoutDocumentPane>
+                            </xcad:LayoutDocumentPaneGroup>
+                            <xcad:LayoutAnchorablePaneGroup x:Name="rightLayoutAnchorablePaneGroup"
+                                                            DockWidth="125">
+                                <xcad:LayoutAnchorablePane x:Name="rightLayoutAnchorablePane">
+                                </xcad:LayoutAnchorablePane>
+                            </xcad:LayoutAnchorablePaneGroup>
+                        </xcad:LayoutPanel>                        
+                    </xcad:LayoutRoot>
+                </xcad:DockingManager>
+            </Grid>
+            <Grid Grid.Row="2"
+                  x:Name="testArea">
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="ShowDeviceTree"
+                            Click="Button_Click_ShowDeviceTree" />
+                    <Button Content="ShowDataTree"
+                            Click="Button_Click_ShowDataTree" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
 
 </UserControl>

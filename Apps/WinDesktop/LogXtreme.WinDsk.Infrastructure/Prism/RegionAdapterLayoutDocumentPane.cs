@@ -80,7 +80,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
                         LayoutDocument document = new LayoutDocument();
                         document.Content = item;
 
-                        // apply some metadata!
+                        // apply some metadata - you need a better thing here!
                         document.Title = view.GetType().ToString();                        
 
                         // the region target is the underlying instance of LayoutDocumentPane
@@ -93,8 +93,9 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
                         // the LayoutDocument.Close event happens when the user click on the 
                         // x button on the document tab. This is one of the possible ways a 
                         // view may be removed from the instance of LayoutDocument. We need 
-                        // to make sure that the view is olso removed from the associated 
-                        // Prism region.
+                        // to make sure that the view is also removed from the associated 
+                        // Prism region. Another possibility is that a document view is 
+                        // removed programmatically following some event.
                         document.Closed += (sender, args) => {
                             RemoveItemFromRegionWhenTheDocumentIsClosed(sender, region);
                         };
@@ -112,7 +113,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
 
                     if (viewToRemove == null) { return; }                    
 
-                    // chek that the view to remove is still in the region before trying to remove it.
+                    // check that the view to remove is still in the region before trying to remove it.
                     // when the removal is triggered by the user by clicking on teh x of teh document 
                     // tab a specific hanlder might have already removed it.
                     if (!region.Views.Contains(viewToRemove)) { return; }
@@ -155,6 +156,8 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
 
             // this should remove the view from the region.
             region.Remove(document.Content);
+
+            //should this raise an event?
         }
 
         /// <summary>

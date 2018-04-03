@@ -9,33 +9,32 @@ using Prism.Regions;
 
 namespace LogXtreme.WinDsk.TestDocking.Prism.Modules {
 
-    [Module(ModuleName = nameof(DataTreeModule))]
-    public class DataTreeModule : IModule {
+    [Module(ModuleName = nameof(DesignToolboxModule))]
+    public class DesignToolboxModule : IModule {
 
         private readonly IUnityContainer container;
         private readonly RegionManager regionManager;
 
-        public DataTreeModule(
+        public DesignToolboxModule(
             IUnityContainer container,
             RegionManager regionManager) {
             this.container = container;
             this.regionManager = regionManager;
         }
-
         public void Initialize() {
 
             // Register types
-            this.container.RegisterType<IDataTreeViewModel, DataTreeViewModel>();
+            this.container.RegisterType<IDesignToolboxViewModel, DesignToolboxViewModel>();
 
             // Subscribe to Services or Events
 
             // Register Shared Services
 
             // Compose Views into the Shell
-            // regionManager.RegisterViewWithRegion(RegionNames.RegionDataTree, typeof(DataTreeView));
+            //regionManager.RegisterViewWithRegion(RegionNames.RegionDataTree, typeof(DesignToolboxView));
 
             // Register the View for navigation
-            this.container.RegisterTypeForNavigation<DataTreeView>();
+            this.container.RegisterTypeForNavigation<DesignToolboxView>();
         }
     }
 }

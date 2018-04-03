@@ -132,9 +132,14 @@
     <Compile Include="Events\DeviceEventArgs.cs" />
     <Compile Include="Models\IShellView.cs" />
     <Compile Include="Models\IShellViewModel.cs" />
+    <Compile Include="Prism\DockingManagerSyncBehavior.cs" />
+    <Compile Include="Prism\IAvalonDockView.cs" />
+    <Compile Include="Prism\IDockingManagerViewModel.cs" />
     <Compile Include="Prism\NavigationRequestParametersBase.cs" />
+    <Compile Include="Prism\RegionAdapterLayoutAnchorablePane.cs" />
     <Compile Include="Prism\RegionAdapterLayoutDocumentPane.cs" />
     <Compile Include="Prism\ShellServiceBase.cs" />
+    <Compile Include="Prism\TestSync.cs" />
     <Compile Include="Services\IAvalonDockService.cs" />
     <Compile Include="TriggerActions\CloseTabAction.cs" />
     <Compile Include="Behaviors\BindVisualStateBehavior.cs" />

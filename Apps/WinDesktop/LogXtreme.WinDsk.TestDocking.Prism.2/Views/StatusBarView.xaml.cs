@@ -40,11 +40,11 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.Views {
 
         public IRegionManager RegionManager {
 
-            get => this.scopedRegionManager;
+            get => this.regionManager;
 
             set {
-                if (this.scopedRegionManager != null) { return; }
-                this.scopedRegionManager = value;
+                if (this.regionManager != null) { return; }
+                this.regionManager = value;
             }
         }
     }

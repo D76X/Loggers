@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LogXtreme.Ifrastructure.Enums;
 using LogXtreme.WinDsk.Infrastructure.Models;
 using LogXtreme.WinDsk.Infrastructure.Prism;
 using LogXtreme.WinDsk.Infrastructure.Utils;
@@ -25,7 +26,8 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.Views {
     public partial class DeviceTreeView : 
         UserControl, 
         IDeviceTreeView,
-        IRegionManagerAware {
+        IRegionManagerAware,
+        IAvalonDockView {
 
         IRegionManager regionManager;
 
@@ -42,12 +44,16 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.Views {
 
         public IRegionManager RegionManager {
 
-            get => this.scopedRegionManager;
+            get => this.regionManager;
 
             set {
-                if (this.scopedRegionManager != null) { return; }
-                this.scopedRegionManager = value;
+                if (this.regionManager != null) { return; }
+                this.regionManager = value;
             }
         }
+
+        public AvalonDockViewTypeEnum AvalonDockViewType => AvalonDockViewTypeEnum.Anchorable;
+
+        public AvalonDockViewAnchorEnum AvalonDockViewAnchor => AvalonDockViewAnchorEnum.Left;
     }
 }

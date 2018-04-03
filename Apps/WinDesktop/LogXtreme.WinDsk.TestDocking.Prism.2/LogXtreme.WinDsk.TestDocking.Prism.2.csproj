@@ -113,6 +113,8 @@
     <Compile Include="Interfaces\IDataGridViewModel.cs" />
     <Compile Include="Interfaces\IDataTreeView.cs" />
     <Compile Include="Interfaces\IDataTreeViewModel.cs" />
+    <Compile Include="Interfaces\IDesignToolboxView.cs" />
+    <Compile Include="Interfaces\IDesignToolboxViewModel.cs" />
     <Compile Include="Interfaces\IDeviceTreeView.cs" />
     <Compile Include="Interfaces\IDeviceTreeViewModel.cs" />
     <Compile Include="Interfaces\IMainMenuView.cs" />
@@ -124,6 +126,7 @@
     <Compile Include="Modules\ContentModule.cs" />
     <Compile Include="Modules\DataGridModule.cs" />
     <Compile Include="Modules\DataTreeModule.cs" />
+    <Compile Include="Modules\DesignToolboxModule.cs" />
     <Compile Include="Modules\DeviceTreeModule.cs" />
     <Compile Include="Modules\MainMenuModule.cs" />
     <Compile Include="Modules\PlottingModule.cs" />
@@ -131,6 +134,7 @@
     <Compile Include="ViewModels\ContentViewModel.cs" />
     <Compile Include="ViewModels\DataGridViewModel.cs" />
     <Compile Include="ViewModels\DataTreeViewModel.cs" />
+    <Compile Include="ViewModels\DesignToolboxViewModel.cs" />
     <Compile Include="ViewModels\DeviceTreeViewModel.cs" />
     <Compile Include="ViewModels\MainMenuViewModel.cs" />
     <Compile Include="ViewModels\PlottingViewModel.cs" />
@@ -144,6 +148,9 @@
     </Compile>
     <Compile Include="Views\DataTreeView.xaml.cs">
       <DependentUpon>DataTreeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DesignToolboxView.xaml.cs">
+      <DependentUpon>DesignToolboxView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DeviceTreeView.xaml.cs">
       <DependentUpon>DeviceTreeView.xaml</DependentUpon>
@@ -180,6 +187,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DataTreeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DesignToolboxView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -230,6 +241,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\LogXtreme.Ifrastructure\LogXtreme.Ifrastructure.csproj">
+      <Project>{F919B826-9C93-4A30-A68C-ED35B35B2FA1}</Project>
+      <Name>LogXtreme.Ifrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Instrumentation\SemanticLogging\SemanticLogging.csproj">
       <Project>{724fb395-9f33-4f4c-993f-2b004425bfc3}</Project>
       <Name>SemanticLogging</Name>

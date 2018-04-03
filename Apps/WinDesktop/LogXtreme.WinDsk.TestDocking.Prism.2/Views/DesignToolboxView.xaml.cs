@@ -1,4 +1,8 @@
-﻿using System;
+﻿using LogXtreme.WinDsk.Infrastructure.Models;
+using LogXtreme.WinDsk.Infrastructure.Prism;
+using LogXtreme.WinDsk.TestDocking.Prism.Interfaces;
+using Prism.Regions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,31 +16,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using LogXtreme.Ifrastructure.Enums;
-using LogXtreme.WinDsk.Infrastructure.Models;
-using LogXtreme.WinDsk.Infrastructure.Prism;
-using LogXtreme.WinDsk.TestDocking.Prism.Interfaces;
-using Prism.Regions;
 
 namespace LogXtreme.WinDsk.TestDocking.Prism.Views {
     /// <summary>
-    /// Interaction logic for PlottingView.xaml
+    /// Interaction logic for DesignToolboxView.xaml
     /// </summary>
-    public partial class PlottingView : 
-        UserControl, 
-        IPlottingView, 
-        IRegionManagerAware,
-        IAvalonDockView {
+    public partial class DesignToolboxView :
+        UserControl,
+        IDesignToolboxView,
+        IRegionManagerAware {
 
         private IRegionManager regionManager;
 
-        public PlottingView(IPlottingViewModel viewModel) {
+        public DesignToolboxView() {
             InitializeComponent();
-            this.ViewModel = viewModel;
         }
 
         public IViewModel ViewModel {
-            get => (IPlottingViewModel)this.DataContext;
+            get => (IDesignToolboxViewModel)this.DataContext;
             set => this.DataContext = value;
         }
 
@@ -49,9 +46,5 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.Views {
                 this.regionManager = value;
             }
         }
-
-        public AvalonDockViewTypeEnum AvalonDockViewType => AvalonDockViewTypeEnum.Document;
-
-        public AvalonDockViewAnchorEnum AvalonDockViewAnchor => AvalonDockViewAnchorEnum.None;
     }
 }

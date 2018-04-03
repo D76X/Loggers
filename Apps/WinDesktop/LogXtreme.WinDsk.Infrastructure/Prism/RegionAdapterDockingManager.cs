@@ -22,7 +22,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
     /// override <see cref="CreateRegion"/> returns an instance of Region.
     /// 
     /// This adapter is designed to work in conjunction with the custom behavior
-    /// <see cref="DockingManagerDocumentsSourceSyncBehavior"/>.
+    /// <see cref="DockingManagerSyncBehavior"/>.
     /// 
     /// Refs
     /// http://avalondock.codeplex.com/discussions/390255
@@ -61,9 +61,10 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
             DockingManager regionTarget) {
             
             region.Validate(nameof(region)).NotNull();
+
             region.Behaviors.Add(
-                DockingManagerDocumentsSourceSyncBehavior.BehaviorKey,
-                new DockingManagerDocumentsSourceSyncBehavior(this.avalonDockService) {
+                DockingManagerSyncBehavior.BehaviorKey,
+                new DockingManagerSyncBehavior(this.avalonDockService) {
                     HostControl = regionTarget
                 });
 
