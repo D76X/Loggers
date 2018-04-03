@@ -65,3 +65,6 @@
 |                           | CSS Grid, ASP.NET Foundamentals                              |
 | 30/03/2018                | Improvements to Docking, German, Probability, Python         |
 |                           | CSS Grid, ASP.NET Foundamentals, PRISM Ribbon                |
+| 01/04/2018                | Improvements to Docking, German, Probability, ML, Phaser,    |
+|                           | ASP.NET Core.                                                |
+| 02/04/2018                | Improvements to Docking, German, Probability, ML, Phaser,    |

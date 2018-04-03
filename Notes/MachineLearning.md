@@ -98,6 +98,15 @@ This post present an agebraic chain of identities that shows how to interpret th
 - [0-1 Loss Function explanation](https://stats.stackexchange.com/questions/284028/0-1-loss-function-explanation)
 
 ***
+### The curse of dimentinality
+
+- [PCA 1: curse of dimensionality](https://www.youtube.com/watch?v=IbE0tbjy6JQ)  
+Victor Lavrenko 
+
+- [Machine learning curse of dimensionality explained?](https://stats.stackexchange.com/questions/65379/machine-learning-curse-of-dimensionality-explained)  
+This post provides very good intuitive examples.  
+
+***
 
 ## Other kinds of learning algorithms
 

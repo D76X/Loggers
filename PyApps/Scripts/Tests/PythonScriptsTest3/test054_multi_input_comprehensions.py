@@ -225,6 +225,15 @@ def test_module():
     prime_square_divisors = {p*p:(1, p, p*p) for p in range(101) if isPrime(p)}
     pp("{{p*p:(1, p, p*p) for p in range(101) if isPrime(p)}} = {}".format(prime_square_divisors))
 
+    # iterable objects and iterator objects are two foundamental building blocks of the Python language
+    # the iterable protocol dictates that we can pass an iterable object to the built-in iter() function to get an interator object
+    # iterator_object = iter(iterable_object)
+    # iterator objects support the iterator protocol that requires that the iterator object can be passed to the built-in next() function
+    # to fetch the next value from teh underlying collection
+    iterable_object = list_of_words
+    iterator_object = iter(iterable_object)
+    next = next(iterator_object)
+
     
 # ##########################################################################################
 
