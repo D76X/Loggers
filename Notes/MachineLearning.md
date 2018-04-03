@@ -35,6 +35,12 @@ Stanford University School of Engineering
 
 ## Probability Theory & Statistics 
 
+### Normal distribution 
+
+[Why divide the sample variance by N-1?](http://www.visiondummy.com/2014/03/divide-variance-n-1/)  
+This article explains well why the variance estimator for a normal distribution uses N-1 as a divisor instead of the more intuitive N.
+***
+
 ### Combination of random variables
 
 1. [Why is the sum of two random variables a convolution?](https://stats.stackexchange.com/questions/331973/why-is-the-sum-of-two-random-variables-a-convolution)  
@@ -98,13 +104,19 @@ This post present an agebraic chain of identities that shows how to interpret th
 - [0-1 Loss Function explanation](https://stats.stackexchange.com/questions/284028/0-1-loss-function-explanation)
 
 ***
-### The curse of dimentinality
+### The curse of dimentionality
 
 - [PCA 1: curse of dimensionality](https://www.youtube.com/watch?v=IbE0tbjy6JQ)  
 Victor Lavrenko 
 
 - [Machine learning curse of dimensionality explained?](https://stats.stackexchange.com/questions/65379/machine-learning-curse-of-dimensionality-explained)  
-This post provides very good intuitive examples.  
+This post provides very good intuitive examples. 
+
+- [The Curse of Dimensionality in classification - Computer vision for dummies](http://www.visiondummy.com/2014/04/curse-dimensionality-affect-classification/)  
+This article gives a very good explanation with examples and illustrations. 
+
+- [What is the curse of dimensionality?](https://stats.stackexchange.com/questions/15971/what-is-the-curse-of-dimensionality)  
+This post references to the **Elements of Statistical Learning** textbook.
 
 ***
 
@@ -205,4 +217,14 @@ Deeplearning.ai
 
 ***
 
+ # Principal Component Analysis (PCA)
+
+1. [19. Principal Component Analysis](https://www.youtube.com/watch?v=WW3ZJHPwvyg)  
+MIT OpenCourseWare  
+MIT 18.650 Statistics for Applications, Fall 2016  
+Instructor: Philippe Rigollet
+
+1. [Feature extraction using PCA](http://www.visiondummy.com/2014/05/feature-extraction-using-pca/)
+
+***
 
