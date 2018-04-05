@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:LogXtreme.WinDsk.TestDocking.Prism.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="LightGreen">
+    <Grid Background="Orange">
         <ContentControl VerticalAlignment="Center"
                         HorizontalAlignment="Center"
                         FontSize="25">

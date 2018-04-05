@@ -1,4 +1,5 @@
-﻿using LogXtreme.WinDsk.Infrastructure.Models;
+﻿using LogXtreme.Ifrastructure.Enums;
+using LogXtreme.WinDsk.Infrastructure.Models;
 using LogXtreme.WinDsk.Infrastructure.Prism;
 using LogXtreme.WinDsk.TestDocking.Prism.Interfaces;
 using Prism.Regions;
@@ -24,7 +25,8 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.Views {
     public partial class DesignToolboxView :
         UserControl,
         IDesignToolboxView,
-        IRegionManagerAware {
+        IRegionManagerAware,
+        IAvalonDockView {
 
         private IRegionManager regionManager;
 
@@ -46,5 +48,9 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.Views {
                 this.regionManager = value;
             }
         }
+
+        public AvalonDockViewTypeEnum AvalonDockViewType => AvalonDockViewTypeEnum.Anchorable;
+
+        public AvalonDockViewAnchorEnum AvalonDockViewAnchor => AvalonDockViewAnchorEnum.Left;
     }
 }

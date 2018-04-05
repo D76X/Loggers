@@ -13,8 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LogXtreme.Ifrastructure.Enums;
+using LogXtreme.WinDsk.Infrastructure.Events;
 using LogXtreme.WinDsk.Infrastructure.Models;
 using LogXtreme.WinDsk.Infrastructure.Prism;
+using LogXtreme.WinDsk.Infrastructure.Services;
 using LogXtreme.WinDsk.Infrastructure.Utils;
 using LogXtreme.WinDsk.TestDocking.Prism.Interfaces;
 using Prism.Regions;
@@ -30,16 +32,23 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.Views {
         IAvalonDockView {
 
         IRegionManager regionManager;
+        private IAvalonDockService avalonDockService;
 
-        public DeviceTreeView(IDeviceTreeViewModel viewModel) {
+        public DeviceTreeView(
+            IDeviceTreeViewModel viewModel,
+            IAvalonDockService avalonDockService) {
 
             InitializeComponent();
-            this.ViewModel = viewModel;                        
-        }
+            this.avalonDockService = avalonDockService;
+            this.ViewModel = viewModel;
+
+            (this.ViewModel as ViewModelBase).NavigatedTo += 
+                ViewModelNavigatedTo;
+        }        
 
         public IViewModel ViewModel {
             get => (IDeviceTreeViewModel)this.DataContext;
-            set => this.DataContext = value;
+            set => this.DataContext = value;            
         }
 
         public IRegionManager RegionManager {
@@ -55,5 +64,14 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.Views {
         public AvalonDockViewTypeEnum AvalonDockViewType => AvalonDockViewTypeEnum.Anchorable;
 
         public AvalonDockViewAnchorEnum AvalonDockViewAnchor => AvalonDockViewAnchorEnum.Left;
+
+        private void ViewModelNavigatedTo(
+            object sender,
+            EventArgs e) {
+
+            this.avalonDockService.RaiseDockingManagerChanged(
+                this,
+                new AvalonDockEventArgs(this, AvalonDockEventEnum.AvalonDockViewNavigatedTo));
+        }
     }
 }

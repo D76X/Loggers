@@ -13,8 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LogXtreme.Ifrastructure.Enums;
+using LogXtreme.WinDsk.Infrastructure.Events;
 using LogXtreme.WinDsk.Infrastructure.Models;
 using LogXtreme.WinDsk.Infrastructure.Prism;
+using LogXtreme.WinDsk.Infrastructure.Services;
 using LogXtreme.WinDsk.TestDocking.Prism.Interfaces;
 using Prism.Regions;
 
@@ -29,10 +31,18 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.Views {
         IAvalonDockView {
 
         private IRegionManager regionManager;
+        private IAvalonDockService avalonDockService;
 
-        public DataTreeView(IDataTreeViewModel viewModel) {
+        public DataTreeView(
+            IDataTreeViewModel viewModel,
+            IAvalonDockService avalonDockService) {
+
             InitializeComponent();
+            this.avalonDockService = avalonDockService;
             this.ViewModel = viewModel;
+
+            (this.ViewModel as ViewModelBase).NavigatedTo +=
+                ViewModelNavigatedTo;
         }
 
         public IViewModel ViewModel {
@@ -53,5 +63,14 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.Views {
         public AvalonDockViewTypeEnum AvalonDockViewType => AvalonDockViewTypeEnum.Anchorable;
 
         public AvalonDockViewAnchorEnum AvalonDockViewAnchor => AvalonDockViewAnchorEnum.Right;
+
+        private void ViewModelNavigatedTo(
+            object sender,
+            EventArgs e) {
+
+            this.avalonDockService.RaiseDockingManagerChanged(
+                this,
+                new AvalonDockEventArgs(this, AvalonDockEventEnum.AvalonDockViewNavigatedTo));
+        }
     }
 }

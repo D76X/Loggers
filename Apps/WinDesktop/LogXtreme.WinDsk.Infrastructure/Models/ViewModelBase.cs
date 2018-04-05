@@ -69,6 +69,8 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
 
         /// </summary>
         public event EventHandler IsActiveChanged;
+        public event EventHandler NavigatedTo;
+        public event EventHandler NavigatedFrom;
 
         /// <summary> 
         /// IConfirmNavigationRequest inherits from INavigationAware.
@@ -135,7 +137,15 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
         /// </summary>
         /// <param name="navigationContext"></param>
         public virtual void OnNavigatedTo(NavigationContext navigationContext) {
-            // look at the NavigationContext do some initialisation...
+            // look at the NavigationContext do some initialisation...           
+        }
+        
+        public virtual void RaiseNavigatedTo() {
+            this.NavigatedTo?.Invoke(this, EventArgs.Empty);
+        }
+
+        public virtual void RaiseNavigatedFrom() {
+            this.NavigatedFrom?.Invoke(this, EventArgs.Empty);
         }
     }
 }

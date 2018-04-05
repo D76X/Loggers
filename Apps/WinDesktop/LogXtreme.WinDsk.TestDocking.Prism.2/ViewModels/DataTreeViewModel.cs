@@ -5,6 +5,7 @@ using Prism.Regions;
 using System;
 
 namespace LogXtreme.WinDsk.TestDocking.Prism.ViewModels {
+
     public class DataTreeViewModel :
         ViewModelBase,
         IRegionManagerAware,
@@ -25,6 +26,7 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.ViewModels {
 
         public override void OnNavigatedTo(NavigationContext navigationContext) {
             base.OnNavigatedTo(navigationContext);
+            base.RaiseNavigatedTo();
         }
 
         #region IDisposable
