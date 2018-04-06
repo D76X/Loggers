@@ -137,9 +137,10 @@
     <Compile Include="Prism\IDockingManagerViewModel.cs" />
     <Compile Include="Prism\NavigationRequestParametersBase.cs" />
     <Compile Include="Prism\RegionAdapterLayoutAnchorablePane.cs" />
-    <Compile Include="Prism\RegionAdapterLayoutDocumentPane.cs" />
+    <None Include="CodeScrap\RegionAdapterLayoutDocumentPane.cs" />
     <Compile Include="Prism\ShellServiceBase.cs" />
     <Compile Include="Prism\TestSync.cs" />
+    <None Include="CodeScrap\IAvalonDockService - Copy.cs" />
     <Compile Include="Services\IAvalonDockService.cs" />
     <Compile Include="TriggerActions\CloseTabAction.cs" />
     <Compile Include="Behaviors\BindVisualStateBehavior.cs" />
@@ -168,11 +169,11 @@
     <Compile Include="Models\MouseCaptureStateBase.cs" />
     <Compile Include="Models\ObservableCollectionEx.cs" />
     <Compile Include="Prism\AvalonRegion.cs" />
-    <Compile Include="Prism\DockingManagerDocumentsSourceSyncBehavior.cs" />
+    <None Include="CodeScrap\DockingManagerDocumentsSourceSyncBehavior.cs" />
     <Compile Include="Prism\ModuleInitializer.cs" />
     <Compile Include="Prism\ModuleLoadingModeAttribute.cs" />
     <Compile Include="Prism\RegionAdapterDockingManager.cs" />
-    <Compile Include="Prism\RegionAdapterLayoutAnchorable.cs" />
+    <None Include="CodeScrap\RegionAdapterLayoutAnchorable.cs" />
     <Compile Include="Services\IBackgroundWorkerService.cs" />
     <Compile Include="TriggerActions\CommandAction.cs" />
     <Compile Include="Utils\PrismUtils.cs" />

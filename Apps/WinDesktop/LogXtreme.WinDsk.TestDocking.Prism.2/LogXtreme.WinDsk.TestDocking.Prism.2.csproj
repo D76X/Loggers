@@ -140,6 +140,9 @@
     <Compile Include="ViewModels\PlottingViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\StatusBarViewModel.cs" />
+    <None Include="Views\CodeScrap\_ContentView.xaml.cs">
+      <DependentUpon>_ContentView.xaml</DependentUpon>
+    </None>
     <Compile Include="Views\ContentView.xaml.cs">
       <DependentUpon>ContentView.xaml</DependentUpon>
     </Compile>
@@ -178,6 +181,10 @@
       <DependentUpon>Shell.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <None Include="Views\CodeScrap\_ContentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
     <Page Include="Views\ContentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

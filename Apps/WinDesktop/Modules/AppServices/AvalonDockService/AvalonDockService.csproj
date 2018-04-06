@@ -78,6 +78,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeScrap\AvalonDockService - Copy.cs" />
     <Compile Include="AvalonDockService.cs" />
     <Compile Include="AvalonDockServiceModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
