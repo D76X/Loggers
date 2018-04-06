@@ -128,6 +128,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeScrap\DockingManagerSyncBehavior_1.cs" />
     <Compile Include="Events\AvalonDockEventArgs.cs" />
     <Compile Include="Events\DeviceEventArgs.cs" />
     <Compile Include="Models\IShellView.cs" />
@@ -137,10 +138,10 @@
     <Compile Include="Prism\IDockingManagerViewModel.cs" />
     <Compile Include="Prism\NavigationRequestParametersBase.cs" />
     <Compile Include="Prism\RegionAdapterLayoutAnchorablePane.cs" />
-    <None Include="CodeScrap\RegionAdapterLayoutDocumentPane.cs" />
+    <None Include="CodeScrap\RegionAdapterLayoutDocumentPane_1.cs" />
     <Compile Include="Prism\ShellServiceBase.cs" />
     <Compile Include="Prism\TestSync.cs" />
-    <None Include="CodeScrap\IAvalonDockService - Copy.cs" />
+    <None Include="CodeScrap\IAvalonDockService_1.cs" />
     <Compile Include="Services\IAvalonDockService.cs" />
     <Compile Include="TriggerActions\CloseTabAction.cs" />
     <Compile Include="Behaviors\BindVisualStateBehavior.cs" />
@@ -169,11 +170,11 @@
     <Compile Include="Models\MouseCaptureStateBase.cs" />
     <Compile Include="Models\ObservableCollectionEx.cs" />
     <Compile Include="Prism\AvalonRegion.cs" />
-    <None Include="CodeScrap\DockingManagerDocumentsSourceSyncBehavior.cs" />
+    <None Include="CodeScrap\DockingManagerDocumentsSourceSyncBehavior_1.cs" />
     <Compile Include="Prism\ModuleInitializer.cs" />
     <Compile Include="Prism\ModuleLoadingModeAttribute.cs" />
     <Compile Include="Prism\RegionAdapterDockingManager.cs" />
-    <None Include="CodeScrap\RegionAdapterLayoutAnchorable.cs" />
+    <None Include="CodeScrap\RegionAdapterLayoutAnchorable_1.cs" />
     <Compile Include="Services\IBackgroundWorkerService.cs" />
     <Compile Include="TriggerActions\CommandAction.cs" />
     <Compile Include="Utils\PrismUtils.cs" />
