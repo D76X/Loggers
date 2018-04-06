@@ -14,9 +14,11 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LogXtreme.WinDsk.Infrastructure.Models;
 using LogXtreme.WinDsk.Infrastructure.Prism;
+using LogXtreme.WinDsk.Infrastructure.Services;
 using LogXtreme.WinDsk.Infrastructure.Utils;
 using LogXtreme.WinDsk.TestDocking.Prism.Interfaces;
 using Prism.Regions;
+using Xceed.Wpf.AvalonDock.Layout;
 using PrismRegions = Prism.Regions;
 
 namespace LogXtreme.WinDsk.TestDocking.Prism.Views {
@@ -31,9 +33,16 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.Views {
 
         IRegionManager regionManager;
 
-        public ContentView(IContentViewModel viewModel) {
+        public ContentView(
+            IContentViewModel viewModel,
+            IAvalonDockService avalonDockService) {
 
             InitializeComponent();
+
+            avalonDockService.RegisterPart<LayoutAnchorablePane>(leftLayoutAnchorablePane.Name);
+            avalonDockService.RegisterPart<LayoutDocumentPane>(@"layoutDocumentPane");
+            avalonDockService.RegisterPart<LayoutAnchorablePane>(rightLayoutAnchorablePane.Name);
+
             this.ViewModel = viewModel;
         }        
         public IRegionManager RegionManager {

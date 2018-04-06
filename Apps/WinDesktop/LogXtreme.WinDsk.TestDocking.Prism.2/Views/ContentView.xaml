@@ -42,9 +42,12 @@
                     <xcad:LayoutRoot x:Name="layoutRoot">
                         <xcad:LayoutPanel x:Name="layoutPanel"
                                           Orientation="Horizontal">
-                            <xcad:LayoutAnchorablePaneGroup x:Name="leftLayoutAnchorablePaneGroup"
-                                                            DockWidth="125">
-                                <xcad:LayoutAnchorablePane x:Name="leftLayoutAnchorablePane">
+                            <xcad:LayoutAnchorablePaneGroup x:Name="leftLayoutAnchorablePaneGroup"                                                           
+                                                            DockWidth="125"
+                                                            AllowDuplicateContent="False">
+                                <xcad:LayoutAnchorablePane x:Name="leftLayoutAnchorablePane"                                                          
+                                                           AllowDuplicateContent="False"
+                                                           Name="leftLayoutAnchorablePane">
                                 </xcad:LayoutAnchorablePane>
                             </xcad:LayoutAnchorablePaneGroup>
                             <xcad:LayoutDocumentPaneGroup x:Name="layoutDocumentPaneGroup">
@@ -52,8 +55,11 @@
                                 </xcad:LayoutDocumentPane>
                             </xcad:LayoutDocumentPaneGroup>
                             <xcad:LayoutAnchorablePaneGroup x:Name="rightLayoutAnchorablePaneGroup"
-                                                            DockWidth="125">
-                                <xcad:LayoutAnchorablePane x:Name="rightLayoutAnchorablePane">
+                                                            DockWidth="125"
+                                                            AllowDuplicateContent="False">
+                                <xcad:LayoutAnchorablePane x:Name="rightLayoutAnchorablePane"
+                                                           AllowDuplicateContent="False"
+                                                           Name="rightLayoutAnchorablePane">
                                 </xcad:LayoutAnchorablePane>
                             </xcad:LayoutAnchorablePaneGroup>
                         </xcad:LayoutPanel>                        
