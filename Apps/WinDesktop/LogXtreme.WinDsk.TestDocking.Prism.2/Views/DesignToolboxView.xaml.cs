@@ -1,6 +1,8 @@
 ﻿using LogXtreme.Ifrastructure.Enums;
+using LogXtreme.WinDsk.Infrastructure.Events;
 using LogXtreme.WinDsk.Infrastructure.Models;
 using LogXtreme.WinDsk.Infrastructure.Prism;
+using LogXtreme.WinDsk.Infrastructure.Services;
 using LogXtreme.WinDsk.TestDocking.Prism.Interfaces;
 using Prism.Regions;
 using System;
@@ -29,9 +31,18 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.Views {
         IAvalonDockView {
 
         private IRegionManager regionManager;
+        private IAvalonDockService avalonDockService;
 
-        public DesignToolboxView() {
+        public DesignToolboxView(
+            IDesignToolboxViewModel viewModel,
+            IAvalonDockService avalonDockService) {
+
             InitializeComponent();
+            this.avalonDockService = avalonDockService;
+            this.ViewModel = viewModel;
+
+            (this.ViewModel as ViewModelBase).NavigatedTo +=
+                ViewModelNavigatedTo;
         }
 
         public IViewModel ViewModel {
@@ -52,5 +63,14 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.Views {
         public AvalonDockViewTypeEnum AvalonDockViewType => AvalonDockViewTypeEnum.Anchorable;
 
         public AvalonDockViewAnchorEnum AvalonDockViewAnchor => AvalonDockViewAnchorEnum.Left;
+
+        private void ViewModelNavigatedTo(
+            object sender,
+            EventArgs e) {
+
+            this.avalonDockService.RaiseDockingManagerChanged(
+                this,
+                new AvalonDockEventArgs(this, AvalonDockEventEnum.AvalonDockViewNavigatedTo));
+        }
     }
 }

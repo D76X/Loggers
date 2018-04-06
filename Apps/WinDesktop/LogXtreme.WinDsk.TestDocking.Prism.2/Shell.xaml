@@ -72,22 +72,7 @@
                           CommandParameter="RegionDockingManager|LogXtreme.WinDsk.TestDocking.Prism.Views.PlottingView" />
                 <MenuItem Header="Open Design Toolbox"
                           Command="{Binding NavigateCommand}"
-                          CommandParameter="RegionDockingManager|LogXtreme.WinDsk.TestDocking.Prism.Views.DesignToolboxView" />
-                <!--<MenuItem Header="Open Device Tree"
-                          Command="{Binding NavigateCommand}"
-                          CommandParameter="RegionDeviceTree|LogXtreme.WinDsk.TestDocking.Prism.Views.DeviceTreeView" />-->
-                <!--<MenuItem Header="Open Data Tree"
-                          Command="{Binding NavigateCommand}"
-                          CommandParameter="RegionDataTree|LogXtreme.WinDsk.TestDocking.Prism.Views.DataTreeView" />-->
-                <!--<MenuItem Header="Open Data Grid"
-                          Command="{Binding NavigateCommand}"
-                          CommandParameter="RegionDocumentPane|LogXtreme.WinDsk.TestDocking.Prism.Views.DataGridView" />-->
-                <!--<MenuItem Header="Open Plotting"
-                          Command="{Binding NavigateCommand}"
-                          CommandParameter="RegionDocumentPane|LogXtreme.WinDsk.TestDocking.Prism.Views.PlottingView" />-->
-                <!--<MenuItem Header="Open DesignToolbox"
-                          Command="{Binding NavigateCommand}"
-                          CommandParameter="RegionDocumentPane|LogXtreme.WinDsk.TestDocking.Prism.Views.DesignToolboxView" />-->
+                          CommandParameter="RegionDockingManager|LogXtreme.WinDsk.TestDocking.Prism.Views.DesignToolboxView" />                
             </Menu>
         </DockPanel>
         <!--
