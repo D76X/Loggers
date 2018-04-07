@@ -1,7 +1,6 @@
 ﻿using LogXtreme.WinDsk.TestDocking.Prism.Interfaces;
 using LogXtreme.WinDsk.TestDocking.Prism.ViewModels;
 using LogXtreme.WinDsk.TestDocking.Prism.Views;
-using LogXtreme.WinDsk.Infrastructure;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Regions;

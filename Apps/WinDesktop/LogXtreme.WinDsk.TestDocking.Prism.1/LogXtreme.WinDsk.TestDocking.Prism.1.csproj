@@ -125,6 +125,7 @@
     <Compile Include="Modules\MainMenuModule.cs" />
     <Compile Include="Modules\PlottingModule.cs" />
     <Compile Include="Modules\StatusBarModule.cs" />
+    <Compile Include="RegionNames.cs" />
     <Compile Include="ViewModels\ContentViewModel.cs" />
     <Compile Include="ViewModels\DataGridViewModel.cs" />
     <Compile Include="ViewModels\DataTreeViewModel.cs" />
