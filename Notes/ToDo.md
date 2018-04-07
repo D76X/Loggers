@@ -4,11 +4,12 @@
 
 # LogXtreme Desktop
 
+- Docking
+- Logging
+- Installer
 - Updater
 - Design time design surface and tools
-- Installer
 - Lincencing system
-- Docking
 - Plotting tools
 - Device communication layer
 - Reservoir, Dial, Bar, Stages, Timer
@@ -93,7 +94,7 @@
 # Specials
 
 - Blog
-- Pluralsight courses => ZEROMQ + Machine Learning + Phaser + Pixijs + ReactiveUI
+- Pluralsight courses => ZEROMQ + Machine Learning + Phaser + Pixijs + ReactiveUI + InkScape + GIMP + Asesprite
 - Youtube channel
 - Fayman
 - Conto arancio

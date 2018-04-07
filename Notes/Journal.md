@@ -68,3 +68,6 @@
 | 01/04/2018                | Improvements to Docking, German, Probability, ML, Phaser,    |
 |                           | ASP.NET Core.                                                |
 | 02/04/2018                | Improvements to Docking, German, Probability, ML, Phaser,    |
+| 03-06/04/2018             | Improvements to Docking, German, Probability, ML, Phaser,    |
+|                           | ASP.NET Core, ZEROMQ, CSS Grid, VAT,                         |
+| 07/04/2018                ||
