@@ -65,7 +65,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
 
                 var documents = this.dockingManager.Layout.Descendents().OfType<LayoutDocument>();
                 var oc = new ObservableCollection<object>(documents);
-                return new ReadOnlyObservableCollection<object>(oc);                
+                return new ReadOnlyObservableCollection<object>(oc);
             }
         }
 
@@ -75,7 +75,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
 
                 var anchorables = this.dockingManager.Layout.Descendents().OfType<LayoutAnchorable>();
                 var oc = new ObservableCollection<object>(anchorables);
-                return new ReadOnlyObservableCollection<object>(oc);                
+                return new ReadOnlyObservableCollection<object>(oc);
             }
         }
 
@@ -127,7 +127,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
                 if (content != null) {
                     // log warning!
                     return;
-                }                
+                }
             }
         }
 
@@ -220,7 +220,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
                 int startIndex = e.NewStartingIndex;
 
                 foreach (object item in e.NewItems) {
-                    this.AddContent(item);                    
+                    this.AddContent(item);
                 }
             }
             else if (e.Action == NotifyCollectionChangedAction.Remove) {
@@ -293,7 +293,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
 
             //title? metadata?...
             anchorable.Title = view.GetType().Name;
-            anchorable.ContentId = uiElement.GetType().ToString();            
+            anchorable.ContentId = uiElement.GetType().ToString();
             // prevent the tab from being closed when it is in the dock
             anchorable.CanClose = false;
 
@@ -342,7 +342,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
         }
 
         private void AnchorableClosing(
-            object sender, 
+            object sender,
             System.ComponentModel.CancelEventArgs e) {
             //e.Cancel = true;
             // log...
@@ -361,19 +361,14 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
 
         private void SynchronizeItems() {
 
-            this.layoutDocumentPane = this.dockingManager.FindName("layoutDocumentPane") as LayoutDocumentPane;
+            var anchorablePaneParts = this.avalonDockService.RegisteredParts.Where(p => p.Value == typeof(LayoutAnchorablePane));
+            var leftPart = anchorablePaneParts.First();
+            var rightPart = anchorablePaneParts.Last();
+            this.layoutAnchorablePaneLeft = this.dockingManager.FindName(leftPart.Key) as LayoutAnchorablePane;
+            this.layoutAnchorablePaneRight = this.dockingManager.FindName(rightPart.Key) as LayoutAnchorablePane;
 
-            this.layoutAnchorablePaneLeft = this.dockingManager.FindName("leftLayoutAnchorablePane") as LayoutAnchorablePane;           this.layoutAnchorablePaneLeft.AllowDuplicateContent = false;
-            this.layoutAnchorablePaneLeft.Name = "LeftPane";
-            this.layoutAnchorablePaneLeft.ChildrenCollectionChanged += LayoutAnchorablePaneLeft_ChildrenCollectionChanged;            
-
-            this.layoutAnchorablePaneRight = this.dockingManager.FindName("rightLayoutAnchorablePane") as LayoutAnchorablePane;
-            this.layoutAnchorablePaneRight.AllowDuplicateContent = false;
-            this.layoutAnchorablePaneRight.Name = "RightPane";
-            this.layoutAnchorablePaneRight.ChildrenCollectionChanged += LayoutAnchorablePaneRight_ChildrenCollectionChanged;    
-
-            this.dockingManager.DocumentClosing += DockingManager_DocumentClosing;
-            this.dockingManager.DocumentClosed += DockingManager_DocumentClosed;        
+            var documentPanePart = this.avalonDockService.RegisteredParts.Where(p => p.Value == typeof(LayoutDocumentPane)).First();
+            this.layoutDocumentPane = this.dockingManager.FindName(documentPanePart.Key) as LayoutDocumentPane;            
 
             // BindingOperations attaches a binding to an arbitrary DependencyObject that may 
             // not expose its own SetBinding method. In this case we want to set a binding
@@ -390,23 +385,7 @@ namespace LogXtreme.WinDsk.Infrastructure.Prism {
                 target: this.dockingManager,
                 dp: DockingManager.AnchorablesSourceProperty,
                 binding: new Binding(@"Anchorables") { Source = this });
-        }
-
-        private void DockingManager_DocumentClosing(object sender, DocumentClosingEventArgs e) {
-            // log
-        }
-
-        private void DockingManager_DocumentClosed(object sender, DocumentClosedEventArgs e) {
-            // log
-        }
-
-        private void LayoutAnchorablePaneRight_ChildrenCollectionChanged(object sender, EventArgs e) {
-            // log
-        }
-
-        private void LayoutAnchorablePaneLeft_ChildrenCollectionChanged(object sender, EventArgs e) {
-            // log
-        }
+        }       
 
         #region IDisposable
 
