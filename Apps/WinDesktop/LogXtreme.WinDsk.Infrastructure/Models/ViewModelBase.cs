@@ -1,7 +1,8 @@
-﻿using System;
+﻿using LogXtreme.WinDsk.Infrastructure.Prism;
 using Prism;
 using Prism.Mvvm;
 using Prism.Regions;
+using System;
 
 namespace LogXtreme.WinDsk.Infrastructure.Models {
 
@@ -13,12 +14,24 @@ namespace LogXtreme.WinDsk.Infrastructure.Models {
     /// </summary>
     public class ViewModelBase :
         BindableBase,
-        IActiveAware,
         IViewModelBase,
+        IRegionManagerAware,
+        IActiveAware,        
         IConfirmNavigationRequest,
         IRegionMemberLifetime {
 
-        private bool isActive;
+        protected bool isActive;
+        protected IRegionManager scopedRegionManager;
+
+        public virtual IRegionManager RegionManager {
+
+            get => this.scopedRegionManager;
+
+            set {
+                if (this.scopedRegionManager != null) { return; }
+                this.scopedRegionManager = value;
+            }
+        }
 
         /// <summary>
         /// When a Navigation Request is made to the RegionManager and a view becomes the 

@@ -1,5 +1,4 @@
-﻿using LogXtreme.WinDsk.Infrastructure;
-using LogXtreme.WinDsk.Infrastructure.Unity;
+﻿using LogXtreme.WinDsk.Infrastructure.Unity;
 using LogXtreme.WinDsk.TestDocking.Prism.Interfaces;
 using LogXtreme.WinDsk.TestDocking.Prism.ViewModels;
 using LogXtreme.WinDsk.TestDocking.Prism.Views;

@@ -11,11 +11,9 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.ViewModels {
     public class ShellViewModel :
         ViewModelBase,
         IShellViewModel,
-        IRegionManagerAware,
         IDisposable {
 
         private IShellService shellService;
-        private IRegionManager scopedRegionManager;
 
         public DelegateCommand<string> OpenShellCommand { get; private set; }
         public DelegateCommand<string> NavigateCommand { get; private set; }
@@ -30,14 +28,6 @@ namespace LogXtreme.WinDsk.TestDocking.Prism.ViewModels {
 
             this.OpenShellCommand = new DelegateCommand<string>(OpenShell);
             this.NavigateCommand = new DelegateCommand<string>(Navigate);
-        }
-
-        /// <summary>
-        /// A reference to the region manager for the shell.        
-        /// </summary>        
-        public IRegionManager RegionManager {
-            get => this.scopedRegionManager;
-            set => this.scopedRegionManager = value;
         }
 
         public int Id {

@@ -1,29 +1,15 @@
 ﻿using LogXtreme.WinDsk.Infrastructure.Models;
-using LogXtreme.WinDsk.Infrastructure.Prism;
 using LogXtreme.WinDsk.TestDocking.Prism.Interfaces;
-using Prism.Regions;
 using System;
 
 namespace LogXtreme.WinDsk.TestDocking.Prism.ViewModels {
+
     public class PlottingViewModel :
         ViewModelBase, 
         IPlottingViewModel,
-        IRegionManagerAware,
         IDisposable {
 
-        private IRegionManager scopedRegionManager;
-        
-        public PlottingViewModel() { }
-
-        public IRegionManager RegionManager {
-
-            get => this.scopedRegionManager;
-
-            set {
-                if (this.scopedRegionManager != null) { return; }
-                this.scopedRegionManager = value;
-            }
-        }
+        public PlottingViewModel() { }        
 
         #region IDisposable
 

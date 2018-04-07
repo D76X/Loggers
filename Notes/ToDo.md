@@ -94,7 +94,7 @@
 # Specials
 
 - Blog
-- Pluralsight courses => ZEROMQ + Machine Learning + Phaser + Pixijs + ReactiveUI + InkScape + GIMP + Asesprite
+- Pluralsight courses => ZEROMQ + Machine Learning + Phaser + Pixijs + ReactiveUI + InkScape + GIMP + Asesprite + StyleCop
 - Youtube channel
 - Fayman
 - Conto arancio
