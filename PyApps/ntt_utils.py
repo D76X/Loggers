@@ -62,6 +62,23 @@ def isPrime(n):
             return False
     return True
 
+def distinct(iterable):
+    """
+    Eliminates duplicates that may be present in 'iterable'.
+
+    Args:
+        iterable: the source series.
+    
+    Yields:
+        an iterable with unique elements from 'iterable'.
+    """
+    seen = set()
+    for item in iterable:
+        if item in seen:
+            continue
+        yield item
+        seen.add(item)
+
 def test_module(): 
     """Module-level tests."""
     print()    
@@ -71,7 +88,6 @@ def test_module():
     print("sign(-1)={}".format(sign(-1)))
     print("sign(-1.01)={}".format(sign(-1.01)))
     print("sign(0)={}".format(sign(0)))    
-
 
 # ##########################################################################################
 
