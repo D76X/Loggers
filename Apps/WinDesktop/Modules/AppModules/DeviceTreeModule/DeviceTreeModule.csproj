@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{E152DB85-F4CB-4864-87D2-EE408093C3FE}</ProjectGuid>
     <OutputType>library</OutputType>
-    <RootNamespace>DeviceTreeModule</RootNamespace>
+    <RootNamespace>LogXtreme.WinDsk.DeviceTreeModule</RootNamespace>
     <AssemblyName>DeviceTreeModule</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -107,6 +107,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Infrastructure\LogXtreme.Ifrastructure\LogXtreme.Ifrastructure.csproj">
+      <Project>{F919B826-9C93-4A30-A68C-ED35B35B2FA1}</Project>
+      <Name>LogXtreme.Ifrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\LogXtreme.WinDsk.Infrastructure\LogXtreme.WinDsk.Infrastructure.csproj">
       <Project>{489706e3-c226-4d83-bb3d-c5a0d49d3835}</Project>
       <Name>LogXtreme.WinDsk.Infrastructure</Name>

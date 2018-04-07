@@ -1,8 +1,8 @@
-﻿using DataGridModule.Interfaces;
-using DataGridModule.ViewModels;
-using DataGridModule.Views;
-using LogXtreme.WinDsk.Infrastructure;
+﻿using LogXtreme.WinDsk.DataGridModule.Interfaces;
+using LogXtreme.WinDsk.DataGridModule.ViewModels;
+using LogXtreme.WinDsk.DataGridModule.Views;
 using LogXtreme.WinDsk.Infrastructure.Services;
+using LogXtreme.WinDsk.Infrastructure.Unity;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Regions;
@@ -39,8 +39,10 @@ namespace LogXtreme.WinDsk.Modules {
             // Register Shared Services
 
             // Compose Views into the Shell
-            //regionManager.RegisterViewWithRegion(RegionNames.WorkspaceTabControl, typeof(DataGridView));
-            regionManager.RegisterViewWithRegion(RegionNames.RegionWorkspace, typeof(DataGridView));
+            // regionManager.RegisterViewWithRegion(RegionNames.RegionDockingManager, typeof(DataGridView));
+
+            // Register the View for navigation only
+            this.container.RegisterTypeForNavigation<DataGridView>();
         }
     }
 }

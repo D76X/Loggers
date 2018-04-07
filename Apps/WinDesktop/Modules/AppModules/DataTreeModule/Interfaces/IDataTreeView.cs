@@ -1,6 +1,6 @@
 ﻿using LogXtreme.WinDsk.Infrastructure.Models;
 
-namespace DataTreeModule.Interfaces {
+namespace LogXtreme.WinDsk.DataTreeModule.Interfaces {
     public interface IDataTreeView : IView {
     }
 }

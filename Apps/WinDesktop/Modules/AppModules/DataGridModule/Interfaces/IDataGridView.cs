@@ -1,6 +1,6 @@
 ﻿using LogXtreme.WinDsk.Infrastructure.Models;
 
-namespace DataGridModule.Interfaces {
+namespace DLogXtreme.WinDsk.ataGridModule.Interfaces {
     public interface IDataGridView : IView {
     }
 }

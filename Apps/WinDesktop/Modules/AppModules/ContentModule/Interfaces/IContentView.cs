@@ -1,7 +1,6 @@
 ﻿using LogXtreme.WinDsk.Infrastructure.Models;
 
-namespace ContentModule.Interfaces {
-    public interface IContentView : IView {
+namespace LogXtreme.WinDsk.ContentModule.Interfaces {
 
-    }
+    public interface IContentView : IView { }
 }

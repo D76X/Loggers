@@ -1,14 +1,14 @@
-﻿using DeviceTreeModule.Interfaces;
+﻿using LogXtreme.WinDsk.DeviceTreeModule.Interfaces;
 using LogXtreme.WinDsk.Infrastructure.Models;
 using LogXtreme.WinDsk.Infrastructure.Services;
-using Prism.Mvvm;
+using Prism.Regions;
 using System;
 using System.Linq;
 
-namespace DeviceTreeModule.ViewModels {
+namespace LogXtreme.WinDsk.DeviceTreeModule.ViewModels {
 
     public class DeviceTreeViewModel :
-        BindableBase,
+        ViewModelBase,
         IDeviceTreeViewModel,
         IDisposable {
 
@@ -35,13 +35,17 @@ namespace DeviceTreeModule.ViewModels {
         }
 
         public TreeItemViewModel<DeviceViewModel> DeviceTree {
+            get => this.deviceTree;
+            set => SetProperty(ref this.deviceTree, value);
+        }
+        
+        public override void OnNavigatedFrom(NavigationContext navigationContext) {
+            base.OnNavigatedFrom(navigationContext);
+        }
 
-            get { return this.deviceTree; }
-
-            set {
-
-                SetProperty(ref this.deviceTree, value);
-            }
+        public override void OnNavigatedTo(NavigationContext navigationContext) {
+            base.OnNavigatedTo(navigationContext);
+            base.RaiseNavigatedTo();
         }
 
         #region IDisposable

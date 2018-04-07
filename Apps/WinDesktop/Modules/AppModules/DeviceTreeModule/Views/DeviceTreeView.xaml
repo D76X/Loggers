@@ -1,10 +1,10 @@
-﻿<UserControl x:Class="DeviceTreeModule.Views.DeviceTreeView"
+﻿<UserControl x:Class="LogXtreme.WinDsk.DeviceTreeModule.Views.DeviceTreeView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:DeviceTreeModule.Views"
-             xmlns:dvm="clr-namespace:DeviceTreeModule.DesignTimeViewModels"
+             xmlns:local="clr-namespace:LogXtreme.WinDsk.DeviceTreeModule.Views"
+             xmlns:dvm="clr-namespace:LogXtreme.WinDsk.DeviceTreeModule.DesignTimeViewModels"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance {x:Type dvm:DesignTimeDeviceTreeViewModel}, IsDesignTimeCreatable=True}">
     <UserControl.Resources>

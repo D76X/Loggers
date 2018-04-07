@@ -1,7 +1,8 @@
-﻿using DeviceTreeModule.Interfaces;
-using DeviceTreeModule.ViewModels;
-using DeviceTreeModule.Views;
+﻿using LogXtreme.WinDsk.DeviceTreeModule.Interfaces;
+using LogXtreme.WinDsk.DeviceTreeModule.ViewModels;
+using LogXtreme.WinDsk.DeviceTreeModule.Views;
 using LogXtreme.WinDsk.Infrastructure;
+using LogXtreme.WinDsk.Infrastructure.Unity;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Regions;
@@ -31,7 +32,10 @@ namespace LogXtreme.WinDsk.Modules {
             // Register Shared Services
 
             // Compose Views into the Shell
-            regionManager.RegisterViewWithRegion(RegionNames.RegionLeftPanels, typeof(DeviceTreeView));
+            this.regionManager.RegisterViewWithRegion(RegionNames.RegionDockingManager, typeof(DeviceTreeView));
+
+            // Register the View for navigation
+            this.container.RegisterTypeForNavigation<DeviceTreeView>();
         }
     }
 }

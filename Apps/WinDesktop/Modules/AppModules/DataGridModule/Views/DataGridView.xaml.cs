@@ -1,25 +1,22 @@
-﻿using DataGridModule.Interfaces;
+﻿using DLogXtreme.WinDsk.ataGridModule.Interfaces;
+using LogXtreme.Ifrastructure.Enums;
+using LogXtreme.WinDsk.DataGridModule.Interfaces;
 using LogXtreme.WinDsk.Infrastructure.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+using LogXtreme.WinDsk.Infrastructure.Prism;
+using Prism.Regions;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace DataGridModule.Views {
+namespace LogXtreme.WinDsk.DataGridModule.Views {
     /// <summary>
     /// Interaction logic for DataGridView.xaml
     /// </summary>
-    public partial class DataGridView : UserControl, IDataGridView {
+    public partial class DataGridView : 
+        UserControl, 
+        IDataGridView,
+        IRegionManagerAware,
+        IAvalonDockView {
+
+        IRegionManager regionManager;
 
         public DataGridView(IDataGridViewModel viewModel) {
             InitializeComponent();
@@ -30,5 +27,19 @@ namespace DataGridModule.Views {
             get => (IDataGridViewModel)this.DataContext;
             set => this.DataContext = value;
         }
+
+        public IRegionManager RegionManager {
+
+            get => this.regionManager;
+
+            set {
+                if (this.regionManager != null) { return; }
+                this.regionManager = value;
+            }
+        }
+
+        public AvalonDockViewTypeEnum AvalonDockViewType => AvalonDockViewTypeEnum.Document;
+
+        public AvalonDockViewAnchorEnum AvalonDockViewAnchor => AvalonDockViewAnchorEnum.None;
     }
 }

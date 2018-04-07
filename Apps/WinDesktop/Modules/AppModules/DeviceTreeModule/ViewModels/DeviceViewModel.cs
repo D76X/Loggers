@@ -1,7 +1,7 @@
 ﻿using LogXtreme.WinDsk.Infrastructure.Models;
 using Prism.Mvvm;
 
-namespace DeviceTreeModule.ViewModels {
+namespace LogXtreme.WinDsk.DeviceTreeModule.ViewModels {
 
     public class DeviceViewModel : BindableBase {
 

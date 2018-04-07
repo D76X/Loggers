@@ -1,13 +1,14 @@
-﻿using DataTreeModule.Interfaces;
-using Prism.Mvvm;
+﻿using LogXtreme.WinDsk.DataTreeModule.Interfaces;
+using LogXtreme.WinDsk.Infrastructure.Models;
+using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace DataTreeModule.ViewModels {
-    public class DataTreeViewModel : 
-        BindableBase,
-        IDataTreeViewModel, 
+namespace LogXtreme.WinDsk.DataTreeModule.ViewModels {
+    public class DataTreeViewModel :
+        ViewModelBase,
+        IDataTreeViewModel,
         IDisposable {
 
         readonly ReadOnlyCollection<DataViewModel> _firstGeneration;
@@ -18,7 +19,7 @@ namespace DataTreeModule.ViewModels {
             var childModel2 = new DataModel() { Name = "child2" };
 
             var childModel1 = new DataModel(
-                new List<DataModel>() { new DataModel() { Name = "child11"} }) {
+                new List<DataModel>() { new DataModel() { Name = "child11" } }) {
                 Name = "child1"
             };
 
@@ -35,11 +36,19 @@ namespace DataTreeModule.ViewModels {
                 {
                     _rootData
                 });
-
         }
 
         public ReadOnlyCollection<DataViewModel> FirstGeneration {
             get { return _firstGeneration; }
+        }
+
+        public override void OnNavigatedFrom(NavigationContext navigationContext) {
+            base.OnNavigatedFrom(navigationContext);
+        }
+
+        public override void OnNavigatedTo(NavigationContext navigationContext) {
+            base.OnNavigatedTo(navigationContext);
+            base.RaiseNavigatedTo();
         }
 
         #region IDisposable

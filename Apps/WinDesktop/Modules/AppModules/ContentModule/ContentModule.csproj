@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{6F2A2AFA-717B-49A7-92FD-015122540034}</ProjectGuid>
     <OutputType>library</OutputType>
-    <RootNamespace>ContentModule</RootNamespace>
+    <RootNamespace>LogXtreme.WinDsk.ContentModule</RootNamespace>
     <AssemblyName>ContentModule</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -71,6 +71,12 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock">
+      <HintPath>..\..\..\..\Binaries\3PartyBinaries\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>..\..\..\..\Binaries\3PartyBinaries\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IContentView.cs" />

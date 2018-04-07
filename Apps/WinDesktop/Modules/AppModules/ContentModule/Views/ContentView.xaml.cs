@@ -1,39 +1,47 @@
-﻿using ContentModule.Interfaces;
-using LogXtreme.WinDsk.Infrastructure;
+﻿using LogXtreme.WinDsk.ContentModule.Interfaces;
 using LogXtreme.WinDsk.Infrastructure.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+using LogXtreme.WinDsk.Infrastructure.Prism;
+using LogXtreme.WinDsk.Infrastructure.Services;
+using Prism.Regions;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Xceed.Wpf.AvalonDock.Layout;
 
-namespace ContentModule.Views {
+namespace LogXtreme.WinDsk.ContentModule.Views {
     /// <summary>
     /// Interaction logic for ContentView.xaml
     /// </summary>
-    public partial class ContentView : UserControl, IContentView {
+    public partial class ContentView :
+        UserControl,
+        IContentView,
+        IRegionManagerAware {
 
-        public ContentView(IContentViewModel viewModel) {
+        IRegionManager regionManager;
+
+        public ContentView(
+            IContentViewModel viewModel,
+            IAvalonDockService avalonDockService) {
+
             InitializeComponent();
+
+            avalonDockService.RegisterPart<LayoutAnchorablePane>(leftLayoutAnchorablePane.Name);
+            avalonDockService.RegisterPart<LayoutDocumentPane>(@"layoutDocumentPane");
+            avalonDockService.RegisterPart<LayoutAnchorablePane>(rightLayoutAnchorablePane.Name);
+
             this.ViewModel = viewModel;
         }
 
         public IViewModel ViewModel {
-            get {
-                return (IContentViewModel)this.DataContext;
-            }
+            get => (IContentViewModel)this.DataContext;
+            set => this.DataContext = value;
+        }
+
+        public IRegionManager RegionManager {
+
+            get => this.regionManager;
 
             set {
-                this.DataContext = value;
+                if (this.regionManager != null) { return; }
+                this.regionManager = value;
             }
         }
     }

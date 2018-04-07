@@ -1,6 +1,6 @@
-﻿using ContentModule.Interfaces;
-using ContentModule.ViewModels;
-using ContentModule.Views;
+﻿using LogXtreme.WinDsk.ContentModule.Interfaces;
+using LogXtreme.WinDsk.ContentModule.ViewModels;
+using LogXtreme.WinDsk.ContentModule.Views;
 using LogXtreme.WinDsk.Infrastructure;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;

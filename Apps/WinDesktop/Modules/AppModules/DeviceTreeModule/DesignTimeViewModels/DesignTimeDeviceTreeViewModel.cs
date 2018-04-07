@@ -1,9 +1,9 @@
-﻿using DeviceTreeModule.ViewModels;
+﻿using LogXtreme.WinDsk.DeviceTreeModule.ViewModels;
 using LogXtreme.WinDsk.Infrastructure.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DeviceTreeModule.DesignTimeViewModels {
+namespace LogXtreme.WinDsk.DeviceTreeModule.DesignTimeViewModels {
     public class DesignTimeDeviceTreeViewModel {
 
         public TreeItemViewModel<DeviceViewModel> DeviceTree {

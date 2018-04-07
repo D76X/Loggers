@@ -1,7 +1,8 @@
-﻿using DataTreeModule.Interfaces;
-using DataTreeModule.ViewModels;
-using DataTreeModule.Views;
+﻿using LogXtreme.WinDsk.DataTreeModule.Interfaces;
+using LogXtreme.WinDsk.DataTreeModule.ViewModels;
+using LogXtreme.WinDsk.DataTreeModule.Views;
 using LogXtreme.WinDsk.Infrastructure;
+using LogXtreme.WinDsk.Infrastructure.Unity;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Regions;
@@ -32,7 +33,10 @@ namespace LogXtreme.WinDsk.Modules {
             // Register Shared Services
 
             // Compose Views into the Shell
-            regionManager.RegisterViewWithRegion(RegionNames.RegionRightPanels, typeof(DataTreeView));
+            regionManager.RegisterViewWithRegion(RegionNames.RegionDockingManager, typeof(DataTreeView));
+
+            // Register the View for navigation
+            this.container.RegisterTypeForNavigation<DataTreeView>();
         }
     }
 }

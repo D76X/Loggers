@@ -1,13 +1,15 @@
-﻿using ContentModule.Interfaces;
-using Prism.Mvvm;
+﻿using LogXtreme.WinDsk.ContentModule.Interfaces;
+using LogXtreme.WinDsk.Infrastructure.Models;
 using System;
 
-namespace ContentModule.ViewModels {
-    public class ContentViewModel : BindableBase, IContentViewModel, IDisposable {
+namespace LogXtreme.WinDsk.ContentModule.ViewModels {
 
-        public ContentViewModel() {
+    public class ContentViewModel :
+        ViewModelBase, 
+        IContentViewModel,
+        IDisposable {
 
-        }
+        public ContentViewModel() { }       
 
         #region IDisposable
 
