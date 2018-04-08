@@ -1,18 +1,18 @@
 ﻿using LogXtreme.Reactive.Extensions;
 using LogXtreme.WinDsk.Infrastructure.Menu;
+using LogXtreme.WinDsk.Infrastructure.Models;
 using LogXtreme.WinDsk.Infrastructure.Services;
-using MainMenuModule.Interfaces;
-using MainMenuModule.Labels;
-using Prism.Mvvm;
+using LogXtreme.WinDsk.MainMenuModule.Interfaces;
+using LogXtreme.WinDsk.MainMenuModule.Labels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Reactive.Linq;
 
-namespace MainMenuModule.ViewModels {
+namespace LogXtreme.WinDsk.MainMenuModule.ViewModels {
 
     public class MainMenuViewModel :
-        BindableBase,
+        ViewModelBase,
         IMainMenuViewModel,
         IDisposable {
 

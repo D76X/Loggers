@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5EAF14E5-39CA-43E7-86DC-40B1DE6C2252}</ProjectGuid>
     <OutputType>library</OutputType>
-    <RootNamespace>MainMenuOptionsModule</RootNamespace>
+    <RootNamespace>LogXtreme.WinDsk.MainMenuOptionsModule</RootNamespace>
     <AssemblyName>MainMenuOptionsModule</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

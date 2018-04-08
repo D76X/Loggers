@@ -1,10 +1,10 @@
 ﻿using LogXtreme.WinDsk.Infrastructure;
+using LogXtreme.WinDsk.StatusBarModule.Interfaces;
+using LogXtreme.WinDsk.StatusBarModule.ViewModels;
+using LogXtreme.WinDsk.StatusBarModule.Views;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Regions;
-using StatusBarModule.Interfaces;
-using StatusBarModule.ViewModels;
-using StatusBarModule.Views;
 
 namespace LogXtreme.WinDsk.Modules {
 

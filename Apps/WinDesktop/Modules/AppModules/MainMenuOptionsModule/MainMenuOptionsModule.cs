@@ -1,6 +1,6 @@
 ﻿using LogXtreme.WinDsk.Infrastructure.Menu;
 using LogXtreme.WinDsk.Infrastructure.Services;
-using MainMenuModule.ViewModels;
+using LogXtreme.WinDsk.MainMenuModule.ViewModels;
 using Prism.Modularity;
 using System.Collections.Generic;
 

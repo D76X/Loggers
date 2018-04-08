@@ -1,6 +1,6 @@
 ﻿using LogXtreme.WinDsk.Infrastructure.Models;
 
-namespace MainMenuModule.Interfaces {
-    public interface IMainMenuView : IView {
-    }
+namespace LogXtreme.WinDsk.MainMenuModule.Interfaces {
+
+    public interface IMainMenuView : IView { }
 }

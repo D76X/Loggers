@@ -1,8 +1,7 @@
 ﻿using LogXtreme.WinDsk.Infrastructure;
-using LogXtreme.WinDsk.Infrastructure.Services;
-using MainMenuModule.Interfaces;
-using MainMenuModule.ViewModels;
-using MainMenuModule.Views;
+using LogXtreme.WinDsk.MainMenuModule.Interfaces;
+using LogXtreme.WinDsk.MainMenuModule.ViewModels;
+using LogXtreme.WinDsk.MainMenuModule.Views;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Regions;

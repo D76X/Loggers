@@ -1,13 +1,14 @@
-﻿using Prism.Mvvm;
-using StatusBarModule.Interfaces;
+﻿using LogXtreme.WinDsk.Infrastructure.Models;
+using LogXtreme.WinDsk.StatusBarModule.Interfaces;
 using System;
 
-namespace StatusBarModule.ViewModels {
-    public class StatusBarViewModel : BindableBase ,IStatusBarViewModel, IDisposable {
+namespace LogXtreme.WinDsk.StatusBarModule.ViewModels {
+    public class StatusBarViewModel : 
+        ViewModelBase ,
+        IStatusBarViewModel, 
+        IDisposable {
 
-        public StatusBarViewModel() {
-
-        }
+        public StatusBarViewModel() { }
 
         #region IDisposable
 

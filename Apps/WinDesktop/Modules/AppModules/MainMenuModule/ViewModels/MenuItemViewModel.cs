@@ -1,10 +1,12 @@
 ﻿using LogXtreme.WinDsk.Infrastructure.Menu;
-using Prism.Mvvm;
+using LogXtreme.WinDsk.Infrastructure.Models;
 using System.Collections.Generic;
 
-namespace MainMenuModule.ViewModels {
+namespace LogXtreme.WinDsk.MainMenuModule.ViewModels {
 
-    public class MenuItemViewModel : BindableBase, IMenuItem {
+    public class MenuItemViewModel : 
+        ViewModelBase, 
+        IMenuItem {
 
         private string header;
         private IMenuItem parent;

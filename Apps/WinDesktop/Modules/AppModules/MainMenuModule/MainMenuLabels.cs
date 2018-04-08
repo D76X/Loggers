@@ -1,4 +1,4 @@
-﻿namespace MainMenuModule.Labels {
+﻿namespace LogXtreme.WinDsk.MainMenuModule.Labels {
 
     static class FileMenuLabels {
         public const string File = @"_File";

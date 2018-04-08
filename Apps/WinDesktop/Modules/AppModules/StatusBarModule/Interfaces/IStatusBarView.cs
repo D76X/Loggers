@@ -1,6 +1,6 @@
 ﻿using LogXtreme.WinDsk.Infrastructure.Models;
 
-namespace StatusBarModule.Interfaces {
-    public interface IStatusBarView : IView {
-    }
+namespace LogXtreme.WinDsk.StatusBarModule.Interfaces {
+
+    public interface IStatusBarView : IView { }
 }

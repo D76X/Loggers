@@ -1,26 +1,19 @@
-﻿using LogXtreme.WinDsk.Infrastructure;
-using LogXtreme.WinDsk.Infrastructure.Models;
-using StatusBarModule.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using LogXtreme.WinDsk.Infrastructure.Models;
+using LogXtreme.WinDsk.Infrastructure.Prism;
+using LogXtreme.WinDsk.StatusBarModule.Interfaces;
+using Prism.Regions;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace StatusBarModule.Views {
+namespace LogXtreme.WinDsk.StatusBarModule.Views {
     /// <summary>
     /// Interaction logic for StatusBarView.xaml
     /// </summary>
-    public partial class StatusBarView : UserControl, IStatusBarView {
+    public partial class StatusBarView : 
+        UserControl, 
+        IStatusBarView,
+        IRegionManagerAware {
+
+        IRegionManager regionManager;
 
         public StatusBarView(IStatusBarViewModel viewModel) {
             InitializeComponent();
@@ -28,12 +21,17 @@ namespace StatusBarModule.Views {
         }
 
         public IViewModel ViewModel {
-            get {
-                return (IStatusBarViewModel)this.DataContext;
-            }
+            get => (IStatusBarViewModel)this.DataContext;
+            set => this.DataContext = value;
+        }
+
+        public IRegionManager RegionManager {
+
+            get => this.regionManager;
 
             set {
-                this.DataContext = value;
+                if (this.regionManager != null) { return; }
+                this.regionManager = value;
             }
         }
     }

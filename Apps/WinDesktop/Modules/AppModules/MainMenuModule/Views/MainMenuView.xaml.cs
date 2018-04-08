@@ -1,12 +1,19 @@
 ﻿using LogXtreme.WinDsk.Infrastructure.Models;
-using MainMenuModule.Interfaces;
+using LogXtreme.WinDsk.Infrastructure.Prism;
+using LogXtreme.WinDsk.MainMenuModule.Interfaces;
+using Prism.Regions;
 using System.Windows.Controls;
 
-namespace MainMenuModule.Views {
+namespace LogXtreme.WinDsk.MainMenuModule.Views {
     /// <summary>
     /// Interaction logic for MainMenuView.xaml
     /// </summary>
-    public partial class MainMenuView : UserControl, IMainMenuView {
+    public partial class MainMenuView : 
+        UserControl, 
+        IMainMenuView,
+        IRegionManagerAware {
+
+        private IRegionManager regionManager;
 
         public MainMenuView(IMainMenuViewModel viewModel) {
             InitializeComponent();
@@ -14,12 +21,17 @@ namespace MainMenuModule.Views {
         }
 
         public IViewModel ViewModel {
-            get {
-                return (IMainMenuViewModel)this.DataContext;
-            }
+            get => (IMainMenuViewModel)this.DataContext;
+            set => this.DataContext = value;
+        }
+
+        public IRegionManager RegionManager {
+
+            get => this.regionManager;
 
             set {
-                this.DataContext = value;
+                if (this.regionManager != null) { return; }
+                this.regionManager = value;
             }
         }
     }
