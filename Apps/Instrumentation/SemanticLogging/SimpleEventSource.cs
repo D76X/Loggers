@@ -4,26 +4,27 @@ using System.Diagnostics.Tracing;
 namespace SemanticLogging {
 
     /// <summary>
-    /// Enforce the following rule
-    /// 1-Use [Event(EventId)] to indicate the Id of the event
-    /// 2-In WriteEvent the EventId must be used
-    /// 3-Maintain the EventId in the order 
-    /// 4-The order of the parameters in the methods signature is significant 
-    /// 5-[Event(2 , Message = "The Key is {0}")] => {0} is for the first param
-    /// 6-use capitalised Parameter Names to see them capitalised in the consumer
-    /// 7-Level defaults to informational (Critical,Error, Informational, LogAlways, Verbose, Warning)
-    /// 8-If you do not supply a Task the name of the Event becomes the name of the Task
-    /// 9-If Task & Opcode are supplied the name of the event seen by consumers becomes Task-Opcode and the method name is ignored
-    /// 10-If you supply only a Task but not the Opcode this is used as the name of the event by consumers and the method name is ignored
-    /// 11-You can redefined the enums Task, Opcodes, Keywords as illustrated below - use nested classes and costs
-    /// 12-Use Int32 or Int64 values consistently to redifined the enums i.e. 0x0001 for the Int32 value 1 but do not mix Inte32 and Int64
-    /// 13-The event name shown in the manifest is the name of the event when the Task and opcode are not defined in the [Event] attribute 
-    /// 14-If the [Event] attribute defines Task and Opcode the name of the event name shown in the manifest is the concatenation Task-Opcode
-    /// 15-The standard Opcodes are Start & Stop - it is advised not to create new opcodes unless absolutely necessary
-    /// 16-The only methods considered by ETW to create the manifest are those that return void!
+    /// Enforce the following rule.
+    /// 1-Use [Event(EventId)] to indicate the Id of the event.
+    /// 2-In WriteEvent the EventId must be used.
+    /// 3-Maintain the EventId in the order. 
+    /// 4-The order of the parameters in the methods signature is significant.
+    /// 5-[Event(2 , Message = "The Key is {0}")] => {0} is for the first param.
+    /// 6-Use capitalised parameter names to see them capitalised in the consumer i.e. PrimaryKey.
+    /// 7-Level defaults to informational but Critical, Error, Informational, LogAlways, Verbose, Warning are also available.
+    /// 8-If you do not supply a Task the name of the Event becomes the name of the Task in the manifest.
+    /// 9-If Task & Opcode are supplied the name of the event seen by consumers and specified in the manifest becomes Task-Opcode and the method name is ignored.
+    /// 10-If you supply only a Task but not the Opcode this is used as the name of the event by consumers and the method name is ignored.
+    /// 11-You can redefined the enums Task, Opcodes, Keywords as illustrated below - use nested classes and constants.
+    /// 12-Use Int32 or Int64 values consistently to redifined the enums i.e. 0x0001 for the Int32 value 1 but do not mix Inte32 and Int64.
+    /// 13-The event name shown in the manifest is the name of the event when the Task and opcode are not defined in the [Event] attribute. 
+    /// 14-If the [Event] attribute defines Task and Opcode the name of the event name shown in the manifest is the concatenation Task-Opcode.
+    /// 15-The standard Opcodes are Start & Stop - it is advised not to create new opcodes unless absolutely necessary.
+    /// 16-The only methods considered by ETW to create the manifest are those that return void all other methods are ignored.
     /// 17-It is possible to use support methods that do not return void in those that defines events
-    /// 18-The access level of the methods return void that define events is irrelevant
-    /// 19-Use the [NonEventAttribute] to identify the support methods
+    /// 18-The access level of the methods which return void (private, protected, internal, public) is not relevant to the creation of the manifest.
+    /// 19-Use the [NonEventAttribute] to identify the support methods available on the EventSource i.e. public methods which may use private methods.
+    /// 20-By using public methods on the EventSource descendant any ad'hoc public API can be provided to the consumer code. 
     /// </summary>
     [EventSource(Name = "NewThinkingTechnologies-LogXtreme-SimpleEventSource")]
     public sealed class SimpleEventSource : EventSource {
