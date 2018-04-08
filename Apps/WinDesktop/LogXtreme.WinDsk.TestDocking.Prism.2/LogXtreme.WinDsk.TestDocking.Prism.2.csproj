@@ -264,9 +264,9 @@
       <Project>{489706e3-c226-4d83-bb3d-c5a0d49d3835}</Project>
       <Name>LogXtreme.WinDsk.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Modules\AppServices\AvalonDockService\AvalonDockService.csproj">
+    <ProjectReference Include="..\Modules\AppServices\AvalonDockServiceModule\AvalonDockServiceModule.csproj">
       <Project>{d3c72916-55a5-4532-a1e3-4058abee0a28}</Project>
-      <Name>AvalonDockService</Name>
+      <Name>AvalonDockServiceModule</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
