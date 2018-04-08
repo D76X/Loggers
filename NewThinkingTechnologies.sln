@@ -440,9 +440,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.WinDsk.TestDockin
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "MachineLearningScripts", "PyApps\Machine Learning\MachineLearningScripts\MachineLearningScripts.pyproj", "{8C27430B-6D38-401C-8D73-0541DEC2120B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvalonDockService", "Apps\WinDesktop\Modules\AppServices\AvalonDockService\AvalonDockService.csproj", "{D3C72916-55A5-4532-A1E3-4058ABEE0A28}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OpenCV", "OpenCV", "{DCF27381-550C-4BE3-9710-EF9AA00EAC94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvalonDockServiceModule", "Apps\WinDesktop\Modules\AppServices\AvalonDockServiceModule\AvalonDockServiceModule.csproj", "{D3C72916-55A5-4532-A1E3-4058ABEE0A28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
