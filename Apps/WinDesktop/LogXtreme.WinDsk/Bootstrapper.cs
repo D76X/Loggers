@@ -131,12 +131,9 @@ namespace LogXtreme.WinDsk {
             // region adapters for the AvalonDock controls
             mappings.RegisterMapping(
                 typeof(DockingManager),
-                new RegionAdapterDockingManager(ServiceLocator.Current.GetInstance<RegionBehaviorFactory>()));
-
-            mappings.RegisterMapping(
-                typeof(LayoutAnchorable),
-                new RegionAdapterLayoutAnchorable(ServiceLocator.Current.GetInstance<RegionBehaviorFactory>()));
-
+                new RegionAdapterDockingManager(
+                    ServiceLocator.Current.GetInstance<RegionBehaviorFactory>(),
+                    Container.Resolve<IAvalonDockService>()));
 
             return mappings;
         }
