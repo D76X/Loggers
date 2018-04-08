@@ -14,7 +14,6 @@ using Prism.Unity;
 using System.Windows;
 using System.Windows.Controls;
 using Xceed.Wpf.AvalonDock;
-using Xceed.Wpf.AvalonDock.Layout;
 
 namespace LogXtreme.WinDsk.TestDocking.Prism {
     public class Bootstrapper : UnityBootstrapper {
@@ -93,8 +92,6 @@ namespace LogXtreme.WinDsk.TestDocking.Prism {
             // register the application services
             RegisterTypeIfMissing(typeof(IShellService), typeof(ShellService), true);
             RegisterTypeIfMissing(typeof(IAvalonDockService), typeof(AvalonDockService), true);
-            //RegisterTypeIfMissing(typeof(IDeviceService), typeof(DeviceService), true);
-            //RegisterTypeIfMissing(typeof(IDataService), typeof(DataService), true);
 
             // register view and view models with their interfaces
             Container.RegisterType<IShellView, Shell>();
