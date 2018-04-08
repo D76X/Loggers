@@ -103,6 +103,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Notes", "_Notes", "{54A549
 		Notes\PrismNotes.txt = Notes\PrismNotes.txt
 		Notes\Python.md = Notes\Python.md
 		Notes\ReactiveExtensions.txt = Notes\ReactiveExtensions.txt
+		Notes\SemanticLogging.md = Notes\SemanticLogging.md
 		Notes\Shortcuts.md = Notes\Shortcuts.md
 		Notes\Simulators.txt = Notes\Simulators.txt
 		Notes\StylecopNotes.txt = Notes\StylecopNotes.txt
