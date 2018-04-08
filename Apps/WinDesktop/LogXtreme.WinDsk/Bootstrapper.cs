@@ -1,6 +1,7 @@
 ﻿using LogXtreme.WinDsk.Infrastructure.Models;
 using LogXtreme.WinDsk.Infrastructure.Prism;
 using LogXtreme.WinDsk.Infrastructure.Services;
+using LogXtreme.WinDsk.Modules.Services;
 using LogXtreme.WinDsk.Services;
 using LogXtreme.WinDsk.ViewModels;
 using Microsoft.Practices.ServiceLocation;
@@ -12,7 +13,6 @@ using Prism.Unity;
 using System.Windows;
 using System.Windows.Controls;
 using Xceed.Wpf.AvalonDock;
-using Xceed.Wpf.AvalonDock.Layout;
 
 namespace LogXtreme.WinDsk {
 
@@ -114,6 +114,7 @@ namespace LogXtreme.WinDsk {
 
             // register the application services
             RegisterTypeIfMissing(typeof(IShellService), typeof(ShellService), true);
+            RegisterTypeIfMissing(typeof(IAvalonDockService), typeof(AvalonDockService), true);
 
             // register view and view models with their interfaces
             Container.RegisterType<IShellView, Shell>();
