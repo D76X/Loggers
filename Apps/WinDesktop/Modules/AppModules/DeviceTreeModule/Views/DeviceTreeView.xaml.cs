@@ -15,7 +15,8 @@ namespace LogXtreme.WinDsk.DeviceTreeModule.Views {
     public partial class DeviceTreeView : 
         UserControl,
         IRegionManagerAware,
-        IDeviceTreeView {
+        IDeviceTreeView,
+        IAvalonDockView {
 
         private IRegionManager regionManager;
         private IAvalonDockService avalonDockService;
