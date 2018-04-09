@@ -30,6 +30,10 @@ Results:
 from math import factorial
 from pprint import pprint as pp
 
+# when working with iterables this package is very useful
+# from itertools import islice, count
+import itertools as its 
+
 # this module imports a function from custom module!
 from ntt_utils import isPrime, distinct
 
@@ -370,8 +374,104 @@ def test_module():
     # Laziness of generators is a great feature to model infinite sequences!
     print()
     print("Laziness of generators is a great feature to model infinite sequences!")
-    
 
+    # this is a generator function as it uses the yield keyword in its definition.
+    def aseq():
+        """
+        A generator function for the sequence of ints: 2, 1, 3, 4, 7, 11..
+        After 2 and 1 any new value is the sum of the preceding two.
+        """
+        yield 2
+        a = 2
+        b = 1
+        while True:
+            yield b
+            # use tuple unpacking!
+            a, b = b, a+b
+    
+    # an instance of the generator
+    g = aseq()
+    print("g = aseq() ={}".format(g))
+
+    print("next(g) = {}".format(next(g)))
+    print("next(g) = {}".format(next(g)))
+    print("next(g) = {}".format(next(g)))
+    print("next(g) = {}".format(next(g)))
+    print("next(g) = {}".format(next(g)))
+    print("next(g) = {}".format(next(g)))
+    print("...")
+
+    print()
+    print("Warning!")
+    print("If you get trapped in an endless sequence by chance use CTRL+C to break off the Python interpreter.")
+
+    # Generator comprehensions
+    print()
+    print("Generator comprehensions!")
+    print("Generator comprehensions is a syntax simmilar to list comprehensions but it results in the creation of a generator object instead.")
+    print("the difference is that the generator object is lazily evaluated while a list is in-memory")
+    print("syntax: (expr(item) for item in iterable)")
+    print("the syntax for generator comprehensions is the same as that for list comprehensions where [] are replaced by ()")
+
+    # examples of generator comprehension
+    first_1M_squares = (x*x for x in range(1, 1000000))
+    print("examples of generator comprehension => first_1M_squares = (x*x for x in range(1, 1000000))")
+    print("next(first_1M_squares) = {}".format(next(first_1M_squares)))
+    print("next(first_1M_squares) = {}".format(next(first_1M_squares)))
+    print("next(first_1M_squares) = {}".format(next(first_1M_squares)))
+    print("next(first_1M_squares) = {}".format(next(first_1M_squares)))
+    print("next(first_1M_squares) = {}".format(next(first_1M_squares)))
+    print("next(first_1M_squares) = {}".format(next(first_1M_squares)))
+    print("...")
+
+    # example of application where the generator comprhension is to be used instead of a list comprehension
+    # the generator comprehension uses little memory 
+    print()
+    print("the generator comprehension uses little memory!")
+    # notice the syntax is sum generator-comprehension without the need of extra parenthesys as in sum(generator-comprehension)
+    # this is only Pythgon syntactic sugar!
+    result = sum(x*x for x in range(1, 10000001))
+    print("sum(x*x for x in range(1, 10000001)) = {}".format(result))
+
+    # generator comprehensions can include predicates
+    print()
+    print("generator comprehensions can include predicates")
+    # notice the syntax is sum generator-comprehension without the need of extra parenthesys as in sum(generator-comprehension)
+    # this is only Pythgon syntactic sugar!
+    result = sum(x*x for x in range(1, 1000) if isPrime(x))
+    print("sum(x*x for x in range(1, 1000) if isPrime(x)) = {}".format(result))
+
+    # iterable objects work in conjuction with some most used and useful built-in functions such as 
+    # sum(), enumerate(), etc.
+    # the itertools module includes more functions of the kind such as
+    # isclice(), count(), etc.
+
+    print()
+    print("**** itertools *****")
+    print("The package itertools adds extra power to working with iterables in Python...")    
+    
+    print()
+    print("itertools.count() produces a generator that counts integer starting from some value n")
+    from_100 = its.count(100)
+    print("from_100 = its.count(100) = {}".format(from_100))
+    print("next(from_100) = {}".format(next(from_100)))
+    print("next(from_100) = {}".format(next(from_100)))
+    print("next(from_100) = {}".format(next(from_100)))
+    print("...")
+
+    print()
+    print("itertools.islice() takes a slice of an iterable and creates another iterable hence can be used to slice a generator")
+    first_1000_primes = its.islice((x for x in its.count() if isPrime(x)), 1000)
+    # the (x for x in its.count() if isPrime(x)) is a generator comprehension
+    # islice() retunrs an iterable actually a generator!
+    print("first_1000_primes = its.islice((x for x in its.count() if isPrime(x), 1000))")
+    print("first_1000_primes = {}".format(first_1000_primes))
+    list_of_first_1000_primes = list(first_1000_primes)
+    for i in list_of_first_1000_primes[1:10]:
+        print(i)
+
+    # any(), all()
+    print("any(), all()")
 
 # ##########################################################################################
 
