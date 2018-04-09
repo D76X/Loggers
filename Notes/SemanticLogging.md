@@ -23,18 +23,19 @@ which can be used as a listeners for event sources.
 
 The __EnterpriseLibrary.SemanticLogging__ provides the definition of sinks 
 
-### Use In-Process
+***
 
-Semantic logging can be used in-process. This means that the listeners In order to use the logger in-process 
+### Use semantic logging out-of-process
 
 ***
 
-### Use Out-of-Process
+### Use semantic logging in-process
 
+Semantic logging can be used in-process, but what does this exaclty mean and how does it happen? 
 
 ***
 
-### Semantic Logging Service (controller) set-up
+### Semantic Logging Service set-up and usage
  
 Semantic logging is most useful when used out-of-process. In order to do so a specific service must be installed 
 on the machine where the tracing from the application that uses EventSource decendants is to be monitored or collected.
@@ -79,6 +80,12 @@ In Summary.
 8. If __SemanticLogging-svc.xml__ defines file-based sinks and they are empty it might be the case that __SemanticLogging-svc.exe__ is running under
    an account that does not have enough permission ot write to the files that are used as logs. Either changes the account used to run the service to
    one with enough permissions or changes the permission on the files used to log the messages.
+
+9. When you make chnages to __SemanticLogging-svc.xml__ the service must be restarted to apply them.
+
+***
+
+### Use the SemanticLogging-svc.exe as a console application.
 
 ***
 
