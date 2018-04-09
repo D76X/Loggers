@@ -46,8 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LoggerEventSource.cs" />
-    <Compile Include="SimpleEventSource.cs" />
+    <Compile Include="ApplicationEventSource.cs" />
+    <Compile Include="ExampleEventSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

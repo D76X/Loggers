@@ -25,20 +25,27 @@ namespace SemanticLogging {
     /// 18-The access level of the methods which return void (private, protected, internal, public) is not relevant to the creation of the manifest.
     /// 19-Use the [NonEventAttribute] to identify the support methods available on the EventSource i.e. public methods which may use private methods.
     /// 20-By using public methods on the EventSource descendant any ad'hoc public API can be provided to the consumer code. 
+    /// 21-Do not start the numbering of events in an EventSource with 0 because 0 is reserved to events that signal problems in the ETW trancing itself.
+    /// 22-Minimise the number of event sources because there is a set-up cost. Ideally a sinlge EventSource class may be defined with all the semantic events you need.
+    /// 23-Call the IsEnabled() methods in your EventSource methods to keep the application load as low as possible and do preprocessing only after this call.
+    /// 24-Avoid the WriteEvent overload that has a signature with the (params object[]) for its last parameter as it is much heavier than the other available overloads.
+    /// 25-There are a bunch of default keywords but in general you want to define application specific keywords.
     /// </summary>
-    [EventSource(Name = "NewThinkingTechnologies-LogXtreme-SimpleEventSource")]
-    public sealed class SimpleEventSource : EventSource {
+    [EventSource(Name = "NewThinkingTechnologies-LogXtreme-ExampleEventSource")]
+    public sealed class ExampleEventSource : EventSource {
 
-        private static Lazy<SimpleEventSource> log = new Lazy<SimpleEventSource>();
+        private static Lazy<ExampleEventSource> log = new Lazy<ExampleEventSource>();
 
-        private SimpleEventSource() { }
+        private ExampleEventSource() { }
 
-        public static SimpleEventSource Log => log.Value;
+        public static ExampleEventSource Log => log.Value;
         
         [Event(1)]
         public void Message(string message) {
 
-            WriteEvent(1, message);
+            if (IsEnabled()) {
+                WriteEvent(1, message);
+            }            
         }
 
         [Event(2 , Message = "The Key is {0}", 
@@ -48,7 +55,9 @@ namespace SemanticLogging {
             Opcode = Opcodes.George)]
         public void AccessByPrimaryKey(string PrimaryKey, string TableName) {
 
-            WriteEvent(2, PrimaryKey, TableName);
+            if (IsEnabled()) {
+                WriteEvent(2, PrimaryKey, TableName); 
+            }
         }
 
         [NonEvent]
@@ -58,7 +67,7 @@ namespace SemanticLogging {
         public int test2() { return 9; }
 
         /// <summary>
-        /// Single-value enum
+        /// Single-value enum. There are no predefined Tasks.
         /// </summary>
         public class Task {
             public const EventTask Selection = (EventTask)0x0001;
@@ -66,14 +75,18 @@ namespace SemanticLogging {
         }
 
         /// <summary>
-        /// Single-value enum
+        /// Single-value enum.
+        /// Normally you do not want to defined your own opt-code because 
+        /// consumers would not understand them. Instad you should use the
+        /// predefined op-codes.
         /// </summary>
         public class Opcodes {
             public const EventOpcode George = (EventOpcode)0x0001;
         }
 
         /// <summary>
-        /// Flag enums - bitwise
+        /// Flag enums can be combined with the bitwise | operator.
+        /// You normally want to define application specific keywords.
         /// </summary>
         public class Keywords {
             public const EventKeywords General = (EventKeywords)0x0001;

@@ -9,7 +9,8 @@ using System.Diagnostics.Tracing;
 namespace SemanticLogging {
 
     /// <summary>
-    /// Keywords are indipendent and orthogonal
+    /// There are a bunch of default keywords but in general you want to define application specific keywords.
+    /// Keywords are indipendent and orthogonal.
     /// </summary>
     public class Keywords {
         public const EventKeywords DATA = (EventKeywords)0x0001;
@@ -36,19 +37,21 @@ namespace SemanticLogging {
         public const EventKeywords CHANGED = (EventKeywords)0x0021;
         public const EventKeywords ENABLED = (EventKeywords)0x0022;
         public const EventKeywords DISABLED = (EventKeywords)0x0023;
+        public const EventKeywords PRISM = (EventKeywords)0x0024;
+        public const EventKeywords NAVIGATION = (EventKeywords)0x0025;
     }
 
-    [EventSource(Name = "NewThinkingTechnologies-LogXtreme-LoggerEventSource")]   
-    public sealed class LoggerEventSource : EventSource {
+    [EventSource(Name = "NewThinkingTechnologies-LogXtreme-ApplicationEventSource")]   
+    public sealed class ApplicationEventSource : EventSource {
 
         /// <summary>
         /// Singletone pattern in .NET 4 or higher
         /// Refs
         /// http://csharpindepth.com/Articles/General/Singleton.aspx
         /// </summary>
-        private static Lazy<LoggerEventSource> logger = new Lazy<LoggerEventSource>(() => new LoggerEventSource());
-        private LoggerEventSource() { }
-        public static LoggerEventSource Logger =>logger.Value;
+        private static Lazy<ApplicationEventSource> logger = new Lazy<ApplicationEventSource>(() => new ApplicationEventSource());
+        private ApplicationEventSource() { }
+        public static ApplicationEventSource Logger =>logger.Value;
 
         [Event(1, Level = EventLevel.Informational)]
         public void LogInfo(string message, string source, string value) {
@@ -59,6 +62,7 @@ namespace SemanticLogging {
         }
 
         [Event(2, Level = EventLevel.Warning)]
+
         public void LogWarning(string message, string source, string value) {
 
             if (IsEnabled()) {
