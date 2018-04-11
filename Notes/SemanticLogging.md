@@ -71,6 +71,10 @@ configuration with respect to the out-of-process alternative.
 
 Out-of-process and in-process set-ups can be used in conjuction if so desired.
 
+For Windows based applications such WPF applications, ASP.NET, ASP.NET Core applications which may use the in-process set up
+it is necessary to modify the property of the project in order to force a console shell to run on start-up. In the project 
+properties in the Application tab set the Output type to console. 
+
 ***
 
 ### Semantic Logging Service out-of-process set-up and usage
@@ -119,11 +123,14 @@ In Summary.
    an account that does not have enough permission ot write to the files that are used as logs. Either changes the account used to run the service to
    one with enough permissions or changes the permission on the files used to log the messages.
 
-9. When you make chnages to __SemanticLogging-svc.xml__ the service must be restarted to apply them.
+9. When you make changes to __SemanticLogging-svc.xml__ the service must be restarted to apply them.
 
 ***
 
 ### Use the SemanticLogging-svc.exe as a console application.
+
+The __SemanticLogging-svc.exe__ can be run as a console application in which case if __SemanticLogging-svc.xml__  configures
+one ore more console sinks the events will be visible in the console of the __SemanticLogging-svc.exe__ process.
 
 ***
 

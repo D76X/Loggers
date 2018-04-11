@@ -471,7 +471,34 @@ def test_module():
         print(i)
 
     # any(), all()
+    print()
     print("any(), all()")
+    print("all([True, False, False]) = {}".format(all([True, False, False]))) 
+    print("any([True, False, False]) = {}".format(any([True, False, False]))) 
+    # look for primes in a range
+    result = any(isPrime(x) for x in range(1328, 1361))
+    print("any(isPrime(x) for x in range(1328, 1361)) = {}".format(result)) 
+    # check that names of capitals are Camel case with the title() function
+    result = all(name == name.title() for name in ['London', 'New York', 'Sydney'])
+    print("all(name == name.title() from name in ['London', 'New York', 'Sydney']) = {}".format(result))
+
+    # zip is very handy!
+    print("zip is very handy!")
+    first = [1, 2, 3]
+    second = [10, 20, 30]
+    third = [20, 40 , 60]
+    zipped = zip(first, second, third)    
+    for item in zipped:
+        print("min={:4.1f}, max={:4.1f}, avegare={:4.1f}".format(min(item), max(item), sum(item)/len(item)))
+    
+    # chain from itertools is the same as zip but it does it lazily that is it provides a generator
+    print()
+    print("chain from itertools is the same as zip but it does it lazily that is it provides a generator")
+    chained = its.chain(first, second, third)
+    print("chained = its.chain(first, second, third) = {}".format(chained))
+    result = all(t > 0 for t in chained)
+    print("all(t > 0 for t in chained) = {}".format(result))
+
 
 # ##########################################################################################
 
