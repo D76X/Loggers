@@ -3,46 +3,54 @@ using System.Diagnostics.Tracing;
 
 /// <summary>
 /// Refs
+/// https://msdn.microsoft.com/en-us/library/dn440729(v=pandp.60).aspx#sec9
 /// https://stackoverflow.com/questions/23101017/why-is-my-eventsource-not-logging
 /// https://dzimchuk.net/troubleshooting-slab-out-of-process-logging/
 /// </summary>
-namespace SemanticLogging {
-
-    /// <summary>
-    /// There are a bunch of default keywords but in general you want to define application specific keywords.
-    /// Keywords are indipendent and orthogonal.
-    /// </summary>
-    public class Keywords {
-        public const EventKeywords DATA = (EventKeywords)0x0001;
-        public const EventKeywords COMMUNICATION = (EventKeywords)0x0002;
-        public const EventKeywords USB = (EventKeywords)0x0003;
-        public const EventKeywords ETHERNET = (EventKeywords)0x0004;
-        public const EventKeywords TCPIP = (EventKeywords)0x0005;
-        public const EventKeywords LICENCE = (EventKeywords)0x0006;
-        public const EventKeywords REGISTRY = (EventKeywords)0x0007;
-        public const EventKeywords CONFIG = (EventKeywords)0x0008;
-        public const EventKeywords INITIALIZATION = (EventKeywords)0x0009;
-        public const EventKeywords PERFORMANCE = (EventKeywords)0x0010;
-        public const EventKeywords OPTIMIZATION = (EventKeywords)0x0011;
-        public const EventKeywords EXPIRED = (EventKeywords)0x0012;
-        public const EventKeywords TIME = (EventKeywords)0x0013;
-        public const EventKeywords DATE = (EventKeywords)0x0014;
-        public const EventKeywords CONNECTION = (EventKeywords)0x0014;
-        public const EventKeywords LOST = (EventKeywords)0x0015;
-        public const EventKeywords MADE = (EventKeywords)0x0016;
-        public const EventKeywords FAILED = (EventKeywords)0x0017;
-        public const EventKeywords TRIED = (EventKeywords)0x0018;
-        public const EventKeywords SENT = (EventKeywords)0x0019;
-        public const EventKeywords RECEIVED = (EventKeywords)0x0020;
-        public const EventKeywords CHANGED = (EventKeywords)0x0021;
-        public const EventKeywords ENABLED = (EventKeywords)0x0022;
-        public const EventKeywords DISABLED = (EventKeywords)0x0023;
-        public const EventKeywords PRISM = (EventKeywords)0x0024;
-        public const EventKeywords NAVIGATION = (EventKeywords)0x0025;
-    }
+namespace SemanticLogging {    
 
     [EventSource(Name = "NewThinkingTechnologies-LogXtreme-ApplicationEventSource")]   
     public sealed class ApplicationEventSource : EventSource {
+
+        /// <summary>
+        /// 1-There are a bunch of default keywords but in general you want to define application 
+        /// specific keywords.
+        /// 2-Each keyword value is a 64-bit integer, which is treated as a bit array enabling you 
+        /// to define up to 64 different keywords.
+        /// 3-Keywords are indipendent and orthogonal.
+        /// </summary>
+        public class Keywords {
+            public const EventKeywords DATA = (EventKeywords)1;
+            public const EventKeywords COMMUNICATION = (EventKeywords)2;
+            public const EventKeywords USB = (EventKeywords)4;
+            public const EventKeywords ETHERNET = (EventKeywords)8;
+            public const EventKeywords TCPIP = (EventKeywords)16;
+            public const EventKeywords LICENCE = (EventKeywords)32;
+            public const EventKeywords REGISTRY = (EventKeywords)64;
+            public const EventKeywords CONFIG = (EventKeywords)128;
+            public const EventKeywords INITIALIZATION = (EventKeywords)256;
+            public const EventKeywords PERFORMANCE = (EventKeywords)512;
+            public const EventKeywords OPTIMIZATION = (EventKeywords)1024;
+            public const EventKeywords EXPIRED = (EventKeywords)2048;
+            public const EventKeywords TIME = (EventKeywords)4096;
+            public const EventKeywords DATE = (EventKeywords)8192;
+            public const EventKeywords CONNECTION = (EventKeywords)16384;
+            public const EventKeywords LOST = (EventKeywords)32768;
+            public const EventKeywords MADE = (EventKeywords)65536;
+            public const EventKeywords FAILED = (EventKeywords)131072;
+            public const EventKeywords TRIED = (EventKeywords)262144;
+            public const EventKeywords SENT = (EventKeywords)524288;
+            public const EventKeywords RECEIVED = (EventKeywords)1048576;
+            public const EventKeywords CHANGED = (EventKeywords)2097152;
+            public const EventKeywords ENABLED = (EventKeywords)4194304;
+            public const EventKeywords DISABLED = (EventKeywords)8388608;
+            public const EventKeywords PRISM = (EventKeywords)16777216;
+            public const EventKeywords NAVIGATION = (EventKeywords)33554432;
+            public const EventKeywords ACCESS = (EventKeywords)67108864;
+            public const EventKeywords READ = (EventKeywords)134217728;
+            public const EventKeywords WRITE = (EventKeywords)268435456;
+            public const EventKeywords FILE = (EventKeywords)536870912;
+        }
 
         /// <summary>
         /// Singletone pattern in .NET 4 or higher

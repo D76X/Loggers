@@ -4,6 +4,9 @@ using System.Diagnostics.Tracing;
 namespace SemanticLogging {
 
     /// <summary>
+    /// Ref
+    /// https://msdn.microsoft.com/en-us/library/dn440729(v=pandp.60).aspx#sec9
+    /// 
     /// Enforce the following rule.
     /// 1-Use [Event(EventId)] to indicate the Id of the event.
     /// 2-In WriteEvent the EventId must be used.
@@ -30,6 +33,10 @@ namespace SemanticLogging {
     /// 23-Call the IsEnabled() methods in your EventSource methods to keep the application load as low as possible and do preprocessing only after this call.
     /// 24-Avoid the WriteEvent overload that has a signature with the (params object[]) for its last parameter as it is much heavier than the other available overloads.
     /// 25-There are a bunch of default keywords but in general you want to define application specific keywords.
+    /// 26-Keywords, Tasks and Opcodes classes used to custom values must be nested classes of the EventSource.
+    /// 27-Opcodes and Tasks don’t need to be assigned values that are powers of two.
+    /// 28-Each keyword value is a 64-bit integer, which is treated as a bit array enabling you to define up to 64 different keywords.
+    /// 29-f you choose to define custom opcodes, you should assign integer values of 11 or above, otherwise they will clash with the opcodes defined in the EventOpcode enumeration.
     /// </summary>
     [EventSource(Name = "NewThinkingTechnologies-LogXtreme-ExampleEventSource")]
     public sealed class ExampleEventSource : EventSource {
@@ -51,7 +58,7 @@ namespace SemanticLogging {
         [Event(2 , Message = "The Key is {0}", 
             Level = EventLevel.Informational,
             Keywords = Keywords.General | Keywords.Data,
-            Task = Task.Selection,
+            Task = Tasks.Selection,
             Opcode = Opcodes.George)]
         public void AccessByPrimaryKey(string PrimaryKey, string TableName) {
 
@@ -68,8 +75,9 @@ namespace SemanticLogging {
 
         /// <summary>
         /// Single-value enum. There are no predefined Tasks.
+        /// Opcodes and Tasks don’t need to be assigned values that are powers of two.
         /// </summary>
-        public class Task {
+        public class Tasks {
             public const EventTask Selection = (EventTask)0x0001;
             public const EventTask Whatever = (EventTask)0x0002;
         }
@@ -79,19 +87,23 @@ namespace SemanticLogging {
         /// Normally you do not want to defined your own opt-code because 
         /// consumers would not understand them. Instad you should use the
         /// predefined op-codes.
+        /// Opcodes and Tasks don’t need to be assigned values that are powers of two.
         /// </summary>
         public class Opcodes {
             public const EventOpcode George = (EventOpcode)0x0001;
         }
 
         /// <summary>
-        /// Flag enums can be combined with the bitwise | operator.
-        /// You normally want to define application specific keywords.
+        /// 1-There are a bunch of default keywords but in general you want to define application 
+        /// specific keywords.
+        /// 2-Each keyword value is a 64-bit integer, which is treated as a bit array enabling you 
+        /// to define up to 64 different keywords.
+        /// 3-Keywords are indipendent and orthogonal.
         /// </summary>
         public class Keywords {
-            public const EventKeywords General = (EventKeywords)0x0001;
-            public const EventKeywords Assert = (EventKeywords)0x0002;
-            public const EventKeywords Data = (EventKeywords)0x0003;
+            public const EventKeywords General = (EventKeywords)1;
+            public const EventKeywords Assert = (EventKeywords)2;
+            public const EventKeywords Data = (EventKeywords)4;
         }
     }
 }

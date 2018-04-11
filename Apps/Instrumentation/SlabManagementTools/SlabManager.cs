@@ -39,7 +39,7 @@ namespace SlabManagementTools {
             // there are other sinks Console, SQL DB, File flat & rolling, Azure tables.
             // In order to get the extension methods to create the other kinds of sinks you must use the 
             // corresponding NuGet packages.
-            listener.LogToConsole();           
+            listener.LogToConsole();          
         }
 
         /// <summary>
