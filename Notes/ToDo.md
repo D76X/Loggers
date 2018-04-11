@@ -33,6 +33,7 @@
 
 # Learn or Refresh
 
+- Emmet
 - StyleCop
 - Wix
 - 3D Printing

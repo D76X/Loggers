@@ -14,7 +14,7 @@
 |                           | German every day                                             |
 |                           | Telephone call with Yossi and arranged meeting               |
 | 12/03/2018                | TabControl+Docking prototype, ML work, Python, .NET Ecosystem|
-|                           | searched new domain name for new game site                   |
+|                           | searched new domain name for new game site                   |    
 |                           | German                                                       |
 | 13/03/2018                | bought gamerambo.com, TabControl+Docking prototype, ML work, |
 |                           | Python, .NET Ecosystem, Probability to lesson 16 ,German     |
