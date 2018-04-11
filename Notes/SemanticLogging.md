@@ -121,6 +121,41 @@ In Summary.
 
 ***
 
+### Use the EventSourceAnalyzer to verify any custom EventSource
+
+1. Create a unit test project
+2. Install the NuGet package __EnterpriseLibrary.SemanticLogging.EventSourceAnalyzer__ to the test project.
+3. Add project references to the test project to the project(s) where the EventSource classe(s) are defined. 
+3. Add the following unit test.
+
+``` 
+   
+    using Microsoft.Practices.EnterpriseLibrary.SemanticLogging.Utility;
+	using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+	namespace SemanticLogging.Tests {
+
+    /// <summary>
+    /// Refs
+    /// https://msdn.microsoft.com/en-us/library/dn440729(v=pandp.60).aspx#sec9
+    /// https://dzimchuk.net/troubleshooting-slab-out-of-process-logging/
+    /// </summary>
+    [TestClass]
+    public class EventSourceValidationTest {
+
+        [TestMethod]
+        public void ShouldValidateApplicationEventSource() {
+
+            EventSourceAnalyzer.InspectAll(ApplicationEventSource.Logger);
+        }
+    }
+}
+
+```
+ 
+
+***
+
 ### Severity Level Guidelines
 
 1. __Critical__ - major failures such as wrong data, no DB connection, etc.		
