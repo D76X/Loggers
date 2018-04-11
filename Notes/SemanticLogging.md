@@ -21,7 +21,20 @@ the namespace __Microsoft.Practices.EnterpriseLibrary.SemanticLogging__ in which
 class is defined. The __ObservableEventListener__ is an implementation of __IObservable\<EventEntry\>__ 
 which can be used as a listeners for event sources. 
 
-The __EnterpriseLibrary.SemanticLogging__ provides the definition of sinks 
+The __EnterpriseLibrary.SemanticLogging__ provides the definition of sinks.
+
+***
+
+### Sinks
+
+Once one or more EventSource descendants are designed applications can either set a direct reference to the project(s) 
+where these EventSource are defined or their binaries and start adding code to invoke their methods to log messages. 
+These messages/events must ultimatly go somewhere so that they can be seen by consumers. Consumers are either humans or tools.
+In order to capture the log messages it is required to set-up one or more sinks which will be the recepients of the logged
+messages/events. Each sink can be set-up such that it also specifies one or more filters in order for the sink to receive 
+only a subset of all the emitted events according to the definition of the filter. In addition to filters a sink may also 
+specify a formatter and color mappers. For example, the simplest sink would be the Console sink that allow the events to be 
+displayed on a command shell and possible formatters for this sink may be JsonFormatter, TextFormatter, XmlFormatter etc.
 
 ***
 
@@ -31,11 +44,36 @@ The __EnterpriseLibrary.SemanticLogging__ provides the definition of sinks
 
 ### Use semantic logging in-process
 
-Semantic logging can be used in-process, but what does this exaclty mean and how does it happen? 
+Semantic logging can be used in-process, but what does this exaclty mean and how does it happen?      
+
+The simplest way Semantic Logging can be employed by an application is in-process which implies that the sink(s) 
+are set up and run in the same process as the application that causes the log events to be emitted. __The most 
+important implication__ with this approach is that if the application process crashes due to an uncaught exception
+the also the sinks will crach and will not be able to collect all the events. For example, if the sick is a Console
+sink on the application crash all is lost otherwise if the sink is a flat file or rolling file the crash might prevent
+the sink from completing the write operation of buffered events available just prior to the crash end uncaught exeption 
+and such events will be lost.
+
+The in-process set up is the simplest because ot does not rely on starting a service or configuring it via an XML file,
+it all reduces to simply run the application and a few lines of codes are used in Application.OnStart to set-up the sink(s). 
+
+In order to use Semantic Logging in-process the application must reference either the __EnterpriseLibrary.SemanticLogging__
+(this is __SLAB__) NuGet package directly or a custom library that reference it on its behalf as described above. __SLAB__
+comes equipped with only the Console sink by default but it might also be used in conjunction with the __SQL__, __Azure Tables__
+and __File__ sinks by adding the respective additional NuGet packages.
+
+__The other important implication__ to keep in mind is that the transport mechanism of the events in in-process set-ups is __NOT__
+ETW events! ETW is a piece of OS infrastructure and it is used to transport logged events only when the set-up is out-of-process.
+The mechanism used by the in-process architecture is not as fast and as robust as ETW.
+
+Ulitmately, the in-process set-up is a simpler more direct way to use EventSource to log events which offer easier set-up and 
+configuration with respect to the out-of-process alternative. 
+
+Out-of-process and in-process set-ups can be used in conjuction if so desired.
 
 ***
 
-### Semantic Logging Service set-up and usage
+### Semantic Logging Service out-of-process set-up and usage
  
 Semantic logging is most useful when used out-of-process. In order to do so a specific service must be installed 
 on the machine where the tracing from the application that uses EventSource decendants is to be monitored or collected.

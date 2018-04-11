@@ -362,6 +362,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B8DBBBFD-E4B0-4F00-80B2-97D646685BAB}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		packages\EnterpriseLibrary.SemanticLogging.Service.2.0.1406.1\tools\SemanticLogging-svc.xml = packages\EnterpriseLibrary.SemanticLogging.Service.2.0.1406.1\tools\SemanticLogging-svc.xml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{86A93344-6AF8-46D0-9F98-95097E76C6C8}"
