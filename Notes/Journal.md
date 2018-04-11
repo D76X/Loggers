@@ -72,4 +72,5 @@
 |                           | ASP.NET Core, ZEROMQ, CSS Grid, VAT,                         |
 | 07-08/04/2018             | Intergation of Docking, ETW Logging, ZEROMQ, CSS Grid, Phaser|
 |                           | Python. German, Probability                                  |
-| 09/04/2018                ||
+| 09-10/04/2018             | ZEROMQ, jQuery, CSS Grid, ETW, German, Python                |
+| 11/04/2018                ||
