@@ -92,3 +92,36 @@ def test_module():
     print("next(g) = {}".format(next(g)))
     print("next(g) = {}".format(next(g)))
     print("etc..")
+
+    # comprehensions actually allow you to use as many input sequences and if clauses as you want
+    print("comprehensions actually allow you to use as many input sequences and if clauses as you want...")
+    cartesian_product = [(x, y) for x in range(5) for y in range(3)]
+    print("cartesian_product = [(x,y) for x in range(5) for y in range(3)] = {}".format(
+        cartesian_product))
+
+    print()
+    print("this can be read as a set of two nested for loops, but you are limited to only two levels!")
+
+    print()
+    print("cubrik space...")
+    cubrik_space = [(x, y, z) for x in range(3)
+                    for y in range(3) for z in range(3)]
+    print("cubrik_space = [(x,y,z) for x in range(3) for y in range(3) for z in range(3)] = {}".format(
+        cubrik_space))
+
+    # with complex multi-input comprehensions try to keep readibility
+    # later clauses can refer to variables declared in earlier clauses!
+    print()
+    complex_space = [x/(x-y)
+                     for x in range(10)
+                     if x > 5
+                     for y in range(10)
+                     if x - y != 0]
+    print(
+        "complex_space = [x/(x-y) for x in range(10) if x > 5 for y in range(10) if x - y != 0] = {}".format(complex_space))
+
+    # later clauses can refer to variables declared in earlier clauses also in the comprehensions syntax
+    print()
+    triangular_space = [(x, y) for x in range(10) for y in range(x)]
+    print("triangular_space = [(x,y) for x in range(10) for y in range(x)] = {}".format(
+        triangular_space))
