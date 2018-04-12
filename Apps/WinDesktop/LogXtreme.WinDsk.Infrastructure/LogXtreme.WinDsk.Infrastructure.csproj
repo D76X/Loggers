@@ -141,6 +141,7 @@
     <Compile Include="Prism\IDockingManagerViewModel.cs" />
     <Compile Include="Prism\NavigationRequestParametersBase.cs" />
     <Compile Include="Prism\RegionAdapterLayoutAnchorablePane.cs" />
+    <None Include="app.config" />
     <None Include="CodeScrap\RegionAdapterLayoutDocumentPane_1.cs" />
     <Compile Include="Prism\ShellServiceBase.cs" />
     <Compile Include="Prism\TestSync.cs" />
