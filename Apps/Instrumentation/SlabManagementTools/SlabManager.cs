@@ -1,4 +1,5 @@
 ﻿using Microsoft.Practices.EnterpriseLibrary.SemanticLogging;
+using Microsoft.Practices.EnterpriseLibrary.SemanticLogging.Formatters;
 using System;
 using System.Diagnostics.Tracing;
 
@@ -13,6 +14,7 @@ namespace SlabManagementTools {
         private static EventSource eventSource;
 
         // define any number of listeners you may see fit
+        // do not share them!
         private static ObservableEventListener listener = new ObservableEventListener();        
 
         /// <summary>
@@ -30,6 +32,8 @@ namespace SlabManagementTools {
             // set up the listeners by specifying the following 
             // 1-their event sources 
             // 2-the condition under which an event from the source is let to the listener 
+            // 3-If you want to activate events in all groups, you must use the Keywords.All parameter value. 
+            //   If you do not supply a value for this optional parameter, only events with no keywords are active.
             // The set-up rules may be defined in the App.config of the consumer code instead of being hard coded!
             listener.EnableEvents(eventSource, EventLevel.LogAlways, Keywords.All);
 
@@ -39,7 +43,8 @@ namespace SlabManagementTools {
             // there are other sinks Console, SQL DB, File flat & rolling, Azure tables.
             // In order to get the extension methods to create the other kinds of sinks you must use the 
             // corresponding NuGet packages.
-            listener.LogToConsole();          
+            var jsonFormatter = new JsonEventTextFormatter(EventTextFormatting.Indented);
+            listener.LogToConsole(jsonFormatter);          
         }
 
         /// <summary>
