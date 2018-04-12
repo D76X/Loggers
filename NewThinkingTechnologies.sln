@@ -18,9 +18,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Advanced-1", "Advanced-1", 
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installers-Examples", "Installers-Examples", "{C7C6F88C-55B2-466B-A0EB-318D990B2C2E}"
-	ProjectSection(SolutionItems) = preProject
-		Examples\Installers-Examples\WiX.txt = Examples\Installers-Examples\WiX.txt
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HelloWix-1", "HelloWix-1", "{129DC57C-243A-4F82-BBCF-0A1E6ED6EC6E}"
 	ProjectSection(SolutionItems) = preProject
@@ -111,7 +108,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Notes", "_Notes", "{54A549
 		Notes\Updater.md = Notes\Updater.md
 		Notes\VisualStudio.md = Notes\VisualStudio.md
 		Notes\WiX.md = Notes\WiX.md
-		Notes\WpfNotes.md = Notes\WpfNotes.md
+		Notes\Wpf.md = Notes\Wpf.md
 		Notes\XAML.md = Notes\XAML.md
 		Notes\ZeroMQ.md = Notes\ZeroMQ.md
 	EndProjectSection
