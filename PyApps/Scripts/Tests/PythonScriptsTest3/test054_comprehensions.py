@@ -4,10 +4,10 @@ This module illustrates the use of comprehensions in Python.
 Usage:
 
     # Copy and paste all these commands in the terminal to see the outputs.
-    import os; os.chdir("C:\\GitHub\\Loggers\\PyApps\\Scripts\\Tests\\PythonScriptsTest3"); clear = lambda: os.system('cls'); import imp; import test054_comprehensions as t54; t54.test_module()
+    import os; os.chdir("C:\\GitHub\\Loggers\\PyApps\\Scripts\\Tests\\PythonScriptsTest3"); clear = lambda: os.system('cls'); import imp; import test054_multi_input_comprehensions as t54; t54.test_module()
 
     # The last two commands are specific to this module.
-    import test054_comprehensions as t54
+    import test054_multi_input_comprehensions as t54
     t54.test_module()
 
     # Reload the module into the REPL after you make any changes to it.
@@ -32,7 +32,7 @@ from pprint import pprint as pp
 
 # when working with iterables this package is very useful
 # from itertools import islice, count
-import itertools as its
+import itertools as its 
 
 # this module imports a function from custom module!
 from ntt_utils import isPrime, distinct
@@ -119,7 +119,7 @@ def test_module():
     keys = [str(i) for i in values]
 
     # Warning!!!!!
-    # Contrary to Python 2 in Python3 the zip contructor returns a Generator that is a lazily evaluated iterable
+    # Contrary to Python 2 in Python3 the zip contructor returns a Generator that ia a lazily evaluated iterable
     # thus the first time the generator is run through by the invokation of the dict contructor it is consumed
     # and trying to iterate on it again will not produce any more tuple - this behaviors my catch you by surprise
     # if you do not know about it.
@@ -308,7 +308,6 @@ def test_module():
 
     # an example of a generator with some trace
     print()
-
     def gen246():
         print("About to yield 2")
         yield 2
@@ -340,7 +339,7 @@ def test_module():
         Args:
             count: the max number of items to retrieve.
             iterable: the source of the items.
-
+        
         Yields:
             At most count items from iterable.
         """
@@ -352,12 +351,12 @@ def test_module():
             yield item
 
     items = [2, 4, 6, 8, 10]
-
+    
     for item in take(3, items):
         print(item)
 
     print()
-    items = [1, 1, 3, 3, 5, 9, 9]
+    items = [1, 1, 3, 3, 5, 9, 9]    
     print("items = {}".format(items))
     print("distinct(items) = ")
     for item in distinct(items):
@@ -389,7 +388,7 @@ def test_module():
             yield b
             # use tuple unpacking!
             a, b = b, a+b
-
+    
     # an instance of the generator
     g = aseq()
     print("g = aseq() ={}".format(g))
@@ -426,7 +425,7 @@ def test_module():
     print("...")
 
     # example of application where the generator comprhension is to be used instead of a list comprehension
-    # the generator comprehension uses little memory
+    # the generator comprehension uses little memory 
     print()
     print("the generator comprehension uses little memory!")
     # notice the syntax is sum generator-comprehension without the need of extra parenthesys as in sum(generator-comprehension)
@@ -442,15 +441,15 @@ def test_module():
     result = sum(x*x for x in range(1, 1000) if isPrime(x))
     print("sum(x*x for x in range(1, 1000) if isPrime(x)) = {}".format(result))
 
-    # iterable objects work in conjuction with some most used and useful built-in functions such as
+    # iterable objects work in conjuction with some most used and useful built-in functions such as 
     # sum(), enumerate(), etc.
     # the itertools module includes more functions of the kind such as
     # isclice(), count(), etc.
 
     print()
     print("**** itertools *****")
-    print("The package itertools adds extra power to working with iterables in Python...")
-
+    print("The package itertools adds extra power to working with iterables in Python...")    
+    
     print()
     print("itertools.count() produces a generator that counts integer starting from some value n")
     from_100 = its.count(100)
@@ -462,8 +461,7 @@ def test_module():
 
     print()
     print("itertools.islice() takes a slice of an iterable and creates another iterable hence can be used to slice a generator")
-    first_1000_primes = its.islice(
-        (x for x in its.count() if isPrime(x)), 1000)
+    first_1000_primes = its.islice((x for x in its.count() if isPrime(x)), 1000)
     # the (x for x in its.count() if isPrime(x)) is a generator comprehension
     # islice() retunrs an iterable actually a generator!
     print("first_1000_primes = its.islice((x for x in its.count() if isPrime(x), 1000))")
@@ -475,27 +473,24 @@ def test_module():
     # any(), all()
     print()
     print("any(), all()")
-    print("all([True, False, False]) = {}".format(all([True, False, False])))
-    print("any([True, False, False]) = {}".format(any([True, False, False])))
+    print("all([True, False, False]) = {}".format(all([True, False, False]))) 
+    print("any([True, False, False]) = {}".format(any([True, False, False]))) 
     # look for primes in a range
     result = any(isPrime(x) for x in range(1328, 1361))
-    print("any(isPrime(x) for x in range(1328, 1361)) = {}".format(result))
+    print("any(isPrime(x) for x in range(1328, 1361)) = {}".format(result)) 
     # check that names of capitals are Camel case with the title() function
-    result = all(name == name.title()
-                 for name in ['London', 'New York', 'Sydney'])
-    print(
-        "all(name == name.title() from name in ['London', 'New York', 'Sydney']) = {}".format(result))
+    result = all(name == name.title() for name in ['London', 'New York', 'Sydney'])
+    print("all(name == name.title() from name in ['London', 'New York', 'Sydney']) = {}".format(result))
 
     # zip is very handy!
     print("zip is very handy!")
     first = [1, 2, 3]
     second = [10, 20, 30]
-    third = [20, 40, 60]
-    zipped = zip(first, second, third)
+    third = [20, 40 , 60]
+    zipped = zip(first, second, third)    
     for item in zipped:
-        print("min={:4.1f}, max={:4.1f}, avegare={:4.1f}".format(
-            min(item), max(item), sum(item)/len(item)))
-
+        print("min={:4.1f}, max={:4.1f}, avegare={:4.1f}".format(min(item), max(item), sum(item)/len(item)))
+    
     # chain from itertools is the same as zip but it does it lazily that is it provides a generator
     print()
     print("chain from itertools is the same as zip but it does it lazily that is it provides a generator")
