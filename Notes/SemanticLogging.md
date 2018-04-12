@@ -217,6 +217,18 @@ one ore more console sinks the events will be visible in the console of the __Se
 
 ***
 
+## Customizing SLAB
+
+The __SLAB__ offers several customization options. 
+
+- Create custom filters 
+- Manipulate events using Reactive Extensions.
+- Create custom formatters for use both in-process and out-of-process.
+- Create custom sinks for use both in-process and out-of-process.
+- Create custom application to collect trace messages from your LOB applications.
+
+***
+
 ### References
 
 [How can I organize EventSources for the Semantic Logging Application Block?
