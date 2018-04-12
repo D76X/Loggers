@@ -451,6 +451,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvalonDockServiceModule", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemanticLogging.Tests", "Apps\Instrumentation\SemanticLogging.Tests\SemanticLogging.Tests.csproj", "{7BFB0713-3CD8-45FA-9CF7-52303D7B2D1F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataStructures", "DataStructures", "{2362EB80-56CD-4436-8803-777BC3581231}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.DataStructures", "Apps\DataStructures\LogXtreme.DataStructures\LogXtreme.DataStructures.csproj", "{67B923E3-B488-4067-9565-45564937560A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.DataStructures.Tests", "Apps\DataStructures\LogXtreme.DataStructures.Tests\LogXtreme.DataStructures.Tests.csproj", "{C6C44C13-0DFE-45FD-9025-217DBDE638E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1321,6 +1327,22 @@ Global
 		{7BFB0713-3CD8-45FA-9CF7-52303D7B2D1F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7BFB0713-3CD8-45FA-9CF7-52303D7B2D1F}.Release|x86.ActiveCfg = Release|Any CPU
 		{7BFB0713-3CD8-45FA-9CF7-52303D7B2D1F}.Release|x86.Build.0 = Release|Any CPU
+		{67B923E3-B488-4067-9565-45564937560A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67B923E3-B488-4067-9565-45564937560A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67B923E3-B488-4067-9565-45564937560A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{67B923E3-B488-4067-9565-45564937560A}.Debug|x86.Build.0 = Debug|Any CPU
+		{67B923E3-B488-4067-9565-45564937560A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67B923E3-B488-4067-9565-45564937560A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67B923E3-B488-4067-9565-45564937560A}.Release|x86.ActiveCfg = Release|Any CPU
+		{67B923E3-B488-4067-9565-45564937560A}.Release|x86.Build.0 = Release|Any CPU
+		{C6C44C13-0DFE-45FD-9025-217DBDE638E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6C44C13-0DFE-45FD-9025-217DBDE638E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6C44C13-0DFE-45FD-9025-217DBDE638E6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C6C44C13-0DFE-45FD-9025-217DBDE638E6}.Debug|x86.Build.0 = Debug|Any CPU
+		{C6C44C13-0DFE-45FD-9025-217DBDE638E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6C44C13-0DFE-45FD-9025-217DBDE638E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6C44C13-0DFE-45FD-9025-217DBDE638E6}.Release|x86.ActiveCfg = Release|Any CPU
+		{C6C44C13-0DFE-45FD-9025-217DBDE638E6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1491,6 +1513,9 @@ Global
 		{8C27430B-6D38-401C-8D73-0541DEC2120B} = {ADEC704F-C61B-4B74-AA13-463FE53F3C35}
 		{D3C72916-55A5-4532-A1E3-4058ABEE0A28} = {B41C4F41-E9F6-4C26-B701-E6A51C4E716F}
 		{7BFB0713-3CD8-45FA-9CF7-52303D7B2D1F} = {CFB67B6F-4DB8-40B2-9DBE-3F9AEC33ADF5}
+		{2362EB80-56CD-4436-8803-777BC3581231} = {336F8F07-C586-45D4-B7E2-20FDB911D3B5}
+		{67B923E3-B488-4067-9565-45564937560A} = {2362EB80-56CD-4436-8803-777BC3581231}
+		{C6C44C13-0DFE-45FD-9025-217DBDE638E6} = {2362EB80-56CD-4436-8803-777BC3581231}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B48A64CD-1E9D-4169-82DF-66FD7695C2D0}
