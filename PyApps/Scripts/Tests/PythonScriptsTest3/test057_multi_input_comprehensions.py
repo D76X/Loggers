@@ -27,15 +27,8 @@ Results:
 
 """
 
-from math import factorial
-from pprint import pprint as pp
-
-# when working with iterables this package is very useful
-# from itertools import islice, count
-import itertools as its
-
 # this module imports a function from custom module!
-from ntt_utils import isPrime, distinct
+from ntt_utils import isPrime
 
 
 def test_module():

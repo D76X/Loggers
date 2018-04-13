@@ -58,6 +58,12 @@
     <Compile Include="test057_multi_input_comprehensions.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="test058_nested_comprehensions.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="test059_map_filter_reduce_functions.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|ContinuumAnalytics|Anaconda36-64" />
