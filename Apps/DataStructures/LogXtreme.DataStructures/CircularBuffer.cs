@@ -5,13 +5,17 @@ using System.Collections.Generic;
 namespace LogXtreme.DataStructures {
 
     /// <summary>
+    /// Simple implementation of a circular buffer.
     /// Refs
     /// http://geekswithblogs.net/blackrob/archive/2014/09/01/circular-buffer-in-c.aspx
     /// https://msdn.microsoft.com/en-us/library/dn440729(v=pandp.60).aspx#sec9
     /// https://github.com/LMAX-Exchange/disruptor/wiki
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class CircularBuffer<T> : ICircularBuffer<T>, IEnumerable<T> {
+    public class CircularBuffer<T> : 
+        ICircularBuffer<T>, 
+        IEnumerable<T> {
+
         private T[] _buffer;
         private int _head;
         private int _tail;
