@@ -64,6 +64,8 @@
     <Compile Include="IObservableEx.cs" />
     <Compile Include="ObservableOn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Provider.cs" />
+    <Compile Include="Reporter.cs" />
     <Compile Include="SubscribeWeakly.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +80,10 @@
     <ProjectReference Include="..\..\..\DataStructures\LogXtreme.DataStructures\LogXtreme.DataStructures.csproj">
       <Project>{67B923E3-B488-4067-9565-45564937560A}</Project>
       <Name>LogXtreme.DataStructures</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Infrastructure\LogXtreme.Ifrastructure\LogXtreme.Ifrastructure.csproj">
+      <Project>{F919B826-9C93-4A30-A68C-ED35B35B2FA1}</Project>
+      <Name>LogXtreme.Ifrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\LogXtreme.Extensions.csproj">
       <Project>{07a36205-c0c2-4f88-a37c-27199051a240}</Project>
