@@ -97,12 +97,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Notes", "_Notes", "{54A549
 		Notes\MachineLearning.md = Notes\MachineLearning.md
 		Notes\Markdown.md = Notes\Markdown.md
 		Notes\md-styles.css = Notes\md-styles.css
+		Notes\MSBuild.md = Notes\MSBuild.md
+		Notes\MSTest.md = Notes\MSTest.md
 		Notes\Prism.md = Notes\Prism.md
 		Notes\Python.md = Notes\Python.md
 		Notes\ReactiveExtensions.md = Notes\ReactiveExtensions.md
 		Notes\SemanticLogging.md = Notes\SemanticLogging.md
 		Notes\Shortcuts.md = Notes\Shortcuts.md
 		Notes\Simulators.md = Notes\Simulators.md
+		Notes\SolutionNotes.md = Notes\SolutionNotes.md
 		Notes\Stylecop.md = Notes\Stylecop.md
 		Notes\ToDo.md = Notes\ToDo.md
 		Notes\Updater.md = Notes\Updater.md
@@ -361,6 +364,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		packages\EnterpriseLibrary.SemanticLogging.Service.2.0.1406.1\tools\SemanticLogging-svc.xml = packages\EnterpriseLibrary.SemanticLogging.Service.2.0.1406.1\tools\SemanticLogging-svc.xml
+		Notes\UWP.md = Notes\UWP.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{86A93344-6AF8-46D0-9F98-95097E76C6C8}"
