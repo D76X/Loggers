@@ -6,8 +6,14 @@ namespace LogXtreme.Reactive.Extensions {
 
     /// <summary>
     /// Basic implementation of <see cref="IObservable"/><T>.
+    /// This implementation has illustrative purpose only and may be used in simple 
+    /// testing scenarios.
     /// Refs
     /// https://docs.microsoft.com/en-us/dotnet/standard/events/how-to-implement-a-provider
+    /// Hot and Cold observables and Publish and Connect
+    /// http://www.introtorx.com/content/v1.0.10621.0/14_HotAndColdObservables.html
+    /// Should use Observable.Create or Observable.Generate instead
+    /// http://www.introtorx.com/content/v1.0.10621.0/04_CreatingObservableSequences.html#ObservableCreate
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class Provider<T> : IObservable<T> {

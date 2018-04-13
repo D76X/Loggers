@@ -5,6 +5,8 @@ namespace LogXtreme.Reactive.Extensions {
 
     /// <summary>
     /// Basic implementation of <see cref="IObserver"/><T> 
+    /// This implementation has illustrative purpose only and may be used in simple 
+    /// testing scenarios.
     /// Refs
     /// https://docs.microsoft.com/en-us/dotnet/standard/events/how-to-implement-an-observer
     /// </summary>
