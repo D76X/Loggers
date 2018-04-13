@@ -33,6 +33,10 @@
 
 # Learn or Refresh
 
+- The absolute minimum about Threading
+- The absolute minimum about Memory management
+- The absolute minimum about Unicode strings
+- The absolute minimum about date and time
 - PyGames, MonoGames
 - Emmet
 - StyleCop
@@ -95,6 +99,7 @@
 
 # Specials
 
+- Octave
 - Blog
 - Pluralsight courses => ZEROMQ + Machine Learning + Phaser + Pixijs + ReactiveUI + InkScape + GIMP + Asesprite + StyleCop
 - Youtube channel
