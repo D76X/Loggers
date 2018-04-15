@@ -27,6 +27,9 @@ Results:
 
 """
 
+from functools import reduce
+import operator
+
 
 def test_module():
     """Module-level tests."""
@@ -115,3 +118,27 @@ def test_module():
         filter(None, [1, 0, 1, 0, 1, False, True, [], [1, 2, 3], '',  'some string']))
     print("results = list(filter(None, [1, 0, 1, 0, 1, False, True, [], [1,2,3], '',  'some string'])) = {}".format(
         results))
+
+    # reduce
+    print()
+    print("reduce() applies a function to the elements of a sequence reducing them to a single value")
+    print("reduce() takes a function of two variables - one an accumulator and each item from the sequence in turn")
+    print("the initial value for the accumulator can be either the value of the first item in the sequence")
+    print("or a specified value - reduce() in Python is equivalent to fold in F# or aggregate() in LINQ, etc.")
+
+    print()
+    result = reduce(operator.add,  [x for x in range(10)])
+    print(
+        "result = reduce(operator.add,  [x for x in range(10)]) = {}".format(result))
+
+    # reduce with the (optional) initial value for the accumulator
+    print()
+    print("reduce with the (optional) initial value for the accumulator")
+    result = reduce(operator.add,  [x for x in range(10)], -1)
+    print("result = reduce(operator.add,  [x for x in range(10)], -1) = {}".format(result))
+    result = reduce(operator.mul,  [x for x in range(1,10,1)], -1)
+    print("result = reduce(operator.mul,  [x for x in range(1,10,1)], -1) = {}".format(result))
+
+    # map() => reduce() 
+    print()
+    print("map() => reduce()")

@@ -79,6 +79,8 @@ def distinct(iterable):
         yield item
         seen.add(item)
 
+def 
+
 def test_module(): 
     """Module-level tests."""
     print()    
