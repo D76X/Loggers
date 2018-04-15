@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*"
+           Name="LogXtreme.WinDsk"
+           Language="1033"
+           Version="1.0.0.0"
+           Manufacturer="New Thinking Technologies"
+           UpgradeCode="875901D4-C083-4279-B199-4DDC0D2EBD56">
+
+    <!--This info goes into the MSI summary information-->
+    <Package InstallerVersion="200"
+             Compressed="yes"
+             InstallScope="perMachine"
+             Description="LogXtreme Data Logger Software"
+             Manufacturer="New Thinking Technologies"
+             Comments="Installer for LogXtreme Data Logger Software"/>
+
+    <!--This tells WiX to automatically assign files to cabinet files-->
+    <!--The cabinet files will be embedded into the MSI file-->
+    <MediaTemplate EmbedCab="yes"/>
+    
+    <Icon Id="product_icon.ico" SourceFile="ntt_logo.ico"/>
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+
+    <Directory Id="TARGETDIR"
+               Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="DIR_NewThinkingTechnologies"
+                   Name="NewThinkingTechnologies">
+          <Directory Id="DIR_LogXtremeWinDsk"
+                     Name="LogXtreme Windows Desktop">
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <DirectoryRef Id="DIR_LogXtremeWinDsk">
+      <Component Id="CMP_LogXtreme.WinDsk.exe"
+                 Guid="82EAAF9C-400E-4A38-B3D5-8A87834BA940">
+        <File Id="FILE_">
+          
+        </File>
+      </Component>
+    </DirectoryRef>
+
+    <!--<Feature Id="ProductFeature"
+             Title="LogXtreme.WinDsk"
+             Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
+    </Feature>-->
+  </Product>
+
+  <!--<Fragment>
+    <Directory Id="TARGETDIR"
+               Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER"
+                   Name="LogXtreme.WinDsk" />
+      </Directory>
+    </Directory>
+  </Fragment>-->
+
+  <!--<Fragment>
+    <ComponentGroup Id="ProductComponents"
+                    Directory="INSTALLFOLDER">
+       TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. 
+       <Component Id="ProductComponent"> 
+       TODO: Insert files, registry keys, and other resources here. 
+       </Component> 
+    </ComponentGroup>
+  </Fragment>-->
+</Wix>
