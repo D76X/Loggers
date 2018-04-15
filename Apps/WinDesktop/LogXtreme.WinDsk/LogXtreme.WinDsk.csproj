@@ -196,14 +196,6 @@
       <Project>{d3c72916-55a5-4532-a1e3-4058abee0a28}</Project>
       <Name>AvalonDockServiceModule</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Modules\AppServices\DataServiceModule\DataServiceModule.csproj">
-      <Project>{fb58d566-2f42-4868-9873-748a62692b35}</Project>
-      <Name>DataServiceModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\AppServices\DeviceServiceModule\DeviceServiceModule.csproj">
-      <Project>{e9083ec0-8f0d-46cf-b145-a09e139b93df}</Project>
-      <Name>DeviceServiceModule</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />

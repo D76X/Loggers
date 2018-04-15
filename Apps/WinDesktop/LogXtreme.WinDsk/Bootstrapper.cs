@@ -21,6 +21,12 @@ namespace LogXtreme.WinDsk {
     /// </summary>
     public class Bootstrapper: UnityBootstrapper {
 
+        /// <summary>
+        /// This method creates the default logger for Prism. 
+        /// You may plug in your own logging framework here by just making sure that 
+        /// it implements <see cref="ILoggerFacade"/>
+        /// </summary>
+        /// <returns></returns>
         protected override ILoggerFacade CreateLogger() {
             return base.CreateLogger();
         }

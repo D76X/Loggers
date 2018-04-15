@@ -6,30 +6,49 @@ namespace LogXtreme.WinDsk {
     /// </summary>
     public partial class App : Application {
 
+        public App() {
+
+            // this will not be caught in process!
+            SemanticLogging.ApplicationEventSource.Logger.LogInfo(@"application", nameof(App), @"constructor");
+        }
+
         protected override void OnStartup(StartupEventArgs e) {
+
+            // this will not be caught in-process
+            SemanticLogging.ApplicationEventSource.Logger.LogInfo(@"before call to base base.OnStartup", nameof(App), nameof(App.OnStartup));
 
             base.OnStartup(e);
 
 #if DEBUG
-            SlabManagementTools.InProcSlabManagement.StartInProcTracing(SemanticLogging.LoggerEventSource.Logger);
+
+            // this line setups and starts the in-process tracing.
+            // the in-process tracing is going to be available only when debugging and not in production.
+            SlabManagementTools.SlabManager.StartInProcTracing(SemanticLogging.ApplicationEventSource.Logger);
+
+            // these lines show how to log basic (semantic) messages by reffering the EventSource.
+            // these lines are not going to be present in production.
+            SemanticLogging.ApplicationEventSource.Logger.LogInfo(@"test-info", nameof(App), nameof(App.OnStartup));
+            SemanticLogging.ApplicationEventSource.Logger.LogAlways(@"test-always", nameof(App), nameof(App.OnStartup));
+            SemanticLogging.ApplicationEventSource.Logger.LogCritical(@"test-critical", nameof(App), nameof(App.OnStartup));
+            SemanticLogging.ApplicationEventSource.Logger.LogError(@"test-error", nameof(App), nameof(App.OnStartup));
+            SemanticLogging.ApplicationEventSource.Logger.LogVerbose(@"test-verbose", nameof(App), nameof(App.OnStartup));
+            SemanticLogging.ApplicationEventSource.Logger.LogWarning(@"test-warning", nameof(App), nameof(App.OnStartup));
 #endif
-            SemanticLogging.LoggerEventSource.Logger.LogInfo(@"log started", nameof(App), nameof(App.OnStartup));
-
-            SemanticLogging.LoggerEventSource.Logger.LogAlways(@"log test always", nameof(App), nameof(App.OnStartup));
-            SemanticLogging.LoggerEventSource.Logger.LogCritical(@"log test critical", nameof(App), nameof(App.OnStartup));
-            SemanticLogging.LoggerEventSource.Logger.LogError(@"log test  error", nameof(App), nameof(App.OnStartup));
-            SemanticLogging.LoggerEventSource.Logger.LogVerbose(@"log test verbose", nameof(App), nameof(App.OnStartup));
-            SemanticLogging.LoggerEventSource.Logger.LogWarning(@"log test warning", nameof(App), nameof(App.OnStartup));
-
+            SemanticLogging.ApplicationEventSource.Logger.LogInfo(@"before Bootstrapper ctor", nameof(App), nameof(App.OnStartup));
             var bootstrapper = new Bootstrapper();
+            SemanticLogging.ApplicationEventSource.Logger.LogInfo(@"after Bootstrapper ctor", nameof(App), nameof(App.OnStartup));
+
+            SemanticLogging.ApplicationEventSource.Logger.LogInfo(@"before Bootstrapper bootstrapper.Run", nameof(App), nameof(App.OnStartup));
             bootstrapper.Run();
         }
 
         protected override void OnExit(ExitEventArgs e) {
 
-#if DEBUG
-            SemanticLogging.LoggerEventSource.Logger.LogInfo(@"log stopped ", nameof(App), nameof(App.OnExit));
-            SlabManagementTools.InProcSlabManagement.StopInProcTracing();
+            SemanticLogging.ApplicationEventSource.Logger.LogInfo(@"before teardown", nameof(App), nameof(App.OnExit));
+#if DEBUG   
+            // In production there isn't any in-process listeners to tear down. 
+            // this line tears down the in-process tracing.
+            SlabManagementTools.SlabManager.StopInProcTracing();
 #endif
 
             base.OnExit(e);
