@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+         DefaultTargets="HelloWorld">
+  <Target Name="HelloWorld">
+    <Message Text="Hello, World!"/>
+  </Target>
+  <Target Name="WhatIsATarget">
+    <Message Text="A target is a bunch of instructions for MSBuild.exe"/>
+  </Target>
+  <Target Name="Goodbye">
+    <Message Text="Goodbye World!"/>
+  </Target>
+</Project> 
+
+<!--
+To run this file with MSBuild start a VS developer command shell in the 
+folder of the *.msbuild and invoke the commands as shown below. You may
+also use the MSBuild.exe that is installed as part of the .NET Framework
+as long as it is in your PATH variable.
+
+> msbuild 01.dosomething.msbuild
+
+With this command MSBuild executes only the first Task in the Project.
+
+> msbuild /target:Goodbey
+
+With this command MSBuild executes only the specified Target of the Project
+inrespective of the order in which the Target appears the *.msbuild file 
+under the Project node.
+
+The Project DefaultTarget attribute value is optional and defaults to the 
+first Target under Project if it is left unpecified. You can use to determine 
+which Target is executed when the /target: switch is not used.
+
+--> 

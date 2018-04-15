@@ -72,6 +72,11 @@
 |                           | ASP.NET Core, ZEROMQ, CSS Grid, VAT,                         |
 | 07-08/04/2018             | Intergation of Docking, ETW Logging, ZEROMQ, CSS Grid, Phaser|
 |                           | Python. German, Probability                                  |
-| 09-10/04/2018             | ZEROMQ, jQuery, CSS Grid, ETW, German, Python                |
-| 11-13/04/2018             | ZEROMQ, jQuery, CSS Grid, ETW, German, Python,			   |
-|							| got infinite scroll to work,|
+| 09-10/04/2018             | ZEROMQ, jQuery, CSS Grid, ETW, German, Python, Probability   |
+|							| Phaser													   |
+| 11-13/04/2018             | ZEROMQ, jQuery, CSS Grid, ETW, German, Python, Probability   |
+|							| got infinite scroll to work, ZEROMQ					       |
+|							| Phaser													   |
+| 14/04/2018				| Improved jQuery async for infinite scrolling, Python, Phaser |
+|							| MSBuild, WiX, ZEROMQ, German, Probability					   |
+||| 
