@@ -4,10 +4,10 @@ This module illustrates the use of the map function in Python.
 Usage:
 
     # Copy and paste all these commands in the terminal to see the outputs.
-    import os; os.chdir("C:\\GitHub\\Loggers\\PyApps\\Scripts\\Tests\\PythonScriptsTest3"); clear = lambda: os.system('cls'); import imp; import test059_map_function as t59; t59.test_module()
+    import os; os.chdir("C:\\GitHub\\Loggers\\PyApps\\Scripts\\Tests\\PythonScriptsTest3"); clear = lambda: os.system('cls'); import imp; import test059_map_filter_reduce_functions as t59; t59.test_module()
 
     # The last two commands are specific to this module.
-    import test059_map_function as t59
+    import test059_map_filter_reduce_functions as t59
     t54.test_module()
 
     # Reload the module into the REPL after you make any changes to it.
@@ -93,3 +93,25 @@ def test_module():
     aset = set(alist)
     print("alist = map(lambda x: x*x, range(5)) = {}".format(alist))
     print("aset = set(alist) = {}".format(aset))
+
+    # filters
+    print()
+    print("filters are used reduce the number of items passed to teh caller from any iterable")
+    print("filter() laways returns a generator hence is always lazily evaluated - only in Python 3!")
+    print("a filter can only be applied to a single iterable")
+
+    print()
+    filtered = filter(lambda x: x % 2, [x*x-1 for x in range(10)])
+    print(
+        "filterd = filter(lambda x: x % 2, [x*x-1 for x in range(10)]) = {}".format(filtered))
+    results = list(filtered)
+    print("results = list(filtered) = {}".format(results))
+
+    # filter(None...)
+    print()
+    print("filter(None...)")
+    print("passing null as the frist argument to the filter function will remove all the elements that evaluate to False")
+    results = list(
+        filter(None, [1, 0, 1, 0, 1, False, True, [], [1, 2, 3], '',  'some string']))
+    print("results = list(filter(None, [1, 0, 1, 0, 1, False, True, [], [1,2,3], '',  'some string'])) = {}".format(
+        results))
