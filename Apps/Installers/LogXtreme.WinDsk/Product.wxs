@@ -18,8 +18,12 @@
     <!--This tells WiX to automatically assign files to cabinet files-->
     <!--The cabinet files will be embedded into the MSI file-->
     <MediaTemplate EmbedCab="yes"/>
+
+    <Icon Id="ICON_ntt.ico"
+          SourceFile="ntt_logo.ico"/>
     
-    <Icon Id="product_icon.ico" SourceFile="ntt_logo.ico"/>
+    <Icon Id="ICON_logxtreme.ico"
+          SourceFile="logxtreme_logo.ico"/>
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
 
@@ -27,9 +31,14 @@
                Name="SourceDir">
       <Directory Id="ProgramFilesFolder">
         <Directory Id="DIR_NewThinkingTechnologies"
-                   Name="NewThinkingTechnologies">
+                   Name="New Thinking Technologies">
           <Directory Id="DIR_LogXtremeWinDsk"
                      Name="LogXtreme Windows Desktop">
+          </Directory>
+          <Directory Id="ProgramMenuFolder">
+            <Directory Id="DIR_NewThinkingTechnologiesShortcutsDir"
+                       Name="New Thinking Technologies">
+            </Directory>
           </Directory>
         </Directory>
       </Directory>
@@ -37,18 +46,37 @@
 
     <DirectoryRef Id="DIR_LogXtremeWinDsk">
       <Component Id="CMP_LogXtreme.WinDsk.exe"
-                 Guid="82EAAF9C-400E-4A38-B3D5-8A87834BA940">
-        <File Id="FILE_">
-          
+                 Guid="A2CB9862-DF25-4509-A6C1-9F9D98B28487">
+        <File Id="FILE_LogXtreme.WinDsk.exe"
+              Source="./testdist/LogXtreme.WinDsk.exe"
+              Name="LogXtreme.WinDsk.exe"
+              Hidden="no"
+              ReadOnly="no"
+              Vital="yes"
+              KeyPath="yes">
         </File>
       </Component>
     </DirectoryRef>
-
-    <!--<Feature Id="ProductFeature"
-             Title="LogXtreme.WinDsk"
+    <DirectoryRef Id="DIR_NewThinkingTechnologiesShortcutsDir">
+      <Component Id="CMP_ApplicationShortcuts"
+                 Guid="BC26E859-BF5B-4106-8D28-5C6047D06E6F">
+        <Shortcut Id="SHORTCUT_LogXtreme.WinDsk.exe"
+                  Name="LogXtreme Data Logger Software"
+                  Description="Launches LogXtreme Data Logger Software"
+                  Target="[DIR_LogXtremeWinDsk]LogXtreme.WinDsk.exe"
+                  Icon="product_icon.ico"/>     
+      </Component>
+    </DirectoryRef>
+    <!--Features contains sets of components-->
+    <!--Features can be visible to the users in the installer UI-->
+    <!--Components cannot be visible to the users in the installer-->
+    <Feature Id="FEATURE_LogXtremeWinDsk"
+             Title="LogXtreme Windows Desktop Data Logger Software"
+             Description="Installs the Main Feature"
              Level="1">
-      <ComponentGroupRef Id="ProductComponents" />
-    </Feature>-->
+      <ComponentRef Id="CMP_LogXtreme.WinDsk.exe"/>  
+      <ComponentRef Id="CMP_ApplicationShortcuts"/>
+    </Feature>
   </Product>
 
   <!--<Fragment>
