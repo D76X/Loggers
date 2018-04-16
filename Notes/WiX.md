@@ -46,6 +46,14 @@ Refere to the help for each executable tool as in the examples below.
 > light.exe --help
 ```
 
+### How to run an MSI with logging 
+
+In order to produce an event log during of the operations performed by the
+installer for a specific ```*.msi``` the flag __l*v__ must be provided to 
+the __msiexec__.
+
+```>msiexec /i myInstaller.msi /l*v log.log```
+
 ---
 
 ### WiX extensions as Windows  Installer Custom Actions
@@ -54,10 +62,10 @@ Refere to the help for each executable tool as in the examples below.
 - ISS configuration
 - etc..
 
+---
 
-========================================================================================================================
+### How To: Create a Shortcut on the Start Menu
 
-HOW TO RUN AN MSI WITH LOGGING: THE l*v flag
+1. [How To: Create a Shortcut on the Start Menu](http://wixtoolset.org/documentation/manual/v3/howtos/files_and_registry/create_start_menu_shortcut.html)  
+---
 
-msiexec /i myInstaller.msi /l*v log.log
-========================================================================================================================
