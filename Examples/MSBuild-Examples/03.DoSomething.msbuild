@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="HelloWorld">
+    <Message Text="Hello, World!"/>
+  </Target>
+  <Target Name="WhatIsATarget">
+    <Message Text="A target is a bunch of instructions for MSBuild.exe"/>
+  </Target>
+  <Target Name="Goodbye">
+    <Message Text="Goodbye World!"/>
+  </Target>
+</Project>
+
+<!--
+
+An MSBuild Task is a .NET is a type that i.e. that is build and consumed
+by msbuild.exe when the corresponding tag in the *.msbuild file is 
+processed. A Task results and is analogous to a function or method call.
+
+For example the <Message> in the example corresponds to the type
+
+.NET Framework 4 assembly > Microsoft.Build.Tasks.v4.0 namespace > Message.
+
+All the available types can be easily inspected by using the Object Browser 
+in Visual Studio. There are several other Tasks available such as Copy, 
+Delete, FinfInList, FormatUrl, etc.
+
+-->

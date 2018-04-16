@@ -1,1 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="HelloWorld">
+    <Message Text="Hello, World!"/>
+  </Target>
+  <Target Name="WhatIsATarget">
+    <Message Text="A target is a bunch of instructions for MSBuild.exe"/>
+  </Target>
+  <Target Name="Goodbye">
+    <Message Text="Goodbye World!"/>
+  </Target>
+</Project>
+
+<!--
+Command line arguments can be supplied to MSBuild via a *.rsp
+file. In the VS Command prompt use the following command.
+
+> msbuild 02.DoSomething.msbuild @02.DoSomething.rsp
+-->
