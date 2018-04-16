@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Product Id="*"
-           Name="LogXtreme.WinDsk"
+           Name="LogXtreme Windows Desktop"
            Language="1033"
            Version="1.0.0.0"
            Manufacturer="New Thinking Technologies"
@@ -9,7 +9,6 @@
 
     <!--This info goes into the MSI summary information-->
     <Package InstallerVersion="300"
-             Platform="x64"             
              Compressed="yes"
              InstallScope="perMachine"
              Description="LogXtreme Data Logger Software"
@@ -23,16 +22,19 @@
     <!--This icon should be used for the folder that collects all the NTT shortcuts-->
     <Icon Id="ICON_ntt.ico"
           SourceFile="ntt_logo.ico"/>
+    <!--The ARPPRODUCTICON sets the icon in the Add/Remove Program tool-->
+    <Property Id="ARPPRODUCTICON" Value="ICON_ntt.ico" />
+
 
     <!--This icon should be used for the shortcut to the LogXtreme.WinDsk.exe-->
-    <Icon Id="ICON_logxtreme_48x48.ico"
-          SourceFile="logxtreme_48x48.ico"/>
+    <Icon Id="ICON_LogXtreme.WinDsk.exe.ico"
+          SourceFile="LogXtreme.WinDsk.exe.ico"/>
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
 
     <Directory Id="TARGETDIR"
                Name="SourceDir">
-      <Directory Id="ProgramFiles64Folder">
+      <Directory Id="ProgramFilesFolder">
         <Directory Id="DIR_NewThinkingTechnologies"
                    Name="New Thinking Technologies">
           <Directory Id="DIR_LogXtremeWinDsk"
@@ -49,11 +51,9 @@
 
     <DirectoryRef Id="DIR_LogXtremeWinDsk">
       <Component Id="CMP_LogXtreme.WinDsk.exe"
-                 Guid="A2CB9862-DF25-4509-A6C1-9F9D98B28487"
-                 Win64="yes">
+                 Guid="A2CB9862-DF25-4509-A6C1-9F9D98B28487">
         <File Id="FILE_LogXtreme.WinDsk.exe"
               Source="./testdist/LogXtreme.WinDsk.exe"
-              ProcessorArchitecture="x64"
               Name="LogXtreme.WinDsk.exe"
               Hidden="no"
               ReadOnly="no"
@@ -71,7 +71,7 @@
                   Description="Launches LogXtreme Data Logger Software"
                   Target="[#FILE_LogXtreme.WinDsk.exe]"
                   WorkingDirectory="DIR_LogXtremeWinDsk"
-                  Icon="ICON_logxtreme_48x48.ico"/>
+                  Icon="ICON_LogXtreme.WinDsk.exe.ico"/>
         <RemoveFolder Id="DIR_NewThinkingTechnologiesShortcutsDir"
                       On="uninstall"/>
         <RegistryValue Root="HKCU"
@@ -82,7 +82,7 @@
                        KeyPath="yes"/>
       </Component>
     </DirectoryRef>
-    
+
     <!--Features contains sets of components-->
     <!--Features can be visible to the users in the installer UI-->
     <!--Components cannot be visible to the users in the installer-->
