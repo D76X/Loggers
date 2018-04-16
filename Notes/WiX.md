@@ -67,5 +67,12 @@ the __msiexec__.
 ### How To: Create a Shortcut on the Start Menu
 
 1. [How To: Create a Shortcut on the Start Menu](http://wixtoolset.org/documentation/manual/v3/howtos/files_and_registry/create_start_menu_shortcut.html)  
+
 ---
+
+### ICE Errors and Warnings
+
+1. [Wix - ICE60 and ICE69 warnings](https://stackoverflow.com/questions/21320334/wix-ice60-and-ice69-warnings)  
+   The cleanest way to handle ICE69 which may be recurrent is to just leave them in the build output and ignore 
+   them where and when it makes sense.
 
