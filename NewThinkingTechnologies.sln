@@ -470,6 +470,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSBuild", "MSBuild", "{7855
 		Examples\MSBuild-Examples\02.DoSomething.msbuild = Examples\MSBuild-Examples\02.DoSomething.msbuild
 		Examples\MSBuild-Examples\02.DoSomething.rsp = Examples\MSBuild-Examples\02.DoSomething.rsp
 		Examples\MSBuild-Examples\03.DoSomething.msbuild = Examples\MSBuild-Examples\03.DoSomething.msbuild
+		Examples\MSBuild-Examples\03.DoSomething.rsp = Examples\MSBuild-Examples\03.DoSomething.rsp
 	EndProjectSection
 EndProject
 Global

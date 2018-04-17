@@ -1,17 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Target Name="HelloWorld">
-    <Message Text="Hello, World!"/>
+  <Target Name="DefaultImportanceMessage">
+    <Message Text="Default Importance Message"/>
   </Target>
-  <Target Name="WhatIsATarget">
-    <Message Text="A target is a bunch of instructions for MSBuild.exe"/>
+  <Target Name="NormalImportanceMessage">
+    <Message Text="Normal Importance Message"
+             Importance="normal"/>
   </Target>
-  <Target Name="Goodbye">
-    <Message Text="Goodbye World!"/>
+  <Target Name="LowImportanceMessage">
+    <Message Text="Low Importance Message"
+             Importance="low"/>
+  </Target>
+  <Target Name="HighImportanceMessage">
+    <Message Text="High Importance Message"
+             Importance="high"/>
   </Target>
 </Project>
 
 <!--
+
+> msbuild 03.dosomething.msbuild @03.dosomething.rsp
 
 An MSBuild Task is a .NET is a type that i.e. that is build and consumed
 by msbuild.exe when the corresponding tag in the *.msbuild file is 
@@ -24,5 +32,23 @@ For example the <Message> in the example corresponds to the type
 All the available types can be easily inspected by using the Object Browser 
 in Visual Studio. There are several other Tasks available such as Copy, 
 Delete, FinfInList, FormatUrl, etc.
+
+All Tasks implements ITask which declares a method named Execute() which is 
+the method invoked by MSBuild on processing the *.msbuild file. 
+
+By using the object browser you can discover properties available on any 
+implementation of ITask.
+
+In the *.rsp the /v flag controls the amount of information that is shown
+to the output while MSBuild processes the *.msbuild file. The list below
+are the possibilities in ascending order of output info.
+
+/v:minimal
+/v:normal
+/v:detailed
+/v:diagnostic
+
+Controls what messages are sent to the output. With "verbose" only high 
+importance messages are sent to teh output.
 
 -->

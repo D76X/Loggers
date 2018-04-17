@@ -22,7 +22,7 @@ as long as it is in your PATH variable.
 
 With this command MSBuild executes only the first Task in the Project.
 
-> msbuild /target:Goodbey
+> msbuild /target:Goodbye
 
 With this command MSBuild executes only the specified Target of the Project
 inrespective of the order in which the Target appears the *.msbuild file 

@@ -1,9 +1,10 @@
 
-======================================================================================================
-USEFUL SHORTCUTS
+## USEFUL SHORTCUTS
 
-TRACK FILE IN SOLUTION EXPLORER
-					[ctrl+[, s]
+| Shortcut			            | Effect			                                               |
+| ------------------------------|--------------------------------------------------------------|
+|[ctrl+[, s]					| TRACK FILE IN SOLUTION EXPLORER							|
+					
 
 ADD TASK TO TASK LIST PANE (NOT TODO)
 Edit > Bookmarks > Remove Task List Shortcut, 					
@@ -66,16 +67,18 @@ REMAPPING SHORTCUTS
 // File.SaveSelectedItems	(Ctrl +S (TextEditor))
 https://stackoverflow.com/questions/3099709/re-map-ctrls-to-file-save-in-visual-studio-2010
 
-======================================================================================================
+---
 
 
-==========================================================================================
+---
+
 Task List and TODOs
 
 How to add tasks to the Task List pane [Ctrl+E,H]
 https://stackoverflow.com/questions/15120139/strange-arrow-in-visual-studio-gutter-window
 Edit > Bookmarks > Add Task List Shortcut/Remove Task List Shortcut [Ctrl+E,H]
-==========================================================================================
+
+---
 
 Create a code snippet in Visual Studio
 http://www.c-sharpcorner.com/article/create-custom-code-snippet-in-visual-studio-2015/
@@ -89,4 +92,13 @@ C:\Users\davidespano\Documents\Visual Studio 2017\Code Snippets\Visual C#\My Cod
 You can either use the Tools>Snippets Manager tool in Visual Studio to import the snippet
 template to this folder or you may simply copy the .snippet file to it manually which is 
 easier.
-==========================================================================================
+
+---
+
+### Associate a file extension to a default an editor. 
+
+1. [Can I tell Visual Studio how treat a file with a custom file extension?
+](https://stackoverflow.com/questions/3493690/can-i-tell-visual-studio-how-treat-a-file-with-a-custom-file-extension)  
+Tools > Options > Text Editor > File Extension
+
+---
