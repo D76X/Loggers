@@ -22,7 +22,7 @@ namespace LogXtreme.Reactive.Extensions.Test._1 {
     public class FlushOnTriggerTest {
 
         [TestMethod]
-        public void TestMethod1() {
+        public void EventsAreQueuedUntilThresholdIsReachedAndThenTheyPassThroughTheQueueToTheObserverTest() {
 
             // arrange
             int threshold = 3;
@@ -30,11 +30,6 @@ namespace LogXtreme.Reactive.Extensions.Test._1 {
             var receivedValuesFromUnbufferedSubscription = new List<int>();
             var receivedValuesFromBufferedSubscription = new List<int>();
 
-            // the observable is cold until it is subscribed to
-            //IObservable<int> observableRange = 
-            //    Observable.Range(leftBound, rightBound);
-
-            //var subject 
             var subject = new Subject<int>();
             IObservable<int> observable = subject;
 
@@ -83,7 +78,7 @@ namespace LogXtreme.Reactive.Extensions.Test._1 {
             Assert.AreEqual(3, receivedValuesFromUnbufferedSubscription.Count);
             Assert.AreEqual(0, receivedValuesFromBufferedSubscription.Count);
 
-            // act - this is the first value after the threshold 
+            // act - this is the first value above the threshold 
             subject.OnNext(4);
 
             // assert            
@@ -91,7 +86,7 @@ namespace LogXtreme.Reactive.Extensions.Test._1 {
             // the bufferred values are flushed to the subscriber
             Assert.AreEqual(4, receivedValuesFromBufferedSubscription.Count);
 
-            // act - this is the first value after the threshold 
+            // act - this is the second value above the threshold 
             subject.OnNext(5);
 
             // assert - now buffered and unbuffed should stay in sync
