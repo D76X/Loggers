@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <Name>Peter</Name>
+    <FullName>$(Name) Pan</FullName>
+  </PropertyGroup>
+  
+  <Target Name="DefaultImportanceMessage">
+    <Message Text="Default Importance Message: Hello $(FullName)!"/>
+  </Target>
+  <Target Name="NormalImportanceMessage">
+    <Message Text="Normal Importance Message: Hello $(FullName)!"
+             Importance="normal"/>
+  </Target>
+  <Target Name="LowImportanceMessage">
+    <Message Text="Low Importance Message: Hello $(FullName)!"
+             Importance="low"/>
+  </Target>
+  <Target Name="HighImportanceMessage">
+    <Message Text="High Importance Message: Hello $(FullName)!"
+             Importance="high"/>
+  </Target>
+</Project>
+
+<!--
+
+> msbuild 04.Properties.msbuild @04.Properties.rsp
+
+Named properties are declared in <PropertyGroup>. The XML remains well-formed but it
+becames invalid against the MDBuild schema, that's is just as it is. Properties are 
+typically employed to parametherise build scripts. As you can see properties can be 
+composed withing a PropertyGroup. One recurrent ussage of properties is to build paths
+of the file system.
+
+RSP tags
+
+/p:
+
+/p can be used to override named properties i.e.
+
+> msbuild 04.Properties.msbuild @04.Properties.rsp /p:Name=Lisa
+
+-->

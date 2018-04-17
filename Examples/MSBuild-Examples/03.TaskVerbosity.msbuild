@@ -19,7 +19,7 @@
 
 <!--
 
-> msbuild 03.dosomething.msbuild @03.dosomething.rsp
+> msbuild 03.TaskVerbosity.msbuild @03.TaskVerbosity.rsp
 
 An MSBuild Task is a .NET is a type that i.e. that is build and consumed
 by msbuild.exe when the corresponding tag in the *.msbuild file is 

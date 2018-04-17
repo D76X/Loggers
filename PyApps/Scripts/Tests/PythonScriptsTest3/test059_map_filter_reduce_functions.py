@@ -136,10 +136,54 @@ def test_module():
     print()
     print("reduce with the (optional) initial value for the accumulator")
     result = reduce(operator.add,  [x for x in range(10)], -1)
-    print("result = reduce(operator.add,  [x for x in range(10)], -1) = {}".format(result))
-    result = reduce(operator.mul,  [x for x in range(1,10,1)], -1)
-    print("result = reduce(operator.mul,  [x for x in range(1,10,1)], -1) = {}".format(result))
+    print(
+        "result = reduce(operator.add,  [x for x in range(10)], -1) = {}".format(result))
+    result = reduce(operator.mul,  [x for x in range(1, 10, 1)], -1)
+    print(
+        "result = reduce(operator.mul,  [x for x in range(1,10,1)], -1) = {}".format(result))
 
-    # map() => reduce() 
+    # IMPORATANT!
+    # While the map function is a built-in functiuon the reduce() function must be imported
+    # from the functools module!
+
+    # map() => reduce()
     print()
     print("map() => reduce()")
+
+    print()
+    print('''
+        IMPORATANT!
+        While the map function is a built-in functiuon the reduce() function must be imported 
+        from the functools module!
+    ''')
+
+    print()
+    documents = [
+        "Some text to be tested.",
+        "Has the text been tested yet?",
+        "Please, test the text if it's not been tested yet."
+        "In the case the text has been tested please do not test it twice.",
+        "We are still not able to retest the text."
+    ]
+
+    # map results is a generator that produces disctinaries of teh word count
+    # according to the outpot of the function count_word from the ntt_utils module
+    word_count_dictionaries = map(count_words, documents)
+    print("word_count_dictionaries = map(count_words, documents) = {}".format(
+        word_count_dictionaries))
+
+    # in any map-reduce operation the reduce step is to consolidate multiple results
+    # produced during teh map phase into a single output value. We need a function
+    # for the reduce step that knows how to combine the output values of the map step.
+    def combine_count_dictionaries(d1, d2):
+        d = d1.copy()
+        for word, count in d2.items():
+            d[word] = d.get(word, 0) + count
+        return d
+
+    total_word_count = reduce(
+        combine_count_dictionaries, word_count_dictionaries)
+
+    print()
+    print("total_word_count = reduce(combine_count_dictionaries, word_count_dictionaries)={}"
+          .format(total_word_count))
