@@ -1,5 +1,5 @@
 """
-This module illustrates the use of the map function in Python.
+This module illustrates the use of the map and reduce functions in Python.
 
 Usage:
 
