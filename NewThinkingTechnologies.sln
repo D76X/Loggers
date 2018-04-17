@@ -37,7 +37,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Updater-Examples", "Updater
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Icons", "Icons", "{8370025A-AD2F-41C8-A5AF-C82008C5BB1F}"
 	ProjectSection(SolutionItems) = preProject
-		Assets\Icons\ntt_logo.ico = Assets\Icons\ntt_logo.ico
+		Assets\Icons\logxtreme.windsk.exe_48x48.ico = Assets\Icons\logxtreme.windsk.exe_48x48.ico
+		Assets\Icons\ntt_logo_256x256.ico = Assets\Icons\ntt_logo_256x256.ico
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ZeroMQ-Basic-0", "ZeroMQ-Basic-0", "{2999A355-D7EB-4167-BE4D-D32E5BDE9917}"

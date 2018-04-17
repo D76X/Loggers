@@ -119,16 +119,16 @@ def test_module():
     print("sign(0)={}".format(sign(0)))
 
     print()
-    print("isPrime(n)"
-    print("isPrime(1) = {}".forma(isPrime(1)))
-    print("isPrime(2) = {}".forma(isPrime(2)))
-    print("isPrime(3) = {}".forma(isPrime(3)))
-    print("isPrime(4) = {}".forma(isPrime(4)))
-    print("isPrime(5) = {}".forma(isPrime(5)))
-    print("isPrime(6) = {}".forma(isPrime(6)))
+    print("isPrime(n)")
+    print("isPrime(1) = {}".format(isPrime(1)))
+    print("isPrime(2) = {}".format(isPrime(2)))
+    print("isPrime(3) = {}".format(isPrime(3)))
+    print("isPrime(4) = {}".format(isPrime(4)))
+    print("isPrime(5) = {}".format(isPrime(5)))
+    print("isPrime(6) = {}".format(isPrime(6)))
 
     print()
-    print("distinct(iterable))
+    print("distinct(iterable)")
     print("distinct([1, 1, 2, 2, 3, 3]) = {}".format(distinct([1, 1, 2, 2, 3, 3])))
 
     print()

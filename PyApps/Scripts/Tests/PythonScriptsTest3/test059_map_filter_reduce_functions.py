@@ -27,6 +27,7 @@ Results:
 
 """
 
+from ntt_utils import count_words
 from functools import reduce
 import operator
 
