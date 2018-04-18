@@ -42,7 +42,6 @@ namespace LogXtreme.Reactive.Extensions.Test._1 {
 
             var subcriberToUnbuffered = observable
                 .Subscribe(i => receivedValuesFromUnbufferedSubscription.Add(i));
-
             var subcriberToBuffered = bufferedObservable
                 .Subscribe(i => receivedValuesFromBufferedSubscription.Add(i));
 
