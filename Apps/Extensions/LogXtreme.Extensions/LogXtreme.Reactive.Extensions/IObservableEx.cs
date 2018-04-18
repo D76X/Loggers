@@ -8,9 +8,9 @@ namespace LogXtreme.Reactive.Extensions {
 
         /// <summary>
         /// Extension method that allows buffering of events from an <see cref="IObservable"/><typeparamref name="T"/>.
-        /// The consumer code provides a predicate that expresses the condition on which point the buffered events are 
-        /// flushed to the subscriber. The consumer provides also the size of the internal circular buffer used to store
-        /// the events. 
+        /// The consumer code provides a predicate that expresses the condition on which the buffered events are 
+        /// flushed to the subscriber. The consumer provides also the size of the internal circular buffer used to 
+        /// store the events. 
         /// Refs
         /// https://msdn.microsoft.com/en-us/library/dn440729(v=pandp.60).aspx#sec9
         /// </summary>
@@ -39,12 +39,15 @@ namespace LogXtreme.Reactive.Extensions {
 
                     if (triggerPredicate(item)) {
 
-                        foreach (var bufferedItem in buffer) {
+                        // must store the number into a variable because as the items are 
+                        // dequeued the count of the items in the buffer desceases.
+                        int numberOfItemsQueuedInTheCircularBufferOnFlushing = buffer.Count;
 
-                            observer.OnNext(bufferedItem);
+                        for (int i = 1; i <= numberOfItemsQueuedInTheCircularBufferOnFlushing; i++) {
+                            observer.OnNext(buffer.Dequeue());
                         }
 
-                        observer.OnNext(item);
+                        observer.OnNext(item);                        
 
                     } else {
 
