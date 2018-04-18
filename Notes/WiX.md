@@ -75,6 +75,35 @@ Refere to the help for each executable tool as in the examples below.
 
 ---
 
+## Windows Installation Types
+
+1. Simple
+
+   This is the most commone case.
+
+2. Administrative
+
+   An ISO is installed to the Network by an administrator. Afterwards,
+   users of teh network can install the ISO on their individual system
+   from the shared image.
+
+3. Advertisment
+
+   Only the UI required to start an installation is presented to the 
+   users. Only whan the user decides to continue whith the installation
+   this can procede on-demand.
+
+## Windows Installation Phases
+
+Each installation carried out by the Windows Installer Service is performed 
+in two phases and each phase is composed of actions executed in a separate 
+process. In particular...
+
+1. UI Phase - Client Side Phase
+2. Execute Phase - Server Side Phase
+
+---
+
 ## The msiexec
 
 The Windows Installation Service can be invoked to perform the operations 
