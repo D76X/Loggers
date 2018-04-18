@@ -48,6 +48,33 @@ Refere to the help for each executable tool as in the examples below.
 
 ---
 
+## WiX GUIDs
+
+- Package Code
+
+  This uniquely identifies the *.msi package thus it must change evry time a 
+  new *.msi is built from source. In summary, twi *.msi files should have the 
+  same PackageCode if and only if they are identical copies! WiX takes care of
+  this for you.  
+
+- Product Code
+
+  This uniquely identify a product on a single Windows system. Typically the 
+  Product Code is only changed when the product version is changed.
+
+- Upgrade Code
+
+  This identifies a product line or a set of related products. The same upgrade 
+  code is used for each release of a product. The Upgrade code is used to support
+  the **Windows Installer Upgrade Functionality**.
+
+  ### Major Upgrade
+
+  When WSI detects that there is already a product with the same **Upgrade Code**
+  but a lower version it replaces it with the newer version.
+
+---
+
 ## The msiexec
 
 The Windows Installation Service can be invoked to perform the operations 
@@ -80,6 +107,20 @@ In the log there are all the sequential actions performed by the WIS as instruct
 by the *.msi. These action are bracketed by **Action...Start**, **Action...Ended**
 or similar. Each action completes with a return value reporting the state after the
 execution of the action.
+
+
+#### Basic logging information   
+```>msiexec /i myInstaller.msi /l log.log```  
+
+#### Verbose mode logging
+```>msiexec /i myInstaller.msi /l*v log.log```
+
+#### Verbose mode logging with additional debugging info
+```>msiexec /i myInstaller.msi /l*vx log.log```
+
+--- 
+
+## Structure of an install log file
 
 ### Action Return Values
 
@@ -120,21 +161,11 @@ Windows calculator may be used to convert.
 
 ```>net helpmsg [COM Error Code]```
 
-#### Notes
+#### Notes parts
 
-part 1: Error Code => https://msdn.microsoft.com/en-us/library/windows/desktop/aa372835(v=vs.85).aspx
-part 2: ... 
-part 3: ...
-
-
-#### Basic logging information   
-```>msiexec /i myInstaller.msi /l log.log```  
-
-#### Verbose mode logging
-```>msiexec /i myInstaller.msi /l*v log.log```
-
-#### Verbose mode logging with additional debugging info
-```>msiexec /i myInstaller.msi /l*vx log.log```
+- part 1: Error Code => https://msdn.microsoft.com/en-us/library/windows/desktop/aa372835(v=vs.85).aspx  
+- part 2: ...   
+- part 3: ...  
 
 ### Tips on how to use a log file to debug installs
 
@@ -149,7 +180,9 @@ searching for specific tokes present in the log file.
 3. Search for the keyword **FileCopy** which signal the action of files
    being copied to the file system.
 
-### Turning on the Windows Installer Global Looging
+---
+
+### Turning on the Windows Installer Global Logging
 
 It might be possible to encounter situations whereby **msiexec** cannot be run with 
 logging on a specific *.msi. It is possible to enable WSI logging on the machine in
