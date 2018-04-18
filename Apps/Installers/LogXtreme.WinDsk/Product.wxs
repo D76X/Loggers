@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  
+  <!--Pull in all the *.wxi files-->
+  <!--Built in Project reference variables http://wixtoolset.org/documentation/manual/v3/votive/votive_project_references.html-->
+  <?include "Config.wxi"?>
+  
   <Product Id="*"
            Name="LogXtreme Windows Desktop"
            Language="1033"
@@ -15,6 +20,9 @@
              Manufacturer="New Thinking Technologies"
              Comments="Installer for LogXtreme Data Logger Software"/>
 
+    <!--This pulls in all the properties defined in the same file-->
+    <PropertyRef Id="PROPERTY_TEST_PROPERTY_1"/>
+
     <!--This tells WiX to automatically assign files to cabinet files-->
     <!--The cabinet files will be embedded into the MSI file-->
     <MediaTemplate EmbedCab="yes"/>
@@ -24,7 +32,6 @@
           SourceFile="ntt_logo.ico"/>
     <!--The ARPPRODUCTICON sets the icon in the Add/Remove Program tool-->
     <Property Id="ARPPRODUCTICON" Value="ICON_ntt.ico" />
-
 
     <!--This icon should be used for the shortcut to the LogXtreme.WinDsk.exe-->
     <Icon Id="ICON_LogXtreme.WinDsk.exe.ico"

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <!--Property Values are always interpreted as strings-->
+  <!--Public property MUST be in all caps-->
+  <!--Any private property MUST have at least a lower case letter-->
+  <!--Public properties are persisted accross the client side (UI phse) and server side (Execute phase) of the installation-->
+  <!--Public properties can also be passed to msiexec on the command line-->
+  <!--Private properrties are anly available during teh server side phase and cannot be specifined on the command line-->
+  <!--Property are stored in the Property table of the *.msi but only if their value is not null-->  
+  <!--The Property Table is always dumped to the log file!-->
+  <!--Do not use secrets or sensitive information in public properties!-->
+  <!--The Product elements provides 5 basic properties: ProductCode, ProductLanguage, Manufacturer, ProductVersion, ProductName-->
+  <!--If the UpgradeCode is provided this is also stored as a public property in the Property table-->
+	<Fragment>
+    <Property Id="PROPERTY_TEST_PROPERTY_1"
+              Value="1"/>
+    <Property Id="PROPERTY_TEST_PROPERTY_2"
+              Value="0"/>
+  </Fragment>
+</Wix>
