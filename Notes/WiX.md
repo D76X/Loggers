@@ -46,13 +46,116 @@ Refere to the help for each executable tool as in the examples below.
 > light.exe --help
 ```
 
+---
+
+## The msiexec
+
+The Windows Installation Service can be invoked to perform the operations 
+declared in any *.msi package from command line as described in the 
+following or just by double clicking on the *.msi.
+
+### Help
+```>msiexec /?```  
+
+### Installing a package
+
+```>msiexec /i mypackage.msi```
+```>msiexec /i /quiet mypackage.msi```
+
+### Uninstalling a package 
+
+```>msiexec /x mypackage.msi```    
+```>msiexec /x {{PRODUCT CODE}}```
+
 ### How to run an MSI with logging 
 
 In order to produce an event log during of the operations performed by the
 installer for a specific ```*.msi``` the flag __l*v__ must be provided to 
-the __msiexec__.
+the __msiexec__. The destination file is always a plain text file which can
+be named anything like log.text or log.log or similar. With the /L*v or /L*vx
+flags the log file may become very large but it can be useful to debug the 
+installation.
 
+In the log there are all the sequential actions performed by the WIS as instructed
+by the *.msi. These action are bracketed by **Action...Start**, **Action...Ended**
+or similar. Each action completes with a return value reporting the state after the
+execution of the action.
+
+### Action Return Values
+
+|Action Return Value		| Meaning|						|
+| --------------------------|--------------------------------------------------------------|
+| 0							| Function could not be executed i.e. there was nothing to do  |
+| 1							| Success|
+| 2							| User cancelled installation|
+| 3							| Fatal error|
+| 4							| Installation suspended| 
+
+### The format of a log entry
+
+MSI (x) (XY:WZ) [time stamp] : log Message or Notes...
+
+### The installation phases
+
+|Prefix						| Meaning|						|
+| --------------------------|--------------------------------------------------------------|
+| MSI (c)				    | client side phase  |
+| MSI (s)				    | server side phase  | 
+
+- The **client side phase** is where the installer UI is executed.
+- The **server side phase** is where system changes are performed.
+
+### Execution Processes
+
+The **(XY:WZ)** identifiles the **ProcessID:ThreadID** of the executed action.
+The MSI (c) and MSI (s) are executed in **separate processes**.
+
+### Interpreting logged Notes
+
+Logged notes are organized in **parts** where the number, the order and meaning of each part 
+depends on the first part which is always the error code. Error codes are described online 
+or can be queried form command line as long as the **COM Error Code** is used in the query.
+The **COM Error Code** is the hexadecimal standard DWORD for the decimal error code - the 
+Windows calculator may be used to convert.
+
+```>net helpmsg [COM Error Code]```
+
+#### Notes
+
+part 1: Error Code => https://msdn.microsoft.com/en-us/library/windows/desktop/aa372835(v=vs.85).aspx
+part 2: ... 
+part 3: ...
+
+
+#### Basic logging information   
+```>msiexec /i myInstaller.msi /l log.log```  
+
+#### Verbose mode logging
 ```>msiexec /i myInstaller.msi /l*v log.log```
+
+#### Verbose mode logging with additional debugging info
+```>msiexec /i myInstaller.msi /l*vx log.log```
+
+### Tips on how to use a log file to debug installs
+
+There are a number of simple techniques which can be employed to 
+investigate problems with installs. These are mostly based on 
+searching for specific tokes present in the log file.
+
+1. Search the log file for **actions** that may have **returned a value of 3** 
+   which signal **errors**. 
+2. Search for the **Feature** keywords. These should be the start of the actions 
+   executed to install the components.
+3. Search for the keyword **FileCopy** which signal the action of files
+   being copied to the file system.
+
+### Turning on the Windows Installer Global Looging
+
+It might be possible to encounter situations whereby **msiexec** cannot be run with 
+logging on a specific *.msi. It is possible to enable WSI logging on the machine in
+such cases as illustrated here.
+
+1. [How to enable Windows Installer logging](https://support.microsoft.com/en-gb/help/223300/how-to-enable-windows-installer-logging)  
 
 ---
 
@@ -76,3 +179,40 @@ the __msiexec__.
    The cleanest way to handle ICE69 which may be recurrent is to just leave them in the build output and ignore 
    them where and when it makes sense.
 
+---
+
+## Windows installer technology basics
+
+1. The Windows installer is a background service of the OS aimed to maintain system stability.
+2. The Windows installer performs transactional operations that is they can be rolled back. 
+3. During an installation a roll-back script is automatically generated.
+4. The roll-back stcript is run on cancellation of the install or on failure.
+5. Windows installer includes **Self-Repair**. This allows to restore assets of an install from the cached installation source. 
+6. Provides the assemblies for the installer UI with a standard set of controls.
+7. It provides **standard actions** as well as **custom actions**.
+8. It provides registration with the tool **Programs and Features**.
+9. It provides **Upgrades and Patching** features.
+10. It provides the installation logging service.
+
+## MSI
+
+With the Windows installer technology the *.msi package is part of the **declarative** approach
+to installation functinality. This is in contrast to the **scripted of procedural** approach used
+in the past of by other thrid-party technologies.
+
+The declarative apporach is superior because the Windows Installation Service can be guaranteed
+to be 100% correct. The provider of the *.msi only provides the data and not the operational
+logic.
+
+1. *.msi files are Windows installation packages and they comprise data streams and ad database.
+2. *.msi are consumed by the Windows Installer Service which performs the actions described in the *.msi with the provided data.
+
+---
+
+## Tools
+
+1. **Orca** is an **MSI Viewer** from the Windows SDK.
+2. **InsteEd** is another **MSI Viewer** similar to **Orca** but with added capabilities such *.msi compare. 
+3. The tools from **Windows Sysinternals** which can all be downloaded from https://live.sysinternals.com/.
+
+---
