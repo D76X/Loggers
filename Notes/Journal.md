@@ -80,5 +80,7 @@
 | 14/04/2018				| Improved jQuery async for infinite scrolling, Python, Phaser |
 |							| MSBuild, WiX, ZEROMQ, German, Probability					   |
 | 15-17/04/2018				| MSBuild, WiX and installer, ZEROMQ, Phaser, Python, German   |
-|							| jQuery, Handlebars, Probability & Statistics				   |
-||| 
+|							| jQuery, Handlebars+CSS+Website, Probability & Statistics	   |
+| 18/04/2018				| WiX & Installer, ZEROMQ, German, Probability & Statistics    | 
+|							| Phaser, Authoring, jQuery+CSS+Handlebars+Website, Logging	   | 
+| 19/04/2018				||
