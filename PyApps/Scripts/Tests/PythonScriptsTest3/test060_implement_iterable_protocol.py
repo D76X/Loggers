@@ -45,6 +45,30 @@ class ExampleIterator:
         self.index += 1
         return result
 
+class ExampleIterable:
+
+    def __init__(self, data):
+        self.data = data
+
+    def __iter__(self):
+        return ExampleIterator(self.data)
+
+# An iterable type may also be implemented by 
+# providing an implementation of __getitem__()
+# but only for any object that supports consequtive
+# integer indexing starting at index 0. Furthermore,
+# when the index gets out of range __getitem__() must
+# throw an exception of type IndexError. My types
+# in Pyhton already support this behavior.
+class AlternateIterable:
+    
+    def __init__(self, data):
+        self.data = data
+
+    def __getitem__(self, idx):    
+        return self.data[idx]
+    
+
 def test_module():
     """Module-level tests."""
 
@@ -81,3 +105,15 @@ def test_module():
     print("iterator = ExampleIterator(""iterator on a string!"")")
     for item in iterator:
         print(item)
+
+    print()
+    print("example with an iterable")
+    iterable = ExampleIterable("I am an iterable!")
+    print("iterable = ExampleIterable(""I am an iterable!"")")
+    for item in iterable:
+        print(item)
+
+    print()
+    print("example with an iterable that supports consequtive interger indexing")  
+    list = [i for i in  AlternateIterable([10, 9, 8])]
+    print("list = [i for i in  AlternateIterable([10, 9, 8])] = {}".format(list))
