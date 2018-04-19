@@ -234,6 +234,94 @@ is processed. Instead the installer writes the custom action into the installati
 
 ---
 
+## Conditions
+
+The tables of the *.msi named **Sequence Table Columns** share the same schema 
+with three basic columns - **Action, Condition, Sequence.** as already described.
+Whether an action is executed by the WSI or not depends upon the corresponding 
+condition. A condition is an expression that can be blank or that evaluates to 
+either true or false.
+
+- The action is executed when the corresponding condition evaluates to true or is blank.
+- The action is not executed otherwise.
+
+### LaunchCondition table
+
+LaunchCondition is a special table of every *.msi. There exists a **Launch Condition 
+Standard Actions** in the **InstallExecuteSequence** table that is always executed.
+The **Launch Condition Standard Actions** causes all the conditions for the actions 
+in the **LaunchCondition table** to be evaluated. 
+
+**All the conditions in the LaunchCondition table must evaluate to true** in order 
+for WSI to continue the installation. If this is not the case an error message is 
+displayed to the user and the insallation is terminated. 
+
+### Conditions on Features and Components
+
+Conditions may be specified for Features and Components. A Feature or Component 
+will be installed only if the corresponding condition evaluates to true or is 
+blank that is it is not specified. 
+
+### Conditional Expression Operators
+
+The standard comparision operators can be used to compose conditional expressions.
+The types alloew in such expressions are only **integer** and **string**. WSI 
+enforces case sensitivity on all standard comparison operators. However, case 
+sensitivity can be bypassed by prepending any of the allowed operators with the 
+charcter **tilde** **~**. The logical operators **AND, OR, XOR, EQV, IMP** are 
+also allowed.
+
+#### Special strings operatos
+
+- string1 >< string2  
+   
+  True only if string1 **contains** string2.
+
+- string1 << string2
+
+  True only if string1 **starts** with string2.
+
+- string1 >> string2
+
+  True only if string1 **ends** with string2.
+
+#### Property Conditions
+
+The name of a property may be used as a valid conditional expression.
+It evaluates to true only if the name the property has been defined 
+**AND** a value for the property exists!
+
+To detect is a property has **not** been defined use the negation as
+in the follwing example which evaluates to true only if the property 
+has not been defined.
+
+**NOT _MYPROPERTYNAME_**
+
+#### Special inputs to conditional expressions
+
+- Environment Varables %NAMEOFTHEENVVAR
+- Component Key for action state $MyComponent
+- Component Key for installation state ?MyComponent
+- Feature Key for action state &MyFeature
+- Feature Key for installation state !MyFeature
+
+The **Action State** is the state of the Feature or Component according to 
+the WSI after the current install succedes. The **install state** is the 
+current state of the Feature or Component on the system.
+
+INSTALLSTATE_UNKONWN = -1
+INSTALLSTATE_ADVERTISED = 1
+INSTALLSTATE_ABSENT = 2
+INSTALLSTATE_LOCAL = 3
+INSTALLSTATE_SOURCE = 4
+
+#### Examples
+
+- "A" = "a"  => false
+- "A" ~= "a" => true
+   
+
+---
 ## The msiexec
 
 The Windows Installation Service can be invoked to perform the operations 
