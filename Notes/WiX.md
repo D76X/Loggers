@@ -133,7 +133,104 @@ the flad **/q**.
 
 ### Sequence of steps during an installation
 
+A detailed description of the steps taken by WSI during installation is below.
+
 1. [Queueing Up](https://www.firegiant.com/wix/tutorial/events-and-actions/queueing-up/)
+
+Sequences of install operation are declared in some of the tables of the *.msi
+which may collectively be named **Sequence Table Columns**. All of them share 
+the same schema with three basic columns - **Action, Condition, Sequence.** 
+
+1. **Action**  
+    It can be either a standard action or a custom action.  
+
+2. **Condition**  
+   Holds an expression that determines whether the action is executed.  
+   The action is executed is the condition is either blank or evaluates to true.
+
+3. **Sequence**   
+   Specifies the order in which the Windows Installer is going to execute the 
+   actions.
+
+### Steps taken in Simple installation mode
+
+1. Client side phase
+   1. InstallUISequence
+   
+2. Server side phase
+   1. InstallExecuteSequence
+
+### Steps taken in Administrative installation mode
+
+1. Client side phase
+   1. AdminUISequence
+   
+2. Server side phase
+   1. AdminExecuteSequence
+   
+### Steps taken in Advertise installation mode
+
+This is special when compered to the previous two modes.
+
+1. Client side phase
+   1. AdvtExecuteSequence
+
+---
+
+## Standard Actions
+
+Windows installer defines **Standard Actions** which should always be executed
+during any installation run in a predesigned order. Each of the Standard Actions
+has a predefined purpose. **WiX** takes care of declaring these appropriately 
+when the source is built and corresponding rows are created in the *.msi tables 
+for each of the necessary standard action. The number of standard actions that 
+are actually present in the *.msi tables depends on the specifics of the install.
+
+- [Standard Actions Reference](https://msdn.microsoft.com/en-us/library/windows/desktop/aa372023(v=vs.85).aspx) 
+
+## Custom Actions
+
+- [Custom Actions](https://msdn.microsoft.com/en-us/library/windows/desktop/aa368066(v=vs.85).aspx)  
+
+While Standard Action are always part of the installation workflow there may be 
+the need for some custom action to be executed on the target system during the
+installation which are not part of teh standard workflow. 
+
+Some illustrative examples of custom actions are the following.
+
+- Set a property to a certain value when some run-time condition is verified or detected.
+- Set a location to a specific path if a run-time condition is verified or detected.
+- Invoke a function from a DLL embedded in the Binary table of the *.msi - **Type 1**.
+- Launch an executable emedded in the Binary table of the *.msi -**Type 2**.
+- Call a function of a DLL installed by the installer -**Type 17**.
+- Call an EXE installed by the installer -**Type 18**. 
+- Display an error as a formatted string to the user and terminate the installation -**Type 19**.
+- Set an install directory path using a formated string - **Type35**.
+- Set the value of a Windows Installer Property using a formatted string **-Type 51**.
+- etc. 
+ 
+Custom actions are made available by the Windows Installer and each custom action 
+has a specific type.
+
+- [Custom Action Types](https://msdn.microsoft.com/en-us/library/windows/desktop/aa372048(v=vs.85).aspx)  
+
+### Deferred Execution Custom Action
+
+- [What is Deferred Execution Custom Action and Why is it Used ?](https://www.symantec.com/connect/blogs/what-deferred-execution-custom-action-and-why-it-used)  
+
+The purpose of a deferred execution custom action is to delay the execution of 
+a system change to the time when the installation script is executed. This differs 
+from a regular custom action, or a standard action, in which the installer executes 
+the action immediately upon encountering it in a sequence table or in a call to 
+MsiDoAction.
+
+A deferred execution custom action enables a package author to specify system operations 
+at a particular point within the execution of the installation script. The installer 
+does not execute a deferred execution custom action at the time the installation sequence 
+is processed. Instead the installer writes the custom action into the installation script.
+
+- Should be placed between install initialize and install finalize.
+- Does not have access to MSIDATABASE in deferred execution.
 
 ---
 
