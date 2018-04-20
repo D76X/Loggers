@@ -319,9 +319,81 @@ INSTALLSTATE_SOURCE = 4
 
 - "A" = "a"  => false
 - "A" ~= "a" => true
-   
 
 ---
+   
+## Winwdows Installer built-in properties
+
+There are several standard built-in properties that are set by the WSI during
+the execution of an insatllation. These are often useful in conditional 
+expressions for custom actions.
+
+- [Property Reference](https://msdn.microsoft.com/en-us/library/windows/desktop/aa370905(v=vs.85).aspx)
+
+#### Some notable standard properties
+
+- Installed - Indicates that a product is already installed.
+- REMOVE - set during uninstallation
+- etc.
+
+---
+
+### Windows Installer Formatted Strings
+
+https://www.advancedinstaller.com/user-guide/formatted.html
+
+Windows Installer makes use of a special string type called **formatted strings** which has some
+special features. Some of the tables in the *.msi have columns that are of the type **formatted 
+string** the actual value of a formatted string is determined at run-time during the installation. 
+In particular the evaluation of formated strings is performed by WSI only after the following three
+standard actions have been executed. 
+
+- CostInitialize
+- FileCost
+- CostFinalize
+
+If any of these three standard action is skipped formatted strings are not evaluated and their 
+values is set to **an empty string**.
+
+The following can be **referenced** by formatted strings.
+
+1. Properties
+2. Folders
+3. Files
+4. Envirinment Variables
+
+The following illustrates the syntax for various formatted strings.
+
+- [propertyname]
+- [DirectoryKey]
+- [%environmentvariable]
+- [#filekey]
+- [&temporaryfile]
+- [folderkey]
+
+#### Examples
+
+- [MYPROPERTY] is evaluated to teh value of the property of name MYPROPERTY
+- [MyDirectoryKey] is evaluated to the path of the directory of key MyDirectoryKey
+- [#myfilekey] is evaluated to the full path to the file bound to the key myfilekey
+- etc.
+
+#### Composing formatted strings
+
+Formatted strings may be composed using the syntax illustrated below where the whole 
+formatted strings is bracketed within curly brackets \{}.
+
+- {The property evaluates to [MYPROPERTY] and the file path is [#FileKey]}
+
+#### Escaping literals in formatted strings
+
+Characters can be escaped by prefixing them with a backslash \.
+
+- {This is a backslash \\}
+- []
+
+---
+
 ## The msiexec
 
 The Windows Installation Service can be invoked to perform the operations 
