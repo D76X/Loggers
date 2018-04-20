@@ -42,7 +42,7 @@
     <Directory Id="TARGETDIR"
                Name="SourceDir">
       <Directory Id="ProgramFilesFolder">
-        <Directory Id="DIR_NewThinkingTechnologies"
+        <Directory Id="DIRNEWTHINKINGTECHNOLOGIES"
                    Name="New Thinking Technologies">
           <Directory Id="DIR_LogXtremeWinDsk"
                      Name="LogXtreme Windows Desktop">
