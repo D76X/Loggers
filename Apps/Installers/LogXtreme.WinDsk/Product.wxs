@@ -48,7 +48,7 @@
                      Name="LogXtreme Windows Desktop">
           </Directory>
           <Directory Id="ProgramMenuFolder">
-            <Directory Id="DIR_NewThinkingTechnologiesShortcutsDir"
+            <Directory Id="DIRNEWTHINKINGTECHNOLOGIESSHORTCUTS"
                        Name="New Thinking Technologies">
             </Directory>
           </Directory>
@@ -70,7 +70,7 @@
         </File>
       </Component>
     </DirectoryRef>
-    <DirectoryRef Id="DIR_NewThinkingTechnologiesShortcutsDir">
+    <DirectoryRef Id="DIRNEWTHINKINGTECHNOLOGIESSHORTCUTS">
       <Component Id="CMP_ApplicationShortcuts"
                  Guid="BC26E859-BF5B-4106-8D28-5C6047D06E6F">
         <Shortcut Id="SHORTCUT_LogXtreme.WinDsk.exe"
@@ -79,7 +79,7 @@
                   Target="[#FILE_LogXtreme.WinDsk.exe]"
                   WorkingDirectory="DIRLOGXTREMEWINDSK"
                   Icon="ICON_LogXtreme.WinDsk.exe.ico"/>
-        <RemoveFolder Id="DIR_NewThinkingTechnologiesShortcutsDir"
+        <RemoveFolder Id="DIRNEWTHINKINGTECHNOLOGIESSHORTCUTS"
                       On="uninstall"/>
         <RegistryValue Root="HKCU"
                        Key="Software\Microsoft\LogXtremeWindowsDesktopDataLoggingSoftware"
