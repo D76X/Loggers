@@ -525,7 +525,10 @@ such cases as illustrated here.
 
 ---
 
-### ICE Errors and Warnings
+### ICE Errors and Warnings - Internal Consistency Evaluators
+
+ICE codes reflect the outcome of consistency checks carried out on *.msi packages to 
+determine the structural consistency of its tables. 
 
 1. [Wix - ICE60 and ICE69 warnings](https://stackoverflow.com/questions/21320334/wix-ice60-and-ice69-warnings)  
    The cleanest way to handle ICE69 which may be recurrent is to just leave them in the build output and ignore 

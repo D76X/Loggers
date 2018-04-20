@@ -67,7 +67,7 @@
     <Compile Include="test060_implement_iterable_protocol.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="test61_iter_generaotrs.py">
+    <Compile Include="test061_iter_generators.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
