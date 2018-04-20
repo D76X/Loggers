@@ -28,13 +28,13 @@
     <MediaTemplate EmbedCab="yes"/>
 
     <!--This icon should be used for the folder that collects all the NTT shortcuts-->
-    <Icon Id="ICON_ntt.ico"
+    <Icon Id="ICON_NTT_LOGO"
           SourceFile="ntt_logo.ico"/>
     <!--The ARPPRODUCTICON sets the icon in the Add/Remove Program tool-->
-    <Property Id="ARPPRODUCTICON" Value="ICON_ntt.ico" />
+    <Property Id="ARPPRODUCTICON" Value="ICON_NTT_LOGO" />
 
     <!--This icon should be used for the shortcut to the LogXtreme.WinDsk.exe-->
-    <Icon Id="ICON_LogXtreme.WinDsk.exe.ico"
+    <Icon Id="ICON_LOGXTREME_WIN_DSK_EXE"
           SourceFile="LogXtreme.WinDsk.exe.ico"/>
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
@@ -42,13 +42,13 @@
     <Directory Id="TARGETDIR"
                Name="SourceDir">
       <Directory Id="ProgramFilesFolder">
-        <Directory Id="DIRNEWTHINKINGTECHNOLOGIES"
+        <Directory Id="DIR_NEW_THINKING_TECHNOLOGIES"
                    Name="New Thinking Technologies">
-          <Directory Id="DIRLOGXTREMEWINDSK"
+          <Directory Id="DIR_LOGXTREME_WIN_DSK"
                      Name="LogXtreme Windows Desktop">
           </Directory>
           <Directory Id="ProgramMenuFolder">
-            <Directory Id="DIRNEWTHINKINGTECHNOLOGIESSHORTCUTS"
+            <Directory Id="DIR_NEW_THINKING_TECHNOLOGIES_SHORTCUTS"
                        Name="New Thinking Technologies">
             </Directory>
           </Directory>
@@ -56,10 +56,10 @@
       </Directory>
     </Directory>
 
-    <DirectoryRef Id="DIRLOGXTREMEWINDSK">
-      <Component Id="CMP_LogXtreme.WinDsk.exe"
+    <DirectoryRef Id="DIR_LOGXTREME_WIN_DSK">
+      <Component Id="CMP_LOGXTREME_WIN_DSK_EXE"
                  Guid="A2CB9862-DF25-4509-A6C1-9F9D98B28487">
-        <File Id="FILE_LogXtreme.WinDsk.exe"
+        <File Id="FILE_LOGXTREME_WIN_DSK_EXE"
               Source="./testdist/LogXtreme.WinDsk.exe"
               Name="LogXtreme.WinDsk.exe"
               Hidden="no"
@@ -70,16 +70,16 @@
         </File>
       </Component>
     </DirectoryRef>
-    <DirectoryRef Id="DIRNEWTHINKINGTECHNOLOGIESSHORTCUTS">
-      <Component Id="CMP_ApplicationShortcuts"
+    <DirectoryRef Id="DIR_NEW_THINKING_TECHNOLOGIES_SHORTCUTS">
+      <Component Id="CMP_APPLICATION_SHORTCUTS"
                  Guid="BC26E859-BF5B-4106-8D28-5C6047D06E6F">
         <Shortcut Id="SHORTCUT_LogXtreme.WinDsk.exe"
                   Name="LogXtreme Data Logger Software"
                   Description="Launches LogXtreme Data Logger Software"
-                  Target="[#FILE_LogXtreme.WinDsk.exe]"
-                  WorkingDirectory="DIRLOGXTREMEWINDSK"
-                  Icon="ICON_LogXtreme.WinDsk.exe.ico"/>
-        <RemoveFolder Id="DIRNEWTHINKINGTECHNOLOGIESSHORTCUTS"
+                  Target="[#FILE_LOGXTREME_WIN_DSK_EXE]"
+                  WorkingDirectory="DIR_LOGXTREME_WIN_DSK"
+                  Icon="ICON_LOGXTREME_WIN_DSK_EXE"/>
+        <RemoveFolder Id="DIR_NEW_THINKING_TECHNOLOGIES_SHORTCUTS"
                       On="uninstall"/>
         <RegistryValue Root="HKCU"
                        Key="Software\Microsoft\LogXtremeWindowsDesktopDataLoggingSoftware"
@@ -93,12 +93,12 @@
     <!--Features contains sets of components-->
     <!--Features can be visible to the users in the installer UI-->
     <!--Components cannot be visible to the users in the installer-->
-    <Feature Id="FEATURE_LogXtremeWinDsk"
+    <Feature Id="FEATURE_LOGXTREME_WIN_DSK"
              Title="LogXtreme Windows Desktop Data Logger Software"
              Description="Installs the Main Feature"
              Level="1">
-      <ComponentRef Id="CMP_LogXtreme.WinDsk.exe"/>
-      <ComponentRef Id="CMP_ApplicationShortcuts"/>
+      <ComponentRef Id="CMP_LOGXTREME_WIN_DSK_EXE"/>
+      <ComponentRef Id="CMP_APPLICATION_SHORTCUTS"/>
     </Feature>
   </Product>
 
