@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 This module illustrates how to implement the iterable protocol in Python.
 

@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 This module illustrates the use of the map and reduce functions in Python.
 

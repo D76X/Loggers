@@ -335,6 +335,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PyApps", "PyApps", "{444E34AC-F19B-4C59-B3AF-50E9D23A843D}"
 	ProjectSection(SolutionItems) = preProject
 		PyApps\ntt_geometry_2d.py = PyApps\ntt_geometry_2d.py
+		PyApps\ntt_sensor.py = PyApps\ntt_sensor.py
 		PyApps\ntt_utils.py = PyApps\ntt_utils.py
 	EndProjectSection
 EndProject

@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 This module illustrates the use of nested comprehensions in Python.
 
@@ -34,16 +35,17 @@ def test_module():
     print()
     print("the output of a comprehension can itself be a comprehension!")
     vals = [[y*3 for y in range(x)] for x in range(10)]
-    print("vals = [[y*3 for y in range(x)] for x in range(10)] = {}".format(vals))
+    print(
+        "vals = [[y*3 for y in range(x)] for x in range(10)] = {}".format(vals))
 
-    # the same as 
+    # the same as
     outer = []
     for x in range(10):
         inner = []
         for y in range(x):
             inner.append(y*3)
         outer.append(inner)
-    
+
     print("""
     
     # the same as the following nested fro loops...
