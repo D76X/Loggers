@@ -70,6 +70,9 @@
     <Compile Include="test061_iter_generators.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="test062_inheritance_subtype_polymorphism.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|ContinuumAnalytics|Anaconda36-64" />
