@@ -100,6 +100,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Notes", "_Notes", "{54A549
 		Notes\md-styles.css = Notes\md-styles.css
 		Notes\MSBuild.md = Notes\MSBuild.md
 		Notes\MSTest.md = Notes\MSTest.md
+		Notes\Poweshell.md = Notes\Poweshell.md
 		Notes\Prism.md = Notes\Prism.md
 		Notes\Python.md = Notes\Python.md
 		Notes\ReactiveExtensions.md = Notes\ReactiveExtensions.md

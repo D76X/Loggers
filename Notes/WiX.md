@@ -571,3 +571,19 @@ logic.
 3. The tools from **Windows Sysinternals** which can all be downloaded from https://live.sysinternals.com/.
 
 ---
+
+## WiX Notes 
+
+### File
+
+1. The **vital** attribute on a File element instructs WSI to continue the installation
+   even when an error was detected while trying to copy the file to disc. The defaule of
+   **vital** is **yes**. If a vital file fails to be copied to disc the user is propmpt 
+   for a retry or to stop the installation.
+
+2. The **ReadOnly** attribute causes the file to be **read-only** on the target system.
+
+3. The **Hidden** attribute causes the file to be **hidden** on the target system.
+
+
+---

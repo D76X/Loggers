@@ -70,6 +70,32 @@ class SubTwo(Base):
 # ################################################################################################
 
 
+class SimpleList:
+    """
+    A class that wraps a list.
+    """
+
+    def __init__(self, items):
+        self._items = list(items)
+
+    def add(self, item):
+        self._items.append(item)
+
+    def __getitem__(self, index):
+        return self._items[item]
+
+    def sort(self):
+        self._items.sort()
+
+    def __len__(self):
+        return len(self._items)
+
+    def __repr__(self):
+        return "SimpleList({!r})".format(sle._items)
+
+# ################################################################################################
+
+
 def test_module():
     """Module-level tests."""
 
