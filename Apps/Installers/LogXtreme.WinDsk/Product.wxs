@@ -60,7 +60,7 @@
       <Component Id="CMP_LOGXTREME_WIN_DSK_EXE"
                  Guid="A2CB9862-DF25-4509-A6C1-9F9D98B28487">
         <File Id="FILE_LOGXTREME_WIN_DSK_EXE"
-              Source="./testdist/LogXtreme.WinDsk.exe"
+              Source=".\dist\LogXtreme.WinDsk.exe"
               Name="LogXtreme.WinDsk.exe"
               Hidden="no"
               ReadOnly="no"
