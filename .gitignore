@@ -4,7 +4,7 @@
 **/Temp/
 **/Apps/Binaries/
 **/Examples/Installers-Examples/HelloWixTestApp1Bin/
-**/Installers/LogXtreme.WinDsk/testdist
+**/Installers/LogXtreme.WinDsk/dist
 
 # User-specific files
 *.suo
