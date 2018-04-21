@@ -30,7 +30,8 @@ Results:
 """
 
 # ################################################################################################
-# simple single inheritance
+
+# The basics of simple single inheritance
 
 
 class Base:
@@ -69,6 +70,8 @@ class SubTwo(Base):
 
 # ################################################################################################
 
+# A more realistics example of single inheritance
+
 
 class SimpleList:
     """
@@ -82,7 +85,7 @@ class SimpleList:
         self._items.append(item)
 
     def __getitem__(self, index):
-        return self._items[item]
+        return self._items[index]
 
     def sort(self):
         self._items.sort()
@@ -90,8 +93,27 @@ class SimpleList:
     def __len__(self):
         return len(self._items)
 
+    # by overriding __reper__ instances of this class
+    # can be passed to print()
     def __repr__(self):
-        return "SimpleList({!r})".format(sle._items)
+        return "SimpleList({!r})".format(self._items)
+
+
+class SortedList(SimpleList):
+    """
+    A class that wraps a list and keeps it sorted.
+    """
+
+    def __init__(self, items=())
+        super().__init__(items)  # IMPORTANT it is super() not super!
+        self.sort()
+
+    def add(self, item):
+        super().add(item)
+        self.sort()
+
+    def __repr__(self):
+        return "SortedList({!r})".format(list(self))
 
 # ################################################################################################
 
