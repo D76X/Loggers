@@ -475,6 +475,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSBuild", "MSBuild", "{7855
 		Examples\MSBuild-Examples\03.TaskVerbosity.rsp = Examples\MSBuild-Examples\03.TaskVerbosity.rsp
 		Examples\MSBuild-Examples\04.Properties.msbuild = Examples\MSBuild-Examples\04.Properties.msbuild
 		Examples\MSBuild-Examples\04.Properties.rsp = Examples\MSBuild-Examples\04.Properties.rsp
+		Examples\MSBuild-Examples\05.ReservedProperties.msbuild = Examples\MSBuild-Examples\05.ReservedProperties.msbuild
+		Examples\MSBuild-Examples\05.ReservedProperties.rsp = Examples\MSBuild-Examples\05.ReservedProperties.rsp
 	EndProjectSection
 EndProject
 Global

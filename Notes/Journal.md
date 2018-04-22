@@ -83,4 +83,7 @@
 |							| jQuery, Handlebars+CSS+Website, Probability & Statistics	   |
 | 18/04/2018				| WiX & Installer, ZEROMQ, German, Probability & Statistics    | 
 |							| Phaser, Authoring, jQuery+CSS+Handlebars+Website, Logging	   | 
-| 19/04/2018				||
+| 19-21/04/2018				| MSBuild, WiX and installer, ZEROMQ, Phaser, Python, German   |
+|							| jQuery, Handlebars+CSS+Website, Probability & Statistics	   |
+|							| Authoring													   |
+| 22/04/2018				| |

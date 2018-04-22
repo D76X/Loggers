@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <Property1>Property1Value</Property1>
+    <Property2>$(Property1)+Property2Value</Property2>
+  </PropertyGroup> 
+  
+  <Target Name="ProcessCustomProperties">
+    <Message Text="Property1 = $(Property1)"/>
+    <Message Text="Property2 = $(Property2)"/>
+  </Target>
+
+  <Target Name="ProcessReservedProperties">
+    <Message Text="LOGONSERVER = $(LOGONSERVER)"/>
+    <Message Text="MSBuildProjectDirectory = $(MSBuildProjectDirectory)"/>
+    <Message Text="MSBuildBinPath = $(MSBuildBinPath)"/>
+  </Target>
+
+</Project>
+
+<!--
+
+> msbuild 05.Properties.msbuild @05.Properties.rsp
+
+Here we show a property group with a number of custom properties that are used in a Target
+to simply print messages to the output by means of Tasks of type Message.
+
+MSBuild Reserved and Well-Known Properties
+https://msdn.microsoft.com/en-us/library/ms164309.aspx
+
+Common MSBuild Project Properties
+https://msdn.microsoft.com/en-us/library/bb629394.aspx
+
+Another Target does the same but this time the messages print the values of some propertes
+that are always available to MSBuild and whose value is determined at runtime.
+
+########
+Tip 1
+########
+
+A complete list of all the available Reserved MSBuild properties may be obtained by running
+a test *.msbuild with verbosity set to diagnostic level. For example the LOGONSERVER property
+used in this example is not one of the documented Reserved Properties bt it can easily be 
+discovered by using this trick.
+
+> msbuild test.msbuild /v:diagnostic
+
+########
+Tip 2
+########
+
+RSP tags
+
+/p:
+
+/p can be used to override named properties i.e.
+
+> msbuild 05.Properties.msbuild @05.Properties.rsp /p:Property1=SomeValue
+-->
