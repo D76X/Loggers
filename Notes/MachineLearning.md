@@ -35,10 +35,19 @@ Stanford University School of Engineering
 
 ## Probability Theory & Statistics 
 
+***
+
+### What is the difference bewteen the Bernoulli distribution and the Binomial Distribution?
+
+1. [What is the difference and relationship between the binomial and Bernoulli distributions?](https://math.stackexchange.com/questions/838107/what-is-the-difference-and-relationship-between-the-binomial-and-bernoulli-distr)  
+
+***
+
 ### Normal distribution 
 
 [Why divide the sample variance by N-1?](http://www.visiondummy.com/2014/03/divide-variance-n-1/)  
 This article explains well why the variance estimator for a normal distribution uses N-1 as a divisor instead of the more intuitive N.
+
 ***
 
 ### Combination of random variables
