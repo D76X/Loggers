@@ -14,10 +14,14 @@
     </xsl:copy>
   </xsl:template>
   
-  <xsl:template match="wix:Directory" >
-    <!-- Apply identity transform on child elements of Directory-->
+  <!--
+  Remove the Directory element with name "dist" that 
+  is created by heat.exe just under the DirectoryRef 
+  with Id="DIR_LOGXTREME_WIN_DSK" which points to the
+  working direckory of the main executable.
+  -->
+  <xsl:template match="wix:DirectoryRef/wix:Directory" >
     <xsl:apply-templates select="*"/>
-    <!--<xsl:apply-templates select="Component"/>-->
     <xsl:copy-of select="*"/>
   </xsl:template>  
   

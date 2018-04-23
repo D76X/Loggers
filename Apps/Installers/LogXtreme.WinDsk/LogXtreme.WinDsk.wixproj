@@ -25,6 +25,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config.wxi" />
+    <Content Include="Readme.md" />
     <Content Include="RemoveDistFolderElementTransform.xslt" />
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" Condition=" '$(WixTargetsPath)' != '' " />

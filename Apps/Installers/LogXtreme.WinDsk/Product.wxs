@@ -56,12 +56,20 @@
       </Directory>
     </Directory>
 
+    <!--  
+    Some files may need to be added manually using this template.
+    
+    Refs for the File element
+    http://wixtoolset.org/documentation/manual/v3/xsd/wix/file.html
+    https://github.com/wixtoolset/issues/issues/5659
+    -->
+    <!--
     <DirectoryRef Id="DIR_LOGXTREME_WIN_DSK">
       <Component Id="CMP_LOGXTREME_WIN_DSK_EXE"
                  Guid="A2CB9862-DF25-4509-A6C1-9F9D98B28487">
         <File Id="FILE_LOGXTREME_WIN_DSK_EXE"
-              Source="$(var.SourceDir)\LogXtreme.WinDsk.exe"
-              Name="LogXtreme.WinDsk.exe"
+              Source="$(var.SourceDir)\AnyAdditionalFile.someextension"
+              Name="MyAdditionalFile.extension"
               Hidden="no"
               ReadOnly="no"
               Vital="yes"
@@ -70,6 +78,8 @@
         </File>
       </Component>
     </DirectoryRef>
+    -->
+    
     <DirectoryRef Id="DIR_New_Thinking_Technologies_Shortcuts">
       <Component Id="CMP_APPLICATION_SHORTCUTS"
                  Guid="BC26E859-BF5B-4106-8D28-5C6047D06E6F">
