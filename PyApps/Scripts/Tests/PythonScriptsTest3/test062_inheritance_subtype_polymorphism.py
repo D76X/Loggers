@@ -104,7 +104,7 @@ class SortedList(SimpleList):
     A class that wraps a list and keeps it sorted.
     """
 
-    def __init__(self, items=())
+    def __init__(self, items=()):
         super().__init__(items)  # IMPORTANT it is super() not super!
         self.sort()
 
@@ -140,6 +140,16 @@ def test_module():
     print()
     sub2 = SubTwo()
     sub2.f()
+
+    # simple single inheritance
+    print()
+    print("simple single inheritance")
+
+    sortedList = SortedList([3, 4, 1, 10])
+    print("sortedList = SortedList([3,4,1,10]) = {}".format(sortedList))
+    sortedList.add(-8)
+    print("sortedList.add(-8)...")
+    print(sortedList)
 
 # ##########################################################################################
 
