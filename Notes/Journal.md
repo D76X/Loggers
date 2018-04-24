@@ -86,4 +86,6 @@
 | 19-21/04/2018				| MSBuild, WiX and installer, ZEROMQ, Phaser, Python, German   |
 |							| jQuery, Handlebars+CSS+Website, Probability & Statistics	   |
 |							| Authoring													   |
-| 22/04/2018				| |
+| 22-23/04/2018				| Authoring, Phaser, jQuery+Site, Probabilit, ZEROMQ, German,  |
+|							| WiX and Installer, Python, Handlebars, PCB rework			   |
+| 24/04/2018				||
