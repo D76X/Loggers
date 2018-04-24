@@ -413,6 +413,10 @@ following or just by double clicking on the *.msi.
 ```>msiexec /x mypackage.msi```    
 ```>msiexec /x {{PRODUCT CODE}}```
 
+### Installing a Feature of a Package
+
+```>msiexec /i mypackage.msi ADDLOCAL=FEATURE_ID```
+
 ### How to run an MSI with logging 
 
 In order to produce an event log during of the operations performed by the
@@ -585,5 +589,32 @@ logic.
 
 3. The **Hidden** attribute causes the file to be **hidden** on the target system.
 
+---
+### Feature
+
+```
+<Feature Id="FEATURE_LOGXTREME_WIN_DSK"
+				Title="LogXtreme Data Logger Software for Windows Desktop"
+				Description="Installs LogXtreme Data Logger Software for Windows Desktop"
+				Level="1">
+		<ComponentRef Id="CMP_LOGXTREME_WIN_DSK_EXE"/>
+		<ComponentRef Id="CMP_APPLICATION_SHORTCUTS"/>
+</Feature>	  
+```  
+
+
+- Features contains sets of components
+- Features can be visible to the users in the installer UI
+- Components cannot be visible to the users in the installer
+- Title and Description shows in the UI whan available
+- Level=1 means the Feature is set to be installed locally*
+- Level=0 means the Feature is disabled and is not displayed in the UI or installed*
+    
+The Windows Installer Propety **InstallLevel** sets the threshold for the **Level** of 
+the Features that will be installed and its default value is 1. A Feature is installed when 
+its attribute **Level** is set to a value such that **Level <= InstallLevel**. 
+
+This causes all Features with Level set to 1 to be installed. However, the Features with 
+Level set to 0 will not be installed and will not be visible in the UI. 
 
 ---
