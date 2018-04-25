@@ -88,4 +88,6 @@
 |							| Authoring													   |
 | 22-23/04/2018				| Authoring, Phaser, jQuery+Site, Probabilit, ZEROMQ, German,  |
 |							| WiX and Installer, Python, Handlebars, PCB rework			   |
-| 24/04/2018				||
+| 24/04/2018				| Phaser, Probability, PCB rework, jQuery, ZEROMQ, German	   |
+|							| WiX installer												   |
+| 25/04/2018				| 3D Printing work, Python, WiX installer... |
