@@ -6,7 +6,7 @@
   <?include "Config.wxi"?>
   
   <Product Id="*"
-           Name="LogXtreme Windows Desktop"
+           Name="LogXtreme for Windows Desktop"
            Language="1033"
            Version="1.0.0.0"
            Manufacturer="New Thinking Technologies"
@@ -37,24 +37,7 @@
     <Icon Id="ICON_LOGXTREME_WIN_DSK_EXE"
           SourceFile="LogXtreme.WinDsk.exe.ico"/>
 
-    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-
-    <Directory Id="TARGETDIR"
-               Name="SourceDir">
-      <Directory Id="ProgramFilesFolder">
-        <Directory Id="DIR_NEW_THINKING_TECHNOLOGIES"
-                   Name="New Thinking Technologies">
-          <Directory Id="DIR_LOGXTREME_WIN_DSK"
-                     Name="LogXtreme Windows Desktop">
-          </Directory>
-          <Directory Id="ProgramMenuFolder">
-            <Directory Id="DIR_New_Thinking_Technologies_Shortcuts"
-                       Name="New Thinking Technologies">
-            </Directory>
-          </Directory>
-        </Directory>
-      </Directory>
-    </Directory>
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />  
 
     <!--  
     Some files may need to be added manually using this template.
@@ -65,9 +48,9 @@
     -->
     <!--
     <DirectoryRef Id="DIR_LOGXTREME_WIN_DSK">
-      <Component Id="CMP_LOGXTREME_WIN_DSK_EXE"
-                 Guid="A2CB9862-DF25-4509-A6C1-9F9D98B28487">
-        <File Id="FILE_LOGXTREME_WIN_DSK_EXE"
+      <Component Id="CMP_SOME_COMPONENT"
+                 Guid="*">
+        <File Id="FILE_SOMEFILE_SOME_EXTENSION"
               Source="$(var.SourceDir)\AnyAdditionalFile.someextension"
               Name="MyAdditionalFile.extension"
               Hidden="no"
@@ -78,57 +61,16 @@
         </File>
       </Component>
     </DirectoryRef>
-    -->
+    -->   
     
-    <DirectoryRef Id="DIR_New_Thinking_Technologies_Shortcuts">
-      <Component Id="CMP_APPLICATION_SHORTCUTS"
-                 Guid="BC26E859-BF5B-4106-8D28-5C6047D06E6F">
-        <Shortcut Id="SHORTCUT_LogXtreme.WinDsk.exe"
-                  Name="LogXtreme Data Logger Software"
-                  Description="Launches LogXtreme Data Logger Software"
-                  Target="[#FILE_LOGXTREME_WIN_DSK_EXE]"
-                  WorkingDirectory="DIR_LOGXTREME_WIN_DSK"
-                  Icon="ICON_LOGXTREME_WIN_DSK_EXE"/>
-        <RemoveFolder Id="DIR_New_Thinking_Technologies_Shortcuts"
-                      On="uninstall"/>
-        <RegistryValue Root="HKCU"
-                       Key="Software\Microsoft\LogXtremeWindowsDesktopDataLoggingSoftware"
-                       Name="installed"
-                       Type="integer"
-                       Value="1"
-                       KeyPath="yes"/>
-      </Component>
-    </DirectoryRef>
-
-    <!--Features contains sets of components-->
-    <!--Features can be visible to the users in the installer UI-->
-    <!--Components cannot be visible to the users in the installer-->
     <Feature Id="FEATURE_LOGXTREME_WIN_DSK"
-             Title="LogXtreme Windows Desktop Data Logger Software"
-             Description="Installs the Main Feature"
+             Title="LogXtreme Data Logger Software for Windows Desktop"
+             Description="Installs LogXtreme Data Logger Software for Windows Desktop"
              Level="1">
-      <ComponentRef Id="CMP_LOGXTREME_WIN_DSK_EXE"/>
-      <ComponentRef Id="CMP_APPLICATION_SHORTCUTS"/>
+      <ComponentGroupRef Id="DistFilesComponentGroup"/>
+      <ComponentGroupRef Id="ShortcutsComponentGroup"/>
     </Feature>
+    
   </Product>
-
-  <!--<Fragment>
-    <Directory Id="TARGETDIR"
-               Name="SourceDir">
-      <Directory Id="ProgramFilesFolder">
-        <Directory Id="INSTALLFOLDER"
-                   Name="LogXtreme.WinDsk" />
-      </Directory>
-    </Directory>
-  </Fragment>-->
-
-  <!--<Fragment>
-    <ComponentGroup Id="ProductComponents"
-                    Directory="INSTALLFOLDER">
-       TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. 
-       <Component Id="ProductComponent"> 
-       TODO: Insert files, registry keys, and other resources here. 
-       </Component> 
-    </ComponentGroup>
-  </Fragment>-->
+  
 </Wix>

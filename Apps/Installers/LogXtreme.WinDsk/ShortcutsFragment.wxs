@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <DirectoryRef Id="DIR_New_Thinking_Technologies_Shortcuts">
+      <Component Id="CMP_APPLICATION_SHORTCUT"
+                 Guid="BC26E859-BF5B-4106-8D28-5C6047D06E6F">
+        <Shortcut Id="SHORTCUT_LogXtreme.WinDsk.exe"
+                  Name="LogXtreme Data Logger Software"
+                  Description="Launches LogXtreme Data Logger Software"
+                  Target="[DIR_LOGXTREME_WIN_DSK]LogXtreme.WinDsk.exe"
+                  WorkingDirectory="DIR_LOGXTREME_WIN_DSK"
+                  Icon="ICON_LOGXTREME_WIN_DSK_EXE"/>
+        <RemoveFolder Id="DIR_New_Thinking_Technologies_Shortcuts"
+                      On="uninstall"/>
+        <RegistryValue Root="HKCU"
+                       Key="Software\Microsoft\LogXtremeWindowsDesktopDataLoggingSoftware"
+                       Name="installed"
+                       Type="integer"
+                       Value="1"
+                       KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="ShortcutsComponentGroup">
+      <ComponentRef Id="CMP_APPLICATION_SHORTCUT"/>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

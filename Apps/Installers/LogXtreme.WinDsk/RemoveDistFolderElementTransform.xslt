@@ -6,14 +6,7 @@
                 exclude-result-prefixes="msxsl"
 >
   <xsl:output method="xml"
-              indent="yes"/>  
-  
-  <xsl:template match="@* | node()">
-    <xsl:copy>
-      <xsl:apply-templates select="@* | node()"/>
-    </xsl:copy>
-  </xsl:template>
-  
+              indent="yes"/> 
   <!--
   Remove the Directory element with name "dist" that 
   is created by heat.exe just under the DirectoryRef 
@@ -21,8 +14,15 @@
   working direckory of the main executable.
   -->
   <xsl:template match="wix:DirectoryRef/wix:Directory" >
-    <xsl:apply-templates select="*"/>
-    <xsl:copy-of select="*"/>
-  </xsl:template>  
+    <!--either of these will work-->
+    <xsl:apply-templates select="*"/>    
+    <!--<xsl:copy-of select="*"/>-->
+  </xsl:template>
+
+  <xsl:template match="@* | node()">
+    <xsl:copy>
+      <xsl:apply-templates select="@* | node()"/>
+    </xsl:copy>
+  </xsl:template>
   
 </xsl:stylesheet>

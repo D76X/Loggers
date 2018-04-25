@@ -1,462 +1,460 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?include "Config.wxi"?>
   <Fragment>
     <DirectoryRef Id="DIR_LOGXTREME_WIN_DSK">
-      <Directory Id="dirAFC4EA1B88D8D1DDF38FC094B55F573E"
-                 Name="dist">
-        <Component Id="cmp581F9727832CC0C1F6138C8B3D33995A"
+      <Component Id="cmp581F9727832CC0C1F6138C8B3D33995A"
+                 Guid="*">
+        <File Id="filF0B6E5BBF5D23997B087A4D7E7FFE6E3"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\AvalonDockServiceModule.dll" />
+      </Component>
+      <Component Id="cmp39402556B1F479A2C6121C2EAD77634B"
+                 Guid="*">
+        <File Id="filF10C9BEF23B42CC084BF32771CFF511C"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\AvalonDockServiceModule.dll.config" />
+      </Component>
+      <Component Id="cmpC8CE1CCA33756B007D17893C4F113CCE"
+                 Guid="*">
+        <File Id="filF4315C5B176830689570F8023C2F4FBE"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\LogXtreme.DataStructures.dll" />
+      </Component>
+      <Component Id="cmp58EC32B22B44D4A356F0AF6C33357A00"
+                 Guid="*">
+        <File Id="fil9E7AF19BE196CA92182729D9160CA055"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\LogXtreme.Extensions.dll" />
+      </Component>
+      <Component Id="cmp6BD27BBB8A7B581DAF55C058A12306E5"
+                 Guid="*">
+        <File Id="fil654997B2637C5B2582F19A1BEBB40C89"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\LogXtreme.Ifrastructure.dll" />
+      </Component>
+      <Component Id="cmp524AD56384AF58BCA8A5B476BB3D96DD"
+                 Guid="*">
+        <File Id="filAD89FD1403B585C48DB5A9BAA1166628"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\LogXtreme.Reactive.Extensions.dll" />
+      </Component>
+      <Component Id="cmp0403D364BEE3297D417A308535896350"
+                 Guid="*">
+        <File Id="fil99737E6D7182433D2CB9B9348F24A999"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\LogXtreme.Reactive.Extensions.dll.config" />
+      </Component>
+      <Component Id="cmp03BFA457A9B9BD9E21744F1CDAE99611"
+                 Guid="*">
+        <File Id="fil935FAD82ED512DFFD2F8FFC5C68337B0"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\LogXtreme.WinDsk.exe" />
+      </Component>
+      <Component Id="cmp1441EAE3D80356FF213E4A56F757093A"
+                 Guid="*">
+        <File Id="fil5A9EB45FB7F264754350EBD08915EFA2"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\LogXtreme.WinDsk.exe.config" />
+      </Component>
+      <Component Id="cmp8936255327925E44B27E070B50B7FEE2"
+                 Guid="*">
+        <File Id="fil4C6499500B7E8B8F5987E3402FA34012"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\LogXtreme.WinDsk.Infrastructure.dll" />
+      </Component>
+      <Component Id="cmpBA395A24F68A18AD046AE3FC62EB2267"
+                 Guid="*">
+        <File Id="fil681C305E5A107FD682242A31A9E2AB86"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\LogXtreme.WinDsk.Infrastructure.dll.config" />
+      </Component>
+      <Component Id="cmp6ECA2B72E5335EDE6C9240F034C1C655"
+                 Guid="*">
+        <File Id="fil876B4683A7B68A77608C38BEBA597AA0"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Microsoft.Expression.Controls.dll" />
+      </Component>
+      <Component Id="cmpB1AEBD45052667DDEC9A968C317A9F5B"
+                 Guid="*">
+        <File Id="fil10A0ADC13C0EDB448EB7A1587E23387F"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Microsoft.Expression.Drawing.dll" />
+      </Component>
+      <Component Id="cmp29580CBE270144212912AAB14610FC88"
+                 Guid="*">
+        <File Id="fil9666E86750FC47493252C34173677E4E"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Microsoft.Expression.Effects.dll" />
+      </Component>
+      <Component Id="cmp3AE4D5D0B4D1A1C9C7198EAEF150E28A"
+                 Guid="*">
+        <File Id="filE57C61F65CCE807D8732C71CBC306E77"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Microsoft.Expression.Interactions.dll" />
+      </Component>
+      <Component Id="cmpC732AABD1EFF72058A99475150CEB6AE"
+                 Guid="*">
+        <File Id="fil8AD954972B893D2BB57BBA5D079980B0"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Microsoft.Expression.Prototyping.Interactivity.dll" />
+      </Component>
+      <Component Id="cmpB5402B57AA112029C456AEF15C774737"
+                 Guid="*">
+        <File Id="filA57F277B9719B46AD368F5184864AC24"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Microsoft.Expression.Prototyping.SketchControls.dll" />
+      </Component>
+      <Component Id="cmpF67514803284F848EED5DB23D2B2ADEB"
+                 Guid="*">
+        <File Id="filD3E6D570D8A0C9E78E5EB91C49AF58CA"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Microsoft.Practices.EnterpriseLibrary.SemanticLogging.dll" />
+      </Component>
+      <Component Id="cmp1471E636A3BA0595E7FEF60950F9420E"
+                 Guid="*">
+        <File Id="fil966B1F6881C2212FE6E2B880B7ECF03E"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Microsoft.Practices.EnterpriseLibrary.SemanticLogging.xml" />
+      </Component>
+      <Component Id="cmpC6D4CAA4F2BCA74FDE414B4D791E6BAA"
+                 Guid="*">
+        <File Id="filCDF52FB5229C71832E99D83F9C1F4646"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Microsoft.Practices.ServiceLocation.dll" />
+      </Component>
+      <Component Id="cmp6A38D73E2FBA5988AD6871EC571E4363"
+                 Guid="*">
+        <File Id="fil85000BDF1B6FA4CDF69A69D2C892779C"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Microsoft.Practices.ServiceLocation.xml" />
+      </Component>
+      <Component Id="cmpEFBF2BAADFAA5D4EFE4B638B32D23F95"
+                 Guid="*">
+        <File Id="filD78AB4A395F4B887422EDD8D2D34E7A0"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Microsoft.Practices.Unity.Configuration.dll" />
+      </Component>
+      <Component Id="cmp34D1406AB1BEBA05EE5F0E3E0A741C35"
+                 Guid="*">
+        <File Id="fil342191185E1EC561FD8F34AEF3D28002"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Microsoft.Practices.Unity.Configuration.xml" />
+      </Component>
+      <Component Id="cmp92565B54B9D776E8AEF3C73145E1DEB4"
+                 Guid="*">
+        <File Id="fil3CE976FBF20A111A2D8FB1357BE8D8D3"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Microsoft.Practices.Unity.dll" />
+      </Component>
+      <Component Id="cmpDE98C2D54B2EA82E3249AE1B3919D27C"
+                 Guid="*">
+        <File Id="fil7FF840A1A86DA5F7A695DF23B6A06C68"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Microsoft.Practices.Unity.RegistrationByConvention.dll" />
+      </Component>
+      <Component Id="cmpC3BF4670AAC40F31DB4E706DB539BE60"
+                 Guid="*">
+        <File Id="fil9B767E87DF9513EE53C08FCA6BBF2F29"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Microsoft.Practices.Unity.RegistrationByConvention.xml" />
+      </Component>
+      <Component Id="cmpF9EF1BBCB540991B1FDE12D7627A7B26"
+                 Guid="*">
+        <File Id="fil3CA4648053B1473875804317647B9C76"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Microsoft.Practices.Unity.xml" />
+      </Component>
+      <Component Id="cmp70A46F8DC8CB0D01E9E784D0615AF72C"
+                 Guid="*">
+        <File Id="fil31558134D4B71A505002856697A7CDEA"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Microsoft.SDK.Expression.Blend.dll" />
+      </Component>
+      <Component Id="cmpDE4473309157110357E004CB2762646B"
+                 Guid="*">
+        <File Id="filE366FF15859106BDEB37B95A587478D7"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Microsoft.VisualStudio.TestPlatform.TestFramework.dll" />
+      </Component>
+      <Component Id="cmp364E80AC71B1001C09C2129D0BF373A8"
+                 Guid="*">
+        <File Id="fil8CA990A91F0DEF3C8F75BDD44444E224"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+      </Component>
+      <Component Id="cmpD80854881C1D2A81EADB3F1AA16B8CEF"
+                 Guid="*">
+        <File Id="fil36FAD9819D4FA7E9393936DC1019AFF5"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Newtonsoft.Json.dll" />
+      </Component>
+      <Component Id="cmpC7896AA8C5DC6A2ECE61D85D3EC82B71"
+                 Guid="*">
+        <File Id="fil32CA9D172682C2C7915DD98CD046BE1C"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Newtonsoft.Json.xml" />
+      </Component>
+      <Component Id="cmp835889ECDFABF30F08D037BF7FFDF4E9"
+                 Guid="*">
+        <File Id="fil1AAA4BBFF520912BDDBE78ED984F708D"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Prism.dll" />
+      </Component>
+      <Component Id="cmp07CBC565D979F1EE6D414CCF0016E3A7"
+                 Guid="*">
+        <File Id="fil76DC13A7EA961C3527D3011422A7A943"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Prism.Unity.Wpf.dll" />
+      </Component>
+      <Component Id="cmpB7EE8188ADB09B755DB2B6B0BF297047"
+                 Guid="*">
+        <File Id="filAFFEBA86C3F19D4609230035B8DAF64C"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Prism.Unity.Wpf.xml" />
+      </Component>
+      <Component Id="cmpC677406153AA6FE81D386C99BD7DCAEC"
+                 Guid="*">
+        <File Id="filD7E5F0362766E6C9405487B56EF451BE"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Prism.Wpf.dll" />
+      </Component>
+      <Component Id="cmpB311D695022457E3457E9794177120E6"
+                 Guid="*">
+        <File Id="fil65632A205ACBCA2AB5ADB306E697EEEA"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Prism.Wpf.xml" />
+      </Component>
+      <Component Id="cmp79CD88407E243B14C2B14D4E518317CF"
+                 Guid="*">
+        <File Id="filC8DDD28DE2BD2B76E2E23FE1843F6145"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Prism.xml" />
+      </Component>
+      <Component Id="cmpCAEBAE0F3717E80A1C216681FE5991AE"
+                 Guid="*">
+        <File Id="fil0B97CACA0E6AAC7BA05B2B1EC74CE15F"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\SemanticLogging.dll" />
+      </Component>
+      <Component Id="cmpFAD02A6C37660528F3AC1683A49C4C38"
+                 Guid="*">
+        <File Id="filF60336950CCE0C6C92F0AC3E767625DA"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\SlabManagementTools.dll" />
+      </Component>
+      <Component Id="cmpE05851496461B2494E0A85D6194D7AFA"
+                 Guid="*">
+        <File Id="filA4F89BCF45D518402108A097457B8ADE"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\System.Reactive.Core.dll" />
+      </Component>
+      <Component Id="cmpD1367E29F99D79993069876CF3862B8D"
+                 Guid="*">
+        <File Id="filA23687AFAA5E4C461D3698CA83515C7C"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\System.Reactive.Core.xml" />
+      </Component>
+      <Component Id="cmpBC8A8ED113FC8F83EA7A5C29DB55D320"
+                 Guid="*">
+        <File Id="filCA48B9D053ED384FD51B59740436568D"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\System.Reactive.Interfaces.dll" />
+      </Component>
+      <Component Id="cmpE7313ED2D0880D54E2A9CD575D8E3B30"
+                 Guid="*">
+        <File Id="filE339B11F177CCA685C8F54D79B6033FC"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\System.Reactive.Interfaces.xml" />
+      </Component>
+      <Component Id="cmp203493ADE713A811ADB61D60C4AE7400"
+                 Guid="*">
+        <File Id="fil2BFEBE7A106D8DBF0D91F1DA1A57AEF5"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\System.Reactive.Linq.dll" />
+      </Component>
+      <Component Id="cmp9CA433C51061957EA9071CA6141881E4"
+                 Guid="*">
+        <File Id="filBC45FC01F6A50CD34045121CA0DB141E"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\System.Reactive.Linq.xml" />
+      </Component>
+      <Component Id="cmpBF06E4F91F7D3052E9A629AE8C17DDE2"
+                 Guid="*">
+        <File Id="fil360F3F3BDBE8CB8D002CCFB24A842E2A"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\System.Reactive.PlatformServices.dll" />
+      </Component>
+      <Component Id="cmp4BCECE613EB6475B68CD0D1EED425EE3"
+                 Guid="*">
+        <File Id="fil41D16D05B91F215E80C7F0909199A175"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\System.Reactive.PlatformServices.xml" />
+      </Component>
+      <Component Id="cmpC69046011E013FA9A9F0B34163B2119F"
+                 Guid="*">
+        <File Id="filA63B24D6E73ACDE83D2EE70477124DE4"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\System.ValueTuple.dll" />
+      </Component>
+      <Component Id="cmpF87F05DF6AA178D85F14F391AE7808B1"
+                 Guid="*">
+        <File Id="fil218FE8858B6039C4D665D07273C4B15F"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\System.ValueTuple.xml" />
+      </Component>
+      <Component Id="cmp765CEFF6BD7845E0E67C58471885AF81"
+                 Guid="*">
+        <File Id="fil719C0D56E2FD81E4D2436C85D2E35532"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\System.Windows.Interactivity.dll" />
+      </Component>
+      <Component Id="cmp1F01AB1D59DD6E960235BE04CB94DC3D"
+                 Guid="*">
+        <File Id="fil5AE9F8D9BFA5680A86F93A9B20FF9C08"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Xceed.Wpf.AvalonDock.dll" />
+      </Component>
+      <Component Id="cmpB7B69B9D7986AB1C3CDB40B6106B217F"
+                 Guid="*">
+        <File Id="filFD461E072DDC63DB7DDAFC28C99A358C"
+              KeyPath="yes"
+              Source="$(var.SourceDir)\Xceed.Wpf.Toolkit.dll" />
+      </Component>
+      <Directory Id="dir246E652F40EC273D9700DF7C332BA1AA"
+                 Name="Modules">
+        <Component Id="cmpA01EBF3894823F945C0C8DBB2D164036"
                    Guid="*">
-          <File Id="filF0B6E5BBF5D23997B087A4D7E7FFE6E3"
+          <File Id="fil0AD3461D7CFE31DA3C1212E6DB943CE1"
                 KeyPath="yes"
-                Source="$(var.SourceDir)\AvalonDockServiceModule.dll" />
+                Source="$(var.SourceDir)\Modules\BackgroundWorkerServiceModule.dll" />
         </Component>
-        <Component Id="cmp39402556B1F479A2C6121C2EAD77634B"
+        <Component Id="cmpA4C4364721D5E9AA0BA186B882E3715B"
                    Guid="*">
-          <File Id="filF10C9BEF23B42CC084BF32771CFF511C"
+          <File Id="fil533E9C9998CAB6AA9D0F719EEAD15968"
                 KeyPath="yes"
-                Source="$(var.SourceDir)\AvalonDockServiceModule.dll.config" />
+                Source="$(var.SourceDir)\Modules\BackgroundWorkerServiceModule.dll.config" />
         </Component>
-        <Component Id="cmpC8CE1CCA33756B007D17893C4F113CCE"
+        <Component Id="cmp8FC7B9D78A5C0B9BB107CD33383A63C7"
                    Guid="*">
-          <File Id="filF4315C5B176830689570F8023C2F4FBE"
+          <File Id="fil083643CFA2C526B7F3A517C257822BE8"
                 KeyPath="yes"
-                Source="$(var.SourceDir)\LogXtreme.DataStructures.dll" />
+                Source="$(var.SourceDir)\Modules\ContentModule.dll" />
         </Component>
-        <Component Id="cmp58EC32B22B44D4A356F0AF6C33357A00"
+        <Component Id="cmpADE1B31F050C9F222092F10934CCE40D"
                    Guid="*">
-          <File Id="fil9E7AF19BE196CA92182729D9160CA055"
+          <File Id="fil3FE9500FC6442EB3903CFA0D82E29DFB"
                 KeyPath="yes"
-                Source="$(var.SourceDir)\LogXtreme.Extensions.dll" />
+                Source="$(var.SourceDir)\Modules\ContentModule.dll.config" />
         </Component>
-        <Component Id="cmp6BD27BBB8A7B581DAF55C058A12306E5"
+        <Component Id="cmpBFCF7071DC7B06AD56B5A95CF744C74B"
                    Guid="*">
-          <File Id="fil654997B2637C5B2582F19A1BEBB40C89"
+          <File Id="fil5FE794AD2B7736D2C57CD9D79CFE1F55"
                 KeyPath="yes"
-                Source="$(var.SourceDir)\LogXtreme.Ifrastructure.dll" />
+                Source="$(var.SourceDir)\Modules\DataGridModule.dll" />
         </Component>
-        <Component Id="cmp524AD56384AF58BCA8A5B476BB3D96DD"
+        <Component Id="cmp4B360334D5A8BDACABE0B7994F4EBA2C"
                    Guid="*">
-          <File Id="filAD89FD1403B585C48DB5A9BAA1166628"
+          <File Id="filFC446475919362B555A56B10613EBC0A"
                 KeyPath="yes"
-                Source="$(var.SourceDir)\LogXtreme.Reactive.Extensions.dll" />
+                Source="$(var.SourceDir)\Modules\DataGridModule.dll.config" />
         </Component>
-        <Component Id="cmp0403D364BEE3297D417A308535896350"
+        <Component Id="cmpB4E22A3E202F91006AD9FDDC9AC0204C"
                    Guid="*">
-          <File Id="fil99737E6D7182433D2CB9B9348F24A999"
+          <File Id="filE4E0F10E3E7EE34061FB139A2BA6C1BE"
                 KeyPath="yes"
-                Source="$(var.SourceDir)\LogXtreme.Reactive.Extensions.dll.config" />
+                Source="$(var.SourceDir)\Modules\DataServiceModule.dll" />
         </Component>
-        <Component Id="cmp03BFA457A9B9BD9E21744F1CDAE99611"
+        <Component Id="cmpC2E5FDDA5A330382D8C71EBB66A14623"
                    Guid="*">
-          <File Id="fil935FAD82ED512DFFD2F8FFC5C68337B0"
+          <File Id="filFFAD9DB7E19EFC676055479B5C46F943"
                 KeyPath="yes"
-                Source="$(var.SourceDir)\LogXtreme.WinDsk.exe" />
+                Source="$(var.SourceDir)\Modules\DataServiceModule.dll.config" />
         </Component>
-        <Component Id="cmp1441EAE3D80356FF213E4A56F757093A"
+        <Component Id="cmpB2DFA1A1197D7822714EA2B566F62D7D"
                    Guid="*">
-          <File Id="fil5A9EB45FB7F264754350EBD08915EFA2"
+          <File Id="fil292B76F2E9464836620A09E0B214C6F1"
                 KeyPath="yes"
-                Source="$(var.SourceDir)\LogXtreme.WinDsk.exe.config" />
+                Source="$(var.SourceDir)\Modules\DataTreeModule.dll" />
         </Component>
-        <Component Id="cmp8936255327925E44B27E070B50B7FEE2"
+        <Component Id="cmp10C5F8E8E6E5AD993F158AAA5D11995E"
                    Guid="*">
-          <File Id="fil4C6499500B7E8B8F5987E3402FA34012"
+          <File Id="filA8DE17C312390EC37AA8772D2A1C0523"
                 KeyPath="yes"
-                Source="$(var.SourceDir)\LogXtreme.WinDsk.Infrastructure.dll" />
+                Source="$(var.SourceDir)\Modules\DataTreeModule.dll.config" />
         </Component>
-        <Component Id="cmpBA395A24F68A18AD046AE3FC62EB2267"
+        <Component Id="cmp08C1A12922C02E04C847E5F6381798EF"
                    Guid="*">
-          <File Id="fil681C305E5A107FD682242A31A9E2AB86"
+          <File Id="fil5F934A2CBCFA2CB855600D5A7A06FFEE"
                 KeyPath="yes"
-                Source="$(var.SourceDir)\LogXtreme.WinDsk.Infrastructure.dll.config" />
+                Source="$(var.SourceDir)\Modules\DeviceServiceModule.dll" />
         </Component>
-        <Component Id="cmp6ECA2B72E5335EDE6C9240F034C1C655"
+        <Component Id="cmpBBDA77A7F80AEF61E21491606B3A28C0"
                    Guid="*">
-          <File Id="fil876B4683A7B68A77608C38BEBA597AA0"
+          <File Id="fil71DF5D1C0EC88F647174426D72C29F60"
                 KeyPath="yes"
-                Source="$(var.SourceDir)\Microsoft.Expression.Controls.dll" />
+                Source="$(var.SourceDir)\Modules\DeviceServiceModule.dll.config" />
         </Component>
-        <Component Id="cmpB1AEBD45052667DDEC9A968C317A9F5B"
+        <Component Id="cmp20A340F3EA3BEBCCB5A5DEC48EBCF4FF"
                    Guid="*">
-          <File Id="fil10A0ADC13C0EDB448EB7A1587E23387F"
+          <File Id="fil28AA32ED35F5D377C0FEAED157E971EB"
                 KeyPath="yes"
-                Source="$(var.SourceDir)\Microsoft.Expression.Drawing.dll" />
+                Source="$(var.SourceDir)\Modules\DeviceTreeModule.dll" />
         </Component>
-        <Component Id="cmp29580CBE270144212912AAB14610FC88"
+        <Component Id="cmp99D35A046CA764622AF6AC373E86A3C3"
                    Guid="*">
-          <File Id="fil9666E86750FC47493252C34173677E4E"
+          <File Id="fil024C976E5F48B8A21C5506C27BA1D20A"
                 KeyPath="yes"
-                Source="$(var.SourceDir)\Microsoft.Expression.Effects.dll" />
+                Source="$(var.SourceDir)\Modules\DeviceTreeModule.dll.config" />
         </Component>
-        <Component Id="cmp3AE4D5D0B4D1A1C9C7198EAEF150E28A"
+        <Component Id="cmp729487AF2A8E27D88642FA3F757EC067"
                    Guid="*">
-          <File Id="filE57C61F65CCE807D8732C71CBC306E77"
+          <File Id="filF0F22045587AA335DDA3FB10993147C4"
                 KeyPath="yes"
-                Source="$(var.SourceDir)\Microsoft.Expression.Interactions.dll" />
+                Source="$(var.SourceDir)\Modules\MainMenuModule.dll" />
         </Component>
-        <Component Id="cmpC732AABD1EFF72058A99475150CEB6AE"
+        <Component Id="cmp051C5195B1013E4AE5C6CFBFA4E2D5D8"
                    Guid="*">
-          <File Id="fil8AD954972B893D2BB57BBA5D079980B0"
+          <File Id="fil04CA2D0E54955FD89A33E9F6778A4D73"
                 KeyPath="yes"
-                Source="$(var.SourceDir)\Microsoft.Expression.Prototyping.Interactivity.dll" />
+                Source="$(var.SourceDir)\Modules\MainMenuModule.dll.config" />
         </Component>
-        <Component Id="cmpB5402B57AA112029C456AEF15C774737"
+        <Component Id="cmp7789AB17A7F474BF7A4C2F0565F63EB6"
                    Guid="*">
-          <File Id="filA57F277B9719B46AD368F5184864AC24"
+          <File Id="fil1ACDD2B47496E236D34359F8DD03C7D7"
                 KeyPath="yes"
-                Source="$(var.SourceDir)\Microsoft.Expression.Prototyping.SketchControls.dll" />
+                Source="$(var.SourceDir)\Modules\MainMenuOptionsModule.dll" />
         </Component>
-        <Component Id="cmpF67514803284F848EED5DB23D2B2ADEB"
+        <Component Id="cmp6CB13BEB6BA623E72FA47F81892D2229"
                    Guid="*">
-          <File Id="filD3E6D570D8A0C9E78E5EB91C49AF58CA"
+          <File Id="fil6FF93601D8865B7B728573C404829599"
                 KeyPath="yes"
-                Source="$(var.SourceDir)\Microsoft.Practices.EnterpriseLibrary.SemanticLogging.dll" />
+                Source="$(var.SourceDir)\Modules\MainMenuOptionsModule.dll.config" />
         </Component>
-        <Component Id="cmp1471E636A3BA0595E7FEF60950F9420E"
+        <Component Id="cmpE250CE0F4C2853223648F582588E4AB5"
                    Guid="*">
-          <File Id="fil966B1F6881C2212FE6E2B880B7ECF03E"
+          <File Id="filB1D258F00162885CA4ECA845FBA4242F"
                 KeyPath="yes"
-                Source="$(var.SourceDir)\Microsoft.Practices.EnterpriseLibrary.SemanticLogging.xml" />
+                Source="$(var.SourceDir)\Modules\MenuServiceModule.dll" />
         </Component>
-        <Component Id="cmpC6D4CAA4F2BCA74FDE414B4D791E6BAA"
+        <Component Id="cmp903EF2A7F4F261B8ED9B1758FACE3D16"
                    Guid="*">
-          <File Id="filCDF52FB5229C71832E99D83F9C1F4646"
+          <File Id="fil4E66FD4642B8783A163161EA54F2285A"
                 KeyPath="yes"
-                Source="$(var.SourceDir)\Microsoft.Practices.ServiceLocation.dll" />
+                Source="$(var.SourceDir)\Modules\MenuServiceModule.dll.config" />
         </Component>
-        <Component Id="cmp6A38D73E2FBA5988AD6871EC571E4363"
+        <Component Id="cmp0A698E111816C369F8B6ED66934B8777"
                    Guid="*">
-          <File Id="fil85000BDF1B6FA4CDF69A69D2C892779C"
+          <File Id="fil3B993369F9FC56B699C007341C0BDF5B"
                 KeyPath="yes"
-                Source="$(var.SourceDir)\Microsoft.Practices.ServiceLocation.xml" />
+                Source="$(var.SourceDir)\Modules\StatusBarModule.dll" />
         </Component>
-        <Component Id="cmpEFBF2BAADFAA5D4EFE4B638B32D23F95"
+        <Component Id="cmp48F06BA7393FB9E02B2CC1B8519CFAE8"
                    Guid="*">
-          <File Id="filD78AB4A395F4B887422EDD8D2D34E7A0"
+          <File Id="fil845CBA610DA49A6A065DC1DF6790A479"
                 KeyPath="yes"
-                Source="$(var.SourceDir)\Microsoft.Practices.Unity.Configuration.dll" />
+                Source="$(var.SourceDir)\Modules\StatusBarModule.dll.config" />
         </Component>
-        <Component Id="cmp34D1406AB1BEBA05EE5F0E3E0A741C35"
-                   Guid="*">
-          <File Id="fil342191185E1EC561FD8F34AEF3D28002"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\Microsoft.Practices.Unity.Configuration.xml" />
-        </Component>
-        <Component Id="cmp92565B54B9D776E8AEF3C73145E1DEB4"
-                   Guid="*">
-          <File Id="fil3CE976FBF20A111A2D8FB1357BE8D8D3"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\Microsoft.Practices.Unity.dll" />
-        </Component>
-        <Component Id="cmpDE98C2D54B2EA82E3249AE1B3919D27C"
-                   Guid="*">
-          <File Id="fil7FF840A1A86DA5F7A695DF23B6A06C68"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\Microsoft.Practices.Unity.RegistrationByConvention.dll" />
-        </Component>
-        <Component Id="cmpC3BF4670AAC40F31DB4E706DB539BE60"
-                   Guid="*">
-          <File Id="fil9B767E87DF9513EE53C08FCA6BBF2F29"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\Microsoft.Practices.Unity.RegistrationByConvention.xml" />
-        </Component>
-        <Component Id="cmpF9EF1BBCB540991B1FDE12D7627A7B26"
-                   Guid="*">
-          <File Id="fil3CA4648053B1473875804317647B9C76"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\Microsoft.Practices.Unity.xml" />
-        </Component>
-        <Component Id="cmp70A46F8DC8CB0D01E9E784D0615AF72C"
-                   Guid="*">
-          <File Id="fil31558134D4B71A505002856697A7CDEA"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\Microsoft.SDK.Expression.Blend.dll" />
-        </Component>
-        <Component Id="cmpDE4473309157110357E004CB2762646B"
-                   Guid="*">
-          <File Id="filE366FF15859106BDEB37B95A587478D7"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\Microsoft.VisualStudio.TestPlatform.TestFramework.dll" />
-        </Component>
-        <Component Id="cmp364E80AC71B1001C09C2129D0BF373A8"
-                   Guid="*">
-          <File Id="fil8CA990A91F0DEF3C8F75BDD44444E224"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
-        </Component>
-        <Component Id="cmpD80854881C1D2A81EADB3F1AA16B8CEF"
-                   Guid="*">
-          <File Id="fil36FAD9819D4FA7E9393936DC1019AFF5"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\Newtonsoft.Json.dll" />
-        </Component>
-        <Component Id="cmpC7896AA8C5DC6A2ECE61D85D3EC82B71"
-                   Guid="*">
-          <File Id="fil32CA9D172682C2C7915DD98CD046BE1C"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\Newtonsoft.Json.xml" />
-        </Component>
-        <Component Id="cmp835889ECDFABF30F08D037BF7FFDF4E9"
-                   Guid="*">
-          <File Id="fil1AAA4BBFF520912BDDBE78ED984F708D"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\Prism.dll" />
-        </Component>
-        <Component Id="cmp07CBC565D979F1EE6D414CCF0016E3A7"
-                   Guid="*">
-          <File Id="fil76DC13A7EA961C3527D3011422A7A943"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\Prism.Unity.Wpf.dll" />
-        </Component>
-        <Component Id="cmpB7EE8188ADB09B755DB2B6B0BF297047"
-                   Guid="*">
-          <File Id="filAFFEBA86C3F19D4609230035B8DAF64C"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\Prism.Unity.Wpf.xml" />
-        </Component>
-        <Component Id="cmpC677406153AA6FE81D386C99BD7DCAEC"
-                   Guid="*">
-          <File Id="filD7E5F0362766E6C9405487B56EF451BE"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\Prism.Wpf.dll" />
-        </Component>
-        <Component Id="cmpB311D695022457E3457E9794177120E6"
-                   Guid="*">
-          <File Id="fil65632A205ACBCA2AB5ADB306E697EEEA"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\Prism.Wpf.xml" />
-        </Component>
-        <Component Id="cmp79CD88407E243B14C2B14D4E518317CF"
-                   Guid="*">
-          <File Id="filC8DDD28DE2BD2B76E2E23FE1843F6145"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\Prism.xml" />
-        </Component>
-        <Component Id="cmpCAEBAE0F3717E80A1C216681FE5991AE"
-                   Guid="*">
-          <File Id="fil0B97CACA0E6AAC7BA05B2B1EC74CE15F"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\SemanticLogging.dll" />
-        </Component>
-        <Component Id="cmpFAD02A6C37660528F3AC1683A49C4C38"
-                   Guid="*">
-          <File Id="filF60336950CCE0C6C92F0AC3E767625DA"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\SlabManagementTools.dll" />
-        </Component>
-        <Component Id="cmpE05851496461B2494E0A85D6194D7AFA"
-                   Guid="*">
-          <File Id="filA4F89BCF45D518402108A097457B8ADE"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\System.Reactive.Core.dll" />
-        </Component>
-        <Component Id="cmpD1367E29F99D79993069876CF3862B8D"
-                   Guid="*">
-          <File Id="filA23687AFAA5E4C461D3698CA83515C7C"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\System.Reactive.Core.xml" />
-        </Component>
-        <Component Id="cmpBC8A8ED113FC8F83EA7A5C29DB55D320"
-                   Guid="*">
-          <File Id="filCA48B9D053ED384FD51B59740436568D"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\System.Reactive.Interfaces.dll" />
-        </Component>
-        <Component Id="cmpE7313ED2D0880D54E2A9CD575D8E3B30"
-                   Guid="*">
-          <File Id="filE339B11F177CCA685C8F54D79B6033FC"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\System.Reactive.Interfaces.xml" />
-        </Component>
-        <Component Id="cmp203493ADE713A811ADB61D60C4AE7400"
-                   Guid="*">
-          <File Id="fil2BFEBE7A106D8DBF0D91F1DA1A57AEF5"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\System.Reactive.Linq.dll" />
-        </Component>
-        <Component Id="cmp9CA433C51061957EA9071CA6141881E4"
-                   Guid="*">
-          <File Id="filBC45FC01F6A50CD34045121CA0DB141E"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\System.Reactive.Linq.xml" />
-        </Component>
-        <Component Id="cmpBF06E4F91F7D3052E9A629AE8C17DDE2"
-                   Guid="*">
-          <File Id="fil360F3F3BDBE8CB8D002CCFB24A842E2A"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\System.Reactive.PlatformServices.dll" />
-        </Component>
-        <Component Id="cmp4BCECE613EB6475B68CD0D1EED425EE3"
-                   Guid="*">
-          <File Id="fil41D16D05B91F215E80C7F0909199A175"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\System.Reactive.PlatformServices.xml" />
-        </Component>
-        <Component Id="cmpC69046011E013FA9A9F0B34163B2119F"
-                   Guid="*">
-          <File Id="filA63B24D6E73ACDE83D2EE70477124DE4"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\System.ValueTuple.dll" />
-        </Component>
-        <Component Id="cmpF87F05DF6AA178D85F14F391AE7808B1"
-                   Guid="*">
-          <File Id="fil218FE8858B6039C4D665D07273C4B15F"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\System.ValueTuple.xml" />
-        </Component>
-        <Component Id="cmp765CEFF6BD7845E0E67C58471885AF81"
-                   Guid="*">
-          <File Id="fil719C0D56E2FD81E4D2436C85D2E35532"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\System.Windows.Interactivity.dll" />
-        </Component>
-        <Component Id="cmp1F01AB1D59DD6E960235BE04CB94DC3D"
-                   Guid="*">
-          <File Id="fil5AE9F8D9BFA5680A86F93A9B20FF9C08"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\Xceed.Wpf.AvalonDock.dll" />
-        </Component>
-        <Component Id="cmpB7B69B9D7986AB1C3CDB40B6106B217F"
-                   Guid="*">
-          <File Id="filFD461E072DDC63DB7DDAFC28C99A358C"
-                KeyPath="yes"
-                Source="$(var.SourceDir)\Xceed.Wpf.Toolkit.dll" />
-        </Component>
-        <Directory Id="dir246E652F40EC273D9700DF7C332BA1AA"
-                   Name="Modules">
-          <Component Id="cmpA01EBF3894823F945C0C8DBB2D164036"
-                     Guid="*">
-            <File Id="fil0AD3461D7CFE31DA3C1212E6DB943CE1"
-                  KeyPath="yes"
-                  Source="$(var.SourceDir)\Modules\BackgroundWorkerServiceModule.dll" />
-          </Component>
-          <Component Id="cmpA4C4364721D5E9AA0BA186B882E3715B"
-                     Guid="*">
-            <File Id="fil533E9C9998CAB6AA9D0F719EEAD15968"
-                  KeyPath="yes"
-                  Source="$(var.SourceDir)\Modules\BackgroundWorkerServiceModule.dll.config" />
-          </Component>
-          <Component Id="cmp8FC7B9D78A5C0B9BB107CD33383A63C7"
-                     Guid="*">
-            <File Id="fil083643CFA2C526B7F3A517C257822BE8"
-                  KeyPath="yes"
-                  Source="$(var.SourceDir)\Modules\ContentModule.dll" />
-          </Component>
-          <Component Id="cmpADE1B31F050C9F222092F10934CCE40D"
-                     Guid="*">
-            <File Id="fil3FE9500FC6442EB3903CFA0D82E29DFB"
-                  KeyPath="yes"
-                  Source="$(var.SourceDir)\Modules\ContentModule.dll.config" />
-          </Component>
-          <Component Id="cmpBFCF7071DC7B06AD56B5A95CF744C74B"
-                     Guid="*">
-            <File Id="fil5FE794AD2B7736D2C57CD9D79CFE1F55"
-                  KeyPath="yes"
-                  Source="$(var.SourceDir)\Modules\DataGridModule.dll" />
-          </Component>
-          <Component Id="cmp4B360334D5A8BDACABE0B7994F4EBA2C"
-                     Guid="*">
-            <File Id="filFC446475919362B555A56B10613EBC0A"
-                  KeyPath="yes"
-                  Source="$(var.SourceDir)\Modules\DataGridModule.dll.config" />
-          </Component>
-          <Component Id="cmpB4E22A3E202F91006AD9FDDC9AC0204C"
-                     Guid="*">
-            <File Id="filE4E0F10E3E7EE34061FB139A2BA6C1BE"
-                  KeyPath="yes"
-                  Source="$(var.SourceDir)\Modules\DataServiceModule.dll" />
-          </Component>
-          <Component Id="cmpC2E5FDDA5A330382D8C71EBB66A14623"
-                     Guid="*">
-            <File Id="filFFAD9DB7E19EFC676055479B5C46F943"
-                  KeyPath="yes"
-                  Source="$(var.SourceDir)\Modules\DataServiceModule.dll.config" />
-          </Component>
-          <Component Id="cmpB2DFA1A1197D7822714EA2B566F62D7D"
-                     Guid="*">
-            <File Id="fil292B76F2E9464836620A09E0B214C6F1"
-                  KeyPath="yes"
-                  Source="$(var.SourceDir)\Modules\DataTreeModule.dll" />
-          </Component>
-          <Component Id="cmp10C5F8E8E6E5AD993F158AAA5D11995E"
-                     Guid="*">
-            <File Id="filA8DE17C312390EC37AA8772D2A1C0523"
-                  KeyPath="yes"
-                  Source="$(var.SourceDir)\Modules\DataTreeModule.dll.config" />
-          </Component>
-          <Component Id="cmp08C1A12922C02E04C847E5F6381798EF"
-                     Guid="*">
-            <File Id="fil5F934A2CBCFA2CB855600D5A7A06FFEE"
-                  KeyPath="yes"
-                  Source="$(var.SourceDir)\Modules\DeviceServiceModule.dll" />
-          </Component>
-          <Component Id="cmpBBDA77A7F80AEF61E21491606B3A28C0"
-                     Guid="*">
-            <File Id="fil71DF5D1C0EC88F647174426D72C29F60"
-                  KeyPath="yes"
-                  Source="$(var.SourceDir)\Modules\DeviceServiceModule.dll.config" />
-          </Component>
-          <Component Id="cmp20A340F3EA3BEBCCB5A5DEC48EBCF4FF"
-                     Guid="*">
-            <File Id="fil28AA32ED35F5D377C0FEAED157E971EB"
-                  KeyPath="yes"
-                  Source="$(var.SourceDir)\Modules\DeviceTreeModule.dll" />
-          </Component>
-          <Component Id="cmp99D35A046CA764622AF6AC373E86A3C3"
-                     Guid="*">
-            <File Id="fil024C976E5F48B8A21C5506C27BA1D20A"
-                  KeyPath="yes"
-                  Source="$(var.SourceDir)\Modules\DeviceTreeModule.dll.config" />
-          </Component>
-          <Component Id="cmp729487AF2A8E27D88642FA3F757EC067"
-                     Guid="*">
-            <File Id="filF0F22045587AA335DDA3FB10993147C4"
-                  KeyPath="yes"
-                  Source="$(var.SourceDir)\Modules\MainMenuModule.dll" />
-          </Component>
-          <Component Id="cmp051C5195B1013E4AE5C6CFBFA4E2D5D8"
-                     Guid="*">
-            <File Id="fil04CA2D0E54955FD89A33E9F6778A4D73"
-                  KeyPath="yes"
-                  Source="$(var.SourceDir)\Modules\MainMenuModule.dll.config" />
-          </Component>
-          <Component Id="cmp7789AB17A7F474BF7A4C2F0565F63EB6"
-                     Guid="*">
-            <File Id="fil1ACDD2B47496E236D34359F8DD03C7D7"
-                  KeyPath="yes"
-                  Source="$(var.SourceDir)\Modules\MainMenuOptionsModule.dll" />
-          </Component>
-          <Component Id="cmp6CB13BEB6BA623E72FA47F81892D2229"
-                     Guid="*">
-            <File Id="fil6FF93601D8865B7B728573C404829599"
-                  KeyPath="yes"
-                  Source="$(var.SourceDir)\Modules\MainMenuOptionsModule.dll.config" />
-          </Component>
-          <Component Id="cmpE250CE0F4C2853223648F582588E4AB5"
-                     Guid="*">
-            <File Id="filB1D258F00162885CA4ECA845FBA4242F"
-                  KeyPath="yes"
-                  Source="$(var.SourceDir)\Modules\MenuServiceModule.dll" />
-          </Component>
-          <Component Id="cmp903EF2A7F4F261B8ED9B1758FACE3D16"
-                     Guid="*">
-            <File Id="fil4E66FD4642B8783A163161EA54F2285A"
-                  KeyPath="yes"
-                  Source="$(var.SourceDir)\Modules\MenuServiceModule.dll.config" />
-          </Component>
-          <Component Id="cmp0A698E111816C369F8B6ED66934B8777"
-                     Guid="*">
-            <File Id="fil3B993369F9FC56B699C007341C0BDF5B"
-                  KeyPath="yes"
-                  Source="$(var.SourceDir)\Modules\StatusBarModule.dll" />
-          </Component>
-          <Component Id="cmp48F06BA7393FB9E02B2CC1B8519CFAE8"
-                     Guid="*">
-            <File Id="fil845CBA610DA49A6A065DC1DF6790A479"
-                  KeyPath="yes"
-                  Source="$(var.SourceDir)\Modules\StatusBarModule.dll.config" />
-          </Component>
-        </Directory>
       </Directory>
     </DirectoryRef>
   </Fragment>
