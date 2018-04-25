@@ -3,8 +3,8 @@
   
   <!--Pull in all the *.wxi files-->
   <!--Built in Project reference variables http://wixtoolset.org/documentation/manual/v3/votive/votive_project_references.html-->
-  <?include "Config.wxi"?>
-  
+  <?include "Config.wxi"?>  
+
   <Product Id="*"
            Name="LogXtreme for Windows Desktop"
            Language="1033"
@@ -19,6 +19,15 @@
              Description="LogXtreme Data Logger Software"
              Manufacturer="New Thinking Technologies"
              Comments="Installer for LogXtreme Data Logger Software"/>
+
+    <!--
+    - WixUI_Minimal
+    - WixUI_Advanced
+    - WixUI_FeatureTree
+    - WixUI_InstallDir
+    - WixUI_Mondo
+    -->
+    <UIRef Id="WixUI_Minimal" />
 
     <!--This pulls in all the properties defined in the same file-->
     <PropertyRef Id="PROPERTY_TEST_PROPERTY_1"/>
@@ -63,7 +72,14 @@
     </DirectoryRef>
     -->   
     
+    <!--
+    This is the main application Feature and must have Absent="disallow" to prevent
+    the user to accidentally disabling the installation of the Feature via the UI
+    of the installer. For this product the Advertise Mode is also not allowed.     
+    -->
     <Feature Id="FEATURE_LOGXTREME_WIN_DSK"
+             Absent="disallow"
+             AllowAdvertise="no"
              Title="LogXtreme Data Logger Software for Windows Desktop"
              Description="Installs LogXtreme Data Logger Software for Windows Desktop"
              Level="1">

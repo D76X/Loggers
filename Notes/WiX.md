@@ -617,4 +617,65 @@ its attribute **Level** is set to a value such that **Level <= InstallLevel**.
 This causes all Features with Level set to 1 to be installed. However, the Features with 
 Level set to 0 will not be installed and will not be visible in the UI. 
 
+### Main Feature
+
+#### Make sure that the Main Feature is installed
+
+Any *.msi should have a main Feature and it must be impossible for the user to avoid
+the installation of the product without installing the main feature i.e. when the 
+*.msi has UI support it must be impossible for the user to disable the installation 
+of the main Feature via the UI of the installer. This can be doen by setting the 
+following attribute on the Feature elements that must be installed in all cases. 
+
+**Absent="disallow"**
+
+#### Disable the Advertised Mode on the Main Feature
+
+Advertised Features are not physically installed on the target system until the user 
+actually launches them. In some cases this might be useful but it is normally not the
+appropriate installation mode for crutial features of the application being installed.
+
+Often the Main Feature should be installed directly from the *.msi as non advertised. 
+Use the floowing attribute on the Feature elements that should not be provided as 
+advertised on the target system.
+
+**AllowAdvertise="no"**
+
+---
+
+## WiX UI Extension
+
+In order to provide the installer package *.msi with **basic UI** support any WiX project
+may set a reference to the folloeing library directly from Visual Studio.
+
+```C:\Program Files (x86)\WiX Toolset v3.11\bin\WixUIExtension.dll```
+
+This library provides a number of prepackaged UI options.
+
+- WixUI_Minimal
+- WixUI_Advanced
+- WixUI_FeatureTree
+- WixUI_InstallDir
+- WixUI_Mondo
+
+After the project reference to the **WixUIExtension.dll** is set the following element 
+must be added to **Product.wxs** as a child of the Product element.
+
+```
+<!--
+- WixUI_Minimal
+- WixUI_Advanced
+- WixUI_FeatureTree
+- WixUI_InstallDir
+- WixUI_Mondo
+-->
+<UIRef Id="WixUI_Minimal" />
+```
+
+### Custom Lincence Agreement
+
+The WiX UI support in its simple form **WixUI_Minimal** may be used to install a 
+single feature and present teh user with the **Licence Agreement**. In order to 
+include a custom Licence Agreement document..
+
 ---
