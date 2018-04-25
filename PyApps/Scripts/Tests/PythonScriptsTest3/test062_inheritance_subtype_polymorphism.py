@@ -30,6 +30,8 @@ Results:
 
 """
 
+from pprint import pprint as pp
+
 # ################################################################################################
 
 # The basics of simple single inheritance
@@ -147,6 +149,16 @@ class IntList(SimpleList):
  # it leaves open some questions
  # 1- both base classes define the add method - which one is called on the descendant?
 
+ # Rules
+ # For a class with multiple bases which does nor define __init__ only the insit of the first base is invoked
+ # __bases__ is a tuple of base classes in the same order give in the class definition
+
+ # MRO - method resolution order in multi-inheritance
+ # __mro__ stores the MRO for a class or you can use the mro() method on the class
+ # the MRO is essential because is a flat view of the inheritance chain used by the Pyhton interpreter to
+ # decide how to resolve the calls to the methods on an instance. Given obj.method() Pyhton walks the MRO
+ # upwards and the first base class that provides a matching method is used for the invokation.
+
 
 class SortedIntList(IntList, SortedList):
     """
@@ -155,6 +167,30 @@ class SortedIntList(IntList, SortedList):
 
     def __repr__(self):
         return "SortedIntList({!r})".format(list(self))
+
+# A bunch of classes to illustrate MRO
+
+
+class A:
+    def func(self):
+        return "A.func"
+
+
+class B:
+    def func(self):
+        return "B.func"
+
+
+class C(A):
+    def func(self):
+        return "C.func"
+
+# which implementation of func is actually resolved on D?
+# this depends on the MRO of the class D!
+
+
+class D(B, C):
+    pass
 
 # ################################################################################################
 
@@ -249,6 +285,29 @@ def test_module():
         issubclass(SortedIntList, IntList)))
     print("issubclass(SortedIntList, SortedList) = {}".format(
         issubclass(SortedIntList, SortedList)))
+
+    print()
+    print("__bases__ is a tuple of base classes in the same order give in the class definition")
+    print("SortedIntList.__bases__ = {}".format(SortedIntList.__bases__))
+
+    print()
+    print("MRO - method resolution order in multi-inheritance")
+
+    print()
+    pp("SortedIntList.__mro__ = {}".format(SortedIntList.__mro__))
+
+    print()
+    pp("SortedIntList.mro() = {}".format(SortedIntList.mro()))
+
+    print()
+    d = D()
+    pp("D.mro() = {}".format(D.mro()))
+
+    print()
+    print("d = D => d.func() = {}".format(d.func()))
+
+    print()
+    print("on instances of type D the call to the method func() is resolved by the first class in the MRO that provide an implementation for func()")
 
 # ##########################################################################################
 
