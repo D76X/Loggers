@@ -29,7 +29,7 @@ Precisely the executable tools __candle.exe, light.exe, heat.exe, dark.exe__ and
 __insigna.exe, lux.exe, melt.exe, torch.exe__ are all directly under in the bin folder. The only 
 exception is __burn.exe__.  
 
-- C:\Program Files (x86)\WiX Toolset v3.10\bin\x86\burn.exe
+- C:\Program Files (x86)\WiX Toolset v3.11\bin\x86\burn.exe
 
 --- 
 
