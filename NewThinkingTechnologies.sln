@@ -466,7 +466,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogXtreme.DataStructures.Te
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "LogXtreme.WinDsk", "Apps\Installers\LogXtreme.WinDsk\LogXtreme.WinDsk.wixproj", "{4931BFF2-9F57-4272-A300-425C642FA132}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSBuild", "MSBuild", "{7855C723-4783-467D-A978-C6A988DC41A8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSBuild-Examples", "MSBuild-Examples", "{7855C723-4783-467D-A978-C6A988DC41A8}"
 	ProjectSection(SolutionItems) = preProject
 		Examples\MSBuild-Examples\01.DoSomething.msbuild = Examples\MSBuild-Examples\01.DoSomething.msbuild
 		Examples\MSBuild-Examples\02.DoSomething.msbuild = Examples\MSBuild-Examples\02.DoSomething.msbuild

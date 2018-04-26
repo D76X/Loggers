@@ -153,11 +153,29 @@ class IntList(SimpleList):
  # For a class with multiple bases which does nor define __init__ only the insit of the first base is invoked
  # __bases__ is a tuple of base classes in the same order give in the class definition
 
- # MRO - method resolution order in multi-inheritance
- # __mro__ stores the MRO for a class or you can use the mro() method on the class
+ # MRO - method resolution order in multi-inheritance.
+ # __mro__ stores the MRO for a class or you can use the mro() method on the class.
  # the MRO is essential because is a flat view of the inheritance chain used by the Pyhton interpreter to
- # decide how to resolve the calls to the methods on an instance. Given obj.method() Pyhton walks the MRO
+ # decide how to resolve the calls to the methods on an instance. Given obj.method() Pyhton walks the MRO.
  # upwards and the first base class that provides a matching method is used for the invokation.
+ # Python employs an algorithm known as C3 to determine the MRO of a class.
+
+ # C3 Algorithm Rules for determing the MRO
+ # 1- Subclasses came always before Base classes regadless the order in which they appear in the definition of a class.
+ # 2- Given rule 1 any other class appears in MRO in the order given with the definition of the class.
+
+ # WARNING!
+ # In Python it is possible to define classes whose inheritance definitiion violates the C3 algorithm rules.
+ # In these cases the Python interpreter will fail to compile the code.
+
+ # Example of classes that fail the C3 algorithm rules
+ # D fails to compile because B and C must both come before A in any MRO as B and C inherit from A.
+ # However the class definition for D places A explicitly before C which fails the C3 algorithm rules
+ # as A cannot at the same time come before C and after C.
+ # class A: pass
+ # class B(A): pass
+ # class C(A): pass
+ # class D(B, A, C): pass
 
 
 class SortedIntList(IntList, SortedList):
