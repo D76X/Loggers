@@ -11,7 +11,13 @@ MakerBot. More information on this topics can be found [here](https://groups.goo
 
 #### Buy WanHao Duplicator 4 (aprox. £600)
 
-https://www.3dhubs.com/3d-printers/wanhao-duplicator-4
+https://www.3dhubs.com/3d-printers/wanhao-duplicator-4  
+
+#### The official WANHAO dedicated page 
+
+This page provides detailed instructions in regard all sorts of upgrades, maintenace and fixes.
+
+http://www.wanhao3dprinter.com/FAQ/ShowArticle.asp?ArticleID=23
 
 #### Some specs.
 
@@ -47,7 +53,7 @@ Lots of useful information can be found at the **WanHao Printer 3d** google grou
 below. In particular, there are all sorts of instruction about compatible firmware,
 software and upgrades.
 
-https://groups.google.com/forum/#!forum/wanhao-printer-3d
+https://groups.google.com/forum/#!forum/wanhao-printer-3d  
 
 ---
 
@@ -56,9 +62,10 @@ https://groups.google.com/forum/#!forum/wanhao-printer-3d
 On of the first thing to know about your printer is what kind of hardware is used to
 control it. 
 
-D4 Motherboard -  mightyboard
-https://www.wanhaouk.com/products/duplicator-4-motherboard
-https://groups.google.com/forum/#!topic/wanhao-printer-3d/sjYp4XBoOvQ
+#### D4 Motherboard -  mightyboard
+
+https://www.wanhaouk.com/products/duplicator-4-motherboard  
+https://groups.google.com/forum/#!topic/wanhao-printer-3d/sjYp4XBoOvQ  
 
 ---
 
@@ -88,6 +95,10 @@ WanHao Printer 3d ›
 Problem duplicator 4 firmware
 https://groups.google.com/forum/#!topic/wanhao-printer-3d/sjYp4XBoOvQ
 
+WanHao Printer 3d ›
+Warning: do NOT upgrade to Sailfish if you have a new D4 motherboard!
+https://groups.google.com/forum/#!topic/wanhao-printer-3d/qrpy8ztCmiw
+
 ## Chapter 6 - Installing Sailfish
 http://www.sailfishfirmware.com/doc/install.html#x31-780006
 
@@ -103,3 +114,6 @@ https://groups.google.com/forum/#!searchin/wanhao-printer-3d/duplicator$204|sort
 ## Setting up the printer
 
 - [Simply and Accurately Calibrate your 3D Printer using Mattercontrol!](https://www.youtube.com/watch?v=D2pGtLSL9dc)
+
+
+https://groups.google.com/forum/#!searchin/wanhao-printer-3d/duplicator$204$20MAKERBOT|sort:date/wanhao-printer-3d/cWpZ06PWpBI/5pqWVORMAwAJ

@@ -327,6 +327,46 @@ def test_module():
     print()
     print("on instances of type D the call to the method func() is resolved by the first class in the MRO that provide an implementation for func()")
 
+    # ----------------------------
+    # How super() works in Python
+    # ----------------------------
+
+    # Given a method resolution order (MRO) and a class C in the MRO, super() gives you an object which resolves methods using only the
+    # part of the MRO which comes after C. In other words, super() does not work with the base classes of a class but instead it works
+    # with the MRO of the type of the object on which a method was originally invoked.
+
+    # A call to super() returns an object that is called "proxy" object which routes methods calls.
+    # There are two types of proxy obejcts.
+
+    # 1-Bound proxy - these are bound to instances or classes objects.
+    # These are relevant in the contest of the object returned by the call to super() and sometimes they are also called super()-proxies.
+
+    # 2-Unbound proxy - are not bound to either instances or classes objects.
+    # Unbound proxies do not do any method call dispatching and are a bit of oddity in Python.
+
+    # Bound Proxy
+
+    # ----------------------
+    # 1 Class-bound proxy
+    # ----------------------
+
+    # proxy = super(base-class, derived-class)
+
+    # Method Resolution Strategy
+
+    # Python finds the MRO for derived-class.
+    # Python finds the base-class in the MRO.
+    # Pyhton takes the part of the MRO that comes AFTER base-class.
+    # Python resolves the method call to the first implementation available on the MRO fragment by matching on the methid name.
+
+    # Example of Class-bound proxy
+
+    # ----------------------
+    # 2 Instance-bound proxy
+    # ----------------------
+
+    # Method Resolution Strategy
+
 # ##########################################################################################
 
 # 1-Run the file in Python as a script.

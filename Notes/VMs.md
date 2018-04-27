@@ -9,6 +9,9 @@ for free for 90 days.
 
 - [Doug installs free, legal Windows virtual machines](https://www.youtube.com/watch?v=a8HESCa9ZP8)
 
+### Set up a host-guest shared folder
+
+- https://www.youtube.com/watch?v=YxL414FRccQ 
 ---
 
 #### Windows 10 VM - 90 days trial
