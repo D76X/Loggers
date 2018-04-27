@@ -27,6 +27,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config.wxi" />
+    <Content Include="EULAs\01.EULA.DidiSoft.rtf" />
+    <Content Include="EULAs\02.EULA.DidiSoft.rtf" />
     <Content Include="Readme.md" />
     <Content Include="RemoveDistFolderElementTransform.xslt" />
   </ItemGroup>
@@ -35,6 +37,9 @@
       <HintPath>$(WixExtDir)\WixUIExtension.dll</HintPath>
       <Name>WixUIExtension</Name>
     </WixExtension>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EULAs" />
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" Condition=" '$(WixTargetsPath)' != '' " />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets" Condition=" '$(WixTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets') " />

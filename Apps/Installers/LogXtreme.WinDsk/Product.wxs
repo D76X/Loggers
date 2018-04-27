@@ -29,6 +29,8 @@
     -->
     <UIRef Id="WixUI_Minimal" />
 
+    <WixVariable Id="WixUILicenseRtf" Value="./EULAs/02.EULA.DidiSoft.rtf" /> 
+     
     <!--This pulls in all the properties defined in the same file-->
     <PropertyRef Id="PROPERTY_TEST_PROPERTY_1"/>
 
