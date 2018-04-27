@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!--
+  In order for the MSBuild  project to work the reference to the other 
+  assets must be imported. The <Import> declaration might also be used 
+  in any of the other files that make up a MSBuild project i.e. the 
+  Common.props may be imported by the Common.targets, etc.
+  -->
+  <Import Project="Common.targets"/>
+  <Import Project="Common.props"/>
+  
+  <!--
+  Inheritance!
+  The oder of the <Import> is significant. For example Targets can be 
+  overwritten in files that are included last. Ulimately the *.proj 
+  file can be use for such override as well.
+  -->
+  
+  <!--*.proj is used to to mark the enty point of an MSBuild project-->
+  <Target Name="EntryPoint" DependsOnTargets="ListRps">
+    <Message Text="This is the entry point Target" />
+    <Message Text="Hello $(Author)" />
+  </Target>
+  
+</Project>
+
+
+<!--
+In order to run this project as usual run a Visual Studio Developer Shell 
+in the folder of the *.proj file and use either.
+
+> msbuild DoSomething.proj 
+> msbuild DoSomething.proj @args.rsp
+
+This project also show how to use the DependsOnTargets attribute on Target
+elements to specify the order in which Targets are to be executed by MSBuild.
+-->

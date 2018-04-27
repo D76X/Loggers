@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Target Name="ListRps"
+          DependsOnTargets="ListStaff">
+    <Message Text="@(Rsps)"/>
+    <Message Text="@(Rsps->'%(ModifiedTime)')"/>
+  </Target>
+
+  <Target Name="ListStaff"
+          DependsOnTargets="ProcessCustomProperties">
+    <Message Text="@(Staff)"/>
+    <Message Text="@(Staff->'%(Name)')"/>
+    <Message Text="@(Staff->'%(Surname)')"/>
+  </Target>
+
+  <Target Name="ProcessCustomProperties"
+          DependsOnTargets="ProcessReservedProperties">
+    <Message Text="Author = $(Property1)"/>
+  </Target>
+
+  <Target Name="ProcessReservedProperties">
+    <Message Text="LOGONSERVER = $(LOGONSERVER)"/>
+    <Message Text="MSBuildProjectDirectory = $(MSBuildProjectDirectory)"/>
+    <Message Text="MSBuildBinPath = $(MSBuildBinPath)"/>
+  </Target>
+
+</Project>
