@@ -360,6 +360,32 @@ def test_module():
     # Python resolves the method call to the first implementation available on the MRO fragment by matching on the methid name.
 
     # Example of Class-bound proxy
+    print()
+    print("Example of class-bond super()-proxy")
+
+    print()
+    class_bound_proxy = super(SortedList, SortedIntList)
+    print("class_bound_proxy = super(SortedList, SortedIntList) = {}".format(
+        class_bound_proxy))
+
+    print()
+    print("Python takes the MRO of the derived-class...")
+    pp("SortedIntList.mro() = {}".format(SortedIntList.mro()))
+
+    print()
+    print("Python takes only the part of MRO that comes after the base-class SimpleList > Object")
+
+    print()
+    print("Python resolved the call to a method to the first class that has an implementation of a method with the same name on the MRO fragment.")
+    print("Hence...")
+    print("super(SortedList, SortedIntList).add = {}".format(class_bound_proxy.add))
+
+    print()
+    print("class-bound proxies cannot be use for direct invokation of instance methods!")
+    print("class-bound proxies can be use for direct invokation of static or class methods!")
+    super(SortedIntList, SortedIntList)._validate(5)
+    print("super(SortedIntList, SortedIntList)._validate(5) = {}".format(
+        super(SortedIntList, SortedIntList)._validate(5)))
 
     # ----------------------
     # 2 Instance-bound proxy
