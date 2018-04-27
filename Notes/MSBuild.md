@@ -29,6 +29,8 @@ The files are
 - Microsoft.Build.CommonTypes.xsd
 - Microsoft.Build.Core.xsd
 
+---
+
 ### MSBuild as part of the .NET Framework
 
 1. [.Net Framework installation include MSBuild?
@@ -49,15 +51,175 @@ In addition to the MSBuild executable, the __*.xsd__ files are located in the fo
 
 ## Project
 
-Any __*.msbuild__ files must begin with 
+Any __*.msbuild__ files must begin with
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+         DefaultTargets="HelloWorld">...
+```
+
+---
 
 ## Targets
 
+Targets represent the sequence of instruction to MSBuild. Targets contain Tasks.
+
+### Some examples from command line and *.rsp
+
+From the command line.
+
+```> msbuild dosomething.msbuild /t:Target10;Target3```
+
+Alternative from the command line with a backing *rsp file.
+
+```> msbuild dosomething.msbuild @dosomething.rsp```
+
+In the *.rsp file
+
+```
+...
+/t:Target10;Target3
+...
+```
+
+
+Another way is to set this in the **DefaultTargets** attribute of the **Project** 
+element of the *.msbuild.
+ 
+```
+<Project DefaultTargets="Target10;Target3" ...
+```
+
+In all cases Target10 is run **before** Target3.
+
+### Concatenation of Targets in the *.msbuild
+
+It is possible to chain the calls to Target elements declared in the *.msbuild file as
+in the following example.
+
+```
+<Target Name="TargetA">
+	...
+	<CallTarget Targets="TargetZ;TargetD" />
+	...
+</Target>
+```
+
+### Implicit Target invokation model - DependsOnTarget attribute
+
+In addition to being able to concatenate Targets explicitely in the *.msbuild it is also
+and common to concatenate Target elements by expressing their relative dependance by means 
+of the attribute **DependsOnTargets** of the **Target** element. 
+
+In the following example the chain af calls will be the following TargetA => TargetZ=> TargetD.
+
+```
+<Target Name="TargetA">
+
+</Target>
+	...
+<Target Name="TargetD" DependsOnTargets="TargetZ">
+	...
+</Target>
+	...
+<Target Name="TargetZ" DependsOnTargets="TargetA">
+	...
+</Target>
+	...
+<Target Name="TargetR" DependsOnTargets="TargetA">
+	...	
+</Target>
+```
+
+#### Important fact about DependsOnTarget
+
+Any Target that is set as a value of the **DependsOnTarget** attribute of any other
+Target that is in the execution path provided to MSBuild **will be executed only once!**
+This is always the case even when there might be multiple Target element which invoke 
+the same Target via the **CallTarget** element.
+
+#### AfterTargets and BeforeTargets attributes
+
+The semantic of **AfterTargets** and **BeforeTargets** is a bit different. These attributes 
+both specify that when the specific Target to which they are applied is run from the console
+**directly** the Target value of the attribute must also be run before or after respectively.
+
+In the following example the sequence will be A => C => B but only when TargetC is invoked 
+directly as in 
+
+```
+> msbuild dosomething.msbuild /t:"TargetC"
+```
+
+```
+<Target Name="TargetA" BeforeTargets="TargetC">
+
+</Target>
+	...
+<Target Name="TargetB" AfterTargets="TargetC">
+	...
+</Target>
+	...
+<Target Name="TargetC">
+	...
+</Target>
+```
+
+#### Conditional Targets
+
+Conditions on the execution of Targtes can be set by means of the attribute **Condition**
+whose value may be an expression evaluated at run time. Normally the expression makes use
+of custom or built-in MSBuild properties or any combination of them into an extression that
+evaluates to a boolean. The example also shows  
+
+```
+<PropertyGroup>
+	<DoIt>true</DoIt>
+	<TestIt>yes<TestIt>
+<PropertyGroup>
+
+<Target Name="TargetA" DependsOnTargets="TargetC;TargetD">
+	...
+</Target>
+	...
+<Target Name="TargetB">
+	...
+</Target>
+	...
+<Target Name="TargetC" Condition="$(DoIt)">
+	...
+</Target>
+<Target Name="TargetD" Condition="$(TestIt)=='yes'">
+	...
+</Target>
+```
+
+---
+
 ## Tasks
+
+Tasks are descendant of the Task class which implements ITask. ITask declares the
+Execute method that is invoked by MSBuild when the *.msbuild is processed.
+
+---
 
 ## Properties
 
+- Properties are used to declare run-time values which can be consumed by the Tasks in
+  the various Targets. 
+
+- Properties can be combined in other properties.
+
+- The are a number of MSBuild built-in properties.
+
+- One frequent application of Properties is to compose paths to directories and files or search paths.
+
+---
+
 ## Items
+
+- Items are used to define array of items with some metadata attached to them.
 
 ---
 
@@ -66,4 +228,6 @@ Any __*.msbuild__ files must begin with
 - [MSBuild Extension Pack](http://www.msbuildextensionpack.com/)
 
 The MSBuild Extension Pack provides the largest collection of MSBuild Tasks, MSBuild Loggers
-and MSBuild TaskFactories available
+and MSBuild TaskFactories available.
+
+---

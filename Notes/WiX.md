@@ -678,4 +678,7 @@ The WiX UI support in its simple form **WixUI_Minimal** may be used to install a
 single feature and present teh user with the **Licence Agreement**. In order to 
 include a custom Licence Agreement document..
 
+- [wix specify licence shows nothing
+](https://stackoverflow.com/questions/6380724/wix-specify-licence-shows-nothing)
+
 ---
