@@ -361,7 +361,7 @@ def test_module():
 
     # Example of Class-bound proxy
     print()
-    print("Example of class-bond super()-proxy")
+    print("Example of class-bound super()-proxy")
 
     print()
     class_bound_proxy = super(SortedList, SortedIntList)
@@ -391,7 +391,44 @@ def test_module():
     # 2 Instance-bound proxy
     # ----------------------
 
+    # proxy = super(class, instance-of-class)
+    # instance-of-class must be any instance of class or any descendant.
+
     # Method Resolution Strategy
+
+    # Python finds the MRO for the type used as second argument.
+    # Pyton finds the location of the first argument in the MRO.
+    # Python takes the MRO fragment AFTER the location above to resolve method calls by matching on teh method name.
+    # With instance-bound super()-proxies class, static and instance methods call all be invoked.
+
+    # Example of Instance-bound proxy
+    print()
+    print("Example of instance-bound super()-proxy")
+
+    print()
+    pp("SortedIntList.mro() = {}".format(SortedIntList.mro()))
+
+    print()
+    sil = SortedIntList([3, 2, 1, -1])
+    print("sil = SortedIntList([3, 2, 1, -1]) = {}".format(sil))
+
+    print()
+    instance_bound_proxy = super(SortedList, sil)
+    print("instance_bound_proxy = super(SortedList, sil) = {}".format(
+        instance_bound_proxy))
+
+    print()
+    print("super(SortedList, sil).add(6) = {}".format(
+        instance_bound_proxy.add(6)))
+    print("super(SortedList, sil).add(""wrong data!"") = {}".format(
+        instance_bound_proxy.add("wrong data!")))
+
+    print()
+    print("In the last example we are able to insert a string intop an instance of SortedIntList!")
+    print("This is not what we want nevertheless it happens because the call to add is resolved to SimpleList which follows SortedList in the MRO!")
+
+    print()
+    print("This example shows the danger of super() and multi-inheritance in Python in general!")
 
 # ##########################################################################################
 

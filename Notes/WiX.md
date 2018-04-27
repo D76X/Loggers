@@ -678,6 +678,16 @@ The WiX UI support in its simple form **WixUI_Minimal** may be used to install a
 single feature and present teh user with the **Licence Agreement**. In order to 
 include a custom Licence Agreement document..
 
+```
+<WixVariable Id="WixUILicenseRtf" Value="test.rtf" />
+```
+
+#### Fix the issue with *.rtf and WiX
+
+The installer might have problems with displaying the *.rtf correctly in which 
+case it might be required to open the file in WordPad and resaved it as *.rtf
+to clean up the special formatting left over by Words or similar.
+
 - [wix specify licence shows nothing
 ](https://stackoverflow.com/questions/6380724/wix-specify-licence-shows-nothing)
 
