@@ -430,6 +430,22 @@ def test_module():
     print()
     print("This example shows the danger of super() and multi-inheritance in Python in general!")
 
+    # What happens when super() is called with no arguments?
+    # Calls to super() are typically used in derived classes!
+
+    # The predominant cases are
+
+    # 1
+    # If super() is called in an instance method.
+    # Then super() = super(class-of-method, self) => instance-bound super()-proxy
+    # In sinle inheritace this causes the call to super().someMethod() to resolve to the invokation of the first base class
+    # # that implements someMethod mathcing it by name on the MRO for the class class-of-method.
+
+    # 2
+    # If super() is called in a class or (static?) method. 
+    # Then super() = super(class-of-method, class) => class-bound super()-proxy.
+    # The mechanincs is the same as before in teh simple inheritance case.
+
 # ##########################################################################################
 
 # 1-Run the file in Python as a script.
