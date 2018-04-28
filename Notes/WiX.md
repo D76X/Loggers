@@ -692,3 +692,42 @@ to clean up the special formatting left over by Words or similar.
 ](https://stackoverflow.com/questions/6380724/wix-specify-licence-shows-nothing)
 
 ---
+
+## AppSearch & LaunchConditions
+
+AppSearch is the part of Windows Installer that allows to examine the 
+target system. AppSearch is a Windows Installer **standard action** and
+the WiX Toolset provides access to this functionality. 
+
+- Files
+- Folders
+- Registry Keys
+
+### AppSearch with Wix
+
+The WiX Toolset provides a set of tags to performed some of teh common 
+searches allowed by the Windows Installer AppSerch.
+
+- \<DirectorySearch>
+- \<FileSearch>
+- \<RegistrySearch>
+- \<ComponentSearch>
+- \<IniSearch>
+
+### LaunchConditions
+
+
+- https://blogs.technet.microsoft.com/alexshev/2008/02/10/from-msi-to-wix-part-3-launch-conditions-and-application-search/
+- https://stackoverflow.com/questions/7389414/how-to-determine-the-folder-that-a-previous-wix-install-installed-a-program-in
+- https://blogs.msdn.microsoft.com/syamp/2012/09/30/wix-search-for-install-path-from-registry/
+- 
+One of the many ways that the results for the standard action AppSearch
+can be used is in a LaunchCondition. LaunchConditions are evaluated at the
+beginning of the set-ip process just after AppSearch.
+
+Normally LaunchConditions are used to test whether the target system 
+satisfies **required prerequisites**.
+
+- If a LaunchCondition retuns false then a message dialog is displayed 
+  to the user and the installation is terminated.
+---
