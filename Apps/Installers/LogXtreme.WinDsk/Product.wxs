@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
   
   <!--Pull in all the *.wxi files-->
   <!--Built in Project reference variables http://wixtoolset.org/documentation/manual/v3/votive/votive_project_references.html-->
@@ -9,7 +10,7 @@
            Name="LogXtreme for Windows Desktop"
            Language="1033"
            Version="1.0.0.0"
-           Manufacturer="New Thinking Technologies"
+           Manufacturer="$(var.Manufacturer)"
            UpgradeCode="875901D4-C083-4279-B199-4DDC0D2EBD56">
 
     <!--This info goes into the MSI summary information-->
@@ -17,7 +18,7 @@
              Compressed="yes"
              InstallScope="perMachine"
              Description="LogXtreme Data Logger Software"
-             Manufacturer="New Thinking Technologies"
+             Manufacturer="$(var.Manufacturer)"
              Comments="Installer for LogXtreme Data Logger Software"/>
 
     <!--
@@ -33,6 +34,7 @@
      
     <!--This pulls in all the properties defined in the same file-->
     <PropertyRef Id="PROPERTY_TEST_PROPERTY_1"/>
+    <PropertyRef Id="PROPERTY_DEFAULT_DIR_NEW_THINKING_TECHNOLOGIES"/>
 
     <!--This tells WiX to automatically assign files to cabinet files-->
     <!--The cabinet files will be embedded into the MSI file-->

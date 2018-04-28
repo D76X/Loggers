@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Fragment>
+  <?include "Config.wxi"?>
+  <Fragment>
     <Directory Id="TARGETDIR"
                Name="SourceDir">
       <Directory Id="ProgramFilesFolder">
         <Directory Id="DIR_NEW_THINKING_TECHNOLOGIES"
-                   Name="New Thinking Technologies">
+                   Name="$(var.Manufacturer)">
           <Directory Id="DIR_LOGXTREME_WIN_DSK"
-                     Name="LogXtreme Windows Desktop">
+                     Name="$(var.ProductLogXtremeWindowsDesktop)">
           </Directory>
           <Directory Id="ProgramMenuFolder">
             <Directory Id="DIR_New_Thinking_Technologies_Shortcuts"
-                       Name="New Thinking Technologies">
+                       Name="$(var.Manufacturer)">
             </Directory>
           </Directory>
         </Directory>

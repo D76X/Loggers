@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  <?include "Config.wxi"?> 
+  <Fragment>    
+    <Property Id="PROPERTY_DEFAULT_DIR_NEW_THINKING_TECHNOLOGIES">
+      <DirectorySearch Id="Search_DIR_NEW_THINKING_TECHNOLOGIES"
+                       Path="[ProgramFilesFolder]\$(var.Manufacturer)">
+
+      </DirectorySearch>
+    </Property>
+    <Property Id="PROPERTY_DEFAULT_DIR_LOGXTREME_WIN_DSK">
+      <DirectorySearch Id="Search_DIR_LOGXTREME_WIN_DSK"
+                       Path="[ProgramFilesFolder]\$(var.Manufacturer)\$(var.ProductLogXtremeWindowsDesktop)">
+      </DirectorySearch>
+    </Property>
+    <Property Id="PROPERTY_DEFAULT_FILE_LOGXTREME_WIN_DSK_EXE">
+      <util:DirectorySearchRef Id="Search_DIR_LOGXTREME_WIN_DSK">
+        <FileSearch Id="Search_FILE_LOGXTREME_WIN_DSK_EXE"
+                    LongName="$(var.ProductLogXtremeWindowsDesktop)"/>                    
+      </util:DirectorySearchRef>
+    </Property>
+  </Fragment>
+</Wix>

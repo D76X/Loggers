@@ -21,6 +21,7 @@
   <ItemGroup>
     <Compile Include="Directories.wxs" />
     <Compile Include="DistFilesFragment.wxs" />
+    <Compile Include="LaunchConditions.wxs" />
     <Compile Include="Product.wxs" />
     <Compile Include="Properties.wxs" />
     <Compile Include="ShortcutsFragment.wxs" />
@@ -33,6 +34,10 @@
     <Content Include="RemoveDistFolderElementTransform.xslt" />
   </ItemGroup>
   <ItemGroup>
+    <WixExtension Include="WixUtilExtension">
+      <HintPath>$(WixExtDir)\WixUtilExtension.dll</HintPath>
+      <Name>WixUtilExtension</Name>
+    </WixExtension>
     <WixExtension Include="WixUIExtension">
       <HintPath>$(WixExtDir)\WixUIExtension.dll</HintPath>
       <Name>WixUIExtension</Name>

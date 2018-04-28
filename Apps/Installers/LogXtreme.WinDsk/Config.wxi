@@ -2,4 +2,6 @@
 <Include>
   <!--https://stackoverflow.com/questions/12973518/wix-relative-path-to-the-source-file-->
   <?define SourceDir = "C:\GitHub\Loggers\Apps\Installers\LogXtreme.WinDsk\dist" ?>
+  <?define Manufacturer = "New Thinking Technologies" ?>
+  <?define ProductLogXtremeWindowsDesktop = "LogXtreme Windows Desktop" ?>
 </Include>
