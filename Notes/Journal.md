@@ -92,5 +92,6 @@
 |							| WiX installer												   |
 | 25/04/2018				| 3D Printing work, Python, WiX installer, jQuery, ZEROMQ,     |
 |							| Probability, Phaser, German, XSLT							   |
-| 26/04/2018			    | 3D Printing work, Python, WiX installer-VMs, jQuery, German  |
-|                           | MSBuild|
+| 26-27/04/2018			    | 3D Printing work, Python, WiX installer-VMs, jQuery, German  |
+|                           | MSBuild, VM, ZEROMQ, Phaser, Authoring					   |
+| 28/04/2018				||
