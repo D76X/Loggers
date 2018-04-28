@@ -124,11 +124,11 @@ class TestConstruction(unittest.TestCase):
 def test_module():
     """Module-level tests."""
 
-    testConstruction = TestConstruction()
-    testConstruction.test_empty()
-    testConstruction.test_from_sequence()
-    testConstruction.test_with_duplicates()
-    testConstruction.test_from_iterable()
+    # You can also run the tests like this from the console
+    # python "C:\GitHub\Loggers\PyApps\Scripts\Tests\PythonScriptsTest3\test063_implementing_collections.py"
+    
+    # run all the unit tests defined in this module.
+    unittest.main(__name__)
 
 # ##########################################################################################
 
@@ -147,6 +147,6 @@ def test_module():
 
 print("__name__ = {}".format(__name__))
 if __name__ == '__main__':
-    test_module()
+    test_module()    
 
 # ##########################################################################################
