@@ -95,21 +95,28 @@ Results:
 import unittest
 
 
-class SoretedSet():
+class SortedSet():
     """
     An implementation of a sorted set.
     """
 
-    def __init__(self, items):
-        self._items = sorted(items)
+    def __init__(self, items=None):
+        self._items = sorted(items) if items is not None else []
+
+    def methodThatThrowsValueError(self):
+        raise ValueError("There was an error!")
 
 
 class TestConstruction(unittest.TestCase):
+    """
+    Test the constructor of the SortedSet class.
+    """
 
     def setUp(self):
         """
         Test fixture that is run before each test.
         """
+        # for example load files, prepare db conetctions, etc.
         print("setUp")
         pass
 
@@ -117,17 +124,32 @@ class TestConstruction(unittest.TestCase):
         """
         Test fixture that is run after each test.
         """
+        # for example close files, close connections, etc.
         print("tearDown")
         pass
 
+    def test_that_fails(self):
+        """This test showcases a failing test."""
+        raise Exception("this is a failing test!")
+
+    def test_exception_is_thown_on_non_existing_method_call(self):
+        """This showcases testing for exceptions and errors.""""
+        with self.assertRaises(ValueError):
+            s = SortedSet()
+            s.methodThatThrowsValueError()
+
+    def test_with_assertion(self):
+        """This is to showcase a simple assertion."""
+        self.assertEqual(1, 1)
+
     def test_empty(self):
-        s = SoretedSet([])
+        s = SortedSet([])
 
     def test_from_sequence(self):
-        s = SoretedSet([7, 8, 3, 1])
+        s = SortedSet([7, 8, 3, 1])
 
     def test_with_duplicates(self):
-        s = SoretedSet([8, 8, 8])
+        s = SortedSet([8, 8, 8])
 
     def test_from_iterable(self):
 
@@ -138,10 +160,7 @@ class TestConstruction(unittest.TestCase):
             yield 9
 
         g = gen6789()
-        s = SoretedSet(g)
-
-    def test_that_fails(self):
-        s = SoretedSet()
+        s = SortedSet(g)
 
 
 def test_module():
