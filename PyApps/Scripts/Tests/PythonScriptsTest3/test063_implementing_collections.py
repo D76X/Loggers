@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 This module illustrates how to design custom collection in Python.
+This module also illustrates teh basic of unit testiong in Python.
 
 Usage:
 
@@ -84,3 +85,68 @@ Results:
 # difference
 # symmetric difference
 # equal / not equal
+
+import unittest
+
+
+class SoretedSet():
+    """
+    An implementation of a sorted set.
+    """
+
+    def __init__(self, items):
+        self._items = sorted(items)
+
+
+class TestConstruction(unittest.TestCase):
+
+    def test_empty(self):
+        s = SoretedSet([])
+
+    def test_from_sequence(self):
+        s = SoretedSet([7, 8, 3, 1])
+
+    def test_with_duplicates(self):
+        s = SoretedSet([8, 8, 8])
+
+    def test_from_iterable(self):
+
+        def gen6789():
+            yield 6
+            yield 7
+            yield 8
+            yield 9
+
+        g = gen6789()
+        s = SoretedSet(g)
+
+
+def test_module():
+    """Module-level tests."""
+
+    testConstruction = TestConstruction()
+    testConstruction.test_empty()
+    testConstruction.test_from_sequence()
+    testConstruction.test_with_duplicates()
+    testConstruction.test_from_iterable()
+
+# ##########################################################################################
+
+# 1-Run the file in Python as a script.
+
+# if __name__ = '__main__' the files is executed as a script
+# to execute the file as a scrip in the cmd use : python filename.py
+
+# 2-Import the module into the Python REPL.
+
+# when  filename.py is imported into the Python REPL as in the following
+# python
+# import filename
+# the __name__ variable is set to the name of the module that by default is filename
+
+
+print("__name__ = {}".format(__name__))
+if __name__ == '__main__':
+    test_module()
+
+# ##########################################################################################
