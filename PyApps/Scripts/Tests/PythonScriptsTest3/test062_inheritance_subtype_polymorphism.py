@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 """
 This module illustrates of single and multiple inheritance and polymorphism in Python.
@@ -11,7 +10,7 @@ Usage:
 
     # The last two commands are specific to this module.
     import test062_inheritance_subtype_polymorphism as t62
-    t54.test_module()
+    t62.test_module()
 
     # Reload the module into the REPL after you make any changes to it.
     import imp
