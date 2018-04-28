@@ -4,13 +4,19 @@ This module illustrates how to design custom collection in Python.
 This module also illustrates teh basic of unit testiong in Python.
 
 Usage:
+  
+    # as this module also contains unit tests you may prefer to run it as
+    # python "C:\GitHub\Loggers\PyApps\Scripts\Tests\PythonScriptsTest3\test063_implementing_collections_and_unittests.py"
+
+    # as the unittest module causes the control to return to the console after the test are run 
+    # rather than remaining in the Pyrhon REPL.
 
     # Copy and paste all these commands in the terminal to see the outputs.
     import os; os.chdir("C:\\GitHub\\Loggers\\PyApps\\Scripts\\Tests\\PythonScriptsTest3"); clear = lambda: os.system(
-        'cls'); import imp; import test063_implementing_collections as t63; t63.test_module()
+        'cls'); import imp; import test063_implementing_collections_and_unittests as t63; t63.test_module()
 
     # The last two commands are specific to this module.
-    import test063_implementing_collections as t63
+    import test063_implementing_collections_and_unittests as t63
     t63.test_module()
 
     # Reload the module into the REPL after you make any changes to it.
@@ -100,6 +106,20 @@ class SoretedSet():
 
 class TestConstruction(unittest.TestCase):
 
+    def setUp(self):
+        """
+        Test fixture that is run before each test.
+        """
+        print("setUp")
+        pass
+
+    def tearDown(self):
+        """
+        Test fixture that is run after each test.
+        """
+        print("tearDown")
+        pass
+
     def test_empty(self):
         s = SoretedSet([])
 
@@ -120,13 +140,16 @@ class TestConstruction(unittest.TestCase):
         g = gen6789()
         s = SoretedSet(g)
 
+    def test_that_fails(self):
+        s = SoretedSet()
+
 
 def test_module():
     """Module-level tests."""
 
     # You can also run the tests like this from the console
-    # python "C:\GitHub\Loggers\PyApps\Scripts\Tests\PythonScriptsTest3\test063_implementing_collections.py"
-    
+    # python "C:\GitHub\Loggers\PyApps\Scripts\Tests\PythonScriptsTest3\test063_implementing_collections_and_unittests.py"
+
     # run all the unit tests defined in this module.
     unittest.main(__name__)
 
@@ -147,6 +170,6 @@ def test_module():
 
 print("__name__ = {}".format(__name__))
 if __name__ == '__main__':
-    test_module()    
+    test_module()
 
 # ##########################################################################################

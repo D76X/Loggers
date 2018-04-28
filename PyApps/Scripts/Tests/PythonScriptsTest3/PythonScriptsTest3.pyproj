@@ -73,9 +73,7 @@
     <Compile Include="test062_inheritance_subtype_polymorphism.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="test063_implementing_collections.py">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="test063_implementing_collections_and_unittests.py" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|ContinuumAnalytics|Anaconda36-64" />
