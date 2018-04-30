@@ -133,7 +133,7 @@ class TestConstruction(unittest.TestCase):
         raise Exception("this is a failing test!")
 
     def test_exception_is_thown_on_non_existing_method_call(self):
-        """This showcases testing for exceptions and errors.""""
+        """This showcases testing for exceptions and errors."""
         with self.assertRaises(ValueError):
             s = SortedSet()
             s.methodThatThrowsValueError()
@@ -161,6 +161,31 @@ class TestConstruction(unittest.TestCase):
 
         g = gen6789()
         s = SortedSet(g)
+
+
+class TestContainerProtocol(unittest.TestCase):
+    """
+    Test the constructor of the SortedSet class.
+    """
+
+    def setUp(self):
+        self.s = SortedSet([6, 7, 3, 9])
+
+    def test_true_6_is_contained(self):
+        """Tests IN on true."""
+        self.assertTrue(6 in self.s)
+
+    def test_false_2_is_not_contained(self):
+        """Tests IN an false."""
+        self.assertFalse(2 in self.s)
+
+    def test_true_5_is_not_contained(self):
+        """Tests NOT IN on true."""
+        self.assertTrue(5 in not self.s)
+
+    def test_false_9_is_not_contained(self):
+        """Tests NOT IN on false."""
+        self.assertFalse(9 not in self.s)
 
 
 def test_module():
