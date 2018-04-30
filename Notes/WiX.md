@@ -245,6 +245,97 @@ either true or false.
 - The action is executed when the corresponding condition evaluates to true or is blank.
 - The action is not executed otherwise.
 
+### WiX Condition
+
+- http://wixtoolset.org/documentation/manual/v3/xsd/wix/condition.html
+
+The \<Condition> element in WiX is overloaded that is its semantic depends on the elemnt that 
+contains the \<Condition> element. In general a condition is used to execute some custom action.
+
+A custom action is executed when the corresponding condition expression evaluates to **true** 
+otherwise the action is skipped.
+
+In the *.msi table structure the tables **LaunchCondition** and all the **..Sequence** tables 
+have a dedicated Condition column with the expression to be evaluated at run time. The 
+conditions in the **LaunchCondition** table are special because on the event of any of these
+evaluation to false Windows Installer shows a message to teh user and aborts the installation
+process. The conditions in the **..Sequence** tables instead only determine whether the
+corresponding action is going to be executed or not. 
+
+### Conditions of Features and Components
+
+It is also possible to set conditions on individual Features or Components which are installed 
+when the corresponding condition expression evaluates to **true**. When no condition is specified
+on a component or Feature the condition expression evaluates to **null** which Windows Installer
+interprets as **true** thus the Component or Feature will be installed.
+
+### Conditions in the UI of the installer
+
+Conditions can also be used to hide or diplsay controls in the UI for the installer or to 
+determine their behavior.
+
+### Conditions with property
+
+Often conditions are used together with properties.
+
+#### The Installed and REMOVE properties
+
+- [Installed property](https://msdn.microsoft.com/en-us/library/windows/desktop/aa369297(v=vs.85).aspx)
+- [Searchng and Launch Conditions](https://app.pluralsight.com/player?course=wix-introduction&author=matthew-clendening&name=wix-introduction-m3&clip=8&mode=live)
+
+The following is an examle of how a condition element is typically used. Notice that the condition is 
+in the CDATA element and a custom message is provided through the Message attribute. The Message is shown
+to the user **only if the condition evaluates to FALSE!**
+
+The **Installed** property is set only if the product is installed per-machine or for the current user (locally).
+The **Installed** property is often used in the \<![CDATA[Installed OR SOMEPROPERTY]]> syntax of **Launch Conditions**
+to make sure that the condition always evaluates to **true** when the user runs the unistaller. In this case the product 
+is already installed and **Installed** evaluates to **true** hence the condtion evaluates always to **true** and is 
+never able to stop the uninstallation process. 
+
+In the example below
+
+- On the first install Installed is **false** thus the NETFRAMEWORK20 is checked and if false the condition
+  evaluates to false and the installation is aborted because the .Net Framework 2.0 is not present on the 
+  target system.
+
+- On any subsequent install the Installed property evaluates to **true** hence the condition is never executed.
+
+- On **unistalling** the Installed property evaluates to **true** hence the condition is never executed.
+
+```
+<Condition Message="This application requires .NET Framework 2.0. Please install the .NET Framework then run this installer again.">
+    <![CDATA[Installed OR NETFRAMEWORK20]]>
+</Condition>
+```
+
+Another property with the same flavour is the **REMOVE** property which is only set during unistallation.
+
+---
+
+### Accessing Values in Conditions
+
+| Operator					| Example							     					   |
+| --------------------------|--------------------------------------------------------------|
+| Envirinmental Variable	| %EnvVarName												   |
+| Component Key				| $MyComponent (Action state of component)					   |
+| Component Key				| ?MyComponent (Installed state of component)				   |
+| Feature Key				| &MyFeature   (Feature action state)	      		           |
+| Feature Key				| !MyFeature   (Installed state of feature)				       |
+
+- Installed State - the current state of the component of feature.
+- Action State - the action planned by the WIS for the component or feature in the current istall process.
+
+| State					    | Value | Meaning														   |
+| --------------------------|-------|------------------------------------------------------------------|
+| INSTALLSTATE_UNKNOWN	    |  -1   | No action for feature or component							   |
+| INSTALLSTATE_ADVERTISED	|  1    | Advertise feature (not possible for components)                  |
+| INSTALLSTATE_ABSENT	    |  2    | Feature or component not present   							   |
+| INSTALLSTATE_LOCAL	    |  3    | Feature or component locally installed    					   |
+| INSTALLSTATE_SOURCE	    |  4    | Feature or component accessed from source						   |
+
+---
+
 ### LaunchCondition table
 
 LaunchCondition is a special table of every *.msi. There exists a **Launch Condition 
@@ -714,6 +805,22 @@ searches allowed by the Windows Installer AppSerch.
 - \<ComponentSearch>
 - \<IniSearch>
 
+#### RegitrySearch
+
+##### Added prefixes for raw
+
+When reading values from the registry with RegistryKey with attribute Type="raw" the 
+following data type may be possible.
+
+| Registry Data Type | Prefix                                                       |
+| -------------------|--------------------------------------------------------------|
+| REG_SZ			 | None - if 1st char is '#' it is escaped with another '#'     |
+| REG_MULTI_SZ		 | Begins with '[ ~ ]' and ends with '[ ~ ]'                    |
+| REG_EXPAND_SZ		 | Begins with '#%'							                    |
+| REG_BINARY		 | Begins with '#x' and each hex digit is also prefixed by '#x' |
+| DWORD      		 | Begins with '#' opionally followed by '+' or '-'             |
+
+
 ### LaunchConditions
 
 
@@ -731,3 +838,12 @@ satisfies **required prerequisites**.
 - If a LaunchCondition retuns false then a message dialog is displayed 
   to the user and the installation is terminated.
 ---
+
+## WiX Topics
+
+1. [How To: Block Installation Based on OS Version](http://wixtoolset.org/documentation/manual/v3/howtos/redistributables_and_install_checks/block_install_on_os.html)
+2. [How To: Read a Registry Entry During Installation + Use the property in a condition](http://wixtoolset.org/documentation/manual/v3/howtos/files_and_registry/read_a_registry_entry.html) 
+3. [How To: Check for .NET Framework Versions](http://wixtoolset.org/documentation/manual/v3/howtos/redistributables_and_install_checks/check_for_dotnet.html)
+4. [How to implement WiX installer upgrade?](https://stackoverflow.com/questions/114165/how-to-implement-wix-installer-upgrade)
+5. [Wix/MSI - How to avoid installing same MSI twice](https://stackoverflow.com/questions/7656509/wix-msi-how-to-avoid-installing-same-msi-twice) 
+
