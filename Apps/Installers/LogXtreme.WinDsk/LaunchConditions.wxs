@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
      xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
-  <?include "Config.wxi"?> 
-  <Fragment>    
+  <?include "Config.wxi"?>
+  <Fragment>
     <Property Id="PROPERTY_DEFAULT_DIR_NEW_THINKING_TECHNOLOGIES">
       <DirectorySearch Id="Search_DIR_NEW_THINKING_TECHNOLOGIES"
                        Path="[ProgramFilesFolder]\$(var.Manufacturer)">
@@ -10,15 +10,40 @@
       </DirectorySearch>
     </Property>
     <Property Id="PROPERTY_DEFAULT_DIR_LOGXTREME_WIN_DSK">
-      <DirectorySearch Id="Search_DIR_LOGXTREME_WIN_DSK"
-                       Path="[ProgramFilesFolder]\$(var.Manufacturer)\$(var.ProductLogXtremeWindowsDesktop)">
+      <DirectorySearch Id="Search_DIR_LOGXTREME_WIN_DSK_1"
+                       Path="[ProgramFilesFolder]\$(var.Manufacturer)\$(var.ProductNameLogXtremeWindowsDesktop)">
       </DirectorySearch>
     </Property>
     <Property Id="PROPERTY_DEFAULT_FILE_LOGXTREME_WIN_DSK_EXE">
-      <util:DirectorySearchRef Id="Search_DIR_LOGXTREME_WIN_DSK">
-        <FileSearch Id="Search_FILE_LOGXTREME_WIN_DSK_EXE"
-                    LongName="$(var.ProductLogXtremeWindowsDesktop)"/>                    
-      </util:DirectorySearchRef>
+      <DirectorySearch Id="Search_DIR_LOGXTREME_WIN_DSK_2"
+                       Path="[ProgramFilesFolder]\$(var.Manufacturer)\$(var.ProductNameLogXtremeWindowsDesktop)">
+        <FileSearch Id="Search_FILE_LOGXTREME_WIN_DSK_EXE_1"
+                    LongName="$(var.FileNameLogXtremeWindowsDesktopExe)"/>
+      </DirectorySearch>
     </Property>
+    <!--
+    The Guid of the components must be looked up in the *.msi by using Orca if 
+    WiX is instructed to generate them by setting the attribute Guid="*" for 
+    the corresponding <Component>.
+    -->
+    <Property Id="PROPERTY_COMPONENT_LOGXTREME_WIN_DSK_EXE">
+      <ComponentSearch Id="Search_COMP_FILE_LOGXTREME_WIN_DSK_EXE"
+                       Guid="{3FC27D10-8C6F-5E53-8438-597AA0589925}"/>
+    </Property>
+    <Property>
+      
+    </Property>
+    <!--<Property Id="PROPERTY_FILE_LOGXTREME_WIN_DSK_EXE">
+      <RegistrySearch Id="Search_REG_FILE_LOGXTREME_WIN_DSK_EXE"
+                      Root="HKLM"
+                      Key=""
+                      Name=""
+                      Type="file">
+        <FileSearch Id="Search_FILE_LOGXTREME_WIN_DSK_EXE_2"
+                    LongName="$(var.FileNameLogXtremeWindowsDesktopExe)"/>
+      </RegistrySearch>
+    </Property>-->
   </Fragment>
 </Wix>
+
+

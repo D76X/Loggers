@@ -8,7 +8,7 @@
         <Directory Id="DIR_NEW_THINKING_TECHNOLOGIES"
                    Name="$(var.Manufacturer)">
           <Directory Id="DIR_LOGXTREME_WIN_DSK"
-                     Name="$(var.ProductLogXtremeWindowsDesktop)">
+                     Name="$(var.ProductNameLogXtremeWindowsDesktop)">
           </Directory>
           <Directory Id="ProgramMenuFolder">
             <Directory Id="DIR_New_Thinking_Technologies_Shortcuts"
