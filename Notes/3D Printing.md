@@ -108,7 +108,8 @@ http://www.sailfishfirmware.com/doc/install-configuring.html#x35-900006.4
 
 ### WANHAO Duplicator 4 PID Tuning
 
-https://groups.google.com/forum/#!searchin/wanhao-printer-3d/duplicator$204|sort:date/wanhao-printer-3d/TDEniDPU67U/l6FHsXTXBAAJ
+https://groups.google.com/forum/#!searchin/wanhao-printer-3d/duplicator$204|sort:date/wanhao-printer-3d/TDEniDPU67U/l6FHsXTXBAAJ  
+
 ---
 
 ## Setting up the printer
@@ -117,3 +118,38 @@ https://groups.google.com/forum/#!searchin/wanhao-printer-3d/duplicator$204|sort
 
 
 https://groups.google.com/forum/#!searchin/wanhao-printer-3d/duplicator$204$20MAKERBOT|sort:date/wanhao-printer-3d/cWpZ06PWpBI/5pqWVORMAwAJ
+
+---
+
+## Cura 3.3.1 Settings fot WANHAO Duplicator 4
+
+- https://www.youtube.com/watch?v=DDXo2GBmbtU&t=25s
+- limit @ 4 mm^3/s
+
+### Settings for PLA on both extruders profile draft quality
+
+1. volume (x, y, z) = 225 * 145 * 150 mm
+2. nozzel diameter = 0.4 mm
+3. copatible material diameter = 1.75 mm
+4. layer heigt = 0.2 mm
+5. Initial layer height = 0.3 mm (compensate for bumps)
+6. initial layer line width = 125% (compensate for bumps)
+5. wall thinkness = 0.8 mm
+6. top/bottom thikness 0.8 mm
+7. Infill density = 20%
+8. print speed = 40 mm/s
+9. wall speed = 20 mm/s
+10. travel speed = 90 mm/s
+11. Initial layer speed = 10 mm/s
+14. top/bottom speed = 20 mm/s (down to 10 mm/s if does not stick!)
+15. outer shell speed = 20 mm/s (improves looks)
+16. innfill speed = 40 mm/s (?)
+
+
+12. default printing temperature = 200 C
+13. build plate temperatur = 60 C
+13. retraction distance = 6.5 mm (2 mm?)
+14. retraction speed = 25 mm/s
+15. flow = 100% (increase or decrease to chnage the )
+
+16. minimal layer time = 15 s (give unough time to cool the layer before teh next)
