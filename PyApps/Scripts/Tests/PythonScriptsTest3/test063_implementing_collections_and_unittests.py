@@ -4,11 +4,11 @@ This module illustrates how to design custom collection in Python.
 This module also illustrates teh basic of unit testiong in Python.
 
 Usage:
-  
+
     # as this module also contains unit tests you may prefer to run it as
     # python "C:\GitHub\Loggers\PyApps\Scripts\Tests\PythonScriptsTest3\test063_implementing_collections_and_unittests.py"
 
-    # as the unittest module causes the control to return to the console after the test are run 
+    # as the unittest module causes the control to return to the console after the test are run
     # rather than remaining in the Pyrhon REPL.
 
     # Copy and paste all these commands in the terminal to see the outputs.
@@ -100,16 +100,31 @@ class SortedSet():
     An implementation of a sorted set.
     """
 
-    def __init__(self, items=None):
-        self._items = sorted(items) if items is not None else []
-
     def methodThatThrowsValueError(self):
         raise ValueError("There was an error!")
+
+    def __init__(self, items=None):
+        self._items = sorted(set(items)) if items is not None else []
+
+    # Container Protocol
+    def __contains__(self, item):
+        return item in self._items
+
+    # Size Protocol
+    def __len__(self):
+        return len(self._items)
+
+    # Iterable Protocol
+    def __iter__(self):
+        return iter(self._items)
+
+    # The Sequence Protocol implies the Iterable Protocol
+    # thus the Iterable Protocol must be implemented first
 
 
 class TestConstruction(unittest.TestCase):
     """
-    Test the constructor of the SortedSet class.
+    Tests the constructor of the SortedSet class.
     """
 
     def setUp(self):
@@ -165,7 +180,8 @@ class TestConstruction(unittest.TestCase):
 
 class TestContainerProtocol(unittest.TestCase):
     """
-    Test the constructor of the SortedSet class.
+    Tests that the SortedSet class implements teh Container Protocol
+    via __contains__.
     """
 
     def setUp(self):
@@ -181,11 +197,69 @@ class TestContainerProtocol(unittest.TestCase):
 
     def test_true_5_is_not_contained(self):
         """Tests NOT IN on true."""
-        self.assertTrue(5 in not self.s)
+        self.assertTrue(5 not in self.s)
 
     def test_false_9_is_not_contained(self):
         """Tests NOT IN on false."""
         self.assertFalse(9 not in self.s)
+
+
+class TestSizeProtocol(unittest.TestCase):
+    """
+    Tests that the SortedSet class properly implements the Size Protocol.
+    """
+
+    def test_empty(self):
+        s = SortedSet()
+        self.assertEqual(len(s), 0)
+
+    def test_one(self):
+        s = SortedSet([91])
+        self.assertEqual(len(s), 1)
+
+    def test_10(self):
+        s = SortedSet([-i for i in range(10)])
+        self.assertEqual(len(s), 10)
+
+    def test_duplicates_are_only_counted_once(self):
+        s = SortedSet([i for i in range(10)]+[1, 2, 3])
+        self.assertEqual(len(s), 10)
+
+
+class TestIterableProtocol(unittest.TestCase):
+    """
+    Tests that the SortedSet class properly implements the Iterable Protocol.
+    """
+
+    def setUp(self):
+        self.s = SortedSet([7, 2, 1, 1, 9])
+
+    def test_iter(self):
+        """
+        Tests that the __iter__ is properly implemented.
+        Each next() call returns the corresponding item in the iterable.
+        The last call to the iterator raises a StopIteration exeption.
+        """
+        iterator = iter(self.s)
+        self.assertEqual(next(iterator), 1)
+        self.assertEqual(next(iterator), 2)
+        self.assertEqual(next(iterator), 7)
+        self.assertEqual(next(iterator), 9)
+        # this is a bit special as it uses a lambda
+        # this is how generally code raising exceptions should be tested
+        self.assertRaises(StopIteration, lambda: next(iterator))
+
+    def test_for_loop(self):
+        """
+        Tests that the for loop idiom works as expected.
+        """
+        index = 0
+        expected = [1, 2, 7, 9]
+        for item in self.s:
+            self.assertEqual(item, expected[index])
+            index += 1
+        for idx, item in enumerate(self.s):
+            self.assertEqual(item, expected[idx])
 
 
 def test_module():
