@@ -955,3 +955,19 @@ satisfies **required prerequisites**.
 5. [Wix/MSI - How to avoid installing same MSI twice](https://stackoverflow.com/questions/7656509/wix-msi-how-to-avoid-installing-same-msi-twice) 
 6. [How To: Write a Registry Entry During Installation](http://wixtoolset.org/documentation/manual/v3/howtos/files_and_registry/write_a_registry_entry.html)
 
+---
+
+## Other useful Info
+
+1. [How do I find the .NET version?](https://stackoverflow.com/questions/1565434/how-do-i-find-the-net-version)
+
+The Powershell command below is to run under admin account and returs the complete table of .NET Frameworks
+installed on teh system includiong things such as WCF and WPF amongst the other.
+
+```
+ gci 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP' -recurse | gp -name Version,Release -EA 0 |
+     where { $_.PSChildName -match '^(?!S)\p{L}'} | select PSChildName, Version, Release
+```
+
+---
+

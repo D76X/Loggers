@@ -70,6 +70,18 @@
                     Name="[PROPERTY_LOGXTREME_WIN_DSK_EXE]"/>
       </RegistrySearch>
     </Property>
+    <!--
+    LaunchConditions
+    -->
+    <!--
+    Test that the install aborts if the OS is not Windows Vista
+    -->
+    <Condition Message="This application is only supported on Windows Vista.">
+      <![CDATA[Installed OR (VersionNT = 600)]]>
+    </Condition>
+    <Condition Message="This application requires .NET Framework 4.0. Please install the .NET Framework then run this installer again.">
+      <![CDATA[Installed OR NETFRAMEWORK40]]>
+    </Condition>
   </Fragment>
 </Wix>
 
