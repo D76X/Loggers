@@ -5,4 +5,5 @@
   <?define Manufacturer = "New Thinking Technologies" ?>
   <?define ProductNameLogXtremeWindowsDesktop = "LogXtreme Windows Desktop" ?>
   <?define FileNameLogXtremeWindowsDesktopExe = "LogXtreme.WinDsk.exe" ?>
+  <?define RegistryKeyLogXtremeWindowsDesktop = "Software\NewThinkingTechnologies\LogXtremeWindowsDesktopDataLoggingSoftware" ?>
 </Include>

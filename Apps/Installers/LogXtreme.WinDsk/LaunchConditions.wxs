@@ -30,19 +30,46 @@
       <ComponentSearch Id="Search_COMP_FILE_LOGXTREME_WIN_DSK_EXE"
                        Guid="{3FC27D10-8C6F-5E53-8438-597AA0589925}"/>
     </Property>
-    <Property>
-      
-    </Property>
-    <!--<Property Id="PROPERTY_FILE_LOGXTREME_WIN_DSK_EXE">
-      <RegistrySearch Id="Search_REG_FILE_LOGXTREME_WIN_DSK_EXE"
-                      Root="HKLM"
-                      Key=""
-                      Name=""
-                      Type="file">
-        <FileSearch Id="Search_FILE_LOGXTREME_WIN_DSK_EXE_2"
-                    LongName="$(var.FileNameLogXtremeWindowsDesktopExe)"/>
+    <!--
+    A shortcut to the executable is created during install together with 
+    a registry entry thus is possible to test whether such key exists in
+    the registry and its value. The Type is raw because this specific key 
+    has an insteger value thus the value read back from the registry won't 
+    be prefixed as it is a REG_SZ value. Notice that Name="installed" means
+    that the name of the registry key to read is "Installed".
+    -->
+    <Property Id="PROPERTY_LOGXTREME_WIN_DSK_SHORTCUT">
+      <RegistrySearch Id="Search_REG_LOGXTREME_WIN_DSK_SHORTCUT"
+                      Root="HKCU"
+                      Key="$(var.RegistryKeyLogXtremeWindowsDesktop)"
+                      Name="installed"
+                      Type="raw">        
       </RegistrySearch>
-    </Property>-->
+    </Property>
+    <!--
+    A registry search may be used to verify whether a file or directory
+    actually exists on the target system. In these cases a FileSearch can
+    be nested under a RegistrySearch to verify that the found directory 
+    or file path actually exists on the system. Firstly a registry key is 
+    created during the istallation in order to store some file path or 
+    some directory path. Then on running the installer again or later 
+    during the same installation a property can be evaluated to test whether
+    the file path or directory actually exists on the system. 
+    1- Root = HKLM = Local Machine
+    2- Type = file = indicates tha the key's value is a path
+    If the file path is actually found by FileSearch then the value of the 
+    property is left unchanged otherwise is set to null.
+    -->
+    <Property Id="PROPERTY_LOGXTREME_WIN_DSK_EXE">
+      <RegistrySearch Id="Search_REG_LOGXTREME_WIN_DSK_EXE"
+                      Root="HKLM"
+                      Key="$(var.RegistryKeyLogXtremeWindowsDesktop)"
+                      Name="PathToLogXtremeExe"
+                      Type="file">
+        <FileSearch Id="Search_FILE_LOGXTREME_WIN_DSK_EXE"
+                    Name="[PROPERTY_LOGXTREME_WIN_DSK_EXE]"/>
+      </RegistrySearch>
+    </Property>
   </Fragment>
 </Wix>
 

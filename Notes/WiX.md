@@ -177,6 +177,32 @@ This is special when compered to the previous two modes.
 
 ---
 
+## WiX Extensions 
+
+The WiX toolset provides a set of core services within its base assembly WiX.dll.
+However, a number of additional asseblies extend the core WiX Toolset by with 
+addtional markup and services. 
+
+In order to make use of any extension in a WiX project a reference my be added in
+Visual Studio to the corresponding assembly located in the bin folder of the Toolset.
+
+- C:\Program Files (x86)\WiX Toolset v3.11\bin
+
+##### Examples
+
+1. [Using Standard Custom Actions](http://wixtoolset.org/documentation/manual/v3/customactions/using_standard_customactions.html)
+
+| Extension					| Description						     					   |
+| --------------------------|--------------------------------------------------------------|
+| WiXUIExtension            | Provides UI services to the installer.                       |
+| WiXUtilExtension          | Provides extra markup i.e. DirectorySearchRef, User etc.     |
+|                           | Foe example \<User> lets the MSI set up a user account during an install |
+| WixNetfxExtension   	    | Includes a set of custom actions to compile native images using Ngen.exe. |
+|                           | It includes properties such as NETFRAMEWORK20 to check the .Net Framework version on the target| 
+|||
+
+---
+
 ## Standard Actions
 
 Windows installer defines **Standard Actions** which should always be executed
@@ -807,6 +833,86 @@ searches allowed by the Windows Installer AppSerch.
 
 #### RegitrySearch
 
+- [How To: Read a Registry Entry During Installation](http://wixtoolset.org/documentation/manual/v3/howtos/files_and_registry/read_a_registry_entry.html)
+- [RegistrySearch Element](http://wixtoolset.org/documentation/manual/v3/xsd/wix/registrysearch.html)
+- [Registry Search](https://app.pluralsight.com/player?course=wix-introduction&author=matthew-clendening&name=wix-introduction-m3&clip=11&mode=live)
+
+##### Example - registry search for a raw value
+
+- [How To: Write a Registry Entry During Installation](http://wixtoolset.org/documentation/manual/v3/howtos/files_and_registry/write_a_registry_entry.html)
+
+The sample below will set the NETFRAMEWORK20 property to "#1" if the registry key was found, 
+and to nothing if it wasn't. Notice that this code is just an example to illustrate how to
+use the RegistrySearch, in reality the definition of NETFRAMEWORK20 and other very useful 
+property can be more conveniently be left to WiX which provides this properties in the extension
+**WixNetfxExtension**.
+
+
+In this example Type="raw" that is the value stored for the key is a number and no prefix or 
+suffix is expetced. However, for other types this might not be the case as explained next.
+
+```
+<Property Id="NETFRAMEWORK20">
+    <RegistrySearch Id="NetFramework20"
+                    Root="HKLM"
+                    Key="Software\Microsoft\NET Framework Setup\NDP\v2.0.50727"
+                    Name="Install"
+                    Type="raw" />
+</Property>
+```
+
+##### Example - registry search for a file or path
+
+```
+<Property Id="MY_PROPERTY">
+	<RegistrySearch Id="myRegSearch"
+					  Root="HKLM"
+					  Key="SOFTWARE\WIXTEST"
+					  Name="PathToFile"
+					  Type="file">
+		<FileSearch Id="myFileSearch" 
+				  Name="[MY_PROPERTY]" />
+	</RegistrySearch>
+</Property>
+```
+
+Suppose you want to read a value from the Registry and that value is the path to a
+file. You then want to check that the file is truly where it says it is on the filesystem.
+As an example, assume that there's a Registry item HKLM\SOFTWARE\WIXTEST\PathToFile that's 
+set to the value C:\Program Files\mySoftware\myFile.txt. You can get this value from the 
+Registry by using the RegistrySearch element. Here, the RegistrySearch element finds the 
+item in the Registry and sets the value of MY_PROPERTY. Next, the nested FileSearch element 
+can now read that property and use it to find the file on the computer. If it finds it, it 
+replaces the value of MY_PROPERTY with the location of the file which should be the same.
+If it doesn't find it, it sets the value to null.
+
+In order for this to work, you have to set the RegistrySearch element's Type
+attribute to file. This tells the installer that it should expect to find the path to a
+file in the Registry and that you intend to nest a FileSearch element inside the
+RegistrySearch.
+
+You can do something similar with DirectorySearch.
+
+```
+<Property Id="MY_PROPERTY">
+	<RegistrySearch Id="myRegSearch"
+					  Root="HKLM"
+					  Key="SOFTWARE\WIXTEST"
+					  Name="PathToDirectory"
+				      Type="directory">
+	<DirectorySearch Id="myDirSearch"
+					   Path="[MY_PROPERTY]" />
+	</RegistrySearch>
+</Property>
+```
+
+Here, Type is set to directory allowing you to nest a DirectorySearch element
+inside RegistrySearch. This type also tells the installer that it should expect the
+Registry value to hold the path to a directory. Like the FileSearch example, this
+one uses the RegistrySearch result to set a property and then uses that property to
+search the filesystem. This time, it's looking for a directory instead of a file. If it finds
+it, it will set the property to the path. If not, the property will be set to null.
+
 ##### Added prefixes for raw
 
 When reading values from the registry with RegistryKey with attribute Type="raw" the 
@@ -841,9 +947,11 @@ satisfies **required prerequisites**.
 
 ## WiX Topics
 
+1. [Where to Install?](https://www.firegiant.com/wix/tutorial/getting-started/where-to-install/)
 1. [How To: Block Installation Based on OS Version](http://wixtoolset.org/documentation/manual/v3/howtos/redistributables_and_install_checks/block_install_on_os.html)
 2. [How To: Read a Registry Entry During Installation + Use the property in a condition](http://wixtoolset.org/documentation/manual/v3/howtos/files_and_registry/read_a_registry_entry.html) 
 3. [How To: Check for .NET Framework Versions](http://wixtoolset.org/documentation/manual/v3/howtos/redistributables_and_install_checks/check_for_dotnet.html)
 4. [How to implement WiX installer upgrade?](https://stackoverflow.com/questions/114165/how-to-implement-wix-installer-upgrade)
 5. [Wix/MSI - How to avoid installing same MSI twice](https://stackoverflow.com/questions/7656509/wix-msi-how-to-avoid-installing-same-msi-twice) 
+6. [How To: Write a Registry Entry During Installation](http://wixtoolset.org/documentation/manual/v3/howtos/files_and_registry/write_a_registry_entry.html)
 

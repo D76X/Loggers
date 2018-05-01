@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?include "Config.wxi"?>
   <Fragment>
     <DirectoryRef Id="DIR_New_Thinking_Technologies_Shortcuts">
       <Component Id="CMP_APPLICATION_SHORTCUT"
@@ -7,13 +8,13 @@
         <Shortcut Id="SHORTCUT_LogXtreme.WinDsk.exe"
                   Name="LogXtreme Data Logger Software"
                   Description="Launches LogXtreme Data Logger Software"
-                  Target="[DIR_LOGXTREME_WIN_DSK]LogXtreme.WinDsk.exe"
+                  Target="[DIR_LOGXTREME_WIN_DSK]$(var.FileNameLogXtremeWindowsDesktopExe)"
                   WorkingDirectory="DIR_LOGXTREME_WIN_DSK"
                   Icon="ICON_LOGXTREME_WIN_DSK_EXE"/>
         <RemoveFolder Id="DIR_New_Thinking_Technologies_Shortcuts"
                       On="uninstall"/>
         <RegistryValue Root="HKCU"
-                       Key="Software\Microsoft\LogXtremeWindowsDesktopDataLoggingSoftware"
+                       Key="$(var.RegistryKeyLogXtremeWindowsDesktop)"
                        Name="installed"
                        Type="integer"
                        Value="1"
