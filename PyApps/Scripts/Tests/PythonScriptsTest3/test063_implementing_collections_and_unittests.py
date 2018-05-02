@@ -106,6 +106,56 @@ class SortedSet():
     def __init__(self, items=None):
         self._items = sorted(set(items)) if items is not None else []
 
+    def __repr__(self):
+        """
+        This implementation determines the output of print(SoertedSet(...))
+        """
+        # in this implementation we piggy-back on the implementation of __repr__
+        # for the underlying list.
+        return "SortedSet({})".format(repr(self._items) if self._items else '')
+
+    # Equality and Inequality
+
+    # All objects in Python may take appear in extpressions such as x == y or x != y
+    # etc. The Python interpreter uses the __eq__ and __ne__ to evaluate such expressions.
+    # If __eq__ and __ne__ are not explicitely implemented then the default implementation is
+    # inherited from the base class Object. The base class object provides reference equality
+    # that is two object are equal if and only if they have the same reference.
+    # In many cases the reference equality might not be what you want i.e. you need object
+    # equlity instead.
+    # The reference equality of Object is the same as the is operator in Python.
+
+    def __eq__(self, rhs):
+        """
+        Implementation of the equality operator on SortedSet.
+
+        Override the default reference equality inherited from the base class Object 
+        wit a custom object equality.
+        """
+
+        # it is necessary to make provision for the case of the expression x == y evaluated
+        # on x and y having different types. By returning NotImplemented the Python interpreter
+        # will try to re-evaluate y == x with the argument reversed with respect the original
+        # expression. This is because while x == y uses the implementation __eq__ for the type
+        # of the argument x the inverse expression uses the implementation of __eq__ for the
+        # type of y which may give some result.
+
+        if not isinstance(rhs, SortedSet):
+            return NotImplemented
+
+        # this implementation relies on the fact that the type list in Python implements
+        # object equality which overrides the inherited reference equality from Object.
+
+        return self._items == rhs._items
+
+    # If __eq__ is overridden then also the __ne__ should be overridden.     
+    # However, Python automatically implements __ne_ by negating __eq__if no explicit 
+    # implementation is provided.
+    def __ne__(self, rhs):        
+        if not isinstance(rhs, SortedSet):
+            return NotImplemented
+        return self._items != rhs._items
+
     # Container Protocol
     def __contains__(self, item):
         return item in self._items
@@ -133,7 +183,23 @@ class SortedSet():
     # 8- support for repetition with the infix operator * i.e. seq3 = seq1*2
     # 9- implmentation of __mul__ and __rmul__
     def __getitem__(self, index):
-        return self._items[index]
+        """
+        Provides the implementation to support indexing and slicing.
+        """
+        # this would be a naive implementation that does not support slicing
+        # return self._items[index]
+
+        # to support slicing we must check whether the index parameter is an
+        # istance of a slice object that is special type in Python.
+        # In this implementation slicing returns a SortedSet by wrapping the
+        # slice of the underlying list which makes more sense that returning
+        # it directly to the caller.
+
+        # if index is an index then result is just an item and can be returned as it is.
+        # if index is a slice object we take the slice of teh underlying list and wrap it
+        # up in a SortedSet and return it to the caller.
+        result = self._items[index]
+        return SortedSet(result) if isinstance(index, slice) else result
 
 
 class TestConstruction(unittest.TestCase):
@@ -280,10 +346,15 @@ class TestIterableProtocol(unittest.TestCase):
 class TestSequenceProtocol(unittest.TestCase):
     """
     Tests that the SortedSet class properly implements the Sequence Protocol.
+    The test are stacked as follows.
+    1-test the indexing
+    2-test the slicing
     """
 
     def setUp(self):
         self.s = SortedSet([1, 4, 9, 13, 15])
+
+    # 1- tests for the indexing
 
     def test_index_zero(self):
         self.assertEqual(self.s[0], 1)
@@ -301,10 +372,10 @@ class TestSequenceProtocol(unittest.TestCase):
         self.assertEqual(self.s[4], 15)
 
     # in this case the alternative to using a lamba to test for exception is used
-    # in this style the "with" keyboard (context manager protocol) is used.  
+    # in this style the "with" keyboard (context manager protocol) is used.
     def test_index_one_beyond_the_end_raises_index_error(self):
         with self.assertRaises(IndexError):
-            self.s[5]   
+            self.s[5]
 
     def test_index_minus_one(self):
         self.assertEqual(self.s[-1], 15)
@@ -318,12 +389,93 @@ class TestSequenceProtocol(unittest.TestCase):
     def test_index_minus_four(self):
         self.assertEqual(self.s[-4], 4)
 
-    def test_index_minus_four(self):
+    def test_index_minus_five(self):
         self.assertEqual(self.s[-5], 1)
 
     def test_index_one_beyond_the_beginning_raises_index_error(self):
         with self.assertRaises(IndexError):
             self.s[-6]
+
+    # 2- tests for the slicing
+
+    def test_slice_from_start(self):
+        # :3 => from the beginning take the first three items
+        self.assertEqual(self.s[:3], SortedSet([1, 4, 9]))
+
+    def test_slice_to_end(self):
+        # 3: => take from index 3 to end
+        self.assertEqual(self.s[3:], SortedSet([13, 15]))
+
+    def test_slice_empty(self):
+        # 10: => take from index 10 to the end
+        self.assertEqual(self.s[10:], SortedSet())
+
+    def test_slice_arbitrary(self):
+        # 2:4 => take from index 2 to index 4-1=3
+        self.assertEqual(self.s[2:4], SortedSet([9, 13]))
+
+    def test_slice_full(self):
+        # : => take all
+        self.assertEqual(self.s[:], self.s)
+
+
+class TestReprProtocol(unittest.TestCase):
+    """
+    Tests for the implementation of __reper__()
+    """
+
+    def test_repr_empty(self):
+        s = SortedSet()
+        self.assertEqual(repr(s), "SortedSet()")
+
+    def test_repr_some(self):
+        s = SortedSet([42, 40, 19])
+        self.assertEqual(repr(s), "SortedSet([19, 40, 42])")
+
+
+class TestEqualityProtocol(unittest.TestCase):
+    """
+    Tests for the implementation of the equality operator on SortedSet.
+    The tests asserts that the default reference equality inherited from the
+    base class Object has been overwritten by a custom object equality.
+    """
+
+    def test_object_equality(self):
+        self.assertTrue(SortedSet([4, 5, 6]) == SortedSet([6, 4, 5]))
+
+    def test_object_not_equality(self):
+        self.assertFalse(SortedSet([4, 5]) == SortedSet([6, 4, 5]))
+
+    def test_not_equality_of_different_types(self):
+        self.assertFalse(SortedSet([1, 2]) == [1, 2])
+
+    def test_equality_of_same_reference(self):
+        s = SortedSet([1, 2])
+        self.assertTrue(s == s)
+
+
+class TestInequalityProtocol(unittest.TestCase):
+    """
+    Tests for the implementation of inequality operator on SortedSet.
+    
+    If __eq__ is overridden then also the __ne__ should be overridden. 
+    
+    However, Python automatically implements __ne_ by negating __eq__
+    if no explicit implementation is provided.
+    """
+
+    def test_objects_are_not_equal(self):
+        self.assertTrue(SortedSet([1, 2, 3]) != SortedSet([3, 8]))
+
+    def test_that_equal_objetcs_are_not_unequal(self):
+        self.assertFalse(SortedSet([1, 2]) != SortedSet([1, 2]))
+
+    def test_different_types_are_not_equal(self):
+        self.assertTrue(SortedSet([1, 2] != [1, 2]))
+
+    def test_same_reference_is_not_unequal(self):
+        s = SortedSet([1, 2])
+        self.assertFalse(s != s)
 
 
 def test_module():
