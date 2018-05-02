@@ -118,8 +118,22 @@ class SortedSet():
     def __iter__(self):
         return iter(self._items)
 
-    # The Sequence Protocol implies the Iterable Protocol
-    # thus the Iterable Protocol must be implemented first
+    # The Sequence Protocol implies the following
+    # 1-Container Protocol
+    # 2-Sized Protocol
+    # 3-Iterable Protocol
+    # The Sequence Protocol provides
+    # 1- indexed access to the items in the container i.e. item = seq[index]
+    # 2- slicing i.e. items = seq[start]
+    # 3- a reverse iterator r = reversed(seq)
+    # 4- index = seq.index(item)
+    # 5- itemCount = seq.count(item)
+    # 6- support for concatenation with the infix operator + i.e. seq3 = seq1 + seq2
+    # 7- implementation of __add__
+    # 8- support for repetition with the infix operator * i.e. seq3 = seq1*2
+    # 9- implmentation of __mul__ and __rmul__
+    def __getitem__(self, index):
+        return self._items[index]
 
 
 class TestConstruction(unittest.TestCase):
@@ -247,6 +261,7 @@ class TestIterableProtocol(unittest.TestCase):
         self.assertEqual(next(iterator), 9)
         # this is a bit special as it uses a lambda
         # this is how generally code raising exceptions should be tested
+        # there is also another style for this which uses the keyword "with"
         self.assertRaises(StopIteration, lambda: next(iterator))
 
     def test_for_loop(self):
@@ -260,6 +275,55 @@ class TestIterableProtocol(unittest.TestCase):
             index += 1
         for idx, item in enumerate(self.s):
             self.assertEqual(item, expected[idx])
+
+
+class TestSequenceProtocol(unittest.TestCase):
+    """
+    Tests that the SortedSet class properly implements the Sequence Protocol.
+    """
+
+    def setUp(self):
+        self.s = SortedSet([1, 4, 9, 13, 15])
+
+    def test_index_zero(self):
+        self.assertEqual(self.s[0], 1)
+
+    def test_index_one(self):
+        self.assertEqual(self.s[1], 4)
+
+    def test_index_two(self):
+        self.assertEqual(self.s[2], 9)
+
+    def test_index_three(self):
+        self.assertEqual(self.s[3], 13)
+
+    def test_index_four(self):
+        self.assertEqual(self.s[4], 15)
+
+    # in this case the alternative to using a lamba to test for exception is used
+    # in this style the "with" keyboard (context manager protocol) is used.  
+    def test_index_one_beyond_the_end_raises_index_error(self):
+        with self.assertRaises(IndexError):
+            self.s[5]   
+
+    def test_index_minus_one(self):
+        self.assertEqual(self.s[-1], 15)
+
+    def test_index_minus_two(self):
+        self.assertEqual(self.s[-2], 13)
+
+    def test_index_minus_three(self):
+        self.assertEqual(self.s[-3], 9)
+
+    def test_index_minus_four(self):
+        self.assertEqual(self.s[-4], 4)
+
+    def test_index_minus_four(self):
+        self.assertEqual(self.s[-5], 1)
+
+    def test_index_one_beyond_the_beginning_raises_index_error(self):
+        with self.assertRaises(IndexError):
+            self.s[-6]
 
 
 def test_module():
