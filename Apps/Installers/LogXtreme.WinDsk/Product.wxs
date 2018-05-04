@@ -32,9 +32,10 @@
 
     <WixVariable Id="WixUILicenseRtf" Value="./EULAs/02.EULA.DidiSoft.rtf" /> 
      
-    <!--This pulls in all the properties defined in the same file-->
-    <PropertyRef Id="PROPERTY_TEST_PROPERTY_1"/>
-    <PropertyRef Id="PROPERTY_DEFAULT_DIR_NEW_THINKING_TECHNOLOGIES"/>
+    <!--This pulls in all the custom properties-->
+    <PropertyRef Id="PROPERTY_IMPORT_ALL_CUSTOM_PROPERTIES"/>
+    <!--This pulls in all the properties defined for the Launch Conditions-->
+    <PropertyRef Id="PROPERTY_IMPORT_ALL_LAUNCH_CONDITIONS_PROPERTIES"/>
 
     <!--This tells WiX to automatically assign files to cabinet files-->
     <!--The cabinet files will be embedded into the MSI file-->
