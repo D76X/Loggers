@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
-     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <?include "Config.wxi"?>
   <Fragment>
+    <Property Id="PROPERTY_IMPORT_ALL_LAUNCH_CONDITIONS_PROPERTIES"
+              Value="1"/>
     <Property Id="PROPERTY_DEFAULT_DIR_NEW_THINKING_TECHNOLOGIES">
       <DirectorySearch Id="Search_DIR_NEW_THINKING_TECHNOLOGIES"
                        Path="[ProgramFilesFolder]\$(var.Manufacturer)">
@@ -43,7 +44,7 @@
                       Root="HKCU"
                       Key="$(var.RegistryKeyLogXtremeWindowsDesktop)"
                       Name="installed"
-                      Type="raw">        
+                      Type="raw">
       </RegistrySearch>
     </Property>
     <!--
@@ -70,17 +71,14 @@
                     Name="[PROPERTY_LOGXTREME_WIN_DSK_EXE]"/>
       </RegistrySearch>
     </Property>
-    <!--
-    LaunchConditions
-    -->
-    <!--
-    Test that the install aborts if the OS is not Windows Vista
-    -->
-    <Condition Message="This application is only supported on Windows Vista.">
-      <![CDATA[Installed OR (VersionNT = 600)]]>
+    <!--Property References from extensions-->
+    <PropertyRef Id="NETFRAMEWORK40FULL"/>
+    <!--LaunchConditions-->
+    <Condition Message="This application is only supported on Windows Vista or later versions of Windows or Windows Server.">
+      <![CDATA[Installed OR (VersionNT >= 600)]]>
     </Condition>
-    <Condition Message="This application requires .NET Framework 4.0. Please install the .NET Framework then run this installer again.">
-      <![CDATA[Installed OR NETFRAMEWORK40]]>
+    <Condition Message="This application requires .NET Framework 4.0. Please! install the .NET Framework then run this installer again.">
+      <![CDATA[Installed OR NETFRAMEWORK40FULL]]>
     </Condition>
   </Fragment>
 </Wix>
