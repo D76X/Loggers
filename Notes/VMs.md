@@ -29,7 +29,10 @@ It is a 4.9 GB download which may take some time to complete.
 These virtual machines expire after **90 days**. We **recommend setting a snapshot when you 
 first install the virtual machine** which **you can roll back to later**. Mac users will need 
 to use a tool that supports zip64, like The Unarchiver, to unzip the files. The password 
-to your VM is **"Passw0rd!"**
+to your VM is **"Passw0rd!"** and teh user name should be **IEUser**.
+
+- username: **IEUser**
+- password: **"Passw0rd!"**
 
 ---
 

@@ -491,6 +491,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project-1-MSBuild", "Projec
 		Examples\MSBuild-Examples\Project-1-MSBuild\DoSomething.proj = Examples\MSBuild-Examples\Project-1-MSBuild\DoSomething.proj
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSMQ-Examples", "MSMQ-Examples", "{4CAC9FBA-1574-4995-B654-38C26E60CE4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1559,6 +1561,7 @@ Global
 		{4931BFF2-9F57-4272-A300-425C642FA132} = {D0D3668D-1456-4E6F-962B-18F45853F1AD}
 		{7855C723-4783-467D-A978-C6A988DC41A8} = {FAFE10AF-AF2C-4D6F-82BC-81ED9863EE85}
 		{03AAEC06-D2D6-4BF7-9FD7-62D8586875F2} = {7855C723-4783-467D-A978-C6A988DC41A8}
+		{4CAC9FBA-1574-4995-B654-38C26E60CE4A} = {FAFE10AF-AF2C-4D6F-82BC-81ED9863EE85}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B48A64CD-1E9D-4169-82DF-66FD7695C2D0}

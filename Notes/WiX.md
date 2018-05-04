@@ -945,16 +945,28 @@ satisfies **required prerequisites**.
   to the user and the installation is terminated.
 ---
 
+## Removing files and folder during uninstall
+
+- http://wixtoolset.org/documentation/manual/v3/xsd/wix/removefolder.html
+
+- https://stackoverflow.com/questions/28470189/wix-removefile-and-removefolder-for-removing-leftovers
+
+- [The WiX toolset's "Remember Property" pattern.](http://robmensching.com/blog/posts/2010/5/2/the-wix-toolsets-remember-property-pattern/)  
+
+---
+
 ## WiX Topics
 
 1. [Where to Install?](https://www.firegiant.com/wix/tutorial/getting-started/where-to-install/)
-1. [How To: Block Installation Based on OS Version](http://wixtoolset.org/documentation/manual/v3/howtos/redistributables_and_install_checks/block_install_on_os.html)
-2. [How To: Read a Registry Entry During Installation + Use the property in a condition](http://wixtoolset.org/documentation/manual/v3/howtos/files_and_registry/read_a_registry_entry.html) 
-3. [How To: Check for .NET Framework Versions](http://wixtoolset.org/documentation/manual/v3/howtos/redistributables_and_install_checks/check_for_dotnet.html)
-4. [How to implement WiX installer upgrade?](https://stackoverflow.com/questions/114165/how-to-implement-wix-installer-upgrade)
-5. [Wix/MSI - How to avoid installing same MSI twice](https://stackoverflow.com/questions/7656509/wix-msi-how-to-avoid-installing-same-msi-twice) 
-6. [How To: Write a Registry Entry During Installation](http://wixtoolset.org/documentation/manual/v3/howtos/files_and_registry/write_a_registry_entry.html)
-
+2. [How To: Block Installation Based on OS Version](http://wixtoolset.org/documentation/manual/v3/howtos/redistributables_and_install_checks/block_install_on_os.html)
+3. [How To: Read a Registry Entry During Installation + Use the property in a condition](http://wixtoolset.org/documentation/manual/v3/howtos/files_and_registry/read_a_registry_entry.html) 
+4. [How To: Check for .NET Framework Versions](http://wixtoolset.org/documentation/manual/v3/howtos/redistributables_and_install_checks/check_for_dotnet.html)
+5. [How to implement WiX installer upgrade?](https://stackoverflow.com/questions/114165/how-to-implement-wix-installer-upgrade)
+6. [Wix/MSI - How to avoid installing same MSI twice](https://stackoverflow.com/questions/7656509/wix-msi-how-to-avoid-installing-same-msi-twice) 
+7. [How To: Write a Registry Entry During Installation](http://wixtoolset.org/documentation/manual/v3/howtos/files_and_registry/write_a_registry_entry.html)
+8. [Advertised shortcuts vs. non-advertised shortcuts in windows setup project](https://stackoverflow.com/questions/11776023/advertised-shortcuts-vs-non-advertised-shortcuts-in-windows-setup-project/37228008)  
+9. [Shortcut Icons Gone When Advertise="yes"??](http://windows-installer-xml-wix-toolset.687559.n2.nabble.com/Shortcut-Icons-Gone-When-Advertise-quot-yes-quot-td688781.html)  
+10. 
 ---
 
 ## Other useful Info
@@ -962,7 +974,7 @@ satisfies **required prerequisites**.
 1. [How do I find the .NET version?](https://stackoverflow.com/questions/1565434/how-do-i-find-the-net-version)
 
 The Powershell command below is to run under admin account and returs the complete table of .NET Frameworks
-installed on teh system includiong things such as WCF and WPF amongst the other.
+installed on the system includiong things such as WCF and WPF amongst the other.
 
 ```
  gci 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP' -recurse | gp -name Version,Release -EA 0 |

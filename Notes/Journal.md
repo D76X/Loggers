@@ -96,5 +96,6 @@
 |                          | MSBuild, VM, ZEROMQ, Phaser, Authoring                        |
 | 28/04/-01/05 2018        | 3D Printing work, Python, WiX installer, jQuery, ZEROMQ,      |
 |                          | Probability, German, MSBuild                                  |
-| 02/05/2018               | 3D Printing work, Python, WiX installer, jQuery, ZEROMQ,      |
-|                          | Probability, German, MSBuild |
+| 02-03/05/2018            | 3D Printing work, Python, WiX installer, jQuery, ZEROMQ,      |
+|                          | Probability, German, MSBuild, Handlebars,                     |
+| 04/05/2018			   | |
