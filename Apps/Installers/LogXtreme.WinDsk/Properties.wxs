@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!--Property Values are always interpreted as strings-->
 <!--Public property MUST be in all caps-->
 <!--Any private property MUST have at least a lower case letter-->
@@ -11,11 +12,16 @@
 <!--The Product elements provides 5 basic properties: ProductCode, ProductLanguage, Manufacturer, ProductVersion, ProductName-->
 <!--If the UpgradeCode is provided this is also stored as a public property in the Property table-->
 
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+<!--Extensions-->
+
+<!--WixNetFxExtension-->
+<!--http://wixtoolset.org/documentation/manual/v3/customactions/wixnetfxextension.html-->
+<!--http://wixtoolset.org/documentation/manual/v3/howtos/redistributables_and_install_checks/check_for_dotnet.html-->
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:netfxext="http://schemas.microsoft.com/wix/NetFxExtension">
   <Fragment>
-    <Property Id="PROPERTY_TEST_PROPERTY_1"
+    <Property Id="PROPERTY_IMPORT_ALL_CUSTOM_PROPERTIES"
               Value="1"/>
-    <Property Id="PROPERTY_TEST_PROPERTY_2"
-              Value="0"/>
-  </Fragment>
+  </Fragment>  
 </Wix>
