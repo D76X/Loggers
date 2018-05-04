@@ -2,17 +2,25 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <?include "Config.wxi"?>
   <Fragment>
+    <!--http://wixtoolset.org/documentation/manual/v3/howtos/files_and_registry/create_uninstall_shortcut.html-->
     <DirectoryRef Id="DIR_New_Thinking_Technologies_Shortcuts">
-      <Component Id="CMP_APPLICATION_SHORTCUT"
-                 Guid="BC26E859-BF5B-4106-8D28-5C6047D06E6F">
+      <Component Id="CMP_Application_Shortcut"
+                 Guid="*">
         <Shortcut Id="SHORTCUT_LogXtreme.WinDsk.exe"
                   Name="LogXtreme Data Logger Software"
                   Description="Launches LogXtreme Data Logger Software"
                   Target="[DIR_LOGXTREME_WIN_DSK]$(var.FileNameLogXtremeWindowsDesktopExe)"
                   WorkingDirectory="DIR_LOGXTREME_WIN_DSK"
                   Icon="ICON_LOGXTREME_WIN_DSK_EXE"/>
+        <Shortcut Id="SHORTCUT_Uninstall_LogXtreme_Win_Dsk"
+                  Name="Uninstall LogXtreme Data Logger Software"
+                  Description="Uninstalls LogXtreme Data Logger Software"
+                  Target="[System64Folder]msiexec.exe"
+                  Arguments="/x [ProductCode]">
+        </Shortcut>
         <RemoveFolder Id="DIR_New_Thinking_Technologies_Shortcuts"
                       On="uninstall"/>
+        <!--Shortcuts cannot be component's KeyPath thus as customary a RegistrValue is used instead.-->
         <RegistryValue Root="HKCU"
                        Key="$(var.RegistryKeyLogXtremeWindowsDesktop)"
                        Name="installed"
@@ -24,7 +32,7 @@
   </Fragment>
   <Fragment>
     <ComponentGroup Id="ShortcutsComponentGroup">
-      <ComponentRef Id="CMP_APPLICATION_SHORTCUT"/>
+      <ComponentRef Id="CMP_Application_Shortcut"/>
     </ComponentGroup>
   </Fragment>
 </Wix>
