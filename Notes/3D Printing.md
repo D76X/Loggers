@@ -45,6 +45,11 @@ to the Makerbot Replicator 2.
 - ON-PRINTER CONTROLS Yes
 - CONNECTIVITY USB SD card
 
+### Extra specs.
+
+- [WanHao Printer 3d ›left excluder help please on a Wanhao Duplicator 4](https://groups.google.com/forum/#!topic/wanhao-printer-3d/y_vHtCbVxDk)  
+  TOOLHEAD OFFSET 33 mm (I have measured it with a caliper and it checks out!)
+
 ---
 
 ## WANHAO Printer 3d Google Group

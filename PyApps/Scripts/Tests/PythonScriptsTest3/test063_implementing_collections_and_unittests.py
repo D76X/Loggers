@@ -471,7 +471,7 @@ class TestInequalityProtocol(unittest.TestCase):
         self.assertFalse(SortedSet([1, 2]) != SortedSet([1, 2]))
 
     def test_different_types_are_not_equal(self):
-        self.assertTrue(SortedSet([1, 2] != [1, 2]))
+        self.assertTrue(SortedSet([1, 2]) != [1, 2])
 
     def test_same_reference_is_not_unequal(self):
         s = SortedSet([1, 2])

@@ -224,15 +224,13 @@ installation which are not part of teh standard workflow.
 
 Some illustrative examples of custom actions are the following.
 
-- Set a property to a certain value when some run-time condition is verified or detected.
-- Set a location to a specific path if a run-time condition is verified or detected.
+- Set a property to a certain value when some run-time condition is verified or detected using a formatted string **-Type 51**..
+- Set a location to a specific path if a run-time condition is verified or detected using a formated string - **Type 35**..
 - Invoke a function from a DLL embedded in the Binary table of the *.msi - **Type 1**.
 - Launch an executable emedded in the Binary table of the *.msi -**Type 2**.
 - Call a function of a DLL installed by the installer -**Type 17**.
 - Call an EXE installed by the installer -**Type 18**. 
 - Display an error as a formatted string to the user and terminate the installation -**Type 19**.
-- Set an install directory path using a formated string - **Type35**.
-- Set the value of a Windows Installer Property using a formatted string **-Type 51**.
 - etc. 
  
 Custom actions are made available by the Windows Installer and each custom action 
@@ -257,6 +255,87 @@ is processed. Instead the installer writes the custom action into the installati
 
 - Should be placed between install initialize and install finalize.
 - Does not have access to MSIDATABASE in deferred execution.
+
+---
+
+## How to use Custom Actions
+
+- [Custom Actions](https://app.pluralsight.com/player?course=wix-introduction&author=matthew-clendening&name=wix-introduction-m4&clip=3&mode=live)  
+- [Adding a Custom Action](http://wixtoolset.org/documentation/manual/v3/wixdev/extensions/authoring_custom_actions.html)  
+
+The besic syntax is belo.
+
+```
+<CustomAction Id="MyAction" 
+				Execute="deferred"
+				Return="check" ... />
+
+<InstallExecuteSequence>
+	<Custom Id="MyAction" 
+	After="InstallInitialize" />
+</InstallExecuteSequence>
+```
+
+A typical use of Custom Actions to set the value of a property - **Type 51 Custom Action.**
+
+```
+<CustomAction Id="uniqueId" 
+				Property="deferred"
+				Value="[SOMEPROPERTY]" />
+
+<InstallExecuteSequence>
+	<Custom Id="uniqueId" 
+	After="CostFinalize" />
+</InstallExecuteSequence>
+```
+
+The WiX Toolset provides murkup to make this particular custom action easier to use.
+Notice that in this example we are assigning the value of the property INSTALLFOLDER 
+which is a directory path to the value of the property PROPERTY_THE_CHOSEN_FOLDER.
+
+This ought to not be confused with another common use case of Custom Action tha is
+assigning the path of a directory as illustrated later. 
+
+```
+<SetProperty Id="PROPERTY_THE_CHOSEN_FOLDER" 
+		      Value="[INSTALLFOLDER]" 
+			  Sequence="execute" 
+			  After="CostFinalize"/>
+```
+
+Another use of custom action is to set the Path of a directory at run-time - **Type 35**.
+
+```
+<SetDirectory Id="TheIdOfTheDirectory" 
+		      Value="[MYPROPERTY]" 
+			  Sequence="execute" />
+```
+
+### Conditions with Custom Actions
+
+It is possible to add a condition to teh declaration of any Custom Action.
+The custom action is executed only if the condition is verified. For example,
+in the exeprt below the custom action SetDirectory is executed only when the
+(NOT Installed) evaluates to true.
+
+```
+<SetDirectory Id="TheIdOfTheDirectory" 
+		      Value="[MYPROPERTY]" 
+			  Sequence="execute">
+
+	<![CDATA[NOT Installed]]
+</SetDirectory>
+```
+
+...
+
+### Important Notes
+
+- Avoid at all cost using Custom Action that execute JScrit of VBScript as they are 
+  notorious for being difficult to debug.
+- Minimise the need for custom actions as they are aoften cause of problems!
+- If you must use Custom Actions keep them as simple as possible.
+- The most important custom actions are types **Types 51, 35, .**
 
 ---
 
@@ -952,6 +1031,53 @@ satisfies **required prerequisites**.
 - https://stackoverflow.com/questions/28470189/wix-removefile-and-removefolder-for-removing-leftovers
 
 - [The WiX toolset's "Remember Property" pattern.](http://robmensching.com/blog/posts/2010/5/2/the-wix-toolsets-remember-property-pattern/)  
+
+---
+
+## Upgrades
+
+The Windows Installer and the WiX Toolset provide support for three update scenarios.
+
+1. Major Upgrade  
+2. Minor Upgrade  
+3. Small Update       
+
+### Major Upgrade 
+
+This upgrade is a replacement of the installed product with a **new** product. 
+In order for Windows Installer to allow a Major Upgrade for an installed product 
+the first install must set its **UpgradeCode** which remains the same for the 
+lifetime of the product that is the **UpgradeCode** is preserved between Major
+Upgrades.
+
+- **ProductCode** and **ProductVersion** must change.
+
+- **UpgradeCode** remains the same - for the life of the product. 
+
+- A new Major Upgrade package is distrubuted as a *.msi. 
+
+- During a Major Upgrade Windows Installer detect any previois version of the same 
+  product via the **UpgradeCode** and remove the older version first and then installs
+  the new product.
+
+### Minor Upgrade 
+
+This upgrade mechanism **modifies** the installed files of a product on the target system.
+
+- The **ProductCode** remains the same. 
+
+- A minor upgrade updates the **ProductVersion**.
+
+- It cannot perform changes to the **existing** structure of the Feature or Component tree.
+
+- A minor upgrade can introduce new Features and Components.
+
+### Minor Update
+
+For the **Minor Update** in addition to the points made for the **Minor Upgrade** the 
+following are also enforced.
+
+- 
 
 ---
 
