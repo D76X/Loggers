@@ -93,9 +93,23 @@ Results:
 # equal / not equal
 
 import unittest
+# collections.abc = Collection Abstract Base Class.
+# this is sort of important!
+# This module provides abstract base classes that can be used to **test** whether a class provides a particular interface;
+# for example, whether it is hashable or whether it is a mapping.
+# However, as shown in SortedSet it also provides base classes that can be used to provide derived classes with some
+# default implementation of some methods. In our case we use collections.abc.Sequence as base class of SortedSet to
+# fill in the implementatiuon of the methods index and count which are implied methods of any collection that implements
+# the Sequence protocol. You might also use the base classes in collections.abc in composition rather than inheritance
+# patterns. That is collections.abc does some of the leg work in cases where some collection protocol needs to be
+# implemented on some custom collection.
+from collections.abc import Container, Iterable, Sequence, Sized
+from itertools import chain
+
+# notice that we let this class inherit from collections.abc.Sequence
 
 
-class SortedSet():
+class SortedSet(Sequence):
     """
     An implementation of a sorted set.
     """
@@ -148,10 +162,10 @@ class SortedSet():
 
         return self._items == rhs._items
 
-    # If __eq__ is overridden then also the __ne__ should be overridden.     
-    # However, Python automatically implements __ne_ by negating __eq__if no explicit 
+    # If __eq__ is overridden then also the __ne__ should be overridden.
+    # However, Python automatically implements __ne_ by negating __eq__if no explicit
     # implementation is provided.
-    def __ne__(self, rhs):        
+    def __ne__(self, rhs):
         if not isinstance(rhs, SortedSet):
             return NotImplemented
         return self._items != rhs._items
@@ -200,6 +214,33 @@ class SortedSet():
         # up in a SortedSet and return it to the caller.
         result = self._items[index]
         return SortedSet(result) if isinstance(index, slice) else result
+
+    # The Sequence Protocol also implies the following methods -  index, count.
+    # Here these two contracts are fullfilled by the underlying collections.abc.Sequence
+    # index = seq.index(item) => from collection.abc.Sequence + __getitem__ + __len__
+    # count = seq.count(item)
+
+    # support for concatenation via the infix operator +
+    def __add__(self, rhs):
+        return SortedSet(chain(self._items, rhs._items))
+
+    # support for repetition via the infixed operator *
+    # __mull__() and __rmull__()
+    def __mul__(self, rhs):
+        """
+        A sorted set remains the same when multiplied a positive number of times.
+        A sorted set degenerates to the empty sorted set when it is repeated zero times.
+        A sorted set degenerates to the empty sorted set when it is repeated a negative number of times.
+        """
+        # Notice that SortedSet instances are immutable hence we can return it directly as self.
+        # If the class produced mutable object we would have to return a new instance of the class.
+        return self if rhs > 0 else SortedSet()
+
+    def __rmul__(self, lhs):
+        """
+        The sorted set is commutative with respect to *.
+        """
+        return self * lhs
 
 
 class TestConstruction(unittest.TestCase):
@@ -283,8 +324,12 @@ class TestContainerProtocol(unittest.TestCase):
         """Tests NOT IN on false."""
         self.assertFalse(9 not in self.s)
 
+    def test_protocol(self):
+        """Tests that the container protocol is properly implemented."""
+        self.assertTrue(issubclass(SortedSet, Container))
 
-class TestSizeProtocol(unittest.TestCase):
+
+class TestSizedProtocol(unittest.TestCase):
     """
     Tests that the SortedSet class properly implements the Size Protocol.
     """
@@ -304,6 +349,10 @@ class TestSizeProtocol(unittest.TestCase):
     def test_duplicates_are_only_counted_once(self):
         s = SortedSet([i for i in range(10)]+[1, 2, 3])
         self.assertEqual(len(s), 10)
+
+    def test_protocol(self):
+        """Tests that the sized protocol is properly implemented."""
+        self.assertTrue(issubclass(SortedSet, Sized))
 
 
 class TestIterableProtocol(unittest.TestCase):
@@ -341,6 +390,10 @@ class TestIterableProtocol(unittest.TestCase):
             index += 1
         for idx, item in enumerate(self.s):
             self.assertEqual(item, expected[idx])
+
+    def test_protocol(self):
+        """Tests that the iterable protocol is properly implemented."""
+        self.assertTrue(issubclass(SortedSet, Iterable))
 
 
 class TestSequenceProtocol(unittest.TestCase):
@@ -418,6 +471,80 @@ class TestSequenceProtocol(unittest.TestCase):
         # : => take all
         self.assertEqual(self.s[:], self.s)
 
+    # 3 - tests for index
+    def test_index_found(self):
+        s = SortedSet([-1, 0, 1, 2, 3])
+        self.assertEqual(s.index(-1), 0)
+        self.assertEqual(s.index(0), 1)
+        self.assertEqual(s.index(1), 2)
+        self.assertEqual(s.index(2), 3)
+        self.assertEqual(s.index(3), 4)
+
+    def test_index_not_found(self):
+        s = SortedSet([-1, 0, 1, 2, 3])
+        with self.assertRaises(ValueError):
+            s.index(100)
+
+    # 4 - tests for count
+    # in a sorted set there exist at most one occurrences of any give item.
+    def test_count_is_zero(self):
+        s = SortedSet([-1, 0, 1, 2, 3])
+        self.assertEqual(s.count(100), 0)
+
+    def test_count_is_one(self):
+        s = SortedSet([-1, 0, 1, 2, 3, 3, 3])
+        self.assertEqual(s.count(3), 1)
+
+    def test_protocol(self):
+        """Tests that the sequence protocol is properly implemented."""
+        self.assertTrue(issubclass(SortedSet, Sequence))
+
+    # 5 - tests for the concatenation via the infix operator +
+    def test_concatenate_disjoint(self):
+        s = SortedSet([1, 2, 3])
+        t = SortedSet([4, 5, 6])
+        self.assertEqual(s+t, SortedSet([1, 2, 3, 4, 5, 6]))
+
+    def test_concatenate_idempotent(self):
+        s = SortedSet([1, 2, 3])
+        self.assertEqual(s+s, s)
+
+    def test_concatenate_intersection(self):
+        s = SortedSet([1, 2, 3])
+        t = SortedSet([3, 4, 5])
+        self.assertEqual(s+t, SortedSet([1, 2, 3, 4, 5]))
+
+    # 5 - tests for the repetition via the infix operator *
+    def test_repetion_with_zero_with_sorted_set_rhs(self):
+        """A sorted set repeated 0 times is the empty set."""
+        s = SortedSet([1])
+        self.assertEqual(0*s, SortedSet())
+
+    def test_repetion_with_one_with_sorted_set_rhs(self):
+        """A sorted set repeated 1 times is itself."""
+        s = SortedSet([1])
+        self.assertEqual(1*s, s)
+
+    def test_repetion_with_non_zero_with_sorted_set_rhs(self):
+        """A sorted set repeated n times is itself."""
+        s = SortedSet([1])
+        self.assertEqual(3*s, s)
+
+    def test_repetion_with_zero_with_sorted_set_lhs(self):
+        """A sorted set repeated 0 times is the empty set."""
+        s = SortedSet([1])
+        self.assertEqual(s*0, SortedSet())
+
+    def test_repetion_with_one_with_sorted_set_lhs(self):
+        """A sorted set repeated 1 times is itself."""
+        s = SortedSet([1])
+        self.assertEqual(s*1, s)
+
+    def test_repetion_with_non_zero_with_sorted_set_lhs(self):
+        """A sorted set repeated n times is itself."""
+        s = SortedSet([1])
+        self.assertEqual(s*3, s)
+
 
 class TestReprProtocol(unittest.TestCase):
     """
@@ -457,9 +584,9 @@ class TestEqualityProtocol(unittest.TestCase):
 class TestInequalityProtocol(unittest.TestCase):
     """
     Tests for the implementation of inequality operator on SortedSet.
-    
+
     If __eq__ is overridden then also the __ne__ should be overridden. 
-    
+
     However, Python automatically implements __ne_ by negating __eq__
     if no explicit implementation is provided.
     """
