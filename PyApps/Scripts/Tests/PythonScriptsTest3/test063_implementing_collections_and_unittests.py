@@ -91,6 +91,43 @@ Results:
 # difference
 # symmetric difference
 # equal / not equal
+#
+# The set operators may be implemented by means of all the method
+# implementations listed below. One way to get basisc implementations
+# for free is to have your collection inherit from the basic abstract
+# class collections.abc.Set. This provodes a fill in for all the methods
+# but you might want to override some accortding to the behavior of the
+# descendant or to provide better performance than the basic implementation
+# can deliver.
+#
+# The set operators that must be implemented are
+#
+# subset:           __le__() with infix <= ; also issubset()
+# proper subset:    __lt__() with infix <
+#                   __eq__() with infix ==
+#                   __ne__() with infix !=
+# proper superset:  __gt__() with infix >
+# supertset:        __ge__() with infix <= ; also issuperset()
+#
+# there is also the  isdisjoint() method if you wish which test
+# whether two sets have any elements in common.
+#
+# issubset() and  issuperset() must be explicitly implemented
+# their advantage over the infix operators is that the latter
+# requires that the lhs and rhs terms of teh infix are of the
+# same type while issubset() and  issuperset() can accept any
+# iterable argument.
+#
+# Other Algebraic set operators that must be implemented are
+#
+# __and__() with infix operator & ; also intersection()
+# __or__()  with infix operator | ; also union()
+# __xor__() with infix operator ^ ; also symmetric_difference()
+# __sub__() with infix operator - ; also difference()
+#
+# the intersection(), union(), symmetric_difference(), difference()
+# must be explicitly implemented and take any iterable as argument
+# as discussed earlier.
 
 import unittest
 # collections.abc = Collection Abstract Base Class.
@@ -103,13 +140,13 @@ import unittest
 # the Sequence protocol. You might also use the base classes in collections.abc in composition rather than inheritance
 # patterns. That is collections.abc does some of the leg work in cases where some collection protocol needs to be
 # implemented on some custom collection.
-from collections.abc import Container, Iterable, Sequence, Sized
+from collections.abc import Container, Iterable, Sequence, Sized, Set
 from itertools import chain
 
 # notice that we let this class inherit from collections.abc.Sequence
 
 
-class SortedSet(Sequence):
+class SortedSet(Sequence, Set):
     """
     An implementation of a sorted set.
     """
@@ -241,6 +278,24 @@ class SortedSet(Sequence):
         The sorted set is commutative with respect to *.
         """
         return self * lhs
+
+    def issubset(self, iterable):
+        return self <= SortedSet(iterable)
+
+    def issuperset(self, iterable):
+        return self >= SortedSet(iterable)
+
+    def intersection(self, iterable):
+        return self & SortedSet(iterable)
+
+    def union(self, iterable):
+        return self | SortedSet(iterable)
+
+    def symmetric_difference(self, iterable):
+        return self ^ SortedSet(iterable)
+
+    def difference(self, iterable):
+        return self - SortedSet(iterable)
 
 
 class TestConstruction(unittest.TestCase):
@@ -603,6 +658,154 @@ class TestInequalityProtocol(unittest.TestCase):
     def test_same_reference_is_not_unequal(self):
         s = SortedSet([1, 2])
         self.assertFalse(s != s)
+
+
+class TestRelationalSetProtocol(unittest.TestCase):
+
+    def test_lt_positive(self):
+        s = SortedSet({1, 2})
+        t = SortedSet({1, 2, 3})
+        self.assertTrue(s < t)
+
+    def test_lt_negative(self):
+        s = SortedSet({1, 2, 3})
+        t = SortedSet({1, 2, 3})
+        self.assertFalse(s < t)
+
+    def test_le_lt_positive(self):
+        s = SortedSet({1, 2})
+        t = SortedSet({1, 2, 3})
+        self.assertTrue(s <= t)
+
+    def test_le_eq_positive(self):
+        s = SortedSet({1, 2, 3})
+        t = SortedSet({1, 2, 3})
+        self.assertTrue(s <= t)
+
+    def test_le_negative(self):
+        s = SortedSet({1, 2, 3})
+        t = SortedSet({1, 2})
+        self.assertFalse(s <= t)
+
+    def test_gt_positive(self):
+        s = SortedSet({1, 2, 3})
+        t = SortedSet({1, 2})
+        self.assertTrue(s > t)
+
+    def test_gt_negative(self):
+        s = SortedSet({1, 2})
+        t = SortedSet({1, 2, 3})
+        self.assertFalse(s > t)
+
+    def test_ge_gt_positive(self):
+        s = SortedSet({1, 2, 3})
+        t = SortedSet({1, 2})
+        self.assertTrue(s > t)
+
+    def test_ge_eq_positive(self):
+        s = SortedSet({1, 2, 3})
+        t = SortedSet({1, 2, 3})
+        self.assertTrue(s >= t)
+
+    def test_ge_negative(self):
+        s = SortedSet({1, 2})
+        t = SortedSet({1, 2, 3})
+        self.assertFalse(s >= t)
+
+
+class TestSetRelationalMethods(unittest.TestCase):
+
+    def test_issubset_proper_positive(self):
+        s = SortedSet({1, 2})
+        t = [1, 2, 3]
+        self.assertTrue(s.issubset(t))
+
+    def test_issubset_positive(self):
+        s = SortedSet({1, 2, 3})
+        t = [1, 2, 3]
+        self.assertTrue(s.issubset(t))
+
+    def test_issubset_negative(self):
+        s = SortedSet({1, 2, 3})
+        t = [1, 2]
+        self.assertFalse(s.issubset(t))
+
+    def test_issuperset_proper_positive(self):
+        s = SortedSet({1, 2, 3})
+        t = [1, 2]
+        self.assertTrue(s.issuperset(t))
+
+    def test_issuperset_positive(self):
+        s = SortedSet({1, 2, 3})
+        t = [1, 2, 3]
+        self.assertTrue(s.issuperset(t))
+
+    def test_issuperset_negative(self):
+        s = SortedSet({1, 2})
+        t = [1, 2, 3]
+        self.assertFalse(s.issuperset(t))
+
+
+class TestOperationsSetProtocol(unittest.TestCase):
+
+    def test_intersection(self):
+        s = SortedSet({1, 2, 3})
+        t = SortedSet({2, 3, 4})
+        self.assertEqual(s & t, SortedSet({2, 3}))
+
+    def test_union(self):
+        s = SortedSet({1, 2, 3})
+        t = SortedSet({2, 3, 4})
+        self.assertEqual(s | t, SortedSet({1, 2, 3, 4}))
+
+    def test_symmetric_difference(self):
+        s = SortedSet({1, 2, 3})
+        t = SortedSet({2, 3, 4})
+        self.assertEqual(s ^ t, SortedSet({1, 4}))
+
+    def test_difference(self):
+        s = SortedSet({1, 2, 3})
+        t = SortedSet({2, 3, 4})
+        self.assertEqual(s - t, SortedSet({1}))
+
+
+class TestSetOperationsMethods(unittest.TestCase):
+
+    def test_intersection(self):
+        s = SortedSet({1, 2, 3})
+        t = [2, 3, 4]
+        self.assertEqual(s.intersection(t), SortedSet({2, 3}))
+
+    def test_union(self):
+        s = SortedSet({1, 2, 3})
+        t = [2, 3, 4]
+        self.assertEqual(s.union(t), SortedSet({1, 2, 3, 4}))
+
+    def test_symmetric_difference(self):
+        s = SortedSet({1, 2, 3})
+        t = [2, 3, 4]
+        self.assertEqual(s.symmetric_difference(t), SortedSet({1, 4}))
+
+    def test_difference(self):
+        s = SortedSet({1, 2, 3})
+        t = [2, 3, 4]
+        self.assertEqual(s.difference(t), SortedSet({1}))
+
+    def test_isdisjoint_positive(self):
+        s = SortedSet({1, 2, 3})
+        t = [4, 5, 6]
+        self.assertTrue(s.isdisjoint(t))
+
+    def test_isdisjoint_negative(self):
+        s = SortedSet({1, 2, 3})
+        t = [3, 4, 5]
+        self.assertFalse(s.isdisjoint(t))
+
+
+class TestSetProtocol(unittest.TestCase):
+
+    def test_protocol(self):
+        self.assertTrue(issubclass(SortedSet, Set))
 
 
 def test_module():
