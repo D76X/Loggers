@@ -101,9 +101,24 @@
 
 - Octave
 - Blog
-- Pluralsight courses => ZEROMQ + Machine Learning + Phaser + Pixijs + ReactiveUI + InkScape + GIMP + Asesprite + StyleCop
 - Youtube channel
 - Fayman
 - Conto arancio
 - Investments
 - W10 on laptop
+
+# Pluralsight Course
+
+- ZEROMQ 
+- ZEROMQ+RABBITMQ+AKKA+PROTOACTOR_STACT+ORLEANS
+- Machine Learning 
+- Phaser 
+- Pixijs 
+- ReactiveUI 
+- InkScape 
+- GIMP 
+- Asesprite 
+- StyleCop
+- Kivy Python
+- 3D Printing https://app.pluralsight.com/library/search?q=3d+printing
+- FreeCAD

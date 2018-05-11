@@ -98,6 +98,9 @@
 |                          | Probability, German, MSBuild                                  |
 | 02-03/05/2018            | 3D Printing work, Python, WiX installer, jQuery, ZEROMQ,      |
 |                          | Probability, German, MSBuild, Handlebars,                     |
-| 04-06/05/2018			   | 3D Printing work, WiX installer, Handlebars, ZEROMQ, German   |
-|						   | Publishing, Pluralsight Project							   |
-| 07/05/2018               ||
+| 04-06/05/2018            | 3D Printing work, WiX installer, Handlebars, ZEROMQ, German   |
+|                          | Publishing, Pluralsight Project                               |
+| 07-10/05/2018            | 3D Printing work, WiX installer, Handlebars, ZEROMQ, German   |
+|                          | Publishing, Pluralsight Project, Camtasia, Phaser (PhoneGap)  |
+|                          | Probability & Statistics, Python                              |
+| 11/05/2018               |                                                               |

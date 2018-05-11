@@ -1068,16 +1068,43 @@ This upgrade mechanism **modifies** the installed files of a product on the targ
 
 - A minor upgrade updates the **ProductVersion**.
 
-- It cannot perform changes to the **existing** structure of the Feature or Component tree.
+- It **cannot** perform changes to the **existing** structure of the Feature or Component tree.
 
-- A minor upgrade can introduce new Features and Components.
+- A minor upgrade **can** introduce new Features and Components.
 
-### Minor Update
+### Small Update
 
-For the **Minor Update** in addition to the points made for the **Minor Upgrade** the 
-following are also enforced.
+A **Small Update** is normally used to update files and/or registry keys.
 
-- 
+- The **ProductCode** remains the same. 
+
+- A small updates the **ProductVersion**.
+
+- It **cannot** perform changes to the **existing** structure of the Feature or Component tree.
+
+- A small update **cannot** introduce new Features and Components. 
+
+- A small update is distributed as a **\*.msp** package.
+
+### Changes to the ProductCode
+
+Of the three mechanism of upgrade available with Windows Installer
+
+1. Major Upgrade 
+2. Minor Upgrade
+3. Small Update
+
+Only the Major Upgrade **must** cause a changes of the ProductCode. However, it is important to know under what
+circumstances it is **required** to change the **ProductCode**.  
+
+1. The name of the *.msi file to install the product changes.
+2. The component code of any existing component changes.
+3. An existing component has been removed from an existing Feature.
+4. An existing Feature has been made a child of another existing Feature.
+5. An existing Feature ha been removed from its parent Feature.
+6. When there is there is the need to support multiple versions of the "same" product side by side on the same system i.e.
+   the user is able to install versions 1.1.1, 1.2.1, 2.4.1, etc. In this case these are treated as different products thus
+   the correposnding installers have different **ProductCode**. Foe example this is the case with **Cura**. 
 
 ---
 
