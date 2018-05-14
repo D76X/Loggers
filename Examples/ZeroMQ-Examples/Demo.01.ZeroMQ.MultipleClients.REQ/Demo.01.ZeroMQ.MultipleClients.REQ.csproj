@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CCCA62F4-0E6C-4BD4-A53D-CC38E2AC1846}</ProjectGuid>
+    <ProjectGuid>{9E696A0B-D1FC-4211-82BA-2B5161B3B07F}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Demo._01.ZeroMQ</RootNamespace>
-    <AssemblyName>Demo.01.ZeroMQ</AssemblyName>
+    <RootNamespace>Demo._01.ZeroMQ.MultipleClients.REQ</RootNamespace>
+    <AssemblyName>Demo.01.ZeroMQ.MultipleClients.REQ</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

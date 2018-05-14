@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C738A937-86C4-462B-A3C8-6392D6591735}</ProjectGuid>
+    <ProjectGuid>{CCCA62F4-0E6C-4BD4-A53D-CC38E2AC1846}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Demo._01.ZeroMQ.Client</RootNamespace>
-    <AssemblyName>Demo.01.ZeroMQ.Client</AssemblyName>
+    <RootNamespace>Demo._01.ZeroMQ</RootNamespace>
+    <AssemblyName>Demo.01.ZeroMQ.Server.REP</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="clrzmq, Version=3.0.0.0, Culture=neutral, PublicKeyToken=ef95cdc29d237b0d, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\clrzmq.3.0.0-rc1\lib\net40\clrzmq.dll</HintPath>
+      <HintPath>..\..\..\packages\clrzmq.3.0.0-rc1\lib\net40\clrzmq.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
