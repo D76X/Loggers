@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9E696A0B-D1FC-4211-82BA-2B5161B3B07F}</ProjectGuid>
+    <ProjectGuid>{99D61332-F130-47A3-B4E2-F956023BD83E}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Demo._01.ZeroMQ.MultipleClients.REQ</RootNamespace>
-    <AssemblyName>Demo.01.ZeroMQ.MultipleClients.REQ</AssemblyName>
+    <RootNamespace>Demo._02.ZeroMQ.MultipleClients.PUSH.PULL</RootNamespace>
+    <AssemblyName>Demo.02.ZeroMQ.MultipleClients.PUSH.PULL</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="clrzmq, Version=3.0.0.0, Culture=neutral, PublicKeyToken=ef95cdc29d237b0d, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\clrzmq.3.0.0-rc1\lib\net40\clrzmq.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -50,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
