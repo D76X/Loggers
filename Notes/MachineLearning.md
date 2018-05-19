@@ -36,6 +36,12 @@
 
 ## Probability Theory & Statistics
 
+1. [Random variables KHANACADAMY](https://www.khanacademy.org/math/statistics-probability/random-variables-stats-library/random-variables-discrete/v/random-variables)
+2. [What is a random variable?](https://www.quora.com/What-is-a-random-variable)
+---
+
+### What is a random variable?
+
 ---
 
 ### Confidence Intervals

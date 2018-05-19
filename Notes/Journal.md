@@ -103,4 +103,5 @@
 | 07-10/05/2018            | 3D Printing work, WiX installer, Handlebars, ZEROMQ, German   |
 |                          | Publishing, Pluralsight Project, Camtasia, Phaser (PhoneGap)  |
 |                          | Probability & Statistics, Python                              |
-| 11/05/2018               |                                                               |
+| 11-19/05/2018            | 3D Printing work, ZEROMQ, Camtasia, Pluralsight Project,	   |
+|						   | Probability & Statistics, Python, web site,				   |

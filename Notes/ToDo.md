@@ -122,3 +122,4 @@
 - Kivy Python
 - 3D Printing https://app.pluralsight.com/library/search?q=3d+printing
 - FreeCAD
+- AvalonDock
