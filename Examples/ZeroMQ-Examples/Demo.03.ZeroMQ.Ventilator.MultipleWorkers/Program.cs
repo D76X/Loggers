@@ -1,10 +1,21 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Threading;
 
 namespace Demo._03.ZeroMQ.Ventilator.MultipleWorkers {
     class Program {
         static void Main(string[] args) {
+
+            int numberOfWorkers = 1;
+
+            for (int i = 0; i < args.Length; i++) {
+                Console.WriteLine($"{args[i]}");
+            }
+
+            if (args.Length > 0) {
+                int.TryParse(args[0], out numberOfWorkers);                
+            }
 
             // start the ventilator
             Process serverProcess = new Process();
@@ -22,15 +33,14 @@ namespace Demo._03.ZeroMQ.Ventilator.MultipleWorkers {
             // start some workers
             Process workerProcess = new Process();
             workerProcess.StartInfo.FileName = Path.GetFullPath(@"..\..\..\Demo.03.ZeroMQ.Worker.Device.PULL.PUSH\bin\Debug\Demo.03.ZeroMQ.Worker.Device.PULL.PUSH.exe");
-            workerProcess.Start();            
 
-            //Process clientProcess = new Process();
-            //clientProcess.StartInfo.FileName = Path.GetFullPath(@"..\..\..\Demo.01.ZeroMQ.Client.REQ\bin\Debug\Demo.01.ZeroMQ.Client.REQ.exe");
+            for (int i = 1; i <= numberOfWorkers; i++) {
+                workerProcess.Start();
+                Console.WriteLine("strated worker");
+            }
 
-            //clientProcess.Start();
-            //clientProcess.Start();
-            //clientProcess.Start();
-            //clientProcess.Start();
+            Console.WriteLine($"started {numberOfWorkers}");
+            Console.ReadKey();
         }
     }
 }
