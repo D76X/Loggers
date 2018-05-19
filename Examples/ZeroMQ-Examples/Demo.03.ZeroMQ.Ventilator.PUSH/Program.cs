@@ -19,6 +19,8 @@ namespace Demo._03.ZeroMQ.Ventilator.PUSH {
 
                 // the sender socket is a stable endpoint thus it binds to an IP address.
                 sender.Bind("tcp://*:5557");
+                Console.WriteLine("Ventilator on tcp://*:5557");
+                Console.WriteLine();
 
                 // connect to the sink socket
                 sink.Connect("tcp://localhost:5558");
@@ -30,10 +32,12 @@ namespace Demo._03.ZeroMQ.Ventilator.PUSH {
                 Console.WriteLine();
 
                 Console.WriteLine("The server is ready to send!");
-                Thread.Sleep(2000);
+                Console.ReadKey();
+                //Thread.Sleep(2000);
 
                 Console.WriteLine("send a start message to the sink...");
-                sink.Send(new byte[] { 0x00 }, 1, SocketFlags.DontWait);
+                var startMessage = new byte[] { 0x00, 0x00, 0x00, 0x00 };
+                sink.Send(startMessage, startMessage.Length, SocketFlags.DontWait);
 
                 Console.WriteLine("split the work, create a batch...");
                 int batchSize = 100; 
@@ -45,9 +49,16 @@ namespace Demo._03.ZeroMQ.Ventilator.PUSH {
                     workLoad[i] = rnd.Next(101);
                     totalWorkLoad += workLoad[i];
                 }
-
-                Console.WriteLine("send the expected workload message for this batch to the sink...");
-                sink.Send(BitConverter.GetBytes(totalWorkLoad), 1, SocketFlags.DontWait);
+                
+                var totalWorkLoadMessage = BitConverter.GetBytes(totalWorkLoad);
+                sink.Send(totalWorkLoadMessage, totalWorkLoadMessage.Length, SocketFlags.DontWait);
+                Console.WriteLine($"sent the total workload message for this batch to the sink {BitConverter.ToString(totalWorkLoadMessage)} = {totalWorkLoad}");
+                Console.WriteLine();
+                
+                var batchSizeMessage = BitConverter.GetBytes(batchSize);
+                sink.Send(batchSizeMessage, batchSizeMessage.Length, SocketFlags.DontWait);
+                Console.WriteLine($"sent the size of the batch to the sink {BitConverter.ToString(batchSizeMessage)} = {batchSize}");
+                Console.WriteLine();
 
                 // hand out the work
                 for (int i = 0; i < batchSize; i++) {    
@@ -58,6 +69,7 @@ namespace Demo._03.ZeroMQ.Ventilator.PUSH {
                 }
 
                 Console.WriteLine($"sent all work {totalWorkLoad}");
+                Console.ReadKey();
             }
         }
     }
