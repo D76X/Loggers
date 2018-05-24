@@ -104,4 +104,7 @@
 |                          | Publishing, Pluralsight Project, Camtasia, Phaser (PhoneGap)  |
 |                          | Probability & Statistics, Python                              |
 | 11-19/05/2018            | 3D Printing work, ZEROMQ, Camtasia, Pluralsight Project,	   |
-|						   | Probability & Statistics, Python, web site,				   |
+|						   | Probability & Statistics, Python, web site, German, Akka.NET  |
+| 20-24/05/2018            | Slic3r, FreeCAD, ZEROMQ, Unicode, Pluralsight Projects, Phaser|
+|						   | Akka.NET, web site, RequireJS, MSBuild, Prob & Stats		   |
+|||
