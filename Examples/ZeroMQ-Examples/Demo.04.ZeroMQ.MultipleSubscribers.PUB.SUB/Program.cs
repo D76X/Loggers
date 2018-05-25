@@ -48,7 +48,7 @@ namespace Demo._04.ZeroMQ.MultipleSubscribers.PUB.SUB {
             Console.WriteLine($"started publisher Area2 on endpoint {publisherEndPointArea2}.");
 
             // start a subscriber to the only endpoint of Area1b but only for the messages with keys TEMPEREATURE and PRESSURE
-            subscriberArgs = $"tcp://localhost:7001|TEMPEREATURE+PRESSURE|4";
+            subscriberArgs = $"tcp://localhost:7001|AREA2_TEMPEREATURE+AREA2_PRESSURE|1";
             subscriberProcess.StartInfo.Arguments = subscriberArgs;
             subscriberProcess.Start();
             Console.WriteLine($"started subscriber to messages with prefix TEMPEREATURE and PRESSURE from Area2 endpoint.");

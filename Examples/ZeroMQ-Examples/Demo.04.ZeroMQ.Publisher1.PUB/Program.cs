@@ -206,6 +206,7 @@ namespace Demo._04.ZeroMQ.Publisher1.PUB {
                 endPointArea1a = args[0];
                 endPointArea1b = args[1];
             }
+
             Console.WriteLine("press P to pause publishing");
             Console.WriteLine();
 

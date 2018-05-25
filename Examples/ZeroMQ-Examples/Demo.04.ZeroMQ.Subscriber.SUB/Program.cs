@@ -69,8 +69,10 @@ namespace Demo._04.ZeroMQ.Subscriber.SUB {
             
             foreach (var prefix in prefixes) {
                 subscriber.Subscribe(Encoding.UTF8.GetBytes(prefix));
-                Console.WriteLine($"Subcribed to message prefix {prefix}");
+                Console.WriteLine($"Subcribed to message prefix {prefix}");                
             }
+
+            Console.WriteLine();
         }
 
         private static void SetupDefaultSubscriber(ZmqSocket subscriber) {
@@ -99,6 +101,11 @@ namespace Demo._04.ZeroMQ.Subscriber.SUB {
 
                 throw new ApplicationException($"message with unexpected number of frames {message.FrameCount}");
             };
+
+            if (expectedMessageFrameCount == 1) {
+                ReadSingleFrame(message);
+                return;
+            }
 
             string key = Encoding.UTF8.GetString(message.First);
 
@@ -144,12 +151,8 @@ namespace Demo._04.ZeroMQ.Subscriber.SUB {
             Console.WriteLine($"key = {key}, ep = {ep}, st = {st}, t = {t}, p = {p}, h = {h}, v = {v}, c = {c}");
         }
 
-        private static void ReadDataArea2a(ZmqSocket subscriber) {
-            Console.WriteLine();
-        }
-
-        private static void ReadDataArea2b(ZmqSocket subscriber) {
-            Console.WriteLine();
-        }
+        private static void ReadSingleFrame(ZmqMessage message) {
+            Console.WriteLine(Encoding.UTF8.GetString(message.First()));
+        }        
     }
 }
