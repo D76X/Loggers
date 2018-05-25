@@ -36,19 +36,20 @@
 
 ## Probability Theory & Statistics
 
-1. [Random variables KHANACADAMY](https://www.khanacademy.org/math/statistics-probability/random-variables-stats-library/random-variables-discrete/v/random-variables)
-2. [What is a random variable?](https://www.quora.com/What-is-a-random-variable)
----
-
 ### What is a random variable?
 
+1. [Random variables KHANACADAMY](https://www.khanacademy.org/math/statistics-probability/random-variables-stats-library/random-variables-discrete/v/random-variables)
+2. [What is a random variable?](https://www.quora.com/What-is-a-random-variable)
+
 ---
 
-### Confidence Intervals
+### Why is the linear combination of random variables computed using teh convolution formula? 
+### What are mixed random variables?
 
-1.  https://www.mathsisfun.com/data/confidence-interval.html
-2.  [Confidence intervals and margin of error](https://www.youtube.com/watch?v=hlM7zdf7zwU)
-3.  [Confidence interval](https://en.wikipedia.org/wiki/Confidence_interval)
+1.  [Why is the sum of two random variables a convolution?](https://stats.stackexchange.com/questions/331973/why-is-the-sum-of-two-random-variables-a-convolution)
+
+Explains the difference that exists between any linear combination of indipendent RVs which leads to the convolution formula and the distinct concept of **mixed RVs** 
+which leads to a linear function of expected values etc.
 
 ---
 
@@ -58,18 +59,23 @@
 
 ---
 
-### Normal distribution
+### What is the difference between Bernoulli, Poisson and exponential distributions and processes?
 
-[Why divide the sample variance by N-1?](http://www.visiondummy.com/2014/03/divide-variance-n-1/)  
-This article explains well why the variance estimator for a normal distribution uses N-1 as a divisor instead of the more intuitive N.
+1.  [Bernoulli Process Practice -MIT MIT 6.041SC Probabilistic Systems Analysis and Applied Probability, Fall 2013](https://www.youtube.com/watch?v=i0Jom_gR0t4)
+2.  [Exponential distribution](https://en.wikipedia.org/wiki/Exponential_distribution)
+---
+
+### What is the  Law of the Unconscious Statistician (LOTUS)?
+
+1.	[Law of the unconscious statistician](https://en.wikipedia.org/wiki/Law_of_the_unconscious_statistician)  
 
 ---
 
-### Combination of random variables
+### Why the variance estimator for a normal distribution uses N-1 as its denominator instead of N?
 
-1.  [Why is the sum of two random variables a convolution?](https://stats.stackexchange.com/questions/331973/why-is-the-sum-of-two-random-variables-a-convolution)
-
-Explains the difference that exists between any linear combination of indipendent RVs which leads to the convolution formula and the distinct concept of **mixed RVs** which leads to a linear function of expected values etc.
+[Why divide the sample variance by N-1?](http://www.visiondummy.com/2014/03/divide-variance-n-1/) 
+ 
+This article explains well why the variance estimator for a normal distribution uses N-1 as a divisor instead of the more intuitive N.
 
 ---
 
@@ -81,13 +87,15 @@ Provides a nice explanation of what the joint PDF is and an example where it is 
 
 ---
 
-### Difference between Bernoulli, Poisson and exponential distributions and processes
+### What is a confidence Intervals?
 
-1.  [Bernoulli Process Practice -MIT MIT 6.041SC Probabilistic Systems Analysis and Applied Probability, Fall 2013](https://www.youtube.com/watch?v=i0Jom_gR0t4)
+1.  https://www.mathsisfun.com/data/confidence-interval.html
+2.  [Confidence intervals and margin of error](https://www.youtube.com/watch?v=hlM7zdf7zwU)
+3.  [Confidence interval](https://en.wikipedia.org/wiki/Confidence_interval)
 
 ---
 
-### Prior and Posterior probabilities.
+### Whar are Prior and Posterior probabilities?
 
 1.  [Prior And Posterior - Intro to Statistics](https://www.youtube.com/watch?v=o2Tpws5C2Eg)
 2.  [26 - Prior and posterior predictive distributions - an introduction](https://www.youtube.com/watch?v=R9NQY2Hyl14)
