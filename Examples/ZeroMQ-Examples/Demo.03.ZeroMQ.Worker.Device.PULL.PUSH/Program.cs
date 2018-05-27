@@ -30,8 +30,8 @@ namespace Demo._03.ZeroMQ.Worker.Device.PULL.PUSH {
                 // connect downstream to the sink.
                 sink.Connect(downstream);
 
-                Console.WriteLine($"sonnect upstream with PULL socktet @ {upstream}");
-                Console.WriteLine($"sonnect downstream with PUSH socktet @ {downstream}");
+                Console.WriteLine($"connect upstream with PULL socktet @ {upstream}");
+                Console.WriteLine($"connect downstream with PUSH socktet @ {downstream}");
 
                 // reads messages from the ventialtor and do the work.
                 while (true) {

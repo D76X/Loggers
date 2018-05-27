@@ -1,13 +1,31 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading;
 
 namespace Demo._03.ZeroMQ.Ventilator.MultipleWorkers {
     class Program {
+
+        static HashSet<Process> processes = new HashSet<Process>();
+
+        static void StartProcess(string exeRelPath, string arguments) {
+
+            Process process = new Process();
+            processes.Add(process);
+            process.StartInfo.FileName = Path.GetFullPath(exeRelPath);
+            process.StartInfo.Arguments = arguments;
+            process.Start();
+        }
+
         static void Main(string[] args) {
 
-            int numberOfWorkers = 1;
+            const string ventilatorExeRelPath = @"..\..\..\Demo.03.ZeroMQ.Ventilator.PUSH\bin\Debug\Demo.03.ZeroMQ.Ventilator.PUSH.exe";
+            const string sinkExeRelPath = @"..\..\..\Demo.03.ZeroMQ.Sink.PULL\bin\Debug\Demo.03.ZeroMQ.Sink.PULL.exe";
+            const string workerExeRelPath = @"..\..\..\Demo.03.ZeroMQ.Worker.Device.PULL.PUSH\bin\Debug\Demo.03.ZeroMQ.Worker.Device.PULL.PUSH.exe";
+
+            int numberOfWorkers = 2;
 
             for (int i = 0; i < args.Length; i++) {
                 Console.WriteLine($"{args[i]}");
@@ -18,29 +36,28 @@ namespace Demo._03.ZeroMQ.Ventilator.MultipleWorkers {
             }
 
             // start the ventilator
-            Process serverProcess = new Process();
-            serverProcess.StartInfo.FileName = Path.GetFullPath(@"..\..\..\Demo.03.ZeroMQ.Ventilator.PUSH\bin\Debug\Demo.03.ZeroMQ.Ventilator.PUSH.exe");
-            serverProcess.Start();
+            StartProcess(ventilatorExeRelPath, null);
+            Console.WriteLine("started ventilator");
 
             // start the sink
-            Process sinkProcess = new Process();
-            sinkProcess.StartInfo.FileName = Path.GetFullPath(@"..\..\..\Demo.03.ZeroMQ.Sink.PULL\bin\Debug\Demo.03.ZeroMQ.Sink.PULL.exe");
-            sinkProcess.Start();
+            StartProcess(sinkExeRelPath, null);
+            Console.WriteLine("started sink");
 
             // give some time for the ventilator and the sink to be up and running
             Thread.Sleep(2000);
 
             // start some workers
-            Process workerProcess = new Process();
-            workerProcess.StartInfo.FileName = Path.GetFullPath(@"..\..\..\Demo.03.ZeroMQ.Worker.Device.PULL.PUSH\bin\Debug\Demo.03.ZeroMQ.Worker.Device.PULL.PUSH.exe");
-
             for (int i = 1; i <= numberOfWorkers; i++) {
-                workerProcess.Start();
-                Console.WriteLine("strated worker");
+                //workerProcess.Start();
+                StartProcess(workerExeRelPath, null);
+                Console.WriteLine($"started worker {i}");
             }
 
-            Console.WriteLine($"started {numberOfWorkers}");
+            Console.WriteLine($"started {numberOfWorkers} workers");
+
+            Console.WriteLine("press any key to tear down all processes...");
             Console.ReadKey();
+            processes.ToList().ForEach(p => p.CloseMainWindow());
         }
     }
 }
