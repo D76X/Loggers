@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Demo._05.NetMQ.Subscriber {
 
@@ -13,10 +12,10 @@ namespace Demo._05.NetMQ.Subscriber {
         const string defaultProxyEndPoint = @"tcp://localhost:5680";
         const int defaultExpectedMessageFrames = 8;
         const string topicAll = "ALL";
-        const string topicTemperature = @"TEMPERAURE";
+        const string topicTemperature = @"TEMPERATURE";
         const string topicPressure = @"PRESSURE";
         const string topicHumidity = @"HUMIDITY";
-        const string topicVentialation = @"VENTIALTION";
+        const string topicVentialation = @"VENTILATION";
         const string topicConditioning = @"CONDITIONING";
 
         internal static class MessageLogger {
@@ -81,10 +80,11 @@ namespace Demo._05.NetMQ.Subscriber {
                     Console.WriteLine($"{args[i]}");
                 }
 
+                // tcp://localhost:5680 2 TEMPERATURE PRESSURE
                 if (args.Length > 1) {
 
                     proxyEndPoint = args[0];
-                    expectedMessageFrames = 1;
+                    expectedMessageFrames = int.Parse(args[1]);
 
                     for (int i = 2; i < args.Length; i++) {
                         topics.Add(args[i]);
@@ -95,33 +95,45 @@ namespace Demo._05.NetMQ.Subscriber {
                 }
 
                 string subscription = TopicsToSubcription(topics);
-                bool unsubscribe = false;
+                bool unsubscribed = false;
 
                 using (var subscriber = new SubscriberSocket()) {
 
-                    subscriber.Options.ReceiveHighWatermark = 1000;
+                    subscriber.Options.ReceiveHighWatermark = 5;
 
                     subscriber.Connect(proxyEndPoint);
                     Console.WriteLine($"subscriber socket connecting on {proxyEndPoint}");
 
                     subscriber.Subscribe(subscription);
-                    Console.WriteLine($"subscription to {subscription}");
+                    Console.WriteLine($"subscribed to {subscription}");
 
                     while (true) {
 
-                        if (unsubscribe) {
-                            Console.WriteLine($"unsubribed from {subscription}");
+                        if (!unsubscribed) {
+                            ReadMessage(subscriber, expectedMessageFrames);                            
                         }
 
-                        ReadMessage(subscriber, expectedMessageFrames);
+                        if (Console.KeyAvailable) {
+
+                            if (!unsubscribed && Console.ReadKey(true).Key == ConsoleKey.P) {
+                                subscriber.Unsubscribe(subscription);
+                                unsubscribed = true;
+                                Console.WriteLine($"unsubribed from {subscription}");
+                                Console.WriteLine("press any key but P to resubscribe...");
+                            }
+                            else {
+                                subscriber.Subscribe(subscription);
+                                unsubscribed = false;
+                                Console.WriteLine($"resubscribed to {subscription}");
+                            }
+                        }                        
                     }
                 }
-
             }
 
             static string TopicsToSubcription(IEnumerable<string> topics) {
 
-                if (topicAll.Contains(topicAll)) {
+                if (topics.Contains(topicAll)) {
                     return $"{topicAll}";
                 }
 

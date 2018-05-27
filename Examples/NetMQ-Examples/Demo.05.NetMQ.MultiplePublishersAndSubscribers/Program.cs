@@ -1,41 +1,62 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
 
 namespace Demo._05.NetMQ.MultiplePublishersAndSubscribers {
     class Program {
+
+        static HashSet<Process> processes = new HashSet<Process>();
+
+        static void StartProcess(string exeRelPath, string arguments) {
+
+            Process process = new Process();
+            processes.Add(process);
+            process.StartInfo.FileName = Path.GetFullPath(exeRelPath);
+            process.StartInfo.Arguments = arguments;
+            process.Start();
+        }
+
         static void Main(string[] args) {
 
             // It does not matter in which order publishers, subscribers and proxy 
             // are started or stopped NetMQ/ZEROMQ takes care of connecting them
             // appropropriately.
-
-            // First we create all the publishers 
+            
             const string publisherExePath = @"..\..\..\Demo.05.NetMQ.Publisher\bin\Debug\Demo.05.NetMQ.Publisher.exe";
             const string subscriberExePath = @"..\..\..\Demo.05.NetMQ.Subscriber\bin\Debug\Demo.05.NetMQ.Subscriber.exe";
             const string proxyExePath = @"..\..\..\Demo.05.NetMQ.Proxy.XSubscriber.XPublisher\bin\Debug\Demo.05.NetMQ.Proxy.XSubscriber.XPublisher.exe";
+            const string proxyFrontend = @"tcp://localhost:5678";
+            const string proxyBackend = @"tcp://localhost:5680";
 
-            Process publisherAll = new Process();
-            publisherAll.StartInfo.FileName = publisherExePath;
-            publisherAll.Start();            
+            // First we create all the publishers 
+            StartProcess(publisherExePath, null);
+            Console.WriteLine("started publisher topic ALL");
+
+            StartProcess(publisherExePath, $"{proxyFrontend} 1000 TEMPERATURE");
+            Console.WriteLine("started publisher for topic TEMPERATURE");
+
+            StartProcess(publisherExePath, $"{proxyFrontend} 1000 VENTILATION");
+            Console.WriteLine("started publisher for topic VENTILATION");
 
             // The we create all the subscribers
-            Process subscriberAll = new Process();
-            subscriberAll.StartInfo.FileName = subscriberExePath;
-            subscriberAll.Start();           
+            StartProcess(subscriberExePath, null);
+            Console.WriteLine("started subscriber to topic ALL");
 
-            // Then we start the proxy
-            Process proxy = new Process();
-            proxy.StartInfo.FileName = proxyExePath;
-            proxy.Start();
+            StartProcess(subscriberExePath, $"{proxyBackend} 1 TEMPERATURE");
+            Console.WriteLine("started subscriber to topic TEMPERATURE");
+
+            StartProcess(subscriberExePath, $"{proxyBackend} 1 VENTILATION");
+            Console.WriteLine("started subscriber to topic VENTILATION");
+
+            // Then we start the proxy to bridge between the publishers and the subscribers
+            StartProcess(proxyExePath, null);
+            Console.WriteLine("started proxy process");
 
             Console.WriteLine("press any key to tear down all processes...");
             Console.ReadKey();
-
-            proxy.CloseMainWindow();
-
-            publisherAll.CloseMainWindow();
-
-            subscriberAll.CloseMainWindow();
+            processes.ToList().ForEach(p => p.CloseMainWindow());          
         }
     }
 }

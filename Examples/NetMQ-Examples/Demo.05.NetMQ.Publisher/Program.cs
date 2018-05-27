@@ -119,43 +119,92 @@ namespace Demo._05.NetMQ.Publisher {
 
             internal static void Log(NetMQMessage message) {
 
-                var enumerator = message.GetEnumerator();
-                enumerator.MoveNext();
+                //var enumerator = message.GetEnumerator();
+                //enumerator.MoveNext();
 
-                string topic = Encoding.UTF8.GetString(enumerator.Current.Buffer);
-                enumerator.MoveNext();
+                string topic = message[0].ConvertToString();
+                //string topic = Encoding.UTF8.GetString(enumerator.Current.Buffer);
+                //enumerator.MoveNext();
 
-                string ep = Encoding.UTF8.GetString(enumerator.Current.Buffer);
-                enumerator.MoveNext();
+                string origin = message[1].ConvertToString();
+                //string ep = Encoding.UTF8.GetString(enumerator.Current.Buffer);
+                //enumerator.MoveNext();
 
-                DateTime st = DateTime.FromBinary(BitConverter.ToInt64(enumerator.Current.Buffer, 0)); ;
-                enumerator.MoveNext();
+                DateTime st = DateTime.FromBinary(BitConverter.ToInt64(message[2].Buffer, 0));
+                //DateTime st = DateTime.FromBinary(BitConverter.ToInt64(enumerator.Current.Buffer, 0)); ;
+                //enumerator.MoveNext();
 
-                int t = BitConverter.ToInt32(enumerator.Current.Buffer.Reverse().ToArray(), 0);
-                enumerator.MoveNext();
+                string head = $"topic = {topic}, origin = {origin}, st = {st}";
 
-                int p = BitConverter.ToInt32(enumerator.Current.Buffer.Reverse().ToArray(), 0);
-                enumerator.MoveNext();
+                switch (topic) {
 
-                int h = BitConverter.ToInt32(enumerator.Current.Buffer.Reverse().ToArray(), 0);
-                enumerator.MoveNext();
+                    case topicAll: {
 
-                bool v = BitConverter.ToBoolean(enumerator.Current.Buffer, 0);
-                enumerator.MoveNext();
+                            int t = message[3].ConvertToInt32();
+                            int p = message[4].ConvertToInt32();
+                            int h = message[5].ConvertToInt32();
+                            bool v = BitConverter.ToBoolean(message[6].Buffer, 0);
+                            bool c = BitConverter.ToBoolean(message[7].Buffer, 0);
+                            Console.WriteLine($"{head}, t = {t}, p = {p}, h = {h}, v = {v}, c = {c}");
 
-                bool c = BitConverter.ToBoolean(enumerator.Current.Buffer, 0);
+                            //int t = BitConverter.ToInt32(enumerator.Current.Buffer.Reverse().ToArray(), 0);
+                            //enumerator.MoveNext();
 
-                Console.WriteLine($"topic = {topic}, ep = {ep}, st = {st}, t = {t}, p = {p}, h = {h}, v = {v}, c = {c}");
+                            //int p = BitConverter.ToInt32(enumerator.Current.Buffer.Reverse().ToArray(), 0);
+                            //enumerator.MoveNext();
+
+                            //int h = BitConverter.ToInt32(enumerator.Current.Buffer.Reverse().ToArray(), 0);
+                            //enumerator.MoveNext();
+
+                            //bool v = BitConverter.ToBoolean(enumerator.Current.Buffer, 0);
+                            //enumerator.MoveNext();
+
+                            //bool c = BitConverter.ToBoolean(enumerator.Current.Buffer, 0);
+
+                            //Console.WriteLine($"topic = {topic}, ep = {ep}, st = {st}, t = {t}, p = {p}, h = {h}, v = {v}, c = {c}");
+                        }
+                        break;
+                    case topicTemperature: {
+                            int t = message[3].ConvertToInt32();
+                            Console.WriteLine($"{head}, t = {t}");
+                        }
+                        break;
+                    case topicPressure: {
+                            int p = message[3].ConvertToInt32();
+                            Console.WriteLine($"{head}, p = {p}");
+                        }
+                        break;
+                    case topicHumidity: {
+                            int h = message[3].ConvertToInt32();
+                            Console.WriteLine($"{head}, h = {h}");
+                        }
+                        break;
+                    case topicVentialation: {
+                            bool v = BitConverter.ToBoolean(message[3].Buffer, 0);
+                            Console.WriteLine($"{head}, v = {v}");
+                        }
+                        break;
+                    case topicConditioning: {
+                            bool c = BitConverter.ToBoolean(message[3].Buffer, 0);
+                            Console.WriteLine($"{head}, v = {c}");
+                        }
+                        break;
+                    default:
+                        Console.WriteLine($"unexpected message format with topic {topic}");
+                        break;
+                }
+
+                
             }
         }
 
         const string defaultProxyEndPoint = @"tcp://localhost:5678";
         const int defaultSamplingTime = 1000;
         const string topicAll = "ALL";
-        const string topicTemperature = @"TEMPERAURE";
+        const string topicTemperature = @"TEMPERATURE";
         const string topicPressure = @"PRESSURE";
         const string topicHumidity = @"HUMIDITY";
-        const string topicVentialation = @"VENTIALTION";
+        const string topicVentialation = @"VENTILATION";
         const string topicConditioning = @"CONDITIONING";
 
         static void Main(string[] args) {
@@ -185,9 +234,9 @@ namespace Demo._05.NetMQ.Publisher {
 
             using (PublisherSocket publisher = new PublisherSocket()) {
 
-                publisher.Options.SendHighWatermark = 1000;
+                publisher.Options.SendHighWatermark = 1;
                 publisher.Connect(proxyEndPoint);
-                Console.WriteLine($"Publisher socket connecting to proxy on {proxyEndPoint}");                
+                Console.WriteLine($"Publisher socket connecting to proxy on {proxyEndPoint}");
                 Console.WriteLine();
 
                 var areaDataReader = new AreaDataReader();
