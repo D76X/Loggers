@@ -1,7 +1,8 @@
-﻿using NetMQ.Sockets;
-using System;
+﻿using System;
+using NetMQ.Sockets;
 
-namespace Demo._05.Proxy.XSubscriber.XPublisher {
+namespace Demo._05.Proxy.XSubscriber.XPublisher {        
+
     class Program {
 
         static void Main(string[] args) {
@@ -30,7 +31,7 @@ namespace Demo._05.Proxy.XSubscriber.XPublisher {
                 Console.WriteLine($"starting proxy from {proxyEndPointFrontend} to {proxyEndPointBackend}...");
 
                 // blocks indefinitely
-                proxy.Start();              
+                proxy.Start();
 
                 // this message does not show on the console
                 Console.WriteLine("proxy started...");

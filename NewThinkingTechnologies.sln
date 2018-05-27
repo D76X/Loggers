@@ -537,7 +537,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.05.NetMQ.Publisher", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.05.NetMQ.Subscriber", "Examples\NetMQ-Examples\Demo.05.NetMQ.Subscriber\Demo.05.NetMQ.Subscriber.csproj", "{90D4F983-9E52-4BD5-BA84-5ADC9F71BAA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.05.Proxy.XSubscriber.XPublisher", "Examples\NetMQ-Examples\Demo.05.Proxy.XSubscriber.XPublisher\Demo.05.Proxy.XSubscriber.XPublisher.csproj", "{4058AF7F-D619-4357-BC86-438D98BFB8FD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.05.NetMQ.MultiplePublishersAndSubscribers", "Examples\NetMQ-Examples\Demo.05.NetMQ.MultiplePublishersAndSubscribers\Demo.05.NetMQ.MultiplePublishersAndSubscribers.csproj", "{CCB71636-5F2F-4815-B658-E8F06AA59DD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.05.NetMQ.Proxy.XSubscriber.XPublisher", "Examples\NetMQ-Examples\Demo.05.NetMQ.Proxy.XSubscriber.XPublisher\Demo.05.NetMQ.Proxy.XSubscriber.XPublisher.csproj", "{4058AF7F-D619-4357-BC86-438D98BFB8FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1583,6 +1585,14 @@ Global
 		{90D4F983-9E52-4BD5-BA84-5ADC9F71BAA0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{90D4F983-9E52-4BD5-BA84-5ADC9F71BAA0}.Release|x86.ActiveCfg = Release|Any CPU
 		{90D4F983-9E52-4BD5-BA84-5ADC9F71BAA0}.Release|x86.Build.0 = Release|Any CPU
+		{CCB71636-5F2F-4815-B658-E8F06AA59DD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCB71636-5F2F-4815-B658-E8F06AA59DD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCB71636-5F2F-4815-B658-E8F06AA59DD9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CCB71636-5F2F-4815-B658-E8F06AA59DD9}.Debug|x86.Build.0 = Debug|Any CPU
+		{CCB71636-5F2F-4815-B658-E8F06AA59DD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCB71636-5F2F-4815-B658-E8F06AA59DD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCB71636-5F2F-4815-B658-E8F06AA59DD9}.Release|x86.ActiveCfg = Release|Any CPU
+		{CCB71636-5F2F-4815-B658-E8F06AA59DD9}.Release|x86.Build.0 = Release|Any CPU
 		{4058AF7F-D619-4357-BC86-438D98BFB8FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4058AF7F-D619-4357-BC86-438D98BFB8FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4058AF7F-D619-4357-BC86-438D98BFB8FD}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -1790,6 +1800,7 @@ Global
 		{D2DB052C-C781-4FBB-AF4D-448BD42550A3} = {BDAAF03F-645C-4E45-BAE7-3309CC441A9C}
 		{CC9D8725-E0DB-404B-A5B9-78822331459F} = {977AC465-8F55-40D1-AE0A-A27491B57E40}
 		{90D4F983-9E52-4BD5-BA84-5ADC9F71BAA0} = {977AC465-8F55-40D1-AE0A-A27491B57E40}
+		{CCB71636-5F2F-4815-B658-E8F06AA59DD9} = {977AC465-8F55-40D1-AE0A-A27491B57E40}
 		{4058AF7F-D619-4357-BC86-438D98BFB8FD} = {977AC465-8F55-40D1-AE0A-A27491B57E40}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

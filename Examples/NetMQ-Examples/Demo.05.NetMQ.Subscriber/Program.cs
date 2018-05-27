@@ -122,13 +122,13 @@ namespace Demo._05.NetMQ.Subscriber {
             static string TopicsToSubcription(IEnumerable<string> topics) {
 
                 if (topicAll.Contains(topicAll)) {
-                    return $"'{topicAll}'";
+                    return $"{topicAll}";
                 }
 
                 var sb = new StringBuilder();
 
                 foreach (var topic in topics) {
-                    sb.Append($"'{topic}' ");
+                    sb.Append($"{topic} ");
                 }
 
                 return sb.ToString().TrimEnd();
