@@ -197,14 +197,25 @@ namespace Demo._04.ZeroMQ.Publisher1.PUB {
 
             string endPointArea1a = defaultEndPointArea1a;
             string endPointArea1b = defaultEndPointArea1b;
+            bool connectToProxy = false;
 
             for (int i = 0; i < args.Length; i++) {
                 Console.WriteLine($"{args[i]}");
             }
 
             if (args.Length == 2) {
+
                 endPointArea1a = args[0];
                 endPointArea1b = args[1];
+
+                if (endPointArea1a == endPointArea1b) {
+
+                    if (endPointArea1a.Contains("*")) {
+                        throw new ArgumentException("wrong address format to use a proxy.");
+                    }
+
+                    connectToProxy = true;
+                }
             }
 
             Console.WriteLine("press P to pause publishing");
@@ -212,16 +223,28 @@ namespace Demo._04.ZeroMQ.Publisher1.PUB {
 
             using (ZmqContext context = ZmqContext.Create())
             using (ZmqSocket publisherArea1a = context.CreateSocket(SocketType.PUB))
-            using (ZmqSocket publisherArea1b = context.CreateSocket(SocketType.PUB)) {
+            using (ZmqSocket publisherArea1b = context.CreateSocket(SocketType.PUB)) {                
 
-                // each PUB socket binds to its own end point.
+                if (connectToProxy) {
+                    
+                    // each PUB socket binds to its own end point.
+                    publisherArea1a.Connect(endPointArea1a);
+                    Console.WriteLine("Publisher for Area 1a connecting to proxy on {0}", endPointArea1a);
 
-                publisherArea1a.Bind(endPointArea1a);
-                Console.WriteLine("Publisher for Area 1a bound on to {0}", endPointArea1a);
+                    publisherArea1b.Connect(endPointArea1b);
+                    Console.WriteLine("Publisher for Area 1b connecting to proxy on {0}", endPointArea1b);
+                    Console.WriteLine();
 
-                publisherArea1b.Bind(endPointArea1b);
-                Console.WriteLine("Publisher for Area 1b bound on to {0}", endPointArea1b);
-                Console.WriteLine();
+                } else {
+
+                    // each PUB socket binds to its own end point.
+                    publisherArea1a.Bind(endPointArea1a);
+                    Console.WriteLine("Publisher for Area 1a bound on to {0}", endPointArea1a);
+
+                    publisherArea1b.Bind(endPointArea1b);
+                    Console.WriteLine("Publisher for Area 1b bound on to {0}", endPointArea1b);
+                    Console.WriteLine();
+                }                
 
                 var dataReaderArea1a = new Area1aDataReader();
                 var dataReaderArea1b = new Area1bDataReader();

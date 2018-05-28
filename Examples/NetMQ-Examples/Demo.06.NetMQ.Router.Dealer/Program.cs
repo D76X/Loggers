@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Demo._05.ZeroMQ.Proxy.XSUB.XPUB {
+namespace Demo._06.NetMQ.Router.Dealer {
     class Program {
         static void Main(string[] args) {
-
-            Console.WriteLine("proxy XSUB-XPUB up and running...");
-            Console.ReadKey();
         }
     }
 }

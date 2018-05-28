@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 
-namespace Demo._04.ZeroMQ.MultipleSubscribers.PUB.SUB {
+namespace Demo._04.ZeroMQ.Starter.PUB.SUB {
 
     class Program {
 

@@ -1,0 +1,68 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Threading;
+
+namespace Demo._04.ZeroMQ.Starter.Forwarder {
+    class Program {
+
+        static HashSet<Process> processes = new HashSet<Process>();
+
+        static void StartProcess(string exeRelPath, string arguments) {
+
+            Process process = new Process();
+            processes.Add(process);
+            process.StartInfo.FileName = Path.GetFullPath(exeRelPath);
+            process.StartInfo.Arguments = arguments;
+            process.Start();
+        }
+
+        static void Main(string[] args) {
+
+            // subscriber process
+            const string publisher1ExePath = @"..\..\..\Demo.04.ZeroMQ.Publisher1.PUB\bin\Debug\Demo.04.ZeroMQ.Publisher1.PUB.exe";
+            const string publisher2ExePath = @"..\..\..\Demo.04.ZeroMQ.Publisher2.PUB\bin\Debug\Demo.04.ZeroMQ.Publisher2.PUB.exe";
+            const string subscriberExePath = @"..\..\..\Demo.04.ZeroMQ.Subscriber.SUB\bin\Debug\Demo.04.ZeroMQ.Subscriber.SUB.exe";
+            const string forwarderExePath = @"..\..\..\Demo.04.ZeroMQ.Forwarder.XSUB.XPUB\bin\Debug\Demo.04.ZeroMQ.Forwarder.XSUB.XPUB.exe";            
+            const string forwarderFrontendEndPointToConnectTo = @"tcp://localhost:5678";
+            const string forwarderBackendEndPointToConnectTo = @"tcp://localhost:5680";
+
+            // start the proxy
+            StartProcess(forwarderExePath, null);
+
+            Thread.Sleep(2000);
+
+            // |tcp://*:6001|READINGS_AREA_1A|8|
+            // start publisher for Area1
+            //StartProcess(publisher1ExePath, $"{forwarderFrontendEndPointToConnectTo} {forwarderFrontendEndPointToConnectTo}");
+            //Console.WriteLine($"started publishers for Area1.");
+
+            //Thread.Sleep(2000);
+
+            // starts a subscriber to all endpoints from Area1 and all messages from each endpoint.
+            //StartProcess(subscriberExePath, $"{forwarderBackendEndPointToConnectTo}|READINGS_AREA_1A|8|");
+            //Console.WriteLine($"started subscriber to all endpoints for Area1 and all messages to any endpoint.");            
+
+
+            StartProcess(publisher2ExePath, $"{forwarderFrontendEndPointToConnectTo}");
+            Console.WriteLine($"started publishers for Area2.");
+            Thread.Sleep(2000);
+
+            // starts a subscriber to messages from Area2 with prefix AREA2_TEMPEREATURE.
+            StartProcess(subscriberExePath, $"{forwarderBackendEndPointToConnectTo}|AREA2_TEMPEREATURE|1|");
+            Console.WriteLine($"started subscriber to messages with prefix AREA2_TEMPEREATURE from Area2 endpoint.");
+
+            Console.WriteLine("press any key to tear down all processes...");
+            Console.ReadKey();
+            processes.ToList().ForEach(
+                p => {
+                    if(Process.Get)
+                    p.CloseMainWindow();
+                }               
+           );
+        }
+    }
+}
+

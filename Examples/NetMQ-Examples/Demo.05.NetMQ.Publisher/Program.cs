@@ -3,7 +3,6 @@ using NetMQ.Sockets;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 
 namespace Demo._05.NetMQ.Publisher {
@@ -119,20 +118,9 @@ namespace Demo._05.NetMQ.Publisher {
 
             internal static void Log(NetMQMessage message) {
 
-                //var enumerator = message.GetEnumerator();
-                //enumerator.MoveNext();
-
                 string topic = message[0].ConvertToString();
-                //string topic = Encoding.UTF8.GetString(enumerator.Current.Buffer);
-                //enumerator.MoveNext();
-
                 string origin = message[1].ConvertToString();
-                //string ep = Encoding.UTF8.GetString(enumerator.Current.Buffer);
-                //enumerator.MoveNext();
-
                 DateTime st = DateTime.FromBinary(BitConverter.ToInt64(message[2].Buffer, 0));
-                //DateTime st = DateTime.FromBinary(BitConverter.ToInt64(enumerator.Current.Buffer, 0)); ;
-                //enumerator.MoveNext();
 
                 string head = $"topic = {topic}, origin = {origin}, st = {st}";
 
@@ -146,22 +134,6 @@ namespace Demo._05.NetMQ.Publisher {
                             bool v = BitConverter.ToBoolean(message[6].Buffer, 0);
                             bool c = BitConverter.ToBoolean(message[7].Buffer, 0);
                             Console.WriteLine($"{head}, t = {t}, p = {p}, h = {h}, v = {v}, c = {c}");
-
-                            //int t = BitConverter.ToInt32(enumerator.Current.Buffer.Reverse().ToArray(), 0);
-                            //enumerator.MoveNext();
-
-                            //int p = BitConverter.ToInt32(enumerator.Current.Buffer.Reverse().ToArray(), 0);
-                            //enumerator.MoveNext();
-
-                            //int h = BitConverter.ToInt32(enumerator.Current.Buffer.Reverse().ToArray(), 0);
-                            //enumerator.MoveNext();
-
-                            //bool v = BitConverter.ToBoolean(enumerator.Current.Buffer, 0);
-                            //enumerator.MoveNext();
-
-                            //bool c = BitConverter.ToBoolean(enumerator.Current.Buffer, 0);
-
-                            //Console.WriteLine($"topic = {topic}, ep = {ep}, st = {st}, t = {t}, p = {p}, h = {h}, v = {v}, c = {c}");
                         }
                         break;
                     case topicTemperature: {

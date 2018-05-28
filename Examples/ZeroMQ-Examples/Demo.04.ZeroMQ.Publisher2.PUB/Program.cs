@@ -41,7 +41,7 @@ namespace Demo._04.ZeroMQ.Publisher2.PUB {
             }
         }
 
-        private const string defaultEndPointArea2 = @"tcp://*:11001";        
+        private const string defaultEndPointArea2 = @"tcp://*:11001";
         private const string keyTemperature = @"AREA2_TEMPEREATURE";
         private const string keyPressure = @"AREA2_PRESSURE";
         private const string keyHumidity = @"AREA2_HUMIDITY";
@@ -51,13 +51,18 @@ namespace Demo._04.ZeroMQ.Publisher2.PUB {
         static void Main(string[] args) {
 
             string endPointArea2 = defaultEndPointArea2;
+            bool connectToProxy = false;
 
             for (int i = 0; i < args.Length; i++) {
                 Console.WriteLine($"{args[i]}");
             }
 
             if (args.Length == 1) {
-                endPointArea2 = args[0];                
+                endPointArea2 = args[0];               
+            }
+
+            if (!endPointArea2.Contains("*")) {
+                connectToProxy = true;
             }
 
             Console.WriteLine("press P to pause publishing");
@@ -66,8 +71,16 @@ namespace Demo._04.ZeroMQ.Publisher2.PUB {
             using (ZmqContext context = ZmqContext.Create())
             using (ZmqSocket publisherArea2 = context.CreateSocket(SocketType.PUB)) {
 
-                publisherArea2.Bind(endPointArea2);
-                Console.WriteLine("Publisher for Area 2 bound on to {0}", endPointArea2);
+                if (connectToProxy) {
+
+                    publisherArea2.Connect(endPointArea2);
+                    Console.WriteLine("Publisher for Area 2 connected to proxy {0}", endPointArea2);
+
+                } else {
+
+                    publisherArea2.Bind(endPointArea2);
+                    Console.WriteLine("Publisher for Area 2 bound on to {0}", endPointArea2);
+                }
 
                 var dataReaderArea2 = new Area2DataReader();
                 bool pause = false;
@@ -100,7 +113,7 @@ namespace Demo._04.ZeroMQ.Publisher2.PUB {
             ZmqSocket publisherSocket,
             Area2DataReader areaDataReader) {
 
-            var t =$"{keyTemperature} {DateTime.Now} {areaDataReader.ReadTemperature()}";
+            var t = $"{keyTemperature} {DateTime.Now} {areaDataReader.ReadTemperature()}";
             publisherSocket.Send(t, Encoding.UTF8);
             Console.WriteLine(t);
 
@@ -120,5 +133,5 @@ namespace Demo._04.ZeroMQ.Publisher2.PUB {
             publisherSocket.Send(c, Encoding.UTF8);
             Console.WriteLine(c);
         }
-    }    
+    }
 }
