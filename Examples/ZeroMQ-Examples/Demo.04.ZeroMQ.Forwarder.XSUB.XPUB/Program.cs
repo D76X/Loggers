@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Text;
 using ZeroMQ;
 using ZeroMQ.Devices;
 
 namespace Demo._04.ZeroMQ.Forwarder.XSUB.XPUB {
 
     /// <summary>
-    /// Refs    /// 
+    /// Refs    
     /// https://github.com/zeromq/clrzmq/blob/master/src/ZeroMQ.AcceptanceTests/DeviceTests/Forwarder.cs
     /// https://github.com/zeromq/clrzmq/blob/master/src/ZeroMQ/Devices/ForwarderDevice.cs
     /// https://github.com/zeromq/clrzmq/blob/master/src/ZeroMQ/Devices/Device.cs
@@ -37,14 +36,16 @@ namespace Demo._04.ZeroMQ.Forwarder.XSUB.XPUB {
 
                 // set up the forwarder as a pass through device
                 forwarder.FrontendSetup.SubscribeAll();
-                //forwarder.BackendSetup.Subscribe(Encoding.UTF8.GetBytes(""));
 
                 Console.WriteLine($"starting forwader from {proxyEndPointFrontend} to {proxyEndPointBackend}");
 
                 // this blocks because mode: DeviceMode.Blocking 
                 forwarder.Start();
+
+                // you would see this only when mode: DeviceMode.Threaded
                 Console.WriteLine("started");
                 Console.ReadKey();
+
                 Console.WriteLine("exiting...");
             }
         }
