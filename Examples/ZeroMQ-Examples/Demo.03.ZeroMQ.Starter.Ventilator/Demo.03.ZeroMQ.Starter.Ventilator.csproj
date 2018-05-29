@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{9B81E449-2381-4CCA-AF37-234673DB5639}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Demo._03.ZeroMQ.Ventilator.MultipleWorkers</RootNamespace>
-    <AssemblyName>Demo.03.ZeroMQ.Ventilator.MultipleWorkers</AssemblyName>
+    <RootNamespace>Demo._03.ZeroMQStarter.Ventilator</RootNamespace>
+    <AssemblyName>Demo.03.ZeroMQ.Starter.Ventilator</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

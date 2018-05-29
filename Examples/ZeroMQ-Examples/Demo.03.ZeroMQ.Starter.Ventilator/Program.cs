@@ -5,18 +5,18 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 
-namespace Demo._03.ZeroMQ.Ventilator.MultipleWorkers {
+namespace Demo._03.ZeroMQ.Starter.Ventilator {
     class Program {
 
-        static HashSet<Process> processes = new HashSet<Process>();
+        static HashSet<int> pids = new HashSet<int>();
 
         static void StartProcess(string exeRelPath, string arguments) {
 
             Process process = new Process();
-            processes.Add(process);
             process.StartInfo.FileName = Path.GetFullPath(exeRelPath);
             process.StartInfo.Arguments = arguments;
             process.Start();
+            pids.Add(process.Id);
         }
 
         static void Main(string[] args) {
@@ -57,6 +57,8 @@ namespace Demo._03.ZeroMQ.Ventilator.MultipleWorkers {
 
             Console.WriteLine("press any key to tear down all processes...");
             Console.ReadKey();
+
+            var processes = Process.GetProcesses().Where(p => pids.Contains(p.Id));
             processes.ToList().ForEach(p => p.CloseMainWindow());
         }
     }
