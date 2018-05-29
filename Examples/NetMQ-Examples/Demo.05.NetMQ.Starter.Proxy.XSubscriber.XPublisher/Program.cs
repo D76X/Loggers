@@ -4,18 +4,18 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
-namespace Demo._05.NetMQ.MultiplePublishersAndSubscribers {
+namespace Demo._05.NetMQ.Starter.Proxy.XSubscriber.XPublisher {
     class Program {
 
-        static HashSet<Process> processes = new HashSet<Process>();
+        static HashSet<int> pids = new HashSet<int>();
 
         static void StartProcess(string exeRelPath, string arguments) {
 
             Process process = new Process();
-            processes.Add(process);
             process.StartInfo.FileName = Path.GetFullPath(exeRelPath);
             process.StartInfo.Arguments = arguments;
             process.Start();
+            pids.Add(process.Id);
         }
 
         static void Main(string[] args) {
@@ -56,7 +56,9 @@ namespace Demo._05.NetMQ.MultiplePublishersAndSubscribers {
 
             Console.WriteLine("press any key to tear down all processes...");
             Console.ReadKey();
-            processes.ToList().ForEach(p => p.CloseMainWindow());          
+
+            var processes = Process.GetProcesses().Where(p => pids.Contains(p.Id));
+            processes.ToList().ForEach(p => p.CloseMainWindow());
         }
     }
 }

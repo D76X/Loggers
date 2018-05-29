@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{CCB71636-5F2F-4815-B658-E8F06AA59DD9}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Demo._05.NetMQ.MultiplePublishersAndSubscribers</RootNamespace>
-    <AssemblyName>Demo.05.NetMQ.MultiplePublishersAndSubscribers</AssemblyName>
+    <RootNamespace>Demo._05.NetMQ.Starter.Proxy.XSubscriber.XPublisher</RootNamespace>
+    <AssemblyName>Demo.05.NetMQ.Starter.Proxy.XSubscriber.XPublisher</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
