@@ -39,10 +39,11 @@ namespace Demo._04.ZeroMQ.Starter.XSUB.XPUB {
             // starts a subscriber to all endpoints from Area1 and all messages from each endpoint.
             StartProcess(subscriberExePath, $"{proxyBackendEndPointToConnectTo}|READINGS_AREA_1A|8|");
             Console.WriteLine($"started subscriber to all endpoints for Area1 and all messages to any endpoint.");
+            
             // starts a subscriber to messages from Area2 with prefix AREA2_TEMPEREATURE.
             StartProcess(subscriberExePath, $"{proxyBackendEndPointToConnectTo}|AREA2_TEMPEREATURE|1|");
             Console.WriteLine($"started subscriber to messages with prefix AREA2_TEMPEREATURE from Area2 endpoint.");
-
+            
             // Thanks to ZEROMQ sockets publishers and the subscribers will automatically connect to the 
             // corresponding end points of the proxy even when the proxy is started at a later 
             // point in time.

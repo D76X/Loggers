@@ -29,37 +29,37 @@ namespace Demo._04.ZeroMQ.Proxy.XSUB.XPUB {
             using (ZmqSocket xsubSocketFrontend = context.CreateSocket(SocketType.XSUB))
             using (Poller poller = new Poller()) {
 
-                // must set up an haldler on the forntend socket to send the message to 
-                // the backend. 
-                xsubSocketFrontend.ReceiveReady += (sender, socketArgs) => {
+                // XSUB accepts all kinds of subscriptions upstream
+                // without XSUB subscribing to PUB sockets on the 
+                // frontend there would be no messages to send to 
+                // the backend
+                xsubSocketFrontend.SubscribeAll();
 
-                    // here something may be done to the message before 
-                    // forwarding to the backend...
+                // the poller will cause this event to fire as long as
+                // it detects that the XSUB socket has received messages
+                // from the SUB socktes on the frontend.
+                xsubSocketFrontend.ReceiveReady += (s, e) => {
+                    
+                    // some other fancy stuff may be done here...
 
-                    // forward the message to teh backend
-                    ((ZmqSocket)sender).Forward(xpubSocketBackend);
+                    // for a XSUB-XPUB proxy just forward all messages 
+                    // to the backend.
+                    xsubSocketFrontend.Forward(xpubSocketBackend);
+                };                
 
+                xpubSocketBackend.ReceiveReady += (s, e) => {
+
+                    // some other fancy stuff may be done here...
+
+                    // for a XSUB-XPUB proxy this is a no-op                    
                 };
 
-                xpubSocketBackend.ReceiveReady += (sender, socketArgs) => {
-
-                    // here something may be done to the message before 
-                    // forwarding to the backend... 
-                    //socketArgs.
-
-                    //Frame frame = xpubSocketBackend.ReceiveFrame();
-                    //xpubSocketBackend.Send(frame.Buffer, frame.Buffer.Length,
-                    //    SocketFlags.DontWait);
-                    //Console.WriteLine(frame.Buffer);
-
-                    xpubSocketBackend.SendMessage(xpubSocketBackend.ReceiveMessage());
-                    Console.Write("*");
-                };
-
-                // the poller drives the events between the sockets 
+                // the poller polls each of its sockets to know whether they
+                // have received any messages and if this the case it raises
+                // the ReceiveReeady event on them.
                 poller.AddSockets(new[] { xsubSocketFrontend, xpubSocketBackend });
 
-                // binds or connect the sockets to their endpoint
+                // binds or connect the sockets to their endpoints
                 xsubSocketFrontend.Bind(proxyEndPointFrontend);
                 xpubSocketBackend.Bind(proxyEndPointBackend);
 
@@ -71,8 +71,7 @@ namespace Demo._04.ZeroMQ.Proxy.XSUB.XPUB {
                 TimeSpan timeout = TimeSpan.FromMilliseconds(500);
 
                 while (true) {
-                    poller.Poll(timeout);
-                    //Console.WriteLine("forwarding");
+                    poller.Poll(timeout);                     
                 }
             }
         }
