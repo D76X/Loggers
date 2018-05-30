@@ -32,7 +32,9 @@ namespace Demo._04.ZeroMQ.Proxy.XSUB.XPUB {
                 // XSUB accepts all kinds of subscriptions upstream
                 // without XSUB subscribing to PUB sockets on the 
                 // frontend there would be no messages to send to 
-                // the backend
+                // the backend.
+                // However the XSUB may be subscribed to only some 
+                // messages instead of all messages.
                 xsubSocketFrontend.SubscribeAll();
 
                 // the poller will cause this event to fire as long as
