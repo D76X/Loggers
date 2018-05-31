@@ -164,9 +164,7 @@ namespace Demo._05.NetMQ.Publisher {
                     default:
                         Console.WriteLine($"unexpected message format with topic {topic}");
                         break;
-                }
-
-                
+                }                
             }
         }
 
