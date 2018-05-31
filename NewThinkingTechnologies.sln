@@ -549,6 +549,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.01.ZeroMQ.Starter.REQ.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.05.NetMQ.Starter.Proxy.XSubscriber.XPublisher", "Examples\NetMQ-Examples\Demo.05.NetMQ.Starter.Proxy.XSubscriber.XPublisher\Demo.05.NetMQ.Starter.Proxy.XSubscriber.XPublisher.csproj", "{CCB71636-5F2F-4815-B658-E8F06AA59DD9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.05.NetMQ.Starter.Proxy.XSubscriber.XPublisher.TransportBridging", "Examples\NetMQ-Examples\Demo.05.NetMQ.Starter.Proxy.XSubscriber.XPublisher.TransportBridging\Demo.05.NetMQ.Starter.Proxy.XSubscriber.XPublisher.TransportBridging.csproj", "{673E36CB-0081-44FF-AADB-A9DA3C355D87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1641,6 +1643,14 @@ Global
 		{CCB71636-5F2F-4815-B658-E8F06AA59DD9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CCB71636-5F2F-4815-B658-E8F06AA59DD9}.Release|x86.ActiveCfg = Release|Any CPU
 		{CCB71636-5F2F-4815-B658-E8F06AA59DD9}.Release|x86.Build.0 = Release|Any CPU
+		{673E36CB-0081-44FF-AADB-A9DA3C355D87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{673E36CB-0081-44FF-AADB-A9DA3C355D87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{673E36CB-0081-44FF-AADB-A9DA3C355D87}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{673E36CB-0081-44FF-AADB-A9DA3C355D87}.Debug|x86.Build.0 = Debug|Any CPU
+		{673E36CB-0081-44FF-AADB-A9DA3C355D87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{673E36CB-0081-44FF-AADB-A9DA3C355D87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{673E36CB-0081-44FF-AADB-A9DA3C355D87}.Release|x86.ActiveCfg = Release|Any CPU
+		{673E36CB-0081-44FF-AADB-A9DA3C355D87}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1846,6 +1856,7 @@ Global
 		{99D61332-F130-47A3-B4E2-F956023BD83E} = {BDAAF03F-645C-4E45-BAE7-3309CC441A9C}
 		{9E696A0B-D1FC-4211-82BA-2B5161B3B07F} = {BDAAF03F-645C-4E45-BAE7-3309CC441A9C}
 		{CCB71636-5F2F-4815-B658-E8F06AA59DD9} = {977AC465-8F55-40D1-AE0A-A27491B57E40}
+		{673E36CB-0081-44FF-AADB-A9DA3C355D87} = {977AC465-8F55-40D1-AE0A-A27491B57E40}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B48A64CD-1E9D-4169-82DF-66FD7695C2D0}
