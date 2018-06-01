@@ -18,14 +18,13 @@ namespace Demo._06.Server.Response {
                 Console.WriteLine($"{args[i]}");
             }
 
-            // tcp://localhost:5678 connect
+            // tcp://localhost:5678 
             if (args.Length > 0) {
                 responseSocketEndPoint = args[0];             
             }
 
-            if (args.Length > 1) {
-                bind = false;
-            }
+            // tcp://*:5678 
+            bind = responseSocketEndPoint.Contains("*");            
 
             using (ResponseSocket responseSocket = new ResponseSocket()) {
 
@@ -38,19 +37,22 @@ namespace Demo._06.Server.Response {
                     Console.WriteLine($"REP socket connected to {responseSocketEndPoint}");
                 }
 
+                long requestNumber = 0;
+
                 // serve clients as fast as possible
                 while (true) {
 
                     string request = responseSocket.ReceiveFrameString();
-                    Console.WriteLine($"received request {DateTime.Now} : {request}");
+                    requestNumber += 1;
+                    Console.WriteLine($"received request {requestNumber} @ {DateTime.Now} : {request}");
 
                     // some work may be done on the server side to satisfy the request
                     Thread.Sleep(1000);
 
-                    string reply = $"request served {DateTime.Now} : {request}";
+                    string reply = $"request {requestNumber} served @ {DateTime.Now} : {request}";
                     responseSocket.SendFrame(reply);
-                    Console.WriteLine($"sent {DateTime.Now} : {reply}");
-                }
+                    Console.WriteLine($"sent {requestNumber} @ {DateTime.Now} : {reply}");
+                }                
             }
         }
     }
