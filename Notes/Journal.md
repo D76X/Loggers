@@ -107,5 +107,8 @@
 |						   | Probability & Statistics, Python, web site, German, Akka.NET  |
 | 20-24/05/2018            | Slic3r, FreeCAD, ZEROMQ, Unicode, ReactiveUI, Pluralsight Pjs |
 |						   | Akka.NET, web site, RequireJS, MSBuild, Prob & Stats, PCB work|
-|						   | Phaser, German, Camtasia, JavaScript prototypes|
-|||
+|						   | Phaser, German, Camtasia, JavaScript prototypes			   |
+| 25-31/05/2018			   | FreeCAD, ZEROMQ, Unicode, Pluralsight Pjs, Oven rebuild,      |
+|						   | MSBuild, German, Kivy, Stats., Phaser, Akka.net			   | 
+|						   | PCB work done build layers docs, built stencil frame		   |
+| 01/06/208				   ||
