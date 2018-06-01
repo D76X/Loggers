@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DD311343-0543-481C-8FA0-D6D8D7AF409C}</ProjectGuid>
+    <ProjectGuid>{C2F18421-65A9-48B2-BC42-664DAC93DD6E}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Demo._06.Server.Response</RootNamespace>
-    <AssemblyName>Demo.06.NetMQ.Server.Response</AssemblyName>
+    <RootNamespace>Demo._06.Router.Dealer</RootNamespace>
+    <AssemblyName>Demo.06.NetMQ.Proxy.RouterSocket.DealerSocket</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

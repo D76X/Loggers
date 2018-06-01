@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DD311343-0543-481C-8FA0-D6D8D7AF409C}</ProjectGuid>
+    <ProjectGuid>{5FD69D56-EAC7-41D8-81A1-4BF246786942}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Demo._06.Server.Response</RootNamespace>
-    <AssemblyName>Demo.06.NetMQ.Server.Response</AssemblyName>
+    <RootNamespace>Demo._06.Starter.QueueDevice</RootNamespace>
+    <AssemblyName>Demo.06.NetMQ.Starter.QueueDevice</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,18 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AsyncIO, Version=0.1.25.0, Culture=neutral, PublicKeyToken=44a94435bd6f33f8, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\AsyncIO.0.1.26.0\lib\net40\AsyncIO.dll</HintPath>
-    </Reference>
-    <Reference Include="NetMQ, Version=4.0.0.1, Culture=neutral, PublicKeyToken=a6decef4ddc58b3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\NetMQ.4.0.0.1\lib\net40\NetMQ.dll</HintPath>
-    </Reference>
-    <Reference Include="NetMQ.Devices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a6decef4ddc58b3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\NetMQ.Devices.1.0.0.0\lib\net40\NetMQ.Devices.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

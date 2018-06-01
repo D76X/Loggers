@@ -5,6 +5,8 @@ namespace Demo._05.Proxy.XSubscriber.XPublisher {
 
     /// <summary>
     /// Refs
+    /// https://github.com/zeromq/netmq/blob/master/src/NetMQ/Proxy.cs
+    /// Why is @"tcp://*:5680" different from "tcp://localhost:5680"?
     /// https://github.com/zeromq/netmq/issues/121
     /// </summary>
     class Program {
@@ -31,7 +33,7 @@ namespace Demo._05.Proxy.XSubscriber.XPublisher {
 
             // tcp://localhost:5680 tcp://*:5680
             if (args.Length > 1) {
-                proxyEndPointBackend = args[0];
+                proxyEndPointFrontend = args[0];
                 proxyEndPointBackend = args[1];
             }
 
