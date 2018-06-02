@@ -2,6 +2,12 @@
 using System;
 
 namespace Demo._06.QueueDevice {
+
+    /// <summary>
+    /// Refs
+    /// https://github.com/NetMQ/NetMQ.Devices/blob/master/src/NetMQ.Devices/QueueDevice.cs
+    /// https://github.com/NetMQ/NetMQ.Devices/blob/master/tests/NetMQ.Devices.Tests/QueueDeviceTests.cs
+    /// </summary>
     class Program {
 
         static void Main(string[] args) {
