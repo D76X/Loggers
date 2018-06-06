@@ -109,6 +109,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Notes", "_Notes", "{54A549
 		Notes\SolutionNotes.md = Notes\SolutionNotes.md
 		Notes\Stylecop.md = Notes\Stylecop.md
 		Notes\ToDo.md = Notes\ToDo.md
+		Notes\Trading.md = Notes\Trading.md
 		Notes\Updater.md = Notes\Updater.md
 		Notes\UWP.md = Notes\UWP.md
 		Notes\VisualStudio.md = Notes\VisualStudio.md
@@ -556,6 +557,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.06.NetMQ.Starter.Proxy.RouterSocket.DealerSocket", "Examples\NetMQ-Examples\Demo.06.NetMQ.Starter.Proxy.RouterSocket.DealerSocket\Demo.06.NetMQ.Starter.Proxy.RouterSocket.DealerSocket.csproj", "{8FE66604-1789-4486-A12D-EBFB3F7EFE61}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.06.NetMQ.Starter.QueueDevice", "Examples\NetMQ-Examples\Demo.06.NetMQ.Starter.QueueDevice\Demo.06.NetMQ.Starter.QueueDevice.csproj", "{5FD69D56-EAC7-41D8-81A1-4BF246786942}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.06.NetMQ.Starter.REQ.RES", "Examples\NetMQ-Examples\Demo.06.NetMQ.Starter.REQ.RES\Demo.06.NetMQ.Starter.REQ.RES.csproj", "{00BCD96E-F3E1-43B1-9F0D-B7D76DDDC6BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.07.NetMQ.Ventilator.PushSocket", "Examples\NetMQ-Examples\Demo.07.NetMQ.Ventilator.PushSocket\Demo.07.NetMQ.Ventilator.PushSocket.csproj", "{CC488543-3E66-4743-8819-DCA86EB9D00B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.07.NetMQ.Sink.PullSocket.With.KillSignal", "Examples\NetMQ-Examples\Demo.07.NetMQ.Sink.PullSocket.With.KillSignal\Demo.07.NetMQ.Sink.PullSocket.With.KillSignal.csproj", "{050C1C7C-16A7-47FF-8459-86F2D26389B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.07.NetMQ.StreamerDevice.With.KillSignal", "Examples\NetMQ-Examples\Demo.07.NetMQ.StreamerDevice.With.KillSignal\Demo.07.NetMQ.StreamerDevice.With.KillSignal.csproj", "{59D79505-E79C-4535-8212-ECE8649355E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.07.NetMQ.Starter.ParallelPipeline.With.KillSignal", "Examples\NetMQ-Examples\Demo.07.NetMQ.Starter.ParallelPipeline.With.KillSignal\Demo.07.NetMQ.Starter.ParallelPipeline.With.KillSignal.csproj", "{71D933D1-FB34-4CC4-94E2-4A2668C54683}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1681,6 +1692,46 @@ Global
 		{5FD69D56-EAC7-41D8-81A1-4BF246786942}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5FD69D56-EAC7-41D8-81A1-4BF246786942}.Release|x86.ActiveCfg = Release|Any CPU
 		{5FD69D56-EAC7-41D8-81A1-4BF246786942}.Release|x86.Build.0 = Release|Any CPU
+		{00BCD96E-F3E1-43B1-9F0D-B7D76DDDC6BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00BCD96E-F3E1-43B1-9F0D-B7D76DDDC6BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00BCD96E-F3E1-43B1-9F0D-B7D76DDDC6BC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{00BCD96E-F3E1-43B1-9F0D-B7D76DDDC6BC}.Debug|x86.Build.0 = Debug|Any CPU
+		{00BCD96E-F3E1-43B1-9F0D-B7D76DDDC6BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00BCD96E-F3E1-43B1-9F0D-B7D76DDDC6BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00BCD96E-F3E1-43B1-9F0D-B7D76DDDC6BC}.Release|x86.ActiveCfg = Release|Any CPU
+		{00BCD96E-F3E1-43B1-9F0D-B7D76DDDC6BC}.Release|x86.Build.0 = Release|Any CPU
+		{CC488543-3E66-4743-8819-DCA86EB9D00B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC488543-3E66-4743-8819-DCA86EB9D00B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC488543-3E66-4743-8819-DCA86EB9D00B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CC488543-3E66-4743-8819-DCA86EB9D00B}.Debug|x86.Build.0 = Debug|Any CPU
+		{CC488543-3E66-4743-8819-DCA86EB9D00B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC488543-3E66-4743-8819-DCA86EB9D00B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC488543-3E66-4743-8819-DCA86EB9D00B}.Release|x86.ActiveCfg = Release|Any CPU
+		{CC488543-3E66-4743-8819-DCA86EB9D00B}.Release|x86.Build.0 = Release|Any CPU
+		{050C1C7C-16A7-47FF-8459-86F2D26389B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{050C1C7C-16A7-47FF-8459-86F2D26389B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{050C1C7C-16A7-47FF-8459-86F2D26389B8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{050C1C7C-16A7-47FF-8459-86F2D26389B8}.Debug|x86.Build.0 = Debug|Any CPU
+		{050C1C7C-16A7-47FF-8459-86F2D26389B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{050C1C7C-16A7-47FF-8459-86F2D26389B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{050C1C7C-16A7-47FF-8459-86F2D26389B8}.Release|x86.ActiveCfg = Release|Any CPU
+		{050C1C7C-16A7-47FF-8459-86F2D26389B8}.Release|x86.Build.0 = Release|Any CPU
+		{59D79505-E79C-4535-8212-ECE8649355E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59D79505-E79C-4535-8212-ECE8649355E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59D79505-E79C-4535-8212-ECE8649355E7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{59D79505-E79C-4535-8212-ECE8649355E7}.Debug|x86.Build.0 = Debug|Any CPU
+		{59D79505-E79C-4535-8212-ECE8649355E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59D79505-E79C-4535-8212-ECE8649355E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59D79505-E79C-4535-8212-ECE8649355E7}.Release|x86.ActiveCfg = Release|Any CPU
+		{59D79505-E79C-4535-8212-ECE8649355E7}.Release|x86.Build.0 = Release|Any CPU
+		{71D933D1-FB34-4CC4-94E2-4A2668C54683}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71D933D1-FB34-4CC4-94E2-4A2668C54683}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71D933D1-FB34-4CC4-94E2-4A2668C54683}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{71D933D1-FB34-4CC4-94E2-4A2668C54683}.Debug|x86.Build.0 = Debug|Any CPU
+		{71D933D1-FB34-4CC4-94E2-4A2668C54683}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71D933D1-FB34-4CC4-94E2-4A2668C54683}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71D933D1-FB34-4CC4-94E2-4A2668C54683}.Release|x86.ActiveCfg = Release|Any CPU
+		{71D933D1-FB34-4CC4-94E2-4A2668C54683}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1890,6 +1941,11 @@ Global
 		{4273BB1C-612C-42CE-8919-67E66136E5E7} = {977AC465-8F55-40D1-AE0A-A27491B57E40}
 		{8FE66604-1789-4486-A12D-EBFB3F7EFE61} = {977AC465-8F55-40D1-AE0A-A27491B57E40}
 		{5FD69D56-EAC7-41D8-81A1-4BF246786942} = {977AC465-8F55-40D1-AE0A-A27491B57E40}
+		{00BCD96E-F3E1-43B1-9F0D-B7D76DDDC6BC} = {977AC465-8F55-40D1-AE0A-A27491B57E40}
+		{CC488543-3E66-4743-8819-DCA86EB9D00B} = {977AC465-8F55-40D1-AE0A-A27491B57E40}
+		{050C1C7C-16A7-47FF-8459-86F2D26389B8} = {977AC465-8F55-40D1-AE0A-A27491B57E40}
+		{59D79505-E79C-4535-8212-ECE8649355E7} = {977AC465-8F55-40D1-AE0A-A27491B57E40}
+		{71D933D1-FB34-4CC4-94E2-4A2668C54683} = {977AC465-8F55-40D1-AE0A-A27491B57E40}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B48A64CD-1E9D-4169-82DF-66FD7695C2D0}
