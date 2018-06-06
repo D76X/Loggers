@@ -6,11 +6,11 @@ namespace Demo._03.ZeroMQ.Worker.Device.PULL.PUSH {
     class Program {
 
         // The worker node is a ZEROMQ device.
-        // A ZEROMQ device as at least two socktes one upstream and one dowstream.        
+        // A ZEROMQ device has at least two socktes one upstream and one dowstream.        
         // The upstream connection is called the frontend.
         // The downstream connection is called the backend.
         // Messages flow the frontend to the backend.
-        // Reply may flow form the backend to teh frontend.
+        // Reply may flow form the backend to the frontend.
         // The worker device connects to the ventilator upstream and connects to the sink downstream.
         // One PULL socket is connected to receive the messages with which work is handed out by the ventilator.
         // One PULL socket is connected to send messages to the sink with a message that notifies about the work done.

@@ -10,11 +10,11 @@ namespace Demo._06.QueueDevice {
     /// </summary>
     class Program {
 
+        const string defaultProxyEndPointFrontend = @"tcp://localhost:5678";
+        const string defaultProxyEndPointBackend = @"tcp://*:5680";
+
         static void Main(string[] args) {
-
-            const string defaultProxyEndPointFrontend = @"tcp://localhost:5678";
-            const string defaultProxyEndPointBackend = @"tcp://*:5680";
-
+            
             string proxyEndPointFrontend = defaultProxyEndPointFrontend;
             string proxyEndPointBackend = defaultProxyEndPointBackend;
 
@@ -22,7 +22,7 @@ namespace Demo._06.QueueDevice {
                 Console.WriteLine($"{args[i]}");
             }
 
-            // tcp://localhost:5680 tcp://*:5680
+            // tcp://localhost:5678 tcp://*:5680
             if (args.Length > 1) {
                 proxyEndPointFrontend = args[0];
                 proxyEndPointBackend = args[1];

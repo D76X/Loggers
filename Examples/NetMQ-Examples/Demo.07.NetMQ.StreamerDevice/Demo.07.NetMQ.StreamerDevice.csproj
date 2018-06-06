@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{59D79505-E79C-4535-8212-ECE8649355E7}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Demo._07.StreamerDevice.With.KillSignal</RootNamespace>
-    <AssemblyName>Demo.07.NetMQ.StreamerDevice.With.KillSignal</AssemblyName>
+    <RootNamespace>Demo._07.StreamerDevice</RootNamespace>
+    <AssemblyName>Demo.07.NetMQ.StreamerDevice</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

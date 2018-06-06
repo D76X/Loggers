@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{050C1C7C-16A7-47FF-8459-86F2D26389B8}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Demo._07.NetMQ.Sink.PullSocket.With.KillSignal</RootNamespace>
+    <RootNamespace>Demo._07.Sink.With.KillSignal</RootNamespace>
     <AssemblyName>Demo.07.NetMQ.Sink.PullSocket.With.KillSignal</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
