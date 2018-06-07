@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Demo.05.ZeroMQ.Publisher")]
+[assembly: AssemblyTitle("Demo.04.ZeroMQ.SlowJoiner")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Demo.05.ZeroMQ.Publisher")]
+[assembly: AssemblyProduct("Demo.04.ZeroMQ.SlowJoiner")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f7179c83-7b7c-42c3-aa37-6979795f632d")]
+[assembly: Guid("2a02d0bc-0883-41bd-ba56-10232a2b6bb4")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BE999819-FE69-4EC6-A2C2-8619CFAC0D58}</ProjectGuid>
+    <ProjectGuid>{2A02D0BC-0883-41BD-BA56-10232A2B6BB4}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Demo._05.ZeroMQ.Subscriber.SUB</RootNamespace>
-    <AssemblyName>Demo.05.ZeroMQ.Subscriber.SUB</AssemblyName>
+    <RootNamespace>Demo._04.ZeroMQ.SlowJoiner</RootNamespace>
+    <AssemblyName>Demo.04.ZeroMQ.SlowJoiner</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="clrzmq, Version=3.0.0.0, Culture=neutral, PublicKeyToken=ef95cdc29d237b0d, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\clrzmq.3.0.0-rc1\lib\net40\clrzmq.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -50,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
