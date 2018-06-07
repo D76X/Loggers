@@ -63,6 +63,13 @@ which leads to a linear function of expected values etc.
 
 1.  [Bernoulli Process Practice -MIT MIT 6.041SC Probabilistic Systems Analysis and Applied Probability, Fall 2013](https://www.youtube.com/watch?v=i0Jom_gR0t4)
 2.  [Exponential distribution](https://en.wikipedia.org/wiki/Exponential_distribution)
+
+Poisson or Binomial distribution?
+http://personal.maths.surrey.ac.uk/st/J.Deane/Teach/se202/poiss_bin.html
+
+When should I use Poisson distribution?
+https://www.quora.com/When-should-I-use-Poisson-distribution
+
 ---
 
 ### What is the  Law of the Unconscious Statistician (LOTUS)?
@@ -264,5 +271,10 @@ Deeplearning.ai
     Instructor: Philippe Rigollet
 
 1.  [Feature extraction using PCA](http://www.visiondummy.com/2014/05/feature-extraction-using-pca/)
+
+---
+
+# Convex Optimization
+
 
 ---
