@@ -7,7 +7,7 @@
     <ProjectGuid>{A80DB357-0E7D-46A1-AD90-7445DD21FE39}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Demo._07.Worker.Pull.Push.Sub.KillSignal</RootNamespace>
-    <AssemblyName>Demo.07.Worker.Pull.Push.Sub.KillSignal</AssemblyName>
+    <AssemblyName>Demo.07.NetMQ.Worker.Pull.Push.Sub.KillSignal</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

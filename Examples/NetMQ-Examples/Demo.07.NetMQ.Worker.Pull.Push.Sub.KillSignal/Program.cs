@@ -1,6 +1,7 @@
 ﻿using NetMQ;
 using NetMQ.Sockets;
 using System;
+using System.Linq;
 using System.Threading;
 
 namespace Demo._07.Worker.Pull.Push.Sub.KillSignal {
@@ -55,26 +56,33 @@ namespace Demo._07.Worker.Pull.Push.Sub.KillSignal {
                 Console.WriteLine($"connect upstream PULL socket to {upstreamEndPoint}");
                 Console.WriteLine($"connect downstrem PUSH socket to {downstreamEndPoint}");
 
-                // do the work...
-                while (true) {
+                Console.WriteLine("worker ready to receive...");
+                bool killSignalReceived = false;
 
-                    string frame = pullSocket.ReceiveFrameString();
+                // do the work...
+                while (!killSignalReceived) {                   
+
+                    // this is blocking
+                    string frame = pullSocket.ReceiveFrameString();                    
 
                     // extract workload
-                    int workLoad = 1;
+                    int workLoad = int.Parse(frame.Split().Last());
 
                     // simulate doing the work
                     Thread.Sleep(workLoad);
 
-                    Console.WriteLine("work done...");
+                    Console.WriteLine($"done work {workLoad} for message : {frame}");
 
                     // send the result of the work to the sink
-                    pushSocket.SendFrame("some work done...");
+                    // in this case we just relay the message
+                    pushSocket.SendFrame(frame);
 
                     // check whether a kill signal was received...
-                    // ...
-                    var killSignalReceived = subscriberSocket.ReceiveSignal();
+                    subscriberSocket.TryReceiveSignal(out killSignalReceived);
                 }
+
+                Console.WriteLine("kill signal received");
+                Console.ReadKey();
             }
         }
     }
