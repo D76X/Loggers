@@ -30,7 +30,7 @@ namespace Demo._03.ZeroMQ.Starter.Ventilator {
             for (int i = 0; i < args.Length; i++) {
                 Console.WriteLine($"{args[i]}");
             }
-
+            
             if (args.Length > 0) {
                 int.TryParse(args[0], out numberOfWorkers);                
             }
@@ -48,7 +48,6 @@ namespace Demo._03.ZeroMQ.Starter.Ventilator {
 
             // start some workers
             for (int i = 1; i <= numberOfWorkers; i++) {
-                //workerProcess.Start();
                 StartProcess(workerExeRelPath, null);
                 Console.WriteLine($"started worker {i}");
             }
