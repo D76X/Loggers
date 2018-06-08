@@ -40,6 +40,7 @@ namespace Demo._07.StreamerDevice {
                 DeviceMode.Blocking);
 
             // this blocks because DeviceMode.Blocking
+            Console.WriteLine($"starting StreamerDevice PULL-PUSH {frontendEndPoint} to {backendEndPoint}");
             streamerDevice.Start();
 
             // this message does not show on the console

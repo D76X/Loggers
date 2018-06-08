@@ -26,8 +26,8 @@ namespace Demo._07.Ventilator {
                 Console.WriteLine($"{args[i]}");
             }
 
-            // tcp://localhost:5678 job1
-            // tcp://*:5678 job1
+            // tcp://localhost:5678 100 job1
+            // tcp://*:5678 100 job1
             if (args.Length > 0) {
 
                 endPoint = args[0];
