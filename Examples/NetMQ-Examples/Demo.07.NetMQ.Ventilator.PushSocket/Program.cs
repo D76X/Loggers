@@ -4,6 +4,10 @@ using System;
 
 namespace Demo._07.Ventilator {
 
+    /// <summary>
+    /// Refs
+    /// https://github.com/zeromq/netmq/blob/master/src/NetMQ/OutgoingSocketExtensions.cs
+    /// </summary>
     class Program {
 
         const string defaultEndPoint = "tcp://*:5678";
@@ -16,24 +20,32 @@ namespace Demo._07.Ventilator {
             bool bind = true;
             string endPoint = defaultEndPoint;
             int batchSize = defaultBatchSize;
+            string jobName = Guid.NewGuid().ToString();
 
             for (int i = 0; i < args.Length; i++) {
                 Console.WriteLine($"{args[i]}");
             }
 
-            // tcp://localhost:5678
-            // tcp://*:5678
+            // tcp://localhost:5678 job1
+            // tcp://*:5678 job1
             if (args.Length > 0) {
 
                 endPoint = args[0];
                 bind = endPoint.Contains("*");
             }
 
-            // tcp://localhost:5678 100
-            // tcp://*:5678 100
+            // tcp://localhost:5678 100 job1
+            // tcp://*:5678 100 job1
             if (args.Length > 1) {
 
                 batchSize = int.Parse(args[1]);
+            }
+
+            // tcp://localhost:5678 100 job1
+            // tcp://*:5678 100 job1
+            if (args.Length > 2) {
+
+                jobName = args[2];
             }
 
             using (PushSocket ventilator = new PushSocket()) {
@@ -57,19 +69,26 @@ namespace Demo._07.Ventilator {
                     totalWorkLoad += workLoad[i];
                 }
 
-                var batchSizeMessage = BitConverter.GetBytes(batchSize);
-                sink.Send(batchSizeMessage, batchSizeMessage.Length, SocketFlags.DontWait);
-                Console.WriteLine($"sent the size of the batch to the sink {BitConverter.ToString(batchSizeMessage)} = {batchSize}");
-                Console.WriteLine();
+                // make sure that all the outgoing messages can be queued
+                // in a buffer ready to be sent once a connection to a
+                // receiving endpoint is established.
+                ventilator.Options.SendHighWatermark = batchSize + 10;
+
+                string header = $"{endPoint} {jobName} {totalWorkLoad} {batchSize}";                
 
                 for (int i = 0; i < batchSize; i++) {
 
-                    //byte[] work = BitConverter.GetBytes(workLoad[i]);
-                    ventilator.SendFrame("some message...");
-                    Console.WriteLine($"sent work {workLoad[i]}");
+                    string message = $"{header} {workLoad[i]}";
+                    
+                    // this is not blocking if the receiving endpoint is 
+                    // not connected yet the messages are going to be queued
+                    // in the outgoing messages buffer.
+                    ventilator.TrySendFrame(message);
+
+                    Console.WriteLine($"sent {message}");
                 }
 
-                Console.WriteLine($"sent all work {totalWorkLoad}");
+                Console.WriteLine($"sent all work {header}");
                 Console.ReadKey();
             }
         }
