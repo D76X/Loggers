@@ -8,6 +8,9 @@ namespace Demo._01.EncodingFoundamentals {
     /// https://docs.microsoft.com/en-us/dotnet/standard/base-types/character-encoding
     /// https://msdn.microsoft.com/en-us/library/system.text.encoding(v=vs.110).aspx
     /// https://www.dotnetperls.com/ascii-table
+    /// https://www.codeproject.com/Questions/286404/How-do-i-convert-from-ansi-to-unicode-in-Csharp
+    /// https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/char
+    /// https://stackoverflow.com/questions/5750203/how-to-write-unicode-characters-to-the-console
     /// </summary>
     class Program {
 
@@ -27,6 +30,14 @@ namespace Demo._01.EncodingFoundamentals {
             char asciiChar;
             char[] asciiCharacters = new char[128];
 
+            // this is the default for UTF-16 Unicode encoding
+            //Console.OutputEncoding = System.Text.Encoding.Unicode;
+            //Console.OutputEncoding = System.Text.Encoding.BigEndianUnicode;
+
+            //Console.InputEncoding = System.Text.Encoding.ASCII;
+            //Console.OutputEncoding = System.Text.Encoding.ASCII;
+
+            //Console.OutputEncoding = System.Text.Encoding.UTF8;
 
             for (int i = 0; i < asciiCharacterBytes.Length; i++) {
 
@@ -38,6 +49,9 @@ namespace Demo._01.EncodingFoundamentals {
                 asciiChar = Convert.ToChar(asciiCharByte);
                 asciiCharacters[i] = asciiChar;
             }
+
+            Console.WriteLine("TEST!");
+            Console.WriteLine(BitConverter.ToChar(new byte[] { 0x02, 0x00 }, 0));
 
             Console.WriteLine();
             Console.WriteLine();
