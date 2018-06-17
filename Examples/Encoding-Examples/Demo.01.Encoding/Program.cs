@@ -11,6 +11,9 @@ namespace Demo._01.EncodingFoundamentals {
     /// https://www.codeproject.com/Questions/286404/How-do-i-convert-from-ansi-to-unicode-in-Csharp
     /// https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/char
     /// https://stackoverflow.com/questions/5750203/how-to-write-unicode-characters-to-the-console
+    /// https://msdn.microsoft.com/en-us/library/system.bitconverter.tochar(v=vs.110).aspx
+    /// https://stackoverflow.com/questions/10940883/c-converting-byte-array-to-string-and-printing-out-to-console
+    /// https://www.fileformat.info/info/charset/UTF-16/list.htm
     /// </summary>
     class Program {
 
@@ -30,13 +33,19 @@ namespace Demo._01.EncodingFoundamentals {
             char asciiChar;
             char[] asciiCharacters = new char[128];
 
-            // this is the default for UTF-16 Unicode encoding
+            // 1
+            // the console defaults to LE UTF-16 Unicode encoding.
             //Console.OutputEncoding = System.Text.Encoding.Unicode;
             //Console.OutputEncoding = System.Text.Encoding.BigEndianUnicode;
 
-            //Console.InputEncoding = System.Text.Encoding.ASCII;
+            // 2
+            // set the ASCII encoding to force teh console to interpret only 
+            // the printable ASCII characters.             
             //Console.OutputEncoding = System.Text.Encoding.ASCII;
 
+            // 3
+            // as the UTF-8 encodings maps 1 to 1 with ASCII for the first 
+            // 127 characters this produces the same output as above.
             //Console.OutputEncoding = System.Text.Encoding.UTF8;
 
             for (int i = 0; i < asciiCharacterBytes.Length; i++) {
