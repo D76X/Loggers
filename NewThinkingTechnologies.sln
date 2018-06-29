@@ -592,6 +592,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IoT-Hub-Examples", "IoT-Hub
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.BandAgent1", "Examples\IoT-Hub-Examples\Test.BandAgent1\Test.BandAgent1.csproj", "{EC190BE6-86A4-42EF-AA32-2F2AC1F4ED53}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GIS-Examples", "GIS-Examples", "{1F6C3011-10CE-448C-AE48-A3FE834CF572}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IntroToSceneView3DMap", "IntroToSceneView3DMap", "{91C564A7-5C9C-42F9-8D80-F8DEA68C089C}"
+	ProjectSection(SolutionItems) = preProject
+		Examples\GIS-Examples\IntroToSceneView3DMap\index.html = Examples\GIS-Examples\IntroToSceneView3DMap\index.html
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -2041,6 +2048,8 @@ Global
 		{3BC0AC7E-3B3B-4D3F-9CC0-B2BDECC460A6} = {EA323D22-8C90-4668-8C7D-DFAF017989F8}
 		{045B3F38-69F1-468E-9E76-CB889574BB34} = {FAFE10AF-AF2C-4D6F-82BC-81ED9863EE85}
 		{EC190BE6-86A4-42EF-AA32-2F2AC1F4ED53} = {045B3F38-69F1-468E-9E76-CB889574BB34}
+		{1F6C3011-10CE-448C-AE48-A3FE834CF572} = {FAFE10AF-AF2C-4D6F-82BC-81ED9863EE85}
+		{91C564A7-5C9C-42F9-8D80-F8DEA68C089C} = {1F6C3011-10CE-448C-AE48-A3FE834CF572}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B48A64CD-1E9D-4169-82DF-66FD7695C2D0}

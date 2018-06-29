@@ -16,6 +16,15 @@
 1. 10 custom endpoints
 2. 100 routes
 
+### IoT Hub Message Transport Options
+
+1. HTTPS polls with a 25 minutes lag only for occasionally connected devices.
+2. MQTT over WebSockets (PORT 443) which is efficient with samll payloadsize and small overall footprint.
+   MQTT allows immediate connection between hub and device. However, it does not allow rejection
+   of messages that the device might not be able to process.
+3. AMQP (Adavnced Message Queuing Protocol) which is better than HTTPS and allow immediate delivery.
+   AMQP can accept and reject messages. 
+   AMQP relies on WebSockets thus it uses (PORT 443).
 ---
 ## Azure IoT solution accelerators
 
@@ -118,6 +127,10 @@ OPC UA is the backbone on IoT!
 ### Free OPC Clients
 
 1. [Free Stuff - OPC Clients](https://www.opcconnect.com/freecli.php)
+
+### OCP Clients for .NET
+
+1. [Measurement Studio by NI](http://www.ni.com/mstudio/)
 
 ### UDC Controller
 

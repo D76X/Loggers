@@ -25,3 +25,10 @@ to complex problems.
 1. [ArcGIS Pro](https://www.esri.com/en-us/arcgis/products/arcgis-pro/overview)
 2. [ArcGIS Enterprise in the Microsoft Azure Cloud](https://www.youtube.com/watch?v=fpg9kwyo-mI)
 2. [Microsoft and Esri launch Geospatial AI on Azure](https://azure.microsoft.com/en-gb/blog/microsoft-and-esri-launch-geospatial-ai-on-azure/)  
+
+
+## APIs and SDKs
+
+0. [All the ArcGIS API](https://developers.arcgis.com/)
+1. [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/3/)
+2. [ArcGIS Runtime SDK for .NET](https://developers.arcgis.com/net/)
