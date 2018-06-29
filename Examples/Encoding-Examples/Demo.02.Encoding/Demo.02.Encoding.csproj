@@ -49,10 +49,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="NotepadPlusMenu.US-ASCII.xml" />
-    <Content Include="NotepadPlusMenu.WrongEncoding.xml" />
-    <Content Include="NotepadPlusMenu.NoEncoding.xml" />
-    <Content Include="NotepadPlusMenu.xml" />
+    <Content Include="05.NotepadPlusMenu.US-ASCII.NoEncoding.xml" />
+    <Content Include="04.NotepadPlusMenu.US-ASCII.xml" />
+    <Content Include="02.NotepadPlusMenu.WrongEncoding.xml" />
+    <Content Include="03.NotepadPlusMenu.NoEncoding.xml" />
+    <Content Include="01.NotepadPlusMenu.xml" />
     <Content Include="SampleText.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
