@@ -38,17 +38,18 @@
 
 ### What is a random variable?
 
-1. [Random variables KHANACADAMY](https://www.khanacademy.org/math/statistics-probability/random-variables-stats-library/random-variables-discrete/v/random-variables)
-2. [What is a random variable?](https://www.quora.com/What-is-a-random-variable)
+1.  [Random variables KHANACADAMY](https://www.khanacademy.org/math/statistics-probability/random-variables-stats-library/random-variables-discrete/v/random-variables)
+2.  [What is a random variable?](https://www.quora.com/What-is-a-random-variable)
 
 ---
 
-### Why is the linear combination of random variables computed using teh convolution formula? 
+### Why is the linear combination of random variables computed using teh convolution formula?
+
 ### What are mixed random variables?
 
 1.  [Why is the sum of two random variables a convolution?](https://stats.stackexchange.com/questions/331973/why-is-the-sum-of-two-random-variables-a-convolution)
 
-Explains the difference that exists between any linear combination of indipendent RVs which leads to the convolution formula and the distinct concept of **mixed RVs** 
+Explains the difference that exists between any linear combination of indipendent RVs which leads to the convolution formula and the distinct concept of **mixed RVs**
 which leads to a linear function of expected values etc.
 
 ---
@@ -72,16 +73,16 @@ https://www.quora.com/When-should-I-use-Poisson-distribution
 
 ---
 
-### What is the  Law of the Unconscious Statistician (LOTUS)?
+### What is the Law of the Unconscious Statistician (LOTUS)?
 
-1.	[Law of the unconscious statistician](https://en.wikipedia.org/wiki/Law_of_the_unconscious_statistician)  
+1.  [Law of the unconscious statistician](https://en.wikipedia.org/wiki/Law_of_the_unconscious_statistician)
 
 ---
 
 ### Why the variance estimator for a normal distribution uses N-1 as its denominator instead of N?
 
-[Why divide the sample variance by N-1?](http://www.visiondummy.com/2014/03/divide-variance-n-1/) 
- 
+[Why divide the sample variance by N-1?](http://www.visiondummy.com/2014/03/divide-variance-n-1/)
+
 This article explains well why the variance estimator for a normal distribution uses N-1 as a divisor instead of the more intuitive N.
 
 ---
@@ -102,6 +103,14 @@ Provides a nice explanation of what the joint PDF is and an example where it is 
 
 ---
 
+### What is the difference between the Maximum Likelihood Estmation [MLE] and the Method of Moments [MOM]?
+
+1.  [What is the difference between Method Of Moment (MOM), Maximum A Posteriori (MAP), and Maximum Likelihood Estimation (MLE)?](https://www.quora.com/What-is-the-difference-between-Method-Of-Moment-MOM-Maximum-A-Posteriori-MAP-and-Maximum-Likelihood-Estimation-MLE#)
+
+2.  [How do you explain maximum likelihood estimation intuitively?](https://www.quora.com/How-do-you-explain-maximum-likelihood-estimation-intuitively)
+
+---
+
 ### Whar are Prior and Posterior probabilities?
 
 1.  [Prior And Posterior - Intro to Statistics](https://www.youtube.com/watch?v=o2Tpws5C2Eg)
@@ -118,13 +127,13 @@ Provides a nice explanation of what the joint PDF is and an example where it is 
     [The concept of loss function on Wikipedia]([https://en.wikipedia.org/wiki/Loss_function#Selecting_a_loss_function)  
     [The robustfit function in Matlab](http://uk.mathworks.com/help/stats/robustfit.html?s_tid=gn_loc_drop)
 
-* Squared error penalizes large errors more than does absolute error and is more forgiving of small errors than absolute error is. **Minimizing square errors (MSE)** is definitely not the same as **minimizing absolute deviations (MAD) of errors**. **MSE** provides the mean response of y conditioned on x, while **MAD** provides the median response of y conditioned on x.
+- Squared error penalizes large errors more than does absolute error and is more forgiving of small errors than absolute error is. **Minimizing square errors (MSE)** is definitely not the same as **minimizing absolute deviations (MAD) of errors**. **MSE** provides the mean response of y conditioned on x, while **MAD** provides the median response of y conditioned on x.
 
-* However, MSE is differentiable, thus, allowing for gradient-based methods, much efficient than their non-differentiable counterpart. MAD is not differentiable at x=0.
+- However, MSE is differentiable, thus, allowing for gradient-based methods, much efficient than their non-differentiable counterpart. MAD is not differentiable at x=0.
 
-* Another reason of why MSE may have had the wide acceptance it has is that it is based on the euclidean distance (in fact it is a solution of the projection problem on an euclidean banach space) which is extremely intuitive given our geometrical reality.
+- Another reason of why MSE may have had the wide acceptance it has is that it is based on the euclidean distance (in fact it is a solution of the projection problem on an euclidean banach space) which is extremely intuitive given our geometrical reality.
 
-* As another answer has explained, minimizing squared error is not the same as minimizing absolute error. The reason minimizing squared error is preferred is because it prevents large errors better.Say your empolyer's payroll department accidentally pays each of a total of ten employees $50 less than required. That's an absolute error of $500. It's also an absolute error of $500 if the department pays just one employee $500 less. But it terms of squared error, it's 25000 versus 250000.
+- As another answer has explained, minimizing squared error is not the same as minimizing absolute error. The reason minimizing squared error is preferred is because it prevents large errors better.Say your empolyer's payroll department accidentally pays each of a total of ten employees $50 less than required. That's an absolute error of $500. It's also an absolute error of $500 if the department pays just one employee $500 less. But it terms of squared error, it's 25000 versus 250000.
 
 2.  [Quadratic loss function implying conditional expectation](https://stats.stackexchange.com/questions/176313/quadratic-loss-function-implying-conditional-expectation)  
     This post present an agebraic chain of identities that shows how to interpret the problem of minimization of the quadratic loss function. It explains why it is the case that choosing the estimation function as the expected value of the conditioned training set of data results in the minimum quadratic error. This is useful as in some other parts of the theory this is a detail over which many gloss over although it is mentioned. This chain of identity is purely an exercise in algebra and the formalism of probability theory hence it is not extremely enlithening is many respects exept for the fact that in addition to clarify the result it forces on the reader some familiarity with the notations and the meaning of the quantities and theorems involved.
@@ -138,26 +147,26 @@ Provides a nice explanation of what the joint PDF is and an example where it is 
 
 ### The concept of Loss Function and ots optimization problems with categorical variables.
 
-* [How does the classification using the 0-1 loss matrix method work?](https://math.stackexchange.com/questions/2623072/how-does-the-classification-using-the-0-1-loss-matrix-method-work)
+- [How does the classification using the 0-1 loss matrix method work?](https://math.stackexchange.com/questions/2623072/how-does-the-classification-using-the-0-1-loss-matrix-method-work)
 
-* [Introduction to Machine Learning IITM](https://www.youtube.com/watch?time_continue=28&v=pFtiNSmJuoE)
+- [Introduction to Machine Learning IITM](https://www.youtube.com/watch?time_continue=28&v=pFtiNSmJuoE)
 
-* [0-1 Loss Function explanation](https://stats.stackexchange.com/questions/284028/0-1-loss-function-explanation)
+- [0-1 Loss Function explanation](https://stats.stackexchange.com/questions/284028/0-1-loss-function-explanation)
 
 ---
 
 ### The curse of dimentionality
 
-* [PCA 1: curse of dimensionality](https://www.youtube.com/watch?v=IbE0tbjy6JQ)  
+- [PCA 1: curse of dimensionality](https://www.youtube.com/watch?v=IbE0tbjy6JQ)  
   Victor Lavrenko
 
-* [Machine learning curse of dimensionality explained?](https://stats.stackexchange.com/questions/65379/machine-learning-curse-of-dimensionality-explained)  
+- [Machine learning curse of dimensionality explained?](https://stats.stackexchange.com/questions/65379/machine-learning-curse-of-dimensionality-explained)  
   This post provides very good intuitive examples.
 
-* [The Curse of Dimensionality in classification - Computer vision for dummies](http://www.visiondummy.com/2014/04/curse-dimensionality-affect-classification/)  
+- [The Curse of Dimensionality in classification - Computer vision for dummies](http://www.visiondummy.com/2014/04/curse-dimensionality-affect-classification/)  
   This article gives a very good explanation with examples and illustrations.
 
-* [What is the curse of dimensionality?](https://stats.stackexchange.com/questions/15971/what-is-the-curse-of-dimensionality)  
+- [What is the curse of dimensionality?](https://stats.stackexchange.com/questions/15971/what-is-the-curse-of-dimensionality)  
   This post references to the **Elements of Statistical Learning** textbook.
 
 ---
@@ -168,9 +177,9 @@ Provides a nice explanation of what the joint PDF is and an example where it is 
 
 [(ML 1.3) What is unsupervised learning?](https://www.youtube.com/watch?v=lANt56UOaSk&index=3&list=PLD0F06AA0D2E8FFBA)
 
-* Clustering
-* Dessity estimation
-* Dimensionality reduction
+- Clustering
+- Dessity estimation
+- Dimensionality reduction
 
 ### Semi-supervised learning algorithms & Psudo-labeling
 
@@ -275,6 +284,5 @@ Deeplearning.ai
 ---
 
 # Convex Optimization
-
 
 ---
