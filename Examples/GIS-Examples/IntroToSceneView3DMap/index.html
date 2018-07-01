@@ -2,10 +2,31 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/css/esri.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.24/dijit/themes/claro/claro.css">
+    <script src="https://js.arcgis.com/3.24/"></script>
+    <title>First GIS application</title>
 </head>
 <body>
-
+    <style>
+        html, body, #map {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <div id="map"></div>
+    <script>
+        var map;
+        require(["esri/map", "dojo/domReady!"], function (Map) {
+            map = new Map("map", {
+                basemap: "topo",
+                center: [-122.45, 37.75],
+                zoom: 13
+            });
+        });
+    </script>
 </body>
 </html>
