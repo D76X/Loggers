@@ -596,12 +596,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GIS-Examples", "GIS-Example
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IntroToSceneView3DMap", "IntroToSceneView3DMap", "{91C564A7-5C9C-42F9-8D80-F8DEA68C089C}"
 	ProjectSection(SolutionItems) = preProject
+		Examples\GIS-Examples\IntroToSceneView3DMap\example1.html = Examples\GIS-Examples\IntroToSceneView3DMap\example1.html
 		Examples\GIS-Examples\IntroToSceneView3DMap\index.html = Examples\GIS-Examples\IntroToSceneView3DMap\index.html
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.BandAgent2", "Examples\IoT-Hub-Examples\Test.BandAgent2\Test.BandAgent2.csproj", "{7D59FD6B-FBF4-4456-928D-1C28572995CE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp1.Core", "Examples\Xamarin-Android-Example\TestApp1.Core\TestApp1.Core.csproj", "{545F90A3-EEFC-471F-8461-EBAB5E568A11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestShopApp1", "Examples\Xamarin-Android-Example\TestShopApp1\TestShopApp1\TestShopApp1.csproj", "{035EA959-B305-421F-AFAC-DB1622DC471B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Band.MessageProcessor1", "Examples\IoT-Hub-Examples\Test.Band.MessageProcessor1\Test.Band.MessageProcessor1.csproj", "{DC96BDEF-72B8-4BEA-A07E-F1655429095A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1843,6 +1848,26 @@ Global
 		{545F90A3-EEFC-471F-8461-EBAB5E568A11}.Release|Any CPU.Build.0 = Release|Any CPU
 		{545F90A3-EEFC-471F-8461-EBAB5E568A11}.Release|x86.ActiveCfg = Release|Any CPU
 		{545F90A3-EEFC-471F-8461-EBAB5E568A11}.Release|x86.Build.0 = Release|Any CPU
+		{035EA959-B305-421F-AFAC-DB1622DC471B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{035EA959-B305-421F-AFAC-DB1622DC471B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{035EA959-B305-421F-AFAC-DB1622DC471B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{035EA959-B305-421F-AFAC-DB1622DC471B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{035EA959-B305-421F-AFAC-DB1622DC471B}.Debug|x86.Build.0 = Debug|Any CPU
+		{035EA959-B305-421F-AFAC-DB1622DC471B}.Debug|x86.Deploy.0 = Debug|Any CPU
+		{035EA959-B305-421F-AFAC-DB1622DC471B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{035EA959-B305-421F-AFAC-DB1622DC471B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{035EA959-B305-421F-AFAC-DB1622DC471B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{035EA959-B305-421F-AFAC-DB1622DC471B}.Release|x86.ActiveCfg = Release|Any CPU
+		{035EA959-B305-421F-AFAC-DB1622DC471B}.Release|x86.Build.0 = Release|Any CPU
+		{035EA959-B305-421F-AFAC-DB1622DC471B}.Release|x86.Deploy.0 = Release|Any CPU
+		{DC96BDEF-72B8-4BEA-A07E-F1655429095A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC96BDEF-72B8-4BEA-A07E-F1655429095A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC96BDEF-72B8-4BEA-A07E-F1655429095A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DC96BDEF-72B8-4BEA-A07E-F1655429095A}.Debug|x86.Build.0 = Debug|Any CPU
+		{DC96BDEF-72B8-4BEA-A07E-F1655429095A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC96BDEF-72B8-4BEA-A07E-F1655429095A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC96BDEF-72B8-4BEA-A07E-F1655429095A}.Release|x86.ActiveCfg = Release|Any CPU
+		{DC96BDEF-72B8-4BEA-A07E-F1655429095A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -2072,6 +2097,8 @@ Global
 		{91C564A7-5C9C-42F9-8D80-F8DEA68C089C} = {1F6C3011-10CE-448C-AE48-A3FE834CF572}
 		{7D59FD6B-FBF4-4456-928D-1C28572995CE} = {045B3F38-69F1-468E-9E76-CB889574BB34}
 		{545F90A3-EEFC-471F-8461-EBAB5E568A11} = {EA323D22-8C90-4668-8C7D-DFAF017989F8}
+		{035EA959-B305-421F-AFAC-DB1622DC471B} = {EA323D22-8C90-4668-8C7D-DFAF017989F8}
+		{DC96BDEF-72B8-4BEA-A07E-F1655429095A} = {045B3F38-69F1-468E-9E76-CB889574BB34}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B48A64CD-1E9D-4169-82DF-66FD7695C2D0}
