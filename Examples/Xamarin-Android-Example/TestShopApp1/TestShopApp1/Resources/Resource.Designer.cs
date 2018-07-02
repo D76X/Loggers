@@ -2336,12 +2336,6 @@ namespace TestShopApp1
 			// aapt resource value: 0x7f080034
 			public const int FUNCTION = 2131230772;
 			
-			// aapt resource value: 0x7f08009d
-			public const int ItemImageView = 2131230877;
-			
-			// aapt resource value: 0x7f08009e
-			public const int ItemTextView = 2131230878;
-			
 			// aapt resource value: 0x7f080035
 			public const int META = 2131230773;
 			
@@ -2426,9 +2420,6 @@ namespace TestShopApp1
 			// aapt resource value: 0x7f080038
 			public const int always = 2131230776;
 			
-			// aapt resource value: 0x7f0800a4
-			public const int amountEditText = 2131230884;
-			
 			// aapt resource value: 0x7f080056
 			public const int async = 2131230806;
 			
@@ -2500,9 +2491,6 @@ namespace TestShopApp1
 			
 			// aapt resource value: 0x7f080060
 			public const int default_activity_button = 2131230816;
-			
-			// aapt resource value: 0x7f0800a0
-			public const int descriptionItemTextView = 2131230880;
 			
 			// aapt resource value: 0x7f080093
 			public const int design_bottom_sheet = 2131230867;
@@ -2591,6 +2579,24 @@ namespace TestShopApp1
 			// aapt resource value: 0x7f080059
 			public const int italic = 2131230809;
 			
+			// aapt resource value: 0x7f0800a4
+			public const int itemAmountEditText = 2131230884;
+			
+			// aapt resource value: 0x7f0800a0
+			public const int itemDescriptionTextView = 2131230880;
+			
+			// aapt resource value: 0x7f08009d
+			public const int itemImageView = 2131230877;
+			
+			// aapt resource value: 0x7f08009e
+			public const int itemNameTextView = 2131230878;
+			
+			// aapt resource value: 0x7f0800a1
+			public const int itemPriceTextView = 2131230881;
+			
+			// aapt resource value: 0x7f08009f
+			public const int itemShortDescriptionTextView = 2131230879;
+			
 			// aapt resource value: 0x7f080000
 			public const int item_touch_helper_previous_elevation = 2131230720;
 			
@@ -2668,9 +2674,6 @@ namespace TestShopApp1
 			
 			// aapt resource value: 0x7f08004d
 			public const int pin = 2131230797;
-			
-			// aapt resource value: 0x7f0800a1
-			public const int priceItemTextView = 2131230881;
 			
 			// aapt resource value: 0x7f080006
 			public const int progress_circular = 2131230726;
@@ -2752,9 +2755,6 @@ namespace TestShopApp1
 			
 			// aapt resource value: 0x7f08008a
 			public const int select_dialog_listview = 2131230858;
-			
-			// aapt resource value: 0x7f08009f
-			public const int shortDescriptionItemTextView = 2131230879;
 			
 			// aapt resource value: 0x7f080074
 			public const int shortcut = 2131230836;

@@ -104,6 +104,12 @@
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\TestApp1.Core\TestApp1.Core.csproj">
+      <Project>{545f90a3-eefc-471f-8461-ebab5e568a11}</Project>
+      <Name>TestApp1.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
 		Other similar extension points exist, see Microsoft.Common.targets.
