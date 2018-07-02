@@ -1,3 +1,54 @@
+## Azure Evets Hub
+
+1. [Azure Event Hubs for .NET Developers: Fundamentals](https://app.pluralsight.com/library/courses/azure-event-hubs-dotnet-developers-fundamentals/table-of-contents)  
+2. [Getting Started with Azure Event Hubs with C#](https://app.pluralsight.com/library/courses/azure-event-hub-c-sharp/table-of-contents)  
+
+The IoT Hub is based and the Azure Events Hub.
+The AEH is a platform that can injest lots of data. 
+The IoT hub has a default event endpoint which is AEH.
+
+### Hub Partitions
+
+The IoT Hub is divided in up to 32 partitions.
+The higher the number of partition the greater the parallel processing power.
+The number of partition cannot be changes after creating the hub. 
+
+When messages are pushed to the IoT from a device
+the message is assigned to a partition based on the
+id value.
+Each new message is added at the end of a partition.
+Therefore the order of the messages is guarateed - queue.
+
+#### Consumer Groups
+
+You can think of a CG as a virtual view on top of the
+event hub.
+
+CGs are useful because allow to have multiple set of processing 
+for the messages that reach the partitions of a hub.
+
+Each CG maintains state, postion, offset of the processing
+of messages for each of the partition on the hub.
+
+There exist a default CG but custom CGs can be created. 
+
+### Processing Messages on a Hub
+
+There exist a number of NuGet packages with base classes.
+
+1. [Receive events from Azure Event Hubs using the .NET Framework](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-dotnet-framework-getstarted-receive-eph)  
+   This is a low level solution. It is a class that 
+   connects a receiver to a partition for a consumer group
+   but the logic to manage the state of the partition is not 
+   included in the base implementation.
+
+2. [Event Processor Host](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) 
+   This inherits from the Event Hub Receiver but add some basic 
+   implementation to handle connect and disconnect, to manage the
+   state of teh partition and to scale under load.
+   
+---
+
 ## IoT Hub
 
 1. [Azure IoT Hub for Developers: Getting Started](https://app.pluralsight.com/library/courses/azure-iot-hub-developers-getting-started/table-of-contents)
@@ -25,6 +76,37 @@
 3. AMQP (Adavnced Message Queuing Protocol) which is better than HTTPS and allow immediate delivery.
    AMQP can accept and reject messages. 
    AMQP relies on WebSockets thus it uses (PORT 443).
+
+### Device twins in IoT Hub
+
+Device twins are json documents holding a set of metadata for each of the 
+devices registered with the hub. 
+
+1. Identity and state.
+2. Tags 
+3. Reported Properties.
+4. Desired Properties
+
+You may query the hub to gather information of all the devices that are 
+registered  with the hub. For example, to know which devices are presently
+connected or in a particular state, etc. It is also possible to query the 
+hub by the twins tags i.e. if one of the tags is the GIS location of the
+device it would be possible to retrieve the list of all devices that are 
+in a location.  
+
+Reported properies are set when the device initialises, these may be queried
+but cannot be set remotely. 
+
+Desired Properties my be used to communicate with the device as they can be
+queried and set remotely.
+
+The may be a lag between updating a desired property and the change of the 
+value of the corresponding reported property. It is up to the device to 
+decide how to handle the requested changes and finally report the change to
+the hub.
+
+1. [Understand and use device twins in IoT Hub](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins)
+
 ---
 ## Azure IoT solution accelerators
 
