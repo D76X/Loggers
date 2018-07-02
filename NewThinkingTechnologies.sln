@@ -590,7 +590,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndroidAppTest1", "Examples
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IoT-Hub-Examples", "IoT-Hub-Examples", "{045B3F38-69F1-468E-9E76-CB889574BB34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.BandAgent1", "Examples\IoT-Hub-Examples\Test.BandAgent1\Test.BandAgent1.csproj", "{EC190BE6-86A4-42EF-AA32-2F2AC1F4ED53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.BandAgent1", "Examples\IoT-Hub-Examples\Test.BandAgent1\Test.BandAgent1.csproj", "{EC190BE6-86A4-42EF-AA32-2F2AC1F4ED53}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GIS-Examples", "GIS-Examples", "{1F6C3011-10CE-448C-AE48-A3FE834CF572}"
 EndProject
@@ -598,6 +598,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IntroToSceneView3DMap", "In
 	ProjectSection(SolutionItems) = preProject
 		Examples\GIS-Examples\IntroToSceneView3DMap\index.html = Examples\GIS-Examples\IntroToSceneView3DMap\index.html
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.BandAgent2", "Examples\IoT-Hub-Examples\Test.BandAgent2\Test.BandAgent2.csproj", "{7D59FD6B-FBF4-4456-928D-1C28572995CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp1.Core", "Examples\Xamarin-Android-Example\TestApp1.Core\TestApp1.Core.csproj", "{545F90A3-EEFC-471F-8461-EBAB5E568A11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1823,6 +1827,22 @@ Global
 		{EC190BE6-86A4-42EF-AA32-2F2AC1F4ED53}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EC190BE6-86A4-42EF-AA32-2F2AC1F4ED53}.Release|x86.ActiveCfg = Release|Any CPU
 		{EC190BE6-86A4-42EF-AA32-2F2AC1F4ED53}.Release|x86.Build.0 = Release|Any CPU
+		{7D59FD6B-FBF4-4456-928D-1C28572995CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D59FD6B-FBF4-4456-928D-1C28572995CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D59FD6B-FBF4-4456-928D-1C28572995CE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7D59FD6B-FBF4-4456-928D-1C28572995CE}.Debug|x86.Build.0 = Debug|Any CPU
+		{7D59FD6B-FBF4-4456-928D-1C28572995CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D59FD6B-FBF4-4456-928D-1C28572995CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D59FD6B-FBF4-4456-928D-1C28572995CE}.Release|x86.ActiveCfg = Release|Any CPU
+		{7D59FD6B-FBF4-4456-928D-1C28572995CE}.Release|x86.Build.0 = Release|Any CPU
+		{545F90A3-EEFC-471F-8461-EBAB5E568A11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{545F90A3-EEFC-471F-8461-EBAB5E568A11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{545F90A3-EEFC-471F-8461-EBAB5E568A11}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{545F90A3-EEFC-471F-8461-EBAB5E568A11}.Debug|x86.Build.0 = Debug|Any CPU
+		{545F90A3-EEFC-471F-8461-EBAB5E568A11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{545F90A3-EEFC-471F-8461-EBAB5E568A11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{545F90A3-EEFC-471F-8461-EBAB5E568A11}.Release|x86.ActiveCfg = Release|Any CPU
+		{545F90A3-EEFC-471F-8461-EBAB5E568A11}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -2050,6 +2070,8 @@ Global
 		{EC190BE6-86A4-42EF-AA32-2F2AC1F4ED53} = {045B3F38-69F1-468E-9E76-CB889574BB34}
 		{1F6C3011-10CE-448C-AE48-A3FE834CF572} = {FAFE10AF-AF2C-4D6F-82BC-81ED9863EE85}
 		{91C564A7-5C9C-42F9-8D80-F8DEA68C089C} = {1F6C3011-10CE-448C-AE48-A3FE834CF572}
+		{7D59FD6B-FBF4-4456-928D-1C28572995CE} = {045B3F38-69F1-468E-9E76-CB889574BB34}
+		{545F90A3-EEFC-471F-8461-EBAB5E568A11} = {EA323D22-8C90-4668-8C7D-DFAF017989F8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B48A64CD-1E9D-4169-82DF-66FD7695C2D0}

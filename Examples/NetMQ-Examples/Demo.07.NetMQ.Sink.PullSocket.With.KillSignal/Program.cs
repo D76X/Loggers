@@ -27,11 +27,11 @@ namespace Demo._07.Sink.With.KillSignal {
             this.Origin = endPoint;
             this.JobId = jobId;
             this.TotalWokload = totalWorkload;
-            this.BatchSize = batchSize;            
+            this.BatchSize = batchSize;
         }
 
         internal void Update(int workDone) {
-            Thread.Sleep(work)
+            Thread.Sleep(workDone);
             progress += workDone;
             updates += 1;
         }
@@ -68,9 +68,9 @@ namespace Demo._07.Sink.With.KillSignal {
 
                 jobs.Add(jobId, new JobProgress(
                     endPoint,
-                    jobId, 
+                    jobId,
                     totalWorkload,
-                    batchSize));                
+                    batchSize));
             }
 
             job = jobs[jobId];
@@ -81,6 +81,12 @@ namespace Demo._07.Sink.With.KillSignal {
             }
 
             return job;
+        }
+
+        public bool IsAllDone {
+            get {
+                return true;
+            }
         }
     }
 
@@ -120,7 +126,7 @@ namespace Demo._07.Sink.With.KillSignal {
 
                 killSignalEndPoint = args[1];
                 bindKillSignalPublisher = killSignalEndPoint.Contains("*");
-            }            
+            }
 
             using (PullSocket pullSocket = new PullSocket())
             using (PublisherSocket publisherSocket = new PublisherSocket()) {
@@ -149,11 +155,12 @@ namespace Demo._07.Sink.With.KillSignal {
                 //Console.ReadKey();
 
                 var jobs = new Jobs();
-               
+                int completedAllJobsCount = 0;
+
                 while (true) {
 
                     // this is blocking
-                    // read the work done by any worker that is useing this endpoint as its sink.
+                    // read the work done by any worker that is using this endpoint as its sink.
                     string frame = pullSocket.ReceiveFrameString();
                     //Console.WriteLine(frame);
 
@@ -163,6 +170,22 @@ namespace Demo._07.Sink.With.KillSignal {
                     string status = job.ToString();
                     string msg = job.Completed ? $"\n\r{status}\n\r" : status;
                     Console.WriteLine(msg);
+
+                    // this is simplistic but for this example it will do.
+
+                    completedAllJobsCount = jobs.IsAllDone ?
+                        completedAllJobsCount + 1 :
+                        0;
+
+                    if (completedAllJobsCount > 10) {
+
+                        completedAllJobsCount = 0;
+
+                        // kill the connected workers so that they can 
+                        // go on with other work if it is the case...
+                        publisherSocket.SignalOK();
+                        Console.WriteLine("Sent kill signal!");
+                    }
                 }
 
                 //// the sink must wait for a start signal before doing anything else.
@@ -194,7 +217,7 @@ namespace Demo._07.Sink.With.KillSignal {
 
                 //stopwatch.Stop();
                 //Console.WriteLine($"All work {totalWorkDone} done in {stopwatch.ElapsedMilliseconds}");
-                //Console.ReadKey();
+                //Console.ReadKey();de
             }
         }
     }
