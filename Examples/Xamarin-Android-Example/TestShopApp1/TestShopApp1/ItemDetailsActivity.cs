@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using TestApp1.Core;
+using TestShopApp1.Utilities;
 
 namespace TestShopApp1 {
     [Activity(Label = "Item details", MainLauncher = true)]
@@ -44,6 +45,13 @@ namespace TestShopApp1 {
             
             // keep references to the controls (views in Android)
             this.FindViews();
+
+            // binds to the seletced data item
+            this.BindData();
+
+            // provide all the event handlers that the controls require
+            // for the view's behaviour
+            this.HanldeEvents();
         }
 
         private void FindViews() {
@@ -59,6 +67,57 @@ namespace TestShopApp1 {
 
             this.cancelButton = FindViewById<Button>(Resource.Id.cancelButton);
             this.orderButton = FindViewById<Button>(Resource.Id.orderButton);
+        }
+
+        private void BindData() {
+
+            this.itemNameTextView.Text = this.selectedItem.Name;
+            this.itemShortDescriptionTextView.Text = this.selectedItem.ShortDescription;
+            this.itemDescriptionTextView.Text = this.selectedItem.Description;
+            this.itemPriceTextView.Text = "Price: " + this.selectedItem.Price;
+
+            var imageBitMap = ImageHelper
+                .GetImageBitmapFromUrl("http://gillcleerenpluralsight.blob.core.windows.net/files/" + selectedItem.ImagePath + ".jpg");
+
+            this.itemImageView.SetImageBitmap(imageBitMap);
+        }
+
+        private void HanldeEvents() {
+
+            this.orderButton.Click += OrderButton_Click;
+            this.cancelButton.Click += CancelButton_Click;
+        }
+        
+        private void OrderButton_Click(object sender, EventArgs e) {
+
+            var amount = Int32.Parse(this.itemAmountEditText.Text);
+
+            //this.AddToCart(this.selectedItem, amount);
+
+            // prototype code
+            var dialog = new AlertDialog.Builder(this);
+            dialog.SetTitle("Confirmation");
+            dialog.SetMessage("Your hot dog has been added to your cart!");
+            dialog.Show();
+
+            //var intent = new Intent();
+            //intent.PutExtra("selectedHotDogId", this.selectedItem.HotDogId);
+            //intent.PutExtra("amount", amount);
+
+            //SetResult(Result.Ok, intent);
+
+            //this.Finish();
+        }
+
+        public void AddToCart(HotDog hotDog, int amount) {
+            //CartDataService cartDataService = new CartDataService();
+            //cartDataService.AddCartItem(hotDog, amount);
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e) {
+
+            //SetResult(Result.Canceled);
+            //this.Finish();
         }
     }
 }

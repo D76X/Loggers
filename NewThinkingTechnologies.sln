@@ -597,6 +597,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IntroToSceneView3DMap", "IntroToSceneView3DMap", "{91C564A7-5C9C-42F9-8D80-F8DEA68C089C}"
 	ProjectSection(SolutionItems) = preProject
 		Examples\GIS-Examples\IntroToSceneView3DMap\example1.html = Examples\GIS-Examples\IntroToSceneView3DMap\example1.html
+		Examples\GIS-Examples\IntroToSceneView3DMap\example2.html = Examples\GIS-Examples\IntroToSceneView3DMap\example2.html
+		Examples\GIS-Examples\IntroToSceneView3DMap\example3.html = Examples\GIS-Examples\IntroToSceneView3DMap\example3.html
 		Examples\GIS-Examples\IntroToSceneView3DMap\index.html = Examples\GIS-Examples\IntroToSceneView3DMap\index.html
 	EndProjectSection
 EndProject
@@ -606,7 +608,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp1.Core", "Examples\X
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestShopApp1", "Examples\Xamarin-Android-Example\TestShopApp1\TestShopApp1\TestShopApp1.csproj", "{035EA959-B305-421F-AFAC-DB1622DC471B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Band.MessageProcessor1", "Examples\IoT-Hub-Examples\Test.Band.MessageProcessor1\Test.Band.MessageProcessor1.csproj", "{DC96BDEF-72B8-4BEA-A07E-F1655429095A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.Band.MessageProcessor1", "Examples\IoT-Hub-Examples\Test.Band.MessageProcessor1\Test.Band.MessageProcessor1.csproj", "{DC96BDEF-72B8-4BEA-A07E-F1655429095A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -32,3 +32,30 @@ to complex problems.
 0. [All the ArcGIS API](https://developers.arcgis.com/)
 1. [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/3/)
 2. [ArcGIS Runtime SDK for .NET](https://developers.arcgis.com/net/)
+
+## 
+
+1. [OpenStreetMap](https://www.openstreetmap.org/#map=6/54.910/-3.432)  
+2. [ArcGIS Living Atlas of the World](https://livingatlas.arcgis.com/en/)    
+
+---
+
+## Good Base Map
+
+When the BaseMap is selected follow these guidelines.
+
+1. Contextually relevant.
+2. Minimally distracting.
+3. Aesthetically pleasing.
+
+---
+#### Run the examples with Python HTTP Server
+
+Make sure some version of Python 3 is present on yopur system then in the 
+command window or PowerShell at the root folder of the project with the 
+html, css and js files use the following commands.
+
+1. [How do you set up a local testing server?](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server)  
+
+*  python -m http.server  
+*  python -m http.server 7800

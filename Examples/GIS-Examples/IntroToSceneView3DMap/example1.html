@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://js.arcgis.com/3.24/esri/css/esri.css">
     <link rel="stylesheet" href="https://js.arcgis.com/3.24/dijit/themes/claro/claro.css">
     <script src="https://js.arcgis.com/3.24/"></script>
-    <title>My First GIS map</title>
+    <title>GIS apps</title>
 </head>
 <body>
     <style>
@@ -17,13 +17,17 @@
             margin: 0;
         }
     </style>
-    <h1>My First GIS map @ http://localhost:8000/ </h1>
+    <h1>GIS map @ http://localhost:8000/example1.html</h1>
+    <p>
+        In this example we specify the basemap: gray to show the basemap in gray color.
+        This may be useful to overlay GIS data to the basemap.
+    </p>
     <div id="map"></div>
     <script>
         var map;
         require(["esri/map", "dojo/domReady!"], function (Map) {
             map = new Map("map", {
-                basemap: "topo",
+                basemap: "gray",
                 center: [-122.45, 37.75],
                 zoom: 13
             });
@@ -32,5 +36,10 @@
 </body>
 </html>
 
-<<!--References-->
+<!--References-->
+<!--Get started with maps-->
+<!--http://doc.arcgis.com/en/arcgis-online/get-started/get-started-with-maps.htm-->
+<!--Build Your First Application-->
 <!--https://developers.arcgis.com/javascript/3/jshelp/intro_firstmap_amd.html-->
+<!--The Web Mercator of the 1922 World Map-->
+<!--https://tiles.arcgis.com/tiles/YpWVqIbOT80sKVHP/arcgis/rest/services/1922_World_Map_WM/MapServer-->

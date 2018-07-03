@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://js.arcgis.com/4.0/esri/css/main.css">
+    <script src="https://js.arcgis.com/4.0/"></script>
+    <!--<link rel="stylesheet" href="https://js.arcgis.com/3.24/dijit/themes/claro/claro.css">-->
+    <title>GIS apps</title>
+</head>
+<body>
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <h1>GIS map @ http://localhost:8000/example2.html</h1>
+    <p>
+        In this example we specify the basemap: gray to show the basemap in gray color.
+        This may be useful to overlay GIS data to the basemap.
+    </p>
+    <div id="viewDiv"></div>
+    <script>
+        //var map;
+        require([
+            "esri/Map",
+            "esri/layers/FeatureLayer",
+            "esri/views/MapView",
+            "dojo/domReady!"
+        ], function (Map, FeatureLayer, MapView) {
+
+            var map = new Map("map", {
+                basemap: "topo"
+            });
+
+            // Construct a layer from a Cached Mapped Service.
+            // This layer will be used as BaseMap for or MapView.
+            // There are services called Cached Mapped Services which hold
+            // these layers which are rich in information and serve them
+            // out very officiently through their infrastructure.
+            // In this example the service is ArcGIS and the TyleLayer clas
+            // https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-TileLayer.html
+            // is designed to work with such service.
+            // ------------------------------------------------------------------------------------
+            // The TileLayer allows you work with a cached map service exposed by the ArcGIS Server
+            // REST API and add it to a Map as a tile layer. A cached service accesses tiles from a
+            // cache instead of dynamically rendering images.
+            // ------------------------------------------------------------------------------------
+            // You must use the right Layer class type according to the Cached Mapped Service the
+            // layer is provided by i.e. if the layer ois from the OpenStreetMap service then the
+            // class OpenStreetMapLayer must be used.
+            // ------------------------------------------------------------------------------------
+            // https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-OpenStreetMapLayer.html
+            // ------------------------------------------------------------------------------------
+            var tileLayer = new FeatureLayer({
+                url: "https://tiles.arcgis.com/tiles/YpWVqIbOT80sKVHP/arcgis/rest/services/1922_World_Map_WM/MapServer"
+            });
+
+            //tileLayer.when(function () {
+            //    view.goTo(layer.fullExtent);
+            //});
+
+            // add the layer to the map
+            // in some APIs the base map is the first layer that is added to
+            // the map. In general is best practice to manage Basemap layers
+            // separately from any other layer if the API supports doing so.
+            map.add(tileLayer);
+
+            // construct a view of the map
+            var mapView = new MapView({
+                container: "viewDiv",
+                map: map,
+                //zoom: 1,
+                //center: [15, 65],
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+<!--References-->
+<!--Get started with maps-->
+<!--http://doc.arcgis.com/en/arcgis-online/get-started/get-started-with-maps.htm-->
+<!--Build Your First Application-->
+<!--https://developers.arcgis.com/javascript/3/jshelp/intro_firstmap_amd.html-->
+<!--The Web Mercator of the 1922 World Map-->
+<!--https://tiles.arcgis.com/tiles/YpWVqIbOT80sKVHP/arcgis/rest/services/1922_World_Map_WM/MapServer-->

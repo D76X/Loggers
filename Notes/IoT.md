@@ -51,6 +51,7 @@ There exist a number of NuGet packages with base classes.
 
 ## IoT Hub
 
+1. [IoT Hub Learning Path](https://azure.microsoft.com/en-gb/documentation/learning-paths/iot-hub/)  
 1. [Azure IoT Hub for Developers: Getting Started](https://app.pluralsight.com/library/courses/azure-iot-hub-developers-getting-started/table-of-contents)
 2. [Use iothub-explorer for Azure IoT Hub device management](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-device-management-iothub-explorer)
 3. [Azure-iothub-explorer on GitHub](https://github.com/Azure/iothub-explorer) 
@@ -227,8 +228,9 @@ SCADA = Supervisory Control & Data Acquisitions
 SCADA RTU = Remote Terminal Unit
 
 1. [E- Learning SCADA Lesson 1- What is SCADA?](https://www.youtube.com/watch?v=5ZiIA-kMV8M)
-2. [Lesson 2 - How to create elements in mySCADA](https://www.youtube.com/watch?v=zZgMVKfhZwQ)
-
+2. [Lesson 2 - How to create elements in mySCADA](https://www.youtube.com/watch?v=zZgMVKfhZwQ)  
+3. [Lesson 0 = Basic Industrial Controls](https://www.youtube.com/watch?v=eBK8lgEd0r0)  
+  
 ### Communication Types
 
 1. [MOBUS]
