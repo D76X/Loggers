@@ -100,6 +100,18 @@ There exist a number of NuGet packages with base classes.
    Adding more EPHs created load-balanced parallelism and fault-tollerance
    there is scope to combine this with Akka.net. 
    
+3. Un important best practise is to make sure that when a message processor 
+  finishes its work it releases the lease on a message partition. In order 
+  to to this the processor host must close gracefully that is with no exceptions
+  thrown by the host process for teh .NET Core app. When you are playing with
+  PowerShell do not just close the shell as this is not a graceful termination
+  of teh .NET Core process and teh lease acquired on the message partition will
+  not released until it expires. Instead add a Console.ReadKey or similar to 
+  exit teh process gracefull (with 0). The problem with not releasing the lease  
+  is that when the a new message processor instance is started it might not 
+  able to acquire a lease because all the partition are leased out, although
+  some of teh processors to which the lease was granted might be no longer 
+  running.
    
 ---
 
@@ -122,7 +134,11 @@ There exist a number of NuGet packages with base classes.
 1. 10 custom endpoints
 2. 100 routes
 
-### IoT Message Type Options
+---
+
+## IoT Message Type Options
+
+### Device to Cloud (D2C) 
 
 The device can send three types of messages to an IoT Hub.
 The format of the data sent to the IoT Hub can vary but it can consist of
@@ -149,6 +165,12 @@ IoT Hub.
 2. Device twin's reported properties.
 3. File uploads for infrequent and intermittent communication scenarios
    with a large amount of data batched up in a single file.  
+
+### Cloud to device
+
+
+
+---
 
 ### IoT Hub Message Transport Options
 

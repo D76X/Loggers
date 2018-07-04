@@ -99,10 +99,22 @@ short for **ell known id** that is the **id** value of the so called
    on the USA map. Different localities have different ways to name the 
    columns of the CSV **ArcGIS Online** does the best it can to match things
    up automatically, but user input can also be of aid to the process. 
-4. At this point the data is displayed on teh map as a Layer. 
+4. At this point the data is displayed on the map as a Layer. There is a check
+   box on the left side menu to enable and disable the visibility of teh layer 
+   on the map and more options are also available. 
 5. It is now possible to **save the Layer as a GIS service and make it available**
-   **to the outside world for consumption.**
-6. ... 
+   **to the outside world for consumption.** One of the available options is 
+   **Save Layer**, add a required tag and save.
+6. From the **ArcGIS Online** frontpage now visit **Content**. You will find the 
+   layer that has been saved as a resource, it is a **FeatureLayer**. This can 
+   now be published as a resource to be consumed by other applications. Just click 
+   on the layer and you will see a page with a URL to access the resource.
+   It is necessary to make the resource **public** by sharing it!
+7. This layer is now available for consumption as a **feature** that is   
+   **geomerty(point, address, etc.) plus attributes(name, address, etc.)**.
+   **ArcGIS Online** makes available this **features** through a **feauture service**
+   and gives access to it via a **RESTfull API**.
+   
 
 ---
 #### Run the examples with Python HTTP Server

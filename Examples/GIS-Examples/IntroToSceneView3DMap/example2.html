@@ -1,15 +1,9 @@
 ﻿<!DOCTYPE html>
-
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="https://js.arcgis.com/4.0/esri/css/main.css">
-    <script src="https://js.arcgis.com/4.0/"></script>
-    <!--<link rel="stylesheet" href="https://js.arcgis.com/3.24/dijit/themes/claro/claro.css">-->
     <title>GIS apps</title>
-</head>
-<body>
     <style>
         html,
         body,
@@ -20,14 +14,9 @@
             width: 100%;
         }
     </style>
-    <h1>GIS map @ http://localhost:8000/example2.html</h1>
-    <p>
-        In this example we specify the basemap: gray to show the basemap in gray color.
-        This may be useful to overlay GIS data to the basemap.
-    </p>
-    <div id="viewDiv"></div>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.0/esri/css/main.css">
+    <script src="https://js.arcgis.com/4.0/"></script>
     <script>
-        //var map;
         require([
             "esri/Map",
             "esri/layers/FeatureLayer",
@@ -35,8 +24,12 @@
             "dojo/domReady!"
         ], function (Map, FeatureLayer, MapView) {
 
-            var map = new Map("map", {
-                basemap: "topo"
+            // for the values that can be assigned to the basemap property fo the object 
+            // apssed as a constructor of teh Map refer to teh API documentation i.e.
+            //https://developers.arcgis.com/javascript/latest/api-reference/esri-Map.html
+            //https://developers.arcgis.com/javascript/latest/api-reference/esri-Map.html#basemap
+            var map = new Map({
+                basemap: "national-geographic"
             });
 
             // Construct a layer from a Cached Mapped Service.
@@ -62,10 +55,6 @@
                 url: "https://tiles.arcgis.com/tiles/YpWVqIbOT80sKVHP/arcgis/rest/services/1922_World_Map_WM/MapServer"
             });
 
-            //tileLayer.when(function () {
-            //    view.goTo(layer.fullExtent);
-            //});
-
             // add the layer to the map
             // in some APIs the base map is the first layer that is added to
             // the map. In general is best practice to manage Basemap layers
@@ -73,22 +62,28 @@
             map.add(tileLayer);
 
             // construct a view of the map
+            // we also use zoom and center to focus the view on specific area
+            // of teh view.
             var mapView = new MapView({
                 container: "viewDiv",
                 map: map,
-                //zoom: 1,
-                //center: [15, 65],
+                zoom: 4,
+                center: [15, 40],
             });
         });
     </script>
-
+</head>
+<body>
+    <h1>GIS map @ http://localhost:8000/example2.html</h1>
+    <p>
+        In this example we specify the basemap: national-geographic to show the basemap in nationla geographic style.        
+    </p>
+    <div id="viewDiv"></div>
 </body>
 </html>
 
 <!--References-->
-<!--Get started with maps-->
-<!--http://doc.arcgis.com/en/arcgis-online/get-started/get-started-with-maps.htm-->
-<!--Build Your First Application-->
-<!--https://developers.arcgis.com/javascript/3/jshelp/intro_firstmap_amd.html-->
+<!--1922 World Map-->
+<!--https://www.arcgis.com/home/item.html?id=7e94632fa6b1413b84a3d1c063b4cf29-->
 <!--The Web Mercator of the 1922 World Map-->
 <!--https://tiles.arcgis.com/tiles/YpWVqIbOT80sKVHP/arcgis/rest/services/1922_World_Map_WM/MapServer-->
