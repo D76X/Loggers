@@ -1,3 +1,9 @@
+## Azure Tools
+
+1. [iothub-explorer](https://github.com/Azure/iothub-explorer)
+2. [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)
+3. [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/)  
+
 ## Azure Evets Hub
 
 1. [Azure Event Hubs for .NET Developers: Fundamentals](https://app.pluralsight.com/library/courses/azure-event-hubs-dotnet-developers-fundamentals/table-of-contents)  
@@ -18,6 +24,44 @@ the message is assigned to a partition based on the
 id value.
 Each new message is added at the end of a partition.
 Therefore the order of the messages is guarateed - queue.
+
+### How many partitions should you have on any IoT Hub?
+
+https://app.pluralsight.com/player?course=azure-iot-hub-developers-getting-started&author=matt-honeycutt&name=cc8b8dcd-920e-4d0b-9892-bd1e85e33298&clip=7&mode=live
+
+Determining the right number of partition is important 
+because it is not possible to change the number of partitions
+on an IoT Hub once it has been created. In order to change the 
+number of partition a new hub must be created but this may cause
+lost of settings includiuong devices twins to be losted. 
+
+The Higer the number to partiotion on the Hub the greater is the 
+potential for parallelism by means of **Event Processor Hosts**.
+The max number of poartitions for any IoT Hub on a paied subscription
+is 32. Despite there is no extra financial cost associated to the 
+number of partitions set up on a Hub it must be considered that the
+**Event Processor Hosts** must perform upkeeping of its state by 
+means of a dedicated blob storage account and this operation requires
+time. Therefore, it is essential to determine the right balance between 
+the number of partitions and the message load on the hub, the best is 
+probably trial and error with performance measurements before 
+commiting to production.
+
+If the number of partition is too large in relation to the message 
+workload it may cause some of **Event Processor Hosts** to seat idle.
+
+A huristic is 
+
+1. start with 2 or 4 partition according to the message workload on 
+   the IoT Hub.
+2. Double the number of partition until load-balancing is achieved
+   at steady state.
+3. Consider an alternative parallelization mechanism such as through 
+   **Consumer Groups**. For example if the are messages that require
+   different time to process i.e. slow and fast, split the messages
+   processing into two corresponding **Consumer Groups** each served
+   by a number of **Event Processor Hosts** instances. This is an
+   example of a 2-tier architecture for the IoT Hub.
 
 #### Consumer Groups
 
@@ -40,12 +84,22 @@ There exist a number of NuGet packages with base classes.
    This is a low level solution. It is a class that 
    connects a receiver to a partition for a consumer group
    but the logic to manage the state of the partition is not 
-   included in the base implementation.
+   included in the base implementation. 
 
 2. [Event Processor Host](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) 
    This inherits from the Event Hub Receiver but add some basic 
    implementation to handle connect and disconnect, to manage the
-   state of teh partition and to scale under load.
+   state of teh partition and to scale under load. Moreover, the 
+   Event Processor Host implemetation has a out-of-the-box scale-out 
+   model implementation. When a new EPH is created it acquires a 
+   lease for every partition. If another instance of a EPH is created
+   for the same consumer gorup it will attempt to do the same and 
+   overtime the host reaches an equilibrium in which each processor 
+   leases about the same number of partitions that is there is an
+   automatic load-balancing mechanism when using Event Processor Host.
+   Adding more EPHs created load-balanced parallelism and fault-tollerance
+   there is scope to combine this with Akka.net. 
+   
    
 ---
 
@@ -67,6 +121,34 @@ There exist a number of NuGet packages with base classes.
 
 1. 10 custom endpoints
 2. 100 routes
+
+### IoT Message Type Options
+
+The device can send three types of messages to an IoT Hub.
+The format of the data sent to the IoT Hub can vary but it can consist of
+any binary data i.e. serialized objects. One typical choice may be POCO 
+C# object serialized to JSON. The binary stream or byte array of the JSON 
+can be ultimately sent to the Hub. The byte array may also be compressed 
+before sending it to the Hub to save bandwidth.
+
+When the message reaches the Hub it is shuffled to one of the available
+Hub partition (1 to 32 max) based on the device ID. Message Porcessors
+can then be used to take leases on the partition and read off the messages
+to do something with them. 
+
+The Message Processor has tthe following resposibilities.
+
+1. Request a lease on a partition on the Hub.
+2. Use a blob storage to maintain teh state of the processor.
+3. Deserialise the binary messages read from the Hub.
+
+The following are the types of messages that devices can send to an 
+IoT Hub.
+
+1. Device to Cloud (D2C) for high-frequency real-time telemetry data.
+2. Device twin's reported properties.
+3. File uploads for infrequent and intermittent communication scenarios
+   with a large amount of data batched up in a single file.  
 
 ### IoT Hub Message Transport Options
 
@@ -160,11 +242,6 @@ the hub.
    to the edge, you will experience reduced latency and have the option for off-line scenarios.  
 
    https://www.amplified.com.au/azure-iot-hub-device-gateway
-
-## Azure Tools
-
-1. [iothub-explorer](https://github.com/Azure/iothub-explorer)
-2. [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)
 
 
 ---

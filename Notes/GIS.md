@@ -1,5 +1,11 @@
 http://www.mobygis.com/wordpress/  
 
+## Resources
+
+1. [Esri Video](https://www.esri.com/videos)  
+2. [ArcGIS for Developers](https://developers.arcgis.com/)  
+3. [ArcGIS Online](https://www.arcgis.com/home/index.html)    
+
 ## GIS [Geographic Information System]
 
 1. [Introduction to GIS for Developers](https://app.pluralsight.com/player?course=gis-introduction-developers&author=jason-hine&name=gis-introduction-developers-m0&clip=0&mode=live)  
@@ -47,6 +53,56 @@ When the BaseMap is selected follow these guidelines.
 1. Contextually relevant.
 2. Minimally distracting.
 3. Aesthetically pleasing.
+
+---
+
+## Geocoding
+
+Geocoding is the process of producing GIS data from some dataset.
+For example, from a spreadsheet with location information including
+addresses or place names to GIS data. The difference between the 
+original information and GIS data is that the latter can be displayed
+on a map. 
+
+Geocoding is generally the first step in large GIS projects.
+
+Geocoding relies on fast GIS servers with large, well maintaned street 
+network datasets. When a query reaches the server the Geocoding services
+uses a sophisticated algorithm to generate potential matches with ranking
+values. It drops the low ranking matches scoring under a threshold and 
+returns a meaningful subset of well form GIS data items.
+
+#### Spatial References and Web Mercator
+
+The Spacial Reference in a GIS data-itemn is the specification of the 
+coordinate system used by the GIS data item. There exist lots of different
+Spacial References but one of the most widespread used the **wkid** that is 
+short for **ell known id** that is the **id** value of the so called
+**web mercator**.
+
+#### Geocoding services
+
+1. One way to use a Geocoding service for free is to leverage the 
+   Esri's ArcGIS platform. This platform can accept a common delimited
+   text file with place names as its input and produce a GIS dataset.
+
+#### Worlflow
+
+1. Sign in to **ArcGIS for Developers**.
+   You should laready have an account or create one i.e. using the G+.
+2. Once you are looged in on ArcGIS for Developers also log in on
+   **ArcGIS Online** and select **Map** to make a new map. This map 
+   includes a BaseMap by default.
+3. Now you can add your data to the map by clicking 
+   **add >> add layer from file**. Make sure you select the right locality 
+   from the data i.e. USA if teh file is a CSV containing data about places
+   on the USA map. Different localities have different ways to name the 
+   columns of the CSV **ArcGIS Online** does the best it can to match things
+   up automatically, but user input can also be of aid to the process. 
+4. At this point the data is displayed on teh map as a Layer. 
+5. It is now possible to **save the Layer as a GIS service and make it available**
+   **to the outside world for consumption.**
+6. ... 
 
 ---
 #### Run the examples with Python HTTP Server

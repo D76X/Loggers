@@ -118,6 +118,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Notes", "_Notes", "{54A549
 		Notes\VMs.md = Notes\VMs.md
 		Notes\WiX.md = Notes\WiX.md
 		Notes\Wpf.md = Notes\Wpf.md
+		Notes\Xamarin.md = Notes\Xamarin.md
 		Notes\XAML.md = Notes\XAML.md
 		Notes\ZeroMQ.md = Notes\ZeroMQ.md
 	EndProjectSection
@@ -609,6 +610,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestShopApp1", "Examples\Xamarin-Android-Example\TestShopApp1\TestShopApp1\TestShopApp1.csproj", "{035EA959-B305-421F-AFAC-DB1622DC471B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.Band.MessageProcessor1", "Examples\IoT-Hub-Examples\Test.Band.MessageProcessor1\Test.Band.MessageProcessor1.csproj", "{DC96BDEF-72B8-4BEA-A07E-F1655429095A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.Band.Common", "Examples\IoT-Hub-Examples\Test.Band.Common\Test.Band.Common.csproj", "{CC2776CC-ECE2-4890-B1DB-19BE055E4E25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.BandAgent3", "Examples\IoT-Hub-Examples\Test.BandAgent3\Test.BandAgent3.csproj", "{EBB18B20-992A-442C-A329-A3AB86657C90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1870,6 +1875,22 @@ Global
 		{DC96BDEF-72B8-4BEA-A07E-F1655429095A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DC96BDEF-72B8-4BEA-A07E-F1655429095A}.Release|x86.ActiveCfg = Release|Any CPU
 		{DC96BDEF-72B8-4BEA-A07E-F1655429095A}.Release|x86.Build.0 = Release|Any CPU
+		{CC2776CC-ECE2-4890-B1DB-19BE055E4E25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC2776CC-ECE2-4890-B1DB-19BE055E4E25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC2776CC-ECE2-4890-B1DB-19BE055E4E25}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CC2776CC-ECE2-4890-B1DB-19BE055E4E25}.Debug|x86.Build.0 = Debug|Any CPU
+		{CC2776CC-ECE2-4890-B1DB-19BE055E4E25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC2776CC-ECE2-4890-B1DB-19BE055E4E25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC2776CC-ECE2-4890-B1DB-19BE055E4E25}.Release|x86.ActiveCfg = Release|Any CPU
+		{CC2776CC-ECE2-4890-B1DB-19BE055E4E25}.Release|x86.Build.0 = Release|Any CPU
+		{EBB18B20-992A-442C-A329-A3AB86657C90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBB18B20-992A-442C-A329-A3AB86657C90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBB18B20-992A-442C-A329-A3AB86657C90}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EBB18B20-992A-442C-A329-A3AB86657C90}.Debug|x86.Build.0 = Debug|Any CPU
+		{EBB18B20-992A-442C-A329-A3AB86657C90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBB18B20-992A-442C-A329-A3AB86657C90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBB18B20-992A-442C-A329-A3AB86657C90}.Release|x86.ActiveCfg = Release|Any CPU
+		{EBB18B20-992A-442C-A329-A3AB86657C90}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -2101,6 +2122,8 @@ Global
 		{545F90A3-EEFC-471F-8461-EBAB5E568A11} = {EA323D22-8C90-4668-8C7D-DFAF017989F8}
 		{035EA959-B305-421F-AFAC-DB1622DC471B} = {EA323D22-8C90-4668-8C7D-DFAF017989F8}
 		{DC96BDEF-72B8-4BEA-A07E-F1655429095A} = {045B3F38-69F1-468E-9E76-CB889574BB34}
+		{CC2776CC-ECE2-4890-B1DB-19BE055E4E25} = {045B3F38-69F1-468E-9E76-CB889574BB34}
+		{EBB18B20-992A-442C-A329-A3AB86657C90} = {045B3F38-69F1-468E-9E76-CB889574BB34}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B48A64CD-1E9D-4169-82DF-66FD7695C2D0}

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Azure.Devices.Client;
+﻿using Microsoft.Azure.Devices.Client;
 using Microsoft.Azure.Devices.Shared;
-using Newtonsoft.Json;
+using System;
+using System.Threading.Tasks;
 
-namespace Test.BandAgent1 {
+namespace Test.BandAgent2 {
     class Program {
 
         private const string DeviceConnectionString = @"HostName=psdemohub1.azure-devices.net;DeviceId=device-01;SharedAccessKey=RF82V2O/5usaLo01FQFTMYHZoDtLYRTU/FxUDv9Nm8A=";

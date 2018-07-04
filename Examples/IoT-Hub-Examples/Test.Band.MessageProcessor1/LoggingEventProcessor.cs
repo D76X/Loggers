@@ -1,4 +1,5 @@
-﻿using Microsoft.Azure.EventHubs;
+﻿using Globomantics.Common;
+using Microsoft.Azure.EventHubs;
 using Microsoft.Azure.EventHubs.Processor;
 using Newtonsoft.Json;
 using System;
@@ -61,9 +62,9 @@ namespace Test.Band.MessageProcessor1 {
             // go through the batch of messages to process
             foreach (var eventData in messages) {
 
-                // extract teh payload that was sent by the the device up to the 
+                // extract the payload that was sent by the the device up to the 
                 // hub as part of the message. Remember that the device can push 
-                // any serialized object up to the IoT Hub!
+                // any serialized object up to the IoT Hub as byte array!
                 var payload = Encoding.ASCII.GetString(eventData.Body.Array,
                     eventData.Body.Offset,
                     eventData.Body.Count);
@@ -78,12 +79,20 @@ namespace Test.Band.MessageProcessor1 {
                                   $"device ID: '{deviceId}', " +
                                   $"payload: '{payload}'");
 
-                //var telemetry = JsonConvert.DeserializeObject<Telemetry>(payload);
+                // Here it is now possible to extract the payload as a byte array
+                // and deserialize it into a POCO object, then do with it all you
+                // like.
 
-                //if (telemetry.Status == StatusType.Emergency) {
-                //    Console.WriteLine($"Guest requires emergency assistance! Device ID: {deviceId}");
-                //    SendFirstRespondersTo(telemetry.Latitude, telemetry.Longitude);
-                //}
+                var telemetry = JsonConvert.DeserializeObject<Telemetry>(payload);
+
+                // For example if the user of the device has pushed the emergency button 
+                // you may want something to happen such as messages should be sent to 
+                // a resque unit or similar...
+
+                if (telemetry.Status == StatusType.Emergency) {
+                    Console.WriteLine($"Guest requires emergency assistance! Device ID: {deviceId}");
+                    SendFirstRespondersTo(telemetry.Latitude, telemetry.Longitude);
+                }
             }
 
             // this call is important because it causes the processor to write a 
