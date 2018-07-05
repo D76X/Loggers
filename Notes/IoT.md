@@ -179,7 +179,47 @@ IoT Hub.
    abandon, this also makes it possible to have **Two-Way** communication because
    either a rejection or acceptance message may be sent back to the Hub.
 
+---
 
+## Models C2D - D2C
+
+1. The simplest model is that based on three moving parts **AGENT-HUB-MANAGER**.
+  
+   1. The device with the .NET Core app running on it which is called AGENT.
+   2. The IoT Hub that is the piece of cloud infrastructure that seats in the middle.
+   3. The manager .NET Core app that deals with the C2D communication.
+
+This is a simple model and thanks to the **build in feedback** provided by the classes
+in **Microsoft.Azure.Device** NuGet pkg you can build a complete C2D-D2C two way 
+architecture. However, there are some missing services with this implementation
+such as  
+
+   1. You must do **correlation** yourself betwen the C2D message and the 
+       D2C feedback message by using and storing the message IDs.
+   2. In this message pattern teh device sends the feedback message to the 
+       IoT Hub and not to the device directly.
+   3. There is a time laps between sending the message from the MANAGER to the DEVICE
+      through the IoT Hub and getting the feedback message to the MANAGER in the 
+      reverse path. 
+
+
+2. The second method is called **DIRECT METHOD AKA DEVICE METHOD**.
+
+In this implementation the MANAGER may call a method on the DEVICE as if it were a 
+local service and it can receive feedback immediately. This pattern offers some 
+advantage but present also disadvantages.
+
+#### Advantages 
+
+* provides very high throughput 
+* provides immediate direct feedback
+* eliminates the need of correlation of C2D and D2C (feedback) messages via IDs 
+
+#### Disdvantages 
+
+* Only supports AMQO and MQTT transports.
+* This pattern is not suitable for devices that may be off-line because calls 
+  on the exposed API on the device will fail. 
 
 ---
 

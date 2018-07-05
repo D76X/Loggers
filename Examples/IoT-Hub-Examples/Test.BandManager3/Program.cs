@@ -56,13 +56,8 @@ namespace Test.BandManager {
                 var deviceId = Console.ReadLine();
 
                 // obviously this sends a message straight to the device
-                await SendCloudToDeviceMessage(serviceClient, deviceId);
-                
-                //await CallDirectMethod(serviceClient, deviceId);
-                //await UpdateDeviceFirmware(registryManager, deviceId);
+                await SendCloudToDeviceMessage(serviceClient, deviceId);                
             }
-
-            //Console.WriteLine("Hello World!");
         }
 
         private static async Task SendCloudToDeviceMessage(
