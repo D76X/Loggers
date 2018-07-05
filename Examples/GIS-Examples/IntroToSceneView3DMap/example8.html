@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>Get started with MapView - Create a 2D map - 4.0</title>
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.0/esri/css/main.css">
+    <script src="https://js.arcgis.com/4.0/"></script>
+
+    <script>
+        require([
+            "esri/Map",
+            "esri/layers/FeatureLayer",
+            "esri/layers/MapImageLayer",
+            "esri/renderers/UniqueValueRenderer",
+            "esri/symbols/SimpleMarkerSymbol",
+            "esri/views/MapView",
+            "dojo/domReady!"
+        ], function (
+            Map,
+            FeatureLayer,
+            MapImageLayer,
+            UniqueValueRenderer,
+            SimpleMarkerSymbol,
+            MapView) {
+
+            // ************
+            // The Map
+            // ************
+
+            var map = new Map({
+                basemap: "streets"
+            });
+
+             /*******************************************************
+             * Visualizing Spatial Patterns - Discrete Data
+             *******************************************************/
+
+            // Discrete Data: Construct a UniqueValueRenderer
+            // specifies which attribues contains a unique value that 
+            // is a binary option.
+            var uvRenderer = new UniqueValueRenderer({
+                field: "Sex"
+            });
+
+            // For each option specify how the GIS data should be rendered
+            // on the map.
+            // Discrete Data: Specify unique values and their symbols.
+            // There are all sorts of symbols that may be placed on a map.
+            // MarkerSymbols are used by this PAI to specify the properties of dots on the map.
+            // Notice that the color array specifies the alpha so that overlapping data-items don't hide 
+            // The 
+            uvRenderer.addUniqueValueInfo({
+                value: "male",
+                symbol: new SimpleMarkerSymbol({
+                    style: "square",
+                    //color: [0,255,0,0.2] 
+                    color: [66, 165, 245, 0.3] // light blue
+                })
+            });
+
+            uvRenderer.addUniqueValueInfo({
+                value: "female",
+                symbol: new SimpleMarkerSymbol({
+                    style: "square",
+                    //color: [0,255,0,0.2]
+                    color: [236, 64, 122, 0.3] // light pink
+                })
+            });
+
+            // ************
+            // The Layers
+            // ************
+
+            // Construct a feature layer from service URL containing your (or public) 
+            // GIS data
+
+            // In this case we create a feature layer for some GSI data that
+            // has been published and shared publicly by means of the 
+            // Development Account. We have used the services available to 
+            // the holder of a development account to create a GSI public Layer
+            // from a CSV file, then ArcGSI provides a features service and a URL
+            // to access it as done here. Now consumer can place the GSI data on
+            // top of their BaseMap!
+            var patientDataFeatureLayer = new FeatureLayer({
+                url: "https://services1.arcgis.com/C746meH3Z79yMV27/arcgis/rest/services/patientdata/FeatureServer"
+            });  
+
+            // Discrete Data: Apply the renderer to the layer
+            patientDataFeatureLayer.renderer = uvRenderer;
+
+            // This layer represents the distribution of median age 
+            // of the population in the USA by state, zip code, etc.
+            // Together with the GIS data provided by the layer above 
+            // it forms the basis of a decent Operational Layer for 
+            // this map.
+            var medianAgeLayer = new MapImageLayer({
+                url: "https://demographics8.arcgis.com/arcgis/rest/services/USA_Demographics_and_Boundaries_2018/MapServer",
+                opacity: 0.5
+            });
+
+            // Add all the layers to map in the order from bottom
+            // to top. Leave the GIS data on top if you want the 
+            // user to be able to interact with it.
+            map.addMany([medianAgeLayer, patientDataFeatureLayer]);
+
+            // ************
+            // The View
+            // ************
+
+            var mapView = new MapView({
+                container: "viewDiv",
+                map: map,
+                zoom: 1
+            }); 
+
+            // Wait until the layer is loaded and then 
+            // center and zoom over the GIS data feature
+            patientDataFeatureLayer.then(function () {
+                mapView.extent = patientDataFeatureLayer.fullExtent;
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <h1>GIS map @ http://localhost:8000/example8.html</h1>
+    <p>
+        In this example we use a published and shared Feature Server from our Development Account
+        to show some data on top of the basemap. If no extent is given the data is initially visible
+        as a red dot on the map but it is actual GIS data that was generated through a Geocoding service
+        from a CSV file and now available as Feature Service on the Esri's ArcGIS platform. The dots are
+        the locations of some data about patients around the city of Denver in the USA.
+        In this example we focus on the feature just after the map is loaded. How this is doen depends on
+        the API used. In addition, in this example we make use of an Image Layer from a Dynamic Map Service
+        which shows the median age of the population by zip codes, states etc. Together with the GIS data 
+        provided by the layer above it forms the basis of a decent Operational Layer for this map.
+        The GIS data on the map this time is placed using a dedicated Renderer which changes the marker 
+        symbol by using the binary options of the attribute "Sex" on the data items.
+    </p>
+    <div id="viewDiv"></div>
+</body>
+</html>

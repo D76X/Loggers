@@ -5,6 +5,7 @@ http://www.mobygis.com/wordpress/
 1. [Esri Video](https://www.esri.com/videos)  
 2. [ArcGIS for Developers](https://developers.arcgis.com/)  
 3. [ArcGIS Online](https://www.arcgis.com/home/index.html)  
+4. [Query (Feature Service)](https://developers.arcgis.com/rest/services-reference/query-feature-service-.htm)  
 
 ## Accounts
 
@@ -165,7 +166,7 @@ Operational Layer.
    be a cached service which returns image tiles that are prerendered 
    and cached by the server to provide optimal performance.
 
-   * Dynamic Map Service.
+   * Dynamic Map Service (AKA Web Map Service)
    This is the opposite of a Cached Map Service as it just renders and 
    returns images upon request. The advantage of a Dynamic Cached Service
    is that there is an intermediate step between the query from the client
@@ -181,6 +182,66 @@ Operational Layer.
 4. selection also by attributes
 5. when the OL supports it you may add, change, remove features...
    and save the changes back to teh cloud
+
+---
+
+## Rendering GIS Feature Data on Operational Layers
+
+GIS data sets are made available to consumer by means of FeatureLayes on 
+Feature services. You can easily drop all the data in a layer on a map 
+and it would all be displayed as a series of undistintive red dots solely 
+based on the geographical data of each data item in the data set.
+
+This is the most basic way to include GIS data on a map. However, GIS data 
+normally not only has geographical attributes but also **other attributes**
+per each of the items in the dataset.
+
+The **Renderers classes** of the APIs are normally equipped with ways to 
+discriminate the rendered data item by setting condition on their attributes
+so that the data items of a GIS data set in a FeatureLayer may be displayed 
+with different treats according to the attributes they carry and 
+**help to reveal spacial patterns** of the data on the base map.
+
+There exist two basic classes of attribues for GIS items.
+
+1. attributes that take values in a discrete finite range i.e. female/male, 
+   registered/unregistered, speed limits 10, 20, 25,..., age in bands of 5
+   from 5 to 150, etc.
+
+2. attributes that take values in a continuos not finite range i.e. 
+   speed of vehicles, local temperature, humidity, current cunsumption, etc. 
+
+For each class of attributes normally APIs offer specialized classes to 
+aid in the rendering process.
+
+---
+
+## Query for a Feature Service
+
+We can query GIS data exposed as a Feature by a feature service. 
+The resource below provides guidance on how to do that. 
+
+1. https://app.pluralsight.com/player?course=gis-introduction-developers&author=jason-hine&name=gis-introduction-developers-m3&clip=3&mode=live
+2. [Query (Feature Service)](https://developers.arcgis.com/rest/services-reference/query-feature-service-.htm)  
+
+*Set SQL Format to standard to compose queries using SQL syntax.**
+ 
+Here is an example of a query that pulls all the data in layer0, notice that 
+the where clause uses 1=1 to accomplish this.
+
+* [{"layerId" : 0, "where" : "1=1", "outFields" : "*"}]
+
+This does the same but only returns the data items of age larger than 10.
+
+* [{"layerId" : 0, "where" : "age>10", "outFields" : "*"}]
+
+Perhaps you do not want to see all fields on each data item i.e. you are 
+only interested to see the range of age of teh dataset. As a side note 
+the "order by" might not work as it is not implemented by all data sources
+(this is what esri says!)
+
+* [{"layerId" : 0, "where" : "1=1", "outFields" : "Age"}]
+* [{"layerId" : 0, "where" : "1=1", "outFields" : "Age", "order by": "Age"}]
 
 ---
 #### Run the examples with Python HTTP Server

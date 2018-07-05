@@ -179,6 +179,31 @@ IoT Hub.
    abandon, this also makes it possible to have **Two-Way** communication because
    either a rejection or acceptance message may be sent back to the Hub.
 
+2. **Using device Twins for C2D.** 
+
+   There are two ways device twins can be used. 
+    
+   * D2C in which the device sends a message to the IoT Hub to notify it 
+     that it would like to make changes to **desired properties** of its
+     twin.
+
+   * C2D in which a **.NET Core manager app** changes the **desired properties**
+     so that teh IoT Hub then send down those changes to the device. The device
+     once notified decides what to do with it i.e. apply the changes or not and 
+     normally replies to the IoT Hub hence the manager.
+
+   The C2D Device Twins patterb works even when the device is off-line as the 
+   changes to the device twins on teh Hub are persisted and passed to the device
+   as soon as it goes on-line again.
+
+   This pattern is ideal to notify the device of a firmware update.
+   This pattern **cannot be used by devices that connect to the hub via HTTPS**
+   only AMQP and MQTT transports are supported.
+   The device **cannot reject a desired property change direclty** all it can do
+   is just simply ignore the changes sent over by the Hub.
+   This message pattern is designed for low-frquency communication i.e. tens msgs
+   per sec.
+
 ---
 
 ## Models C2D - D2C
@@ -188,6 +213,7 @@ IoT Hub.
    1. The device with the .NET Core app running on it which is called AGENT.
    2. The IoT Hub that is the piece of cloud infrastructure that seats in the middle.
    3. The manager .NET Core app that deals with the C2D communication.
+   4. This pattern may be implented as one-way or async req-rep.
 
 This is a simple model and thanks to the **build in feedback** provided by the classes
 in **Microsoft.Azure.Device** NuGet pkg you can build a complete C2D-D2C two way 
@@ -200,7 +226,8 @@ such as
        IoT Hub and not to the device directly.
    3. There is a time laps between sending the message from the MANAGER to the DEVICE
       through the IoT Hub and getting the feedback message to the MANAGER in the 
-      reverse path. 
+      reverse path.
+   4. this pattern is always async req-rep. 
 
 
 2. The second method is called **DIRECT METHOD AKA DEVICE METHOD**.
@@ -271,6 +298,10 @@ the hub.
 * iothub-explorer send device01 "Some message"
 * iothub-explorer send device01 send-iterations 10 send-interval 1000 "Some message"
 
+* iothub-explorer device-method device-01 "showMessage" "Hello from IoT Hub Explorer!"
+  Invoke a direct method on the device from a manager.
+
+* 
 ---
 ## Azure IoT solution accelerators
 

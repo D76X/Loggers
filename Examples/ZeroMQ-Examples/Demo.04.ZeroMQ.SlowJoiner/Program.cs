@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Demo._04.ZeroMQ.SlowJoiner {
     class Program {
+
         static void Main(string[] args) {
         }
     }
