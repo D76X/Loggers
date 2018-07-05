@@ -20,6 +20,10 @@ namespace Test.BandAgent3 {
 
             await device.OpenAsync();
 
+            // the program running on the device may also listen for messages
+            // sent by the IoT Hub. A background task may be used for it.
+            var receiveEventsTask = ReceiveEvents(device);
+
             Console.WriteLine("The device is connected!");
 
             await UpdateTwin(device);
@@ -97,7 +101,7 @@ namespace Test.BandAgent3 {
                 Console.WriteLine("Message sent!");
             }
 
-            Console.WriteLine("Disconnecting...");  
+            Console.WriteLine("Disconnecting...");
         }
 
         private static async Task UpdateTwin(DeviceClient device) {
@@ -116,6 +120,56 @@ namespace Test.BandAgent3 {
             Console.WriteLine("sent update to device twin properties");
         }
 
+        private static async Task ReceiveEvents(DeviceClient device) {
+
+            while (true) {
+
+                bool? errorWhileProcessingTheMessage = null;
+
+                // ReceiveAsync returns as soon as there is a message
+                // to read from the hub or after a timeout expires.
+                var message = await device.ReceiveAsync();
+
+                if (message == null) {
+                    // the timeout has expired there are no 
+                    // messages from the hub
+                    continue;
+                }
+
+                var messageBody = message.GetBytes();
+
+                // as usual the payload is a byte array that may be 
+                // a serialized object
+                var payload = Encoding.ASCII.GetString(messageBody);
+
+                // on a real device the payload would be thrown into the 
+                // device API to do things i.e. display messages or activate
+                // functions if the meaning of the message from the Hub is a 
+                // command.
+                Console.WriteLine($"Received message from cloud: '{payload}'");
+                errorWhileProcessingTheMessage = false;
+
+                if (!errorWhileProcessingTheMessage.HasValue) {
+
+                    // the device might not be able to attend to the ops
+                    // implied by the message sent by the Hub right now 
+                    // so it abandons it to try later...
+                    await device.AbandonAsync(message);
+                }
+
+                if (!errorWhileProcessingTheMessage.Value) {
+
+                    // this is teh device accepting the message as all was
+                    // good with it
+                    await device.CompleteAsync(message);
+                }
+                else {
+                    // the device can also reject the message...
+                    await device.RejectAsync(message);
+                }
+                
+            }
+        }
     }
 }
 

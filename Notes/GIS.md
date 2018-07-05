@@ -4,7 +4,16 @@ http://www.mobygis.com/wordpress/
 
 1. [Esri Video](https://www.esri.com/videos)  
 2. [ArcGIS for Developers](https://developers.arcgis.com/)  
-3. [ArcGIS Online](https://www.arcgis.com/home/index.html)    
+3. [ArcGIS Online](https://www.arcgis.com/home/index.html)  
+
+## Accounts
+
+You must have a developer account in order to make use of some 
+services i.e. ...
+
+#### Developer Account
+D76XD76X
+http://davide-spano.maps.arcgis.com
 
 ## GIS [Geographic Information System]
 
@@ -86,6 +95,14 @@ short for **ell known id** that is the **id** value of the so called
    Esri's ArcGIS platform. This platform can accept a common delimited
    text file with place names as its input and produce a GIS dataset.
 
+### GIS standards
+
+1. [GeoJSON](http://geojson.org/)  
+2. CSV
+3. Shapefile
+4. Feature collection
+5. FGDB  
+
 #### Worlflow
 
 1. Sign in to **ArcGIS for Developers**.
@@ -114,7 +131,56 @@ short for **ell known id** that is the **id** value of the so called
    **geomerty(point, address, etc.) plus attributes(name, address, etc.)**.
    **ArcGIS Online** makes available this **features** through a **feauture service**
    and gives access to it via a **RESTfull API**.
+
+---
+
+## Operational Layer
+
+Any type of map layer involved in GIS operations such as queries, spacial analysis,
+edits, etc. For example editable GIS data drawn on top of a basemap constitute an 
+Operational Layer. 
+
+### What operational layer do I need on my map? 
+
+1. Data that is meaningful and useful to the user
+2. Consider how user would want to see and interact with that data on the map
+
+---
+
+## The Types of Services
+
+1. Feature service.
+   Returns feature data that is GIS data to the client.
+   This is an advantage because clients that requests features can use 
+   the data to perform all sort of client side logis i.e. query, edit, 
+   etc.
+
+2. Map Services. 
+   Returns rendered images (not data). When there is a lot of data an 
+   image requires much less bandwidth than it would require as GIS data
+   plus the client saves the work to render the GIS data to display!
    
+   * Cached Map Service. 
+   In case of basemaps these service may also 
+   be a cached service which returns image tiles that are prerendered 
+   and cached by the server to provide optimal performance.
+
+   * Dynamic Map Service.
+   This is the opposite of a Cached Map Service as it just renders and 
+   returns images upon request. The advantage of a Dynamic Cached Service
+   is that there is an intermediate step between the query from the client
+   and the production of the rendered image. 
+
+---
+
+### Example of operations on OLs
+
+1. queries by attributes
+2. search by attributes
+3. count and measures also by attributes
+4. selection also by attributes
+5. when the OL supports it you may add, change, remove features...
+   and save the changes back to teh cloud
 
 ---
 #### Run the examples with Python HTTP Server

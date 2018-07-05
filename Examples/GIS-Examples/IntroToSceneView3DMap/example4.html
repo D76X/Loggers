@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>Get started with MapView - Create a 2D map - 4.0</title>
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.0/esri/css/main.css">
+    <script src="https://js.arcgis.com/4.0/"></script>
+
+    <script>
+        require([
+            "esri/Map",
+            "esri/layers/FeatureLayer",
+            "esri/views/MapView",
+            "dojo/domReady!"
+        ], function (Map, FeatureLayer, MapView) {
+
+            var map = new Map({
+                basemap: "streets"
+            });
+
+            // Construct feature layer from service URL
+            // In this case we create a feature layer for some GSI data that 
+            // has been published and shared publicly by means of the 
+            // Development Account. We have used the services available to 
+            // the holder of a development account to create a GSI public Layer
+            // froma CSV file, then ArcGSI provides a features service and a URL
+            // to access it as done here. Now consumer can place the GSI data on
+            // top of their BaseMap!
+            var featureLayer = new FeatureLayer({
+                url: "https://services1.arcgis.com/C746meH3Z79yMV27/arcgis/rest/services/auroragroceries/FeatureServer"
+            });
+
+            // Add feature layer to map
+            map.add(featureLayer);
+
+            var mapView = new MapView({
+                container: "viewDiv",
+                map: map,
+                zoom: 1
+            });
+
+            // Wait until the layer is loaded...
+            //featureLayer.then(function() {
+            //    // ... then set the initial extent
+            //    mapView.extent = featureLayer.fullExtent;
+            //});
+
+        });
+    </script>
+</head>
+
+<body>
+    <h1>GIS map @ http://localhost:8000/example4.html</h1>
+    <p>
+        In this example we use a published and shared Feature Server from our Development Account
+        to show some data on top of the basemap. The data is initially visible as a red dot on the
+        map but it is actual GIS data that was generated through a Geocoding services from a CSV file
+        and now available as Feature Service on the Esri's ArcGIS platform. The dots are the locations 
+        of groceries stores in the town of Aurora close ot Denver, USA.
+    </p>
+    <div id="viewDiv"></div>
+</body>
+</html>

@@ -166,7 +166,18 @@ IoT Hub.
 3. File uploads for infrequent and intermittent communication scenarios
    with a large amount of data batched up in a single file.  
 
-### Cloud to device
+### Cloud to device (C2D)
+
+1. C2D messaging i.e. news broadcast to devices, real-time, high-rate.
+   This is a **One-Way messaging pattern**. The Hub attempts to deliver a message
+   to a device or seet of devices until the message is sent or expires.
+   For this pattern all three transposrts are available **AMQP, MQTT, HTTP(S)**.
+   However, with **HTTP(S)** the device must poll the hub and it is designed only 
+   for scenarios that can accept latency thus is not appropriate in most cases.
+   **MQTT** is efficient but **does not** allow the options of rejection, accept,
+   abandon. The best is **AMQP** which is efficient and allows rejection, accept,
+   abandon, this also makes it possible to have **Two-Way** communication because
+   either a rejection or acceptance message may be sent back to the Hub.
 
 
 
@@ -211,6 +222,14 @@ decide how to handle the requested changes and finally report the change to
 the hub.
 
 1. [Understand and use device twins in IoT Hub](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins)
+
+---
+
+## IoT Hub Explorer Foundamentals
+
+* iothub-explorer login "...Your IoT Hub Key Here!..."
+* iothub-explorer send device01 "Some message"
+* iothub-explorer send device01 send-iterations 10 send-interval 1000 "Some message"
 
 ---
 ## Azure IoT solution accelerators
