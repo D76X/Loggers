@@ -597,16 +597,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GIS-Examples", "GIS-Example
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IntroToSceneView3DMap", "IntroToSceneView3DMap", "{91C564A7-5C9C-42F9-8D80-F8DEA68C089C}"
 	ProjectSection(SolutionItems) = preProject
-		Examples\GIS-Examples\IntroToSceneView3DMap\example1.html = Examples\GIS-Examples\IntroToSceneView3DMap\example1.html
+		Examples\GIS-Examples\IntroToSceneView3DMap\example01.html = Examples\GIS-Examples\IntroToSceneView3DMap\example01.html
+		Examples\GIS-Examples\IntroToSceneView3DMap\example02.html = Examples\GIS-Examples\IntroToSceneView3DMap\example02.html
+		Examples\GIS-Examples\IntroToSceneView3DMap\example03.html = Examples\GIS-Examples\IntroToSceneView3DMap\example03.html
+		Examples\GIS-Examples\IntroToSceneView3DMap\example04.html = Examples\GIS-Examples\IntroToSceneView3DMap\example04.html
+		Examples\GIS-Examples\IntroToSceneView3DMap\example05.html = Examples\GIS-Examples\IntroToSceneView3DMap\example05.html
+		Examples\GIS-Examples\IntroToSceneView3DMap\example06.html = Examples\GIS-Examples\IntroToSceneView3DMap\example06.html
+		Examples\GIS-Examples\IntroToSceneView3DMap\example07.html = Examples\GIS-Examples\IntroToSceneView3DMap\example07.html
+		Examples\GIS-Examples\IntroToSceneView3DMap\example08.html = Examples\GIS-Examples\IntroToSceneView3DMap\example08.html
+		Examples\GIS-Examples\IntroToSceneView3DMap\example09.html = Examples\GIS-Examples\IntroToSceneView3DMap\example09.html
 		Examples\GIS-Examples\IntroToSceneView3DMap\example10.html = Examples\GIS-Examples\IntroToSceneView3DMap\example10.html
-		Examples\GIS-Examples\IntroToSceneView3DMap\example2.html = Examples\GIS-Examples\IntroToSceneView3DMap\example2.html
-		Examples\GIS-Examples\IntroToSceneView3DMap\example3.html = Examples\GIS-Examples\IntroToSceneView3DMap\example3.html
-		Examples\GIS-Examples\IntroToSceneView3DMap\example4.html = Examples\GIS-Examples\IntroToSceneView3DMap\example4.html
-		Examples\GIS-Examples\IntroToSceneView3DMap\example5.html = Examples\GIS-Examples\IntroToSceneView3DMap\example5.html
-		Examples\GIS-Examples\IntroToSceneView3DMap\example6.html = Examples\GIS-Examples\IntroToSceneView3DMap\example6.html
-		Examples\GIS-Examples\IntroToSceneView3DMap\example7.html = Examples\GIS-Examples\IntroToSceneView3DMap\example7.html
-		Examples\GIS-Examples\IntroToSceneView3DMap\example8.html = Examples\GIS-Examples\IntroToSceneView3DMap\example8.html
-		Examples\GIS-Examples\IntroToSceneView3DMap\example9.html = Examples\GIS-Examples\IntroToSceneView3DMap\example9.html
+		Examples\GIS-Examples\IntroToSceneView3DMap\example11.html = Examples\GIS-Examples\IntroToSceneView3DMap\example11.html
 		Examples\GIS-Examples\IntroToSceneView3DMap\index.html = Examples\GIS-Examples\IntroToSceneView3DMap\index.html
 	EndProjectSection
 EndProject
@@ -626,7 +627,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.BandManager3", "Exampl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.BandManager4", "Examples\IoT-Hub-Examples\Test.BandManager4\Test.BandManager4.csproj", "{00CF58FB-3BEE-463D-AF94-CBF74B423503}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.BandAgent4", "Examples\IoT-Hub-Examples\Test.BandAgent4\Test.BandAgent4.csproj", "{44340537-A642-4B30-9D2A-896FDA8C961E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.BandAgent4", "Examples\IoT-Hub-Examples\Test.BandAgent4\Test.BandAgent4.csproj", "{44340537-A642-4B30-9D2A-896FDA8C961E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

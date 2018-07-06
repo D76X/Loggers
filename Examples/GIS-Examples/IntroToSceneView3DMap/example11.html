@@ -1,0 +1,236 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>Outbreaker - Visualizing (after)</title>
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://jsdev.arcgis.com/4.1/esri/css/main.css">
+    <link rel="stylesheet" href="https://jsdev.arcgis.com/4.1/dijit/themes/soria/soria.css">
+    <script src="https://jsdev.arcgis.com/4.1/"></script>
+
+    <script>
+        require([
+            "esri/Map",
+            "esri/views/MapView",
+            "esri/layers/FeatureLayer",
+            "esri/layers/MapImageLayer",
+            "esri/renderers/UniqueValueRenderer",
+            "esri/renderers/ClassBreaksRenderer",
+            "esri/symbols/SimpleMarkerSymbol",
+            "esri/symbols/SimpleFillSymbol",
+            "esri/widgets/Legend",
+            "esri/PopupTemplate",
+            "esri/symbols/TextSymbol",
+            "dojo/domReady!"
+        ], function (Map, MapView, FeatureLayer, MapImageLayer,
+            UniqueValueRenderer, ClassBreaksRenderer,
+            SimpleMarkerSymbol, SimpleFillSymbol,
+            Legend, PopupTemplate, TextSymbol) {
+                var map = new Map({
+                    basemap: "gray"
+                });
+
+                var view = new MapView({
+                    container: "viewDiv",
+                    map: map,
+                    center: [-104.928591, 39.732578],
+                    zoom: 10
+                });
+
+                var patientDataLayer = new FeatureLayer({
+                    //url: "http://services5.arcgis.com/zMQkoTAh5uCFjA7j/arcgis/rest/services/PatientData/FeatureServer/0"
+                    url: "https://services1.arcgis.com/C746meH3Z79yMV27/arcgis/rest/services/patientdata/FeatureServer"
+                });
+                map.add(patientDataLayer);
+
+                /*******************************************************
+                 * Visualizing Spatial Patterns - Discrete Data
+                 *******************************************************/
+
+                // Discrete Data: Construct a UniqueValueRenderer
+                var uvRenderer = new UniqueValueRenderer({
+                    field: "Sex"
+                });
+
+                // Discrete Data: Specify unique values and their symbols
+                uvRenderer.addUniqueValueInfo({
+                    value: "male",
+                    symbol: new SimpleMarkerSymbol({
+                        style: "square",
+                        //color: [0,255,0,0.2]
+                        color: [66, 165, 245, 0.3]
+                    })
+                });
+                uvRenderer.addUniqueValueInfo({
+                    value: "female",
+                    symbol: new SimpleMarkerSymbol({
+                        style: "square",
+                        //color: [0,255,0,0.2]
+                        color: [236, 64, 122, 0.3]
+                    })
+                });
+
+                // Discrete Data: Apply the renderer to the layer
+                //patientDataLayer.renderer = uvRenderer;
+
+
+                /*******************************************************
+                 * Visualizing Spatial Patterns - Continuous Data
+                 *******************************************************/
+
+                // Patient Data: Construct a ClassBreaksRenderer
+                var cbRenderer = new ClassBreaksRenderer({
+                    field: "Age"
+                });
+
+                // Patient Data: Specify intervals and their symbols
+                cbRenderer.addClassBreakInfo({
+                    minValue: 0,
+                    maxValue: 4,
+                    symbol: new SimpleMarkerSymbol({
+                        style: "diamond",
+                        color: [255, 0, 0, 0.25],
+                        size: 15
+                    })
+                });
+                cbRenderer.addClassBreakInfo({
+                    minValue: 5,
+                    maxValue: 13,
+                    symbol: new SimpleMarkerSymbol({
+                        style: "diamond",
+                        color: [0, 0, 255, 0.15],
+                        size: 15
+                    })
+                });
+
+                // Patient Data: Apply renderer to layer
+                patientDataLayer.renderer = cbRenderer;
+
+
+                // Median Age Data: Construct a ClassBreaksRenderer
+                var ageRenderer = new ClassBreaksRenderer({
+                    field: "POP0_CY",
+                    classBreakInfos: [{
+                        minValue: 0,
+                        maxValue: 2000,
+                        symbol: new SimpleFillSymbol({ color: "#e5f5e0" }),
+                        label: "0 - 2000"
+                    }, {
+                        minValue: 2001,
+                        maxValue: 4000,
+                        symbol: new SimpleFillSymbol({ color: "#a1d99b" }),
+                        label: "2001 - 4000"
+                    }, {
+                        minValue: 4001,
+                        maxValue: 6000,
+                        symbol: new SimpleFillSymbol({ color: "#31a354" }),
+                        label: "4001 - 6000"
+                    }]
+                });
+
+                // Median Age Data: Apply renderer when constructing layer
+                //                  (Renderer will be applied server-side)
+                var medianAgeLayer = new MapImageLayer({
+                    url: "http://demographics6.arcgis.com/arcgis/rest/services/USA_Demographics_and_Boundaries_2016/MapServer",
+                    sublayers: [
+                        {
+                            id: 123,
+                            renderer: ageRenderer,
+                            source: {
+                                mapLayerId: 10
+                            }
+                        }
+                    ]
+                });
+
+                // Median Age Data: Add layer to the map at index 0
+                map.add(medianAgeLayer, 0);
+
+
+                /************************************************
+                 * Visualizing Spatial Data - Other Media
+                 ************************************************/
+
+                // Legend widget
+                var myLegend = new Legend({
+                    view: view,
+                    layerInfos: [{
+                        layer: patientDataLayer,
+                        title: "Patient age proportions"
+                    }, {
+                        layer: medianAgeLayer,
+                        title: "Number of 0 - 4 year olds"
+                    }]
+                });
+                view.ui.add(myLegend, "bottom-right");
+                view.then(function () {
+                    // wait to start the widget until the view is ready
+                    myLegend.startup();
+                });
+
+                // Popups
+                var agePopupTemplate = new PopupTemplate({
+                    title: "Young Children in<br>Zip Code {ID}",
+                    content: "In 2016, out of {TOTPOP_CY} people " +
+                        "in this zip code, <b>{POP0_CY}</b> " +
+                        "were four years of age or younger.",
+                    fieldInfos: [{
+                        fieldName: "TOTPOP_CY",
+                        format: {
+                            digitSeparator: true,
+                            places: 0
+                        }
+                    }, {
+                        fieldName: "POP0_CY",
+                        format: {
+                            digitSeparator: true,
+                            places: 0
+                        }
+                    }, {
+                        fieldName: "ID"
+                    }]
+                });
+                //
+                // Apply the popup template to the sublayer
+                var sublayer = medianAgeLayer.sublayers.items[0];
+                sublayer.popupTemplate = agePopupTemplate;
+                //
+                // Tell the view how to position the popup
+                view.popup.set("dockOptions", {
+                    breakpoint: false,
+                    position: "auto"
+                });
+
+                // Labels
+                sublayer.labelsVisible = true;
+                sublayer.labelingInfo = [{
+                    labelExpression: "[ID]",
+                    labelPlacement: "always-horizontal",
+                    symbol: new TextSymbol({
+                        color: [255, 255, 255, 1.0],
+                        font: {
+                            size: 12,
+                            weight: "bolder"
+                        }
+                    })
+                }];
+
+            });
+    </script>
+</head>
+
+<body>
+    <div id="viewDiv"></div>
+</body>
+</html>

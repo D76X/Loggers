@@ -58,7 +58,7 @@ namespace Test.BandAgent4 {
             object context = null;
             await _device.SetDesiredPropertyUpdateCallbackAsync(UpdatePropertiesCallback, context);
 
-            // these are the options available on teh band device
+            // these are the options available on the band device
             // here a simple menu is printed to the console to 
             // simulate the set of buttons/controls that would be 
             // available on teh real device.
@@ -144,6 +144,8 @@ namespace Test.BandAgent4 {
             TwinCollection desiredProperties, 
             object userContext) {
 
+            Console.WriteLine($"{nameof(UpdatePropertiesCallback)} invoked...");
+
             // the context might contain some useful info...
             // in this case we know its null...
 
@@ -177,18 +179,21 @@ namespace Test.BandAgent4 {
             await _device.UpdateReportedPropertiesAsync(_reportedProperties);
 
             // simulate dowload
+            Console.WriteLine("downloading firmware update...");
             Thread.Sleep(5000);
 
             _reportedProperties["firmwareUpdateStatus"] = "Unzipping package...";
             await _device.UpdateReportedPropertiesAsync(_reportedProperties);
 
             // simulate unzipping
+            Console.WriteLine("unzipping firmware update...");
             Thread.Sleep(5000);
 
             _reportedProperties["firmwareUpdateStatus"] = "Applying update...";
             await _device.UpdateReportedPropertiesAsync(_reportedProperties);
 
             // simulate applying
+            Console.WriteLine("applying firmware update...");
             Thread.Sleep(5000);
 
             Console.WriteLine("Firmware update complete!");
@@ -212,10 +217,13 @@ namespace Test.BandAgent4 {
             // twinProperties["connection.type"] = "wi-fi";
 
             // for example here we are telling the hub that this device
-            // is now in wi-fi mode and the strngth of its connection 
-            // is good
+            // is now in wi-fi mode and the strength of its connection 
+            // is good. 
+            // Plus we initialised the firmware version to 1.0 each 
+            // time.
             _reportedProperties["connectionType"] = "wi-fi";
             _reportedProperties["connectionStrength"] = "full";
+            _reportedProperties["firmwareVersion"] = "1.0";
 
             // send it up to the Hub
             await device.UpdateReportedPropertiesAsync(_reportedProperties);

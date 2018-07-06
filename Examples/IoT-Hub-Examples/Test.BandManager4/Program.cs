@@ -1,6 +1,8 @@
 ﻿using Microsoft.Azure.Devices;
+using Newtonsoft.Json;
 using System;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Test.BandManager {
@@ -59,35 +61,156 @@ namespace Test.BandManager {
             // from the device to make sure that it has not been left out.
             var feedbackTask = ReceiveFeedback(serviceClient);
 
-            while (true) {
+            var quitRequested = false;
+            while (!quitRequested) {
 
                 Console.WriteLine("Which device do you wish to send a message to? ");
                 Console.Write("> ");
                 var deviceId = Console.ReadLine();
 
-                Console.WriteLine("Which kind of message di you wish to send?");
+                Console.WriteLine("Which pattern would you like to use to send the message?");
 
-                //--------------------------------------------------------------------
-                // obviously this sends a message straight to the device
-                // but it does so according to the AGENT-HUB-MANAGER pattern
-                // await SendCloudToDeviceMessage(serviceClient, deviceId);
-                //--------------------------------------------------------------------
+                // these are the options available to a MANAGER app
+                // to communicate with the device (C2D)
+                Console.WriteLine("Press a key to perform an action:");
+                Console.WriteLine("q: quits");
+                Console.WriteLine("s: send message agent-hub-device pattern");
+                Console.WriteLine("d: call direct method pattern");
+                Console.WriteLine("t: send device twins update message");
+                var input = Console.ReadKey().KeyChar;
 
-                //--------------------------------------------------------------------
-                // The foolowing is the implementation of the alternative pattern 
-                // DIRECT METHOD AKA DEVICE METHOD
-                // await CallDirectMethod(serviceClient, deviceId);
-                //--------------------------------------------------------------------
+                // this corresponds to any options selected
+                // by the user on teh device buttons
+                switch (Char.ToLower(input)) {
+                    case 'q':
+                        quitRequested = true;
+                        break;
+                    case 's':
+                        //--------------------------------------------------------------------
+                        // obviously this sends a message straight to the device
+                        // but it does so according to the AGENT-HUB-MANAGER pattern
+                        await SendCloudToDeviceMessage(serviceClient, deviceId);
+                        //--------------------------------------------------------------------
+                        break;
+                    case 'd':
+                        //--------------------------------------------------------------------
+                        // The following is the implementation of the alternative pattern 
+                        // DIRECT METHOD AKA DEVICE METHOD
+                        await CallDirectMethod(serviceClient, deviceId);
+                        //--------------------------------------------------------------------
+                        break;
+                    case 't':
+                        //--------------------------------------------------------------------
+                        // The foolowing is the implementation of the device twins pattern
+                        await UpdateDeviceFirmware(registryManager, deviceId);
+                        //--------------------------------------------------------------------
+                        break;
+                    default:
+                        Console.WriteLine($"{input} is not a valid option");
+                        break;
+                }
+            }
 
-                //--------------------------------------------------------------------
-                // The foolowing is the implementation of the device twins pattern
-                ...
+            Console.WriteLine("exiting...");
+        }
 
+        /// <summary>
+        /// Manager side part of the DEVICE TWINS communication pattern
+        /// </summary>
+        /// <param name="registryManager"></param>
+        /// <param name="deviceId"></param>
+        /// <returns></returns>
+        private static async Task UpdateDeviceFirmware(
+            RegistryManager registryManager,
+            string deviceId) { //,
+                               //string firmVer) {
+
+            // get the twins for the device
+            // the registry manager has permission to do so...
+
+            var deviceTwin = await registryManager.GetTwinAsync(deviceId);
+            
+            // look into the reported properties to find the firmwareVersion
+            string initialVersion = deviceTwin.Properties.Reported["firmwareVersion"];
+
+            // work out teh next firmware version i.e. read it from a DB or URL
+            // here we just add 1.0 or set to 1.0 if the firmwareVersion has not 
+            // been found.
+            string updateVersion = initialVersion == "" ? 
+                "1.0" :
+                (Convert.ToDouble(initialVersion) + 1.0).ToString("N1");
+
+            // create a patch model...
+            // a POCO to model the firmware update
+            // here we want the cloud side of things to send a message to 
+            // a device to notify it of a change to the desired properties
+            // of its twins. The device will get the message as soon as it
+            // goes online and then decides what actions to take if any.
+            //------------------------------------------------------------
+            // In this version of the Microsoft.Azure.Device pck used by 
+            // the agent there is no type safety on the POCO for the twins 
+            // patch. This is bad and mightbe improved in future releases
+            // of teh package. For the moment you must use nested anonymous 
+            // objects to model the device twins patch.
+            //------------------------------------------------------------
+            var twinPatch = new {
+                properties = new {
+                    desired = new {
+                        firmwareVersion = updateVersion 
+                    }
+                }
+            };
+
+            // the payload of the message in this pattern must be JSON.
+            var twinPatchJson = JsonConvert.SerializeObject(twinPatch);
+
+            // a registry manager must be used in this communication pattern
+            // a registry manager normaly uses a dedicated connection string 
+            // that is not the ServiceConnectionString used by the service client
+            // has ServiceConnectionString will normally not have permission to
+            // read and write to teh device twins, although it may be granted such
+            // permission from the Azure portal.
+            // Notice that the ETAG of the twins is sent into the message to deal 
+            // with concurrency. The update will succeed only if the ETag on the 
+            // message matches up with that on the document at the time of delivery. 
+            // more work required...
+            await registryManager.UpdateTwinAsync(
+                deviceId, 
+                twinPatchJson, 
+                deviceTwin.ETag);
+
+            Console.WriteLine($"Firmware update sent to device '{deviceId}'...");
+
+            
+            // this is a simplified monitor we should have ti in its onw task...
+
+            // Now that the device has been notified of the firmware update the 
+            // cloud side that is the manager wants to know what the device is 
+            // doing is anything...           
+            
+            while (true) {
+
+                // take 1 sec break
+                Thread.Sleep(1000);
+
+                // as the device goes through tapplying the updates it post 
+                // changes to the "firmwareUpdateStatus" property of its twins
+                // thus the manager can check that to monitor teh progress of
+                // the updates on teh device.
+                deviceTwin = await registryManager.GetTwinAsync(deviceId);
+
+                Console.WriteLine($"Firmware update status: {deviceTwin.Properties.Reported["firmwareUpdateStatus"]}");
+
+                if (deviceTwin.Properties.Reported["firmwareVersion"] == updateVersion) {
+                    Console.WriteLine("Firmware update complete!");
+                    break;
+
+                }
             }
         }
 
         /// <summary>
-        /// Manager side part of the DIRECT METHOD AKA DEVICE METHOD pattern        /// 
+        /// Manager side part of the DIRECT METHOD AKA DEVICE METHOD pattern 
         /// </summary>
         /// <param name="serviceClient"></param>
         /// <param name="deviceId"></param>
