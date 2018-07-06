@@ -303,6 +303,45 @@ the hub.
 
 * 
 ---
+
+## Deployment to Azure
+
+A solution based on IoT Hub will have the following components
+
+1. A .NET Core app running on the devices
+2. A IoT Hub on which the devices are registered
+3. Some other .NET Core apps on the server side
+
+The last category may encompass the following
+
+1. Manager apps that sends C2D messages to the devices with one or mopre 
+   of the three message patterns.
+   * MANAGER-HUB-DEVICE
+   * DIRECT MESSAGES
+   * C2D TWINS UPDATES
+2. Processing apps that read the messages sent by the devices to the Hub
+   (in general telemetry, etc.) and process them in some way.
+
+The app on the device must, of course, run on the device!
+However, for the other server-side apps different possibilities exist.
+
+https://app.pluralsight.com/player?course=azure-iot-hub-developers-getting-started&author=matt-honeycutt&name=054b9253-dfe7-4bbc-a677-6076b0eb4bab&clip=1&mode=live
+
+1. they run as self-hosted app or web services on virual machines 
+   or proprietary hardware.
+2. the application can be deployed as **WebJob** which gives both 
+   vertical (more computing power) and horizontal (parallelization)
+   scaling.
+3. The app can be package into **Azure container** that can be deployed  
+   on Azure infrastructure.
+4. The **serverless option** using **Azure Functions** which can be bound  
+   to the IoT Hub endpoints. 
+5. **Stream Analytics** which is a very powerful tool to process streams
+   of data with a SQL like language.
+6. Use **Power BI** to build customized dashboards.
+
+---
+
 ## Azure IoT solution accelerators
 
 1. Remote Monitoring

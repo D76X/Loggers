@@ -13,7 +13,7 @@ using TestApp1.Core;
 using TestShopApp1.Utilities;
 
 namespace TestShopApp1 {
-    [Activity(Label = "Item details", MainLauncher = true)]
+    [Activity(Label = "Item details", MainLauncher = false)]
     public class ItemDetailsActivity : Activity {
 
         private ImageView itemImageView;
