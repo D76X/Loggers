@@ -40,8 +40,23 @@ namespace TestShopApp1 {
 
             // grab the services
             this.dataService = new HotDogDataService();
-            // grab the data
-            selectedItem = dataService.GetHotDogById(1);
+
+            // you may reach this activity and view by means of an
+            // intent to navigation from another activity i.e. the
+            // activity whose view is the list of items after the 
+            // user tap one one of them
+            var selectedItemId = Intent.Extras.GetInt("selectedItemId");
+
+            if (selectedItemId == 0) {
+                // case when the navigation is direct i.e. during testing
+                // when this activity is marcked with MainLauncher = true
+                selectedItem = dataService.GetHotDogById(1);
+            }
+            else {
+                // navigation to this activity has happened following 
+                // the intent from the list of items
+                selectedItem = dataService.GetHotDogById(selectedItemId);
+            }        
             
             // keep references to the controls (views in Android)
             this.FindViews();
@@ -95,18 +110,26 @@ namespace TestShopApp1 {
             //this.AddToCart(this.selectedItem, amount);
 
             // prototype code
-            var dialog = new AlertDialog.Builder(this);
-            dialog.SetTitle("Confirmation");
-            dialog.SetMessage("Your hot dog has been added to your cart!");
-            dialog.Show();
+            //---------------------------------------------------------------
+            //var dialog = new AlertDialog.Builder(this);
+            //dialog.SetTitle("Confirmation");
+            //dialog.SetMessage("Your hot dog has been added to your cart!");
+            //dialog.Show();
+            //---------------------------------------------------------------
 
-            //var intent = new Intent();
-            //intent.PutExtra("selectedHotDogId", this.selectedItem.HotDogId);
-            //intent.PutExtra("amount", amount);
+            //---------------------------------------------------------------
 
-            //SetResult(Result.Ok, intent);
+            var intent = new Intent();
+            intent.PutExtra("selectedItemId", this.selectedItem.HotDogId);
+            intent.PutExtra("amount", amount);
 
-            //this.Finish();
+            // SetResult causes the OnActivityResult to run on the activity 
+            // that generated the intent to navigate to this activity that 
+            // is the items list activity! 
+            SetResult(Result.Ok, intent);
+
+            // Finish destroys this activity and pops it from teh Activity Stack!
+            this.Finish();
         }
 
         public void AddToCart(HotDog hotDog, int amount) {
