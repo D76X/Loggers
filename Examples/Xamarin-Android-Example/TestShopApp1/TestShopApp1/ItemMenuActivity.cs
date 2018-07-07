@@ -13,7 +13,7 @@ using TestApp1.Core;
 using TestShopApp1.Adapters;
 
 namespace TestShopApp1 {
-    [Activity(Label = "Menu", MainLauncher = true)]
+    [Activity(Label = "Menu", MainLauncher = false)]
     public class ItemMenuActivity : Activity {
 
         private ListView itemsListView;

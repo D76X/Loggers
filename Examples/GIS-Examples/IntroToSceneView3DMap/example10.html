@@ -15,184 +15,198 @@
         }
     </style>
 
-    <link rel="stylesheet" href="https://js.arcgis.com/4.0/esri/css/main.css">
-    <script src="https://js.arcgis.com/4.0/"></script>
+    <link rel="stylesheet" href="https://jsdev.arcgis.com/4.1/esri/css/main.css">
+    <link rel="stylesheet" href="https://jsdev.arcgis.com/4.1/dijit/themes/soria/soria.css">
+    <script src="https://jsdev.arcgis.com/4.1/"></script>
 
     <script>
         require([
             "esri/Map",
+            "esri/views/MapView",
             "esri/layers/FeatureLayer",
             "esri/layers/MapImageLayer",
             "esri/renderers/UniqueValueRenderer",
             "esri/symbols/SimpleMarkerSymbol",
             "esri/symbols/SimpleFillSymbol",
             "esri/renderers/ClassBreaksRenderer",
-            "esri/views/MapView",
+            "esri/widgets/Legend",
+            "esri/PopupTemplate",            
+            "esri/symbols/TextSymbol",
             "dojo/domReady!"
         ], function (
             Map,
+            MapView,
             FeatureLayer,
             MapImageLayer,
             UniqueValueRenderer,
             SimpleMarkerSymbol,
             SimpleFillSymbol,
             ClassBreaksRenderer,
-            MapView) {
+            Legend,
+            PopupTemplate,
+            TextSymbol) {
 
-            // ************
-            // The Map
-            // ************
+                // ************
+                // The Map
+                // ************
 
-            var map = new Map({
-                basemap: "streets"
-            });
+                var map = new Map({
+                    basemap: "gray"
+                });
 
-            // Renderers            
+                // ************
+                // The View
+                // ************
 
-            /*******************************************************
-             * Visualizing Spatial Patterns - Continuous Data
-             *******************************************************/
+                var mapView = new MapView({
+                    container: "viewDiv",
+                    map: map,
+                    center: [-104.928591, 39.732578],
+                    zoom: 10
+                });
 
-            // Patient Data: Construct a ClassBreaksRenderer
-            // this allows to break the data into contiguos blocks
-            // by means of an attribute of the data that takes a on
-            // values in a continuos range. In this case we assume 
-            // the attribute "age" available on the GIS dataset for 
-            // patient data to be one of such attributes.
-            var cbRenderer = new ClassBreaksRenderer({
-                field: "Age"
-            });
+                var patientDataLayer = new FeatureLayer({
+                    url: "https://services1.arcgis.com/C746meH3Z79yMV27/arcgis/rest/services/patientdata/FeatureServer"
+                });
 
-            // Patient Data: Specify intervals and their symbols
-            // in this API minValue/maxValue are used to create 
-            // the breaks. As usual a dedicated symbol is then 
-            // specified for each break.
-            // Notice that here we break the age range into 
-            // [0,4] [5, 13]
-            // we
-            cbRenderer.addClassBreakInfo({
-                minValue: 0,
-                maxValue: 4,
-                symbol: new SimpleMarkerSymbol({
-                    style: "diamond",
-                    color: [255, 0, 0, 0.25], // red
-                    size: 15
-                })
-            });
-            cbRenderer.addClassBreakInfo({
-                minValue: 5,
-                maxValue: 13,
-                symbol: new SimpleMarkerSymbol({
-                    style: "diamond",
-                    color: [0, 0, 255, 0.15], // blue
-                    size: 15
-                })
-            });  
+                map.add(patientDataLayer);
 
-            // A renderer can be used entirely on the client side as
-            // it is normally the case for Feature Layers as in the 
-            // case above as features layers are porduced by dynamic 
-            // services.
+                /*******************************************************
+                * Visualizing Spatial Patterns - Continuous Data
+                *******************************************************/
 
-            // We can use a renderers also when the service we get the 
-            // data from is not a FeautureService as long as it supports 
-            // **Dynamic Layers**. If this support exists the client side
-            // has control on how the data is rendered on the server!
+                // Patient Data: Construct a ClassBreaksRenderer
+                var cbRenderer = new ClassBreaksRenderer({
+                    field: "Age"
+                });
 
-            // -------------------------------------------------------------------
-            // The pattern 
-            // 1- construct a renderer that is appropriate for the data attribute
-            // 2- apply the renderer when costructing the map service layer
-            // -------------------------------------------------------------------
-
-            // Median Age Data: Construct a ClassBreaksRenderer
-            var ageRenderer = new ClassBreaksRenderer({
-                field: "POP0_CY",   // total population 0-4 field
-                classBreakInfos: [{
+                // Patient Data: Specify intervals and their symbols
+                cbRenderer.addClassBreakInfo({
                     minValue: 0,
-                    maxValue: 2000,
-                    symbol: new SimpleFillSymbol({ color: "#e5f5e0" }), // light green
-                    label: "0 - 2000"
-                }, {
-                    minValue: 2001,
-                    maxValue: 4000,
-                    symbol: new SimpleFillSymbol({ color: "#a1d99b" }), // medium green 
-                    label: "2001 - 4000"
-                }, {
-                    minValue: 4001,
-                    maxValue: 6000,
-                    symbol: new SimpleFillSymbol({ color: "#31a354" }), // dark green
-                    label: "4001 - 6000"
-                }]
+                    maxValue: 4,
+                    symbol: new SimpleMarkerSymbol({
+                        style: "diamond",
+                        color: [255, 0, 0, 0.25],
+                        size: 15
+                    })
+                });
+                cbRenderer.addClassBreakInfo({
+                    minValue: 5,
+                    maxValue: 13,
+                    symbol: new SimpleMarkerSymbol({
+                        style: "diamond",
+                        color: [0, 0, 255, 0.15],
+                        size: 15
+                    })
+                });
+
+                // Patient Data: Apply renderer to layer
+                patientDataLayer.renderer = cbRenderer;
+
+                // Median Age Data: Construct a ClassBreaksRenderer
+                var ageRenderer = new ClassBreaksRenderer({
+                    field: "POP0_CY",
+                    classBreakInfos: [{
+                        minValue: 0,
+                        maxValue: 2000,
+                        symbol: new SimpleFillSymbol({ color: "#e5f5e0" }),
+                        label: "0 - 2000"
+                    }, {
+                        minValue: 2001,
+                        maxValue: 4000,
+                        symbol: new SimpleFillSymbol({ color: "#a1d99b" }),
+                        label: "2001 - 4000"
+                    }, {
+                        minValue: 4001,
+                        maxValue: 6000,
+                        symbol: new SimpleFillSymbol({ color: "#31a354" }),
+                        label: "4001 - 6000"
+                    }]
+                });
+
+                // Median Age Data: Apply renderer when constructing layer
+                //                  (Renderer will be applied server-side)
+                var medianAgeLayer = new MapImageLayer({
+                    url: "http://demographics6.arcgis.com/arcgis/rest/services/USA_Demographics_and_Boundaries_2016/MapServer",
+                    sublayers: [
+                        {
+                            id: 123,
+                            renderer: ageRenderer,
+                            source: {
+                                mapLayerId: 10
+                            }
+                        }
+                    ]
+                });
+
+                // Median Age Data: Add layer to the map at index 0
+                map.add(medianAgeLayer, 0);
+
+                /************************************************
+                * Visualizing Spatial Data - Other Media
+                ************************************************/
+
+                // Legend widget
+                var myLegend = new Legend({
+                    view: mapView,
+                    layerInfos: [{
+                        layer: patientDataLayer,
+                        title: "Patient age proportions"
+                    }, {
+                        layer: medianAgeLayer,
+                        title: "Number of 0 - 4 year olds"
+                    }]
+                });
+
+                // Popups
+                var agePopupTemplate = new PopupTemplate({
+                    title: "Young Children in<br>Zip Code {ID}",
+                    content: "In 2016, out of {TOTPOP_CY} people " +
+                        "in this zip code, <b>{POP0_CY}</b> " +
+                        "were four years of age or younger.",
+                    fieldInfos: [{
+                        fieldName: "TOTPOP_CY",
+                        format: {
+                            digitSeparator: true,
+                            places: 0
+                        }
+                    }, {
+                        fieldName: "POP0_CY",
+                        format: {
+                            digitSeparator: true,
+                            places: 0
+                        }
+                    }, {
+                        fieldName: "ID"
+                    }]
+                });
+
+                // Apply the popup template to the sublayer
+                var sublayer = medianAgeLayer.sublayers.items[0];
+                sublayer.popupTemplate = agePopupTemplate;
+
+                // Tell the view how to position the popup
+                view.popup.set("dockOptions", {
+                    breakpoint: false,
+                    position: "auto"
+                });
+
+                // Labels
+                sublayer.labelsVisible = true;
+
+                sublayer.labelingInfo = [{
+                    labelExpression: "[ID]",
+                    labelPlacement: "always-horizontal",
+                    symbol: new TextSymbol({
+                        color: [255, 255, 255, 1.0],
+                        font: {
+                            size: 12,
+                            weight: "bolder"
+                        }
+                    })
+                }];
+
             });
-
-            // ************
-            // The Layers
-            // ************
-
-            // Construct a feature layer from service URL containing your (or public) 
-            // GIS data
-
-            // In this case we create a feature layer for some GSI data that
-            // has been published and shared publicly by means of the 
-            // Development Account. We have used the services available to 
-            // the holder of a development account to create a GSI public Layer
-            // from a CSV file, then ArcGSI provides a features service and a URL
-            // to access it as done here. Now consumer can place the GSI data on
-            // top of their BaseMap!
-            var patientDataFeatureLayer = new FeatureLayer({
-                url: "https://services1.arcgis.com/C746meH3Z79yMV27/arcgis/rest/services/patientdata/FeatureServer"
-            });  
-
-            // Discrete Data: Apply the renderer to the layer
-            patientDataFeatureLayer.renderer = cbRenderer;
-
-            // This layer represents the distribution of median age 
-            // of the population in the USA by state, zip code, etc.
-            // Together with the GIS data provided by the layer above 
-            // it forms the basis of a decent Operational Layer for 
-            // this map.
-
-            // Here we apply the Age rendere to the sublayer 10.
-
-            var medianAgeLayer = new MapImageLayer({
-                url: "https://demographics8.arcgis.com/arcgis/rest/services/USA_Demographics_and_Boundaries_2018/MapServer",
-                opacity: 0.5,
-                sublayers: [
-                    {
-                        id: 123,
-                        //renderer: ageRenderer,
-                        source: {
-                            mapLayerId: 10
-                        }, 
-                        visible: true
-                    }
-                ]
-            });
-
-            // Add all the layers to map in the order from bottom
-            // to top. Leave the GIS data on top if you want the 
-            // user to be able to interact with it.
-            //map.addMany([medianAgeLayer, patientDataFeatureLayer]);
-            map.addMany([medianAgeLayer]);
-
-            // ************
-            // The View
-            // ************
-
-            var mapView = new MapView({
-                container: "viewDiv",
-                map: map,
-                zoom: 1
-            }); 
-
-            // Wait until the layer is loaded and then 
-            // center and zoom over the GIS data feature
-            patientDataFeatureLayer.then(function () {
-                mapView.extent = patientDataFeatureLayer.fullExtent;
-            });
-
-        });
     </script>
 </head>
 
@@ -206,9 +220,9 @@
         the locations of some data about patients around the city of Denver in the USA.
         In this example we focus on the feature just after the map is loaded. How this is doen depends on
         the API used. In addition, in this example we make use of an Image Layer from a Dynamic Map Service
-        which shows the median age of the population by zip codes, states etc. Together with the GIS data 
+        which shows the median age of the population by zip codes, states etc. Together with the GIS data
         provided by the layer above it forms the basis of a decent Operational Layer for this map.
-        The GIS data on the map this time is placed using a dedicated Renderer which changes the marker 
+        The GIS data on the map this time is placed using a dedicated Renderer which changes the marker
         symbol by using the continuos value attribute "age" on the data items.
         We also apply a renderer on teh server side map based to break the median age into groups.
     </p>

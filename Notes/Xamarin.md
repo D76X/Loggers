@@ -37,3 +37,23 @@ Microsoft Windows*
 Windows® 10 (32/64-bit), Windows* 8 and 8.1 (32/64-bit), Windows* 7 (32/64-bit)
 
 2. [warning: quick boot/snapshots not supported on this machine](https://stackoverflow.com/questions/48759022/warning-quick-boot-snapshots-not-supported-on-this-machine)  
+
+---
+
+## Xamarin Resources
+
+1. [Xamarin.Android](https://docs.microsoft.com/en-us/xamarin/android/)  
+2. [Xamarin GitHub](https://gith3. [xamarin/monodroid-samples](https://github.com/xamarin/monodroid-samples)  
+
+---
+
+## Android Permissions for dangerous activities
+
+0. [Permissions In Xamarin.Android](https://docs.microsoft.com/en-us/xamarin/android/app-fundamentals/permissions?tabs=vswin)  
+1. [monodroid-samples/android-m/RuntimePermissions/](https://github.com/xamarin/monodroid-samples/tree/master/android-m/RuntimePermissions)
+0. [Requesting Runtime Permissions in Android Marshmallow](https://blog.xamarin.com/requesting-runtime-permissions-in-android-marshmallow/)    
+1. [Add CAll_PHONE permission at runtime](https://forums.xamarin.com/discussion/101820/add-call-phone-permission-at-runtime)  
+2. [Permissions Plugin for Xamarin (Simplifying Runtime Permissions)](https://forums.xamarin.com/discussion/56571/permissions-plugin-for-xamarin-simplifying-runtime-permissions)  
+3. [Permission Request Sample](https://developer.xamarin.com/samples/monodroid/android5.0/PermissionRequest/)
+
+---

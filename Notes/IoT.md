@@ -342,7 +342,13 @@ https://app.pluralsight.com/player?course=azure-iot-hub-developers-getting-start
 
 ---
 
-## Azure IoT solution accelerators
+## [Azure IoT solution accelerators](https://www.azureiotsolutions.com/Accelerators)  
+
+Provides a series of prepackage solutions for various IoT scenarios. Each is backed up 
+by an open source project in both Java and .NET 
+
+[Azure IoT solution accelerators overview](https://iotschool.microsoft.com/learning-paths/4FyFf43XTGus4u4eO2ms0g/modules/4umtwpRcPKY6gUK0EsU8Su)    
+https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet
 
 1. Remote Monitoring
 2. Predictive Maintenance
@@ -394,6 +400,31 @@ https://app.pluralsight.com/player?course=azure-iot-hub-developers-getting-start
 
    https://www.amplified.com.au/azure-iot-hub-device-gateway
 
+---
+
+# Parts of Azure infrastructure 
+
+[Microsoft Azure for Developers: What to Use When](https://app.pluralsight.com/library/courses/microsoft-azure-developers-what-to-use/table-of-contents)    
+
+These parts can all be used to gether with the IoT HUb
+
+1. [Azure Data Lake](https://azure.microsoft.com/en-gb/services/data-lake-analytics/?&OCID=AID719823_SEM_lkIVY6rh&dclid=COOnobnqjNwCFQrRZAodXjwO0A)   
+[ntroduction to the Azure Data Lake and U-SQL](https://app.pluralsight.com/library/courses/u-sql-azure-data-lake/table-of-contents)  
+
+2. [Data Warehouse](https://azure.microsoft.com/en-gb/services/sql-data-warehouse/?&OCID=AID719823_SEM_J2G8Ui5i&dclid=CMuStoPrjNwCFU7AZAodl2sIYQ)  
+[Introduction to Data Warehousing and Business Intelligence](https://app.pluralsight.com/library/courses/intro-dwbi-course-2017/table-of-contents)  
+
+3. [Time series insights](https://azure.microsoft.com/en-gb/services/time-series-insights/)  
+
+4. [Azure Functions](https://azure.microsoft.com/en-gb/services/functions/?&OCID=AID719823_SEM_0DwINtxM&dclid=CP6nhafrjNwCFUz8ZAodXbQHTg)  
+[Azure Functions Fundamentals](https://app.pluralsight.com/library/courses/azure-functions-fundamentals/table-of-contents)  
+
+5. [Azure Machine Learning Studio](https://azure.microsoft.com/en-gb/services/machine-learning-studio/?&OCID=AID719823_SEM_tK5mWD7P&dclid=CLjxwqrsjNwCFcznZAod6o4Iuw)    
+[Getting Started with Azure Machine Learning](https://app.pluralsight.com/library/courses/azure-machine-learning-getting-started/table-of-contents)  
+
+6. [Azure Logic Apps service](https://azure.microsoft.com/en-gb/services/logic-apps/)    
+[Azure Logic Apps: Fundamentals](https://app.pluralsight.com/library/courses/azure-logic-apps-fundamentals/table-of-contents)    
+[Azure Logic Apps: Getting Started](https://app.pluralsight.com/library/courses/azure-logic-apps-getting-started/table-of-contents?aid=7010a000002BWqGAAW)    
 
 ---
 
