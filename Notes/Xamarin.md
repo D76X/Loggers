@@ -47,6 +47,12 @@ Windows® 10 (32/64-bit), Windows* 8 and 8.1 (32/64-bit), Windows* 7 (32/64-bit)
 
 ---
 
+## Xamarin tools
+
+1. [Visual Studio Tools for Xamarin](https://visualstudio.microsoft.com/xamarin/)  
+
+---
+
 ## Android Permissions for dangerous activities
 
 0. [Permissions In Xamarin.Android](https://docs.microsoft.com/en-us/xamarin/android/app-fundamentals/permissions?tabs=vswin)  

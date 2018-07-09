@@ -60,9 +60,15 @@
   <ItemGroup>
     <Compile Include="AboutActivity.cs" />
     <Compile Include="Adapters\ItemListAdapter.cs" />
+    <Compile Include="Fragments\BaseLoversFragment.cs" />
+    <Compile Include="Fragments\FavoriteHotDogFragment.cs" />
+    <Compile Include="Fragments\MeatLoversFragment.cs" />
+    <Compile Include="Fragments\VeggieLoversFragment.cs" />
     <Compile Include="ItemDetailsActivity.cs" />
     <Compile Include="ItemMenuActivity.cs" />
+    <Compile Include="ItemMenuTabsActivity.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="MenuActivityTabs.cs" />
     <Compile Include="MenuActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,9 +80,6 @@
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_main.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\layout\content_main.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -144,6 +147,46 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\AboutView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\favoriteHotDogFragment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\meatLoversFragment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\veggieLoversFragment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\FavoritesIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\MeatLoversIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\VeggieLoversIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\ItemMenuTabsView.axml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\toolbar.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\top_menus.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

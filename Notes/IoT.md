@@ -402,7 +402,7 @@ https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet
 
 ---
 
-# Parts of Azure infrastructure 
+# Parts of Azure infrastructure to use with IoT Hub
 
 [Microsoft Azure for Developers: What to Use When](https://app.pluralsight.com/library/courses/microsoft-azure-developers-what-to-use/table-of-contents)    
 
@@ -425,6 +425,45 @@ These parts can all be used to gether with the IoT HUb
 6. [Azure Logic Apps service](https://azure.microsoft.com/en-gb/services/logic-apps/)    
 [Azure Logic Apps: Fundamentals](https://app.pluralsight.com/library/courses/azure-logic-apps-fundamentals/table-of-contents)    
 [Azure Logic Apps: Getting Started](https://app.pluralsight.com/library/courses/azure-logic-apps-getting-started/table-of-contents?aid=7010a000002BWqGAAW)    
+
+---
+
+## Azure infrastructure
+
++Control & Responsibility
+ - ------------------------
+1. IaaS = Infrastructure as a Service
+2. PaaS = Platform as a Service (best compromise as the OS is taken care of and you retain control over the app and scaling)
+3. LaaS = Logic as a service (serverless cloud computing services it scales automatically)
+- ------------------------
++More Business Value
+
+### Options for running an app in Azure
+
+* IaaS
+  
+  1. VMs
+  2. Container Service
+  3. Container Insances Service
+  4. Web App for Containers Service
+  5. Azure Batch
+  
+* IaaS/PaaS
+
+  6. Azure Service Fabric
+
+* PaaS
+
+  7. Azure Cloud Services
+  8. Web App
+  9. Mobile App
+
+* LaaS
+
+  10. Function App
+  11. Logic App
+
+### 
 
 ---
 
@@ -492,11 +531,30 @@ SCADA RTU = Remote Terminal Unit
   
 ### Communication Types
 
-1. [MOBUS]
+1. [MODBUS]
 2. [Fieldbus]
 3. [CAN]
 4. [Profibus]
 5. [Ethernet]
+
+* [Understanding Modbus Serial and TCP/IP](https://www.youtube.com/watch?v=k993tAFRLSE)  
+Serial communication protocol that can be used on standard serial cable and ethernet cable.
+It was inveted in 1979 for industrial PLC application and there exist 3 variations.
+Mobus is 1-master/m-
+
+1. Modbus ACII
+2. Mobus RTU (most popular with binary encoding and CRC it runs on the EI RS232, RS485, RS422)
+3. Mobus TCP/IP
+
+---
+
+### Serial electrical interfaces
+
+1. RS232 point to point master/slave up to 50 ft (15m)
+2. RS485 master/m-slave over 15m for up to 32 nodes over 4000ft (1200m) without a rpeater
+3. RS422
+
+---
 
 ### Scada Software
 

@@ -244,6 +244,61 @@ the "order by" might not work as it is not implemented by all data sources
 * [{"layerId" : 0, "where" : "1=1", "outFields" : "Age", "order by": "Age"}]
 
 ---
+
+## Spacial Analysis of GIS data
+
+The analysis of **special relationships** between GIS features is called **spacial analysis**.
+The ability to perform special analysis on various form of GIS datasets is what sets GIS apart
+from other form of basic mapping applications.
+
+The most common spacial analysis types 
+
+1. Suitability Analysis
+
+The process of determining areas appropriate for a particular use, based on geographic,
+demographic or other kinds of criteria. The typical example is that of finding good 
+locations for a new bike-sharing station in an urban area or to help determine the area 
+that health workers should quarantine following the outbreak of a disease.
+
+### High level workflow for Suitability Analysis
+
+1. Stat the criteria according to which suitable locations are classified.
+2. Produce a flowchart such as below to describe the steps taken in processing the datasets. 
+* input => function => output => function => output => etc.
+3. Develope the code or process corresponding to the **function** steps in the flowchart
+   and apply the asynchronous programming pattern if these function are custom implementations
+   is your application.
+4. Sometimes there is not even need ti develop your own code for the functions and all can 
+   be done on ESRI servers and tools i.e. MapView an then the layer with teh results can 
+   simply be saved and published for clients to be consumed as it is.
+
+
+2. Network Analysis
+
+Analysis of the connected features to solve network problems such as **traversability**
+**,rate of flow or capacity**. The typical example is to find all the areares around 
+some given features of a GIS dataset that are reachable within x min of commute on 
+road or public transports. Another is to find the fastest way to travel accross a number
+of given locations. Aother kinds of questions can also be answered by means of Network
+Analysis by combining datasets i.e. find the number of people that leave withing 1o mins
+commute of an hostipal or other facilities.
+
+All kinds of networks can be used in this kind of analysis
+
+* road network
+* gas/oil/water pipelines
+* electrical grids
+* pedestrian walkways
+
+Network analysis requires lots of computational resources which are typically only available
+on powerful cloud infrastructure. This is important becauses it influences how APIs to 
+perform Network Analysis are designed. These typically send data back and forth between the
+client and the server to have the heavy computational work done on the cloud. 
+In the **Esri infrastructure** the **MapViewer** can be used to perform Network Analysis as it
+offer all sorts of functions for it.
+
+---
+
 #### Run the examples with Python HTTP Server
 
 Make sure some version of Python 3 is present on yopur system then in the 
