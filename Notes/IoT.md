@@ -533,7 +533,7 @@ SCADA RTU = Remote Terminal Unit
 
 1. [MODBUS]
 2. [Fieldbus]
-3. [CAN]
+3. [CAN][CANOpen] https://www.youtube.com/watch?v=FqLDpHsxvf8
 4. [Profibus]
 5. [Ethernet]
 
