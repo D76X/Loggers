@@ -1,0 +1,19 @@
+Back Annotation Results Report
+------------------------------
+
+Report File:        C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\SMART-A (PCB - Back Annotation Results Report).txt
+Report Written:     Tuesday, March 14, 2017
+Project Path:       C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\SMART-A.prj
+Design Path:        C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\SMART-A.pcb
+Design Title:       
+Created:            10-Aug-16 8:56:42 PM
+Last Saved:         14-Mar-17 8:44:37 PM
+Editing Time:       36657 min
+Units:              mm (precision 4)
+
+Back Annotate renames from the PCB design to all Schematic designs in project "SMART-A".
+
+Change Value on Component 'C176' - 'Value'. - PIC18F97J60.sch
+
+
+End Of Report.

@@ -1,0 +1,8 @@
+
+New Thinking Technologies
+Date 23/10/2018
+
+1-MicroSD-Flash
+
+C93 is badly placed. It is located on the bottom layer under U4 but should be close to CONN16
+as shown in the schematic.

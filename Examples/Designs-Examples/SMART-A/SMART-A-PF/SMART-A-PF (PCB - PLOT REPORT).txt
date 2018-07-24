@@ -1,0 +1,257 @@
+PLOT REPORT
+-----------
+
+Report File:        C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A-PF\SMART-A-PF (PCB - PLOT REPORT).txt
+Report Written:     Saturday, January 28, 2017
+Project Path:       C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A-PF\SMART-A-PF.prj
+Design Path:        C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A-PF\SMART-A-PF.pcb
+Design Title:       
+Created:            15-Dec-16 9:44:31 PM
+Last Saved:         28-Jan-17 2:58:34 PM
+Editing Time:       6100 min
+Units:              mm (precision 4)
+
+
+Device Settings
+===============
+
+
+Gerber Settings
+===============
+
+    Leading zero suppression.
+    G01 assumed throughout.
+    Line termination <*> <CR> <LF>.
+    3.6 format absolute mm.
+    Format commands defined in Gerber file.
+    Aperture table defined in Gerber file.
+    Hardware arcs allowed.
+
+
+Drill Settings
+==============
+
+    Excellon Format 1    Format 2.4 absolute in inches.
+    No zero suppression.
+
+
+Plots Output
+============
+
+    Plot Job: "C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A-PF\SMART-A-PF.mop"
+
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A-PF\Plots\SMART-A-PF - Mechanical.gbr
+
+    Layers:
+    ------------------
+    Mechanical
+    Board Outlines
+
+    D-Code Shape  (mm)
+    ---------------------
+    D10    Round 0.025
+    D11    Round 0.127
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A-PF\Plots\SMART-A-PF - Top Silkscreen.gbr
+
+    Layers:
+    ------------------
+    Top Silkscreen
+    Board Outlines
+
+    D-Code Shape  (mm)
+    ---------------------
+    D11    Round 0.127
+    D12    Round 0.200
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A-PF\Plots\SMART-A-PF - Top Paste.gbr
+
+    Layers:
+    ------------------
+    Top Paste
+    Board Outlines
+
+    D-Code Shape  (mm)
+    ---------------------
+    D11    Round 0.127
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A-PF\Plots\SMART-A-PF - Top Solder Mask.gbr
+
+    Layers:
+    -------------------
+    Top Solder Mask
+    Board Outlines
+
+    D-Code Shape  (mm)
+    ---------------------
+    D11    Round 0.127
+    D13    Round 5.160
+    D14    Round 6.560
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A-PF\Plots\SMART-A-PF - Top Copper.gbr
+
+    Layers:
+    ------------------
+    Top Copper
+    Board Outlines
+
+    D-Code Shape  (mm)
+    ---------------------
+    D11    Round 0.127
+    D12    Round 0.200
+    D15    Round 5.000
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A-PF\Plots\SMART-A-PF - Botton Solder Mask.gbr
+
+    Layers:
+    ----------------------
+    Botton Solder Mask
+    Board Outlines
+
+    D-Code Shape  (mm)
+    ------------------------------------------------
+    D11    Round 0.127
+    D13    Round 5.160
+    D14    Round 6.560
+    D23    Rectangle 2.660 X 105.660  Rotation 90
+    D27    Rectangle 3.910 X 26.660
+    D75    Rectangle 3.160 X 39.360  Rotation 90
+    D76    Rectangle 6.360 X 6.360  Rotation 90
+    D77    Rectangle 2.160 X 16.910
+    D78    Rectangle 1.660 X 16.910
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A-PF\Plots\SMART-A-PF - Bottom Copper.gbr
+
+    Layers:
+    ------------------
+    Bottom Copper
+    Board Outlines
+
+    D-Code Shape  (mm)
+    ------------------------------------------------
+    D10    Round 0.025
+    D11    Round 0.127
+    D12    Round 0.200
+    D15    Round 5.000
+    D25    Rectangle 2.500 X 105.500  Rotation 90
+    D28    Rectangle 3.750 X 26.500
+    D79    Rectangle 3.000 X 39.200  Rotation 90
+    D80    Rectangle 6.200 X 6.200  Rotation 90
+    D81    Rectangle 2.000 X 16.750
+    D82    Rectangle 1.500 X 16.750
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A-PF\Plots\SMART-A-PF - Bottom Paste.gbr
+
+    Layers:
+    ------------------
+    Bottom Paste
+    Board Outlines
+
+    D-Code Shape  (mm)
+    ------------------------------------------------
+    D11    Round 0.127
+    D23    Rectangle 2.660 X 105.660  Rotation 90
+    D27    Rectangle 3.910 X 26.660
+    D75    Rectangle 3.160 X 39.360  Rotation 90
+    D76    Rectangle 6.360 X 6.360  Rotation 90
+    D77    Rectangle 2.160 X 16.910
+    D78    Rectangle 1.660 X 16.910
+
+NC Drill Output
+===============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A-PF\Plots\SMART-A-PF - Drill Data - [Through Hole].drl
+
+    Output:
+    ---------------------------
+    Plated Round Drill Holes
+    Plated Slots
+    Plated Board Outlines
+
+    Tool  Size       Count   ID
+    ----------------------------------
+    T001  00.1378 in 4     A
+    ----------------------------------
+    Total            4
+    ----------------------------------
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A-PF\Plots\SMART-A-PF - Drill Data - [Through Hole] (Unplated).drl
+
+    Output:
+    -----------------------------
+    Unplated Round Drill Holes
+    Unplated Slots
+    Unplated Board Outlines
+
+    Tool  Size       Count   ID
+    ----------------------------------
+    T001  00.0250 in 3
+    T002  00.2520 in 1     D
+    ----------------------------------
+    Total            4
+    ----------------------------------
+
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A-PF\Plots\SMART-A-PF - Drill Ident Drawing - [Through Hole].gbr
+
+    Layers:
+    ------------------
+    [Through Hole]
+    Board Outlines
+
+
+Drill Ident Drawing
+===================
+
+    Drill Plated Size  Shape ID
+    ------------------------------------
+    3.500 Y      2.540 Round A
+    6.400        2.540 Round D
+
+    D-Code Shape  (mm)
+    ---------------------
+    D11    Round 0.127
+    D70    Round 2.540
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A-PF\Plots\SMART-A-PF - Board Outline.gbr
+
+    Layers:
+    ------------------
+    Board Outlines
+
+    D-Code Shape  (mm)
+    ---------------------
+    D11    Round 0.127
+
+End Of Report.

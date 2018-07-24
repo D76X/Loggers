@@ -1,0 +1,101 @@
+Forward Design Changes Report
+-----------------------------
+
+Report File:        C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\SMART-A (PCB - Forward Design Changes Report).txt
+Report Written:     Sunday, April 02, 2017
+Project Path:       C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\SMART-A.prj
+Design Path:        C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\SMART-A.pcb
+Design Title:       
+Created:            10-Aug-16 9:56:42 PM
+Last Saved:         02-Apr-17 2:52:40 PM
+Editing Time:       38638 min
+Units:              mm (precision 4)
+
+Ignoring instance CONN7 ("TE 2040852-1") as it is defined for PCB only (no Schematic information).
+Ignoring instance CONN9 ("TE 2040852-1") as it is defined for PCB only (no Schematic information).
+Ignoring instance CONN10 ("TE 2040852-1") as it is defined for PCB only (no Schematic information).
+Ignoring instance CONN11 ("TE 2040852-1") as it is defined for PCB only (no Schematic information).
+Ignoring instance U2 ("smart-a-bottom") as it is defined for PCB only (no Schematic information).
+Ignoring instance U10 ("smart-a-bottom") as it is defined for PCB only (no Schematic information).
+
+Disconnected pin "IC10-69" from net "N0165".
+Disconnected pin "IC10-83" from net "GND".
+Disconnected pin "U5-6" from net "N0693!AOs AD5624R!".
+Disconnected pin "U222-1" from net "N0165".
+Disconnected pin "R116-2" from net "N0165".
+
+Deleted net "N0693!AOs AD5624R!".
+Deleted net "N0165".
+
+Added net "PIN83_RD7_AD7_PSP7_nSS2".
+
+Error: Unable to add component reference "IN41" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN42" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN43" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN44" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN53" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN54" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN63" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN64" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN65" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN66" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN67" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN68" of component "IO", package "USER" because No PCB information for Component "IO"..
+Added component reference "R117" of component "R0603", package "SM".
+Changed value "Value" on component reference "R117" to "10K".
+Added value "case=0603" to component reference "R117".
+
+Added value "Tolerance=1%" to component reference "R117".
+
+Added value "tc=100ppm/°C" to component reference "R117".
+
+Added value "pwr=0.1W" to component reference "R117".
+
+Error: Unable to add component reference "IN3" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN4" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN7" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN8" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN9" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN10" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN11" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN12" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN13" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN14" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN15" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN16" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN33" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN34" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN35" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN36" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN37" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN38" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN39" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN40" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN45" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN46" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN47" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN48" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN49" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN50" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN51" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN52" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN55" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN56" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN57" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN58" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN59" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN60" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN61" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN62" of component "IO", package "USER" because No PCB information for Component "IO"..
+Error: Unable to add component reference "IN69" of component "IO", package "USER" because No PCB information for Component "IO"..
+
+Connected pin "IC10-69" to net "PIN69_RB4_KBI0".
+Connected pin "IC10-83" to net "PIN83_RD7_AD7_PSP7_nSS2".
+Connected pin "U5-6" to net "PIN83_RD7_AD7_PSP7_nSS2".
+Connected pin "R117-1" to net "+3.30 V".
+Connected pin "R117-2" to net "PIN83_RD7_AD7_PSP7_nSS2".
+Connected pin "U222-1" to net "PIN69_RB4_KBI0".
+Connected pin "R116-2" to net "PIN69_RB4_KBI0".
+
+
+End Of Report.

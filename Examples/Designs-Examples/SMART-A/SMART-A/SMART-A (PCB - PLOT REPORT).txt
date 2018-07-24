@@ -1,0 +1,633 @@
+PLOT REPORT
+-----------
+
+Report File:        C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\SMART-A (PCB - PLOT REPORT).txt
+Report Written:     Friday, April 14, 2017
+Project Path:       C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\SMART-A.prj
+Design Path:        C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\SMART-A.pcb
+Design Title:       
+Created:            10-Aug-16 9:56:42 PM
+Last Saved:         14-Apr-17 10:19:07 PM
+Editing Time:       38927 min
+Units:              mm (precision 4)
+
+
+Device Settings
+===============
+
+
+Gerber Settings
+===============
+
+    Leading zero suppression.
+    G01 assumed throughout.
+    Line termination <*> <CR> <LF>.
+    3.6 format absolute mm.
+    Format commands defined in Gerber file.
+    Aperture table defined in Gerber file.
+    Hardware arcs allowed.
+
+
+Drill Settings
+==============
+
+    Excellon Format 1    Format 2.4 absolute in inches.
+    No zero suppression.
+
+
+Plots Output
+============
+
+    Plot Job: "C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\SMART-A.mop"
+
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\Plots\SMART-A - Paste Mask.gbr
+
+    Layers:
+    ------------------
+    Paste Mask
+    Board Outlines
+
+    D-Code Shape  (mm)
+    ----------------------------------------------
+    D71    Round 0.127
+    D28    Rectangle 0.848 X 0.948
+    D29    Rectangle 0.848 X 0.948  Rotation 90
+    D72    Rectangle 0.148 X 1.323
+    D73    Rectangle 0.148 X 1.323  Rotation 90
+    D74    Rectangle 0.848 X 1.648  Rotation 90
+    D75    Rectangle 0.356 X 0.813
+    D76    Rectangle 1.048 X 1.648
+    D77    Rectangle 0.229 X 0.965  Rotation 90
+    D78    Rectangle 2.388 X 2.518
+    D79    Rectangle 0.610 X 1.118  Rotation 90
+    D80    Rectangle 1.448 X 2.848
+    D81    Rectangle 5.648 X 6.048
+    D82    Rectangle 0.798 X 1.448
+    D83    Rectangle 1.448 X 3.048  Rotation 90
+    D84    Rectangle 1.295 X 3.048  Rotation 90
+    D85    Rectangle 0.548 X 1.048
+    D86    Rectangle 0.848 X 1.048
+    D87    Rectangle 0.848 X 2.648
+    D88    Rectangle 0.648 X 0.848  Rotation 90
+    D89    Rectangle 1.148 X 1.748
+    D90    Rectangle 0.098 X 0.248
+    D91    Rectangle 0.298 X 2.848  Rotation 90
+    D92    Rectangle 0.248 X 0.348
+    D93    Rectangle 0.248 X 0.448
+    D94    Rectangle 0.248 X 0.448  Rotation 90
+    D95    Square 1.948
+    D96    Rectangle 1.148 X 1.348
+    D97    Rectangle 0.608 X 4.028
+    D98    Rectangle 3.268 X 4.428
+    D99    Rectangle 0.848 X 1.248
+    D100   Rectangle 0.448 X 1.348
+    D101   Rectangle 0.356 X 1.016  Rotation 90
+    D102   Rectangle 1.248 X 1.948  Rotation 90
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\Plots\SMART-A - Solder Mask.gbr
+
+    Layers:
+    ------------------
+    Solder Mask
+    Board Outlines
+
+    D-Code Shape  (mm)
+    ----------------------------------------------
+    D71    Round 0.127
+    D103   Round 5.200
+    D104   Round 0.813
+    D105   Rectangle 1.000 X 1.100
+    D106   Rectangle 1.000 X 1.100  Rotation 90
+    D107   Rectangle 0.300 X 1.475
+    D108   Rectangle 0.300 X 1.475  Rotation 90
+    D109   Round 1.624
+    D110   Rectangle 1.000 X 1.800  Rotation 90
+    D111   Rectangle 0.508 X 0.965
+    D112   Rectangle 1.200 X 1.800
+    D113   Rectangle 0.381 X 1.118  Rotation 90
+    D114   Rectangle 2.540 X 2.670
+    D115   Rectangle 0.762 X 1.270  Rotation 90
+    D116   Rectangle 1.600 X 3.000
+    D117   Rectangle 5.800 X 6.200
+    D118   Rectangle 0.950 X 1.600
+    D119   Rectangle 1.600 X 3.200  Rotation 90
+    D120   Rectangle 1.448 X 3.201  Rotation 90
+    D121   Rectangle 0.700 X 1.200
+    D122   Rectangle 1.000 X 1.200
+    D123   Rectangle 1.000 X 2.800
+    D124   Rectangle 0.800 X 1.000  Rotation 90
+    D125   Rectangle 1.300 X 1.900
+    D126   Rectangle 0.250 X 0.400
+    D127   Rectangle 0.450 X 3.000  Rotation 90
+    D128   Round 1.778
+    D129   Round 4.445
+    D130   Rectangle 0.400 X 0.500
+    D131   Rectangle 0.400 X 0.600
+    D132   Rectangle 0.400 X 0.600  Rotation 90
+    D133   Square 2.100
+    D134   Rectangle 1.300 X 1.500
+    D135   Square 1.524
+    D136   Round 1.720
+    D137   Round 1.524
+    D138   Round 3.000
+    D139   Round 3.600
+    D140   Round 4.200
+    D141   Rectangle 0.760 X 4.180
+    D142   Rectangle 3.420 X 4.580
+    D143   Round 3.310
+    D144   Rectangle 1.000 X 1.400
+    D145   Rectangle 0.600 X 1.500
+    D146   Rectangle 0.508 X 1.169  Rotation 90
+    D147   Round 1.390
+    D148   Rectangle 1.400 X 2.100  Rotation 90
+    D149   Round 1.423
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\Plots\SMART-A - Mechanical.gbr
+
+    Layers:
+    ------------------
+    Mechanical
+    Board Outlines
+
+    D-Code Shape  (mm)
+    ---------------------
+    D71    Round 0.127
+    D141   Round 0.208
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\Plots\SMART-A - Documentation.gbr
+
+    Layers:
+    ------------------
+    Documentation
+    Board Outlines
+
+    D-Code Shape  (mm)
+    ---------------------
+    D10    Round 0.025
+    D11    Round 0.025
+    D12    Round 0.050
+    D13    Round 0.180
+    D14    Round 0.076
+    D15    Round 0.102
+    D16    Round 0.005
+    D17    Round 0.127
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\Plots\SMART-A - Top Silkscreen.gbr
+
+    Layers:
+    ------------------
+    Top Silkscreen
+    Board Outlines
+
+    D-Code Shape  (mm)
+    ---------------------
+    D10    Round 0.025
+    D13    Round 0.180
+    D14    Round 0.076
+    D15    Round 0.102
+    D17    Round 0.127
+    D18    Round 0.150
+    D19    Round 0.200
+    D70    Round 0.250
+    D71    Round 0.152
+    D20    Round 0.100
+    D21    Round 0.254
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\Plots\SMART-A - Top Copper.gbr
+
+    Layers:
+    ------------------
+    Top Copper
+    Board Outlines
+
+    D-Code Shape  (mm)
+    ----------------------------------------------
+    D17    Round 0.127
+    D18    Round 0.150
+    D22    Round 0.635
+    D23    Round 5.200
+    D24    Round 0.813
+    D25    Rectangle 1.000 X 1.100
+    D26    Rectangle 1.000 X 1.100  Rotation 90
+    D27    Rectangle 0.300 X 1.475
+    D28    Rectangle 0.300 X 1.475  Rotation 90
+    D29    Round 1.624
+    D72    Rectangle 1.000 X 1.800  Rotation 90
+    D73    Rectangle 0.508 X 0.965
+    D74    Rectangle 1.200 X 1.800
+    D75    Rectangle 0.381 X 1.118  Rotation 90
+    D76    Rectangle 2.540 X 2.670
+    D77    Rectangle 0.762 X 1.270  Rotation 90
+    D78    Rectangle 1.600 X 3.000
+    D79    Rectangle 5.800 X 6.200
+    D80    Rectangle 0.950 X 1.600
+    D81    Rectangle 1.600 X 3.200  Rotation 90
+    D82    Rectangle 1.448 X 3.200  Rotation 90
+    D83    Rectangle 0.700 X 1.200
+    D84    Rectangle 1.000 X 1.200
+    D85    Rectangle 1.000 X 2.800
+    D86    Rectangle 0.800 X 1.000  Rotation 90
+    D87    Rectangle 1.300 X 1.900
+    D88    Rectangle 0.250 X 0.400
+    D89    Rectangle 0.450 X 3.000  Rotation 90
+    D90    Round 1.778
+    D91    Round 4.445
+    D92    Rectangle 0.400 X 0.500
+    D93    Rectangle 0.400 X 0.600
+    D94    Rectangle 0.400 X 0.600  Rotation 90
+    D95    Square 2.100
+    D96    Rectangle 1.300 X 1.500
+    D97    Square 1.524
+    D98    Round 1.720
+    D99    Round 1.524
+    D100   Round 3.000
+    D101   Round 3.600
+    D102   Round 4.200
+    D103   Rectangle 0.760 X 4.180
+    D104   Rectangle 3.420 X 4.580
+    D105   Round 3.310
+    D106   Rectangle 1.000 X 1.400
+    D107   Rectangle 0.600 X 1.500
+    D108   Rectangle 0.508 X 1.168  Rotation 90
+    D109   Round 1.390
+    D110   Rectangle 1.400 X 2.100  Rotation 90
+    D111   Round 1.422
+    D112   Round 0.300
+    D113   Round 0.900
+    D114   Round 1.600
+    D115   Round 0.750
+    D116   Round 1.000
+    D117   Round 0.500
+    D141   Round 0.208
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\Plots\SMART-A - Keepout.gbr
+
+    Layers:
+    ------------------
+    Keepout
+    Board Outlines
+
+    D-Code Shape  (mm)
+    ---------------------
+    D10    Round 0.025
+    D17    Round 0.127
+    D118   Round 0.010
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\Plots\SMART-A - GND Plane (Powerplane).gbr
+
+    Layers:
+    ----------------------------------------------------------------------------------------
+    GND Plane       - Plane Isolation Gap 0.254 Thermal Connect Width 0.127 with 4 Spokes
+    Board Outlines
+
+    D-Code Shape  (mm)
+    ------------------------------------------
+    D22    Round 0.635
+    D119   Round 5.200  Thermal Relief Pad
+    D120   Round 0.813  Thermal Relief Pad
+    D121   Round 2.132
+    D122   Round 2.286
+    D123   Round 1.778  Thermal Relief Pad
+    D124   Round 4.445  Thermal Relief Pad
+    D125   Square 1.524  Thermal Relief Pad
+    D126   Square 2.032
+    D127   Round 2.228
+    D128   Round 2.032
+    D129   Round 1.524  Thermal Relief Pad
+    D130   Round 3.000  Thermal Relief Pad
+    D131   Round 3.600  Thermal Relief Pad
+    D132   Round 4.708
+    D133   Round 3.818
+    D134   Round 1.898
+    D135   Round 1.390  Thermal Relief Pad
+    D136   Round 1.422  Thermal Relief Pad
+    D137   Round 1.321
+    D141   Round 0.208
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\Plots\SMART-A - GND Plane (Powerplane Positive).gbr
+
+    Layers:
+    ----------------------------------------------------------------------------------------
+    GND Plane       - Plane Isolation Gap 0.254 Thermal Connect Width 0.127 with 4 Spokes
+    Board Outlines
+
+    D-Code Shape  (mm)
+    ----------------------
+    D17    Round 0.127
+    D23    Round 5.200
+    D24    Round 0.813
+    D29    Round 1.624
+    D90    Round 1.778
+    D91    Round 4.445
+    D97    Square 1.524
+    D98    Round 1.720
+    D99    Round 1.524
+    D100   Round 3.000
+    D101   Round 3.600
+    D102   Round 4.200
+    D105   Round 3.310
+    D109   Round 1.390
+    D111   Round 1.422
+    D141   Round 0.208
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\Plots\SMART-A - +3.30 V Plane (Powerplane).gbr
+
+    Layers:
+    ----------------------------------------------------------------------------------------
+    +3.30 V Plane   - Plane Isolation Gap 0.254 Thermal Connect Width 0.127 with 4 Spokes
+    Board Outlines
+
+    D-Code Shape  (mm)
+    ------------------------------------------
+    D22    Round 0.635
+    D120   Round 0.813  Thermal Relief Pad
+    D121   Round 2.132
+    D122   Round 2.286
+    D125   Square 1.524  Thermal Relief Pad
+    D126   Square 2.032
+    D127   Round 2.228
+    D128   Round 2.032
+    D132   Round 4.708
+    D133   Round 3.818
+    D134   Round 1.898
+    D137   Round 1.321
+    D138   Round 5.708
+    D139   Round 4.953
+    D140   Round 3.508
+    D141   Round 0.208
+    D142   Round 4.108
+    D143   Round 1.930
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\Plots\SMART-A - +3.30 V Plane (Powerplane Positive).gbr
+
+    Layers:
+    ----------------------------------------------------------------------------------------
+    +3.30 V Plane   - Plane Isolation Gap 0.254 Thermal Connect Width 0.127 with 4 Spokes
+    Board Outlines
+
+    D-Code Shape  (mm)
+    ----------------------
+    D17    Round 0.127
+    D23    Round 5.200
+    D24    Round 0.813
+    D29    Round 1.624
+    D90    Round 1.778
+    D91    Round 4.445
+    D97    Square 1.524
+    D98    Round 1.720
+    D99    Round 1.524
+    D100   Round 3.000
+    D101   Round 3.600
+    D102   Round 4.200
+    D105   Round 3.310
+    D109   Round 1.390
+    D111   Round 1.422
+    D141   Round 0.208
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\Plots\SMART-A - Bottom Solder Mask.gbr
+
+    Layers:
+    ----------------------
+    Bottom Solder Mask
+    Board Outlines
+
+    D-Code Shape  (mm)
+    ----------------------------------------------
+    D17    Round 0.127
+    D144   Round 5.200
+    D145   Round 0.813
+    D146   Rectangle 1.000 X 1.100  Rotation 90
+    D147   Rectangle 1.000 X 1.100
+    D148   Rectangle 0.330 X 1.473  Rotation 90
+    D149   Rectangle 0.356 X 1.473  Rotation 90
+    D150   Rectangle 0.381 X 1.473  Rotation 90
+    D151   Round 1.624
+    D152   Rectangle 2.540 X 2.670  Rotation 90
+    D153   Rectangle 0.762 X 1.270
+    D154   Round 1.778
+    D155   Round 4.445
+    D156   Square 1.524
+    D157   Round 1.720
+    D158   Round 1.524
+    D159   Round 3.000
+    D160   Round 3.600
+    D161   Round 4.200
+    D162   Round 3.310
+    D163   Rectangle 1.000 X 1.400
+    D164   Rectangle 0.450 X 1.800
+    D165   Round 1.390
+    D166   Rectangle 0.508 X 1.677
+    D167   Round 1.423
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\Plots\SMART-A - Bottom Copper.gbr
+
+    Layers:
+    ------------------
+    Bottom Copper
+    Board Outlines
+
+    D-Code Shape  (mm)
+    ----------------------------------------------
+    D17    Round 0.127
+    D18    Round 0.150
+    D23    Round 5.200
+    D24    Round 0.813
+    D25    Rectangle 1.000 X 1.100
+    D26    Rectangle 1.000 X 1.100  Rotation 90
+    D29    Round 1.624
+    D90    Round 1.778
+    D91    Round 4.445
+    D97    Square 1.524
+    D98    Round 1.720
+    D99    Round 1.524
+    D100   Round 3.000
+    D101   Round 3.600
+    D102   Round 4.200
+    D105   Round 3.310
+    D106   Rectangle 1.000 X 1.400
+    D109   Round 1.390
+    D111   Round 1.422
+    D112   Round 0.300
+    D113   Round 0.900
+    D141   Round 0.208
+    D150   Rectangle 0.330 X 1.473  Rotation 90
+    D151   Rectangle 0.356 X 1.473  Rotation 90
+    D152   Rectangle 0.381 X 1.473  Rotation 90
+    D153   Rectangle 2.540 X 2.670  Rotation 90
+    D154   Rectangle 0.762 X 1.270
+    D155   Rectangle 0.450 X 1.800
+    D156   Rectangle 0.508 X 1.676
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\Plots\SMART-A - Bottom Copper (Paste).gbr
+
+    Layers:
+    ---------------------
+    Bottom Paste Mask
+    Board Outlines
+
+    D-Code Shape  (mm)
+    ----------------------------------------------
+    D10    Rectangle 0.898 X 0.998  Rotation 90
+    D11    Rectangle 0.898 X 0.998
+    D12    Rectangle 0.229 X 1.372  Rotation 90
+    D13    Rectangle 0.254 X 1.372  Rotation 90
+    D14    Rectangle 0.279 X 1.372  Rotation 90
+    D15    Rectangle 2.438 X 2.568  Rotation 90
+    D16    Rectangle 0.660 X 1.168
+    D17    Rectangle 0.898 X 1.298
+    D18    Rectangle 0.348 X 1.698
+    D19    Rectangle 0.406 X 1.575
+    D70    Round 0.127
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\Plots\SMART-A - Bottom Silkscreen.gbr
+
+    Layers:
+    ---------------------
+    Bottom Silkscreen
+    Board Outlines
+
+    D-Code Shape  (mm)
+    ---------------------
+    D70    Round 0.127
+    D71    Round 0.180
+    D20    Round 0.150
+    D21    Round 0.025
+    D22    Round 0.152
+    D23    Round 0.076
+    D24    Round 0.200
+    D25    Round 0.325
+
+NC Drill Output
+===============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\Plots\SMART-A - Drill Data - [Through Hole].drl
+
+    Output:
+    ---------------------------
+    Plated Round Drill Holes
+    Plated Slots
+    Plated Board Outlines
+
+    Tool  Size       Count   ID
+    ----------------------------------
+    T001  00.0160 in 406   M
+    T002  00.0320 in 1     N
+    T003  00.0350 in 17    H
+    T004  00.0362 in 1     I
+    T005  00.0394 in 34    F
+    T006  00.0906 in 2     J
+    T007  00.1181 in 6     E
+    T008  00.1201 in 4     G
+    T009  00.1417 in 1     K
+    ----------------------------------
+    Total            472
+    ----------------------------------
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\Plots\SMART-A - Drill Data - [Through Hole] (Unplated).drl
+
+    Output:
+    -----------------------------
+    Unplated Round Drill Holes
+    Unplated Slots
+    Unplated Board Outlines
+
+    Tool  Size       Count   ID
+    ----------------------------------
+    T001  00.0250 in 1
+    T002  00.1299 in 2     L
+    ----------------------------------
+    Total            3
+    ----------------------------------
+
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\Plots\SMART-A - Drill Ident Drawing - [Through Hole].gbr
+
+    Layers:
+    ------------------
+    [Through Hole]
+
+
+Drill Ident Drawing
+===================
+
+    Drill Plated Size  Shape ID
+    ------------------------------------
+    3.000 Y      2.540 Round E
+    1.000 Y      2.540 Round F
+    3.050 Y      2.540 Round G
+    0.889 Y      2.540 Round H
+    0.920 Y      2.540 Round I
+    2.300 Y      2.540 Round J
+    3.600 Y      2.540 Round K
+    3.300        2.540 Round L
+    0.406 Y      2.540 Round M
+    0.813 Y      2.540 Round N
+
+    D-Code Shape  (mm)
+    ---------------------
+    D70    Round 0.127
+    D26    Round 2.540
+
+Gerber Output
+=============
+
+C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\Plots\SMART-A - Board Outline.gbr
+
+    Layers:
+    ------------------
+    Board Outlines
+
+    D-Code Shape  (mm)
+    ---------------------
+    D70    Round 0.127
+
+End Of Report.

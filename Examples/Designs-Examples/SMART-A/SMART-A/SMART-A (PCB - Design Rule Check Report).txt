@@ -1,0 +1,137 @@
+Design Rule Check Report
+------------------------
+
+Report File:        C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\SMART-A (PCB - Design Rule Check Report).txt
+Report Written:     Thursday, April 13, 2017
+Project Path:       C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\SMART-A.prj
+Design Path:        C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\SMART-A.pcb
+Design Title:       
+Created:            10-Aug-16 9:56:42 PM
+Last Saved:         13-Apr-17 9:48:23 PM
+Editing Time:       38923 min
+Units:              mm (precision 4)
+
+
+Results
+=======
+
+Pad to Shape error (P-C) at (20.7015 32.7260) on layer "Top Copper".
+    Error between Component Pad U1.5 (Net 'N0578!Power!') and Poured Shape (Net 'N0149'), Gap is 0.0000 needs to be 0.5000.
+Pad to Shape error (P-C) at (20.2250 34.5250) on layer "Top Copper".
+    Error between Component Pad L1.2 (Net 'N0578!Power!') and Poured Shape (Net 'N0149'), Gap is 0.0000 needs to be 0.5000.
+Pad to Board Error (P-B) between (43.5635 0.1500) and (43.5635 0.0000) on Layer "[All]".
+    Error between Component Pad CONN16.12 (Net 'GND') and Board, Gap is 0.0865 needs to be 0.2540.
+Pad to Board Error (P-B) between (56.9135 0.1500) and (56.9135 0.0000) on Layer "[All]".
+    Error between Component Pad CONN16.13 (Net 'GND') and Board, Gap is 0.0865 needs to be 0.2540.
+Pad to Board Error (P-B) between (76.0735 0.2600) and (76.0735 0.0000) on Layer "[All]".
+    Error between Component Pad CONN6.9 (Net 'GND') and Board, Gap is 0.1965 needs to be 0.2540.
+Pad to Board Error (P-B) between (64.4935 0.2600) and (64.4935 0.0000) on Layer "[All]".
+    Error between Component Pad CONN6.10 (Net 'GND') and Board, Gap is 0.1965 needs to be 0.2540.
+Pad to Board Error (P-B) between (0.1090 6.7500) and (0.0000 6.7500) on Layer "[All]".
+    Error between Component Pad CONN7.1 and Board, Gap is 0.0455 needs to be 0.2540.
+Pad to Board Error (P-B) between (99.9032 6.7500) and (100.0000 6.7500) on Layer "[All]".
+    Error between Component Pad CONN9.2 and Board, Gap is 0.0333 needs to be 0.2540.
+Pad to Board Error (P-B) between (0.1090 66.7500) and (0.0000 66.7500) on Layer "[All]".
+    Error between Component Pad CONN10.1 and Board, Gap is 0.0455 needs to be 0.2540.
+Pad to Board Error (P-B) between (99.9094 66.7500) and (100.0000 66.7500) on Layer "[All]".
+    Error between Component Pad CONN11.2 and Board, Gap is 0.0271 needs to be 0.2540.
+Track to Board Error (T-B) between (57.5635 1.1000) and (57.5635 0.0000) on Layer "Top Copper".
+    Error between Track (Net 'GND') and Board, Gap is 0.8865 needs to be 1.2700.
+Track to Board Error (T-B) between (57.5635 1.1000) and (57.5635 0.0000) on Layer "Top Copper".
+    Error between Track (Net 'GND') and Board, Gap is 0.8865 needs to be 1.2700.
+Track to Board Error (T-B) between (57.5635 1.1000) and (57.5635 0.0000) on Layer "Top Copper".
+    Error between Track (Net 'GND') and Board, Gap is 0.8865 needs to be 1.2700.
+Track to Shape error (T-C) at (20.4475 32.2434) on layer "Top Copper".
+    Error between Track (Net 'N0578!Power!') and Poured Shape (Net 'N0149'), Gap is 0.0000 needs to be 0.5000.
+Shape to Board Error (C-B) between (0.0000 0.7500) and (0.5000 0.7500) on Layer "Bottom Copper".
+    Error between Board and Poured Shape (Net 'GND'), Gap is 0.3730 needs to be 1.2700.
+Shape to Board Error (C-B) between (100.0000 0.7500) and (99.5000 0.7500) on Layer "Bottom Copper".
+    Error between Board and Poured Shape (Net 'GND'), Gap is 0.3730 needs to be 1.2700.
+Component to Board error (Cm-B) at (98.8032 7.5000) on layer "[Top]".
+    CONN9.
+Component to Board error (Cm-B) at (1.2090 7.5000) on layer "[Top]".
+    CONN7.
+Component to Board error (Cm-B) at (98.8094 67.5000) on layer "[Top]".
+    CONN11.
+Component to Board error (Cm-B) at (1.2090 67.5000) on layer "[Top]".
+    CONN10.
+Component to Board error (Cm-B) at (71.9935 18.4000) on layer "[Top]".
+    CONN6.
+Component to Board error (Cm-B) at (33.0770 12.5250) on layer "[Top]".
+    CONN2.
+Component to Board error (Cm-B) at (11.1270 -1.9250) on layer "[Top]".
+    CONN3.
+Component to Board error (Cm-B) at (26.3832 69.7000) on layer "[Top]".
+    CONN5.
+Component to Board error (Cm-B) at (73.4292 69.7000) on layer "[Top]".
+    CONN4.
+Component to Component error (Cm-Cm) at (83.3250 46.4380) on layer "[Bottom]".
+    R53 - L13, Gap is 0.0000.
+Component to Component Error (Cm-Cm) between (84.3805 49.6248) and (86.5370 49.6248) on Layer "[Bottom]".
+    U6 - L13, Gap is 0.0000.
+Component to Component error (Cm-Cm) at (83.3250 55.3120) on layer "[Bottom]".
+    L13 - R54, Gap is 0.0000.
+Component to Component error (Cm-Cm) at (86.5370 51.4000) on layer "[Bottom]".
+    L13 - C12, Gap is 0.0000.
+Component to Component error (Cm-Cm) at (86.5370 49.4750) on layer "[Bottom]".
+    L13 - C13, Gap is 0.0000.
+Component to Component Error (Cm-Cm) between (80.0500 46.4380) and (80.0500 47.6500) on Layer "[Bottom]".
+    L13 - C220, Gap is 0.0000.
+Component to Component Error (Cm-Cm) between (83.3000 55.3120) and (83.3000 54.8500) on Layer "[Bottom]".
+    L13 - C224, Gap is 0.0000.
+Component to Component error (Cm-Cm) at (39.0000 13.3850) on layer "[Bottom]".
+    ZD1 - CONN2, Gap is 0.0000.
+Component to Component error (Cm-Cm) at (39.3470 11.3000) on layer "[Bottom]".
+    C2 - CONN2, Gap is 0.0000.
+Component to Component Error (Cm-Cm) between (37.8000 12.9000) and (37.8000 13.3850) on Layer "[Bottom]".
+    R9 - CONN2, Gap is 0.0000.
+Component to Component Error (Cm-Cm) between (39.3470 9.5000) and (37.8000 9.5000) on Layer "[Bottom]".
+    CONN2 - C46, Gap is 0.0000.
+
+Number of errors found : 36
+
+
+Settings
+========
+
+
+Spacings
+
+=========
+
+Tracks        Yes
+Pads and Vias Yes
+Shapes        Yes
+Text          Yes
+Board         Yes
+Drills        Yes
+Components    Yes
+
+
+Manufacturing
+
+==============
+
+Drill Breakout                  No
+Drill Backoff                   No
+Silkscreen Overlap              No
+Copper Text In Board            No
+Min Track Width                 No
+Min Annular Ring                No
+Min Paste Size                  No
+Vias In Pads                    No
+Unplated Vias                   No
+Unplated Pads With Inner Tracks No
+
+
+Nets
+
+=====
+
+Net Completion               No
+Dangling Tracks              No
+Net Track Length Differences No
+
+
+
+End Of Report.

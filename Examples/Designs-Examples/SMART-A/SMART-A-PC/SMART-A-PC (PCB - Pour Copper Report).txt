@@ -1,0 +1,15 @@
+Pour Copper Report
+------------------
+
+Report File:        C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A-PC\SMART-A-PC (PCB - Pour Copper Report).txt
+Report Written:     Tuesday, January 31, 2017
+Project Path:       C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A-PC\SMART-A-PC.prj
+Design Path:        C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A-PC\SMART-A-PC.pcb
+Design Title:       
+Created:            15-Dec-16 9:44:31 PM
+Last Saved:         31-Jan-17 8:40:21 PM
+Editing Time:       5628 min
+Units:              mm (precision 4)
+
+
+End Of Report.

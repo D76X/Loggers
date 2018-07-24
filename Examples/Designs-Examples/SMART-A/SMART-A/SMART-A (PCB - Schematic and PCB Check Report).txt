@@ -1,0 +1,25 @@
+Schematic and PCB Check Report
+------------------------------
+
+Report File:        C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\SMART-A (PCB - Schematic and PCB Check Report).txt
+Report Written:     Sunday, April 02, 2017
+Project Path:       C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\SMART-A.prj
+Design Path:        C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\SMART-A.pcb
+Design Title:       
+Created:            10-Aug-16 9:56:42 PM
+Last Saved:         02-Apr-17 2:52:40 PM
+Editing Time:       38638 min
+Units:              mm (precision 4)
+
+
+Checking integrity of Schematic "C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\SMART-A.prj" with PCB "C:\Users\davidespano\OneDrive\Projects\DesignSparkPrjs\logxtreme\SMART-A\SMART-A\SMART-A.pcb"
+======================================================================================================================================================================================================================================
+
+
+Warning: Project has more than one version of Component "GND" ("AOs AD5624R.sch" & "PIC18F97J60.sch"). At least one should be reloaded otherwise results may be incorrect.
+Warning: Project has more than one version of Component "GND" ("AD7329.sch" & "PIC18F97J60.sch"). At least one should be reloaded otherwise results may be incorrect.
+Warning: Project has more than one version of Component "GND" ("Analog and Digital IOs.sch" & "PIC18F97J60.sch"). At least one should be reloaded otherwise results may be incorrect.
+Warning: Project has more than one version of Component "BAT754S" ("Analog and Digital IOs.sch" & "AOs AD5624R.sch"). At least one should be reloaded otherwise results may be incorrect.
+
+
+End Of Report.
