@@ -6,7 +6,6 @@
 // Refs 
 // https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable?view=netframework-4.7.2
 
-// Expression 0
 // Given the scores of a set of races as a string work out the score for the racer
 // as the sum of the score from each race excluded the three lowest individual scores. 
 // "10,5,0,8,10,1,4,0,10,1"
@@ -109,14 +108,3 @@ double ComputeScoreImperativeWrong(IEnumerable<int> scores){
 	 
 	 return result;
 }
-
-
-
-
-
-
-
-
-
-
-
