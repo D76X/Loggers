@@ -87,9 +87,28 @@ JMESPath.
 ### Best Practices
 
 1. For each Azure account create multiple subscriptions each used to perform a related set of tasks.
-   For example one for setting up sequirity another for storage another for logic apps another for databases,
+   For example one for setting up sequrity another for storage another for logic apps another for databases,
    another for testing, another for staging, another for production, etc. In this way each sets of resources
-   coming under the same subscription is billed separatly and it is easier to slipt out and monitor costs.
+   coming under the same subscription is billed separately and it is easier to slipt out and monitor costs.
+
+2. Use resource groups to lump resources that belong together. In this way for example is easier to manage
+   the resources in the group as a single unit. For example une user case is that by deletying a resource group 
+   all the resources in the group are disposed of which saves from having to delete them one by one. This is 
+   especially useful when resources are used for testing purposes and a no longer needed. Onether advantage is 
+   that a resource group provides some defaults for the resources created in it. Foe example if the location
+   of a resource added to a resource group is not specified then it defaults to that of its resource group if
+   one is specified. Notice that resources added to a resource group need not be located in the same area of 
+   the resource group, this just provides a default.
+
+### Resource Groups
+
+
+
+| Command                                               | Results                                    |
+| --------------------------------------------------    | ------------------------------------------ |
+| `az resources list -g $MyResourceGroupName -o tabkle` | lists all the resources in the given resource group.  |
+
+
 
 ### Virtual Machine
 
@@ -117,6 +136,6 @@ There are a number of considerations to account for when setting up a VM.
 | `az vm image list --all -f elasticsearch -o table` | Table out all the VM images which have Elastic search installef. The -f filters ut on the server. |
 | `az vm image list --all -s VS-2017 -o table`       | Table out all the VM images which have SKU name VS-2017 - these have VS210 installed.             |
 | `az vm list-size --location westeurope -o table`   | Table out all the VM images and their size available in west Europe.                              |
-| `` |.                                              |
+| `az vm create -n $MyVm -g $MyResourceGroup --image Centos --admin-username myusername --admin-password $MyAdminPswd` | Creates a VM named as the value of the local variable $MyVm from the image Centos in the resource group named as the value of the local variable $MyResourceGroup and the given password and username (which would be used to RDP into the VM).                                              |
 | `` |.                                              |
 | `` |.                                              |
