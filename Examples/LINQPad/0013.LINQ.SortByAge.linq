@@ -33,9 +33,7 @@ static class DateTimeExtensions {
 		}
 }
 
-static DateTime ParseDob(string dob){
- 	return DateTime.ParseExact(dob.Trim(), @"dd/MM/yyyy", CultureInfo.InvariantCulture);
-}
+static DateTime ParseDob(string dob) => DateTime.ParseExact(dob.Trim(), @"dd/MM/yyyy", CultureInfo.InvariantCulture);
 
 void Main() {
 
