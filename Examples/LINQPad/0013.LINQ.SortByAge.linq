@@ -33,6 +33,10 @@ static class DateTimeExtensions {
 		}
 }
 
+static DateTime ParseDob(string dob){
+ 	return DateTime.ParseExact(dob.Trim(), @"dd/MM/yyyy", CultureInfo.InvariantCulture);
+}
+
 void Main() {
 
  nameDobData.Dump();
@@ -52,7 +56,7 @@ void Main() {
 	.Select(a => new {	
 						name = a[0].Trim(), 
 						age = a.Length>1 ? 
-							DateTime.ParseExact(a[1].Trim(), @"dd/MM/yyyy", CultureInfo.InvariantCulture).DobToAge() : 
+							ParseDob(a[1]).DobToAge() : 
 							DateTime.MinValue.DobToAge()
 						})
 	.OrderBy(o => o.age)
