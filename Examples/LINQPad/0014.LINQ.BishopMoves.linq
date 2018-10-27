@@ -105,6 +105,21 @@ void Main() {
 			  // provide a nicer formatting for the output
 			  .Select(p => $"{p.File}{p.Rank}")									  
 			  .Dump();
+			  
+    // equivalent query syntax
+	var moves3 = 
+	from v in files
+	from h in ranks
+	let f = (char)v
+	let r = (char)h
+	let dx = Math.Abs(f-'c')
+	let dy = Math.Abs(r-'6')
+	where dx==dy && dx!=0
+	select $"{f}{r}";
+	// notice that because of defferred execution you must call Dump() on the 
+	// IQueryable in order to actually enumerate the expression.
+	moves3.Dump();
+	
 }
 
 void TestStep2(){ 
