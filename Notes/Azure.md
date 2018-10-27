@@ -142,12 +142,6 @@ There are a number of considerations to account for when setting up a VM.
 | `az vm show -n $VmName -g $ResGrpName --query "PowerState" -o tvs` | Show the power state of the specified VM.|
 | `az vm  deallocate -n $VmName -g $ResGrpName` | Set the specified VM to a deallocated state.|
 | `az vm show -d -n $VmName -g $ResGrpName --query "PowerState" -o tvs ` | The **d** flag shows additional details.|
-| `` |.|
-| `` |.|
-| `` |.|
-| `` |.|
-| `` |.|
-| `` |.|
 
 
 #### Install Virtual Machine Extensions
@@ -200,7 +194,71 @@ be installed and one or more web sites deployed to IIS to use the VM as a dedica
 
 ---
 
+### **SAS (Shared Access Signature)**
+
+These are used to create **read-only, time limited secure URL** for stored resources such as 
+files and blobs.
+
+---
+
 ### Managing Sorage Accounts
+
+1. **Blobs**  
+Used to store files and other unstructured data in the cloud. Blob storage can also be used to 
+control access to files by means of a **SAS (Shared Access Signature) tokens** .
+
+2. **Files**  
+These are containers used as files shares which may be attached to VMs as shared drives.
+
+3. **Storage Queues**  
+It's a simple and cost-effective storage solution for **sending and receiving messages**.
+
+3. **Storage Tables**  
+It's a simple and cost-effective storage solution for **storing semistructured data**.
+
+Some of the tasks that you may want to automate by means of the Azure CLI in relation to storage 
+accounts are 
+
+- Create a new storage account.
+- Upload blobs or files.
+- Clean up tables or queues.
+- Create **SAS** for stored resources.
+- Planned download of resources on a schedule i.e. logs from Azure Table storage.
+- Posting messages to queues in order to kick start processes i.e. some kind of maintenance task. 
+
+One thing to do before running any od the commands to manage storage from the Azure CLI is to set 
+your subscription i.e.
+
+```az account set -s $MySubscriptionName/Guid```
+
+You may also set up a number of variables that are often used in the Azure CLI commands as illustrated.
+Note: the **name of the storage account must be unique accross all Azure users!** . 
+
+```
+rgn="MyResourceGroupName"
+loc="westeurope"
+san="MyUniqueStorageAccoutName"
+```
+
+Then create your resource group in the preferred location.
+
+```az group create -n $rgn -l $loc```
+
+Finally create your storage account - notice that without specifying the -l parameter in the command
+the storage account would be created in the location provided as default by the specified resource
+group. The **-sku Standard_LRS** means that the storage account will be created with the **Standard
+Locally Redundant Storage SKU**.
+
+```az storage account create -n $san -g $rgn -l $loc -sku Standard_LRS```
+
+| Command                                            | Results                                    |
+| -------------------------------------------------- | ------------------------------------------ |
+| `az storage account create -n $san -g $rgn -l $loc -sku Standard_LRS` | Example to create a storage account.|
+| cn=`az storage account show-connection-string -n $san -g $rgn --query connectionString -o tvs`` | Store the connection string for the named storage account into the variable cn.|
+| `` |.|
+| `` |.|
+| `` |.|
+| `` |.|
 
 ---
 
