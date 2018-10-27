@@ -137,5 +137,66 @@ There are a number of considerations to account for when setting up a VM.
 | `az vm image list --all -s VS-2017 -o table`       | Table out all the VM images which have SKU name VS-2017 - these have VS210 installed.             |
 | `az vm list-size --location westeurope -o table`   | Table out all the VM images and their size available in west Europe.                              |
 | `az vm create -n $MyVm -g $MyResourceGroup --image Centos --admin-username myusername --admin-password $MyAdminPswd` | Creates a VM named as the value of the local variable $MyVm from the image Centos in the resource group named as the value of the local variable $MyResourceGroup and the given password and username (which would be used to RDP into the VM).                                              |
-| `` |.                                              |
-| `` |.                                              |
+| `az vm list-ip-addresses -n $VmName -g $ResGrpName -o table` | Table out the IP public addresses of the specified VM.|
+| `az vm open-port --port 80 -n $VmName -g $ResGrpName` | Open port 80 on the specified VM.|
+| `az vm show -n $VmName -g $ResGrpName --query "PowerState" -o tvs` | Show the power state of the specified VM.|
+| `az vm  deallocate -n $VmName -g $ResGrpName` | Set the specified VM to a deallocated state.|
+| `az vm show -d -n $VmName -g $ResGrpName --query "PowerState" -o tvs ` | The **d** flag shows additional details.|
+| `` |.|
+| `` |.|
+| `` |.|
+| `` |.|
+| `` |.|
+| `` |.|
+
+
+#### Install Virtual Machine Extensions
+
+It's possible to install extensions on a VM. For example, the **custom script extension** once installed
+allows custom PowerShell scrips to be run on the VM. The example below illustrates hoe to install the 
+ **custom script extension**  on a VM from **Azure CLI**. Notice that in the script below settings are 
+ passed to the command via a json file - it would be possible to specify them inline but this way is 
+ clealry more practical. The settings file in this case contains a json object with properties specifying
+ the path of the file(s) to download to the VM and that will be subsequently run on it and the execute 
+ command expression that will be used to run the scripts on the VM.
+
+
+```
+az vm extension set \
+--publisher Microsoft.Compute \
+--version 1.8
+--name CustomScriptExtension
+--vm-name $VmName
+--resource-group $RsGrpName
+--settings extensionSettings.json
+```
+
+One use case for which you might want to enable **VM Extensions** such as the **CustomScriptExtensions** is
+to run PowerShell script to perform regular automated maintenance or install software. For example, IIS may
+be installed and one or more web sites deployed to IIS to use the VM as a dedicated web server.
+
+| Command                                            | Results                                      |
+| -------------------------------------------------- | -------------------------------------------- |
+| `` |.|
+
+#### Virtual Machine States
+
+1. The payment model for a VM splits the costs into the static hardware resources and the compute resources.
+   Costs for the latter can be avoided by setting the VM in a **"stopped"** state. However, you will still 
+   incur in the cost for the **static hardware resources** such as the hard drive and the public IP addresses 
+   of the machine. In order to remove also these costs the VM must not only be in a **stop** state but also be
+   set to **deallocated** state. The deallocation **does not remove the VM from the resource group** that is the
+   VM is still available as a resource but it's no longer running and has no hardware resources assigned to it 
+   there is just its ISO. IT can be restored to **running** state in the usual way afterwards.
+
+2. When a VM is stopped and then restated i.e. overnight to save on CPU costs, it will retain the same IP public
+   address on restarting it. However, when it is **deallocated** it will normally obtain a **different public IP
+   adress** on restarting it. 
+
+3. When a VM is created there are much more resources allocated than the mere VM. For example, **network interfaces,
+   disks, IP addresses, VPNs, etc.** are all resources that are provisioned together with a VM. The best way to deallocate
+   all these resources together is to deallocate the resource group these are associated with.
+   ***'''az group delete --name $ResGrpName'''*** .
+
+
+
