@@ -4,6 +4,8 @@
 
 1. [Azure CLI: Getting Started Pluralsight course](https://app.pluralsight.com/library/courses/azure-cli-getting-started/table-of-contents)
 
+---
+
 ### Frequently used commands
 
 - az login
@@ -33,15 +35,9 @@
 | `az account list --query "[0].{name:name, id:id}"`                   | As above but only the object at index 0.                                      |
 | `az account list --query "[?name=='DreamSpark']"`                    | As above but only the account of name DreamSpark - the whole JSON object.     |
 | `az account list --query "[?name=='DreamSpark'].state"`              | As above but only the value of the state property from the JSON object.       |
-| `az account list --query "[?name=='DreamSpark'].state" -o tsv`       | As above but the raw value is extracted by -o tsv as tab separeted.           |
-| `` |.                                                                |
-| `` |.                                                                |
-| `` |.                                                                |
-| `` |.                                                                |
-| `` |.                                                                |
-| `` |.                                                                |
-| `` |.                                                                |
-| `` |.                                                                |
+| `az account list --query "[?name=='DreamSpark'].state" -o tsv`       | As above but the raw value is extracted by -o tsv as tab separated.           |
+
+---
 
 ### Examples
 
@@ -52,6 +48,8 @@
   or
 
   > az account set -s "DreamSpark"
+
+---
 
 ### AZ Interactive mode
 
@@ -84,6 +82,8 @@ JMESPath.
 > --query ipAddress  
 > -o tvs
 
+---
+
 ### Best Practices
 
 1. For each Azure account create multiple subscriptions each used to perform a related set of tasks.
@@ -100,17 +100,17 @@ JMESPath.
    one is specified. Notice that resources added to a resource group need not be located in the same area of 
    the resource group, this just provides a default.
 
+---
+
 ### Resource Groups
-
-
 
 | Command                                               | Results                                    |
 | --------------------------------------------------    | ------------------------------------------ |
 | `az resources list -g $MyResourceGroupName -o tabkle` | lists all the resources in the given resource group.  |
 
+---
 
-
-### Virtual Machine
+### Virtual Machines
 
 There are a number of considerations to account for when setting up a VM.
 
@@ -197,6 +197,12 @@ be installed and one or more web sites deployed to IIS to use the VM as a dedica
    disks, IP addresses, VPNs, etc.** are all resources that are provisioned together with a VM. The best way to deallocate
    all these resources together is to deallocate the resource group these are associated with.
    ***'''az group delete --name $ResGrpName'''*** .
+
+---
+
+### Managing Sorage Accounts
+
+---
 
 
 
