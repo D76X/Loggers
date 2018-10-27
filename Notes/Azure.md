@@ -205,7 +205,44 @@ files and blobs.
 
 1. **Blobs**  
 Used to store files and other unstructured data in the cloud. Blob storage can also be used to 
-control access to files by means of a **SAS (Shared Access Signature) tokens** .
+control access to files by means of a **SAS (Shared Access Signature) tokens** . Notice that this
+storage type is flat that is **there is no folder structure**. The resources may be accessed over
+URLs and these URLs maybe modified at the time the resources are uploaded to the storage in order
+to emulate a folder structure if it desirable to do so. For **Blob storage in public containers**
+the resources are directly accessible over their URLs that is by using the file's URL directly
+in the browser it will download the file. However, for **Blob storage in private containers** the
+URL of the file is not enough to download the resource **a SAS token is also required.**.
+
+This example illustrate how to get the URL of a file available on a Blob storage when the name of 
+the file on the Blob is known together with the name of the storage container - the **-o tsv** 
+option as usual is used to get a value instead of json as the Azure CLI would normally do.
+
+```
+az storage blob generate-sas \
+-c $myPrivateContainerName \
+-n $myBlobStorageName \
+-o tsv \
+```
+
+Given the URL of the file as above it may be used directly if the blob storage in which the file
+resides is public. However, **in case the container of blob storage is private it is required to** 
+**create a SAS token to enable access to the file** . Notice that in the following the **--permission**
+option is used to specify the access level that the generated SAS grants. In this case **r** means
+**read access only** .
+
+```
+az storage blob generate-sas \
+-c $myPrivateContainerName \
+-n $myBlobStorageName \
+-permissions r \
+-o tsv \
+-expiry 2018-10-27T12:00
+```
+
+Once a SAS token for a file in a Blob storage in a private storage container has been created 
+the file will be accessible within the expiration time by using the **URL?SASkey** as below.
+
+```https:\\myblobcontainer.blob.core.windows.net/..../myfile.txt?sa=6238982097840238409820384Augfsdjh```
 
 2. **Files**  
 These are containers used as files shares which may be attached to VMs as shared drives.
@@ -255,6 +292,12 @@ Locally Redundant Storage SKU**.
 | -------------------------------------------------- | ------------------------------------------ |
 | `az storage account create -n $san -g $rgn -l $loc -sku Standard_LRS` | Example to create a storage account.|
 | cn=`az storage account show-connection-string -n $san -g $rgn --query connectionString -o tvs`` | Store the connection string for the named storage account into the variable cn.|
+| `az storage -h` | As usual you get help from the Azure CLI, this will list the available storage commands.|
+| `az storage container create -h` | Get help on the options to create a storage container.|
+| `az storage container create -n "mypubliccont" --public-access blob - connection-string $cs` | Create a public blob storage container.|
+| `az storage container create -n "myprivatecont" --public-access off - connection-string $cs` | Create a private blob storage container.|
+| `az storage blob upload -c $containerName -f $myFileName -n "MyStoredFile.txt"` | Upload a file to a blob container.|
+| `az storage blob url -c $containerName -n "MyStoredFile.txt" -tsv` | Find the URL of the stored filed on the specified container.|
 | `` |.|
 | `` |.|
 | `` |.|
