@@ -1,4 +1,6 @@
 <Query Kind="Program">
+  <Reference Relative="Binaries\MoreLinq.dll">C:\GitHub\Loggers\Examples\LINQPad\Binaries\MoreLinq.dll</Reference>
+  <Namespace>MoreLinq</Namespace>
   <Namespace>System.Globalization</Namespace>
   <Namespace>System.Linq</Namespace>
 </Query>
@@ -35,9 +37,27 @@ void Main() {
  TestStep0();
  TestStep1();
  
+ //----------------------------------------------------------------
+ // How to reference MoreLINQ in the free version of LINQPad!
+ // 1- Use NuGet Package Explorer to download the NuGet Package from the remote repo to a local folder
+ // 2- C:\GitHub\NuGetPakages
+ // 3- Use NuGet Package Explorer to inspect the content of the NuGet pckg file
+ // 4- Save the DLL to a folder where LINQPad can have access
+ // 5- C:\GitHub\Loggers\Examples\LINQPad\Binaries
+ // 6- Add a refernce to this binary in LINQPad i.e. F4...
+ // 7- add any relevant namespace i.e. MoreLinq
+ //----------------------------------------------------------------
+ 
  // we can obtain a more elegant and efficinet solution by means of 
  // the MoreLINQ library Pairwise extension method. Pairwise takes 
  // a sequence and turn it into a sequence of adjecent elements.
+ var result = 
+	("00:00," + data)
+	.Split(',')
+	.Select(s => TimeSpan.Parse($"00:{s}"))
+	.Pairwise((a,b)=> b-a);
+	
+ result.Dump();
  
 }
 
