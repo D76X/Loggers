@@ -22,6 +22,11 @@
 // a pool's length convert the sequence into a new sequnce of the time taken 
 // by the swimmer to swim each length. In other words compute the sequence of
 // differences.
+// Example of the expected output
+// Length 1: Start = 0:00 End = 0:45  Delta = 0:45
+// Length 2: Start = 0:45 End = 01:32 Delta = ...
+// etc.
+
 string data = "00:45,01:32,02:18,03:01,03:44,04:31,05:19,06:01,06:47,07:35";
 
 void Main() { 
@@ -29,7 +34,44 @@ void Main() {
  // tests 
  TestStep0();
  //TestStep1();
+ 
 }
 
-void TestStep0(){
+class Rec {
+	string Start {get; set;}
+	string End{get; set;}
+	string Delta{get; set;}
 }
+
+void TestStep0(){ 
+	
+	// one ugly way combines 
+	// 1- IEnumerable<T>.Aggregate
+	// 2- anonymous types
+	// 3- the use of the dynamic keyword
+	// 4- use of the ArrayList type
+	var result = 
+	data
+	.Split(',')
+	.Aggregate(
+		new ArrayList(),
+		(agg,next) => {			
+			int index = agg.Count-1;
+			string start = "00:00";			
+			if(index<0) {
+				agg.Add(new {Start=start, End=next, Delta=TimeSpan.Parse(next)-TimeSpan.Parse(start)});
+				return agg;
+			}				
+			dynamic last = agg[index];	
+			start = last.End;
+			agg.Add(new {Start=last.End, End=next, Delta=TimeSpan.Parse(next)-TimeSpan.Parse(start)});
+			return agg;
+		});
+		
+	result.Dump();
+}
+
+
+
+
+
