@@ -18,7 +18,7 @@
 // To see the properties of a LINQPad query right-click and select References and Properties.
 
 // Challenge
-// give an enumerable of Books find the Title if the longest book.
+// given an enumerable of Books find the Title if the longest book.
 
 public static class LinqExtensions {
 
@@ -28,8 +28,27 @@ public static class LinqExtensions {
 		
 		var comparer = Comparer<TKey>.Default;
 		
-		using(){
+		using(var sourceIterator = source.GetEnumerator()){
 		
+			if(!sourceIterator.MoveNext()){
+			 throw new InvalidOperationException("Sequence contains no elements");
+			}
+			
+			var max = sourceIterator.Current;
+			var maxKey = selector(max);
+			
+			while(sourceIterator.MoveNext()){
+			
+				var candidate = sourceIterator.Current;
+				var candidateProjected = selector(candidate);
+				
+				if(comparer.Compare(candidateProjected,maxKey)>0){
+					maxKey = candidateProjected;
+					max = candidate;
+				}
+			}
+			
+			return max;
 		}	
 	}
 }
@@ -62,7 +81,7 @@ void Main() {
  // which can return complex types contrary to the LINQ
  // IEnumerable.Max method.
  
-	
+ books.MaxBy(b => b.Pages).Dump();	
 }
 
 void TestStep0(){
@@ -91,7 +110,7 @@ void TestStep2(){
 
 void TestStep3(){
  
- // here we use the versitile IEnumerable<T>.Agreegate function
+ // here we use the versitile IEnumerable<T>.Aggregate function
  // although it does not warrant good readability. The aggregate
  // value 'max' is a complex value and the time complexity is N
  // as in the cases before.
