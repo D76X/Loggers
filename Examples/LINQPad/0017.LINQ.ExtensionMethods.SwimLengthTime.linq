@@ -33,7 +33,11 @@ void Main() {
  
  // tests 
  TestStep0();
- //TestStep1();
+ TestStep1();
+ 
+ // we can obtain a more elegant and efficinet solution by means of 
+ // the MoreLINQ library Pairwise extension method. Pairwise takes 
+ // a sequence and turn it into a sequence of adjecent elements.
  
 }
 
@@ -67,6 +71,29 @@ void TestStep0(){
 			agg.Add(new {Start=last.End, End=next, Delta=TimeSpan.Parse(next)-TimeSpan.Parse(start)});
 			return agg;
 		});
+		
+	result.Dump();
+}
+
+void TestStep1(){ 
+	
+	// this is even worse than before because it splits 
+	// the data twice! This means that its time complexity
+	// is 2N instead of N. 
+	var result = 
+	("00:00," + data)
+	.Split(',')
+	.Zip(
+		data.Split(','),
+		(s,f) => { 
+		 var start = TimeSpan.Parse(s);
+		 var finish = TimeSpan.Parse(f);
+		 return new {
+		 Start = start,
+		 Finish = finish,
+		 Delta = finish - start 
+		 };
+	});
 		
 	result.Dump();
 }
