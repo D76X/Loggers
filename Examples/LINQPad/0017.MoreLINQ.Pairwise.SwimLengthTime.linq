@@ -50,6 +50,7 @@ void Main() {
  // MoreLINQ namespaces 
  //
  // https://markheath.net/post/exploring-morelinq-16-pairwise
+ // https://stackoverflow.com/questions/31852389/how-do-i-use-the-c6-using-static-feature
  //----------------------------------------------------------------------------------------------------
   
  // we can obtain a more elegant and efficinet solution by means of 
