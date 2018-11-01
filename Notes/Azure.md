@@ -288,6 +288,8 @@ Locally Redundant Storage SKU**.
 
 ```az storage account create -n $san -g $rgn -l $loc -sku Standard_LRS```
 
+### Managing Storage Accounts and Containers 
+
 | Command                                            | Results                                    |
 | -------------------------------------------------- | ------------------------------------------ |
 | `az storage account create -n $san -g $rgn -l $loc -sku Standard_LRS` | Example to create a storage account.|
@@ -296,8 +298,65 @@ Locally Redundant Storage SKU**.
 | `az storage container create -h` | Get help on the options to create a storage container.|
 | `az storage container create -n "mypubliccont" --public-access blob - connection-string $cs` | Create a public blob storage container.|
 | `az storage container create -n "myprivatecont" --public-access off - connection-string $cs` | Create a private blob storage container.|
-| `az storage blob upload -c $containerName -f $myFileName -n "MyStoredFile.txt"` | Upload a file to a blob container.|
+
+### Managing Blob Containers
+
+| Command                                            | Results                                    |
+| -------------------------------------------------- | ------------------------------------------ |
+| `az storage blob upload -c $containerName -f $myFileName -n "MyStoredFile.txt"` | Upload a file to a public blob container.|
 | `az storage blob url -c $containerName -n "MyStoredFile.txt" -tsv` | Find the URL of the stored filed on the specified container.|
+| `az storage blob upload -c $privateContainer -"myfile.csv" -n $myBlobName` |Upload a file to a private blob container.|
+| `az storage blob generate-sas -c $privateContainer -n $blobName --permission r -expiry $expDate -o tsv` | Generate a read only SAK to access the named blob on the private blob container within an expiration date.|
+
+### Managing Queues
+
+| Command                                            | Results                                    |
+| -------------------------------------------------- | ------------------------------------------ |
+| `az storage queue create -n $queueName --connection-string $cs` | Create a queue on the storage account with the given conn str.|
+| `az storage message put -q $queueName --content "My Message"`   | Post a message to a queue i.e. to trigger a maintenance workflow.|
+| `az storage message get -q $queueName --visibility-timeout 120` | Read off the next available message from the queue.|
+| `az storage message delete --id $msgId --pop-receipt $popId --queue-name $qN ` | Post a message delition to the queue.|
+
+#### Reading and processing messages from a queue
+
+When messages are read from a queue storage the `--visibility-timeout mm` specify the time lapse over which the message is 
+expected to be processed by the caller before the same message is set to be readable on the queue again. This means that
+the caller which reads a message obtains a json with the content of the message its id on the queue and its **popReceipt**
+which must be posted back to the queue by the caller to notify the queue that the caller has processed the message and it's
+Ok to remove it from the queue. Once the message has been deleted by the queue it is no longer available to any other caller.
+
+### Managing Tables
+
+| Command                                            | Results                                    |
+| -------------------------------------------------- | ------------------------------------------ |
+| `az storage table create -n $tableName --connection-string $cs` | Create a table on the storage account with the given conn str.|
+| `az storage entity insert -t $tableName -e PartitionKey="Settings" RowKey="Timeout" Value=10 Description="Timeout in sec"` | Inserts a rowin the table of given name with the given PK and RK and a bunch of data.|
+| `az storage table query -t $tableName` | Retrieves all the rows from the named tabled.|
+| `az storage table entity query -t $tableName --filter "PartitionKey eq 'Settings'"` | Retrieve all the rows fromthenamed table whose PK is set to the string Settings.|
+| `az storage table entity query -t $tableName --filter 'Value eq 10` | Obvious.|
+| `az storage entity replace -t $tableName -e PartitionKey="Settings" RowKey="Timeout" Value=5 Description="Changed"` | Replace the given PK+RK entity in the named table with the given data.|
+| `az storage entity merge -t $tableName -e PartitionKey="Settings" RowKey="Timeout" Value=100` | Updates the Value of the entity.|
+| `az storage entity merge -t $tableName -e PartitionKey="Settings" RowKey="Timeout"` | Retrives the entity at PK+RK in the named table.|
+| `` |.|
+| `` |.|
+
+#### Azure Tables
+
+Azure tables is a shcemeless storage, **only PK an RK are necessary** other than that it is possible to insert entities with as many
+fields as necessary **up to 255**. Rows retrieved from any Azure table will also always have **Timestap and etag**. When the data for 
+an entity needs to be modified there exist two upions **replace and merge**. The former requires to match the schema for the row while
+with the latter only some of the fields can be updated by including them in the command with the new values.
+
+There is some special syntax to query Azure table [Querying Tables and Entities](https://docs.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities)  
+
+### Managing File Shares
+
+| Command                                            | Results                                    |
+| -------------------------------------------------- | ------------------------------------------ |
+| `` |.|
+| `` |.|
+| `` |.|
+| `` |.|
 | `` |.|
 | `` |.|
 | `` |.|
