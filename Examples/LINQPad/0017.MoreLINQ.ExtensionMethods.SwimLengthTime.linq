@@ -1,6 +1,6 @@
 <Query Kind="Program">
   <Reference Relative="Binaries\MoreLinq.dll">C:\GitHub\Loggers\Examples\LINQPad\Binaries\MoreLinq.dll</Reference>
-  <Namespace>MoreLinq</Namespace>
+  <Namespace>static MoreLinq.Extensions.PairwiseExtension</Namespace>
   <Namespace>System.Globalization</Namespace>
   <Namespace>System.Linq</Namespace>
 </Query>
@@ -37,7 +37,7 @@ void Main() {
  TestStep0();
  TestStep1();
  
- //----------------------------------------------------------------
+ //----------------------------------------------------------------------------------------------------
  // How to reference MoreLINQ in the free version of LINQPad!
  // 1- Use NuGet Package Explorer to download the NuGet Package from the remote repo to a local folder
  // 2- C:\GitHub\NuGetPakages
@@ -46,15 +46,26 @@ void Main() {
  // 5- C:\GitHub\Loggers\Examples\LINQPad\Binaries
  // 6- Add a refernce to this binary in LINQPad i.e. F4...
  // 7- add any relevant namespace i.e. MoreLinq
- //----------------------------------------------------------------
- 
+ //----------------------------------------------------------------------------------------------------
+ // MoreLINQ namespaces 
+ //
+ // https://markheath.net/post/exploring-morelinq-16-pairwise
+ //----------------------------------------------------------------------------------------------------
+  
  // we can obtain a more elegant and efficinet solution by means of 
  // the MoreLINQ library Pairwise extension method. Pairwise takes 
  // a sequence and turn it into a sequence of adjecent elements.
+ // It is actually a special case of the MoreLINQ Windows extension
+ // method which allows 
  var result = 
-	("00:00," + data)
-	.Split(',')
-	.Select(s => TimeSpan.Parse($"00:{s}"))
+	 data	
+	.Split(',')	
+	.Select(s => TimeSpan.Parse($"00:{s}"))	
+	// Prepend is implemented in System.LINQ and MoreLINQ
+	// here we use the LINQ standard implementation as we 
+	// have imported Pairwise by means of thestatic namespace
+	// static MoreLinq.Extensions.PairwiseExtension
+	.Prepend(TimeSpan.Zero)					
 	.Pairwise((a,b)=> b-a);
 	
  result.Dump();
@@ -117,8 +128,3 @@ void TestStep1(){
 		
 	result.Dump();
 }
-
-
-
-
-
