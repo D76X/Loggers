@@ -1,6 +1,6 @@
 <Query Kind="Program">
   <Reference Relative="Binaries\MoreLinq.dll">C:\GitHub\Loggers\Examples\LINQPad\Binaries\MoreLinq.dll</Reference>
-  <Namespace>static MoreLinq.Extensions.PairwiseExtension</Namespace>
+  <Namespace>MoreLinq.Extensions</Namespace>
   <Namespace>System.Globalization</Namespace>
   <Namespace>System.Linq</Namespace>
 </Query>
@@ -52,7 +52,7 @@ void Main() {
  // this sequence is much more useful
  // Code equivalent to the 'let' keyword in chained LINQ extension method calls
  // https://stackoverflow.com/questions/1092687/code-equivalent-to-the-let-keyword-in-chained-linq-extension-method-calls 
-  var seq = data
+  var seq1 = data
   .Split(',')
   .Select((s, index) => new { Day=++index, Sales=Int32.Parse(s.Trim()) });
  
@@ -60,7 +60,9 @@ void Main() {
  
  // solution by using IEnumerable<T>.Aggregate
  // very imperative and less readable than the one following
- var result1 = seq.Aggregate(new {Current=new ArrayList(), Max=new ArrayList()} , (acc, next) => {
+ var result1 = seq1.Aggregate(
+ 	new {Current=new ArrayList(), Max=new ArrayList()} , 
+	(acc, next) => {
   	
 	if(next.Sales==0) { 
 		acc.Current.Clear(); 
@@ -79,11 +81,27 @@ void Main() {
  
  result1.Max.Dump();
  
- // Here the MoreLINQ Batch method makes the expression of the logic very elegant
- // readable and succinct 
- 
-
- 
+ // Here the MoreLINQ GroupAdjecent method makes the expression of the logic very elegant
+ // readable and succinct. Notice that in this example the using statement MoreLinq.Extensions
+ // has been added to the import as the IEnumerable<T>.GroupAjacent is only available in 
+ // MoreLINQ and there is no conflict with the .NET native LINQ implementations.
+ var seq2 = data
+  .Split(',')
+  .Select(s => Int32.Parse(s.Trim()));
+  
+  var result2 = 
+  // create IGrouping<TKey,TElement> from IEnumerable<TElement> by means of a predicate
+  // each time the predicate turns from false to true a new group element is created 
+  // the groups are also ordered from the one that contains more items thus the longest 
+  // streak of consecutive sales.
+  seq2
+  .GroupAdjacent(s => s > 0)
+  .OrderByDescending(g => g.Count())
+  .First()
+  .Dump();
+  
+  // the previous implementation can be improved as the OrderByDescending introduces 
+  // inefficiency as the its cost is at least NlogN...
 }
 
 void TestStep0() {
