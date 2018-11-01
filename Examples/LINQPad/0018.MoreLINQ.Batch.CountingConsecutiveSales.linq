@@ -48,14 +48,40 @@ void Main() {
  // https://markheath.net/post/exploring-morelinq-16-pairwise
  // https://stackoverflow.com/questions/31852389/how-do-i-use-the-c6-using-static-feature
  //----------------------------------------------------------------------------------------------------
-  
- // Here the MoreLINQ Batch method makes the expression of the logic very elegant
- var result = 
-	 data	
-	.Split(',')
-	.Select(s => s.Trim());
+ 
+ // this sequence is much more useful
+ // Code equivalent to the 'let' keyword in chained LINQ extension method calls
+ // https://stackoverflow.com/questions/1092687/code-equivalent-to-the-let-keyword-in-chained-linq-extension-method-calls 
+  var seq = data
+  .Split(',')
+  .Select((s, index) => new { Day=++index, Sales=Int32.Parse(s.Trim()) });
+ 
+ //seq.Dump();
+ 
+ // solution by using IEnumerable<T>.Aggregate
+ // very imperative and less readable than the one following
+ var result1 = seq.Aggregate(new {Current=new ArrayList(), Max=new ArrayList()} , (acc, next) => {
+  	
+	if(next.Sales==0) { 
+		acc.Current.Clear(); 
+		return acc;
+	} else {
+		acc.Current.Add(next);
+	}	
 	
- result.Dump();
+	if(acc.Current.Count>acc.Max.Count) {
+		acc.Max.Clear();
+		acc.Max.AddRange(acc.Current);
+	}
+	
+	return acc;
+  });
+ 
+ result1.Max.Dump();
+ 
+ // Here the MoreLINQ Batch method makes the expression of the logic very elegant
+ // readable and succinct 
+
  
 }
 
@@ -117,7 +143,6 @@ void TestStep2() {
 	// Take only the IGrouping that are not single zero sales.
 	where gSales.Count()>1 
 	select new { gSales };
-
 	
 	result.Dump();
 }
