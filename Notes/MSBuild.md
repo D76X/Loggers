@@ -1,6 +1,5 @@
 # MSBuild
 
----
 ### MSBuild from command line
 
 In the Visual Studio Developer Command Propmt
@@ -63,7 +62,8 @@ Any __*.msbuild__ files must begin with
 
 ## Targets
 
-Targets represent the sequence of instruction to MSBuild. Targets contain Tasks.
+*  Targets represent the sequence of instruction to MSBuild.  
+*  Targets contain Tasks.
 
 ### Some examples from command line and *.rsp
 
@@ -71,7 +71,7 @@ From the command line.
 
 ```> msbuild dosomething.msbuild /t:Target10;Target3```
 
-Alternative from the command line with a backing *rsp file.
+Alternative from the command line with a backing *.rsp file.
 
 ```> msbuild dosomething.msbuild @dosomething.rsp```
 
@@ -199,8 +199,8 @@ evaluates to a boolean. The example also shows
 
 ## Tasks
 
-Tasks are descendant of the Task class which implements ITask. ITask declares the
-Execute method that is invoked by MSBuild when the *.msbuild is processed.
+* Tasks are descendant of the Task class which implements ITask. 
+* ITask declares the Execute method that is invoked by MSBuild when the *.msbuild is processed.
 
 ---
 

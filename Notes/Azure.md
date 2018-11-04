@@ -187,10 +187,11 @@ be installed and one or more web sites deployed to IIS to use the VM as a dedica
    address on restarting it. However, when it is **deallocated** it will normally obtain a **different public IP
    adress** on restarting it. 
 
+### Use a Resource Group to efficiently manage Azure resources deallocation. 
+
 3. When a VM is created there are much more resources allocated than the mere VM. For example, **network interfaces,
    disks, IP addresses, VPNs, etc.** are all resources that are provisioned together with a VM. The best way to deallocate
-   all these resources together is to deallocate the resource group these are associated with.
-   ***'''az group delete --name $ResGrpName'''*** .
+   all these resources together is to deallocate the resource group these are associated with. This applies in general any time a number of resources are allocated within a resource group. For example, when testing a new feature on a project thatmakes use of Azure services an ad hoc test resource group can be instantiated so that all the necessary Azure services for the test can be created within the test resource group. Once the test of the new feature is completed all the resources allocated within it canbe deallocvated by simply deleting the resource group with ***'''az group delete --name $ResGrpName --yes*** . 
 
 ---
 
@@ -353,16 +354,30 @@ There is some special syntax to query Azure table [Querying Tables and Entities]
 
 | Command                                            | Results                                    |
 | -------------------------------------------------- | ------------------------------------------ |
+| `az storage file -h` | Show the Azure CLI help for the storage area and the file section.|
+| `az storage share create -n $fileShareName --quota 2 --connection-string $cs` | Create a fileshare of 2GB.|
+| `az storage file upload -n $fileShareName --source "MyFile.txt" --connection-string $cs` | Upload a file to the share.|
+| `az storage file list -s $fileShareName` | Lists all the file on the share - returns json details.|
 | `` |.|
-| `` |.|
-| `` |.|
-| `` |.|
-| `` |.|
-| `` |.|
-| `` |.|
-| `` |.|
+
 
 ---
 
+## Managing Web Apps and SQL Databases
+
+| Command                                            | Results                                    |
+| -------------------------------------------------- | ------------------------------------------ |
+| `` |.|
+| `` |.|
+| `` |.|
+| `` |.|
+| `` |.|
+| `` |.|
+| `` |.|
+| `` |.|
+| `` |.|
+| `` |.|
+| `` |.|
+| `` |.|
 
 
