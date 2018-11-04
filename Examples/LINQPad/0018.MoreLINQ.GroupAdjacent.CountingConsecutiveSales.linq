@@ -192,11 +192,3 @@ void TestStep3() {
 	// take only the first group which holds the longest streak of consecutive sales.
 	result.Take(1).Dump();	
 }
-
-
-
-
-
-
-
-
