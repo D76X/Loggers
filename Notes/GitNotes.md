@@ -7,13 +7,13 @@ https://stackoverflow.com/questions/5737002/how-to-delete-a-stash-created-with-g
 Imagine that you have been working on a branch for some time and you have a bunch of uncommitted changes for it that are important but not yet in a state where you can commit them. However, for some region you need to switch branch i.e. you need to fix an urgent bug on master while the changes are on feature1 branch. In these cases before switching from feature1 to master you may want to stash the local changes. It is a sort of shelveset.
 
 
-| Command		            | Results			                                                                              |
-| -------------             | ------------------------------------------------------------------------------------------------|
+| Command		            | Results   |
+| --------------------------| --------------------------------------------|
 | ```git stash```	        | Create a stash with the uncommitted changes on the current branch and removes the local changes.| 
 | stash & keep              | See below.                                                                                      |
-| ```git stash list```	    | List all the stashes on the server.                                   |
-| ```git stash apply```	    | Apply the most recent stash changes toi the current branch.           |
-| ```git stash drop```	    | Removes the most recent stash.                                        |
+| ```git stash list```	    | List all the stashes on the server.|
+| ```git stash apply```	    | Apply the most recent stash changes toi the current branch.|
+| ```git stash drop```	    | Removes the most recent stash.|
 
 ## [Stash changes while keeping the changes in the working directory in Git](https://stackoverflow.com/questions/17843384/stash-changes-while-keeping-the-changes-in-the-working-directory-in-git)
 
@@ -45,16 +45,30 @@ In cases where the changes haved already been synched or pushed to the repo this
 
 ## Eclude Folders with .gitignore 
 
-https://stackoverflow.com/questions/30005759/visual-studio-2013-git-ignore-list-doesnt-ignore-dlls  
+* [VisualStudio.gitignore](https://github.com/github/gitignore/blob/master/VisualStudio.gitignore)  
+* [A collection of .gitignore templates](https://github.com/github/gitignore)  
+* [.gitignore for Visual Studio Projects and Solutions](https://stackoverflow.com/questions/2143956/gitignore-for-visual-studio-projects-and-solutions)  
+* [visual studio 2013 GIT ignore list doesn't ignore dlls](https://stackoverflow.com/questions/30005759/visual-studio-2013-git-ignore-list-doesnt-ignore-dlls)   
 
-### Example
 
-Firstly run the command
+### [How to make Git “forget” about a file that was tracked but is now in .gitignore?](https://stackoverflow.com/questions/1274057/how-to-make-git-forget-about-a-file-that-was-tracked-but-is-now-in-gitignore)  
 
-```git rm -rf C:\GitHub\Loggers\Examples\Installers-Examples\HelloWixTestApp1Bin```  
+* Case 1 for a single file
+```
+git rm --cached <file>
+```
 
-Then add the following to .gitignore  
+* Case 2 for all files that are set in the **.gitignore**
 
-```**/Temp/**/Examples/Installers-Examples/HelloWixTestApp1Bin/```
+```
+First:
+
+git rm -r --cached . 
+git add .
+
+Then:
+
+git commit -am "Remove ignored files"
+```
 
 ***
