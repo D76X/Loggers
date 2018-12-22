@@ -11,31 +11,31 @@
 - az login
 - az account show
 
-| Command                                                              | Results                                                                       |
-| -------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `az login`                                                           | Login to your Azure account.                                                  |
-| `az account show`                                                    | See all the currently selected subscriptions for the account.                 |
-| `az account list`                                                    | See all the available subscriptions for the account.                          |
-| `az account set -s "NameOfSuscription/guid"`                         | Select a subscription by name or its GUID.                                    |
-| `az`                                                                 | Shows all the available base commands.                                        |
-| `az --version`                                                       | Shows the vesrion of the CLI and subpackages.                                 |
-| `az webapp -h`                                                       | Shows help on the webapp subgroups and subcommands.                           |
-| `az webapp create -h`                                                | Shows help for the webapp create subcommand.                                  |
-| `az webapp config -h`                                                | Shows help for the webapp config subgroup of subcommand.                      |
-| `az group list`                                                      | List all the groups.                                                          |
-| `az group list -o table`                                             | Formats the ouptput as a table.                                               |
-| `az group list -o tvs`                                               | Formats the output as tab separated values.                                   |
-| `az group list -o jsonc`                                             | Formats the output with syntax highlighted JSON.                              |
-| `az functionapp list`                                                | List all the function apps.                                                   |
-| `az group show -n ps-iot-hub-test --query location`                  | Show only the value of location property of the group of name ps-iot-hub-test |
-| `az group show -n ps-iot-hub-test --query "[location, id] -o table"` | As above but include also the value of the prop id and format as a table.     |
-| `az group show -n ps-iot-hub-test --query "{loc:location, id:id}"`   | As above but a JSON object is returned.                                       |
-| `az account list --query "[].id"`                                    | Returns the ids of the accounts.                                              |
-| `az account list --query "[].{name:name, id:id}"`                    | Returns the ids/names of the accounts as JSON objects.                        |
-| `az account list --query "[0].{name:name, id:id}"`                   | As above but only the object at index 0.                                      |
-| `az account list --query "[?name=='DreamSpark']"`                    | As above but only the account of name DreamSpark - the whole JSON object.     |
-| `az account list --query "[?name=='DreamSpark'].state"`              | As above but only the value of the state property from the JSON object.       |
-| `az account list --query "[?name=='DreamSpark'].state" -o tsv`       | As above but the raw value is extracted by -o tsv as tab separated.           |
+| Command | Results |
+| ------- | ------- |
+| `az login` | Login to your Azure account. |
+| `az account show` | See all the currently selected subscriptions for the account. |
+| `az account list` | See all the available subscriptions for the account. |
+| `az account set -s "NameOfSuscription/guid"`| Select a subscription by name or its GUID. |
+| `az` | Shows all the available base commands.                                        |
+| `az --version` | Shows the vesrion of the CLI and subpackages.                                 |
+| `az webapp -h` | Shows help on the webapp subgroups and subcommands. |
+| `az webapp create -h`| Shows help for the webapp create subcommand.|
+| `az webapp config -h`| Shows help for the webapp config subgroup of subcommand.|
+| `az group list` | List all the groups.  |
+| `az group list -o table` | Formats the ouptput as a table. |
+| `az group list -o tvs` | Formats the output as tab separated values.|
+| `az group list -o jsonc` | Formats the output with syntax highlighted JSON. |
+| `az functionapp list`| List all the function apps.|
+| `az group show -n ps-iot-hub-test --query location`| Show only the value of location property of the group of name ps-iot-hub-test |
+| `az group show -n ps-iot-hub-test --query "[location, id] -o table"` | As above but include also the value of the prop id and format as a table. |
+| `az group show -n ps-iot-hub-test --query "{loc:location, id:id}"` | As above but a JSON object is returned. |
+| `az account list --query "[].id"` | Returns the ids of the accounts. |
+| `az account list --query "[].{name:name, id:id}"`| Returns the ids/names of the accounts as JSON objects.|
+| `az account list --query "[0].{name:name, id:id}"` | As above but only the object at index 0. |
+| `az account list --query "[?name=='DreamSpark']"` | As above but only the account of name DreamSpark - the whole JSON object. |
+| `az account list --query "[?name=='DreamSpark'].state"`| As above but only the value of the state property from the JSON object. |
+| `az account list --query "[?name=='DreamSpark'].state" -o tsv` | As above but the raw value is extracted by -o tsv as tab separated. |
 
 ---
 
@@ -104,8 +104,8 @@ JMESPath.
 
 ### Resource Groups
 
-| Command                                               | Results                                    |
-| --------------------------------------------------    | ------------------------------------------ |
+| Command | Results |
+| ------- | ------- |
 | `az resources list -g $MyResourceGroupName -o tabkle` | lists all the resources in the given resource group.  |
 
 ---
@@ -128,8 +128,8 @@ There are a number of considerations to account for when setting up a VM.
 12. Are you going to run teh VM 24/7 or stop and restart it regularly?
 13. Do you need credential to remote or SSH into your VM?
 
-| Command                                            | Results                                                                                           |
-| -------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Command | Results |
+| ------- | ------- |
 | `az vm -h`                                         | Find help on the vm subgroup fo commands.                                                         |
 | `az vm image list -o table`                        | Table out the most commonly used available VM images.                                             |
 | `az vm image list --all -o table`                  | Table out all the available VM images - it might take a long time.                                |
@@ -169,8 +169,8 @@ One use case for which you might want to enable **VM Extensions** such as the **
 to run PowerShell script to perform regular automated maintenance or install software. For example, IIS may
 be installed and one or more web sites deployed to IIS to use the VM as a dedicated web server.
 
-| Command                                            | Results                                      |
-| -------------------------------------------------- | -------------------------------------------- |
+| Command | Results |
+| ------- | ------- |
 | `` |.|
 
 #### Virtual Machine States
@@ -291,8 +291,8 @@ Locally Redundant Storage SKU**.
 
 ### Managing Storage Accounts and Containers 
 
-| Command                                            | Results                                    |
-| -------------------------------------------------- | ------------------------------------------ |
+| Command | Results |
+| ------- | ------- |
 | `az storage account create -n $san -g $rgn -l $loc -sku Standard_LRS` | Example to create a storage account.|
 | cn=`az storage account show-connection-string -n $san -g $rgn --query connectionString -o tvs`` | Store the connection string for the named storage account into the variable cn.|
 | `az storage -h` | As usual you get help from the Azure CLI, this will list the available storage commands.|
@@ -302,8 +302,8 @@ Locally Redundant Storage SKU**.
 
 ### Managing Blob Containers
 
-| Command                                            | Results                                    |
-| -------------------------------------------------- | ------------------------------------------ |
+| Command | Results |
+| ------- | ------- |
 | `az storage blob upload -c $containerName -f $myFileName -n "MyStoredFile.txt"` | Upload a file to a public blob container.|
 | `az storage blob url -c $containerName -n "MyStoredFile.txt" -tsv` | Find the URL of the stored filed on the specified container.|
 | `az storage blob upload -c $privateContainer -"myfile.csv" -n $myBlobName` |Upload a file to a private blob container.|
@@ -311,8 +311,8 @@ Locally Redundant Storage SKU**.
 
 ### Managing Queues
 
-| Command                                            | Results                                    |
-| -------------------------------------------------- | ------------------------------------------ |
+| Command | Results |
+| ------- | ------- |
 | `az storage queue create -n $queueName --connection-string $cs` | Create a queue on the storage account with the given conn str.|
 | `az storage message put -q $queueName --content "My Message"`   | Post a message to a queue i.e. to trigger a maintenance workflow.|
 | `az storage message get -q $queueName --visibility-timeout 120` | Read off the next available message from the queue.|
@@ -328,8 +328,8 @@ Ok to remove it from the queue. Once the message has been deleted by the queue i
 
 ### Managing Tables
 
-| Command                                            | Results                                    |
-| -------------------------------------------------- | ------------------------------------------ |
+| Command | Results |
+| ------- | ------- |
 | `az storage table create -n $tableName --connection-string $cs` | Create a table on the storage account with the given conn str.|
 | `az storage entity insert -t $tableName -e PartitionKey="Settings" RowKey="Timeout" Value=10 Description="Timeout in sec"` | Inserts a rowin the table of given name with the given PK and RK and a bunch of data.|
 | `az storage table query -t $tableName` | Retrieves all the rows from the named tabled.|
@@ -352,8 +352,8 @@ There is some special syntax to query Azure table [Querying Tables and Entities]
 
 ### Managing File Shares
 
-| Command                                            | Results                                    |
-| -------------------------------------------------- | ------------------------------------------ |
+| Command | Results |
+| ------- | ------- |
 | `az storage file -h` | Show the Azure CLI help for the storage area and the file section.|
 | `az storage share create -n $fileShareName --quota 2 --connection-string $cs` | Create a fileshare of 2GB.|
 | `az storage file upload -n $fileShareName --source "MyFile.txt" --connection-string $cs` | Upload a file to the share.|
@@ -365,8 +365,8 @@ There is some special syntax to query Azure table [Querying Tables and Entities]
 
 ## Managing Web Apps and SQL Databases
 
-| Command                                            | Results                                    |
-| -------------------------------------------------- | ------------------------------------------ |
+| Command | Results |
+| ------- | ------- |
 | `` |.|
 | `` |.|
 | `` |.|
