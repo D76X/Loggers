@@ -12,7 +12,7 @@
     <Rsps Include="$(RspPath)"/>
   </ItemGroup>
   
-  <!--An item group to hold custom data-->
+  <!--An item group to hold custom items-->
   <ItemGroup>
     <Staff Include="code1">
       <Name>Jane</Name>
@@ -28,11 +28,13 @@
     </Staff>
   </ItemGroup>
 
+  <!--Accessing declared items-->
   <Target Name="ListRps">
     <Message Text="@(Rsps)"/>
     <Message Text="@(Rsps->'%(ModifiedTime)')"/>
   </Target>
 
+  <!--Accessing a declared custom items-->
   <Target Name="ListStaff">
     <Message Text="@(Staff)"/>
     <Message Text="@(Staff->'%(Name)')"/>

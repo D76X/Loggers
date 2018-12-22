@@ -107,6 +107,26 @@ Another very useful tool is the **start-transcript/stop-transcript** pair of com
 | `` |.|
 | `` |.|
 
+## Objects, Properties, Methods, Members and Piping.
+
+Normally the output from and often also the imput to any PowerShell cmdlet or Function is modelled as an **object**. Any object have **members** which may be either **properties** or **methods**. **Properties** bear values for the object while **methods** are actions thatcan be performed over the object just as in the traditional OOP model.
+
+The output of any cmdlet or Function can be piped into another cmdlet or Function by means of the **pipe** ```|```.
+
+The ```select-object``` cmdlet is often used in combination with other command to filter the objects provided as output into objects bearing only a subset of properties. In addition ```where-object``` is also useful as it allowed to filter the output of a cmdlet or Function on a specified condition.
+
+| Command | Results |
+| ------- | ------- |
+| `help get-member` | Shows the help about the get-member cmdlet.|
+| `get-service | get-member | more` | Shows all the members of the object type for the output from the cmdlet get-service .|
+| `get-service | select-object Name,Status | more` | Selects only the properties Name and Status of any object from the output of the cmdlet get-service.|
+| `get-service | where-object status -eq "stopped" | select-object Name,Status | more` | Filters the output of get-service to only the stopped services and projects it into an object with only Name and Status properties.|
+| `get-service | where-object status -eq "stopped" | format-list | more` | As above but formats the output into a list insted of the standard Powershell table alos all the properties are shown for each item of the list.|
+| `` |.|
+| `` |.|
+| `` |.|
+| `` |.|
+
 ## Querying for system services
 
 | Command | Results |
@@ -118,6 +138,16 @@ Another very useful tool is the **start-transcript/stop-transcript** pair of com
 | `notepad $path` | Opens the file created above.|
 | `get-service | where-object Status -eq 'Stopped' | select-object Status, Name, DisplayName` | List of the three properties Status, Name, DisplayName of all Stopped services.|
 | `get-service | where-object Status -eq 'Stopped' | select-object Status, Name, DisplayName |  export-csv $path` | As above but exported to a CSV file.|
+| `` |.|
+| `` |.|
+| `` |.|
+| `` |.|
+| `` |.|
+
+## Formatting
+
+| Command | Results |
+| ------- | ------- |
 | `` |.|
 | `` |.|
 | `` |.|

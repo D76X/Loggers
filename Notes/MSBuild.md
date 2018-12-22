@@ -1,5 +1,11 @@
 # MSBuild
 
+The official documentation for MSBuild.
+
+https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild?view=vs-2017
+
+---
+
 ### MSBuild from command line
 
 In the Visual Studio Developer Command Console Windows
@@ -215,11 +221,92 @@ evaluates to a boolean.
 
 - One frequent application of Properties is to compose paths to directories and files or search paths.
 
+- Properties do not have to have a value. If no value for a named property is given and the property is used anywhere in the **msbuild** file **no runtime error is generated**. 
+
+- Properties can also be injected at run time as shown below. When the values of properties is injected at runtime any properties declared in the **msbuild** file or **rsp** file bearing the same name will have its value overridden by the value injected at run-time.
+
+```
+>msbuild dosomething.msbuild @responsefile.rsp /p:Name=Lisa
+```
+- The following shows an exampleof declared properties within a **msbuild** file.
+
+```
+<PropertyGroup>
+    <Name>Peter</Name>
+    <FullName>$(Name) Pan</FullName>
+</PropertyGroup>
+...
+...
+<Target Name="DefaultImportanceMessage">
+    <Message Text="Default Importance Message: Hello $(FullName)!"/>
+</Target>
+```
+
+- There are lost of [MSBuild reserved and well-known properties](https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild-reserved-and-well-known-properties?view=vs-2017) to use in custom **msbuild** scripts. The value of these properties is assigned by the mbuild runtime environment. One way to show the complete list of the builtin properties that are used at runtime and their values is to **run the msbuild file** with **verbosity set to the diagnostic level**.
+
+```
+> msbuild dosomethong.msbuild @responsefile.rsp /v:diagnostic /t:ReservedProps
+```
+
 ---
 
 ## Items
 
-- Items are used to define array of items with some metadata attached to them.
+- Items are used to define array of items with some **metadata** attached to them. One of the most frequent user cases of ```<ItemGroup>``` and the contained items is to collect file paths.
+
+- It is important to understand that the items are not just text values instead they are objects with associated metadata which can be accessed withing the **msbuild** script with the following syntaxt ```@(Rsps->'%(ModifiedTime)```. The metadata available on the item depends on its type.
+
+- [MSBuild items](https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild-items?view=vs-2017)  
+
+```
+<PropertyGroup>
+    <Property1>Property1Value</Property1>
+    <Property2>$(Property1)+Property2Value</Property2>
+    <RspPath>$(MSBuildProjectDirectory)\*.rsp</RspPath>
+  </PropertyGroup>
+
+  <!--An item group that pulls in files-->
+  <ItemGroup>
+    <Rsps Include="$(RspPath)"/>
+  </ItemGroup>
+  ...
+  ...
+  <!--Accessing declared items-->
+  <Target Name="ListRps">
+    <Message Text="@(Rsps)"/>
+    <Message Text="@(Rsps->'%(ModifiedTime)')"/>
+  </Target>
+```
+
+## Custom items
+
+It is also possible to declare custom items within a **msbuild**.
+
+```
+<!--An item group to hold custom items-->
+  <ItemGroup>
+    <Staff Include="code1">
+      <Name>Jane</Name>
+      <Surname>Simpson</Surname>
+    </Staff>
+    <Staff Include="code2">
+      <Name>Peter</Name>
+      <Surname>Kleng</Surname>
+    </Staff>
+    <Staff Include="code3">
+      <Name>Paul</Name>
+      <Surname>Tinker</Surname>
+    </Staff>
+  </ItemGroup>
+  ...
+  ...
+  <!--Accessing a declared custom items-->
+  <Target Name="ListStaff">
+    <Message Text="@(Staff)"/>
+    <Message Text="@(Staff->'%(Name)')"/>
+    <Message Text="@(Staff->'%(Surname)')"/>
+  </Target>
+```
 
 ---
 
