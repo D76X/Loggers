@@ -25,7 +25,7 @@ With this command MSBuild executes only the first Task in the Project.
 > msbuild /target:Goodbye
 
 With this command MSBuild executes only the specified Target of the Project
-inrespective of the order in which the Target appears the *.msbuild file 
+irrespective of the order in which the Target appears the *.msbuild file 
 under the Project node.
 
 The Project DefaultTarget attribute value is optional and defaults to the 

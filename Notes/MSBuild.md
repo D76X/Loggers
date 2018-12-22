@@ -2,7 +2,7 @@
 
 ### MSBuild from command line
 
-In the Visual Studio Developer Command Propmt
+In the Visual Studio Developer Command Console Windows
 
 ```
 > msbuild -help | more
@@ -65,7 +65,7 @@ Any __*.msbuild__ files must begin with
 *  Targets represent the sequence of instruction to MSBuild.  
 *  Targets contain Tasks.
 
-### Some examples from command line and *.rsp
+### Some examples from command line and **response files** (*.rsp)
 
 From the command line.
 
@@ -136,7 +136,7 @@ In the following example the chain af calls will be the following TargetA => Tar
 
 Any Target that is set as a value of the **DependsOnTarget** attribute of any other
 Target that is in the execution path provided to MSBuild **will be executed only once!**
-This is always the case even when there might be multiple Target element which invoke 
+This is always the case even when there might be multiple Target elements which invoke 
 the same Target via the **CallTarget** element.
 
 #### AfterTargets and BeforeTargets attributes
@@ -171,7 +171,7 @@ directly as in
 Conditions on the execution of Targtes can be set by means of the attribute **Condition**
 whose value may be an expression evaluated at run time. Normally the expression makes use
 of custom or built-in MSBuild properties or any combination of them into an extression that
-evaluates to a boolean. The example also shows  
+evaluates to a boolean. 
 
 ```
 <PropertyGroup>
@@ -220,6 +220,26 @@ evaluates to a boolean. The example also shows
 ## Items
 
 - Items are used to define array of items with some metadata attached to them.
+
+---
+
+## Logging and Verbosity
+
+When any **\*.msbuild** is run in any of the available execution
+tools such as the command line window or the powershell window etc. some of the tasks in the targets declared in the build file **\*.msbuild** may produce some textual output. For example, the ```<Message>``` tag declares a executable task of type message that prints a message to the output stream.
+
+The textual information that is available available in the output stream depends on the level of logging set for the output stream and that of the task that produces such output. 
+
+For example ```<Message Text="High Importance Message"             Importance="high"/>``` outputas in red or similar colour while ```<Message Text="High Importance Message"             Importance="low"/>``` does not reach the output stream as the default level of the output stream is **normal**. 
+
+The verbosity level of the putput stream can controlled by means of the **msbuild.exe** switch **/v**. The levels available are the following.
+
+```
+/v:minimal
+/v:normal
+/v:detailed
+/v:diagnostic
+```
 
 ---
 
