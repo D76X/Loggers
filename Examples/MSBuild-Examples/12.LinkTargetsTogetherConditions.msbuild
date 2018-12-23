@@ -4,7 +4,8 @@ DefaultTargets="TargetA">
 
 <PropertyGroup>
     <DoIt>true</DoIt> 
-    <DontDoIt>false</DontDoIt>   
+    <DontDoIt>false</DontDoIt>
+    <Value>Foo</Value>  
   </PropertyGroup>
 
   <Target Name="TargetA" 
@@ -18,6 +19,12 @@ DefaultTargets="TargetA">
     <Message Text="This is TargetB"
              Importance="normal"/>  
   </Target> 
+  <Target Name="TargetX" 
+    AfterTargets="TargetC" 
+    Condition="$(Value)=='Foo'">
+    <Message Text="This is TargetX"
+             Importance="normal"/>  
+  </Target>
   <Target Name="TargetC">
     <Message Text="This is TargetC"
              Importance="normal"/>  
@@ -29,7 +36,7 @@ DefaultTargets="TargetA">
 This invokation only runs TargetA.
 > msbuild 12.LinkTargetsTogetherConditions.msbuild
 
-This invokation runs TargetC followed by TargetA but TargetB
+This invokation runs TargetC followed by TargetA and TargetX but TargetB
 does not execute as its condition is evaluates to false at 
 runtime.
 
