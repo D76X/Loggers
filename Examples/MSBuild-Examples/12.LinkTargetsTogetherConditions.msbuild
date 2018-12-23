@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" 
+DefaultTargets="TargetA">
+
+<PropertyGroup>
+    <DoIt>true</DoIt> 
+    <DontDoIt>false</DontDoIt>   
+  </PropertyGroup>
+
+  <Target Name="TargetA" 
+    AfterTargets="TargetC"
+    Condition="$(DontDoIt)">
+    <Message Text="This is TargetA"/>    
+  </Target>
+  <Target Name="TargetB" 
+    AfterTargets="TargetC" 
+    Condition="$(DoIt)">
+    <Message Text="This is TargetB"
+             Importance="normal"/>  
+  </Target> 
+  <Target Name="TargetC">
+    <Message Text="This is TargetC"
+             Importance="normal"/>  
+  </Target>  
+</Project>
+
+<!--
+
+This invokation only runs TargetA.
+> msbuild 12.LinkTargetsTogetherConditions.msbuild
+
+This invokation runs TargetC followed by TargetA but TargetB
+does not execute as its condition is evaluates to false at 
+runtime.
+
+> msbuild 12.LinkTargetsTogetherConditions.msbuild /t:TargetC
+
+-->
