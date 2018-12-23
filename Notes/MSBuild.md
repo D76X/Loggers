@@ -330,6 +330,113 @@ The verbosity level of the putput stream can controlled by means of the **msbuil
 
 ---
 
+## How to link the execution of targets 
+
+### The Explicit Invokation Model
+
+1. Use the ```<CallTarget>``` task as shown below. One important thing to understand about this model of execution of targets is that ```TargetA``` compltes only after the execution of ```TargetD```. This is the same model as the **synchronous invocation stack** of functions in .Net.
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" 
+DefaultTargets="TargetA">
+  <Target Name="TargetA">
+    <Message Text="This is TargetA"/>
+    <CallTarget Targets="TargetB;TargetC;TargetD"/>
+  </Target>
+  <Target Name="TargetB">
+    <Message Text="This is TargetB"
+             Importance="normal"/>
+  </Target>
+  <Target Name="TargetC">
+    <Message Text="This is TargetC"/>
+  </Target>
+  <Target Name="TargetD">
+    <Message Text="This is TargetD"
+             Importance="high"/>
+  </Target>
+</Project>
+```
+
+2. The same as before but the chaining is declared by means of multiple ```<CallTarget>``` tasks.
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" 
+DefaultTargets="TargetA">
+  <Target Name="TargetA">
+    <Message Text="This is TargetA"/>
+    <CallTarget Targets="TargetB;TargetC;TargetD"/>
+  </Target>
+  <Target Name="TargetB">
+    <Message Text="This is TargetB"
+             Importance="normal"/>
+  </Target>
+  <Target Name="TargetC">
+    <Message Text="This is TargetC"/>
+  </Target>
+  <Target Name="TargetD">
+    <Message Text="This is TargetD"
+             Importance="high"/>
+  </Target>
+</Project>
+```
+
+### The Implicit Invokation Model
+
+In this model of execution the ```DependsOnTargets="TargetA"``` attribute of the ```<Target>``` is exploited. One **important difference between the implicit and explicit models of execution** is that in the implicit model the target that is used as a value of the **DependsOnTargets** attribute i.e.  ```DependsOnTargets="TargetA"``` is going to be executed only once regardless the number of other targets that dependsupon it.
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" 
+DefaultTargets="TargetD">
+  <Target Name="TargetA">
+    <Message Text="This is TargetA"/>    
+  </Target>
+  <Target Name="TargetB" DependsOnTargets="TargetA">
+    <Message Text="This is TargetB"
+             Importance="normal"/>  
+  </Target>
+  <Target Name="TargetC" DependsOnTargets="TargetB">
+    <Message Text="This is TargetC"/>    
+  </Target>
+  <Target Name="TargetD" DependsOnTargets="TargetC">
+    <Message Text="This is TargetD"
+             Importance="high"/>   
+  </Target>
+</Project>
+```
+
+### AfterTargets and BeforeTargets
+
+1. Usage of the ```AfterTargets``` attribute requires care. Following there are two examples to use in order to better understand the execution model.
+
+This invokation only runs TargetA. It invokes the direct execution of TargetA which is set as default target by ```DefaultTargets="TargetA"```.
+
+```> msbuild 10.LinkTargetsTogether.msbuild```
+
+This invokation runs TargetB followed by TargetA.
+
+```> msbuild 10.LinkTargetsTogether.msbuild /t:TargetB```
+
+For more detailed information on the mechanics of the ```AfterTargets``` and ```BeforeTargets``` attributes of the ```<Target>``` refer to the accompaining examples. 
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" 
+DefaultTargets="TargetA">
+  <Target Name="TargetA" AfterTargets="TargetB">
+    <Message Text="This is TargetA"/>    
+  </Target>
+  <Target Name="TargetB">
+    <Message Text="This is TargetB"
+             Importance="normal"/>  
+  </Target>  
+</Project>
+```
+
+---
+
 ## MSBuild Extension Pack
 
 - [MSBuild Extension Pack](http://www.msbuildextensionpack.com/)

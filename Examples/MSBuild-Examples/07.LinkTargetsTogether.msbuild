@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" 
+DefaultTargets="TargetA">
+  <Target Name="TargetA">
+    <Message Text="This is TargetA"/>
+    <CallTarget Targets="TargetB;TargetC;TargetD"/>
+  </Target>
+  <Target Name="TargetB">
+    <Message Text="This is TargetB"
+             Importance="normal"/>
+  </Target>
+  <Target Name="TargetC">
+    <Message Text="This is TargetC"/>
+  </Target>
+  <Target Name="TargetD">
+    <Message Text="This is TargetD"
+             Importance="high"/>
+  </Target>
+</Project>
+
+<!--
+
+> msbuild 07.LinkTargetsTogether.msbuild @07.LinkTargetsTogether.rsp
+
+Use the ```<CallTarget>``` task as shown below. One important thing 
+to understand about this model of execution of targets is that 
+```TargetA``` compltes only after the execution of ```TargetD```. 
+This is the same model as the **synchronous invocation stack** of 
+functions in .Net.
+
+-->

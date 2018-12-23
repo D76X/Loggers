@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" 
+DefaultTargets="TargetD">
+  <Target Name="TargetA">
+    <Message Text="This is TargetA"/>    
+  </Target>
+  <Target Name="TargetB" DependsOnTargets="TargetA">
+    <Message Text="This is TargetB"
+             Importance="normal"/>  
+  </Target>
+  <Target Name="TargetC" DependsOnTargets="TargetB">
+    <Message Text="This is TargetC"/>    
+  </Target>
+  <Target Name="TargetD" DependsOnTargets="TargetC">
+    <Message Text="This is TargetD"
+             Importance="high"/>   
+  </Target>
+</Project>
+
+<!--
+
+> msbuild 09.LinkTargetsTogether.msbuild @09.LinkTargetsTogether.rsp
+
+-->

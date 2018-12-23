@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" 
+DefaultTargets="TargetA">
+  <Target Name="TargetA" AfterTargets="TargetC">
+    <Message Text="This is TargetA"/>    
+  </Target>
+  <Target Name="TargetB" AfterTargets="TargetC">
+    <Message Text="This is TargetB"
+             Importance="normal"/>  
+  </Target> 
+  <Target Name="TargetC">
+    <Message Text="This is TargetC"
+             Importance="normal"/>  
+  </Target>  
+</Project>
+
+<!--
+
+This invokation only runs TargetA.
+> msbuild 11.LinkTargetsTogether.msbuild
+
+
+This invokation runs TargetC followed by TargetB and later TargetA.
+> msbuild 11.LinkTargetsTogether.msbuild /t:TargetC
+
+-->
