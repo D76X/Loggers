@@ -481,6 +481,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSBuild-Examples", "MSBuild
 		Examples\MSBuild-Examples\05.ReservedProperties.rsp = Examples\MSBuild-Examples\05.ReservedProperties.rsp
 		Examples\MSBuild-Examples\06.Items.msbuild = Examples\MSBuild-Examples\06.Items.msbuild
 		Examples\MSBuild-Examples\06.Items.rsp = Examples\MSBuild-Examples\06.Items.rsp
+		Examples\MSBuild-Examples\07.LinkTargetsTogether.msbuild = Examples\MSBuild-Examples\07.LinkTargetsTogether.msbuild
+		Examples\MSBuild-Examples\08.LinkTargetsTogether.msbuild = Examples\MSBuild-Examples\08.LinkTargetsTogether.msbuild
+		Examples\MSBuild-Examples\09.LinkTargetsTogether.msbuild = Examples\MSBuild-Examples\09.LinkTargetsTogether.msbuild
+		Examples\MSBuild-Examples\10.LinkTargetsTogether.msbuild = Examples\MSBuild-Examples\10.LinkTargetsTogether.msbuild
+		Examples\MSBuild-Examples\11.LinkTargetsTogether.msbuild = Examples\MSBuild-Examples\11.LinkTargetsTogether.msbuild
+		Examples\MSBuild-Examples\12.LinkTargetsTogetherConditions.msbuild = Examples\MSBuild-Examples\12.LinkTargetsTogetherConditions.msbuild
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project-1-MSBuild", "Project-1-MSBuild", "{03AAEC06-D2D6-4BF7-9FD7-62D8586875F2}"

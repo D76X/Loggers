@@ -434,8 +434,29 @@ DefaultTargets="TargetA">
   </Target>  
 </Project>
 ```
+---
+
+## Use MSBuild with Visual Studio solutions and projects 
+
+Visual Studio solutions **\*.sln** files **are not** directly valid XML that is understood by the MSBuild engine. However, the MSBuild engine has been designed to undestand such syntax and parsed it in memory into valid MSBuld XML instructions at runtime which can then be executed. 
+
+On the contrary **\*.csproj** files are instead valid MSBuild XML files. There are typical tags which appears in **\*.csproj** such as ```<Reference>``` that marks a dependency reference to a project or assembly and the ```<Compile>``` which is a reference to **\*.cs** files that are part of the project source code and need to be compiled.
+
+Normally the most important work done by the MSBuild engine in relation to **\*.csproj** is to **invoke the csc.exe compiler** and **pass to it all the artifacts of the project as argument of the invokation**.
+
+It is possible to have a look at the typical contents of any **\*.csproj** by unloading the project and then open it for editing. The following instruction to the MSBuild engine is imprtant and kicks start the compilation process by executing ```Microsoft.CSharp.targets```.  
+
+```
+<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+```
+
+You can see the contents of this file online for example [here](https://referencesource.microsoft.com/#MSBuildFiles/C/ProgramFiles(x86)/MSBuild/14.0/bin_/amd64/Microsoft.CSharp.targets).
 
 ---
+
+## MSBuild Task Reference
+
+The [MSBuild Task Reference](https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild-task-reference?view=vs-2017) is a repository of MSBuild tasks that are included with it.
 
 ## MSBuild Extension Pack
 

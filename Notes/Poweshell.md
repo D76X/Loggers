@@ -61,10 +61,8 @@ output usually shows examples of the usage for the Cmdlet or Function.
 | `help get-command` | Shows the help for the get-command cmdlet.|
 | `help get-command -examples` |  Shows the examples from the help for the get-command cmdlet.|
 | `` |.|
-| `` |.|
-| `` |.|
-| `` |.|
-| `` |.|
+
+---
 
 ## Querying the History
 
@@ -86,11 +84,8 @@ Another very useful tool is the **start-transcript/stop-transcript** pair of com
 | `start-transcript path c:\mysession.txt` | Captures the entore PowerShell session into a text file.|
 | `stop-trascript` | It stops the transcription of the session to text file.|
 | `` |.|
-| `` |.|
-| `` |.|
-| `` |.|
-| `` |.|
 
+---
 
 ## Querying for PowerShell verbs
 
@@ -103,9 +98,8 @@ Another very useful tool is the **start-transcript/stop-transcript** pair of com
 | `gsv -Name M*` | the same as above but the **gsv** alias is used.|
 | `gsv -Name M*, S*` | get the services starting by m and then those starting by s.|
 | `` |.|
-| `` |.|
-| `` |.|
-| `` |.|
+
+---
 
 ## Objects, Properties, Methods, Members and Piping.
 
@@ -123,9 +117,8 @@ The ```select-object``` cmdlet is often used in combination with other command t
 | `get-service | where-object status -eq "stopped" | select-object Name,Status | more` | Filters the output of get-service to only the stopped services and projects it into an object with only Name and Status properties.|
 | `get-service | where-object status -eq "stopped" | format-list | more` | As above but formats the output into a list insted of the standard Powershell table alos all the properties are shown for each item of the list.|
 | `` |.|
-| `` |.|
-| `` |.|
-| `` |.|
+
+---
 
 ## Querying for system services
 
@@ -139,20 +132,29 @@ The ```select-object``` cmdlet is often used in combination with other command t
 | `get-service | where-object Status -eq 'Stopped' | select-object Status, Name, DisplayName` | List of the three properties Status, Name, DisplayName of all Stopped services.|
 | `get-service | where-object Status -eq 'Stopped' | select-object Status, Name, DisplayName |  export-csv $path` | As above but exported to a CSV file.|
 | `` |.|
-| `` |.|
-| `` |.|
-| `` |.|
-| `` |.|
+
+---
 
 ## Formatting
 
+The output of Cmdlets and Functions to the console of files can be formatted in different ways by means of a set of three Cmdlets.
+
+- Format-list (fl)
+- Format-table (ft) >> for more details about each item
+- Out-Gridview >> opens a separate GridView Window with complex filter and sort controls.
+
 | Command | Results |
 | ------- | ------- |
+| `help Format-list` | Gets help on the Cmdlet Format-List.|
+| `help format-list -examples` | Pulls out only the examples.|
+| `get-service|fl Name,Status|more` | The output of get-service is projected into a list of items with properties Name and Status.|
+| `get-service|ft -AutoSize|more` | Project into a table and autosizes its column width - this prevents cropping and uses the full size of the console window.|
+| `get-service|ft -Wrap|more` | This wraps longer content on any columns on a separate line.|
+| `get-service|ft -Wrap - Autosize|more` | The two above combined.|
+| `get-service|out-gridview` |Pushes the output to a separate GridView with complex filter and sort controls.|
 | `` |.|
-| `` |.|
-| `` |.|
-| `` |.|
-| `` |.|
+
+---
 
 ## Some interesting commands
 
@@ -170,5 +172,29 @@ sorts all the cmdlets by their Noun property and formats the output into a table
 | `get-command -name *IP* | Sort-object -Property name | Format-Table | more` | Pipe the results into the sort command by the property name.|
 | `get-command -name *IP* | Sort-object -Property name | Format-Table -GropuBy CommandType | more` | Sort by name and group by CommandType.|
 | `get-command -name *IP* -module NETTCPIP | more` | Limits the search to the module NETTCPIP.|
+| `` |.|
+| `` |.|
+
+---
+
+## Typical Diagnostic Process
+
+A good **general strategy for diagnostic** of problems on a system by means of PowerShell is based on three steps and important Comdlets.
+
+1. Get-Command >> research the commands that address a user case.
+
+2. Help (-example) >> investigate the usage of the relevant commands. 
+
+3. Get-Member >> finds out which members are available on a the objects returned as output of a command in order to project it into a meaningful and relevant subset.
+
+### The Windows Management Instrumentation (WMI)
+
+Is the **Windows OS component** that can be queried to gather system-wide diagnostics. 
+
+
+| Command | Results |
+| ------- | ------- |
+| `` |.|
+| `` |.|
 | `` |.|
 | `` |.|
