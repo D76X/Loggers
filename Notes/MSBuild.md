@@ -463,6 +463,26 @@ The [MSBuild Task Reference](https://docs.microsoft.com/en-us/visualstudio/msbui
 - [MSBuild Extension Pack](http://www.msbuildextensionpack.com/)
 
 The MSBuild Extension Pack provides the largest collection of MSBuild Tasks, MSBuild Loggers
-and MSBuild TaskFactories available.
+and MSBuild TaskFactories available. It si possiblo to download the latest zip from the GitHub repository and either build the solution or use the provided MSI to install the product on the system.
+
+On Windows 64-bit install the 64-bit version of the product and the installation folder defaults to the location below.
+
+```
+C:\Program Files\MSBuildExtensionPack
+```
+
+In order to make use if the Targets available in the MSBuild Extensions it is necessary to import the MSBuild Extension tasks in your csproj or proj be means of a ```<Import>``` MSBuild task as outlined below.
+
+```
+<!--MSBuild Extension Pack Tasks-->
+  <Import Project="C:\Program Files\MSBuildExtensionPack\4.0\MSBuild.ExtensionPack.tasks"/>
+```
+
+The **MSBuild.ExtensionPack.tasks** contains the list of all the available extension tasks and the corresponding implementing binary (assemply). The ```$(ExtensionTasksPath)``` variable is determined at runtime. It might be required to change the value ```$(ExtensionTasksPath)``` from its default by editing the **MSBuild.ExtensionPack.tasks** file i.e. **using Notepad or VS in admin mode** to point to the correct location. This 
+makes sure that MSBuild is then able to find the binaries for the tasks from teh extension.
+
+```
+<ExtensionTasksPath Condition="'$(ExtensionTasksPath)' == ''">C:\Program Files\MSBuildExtensionPack\4.0\</ExtensionTasksPath>
+```
 
 ---

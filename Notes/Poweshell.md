@@ -189,12 +189,35 @@ A good **general strategy for diagnostic** of problems on a system by means of P
 
 ### The Windows Management Instrumentation (WMI)
 
-Is the **Windows OS component** that can be queried to gather system-wide diagnostics. 
+Is the **Windows OS component** that can be queried to gather system-wide diagnostics. WMI is based on the **Common Information Model (CIM)** which is an open **standard** that defines how managed elemnt in an IT environment are to be represented as a **common set of objetcs as well as the relationships between them**. CIM was introduced in **PowerShell vesrion 3.0 with Get-CimInstance**.
+
+WMI information is stored in the **WMI Repository** in which information is organized into **namespaces**. One particualarly important and useful namespace is **CIMv2**. Information in the WMI Repository is stored as objects and properties of those objects.
+
+### Example 1 of diagnostic process
+
+Look up commands that have anything to do with counters.
+
+```
+> get-command *counter* 
+```
+
+Find more information of a specific command that fits the user case at hand i.e. measuring the commited memory.
+
+```
+> help get-counter
+> help get-counter -examples
+```
+
+List all the counter sets that can be queried through the get-command Cmdlet and have anything to do with memory.
+
+```
+> get-counter -listset *memory*
+```
 
 
 | Command | Results |
 | ------- | ------- |
-| `` |.|
-| `` |.|
-| `` |.|
-| `` |.|
+| `get-counter` |.|
+| `get-wmiobject` |.|
+| `get-cmiinstance` |.|
+| `get-eventlog` |.|
