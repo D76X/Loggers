@@ -641,6 +641,28 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests-Examples", "Tests-Exa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Test1", "Examples\Tests-Examples\Tests.Test1\Tests.Test1.csproj", "{4861B15D-271C-4914-B201-825E06C04CE9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project-2-MSBuild", "Project-2-MSBuild", "{AD65E6B1-55E9-44A4-8867-5DEFAB2E4F7F}"
+	ProjectSection(SolutionItems) = preProject
+		Examples\MSBuild-Examples\Project-2-MSBuild\args.rsp = Examples\MSBuild-Examples\Project-2-MSBuild\args.rsp
+		Examples\MSBuild-Examples\Project-2-MSBuild\Common.props = Examples\MSBuild-Examples\Project-2-MSBuild\Common.props
+		Examples\MSBuild-Examples\Project-2-MSBuild\Common.targets = Examples\MSBuild-Examples\Project-2-MSBuild\Common.targets
+		Examples\MSBuild-Examples\Project-2-MSBuild\DoSomething.proj = Examples\MSBuild-Examples\Project-2-MSBuild\DoSomething.proj
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FilesToZip", "FilesToZip", "{3363B131-9128-45BD-B2CD-345933C9F710}"
+	ProjectSection(SolutionItems) = preProject
+		Examples\MSBuild-Examples\Project-2-MSBuild\FilesToZip\test1.txt = Examples\MSBuild-Examples\Project-2-MSBuild\FilesToZip\test1.txt
+		Examples\MSBuild-Examples\Project-2-MSBuild\FilesToZip\test2.txt = Examples\MSBuild-Examples\Project-2-MSBuild\FilesToZip\test2.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project-3-MSBuild", "Project-3-MSBuild", "{48FFF036-61ED-48F5-999F-CD78FCB8D5A9}"
+	ProjectSection(SolutionItems) = preProject
+		Examples\MSBuild-Examples\Project-3-MSBuild\args.rsp = Examples\MSBuild-Examples\Project-3-MSBuild\args.rsp
+		Examples\MSBuild-Examples\Project-3-MSBuild\Common.props = Examples\MSBuild-Examples\Project-3-MSBuild\Common.props
+		Examples\MSBuild-Examples\Project-3-MSBuild\Common.targets = Examples\MSBuild-Examples\Project-3-MSBuild\Common.targets
+		Examples\MSBuild-Examples\Project-3-MSBuild\DoSomething.proj = Examples\MSBuild-Examples\Project-3-MSBuild\DoSomething.proj
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -2196,6 +2218,9 @@ Global
 		{3E9AE13E-DF73-436B-A41B-FB67FE24F7F1} = {045B3F38-69F1-468E-9E76-CB889574BB34}
 		{1EA905D0-F4BA-4DFD-BAD0-F959C8A39381} = {FAFE10AF-AF2C-4D6F-82BC-81ED9863EE85}
 		{4861B15D-271C-4914-B201-825E06C04CE9} = {1EA905D0-F4BA-4DFD-BAD0-F959C8A39381}
+		{AD65E6B1-55E9-44A4-8867-5DEFAB2E4F7F} = {7855C723-4783-467D-A978-C6A988DC41A8}
+		{3363B131-9128-45BD-B2CD-345933C9F710} = {AD65E6B1-55E9-44A4-8867-5DEFAB2E4F7F}
+		{48FFF036-61ED-48F5-999F-CD78FCB8D5A9} = {7855C723-4783-467D-A978-C6A988DC41A8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B48A64CD-1E9D-4169-82DF-66FD7695C2D0}
