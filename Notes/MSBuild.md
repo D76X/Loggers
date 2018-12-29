@@ -488,10 +488,23 @@ makes sure that MSBuild is then able to find the binaries for the tasks from teh
 
 ## MSBuild Custom ITask implementations
 
+### Implementing Microsoft.Build.Framework.ITask
+
 It is possible to create your won tasks by implementing the **ITask** interface. This is possible by simply adding the reference below to a class library project based on the full .Net Framework.
 
 ```
 Microsoft.Build.Framework
+```
+
+### Implementing Microsoft.Build.Utilities.v4.0.Task
+
+The abstract class ```Microsoft.Build.Utilities.v4.0.Task``` provides some out-of-the-box implementation such as simplified logging, etc.
+
+```
+(normally you woul need to refer this as well)
+Microsoft.Build.Framework
+
+Microsoft.Build.Utilities.v4.0
 ```
 
 ---

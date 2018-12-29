@@ -2,18 +2,23 @@
 
 namespace Example.Tasks
 {
+    // One way to create a custom MSBuld task is to provide an iplemetation of ITask. 
     public class AddTwoNumbers : ITask
     {
         // this property can be used to gain access to the MSBuild runtime
         public IBuildEngine BuildEngine {
-            get => throw new System.NotImplementedException();
-            set => throw new System.NotImplementedException();
+            //get => throw new System.NotImplementedException();
+            //set => throw new System.NotImplementedException();
+            get;
+            set;
         }
 
         // ?
         public ITaskHost HostObject {
-            get => throw new System.NotImplementedException();
-            set => throw new System.NotImplementedException();
+            //get => throw new System.NotImplementedException();
+            //set => throw new System.NotImplementedException();
+            get;
+            set;
         }
 
         // the entry point used by the MSBuild runtime at the invokation of the 

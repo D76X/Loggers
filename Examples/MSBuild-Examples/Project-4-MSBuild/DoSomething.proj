@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
-DefaultTargets="PackageStuff">
+DefaultTargets="TestCustomTaskAddTwoNumbers;TestCustomTaskMultiplyTwoNumbers">
 
   <!--
   In order for the MSBuild  project to work the reference to the other 
@@ -18,6 +18,29 @@ DefaultTargets="PackageStuff">
   ayatem.
   -->
   <Import Project="C:\Program Files\MSBuildExtensionPack\4.0\MSBuild.ExtensionPack.tasks"/>
+
+  <!--
+  In this example a custom ITask implemetation is showcased.
+  Import the task files that link to the assembly with the ITask custom implemetation.
+  -->
+  <Import Project=".\AddTwoNumbers.task"/>
+  <Import Project=".\MultiplyTwoNumbers.task"/>
+  
+  <Target Name="TestCustomTaskAddTwoNumbers">
+    <AddTwoNumbers Number1="1" Number2="-3">
+      <Output TaskParameter="Result"
+              PropertyName="Sum"/>
+    </AddTwoNumbers>
+    <Message Text="AddTwoNumber result = $(Sum)"/>
+  </Target>
+  
+  <Target Name="TestCustomTaskMultiplyTwoNumbers">
+    <MultiplyTwoNumbers Number1="1" Number2="-3">
+      <Output TaskParameter="Result"
+              PropertyName="Product"/>
+    </MultiplyTwoNumbers>
+    <Message Text="MultiplyTwoNumbers result = $(Product)"/>
+  </Target>
   
   <!--These Targets make use of Tasks defined in the MSBuild Extension Pack imported above-->  
   <Target Name="PackageStuff">

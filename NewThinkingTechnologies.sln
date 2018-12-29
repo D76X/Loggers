@@ -665,11 +665,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project-3-MSBuild", "Projec
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project-4-MSBuild", "Project-4-MSBuild", "{5969075F-3D02-4E10-961C-0F936830BE5E}"
 	ProjectSection(SolutionItems) = preProject
-		Examples\MSBuild-Examples\Project-4-MSBuild\AddTwoNumber.task = Examples\MSBuild-Examples\Project-4-MSBuild\AddTwoNumber.task
+		Examples\MSBuild-Examples\Project-4-MSBuild\AddTwoNumbers.task = Examples\MSBuild-Examples\Project-4-MSBuild\AddTwoNumbers.task
 		Examples\MSBuild-Examples\Project-4-MSBuild\args.rsp = Examples\MSBuild-Examples\Project-4-MSBuild\args.rsp
 		Examples\MSBuild-Examples\Project-4-MSBuild\Common.props = Examples\MSBuild-Examples\Project-4-MSBuild\Common.props
 		Examples\MSBuild-Examples\Project-4-MSBuild\Common.targets = Examples\MSBuild-Examples\Project-4-MSBuild\Common.targets
 		Examples\MSBuild-Examples\Project-4-MSBuild\DoSomething.proj = Examples\MSBuild-Examples\Project-4-MSBuild\DoSomething.proj
+		Examples\MSBuild-Examples\Project-4-MSBuild\MultiplyTwoNumbers.task = Examples\MSBuild-Examples\Project-4-MSBuild\MultiplyTwoNumbers.task
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Tasks", "Examples\MSBuild-Examples\Project-4-MSBuild\Example.Tasks\Example.Tasks.csproj", "{64AD0680-DC4A-488D-8CF5-47002296EB57}"
