@@ -273,7 +273,7 @@ get-cimclass -ClassName *disk*
 
 The results obtained by this Cmdlet includes **a set of CMI and WMI objetcs** normally these objects overlap their responsibilities but the CMI version adhere to an open standard. Of course, **WMI objetcs** can then be queried with the ```get-wmiobject``` Cmdlet while **CMI objects** can likewise be queried bymeans of the ```get-cmiinstance``` Cmdlet. 
 
-For example the following command brings back the list of logica disks available on the system as a set of WMI objects.
+For example the following command brings back the list of logical volumes (disks) including mapped drives that are available on the system as a set of WMI objects.
 
 ```
 get-wmiobject -Class Win32_logicaldisk
