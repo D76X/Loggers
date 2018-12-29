@@ -273,12 +273,18 @@ get-cimclass -ClassName *disk*
 
 The results obtained by this Cmdlet includes **a set of CMI and WMI objetcs** normally these objects overlap their responsibilities but the CMI version adhere to an open standard. Of course, **WMI objetcs** can then be queried with the ```get-wmiobject``` Cmdlet while **CMI objects** can likewise be queried bymeans of the ```get-cmiinstance``` Cmdlet. 
 
+For example the following command brings back the list of logica disks available on the system as a set of WMI objects.
+
+```
+get-wmiobject -Class Win32_logicaldisk
+```
+
 ---
 
 | Command | Results |
 | ------- | ------- |
 | `get-counter` | Used to queried a set of counters available on the OS.|
-| `get-wmiobject` |.|
-| `get-cmiinstance` | Used to access the **Common Information Model (CIM)** instances on the OS.|
 | `get-cmiclass` | Used to access the **Common Information Model (CIM)** class metadata on the OS.|
-| `get-eventlog` |.|
+| `get-wmiobject` | Used to access the **Windows Management Instrumentation (WMI)** objetcs.|
+| `get-cmiinstance` | Used to access the **Common Information Model (CIM)** instances on the OS.|
+| `get-eventlog` | .|
