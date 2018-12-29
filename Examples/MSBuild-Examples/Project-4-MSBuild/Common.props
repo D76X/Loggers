@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <Author>Davide Spano</Author>    
+    <RspPath>$(MSBuildProjectDirectory)\*.rsp</RspPath>
+  </PropertyGroup>
+
+  <!--An item group that pulls in files-->
+  <ItemGroup>
+    <Rsps Include="$(RspPath)"/>
+  </ItemGroup>
+  
+  <!--An item group to hold custom data-->
+  <ItemGroup>
+    <Staff Include="code1">
+      <Name>Jane</Name>
+      <Surname>Simpson</Surname>
+    </Staff>
+    <Staff Include="code2">
+      <Name>Peter</Name>
+      <Surname>Kleng</Surname>
+    </Staff>
+    <Staff Include="code3">
+      <Name>Paul</Name>
+      <Surname>Tinker</Surname>
+    </Staff>
+  </ItemGroup>
+
+</Project>

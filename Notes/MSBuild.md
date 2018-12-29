@@ -484,5 +484,14 @@ makes sure that MSBuild is then able to find the binaries for the tasks from teh
 ```
 <ExtensionTasksPath Condition="'$(ExtensionTasksPath)' == ''">C:\Program Files\MSBuildExtensionPack\4.0\</ExtensionTasksPath>
 ```
+---
+
+## MSBuild Custom ITask implementations
+
+It is possible to create your won tasks by implementing the **ITask** interface. This is possible by simply adding the reference below to a class library project based on the full .Net Framework.
+
+```
+Microsoft.Build.Framework
+```
 
 ---
