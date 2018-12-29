@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
-DefaultTargets="TestCustomTaskAddTwoNumbers;TestCustomTaskMultiplyTwoNumbers">
+DefaultTargets="TestCustomTaskAddTwoNumbers;TestCustomTaskMultiplyTwoNumbers;TestCustomTaskDivideTwoNumbers">
 
   <!--
   In order for the MSBuild  project to work the reference to the other 
@@ -25,6 +25,7 @@ DefaultTargets="TestCustomTaskAddTwoNumbers;TestCustomTaskMultiplyTwoNumbers">
   -->
   <Import Project=".\AddTwoNumbers.task"/>
   <Import Project=".\MultiplyTwoNumbers.task"/>
+  <Import Project=".\DivideTwoNumbers.task"/>
   
   <Target Name="TestCustomTaskAddTwoNumbers">
     <AddTwoNumbers Number1="1" Number2="-3">
@@ -40,6 +41,14 @@ DefaultTargets="TestCustomTaskAddTwoNumbers;TestCustomTaskMultiplyTwoNumbers">
               PropertyName="Product"/>
     </MultiplyTwoNumbers>
     <Message Text="MultiplyTwoNumbers result = $(Product)"/>
+  </Target>
+
+  <Target Name="TestCustomTaskDivideTwoNumbers">
+    <DivideTwoNumbers Number1="1" Number2="-3">
+      <Output TaskParameter="Result"
+              PropertyName="Quotient"/>
+    </DivideTwoNumbers>
+    <Message Text="DivideTwoNumbers result = $(Quotient)"/>
   </Target>
   
   <!--These Targets make use of Tasks defined in the MSBuild Extension Pack imported above-->  

@@ -669,6 +669,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project-4-MSBuild", "Projec
 		Examples\MSBuild-Examples\Project-4-MSBuild\args.rsp = Examples\MSBuild-Examples\Project-4-MSBuild\args.rsp
 		Examples\MSBuild-Examples\Project-4-MSBuild\Common.props = Examples\MSBuild-Examples\Project-4-MSBuild\Common.props
 		Examples\MSBuild-Examples\Project-4-MSBuild\Common.targets = Examples\MSBuild-Examples\Project-4-MSBuild\Common.targets
+		Examples\MSBuild-Examples\Project-4-MSBuild\DivideTwoNumbers.task = Examples\MSBuild-Examples\Project-4-MSBuild\DivideTwoNumbers.task
 		Examples\MSBuild-Examples\Project-4-MSBuild\DoSomething.proj = Examples\MSBuild-Examples\Project-4-MSBuild\DoSomething.proj
 		Examples\MSBuild-Examples\Project-4-MSBuild\MultiplyTwoNumbers.task = Examples\MSBuild-Examples\Project-4-MSBuild\MultiplyTwoNumbers.task
 	EndProjectSection

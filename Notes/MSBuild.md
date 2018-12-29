@@ -507,4 +507,77 @@ Microsoft.Build.Framework
 Microsoft.Build.Utilities.v4.0
 ```
 
+### Implementingan inline task
+
+This is a rather flexible way to provide a custom task as it opens up to 
+languages other than .Net languages i.e. Python. On this point pay attention to the following part of the .task file in which the Language attribute is specified.
+
+```
+  <Task>
+      <Code Type="Fragment" Language="cs">
+      ...
+```
+
+Notoce also the ```ToolsVesrionAttribute``` specified for the ```<Project>```.
+
+```
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+         ToolsVersion="4.0">
+         ...
+```
+
+And the ```<UsingTask>```.
+
+```
+ <UsingTask TaskName="DivideTwoNumbers"
+             TaskFactory="CodeTaskFactory"
+             AssemblyFile="C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Build.Tasks.v4.0.dll">
+             ...
+```
+
+All of this to resolve errors of the following type.
+
+```
+The task factory "CodeTaskFactory" could not be loaded from the assembly "C:\Windows\Microsoft.NET\Framework\v2.0.50727\Microsoft.Build.Tasks.v4.0.dll"
+```
+
+Notice that Visual Studio by default will look for the ```TaskFactory``` in the ```C:\Windows\Microsoft.NET\Framework\v2.0.50727``` or similar which will cause the compilation error if niot overridden as shown above.
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+         ToolsVersion="4.0">
+
+  <UsingTask TaskName="DivideTwoNumbers"
+             TaskFactory="CodeTaskFactory"
+             AssemblyFile="C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Build.Tasks.v4.0.dll">
+    <ParameterGroup>
+      <Number1 ParameterType="System.Double" Required="true"/>
+      <Number2 ParameterType="System.Double" Required="true"/>
+      <Result ParameterType="System.Double" Output="true"/>
+    </ParameterGroup>
+    <Task>
+      <Code Type="Fragment" Language="cs">
+
+        try
+        {
+
+        Result = Number1 / Number2;
+
+        Log.LogMessage(
+        message: "Divided Two Numbers {0} / {1} = {2}",
+        messageArgs: new object[] {Number1, Number2, Result});
+        }
+        catch (System.Exception e)
+        {
+        Log.LogErrorFromException(e);
+        throw;
+        }
+
+      </Code>
+    </Task>
+  </UsingTask>  
+</Project>
+```
+
 ---
