@@ -4,6 +4,11 @@
 **/Examples/MSBuild-Examples/*.txt
 **/Examples/MSBuild-Examples/**/*.txt
 **/Examples/MSBuild-Examples/*.zip
+**/Examples/MSBuild-Examples/**/*.zip
+**/Examples/MSBuild-Examples/*.pdb
+**/Examples/MSBuild-Examples/**/*.pdb
+**/Examples/MSBuild-Examples/*.dll
+**/Examples/MSBuild-Examples/**/*.dll
 
 **/Temp/
 **/Apps/Binaries/
