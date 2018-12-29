@@ -187,13 +187,21 @@ A good **general strategy for diagnostic** of problems on a system by means of P
 
 3. Get-Member >> finds out which members are available on a the objects returned as output of a command in order to project it into a meaningful and relevant subset.
 
-### The Windows Management Instrumentation (WMI)
+### Querying for System resources via get-command
 
-Is the **Windows OS component** that can be queried to gather system-wide diagnostics. WMI is based on the **Common Information Model (CIM)** which is an open **standard** that defines how managed elemnt in an IT environment are to be represented as a **common set of objetcs as well as the relationships between them**. CIM was introduced in **PowerShell vesrion 3.0 with Get-CimInstance**.
+One way to access system wide resources and diagnostics is by menas of teh ```get-command`` Cmdlets. In the folowing several examples of diagnostics of this kind are presented.
+
+### The Windows Management Instrumentation (WMI) and Common Information Model (CMI).
+
+Is the **Windows OS component** that can be queried to gather system-wide diagnostics. There arebasically a few PowerShell commands that can be used to investigate the Hardware and Network resources of the System according to two sets of corresponding objects that is the **WMI and CMI objects**. These are mostly the same but are accessed by different Cmdlets. 
+
+WMI is based on the **Common Information Model (CIM)** which is an open **standard** that defines how managed element in an IT environment are to be represented as a **common set of objetcs as well as the relationships between them**. CIM was introduced in **PowerShell vesrion 3.0 with Get-CimInstance** while to access the **WMI Repository** the **Get-WmiObject** Cmslet is used.
 
 WMI information is stored in the **WMI Repository** in which information is organized into **namespaces**. One particualarly important and useful namespace is **CIMv2**. Information in the WMI Repository is stored as objects and properties of those objects.
 
-### Example 1 of diagnostic process
+---
+
+### Example 1 of diagnostic process - extraction of a counter using get-command
 
 Look up commands that have anything to do with counters.
 
@@ -209,15 +217,68 @@ Find more information of a specific command that fits the user case at hand i.e.
 ```
 
 List all the counter sets that can be queried through the get-command Cmdlet and have anything to do with memory.
+From this list you may read the ```Description``` value of the returned objects and decide which of the CounterSetName provides the counter that you need.
 
 ```
 > get-counter -listset *memory*
 ```
 
+For example for the CounterSetName Memory the description is the following.
+
+```
+The Memory performance object  consists of counters that describe the behavior of physical an virtual memory on the computer...
+```
+
+It is now possible to pick the specific counter.
+
+```
+get-counter -listset *memory* | where CounterSetName -eq Memory
+```
+
+In order to extract the values that are relevant to the selected counter the Paths property must be selected from the counter set object. Of course, the Paths property is itself an array of object which is possible to ```expand``` as follows.
+
+```
+get-counter -listset *memory* | where CounterSetName -eq Memory | select -expand Paths
+```
+
+Lastly, the value of the counter of interest can be extracted as as follows.
+
+```
+get-counter "\Memory\% Committed Bytes in use"
+```
+---
+
+### Example 2 - accessing the **Common Information Model (CIM)** via get-cmiinstance and get-cmiclass
+
+The **Windows OS component** can be queried to gather system-wide diagnostics. WMI is based on the **Common Information Model (CIM)** which is an open **standard** that defines how managed element in an IT environment are to be represented as a **common set of objetcs as well as the relationships between them**. CIM was introduced in **PowerShell vesrion 3.0 with Get-CimInstance**.
+
+For example, one of the CMI objects is the ```Win32_PhysicalMedia``` object that can be quesried as follows.
+
+```
+get-ciminstance Win32_PhysicalMedia
+get-ciminstance Win32_PhysicalMemory
+get-ciminstance Win32_PhysicalMemory | select Capacity
+```
+
+More information of the vailable WMI classes on Windows OS can be found at the follwing URLs.
+
+[Retrieving a WMI Class](https://docs.microsoft.com/en-us/windows/desktop/WmiSdk/retrieving-a-class)  
+[Win32_PhysicalMemory class](https://docs.microsoft.com/en-us/windows/desktop/cimwin32prov/win32-physicalmemory)
+
+As usual in PowerShell one of the most useful assets is the possibility to investigate the availability of commands and objects using query without the need to necessarily refer to the corresponding documentations. For example, the following queries employes the ```get-cmiclass``` cmdlet to query for any the WIM classes (CIM objetcs) that have anyting to do with ```disk``` as part of their class name.
+
+```
+get-cimclass -ClassName *disk*
+```
+
+The results obtained by this Cmdlet includes **a set of CMI and WMI objetcs** normally these objects overlap their responsibilities but the CMI version adhere to an open standard. Of course, **WMI objetcs** can then be queried with the ```get-wmiobject``` Cmdlet while **CMI objects** can likewise be queried bymeans of the ```get-cmiinstance``` Cmdlet. 
+
+---
 
 | Command | Results |
 | ------- | ------- |
-| `get-counter` |.|
+| `get-counter` | Used to queried a set of counters available on the OS.|
 | `get-wmiobject` |.|
-| `get-cmiinstance` |.|
+| `get-cmiinstance` | Used to access the **Common Information Model (CIM)** instances on the OS.|
+| `get-cmiclass` | Used to access the **Common Information Model (CIM)** class metadata on the OS.|
 | `get-eventlog` |.|
