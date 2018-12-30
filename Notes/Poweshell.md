@@ -350,6 +350,12 @@ get-eventlog -log system -newest 1000 | where-object eventID -eq '1074'
 
 The ```-log system``` specifies that the system log and not the applications log is to be queried for the 1000 most recent system events. The resultset is filtered by a where clause to only pick the   syset reboot events which are identified by its ID=1074.
 
+The output to the console from the previous query can be improved by providing some **formatting instructions**.
+
+```
+get-eventlog -log system -newest 1000 | where-object eventID -eq '1074' | format-table machinename, username, timegenerated -autosize
+```
+
 ---
 
 | Command | Results |
