@@ -248,7 +248,7 @@ get-counter "\Memory\% Committed Bytes in use"
 ```
 ---
 
-### Example 2 - accessing the **Common Information Model (CIM)** via get-cmiinstance and get-cmiclass
+### Example 2 - accessing the **Common Information Model (CIM)** via get-cmiinstance and get-cmiclass investigate the disks and volumes
 
 The **Windows OS component** can be queried to gather system-wide diagnostics. WMI is based on the **Common Information Model (CIM)** which is an open **standard** that defines how managed element in an IT environment are to be represented as a **common set of objetcs as well as the relationships between them**. CIM was introduced in **PowerShell vesrion 3.0 with Get-CimInstance**.
 
@@ -278,6 +278,77 @@ For example the following command brings back the list of logical volumes (disks
 ```
 get-wmiobject -Class Win32_logicaldisk
 ```
+
+---
+
+### Example 3 - accessing the **Common Information Model (CIM)** via get-cmiinstance and get-cmiclass investigate the BIOS
+
+In a similar fashion to what was done in the prvious example the steps below illustrate the investigative process once again.
+
+Find all theCIM classes taht have something to do with the BIOS.
+
+```
+get-cimclass *BIOS*
+```
+
+Find more info about one interesting candidate.
+
+```
+get-cimclass WIN32_BIOS | select -Property Description
+```
+
+Inspect the WMI object or the CIM instance to check its properties and their values.
+
+```
+get-wmiobject WIN32_BIOS
+get-ciminstance WIN32_BIOS
+```
+
+Pull out individual details about the system BIOS.
+
+```
+get-wmiobject WIN32_BIOS -Property Version
+get-wmiobject WIN32_BIOS | select -Property Version
+get-wmiobject WIN32_BIOS | select -Property SerialNumber
+get-wmiobject WIN32_BIOS | select -Property Version, SerialNumber
+...
+```
+
+---
+
+### Example 4 - inspect the system events in the event viewer
+
+System events are logged to the Event Viewer. We are interestd to know more about recent event on the machine butwhere to start?
+One of the most effective ways to start any investigation is to first explore whether there exist Cmdlets which can help to do wat we need to do. The ```get-command``` approach is the same used in **example 1**.
+
+Find out which Cmdlets are available on teh system that have anything to do with events. The query the Cmdlets for help to know more about what they are meant to accomplish until you find what fits your case.
+
+```
+get-command *event*
+gcm *event*
+
+...
+help Get-EventLog
+help Get-EventLog -examples
+...
+```
+
+For example in this case we would like to use one of the examples for Get-EventLog as follows.
+
+```
+get-eventlog -log application -source outlook | where {$_.eventID -eq 34}
+
+This command gets events in the Application event log where the source is Outlook and the event ID is 34. Even though Get-EventLog does not have an EventID parameter, you can use the Where-Object cmdlet to select events based on the value of any event property.
+
+```
+
+In our case with the help of the example above among the other we can conjure up something like the following.
+
+```
+get-eventlog -log system -newest 1000 | where-object eventID -eq '1074'
+```
+
+The ```-log system``` specifies that the system log and not the applications log is to be queried for the 1000 most recent system events. The resultset is filtered by a where clause to only pick the   syset reboot events which are identified by its ID=1074.
 
 ---
 
