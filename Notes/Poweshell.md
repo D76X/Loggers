@@ -179,6 +179,34 @@ sorts all the cmdlets by their Noun property and formats the output into a table
 
 ## Typical Diagnostic Process
 
+In the following a number of typical diagnostic scenarios are presented with worked examples to illustrate the typical investigative process and the description of set of commands that are most likely to be of use in each schenario.
+
+1. System Diagnostic
+2. Network Diagnostice
+3. Registry Information
+4. Files and Printers
+5. Active Directory
+
+---
+
+### System Diagnostics
+
+Inspection and retrieval of reports on the status and history of the system such as the installed hardware components i.e. disks and volumes or BIOS or events storedin the system event log.
+
+#### Summary Table
+
+| Command | Results |
+| ------- | ------- |
+| `get-counter` | Used to queried a set of counters available on the OS.|
+| `get-cmiclass` | Used to access the **Common Information Model (CIM)** class metadata on the OS.|
+| `get-wmiobject` | Used to access the **Windows Management Instrumentation (WMI)** objetcs.|
+| `get-cmiinstance` | Used to access the **Common Information Model (CIM)** instances on the OS.|
+| `get-eventlog` | Used to access the System EventLog.|
+
+---
+
+### General Strategy 
+
 A good **general strategy for diagnostic** of problems on a system by means of PowerShell is based on three steps and important Comdlets.
 
 1. Get-Command >> research the commands that address a user case.
@@ -186,6 +214,8 @@ A good **general strategy for diagnostic** of problems on a system by means of P
 2. Help (-example) >> investigate the usage of the relevant commands. 
 
 3. Get-Member >> finds out which members are available on a the objects returned as output of a command in order to project it into a meaningful and relevant subset.
+
+---
 
 ### Querying for System resources via get-command
 
@@ -358,10 +388,230 @@ get-eventlog -log system -newest 1000 | where-object eventID -eq '1074' | format
 
 ---
 
+### Networking Diagnostics
+
+One of the most basics ways to diagnose Network issues on a system is to make use of the `Ipconfig` and `Ipconfig /all` commands. However, PowerShell offer a large set of Cmdlets that allow to go beyond hwat is possible with `Ipconfig` alone.
+
+#### Summary Table
+
+As usual in order to find Poershell cmdltes that are in some way related to IP addresses one simple way is to make use of something like the following.
+
+```
+> gcm *IP*
+> get-command *IP*
+```
+
+The same principle applies also for other networking related ares such as DNS,
+
+```
+> gcm *dns*
+> get-command *dns*
+```
+
+Once the set of commands that may be of interest is identified it is possible to gather more information on each by querying the corresponding help.
+
+```
+> help het-NetIpAddress
+```
+
+In the following table the most useful and commonly used cmdlets related to IP and DNS are presented.
+
 | Command | Results |
 | ------- | ------- |
-| `get-counter` | Used to queried a set of counters available on the OS.|
-| `get-cmiclass` | Used to access the **Common Information Model (CIM)** class metadata on the OS.|
-| `get-wmiobject` | Used to access the **Windows Management Instrumentation (WMI)** objetcs.|
-| `get-cmiinstance` | Used to access the **Common Information Model (CIM)** instances on the OS.|
-| `get-eventlog` | .|
+|`Ipconfig`| Shows the Network Interface data.|
+|`Ipconfig /all`| Shows the Network Interface data in detail.|
+| `get-NetIpAddress` | Get complete info about network interfaces on the system.|
+| `get-NetIpAddressConfiguration` | Produces info very similar to **ipconfig** This is normally more useful than get-NetIpAddress.|
+|`Get-DNSClient`| Produces a table of the Domain Name Services registered on the system.|
+|`Get-DNSClientServerAddress`| As above but with teh addition of the DNS address which helps in diagnosing whether a client has the correct DNS registered on their system.|
+|`Get-DnsClientCache`| This command is useful when a user's browser seems unable to reach the right wesite. The wrong or stale address might have cached by the DNS service.|
+
+---
+
+Testing for Network connectivity can be done by simply using the **ping** command from command line which sends an **ICMP (Internet Control Message Protocol) packet** to the remote address and waits for a reply to compile some useful statistics. However, this command is only useful to verify that a specific IP address can be reached by the user's system as in this case it returns the **TTL (Time To Live)** of the packets. In case of failure **ping** is not so useful as it does not reveal where a packet has timeout along the path. This additional info is available on **tracert** **(short for trace route)**.
+
+```
+> ping 4.2.2.1
+> tracert 4.2.2.1
+```
+
+| Command | Results |
+| ------- | ------- |
+|`Test-NetConnection`| Similar to the **ping** command.|
+|`Test-NetConnection x.x.x.x -TraceRoute`| similar to the **tracert** cmd.|
+|`Test-NetConnection -CommonTcpPort HTTP -ComputerName pluralsight.com`| Tests whether port 80 is open to the given address.|
+|``| .|
+|``| .|
+|``| .|
+
+---
+
+### SMB (Server Message Block)
+
+In the following table the most useful and commonly used cmdlets related **SMB (Server Message Block) mappings** are presented. **SMB** is a network protocol used by Windows-based computers that allows systems within the same network to share files. t allows computers connected to the same network or domain to access files from other local computers as easily as if they were on the computer's local hard drive.Not only does SMB allow computers to share files, but it also enables computers to share printers and even serial ports from other computers within the network. Though SMB was originally developed for Windows, it can also be used by other platforms, including **Unix and Mac OS X**, using a software implementation called **Samba**. By using **Samba** instructions, **Mac, Windows, and Unix** computers can share the same files, folders, and printers. 
+
+| Command | Results |
+| ------- | ------- |
+|`Get-SMBMapping`| Get all the network drive mappings.|
+|`New-SMbmAPPING`| It's used to create a new network drive mapping.|
+|``| .|
+
+
+---
+
+## Remoting with Powershell
+
+Remoting is the act of querying or sending instructions to a computer node. This applies in general whether the node is remote or the local node that is the local 
+computer.
+
+**WinRM is the Windows Remote Management Service** that is installed with the Windows OS starting from Windows 8, this service is not started by default. **WinRM** is 
+responsible for maintaining connections between computer nodes. For **WinRM** to work the nodes **must enable listeners** which Powershell can use to query the node.
+Communication with **WinRM** to the available listeners uses **WS-MAN protocol** which is based on **HTTP**. The communication channel canm also be secured over **HTTPS**.
+
+### How to enable remoting into a computer node with Powwershell
+
+In order for a user to be able to remote into computer node with Powershell
+they **must have appropriate permission level**. The **easiest way** to grant 
+a user sufficient permission level to remoting into the node is to **grant admin rights** on the machine to such user. Clearly, there are also more granular and 
+sofisticated ways to accomplish this.
+
+### DCOM used 
+
+Some old version of Powershell do not have **CMI** commands. In these case the 
+connection to the copmuter nodes relies on the old technology **DCOM**.
+
+Some basic commands
+
+| Command | Results |
+| ------- | ------- |
+|`Hostname`| Getes the name of the local computer node.|
+|`Get-Service -computername WIN-DKV1U09FSM4`| Gets all the services running on the specified node.|
+|`Enter-PSSession -computername WIN-DKV1U09FSM4`| Connect to the given computer node with a Powershell session.|
+|``| .|
+
+---
+
+### Enabling PSRemoting 
+
+A command such as `Enter-PSSession -computername WIN-DKV1U09FSM4` may fail when the user executing it does not have the permission to execute the command or the target 
+computer node has not yet enabled **WinRM and a listener**. This can be accomplish on
+the target computer node with the Cmdlet ```Enable-PSRemoting``` **which must be executed by a user with sufficient permission level i.e. a user of the admin user group**. However, it might be more complicated than just the simple act of running 
+the ```Enable-PSRemoting``` command as **it is necessary that the computer node is 
+configured with a PRIVATE connection type for this command to work.**
+
+### Connection Types - what does it mean?
+
+Windows provide different connection type profiles (or Network Locations) each with different levels of restrictions on what connections can be granted to the local computer on the network.
+
+**These types are confusing.** You are perhaps familiar with the message presented the first time you logon to a machine asking you if you would like the computer to be discoverable on the internet. If you choose **no**, the network interface is given a **public internet connection profile**. If you choose **yes** then it is **private**. The confusion is that **public does not mean publicly accessible** quite the opposite! 
+
+### Public network locations
+
+**<ins>Public network</ins> locations have Network Discovery <ins>turned off</ins>  and restrict your firewall for some applications**. You **cannot** create or join Homegroups with public networs. **WinRM firewall exception rules also cannot be enabled on a public network**. Your network location **must** **<ins>be private in order for other machines to make a WinRM connection to the computer</ins>**.
+
+### Domain Networks
+
+If your computer is on a domain, that is an entirely different network location type. On a domain network, the accessibility of the machine is governed by your domain policies. **This network location type is automatically chosen if your machine is part of an Active Directory domain**.
+
+### Working around Public network restrictions on Windows 8 and up
+
+Refs
+
+- [Fixing - WinRM Firewall exception rule not working when Internet Connection Type is set to Public](http://www.hurryupandwait.io/blog/fixing-winrm-firewall-exception-rule-not-working-when-internet-connection-type-is-set-to-public)  
+
+- [Cannot create remote powershell session after Enable-PSRemoting](https://stackoverflow.com/questions/16062033/cannot-create-remote-powershell-session-after-enable-psremoting)  
+- [How to get current username in Windows Powershell?](https://stackoverflow.com/questions/2085744/how-to-get-current-username-in-windows-powershell) 
+
+When enabling WinRM, client SKUs of windows (8, 8.1, 10) expose an additional setting that allow the machine to be discoverable over WinRM publicly but only on the same subnet. By using the -SkipNetworkProfileCheck switch of Enable-PSRemoting or Set-WSManQuickConfig you can still allow connections to your computer but those connections must come from other machines on the same subnet. So this can work for local VMs but will still be restrictive for cloud based VMs.
+
+```
+Enable-PSRemoting -SkipNetworkProfileCheck
+```
+
+The following are the bits that are required to execute the ```Enter-PSSession``` successfully after ```Enable-PSRemoting``` and with a user that have sufficient permission suchas a user in the admin group. Note the ```$env:UserName,$env:UserDomain,$env:ComputerName``` which are used to extract the information relative to the session current user, their domain and the name of the computer node.
+
+```
+PS C:\Windows\system32> $env:UserName
+david
+
+PS C:\Windows\system32> $env:UserDomain
+WIN-DKV1U09FSM4
+
+PS C:\Windows\system32> $env:ComputerName
+WIN-DKV1U09FSM4
+
+PS C:\Windows\system32> Enter-PSSession -ComputerName WIN-DKV1U09FSM4 -Credential WIN-DKV1U09FSM4\david
+```
+
+You will know that a PS session has been successfully open when the propmpt changes as in the example below.
+
+```
+[WIN-DKV1U09FSM4]: PS C:\Users\david\Documents>
+```
+
+###  Exit a WinRM Remote session
+
+To exit a WinRM session just type ```exit``` and the Powershell prompt return to the normal Powershell session that is not remote that is characterused by the absence of the **PS** indicator. 
+
+### Changing the Network Location
+
+#### Refs
+
+- [Fixing - WinRM Firewall exception rule not working when Internet Connection Type is set to Public](http://www.hurryupandwait.io/blog/fixing-winrm-firewall-exception-rule-not-working-when-internet-connection-type-is-set-to-public)  
+
+| Command | Results |
+| ------- | ------- |
+|`help Enable-PSRemoting -full`| Get all the network drive mappings.|
+|`Get-NetConnectionProfile`| Shows the network location of all network interfaces.|
+|`Set-NetConnectionProfile`| Change the location type.|
+|`Set-NetConnectionProfile -InterfaceAlias Ethernet -NetworkCategory Public`| .|
+|`Get-NetConnectionProfile | Set-NetConnectionProfile -NetworkCategory Private`| Changes all network interfaces are set to a particular location.|
+|`Enable-PSRemoting`| Starts the **WinRM listener** and **configures the Windows Firewall for remoting**.|
+|`Enable-PSRemoting -SkipNetworkProfileCheck`| Starts the **WinRM listener** and **configures the Windows Firewall for remoting** for computer nodes on a public network but only on the same subnet.|
+|`Enter-PSSession -computername WIN-DKV1U09FSM4`| Connect to the given computer node with a Powershell session.|
+|`Get-PSSessionConfiguration`| .|
+|`Set-PSSession`| Access Powershell remoting.|
+|`Set-WindowsFirewallRule`| .|
+|``| .|
+|``| .|
+|``| .|
+|``| .|
+|``| .|
+
+
+---
+
+## Running Powershell Scripts (*.ps1)
+
+In order to be able to run Powershell scrips two things must be done.
+
+1. Invoke the script from a powershell session as in **.\myPowershellScrip.ps1**, here the ``.\`` is important to Powershell to find the script in the folder.
+
+2. **Set the execution policy on the machine to allow the execution of Powershell scripts.** By default the **execution policy** is set to a level of **Restricted** which must be elevated. Other execution polices are ```AllSigned, RemoteSigned, Unrestricted, Bypass, Undefined``` refer to the following.
+
+| Execution Policy | Meaning |
+| ---------------- | ------- |
+|`AllSigned`| Scripts must always be signed with a known certificate.|
+|`RemoteSigned`| Scripts downloaded form teh internet can be run only if signed.|
+|`Unrestricted`| All Scripts are allowed to run but unsigned scripts promt a confimation dialog.|
+|`Bypass`| All scripts can be run andscripts that are not signed do not promt confimration dialogs.|
+|`Undefined`| Removes the currently assigned EP from the session's scope which is then set to the **Group Policy Scope (GPS)**.|
+|``| .|
+|``| .|
+
+---
+
+The following table illustrates commands related to setting or querying the Execution Policy applied to a PowerShell session. 
+
+| Command | Results |
+| ------- | ------- |
+|`help SetExecutionPolicy -full`| Get all the network drive mappings.|
+|`Set-ExecutionPolicy Unrestricted`|The level granted to the Execution Policy can be altered.|
+|`Get-ExecutionPolicy`| Yo test for the session's EP.|
+|``| .|
+|``| .|
+|``| .|
+|``| .|
+|``| .|
+
+---
