@@ -1,7 +1,7 @@
 ﻿#For this script the following requirement must be met.
 
 #-1 WinRM must be enabled on the local or remote computer node when the script is to be run
-#-2 The user that run the script in a Powershell session must have sufficient permission
+#-2 The user that runs the script in a Powershell session must have sufficient permission
 #   to be able to open a WinRM PS Remoting session.
 
 $YourComputerName = Hostname

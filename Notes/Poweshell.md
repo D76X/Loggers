@@ -551,7 +551,9 @@ You will know that a PS session has been successfully open when the propmpt chan
 
 ###  Exit a WinRM Remote session
 
-To exit a WinRM session just type ```exit``` and the Powershell prompt return to the normal Powershell session that is not remote that is characterused by the absence of the **PS** indicator. 
+To exit a WinRM session just type ```exit``` and the Powershell prompt return to the normal Powershell session that is not remote that is characterused by the absence of the **PS** indicator.
+
+See also [Exit-PSSession](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/exit-pssession?view=powershell-6).
 
 ### Changing the Network Location
 
