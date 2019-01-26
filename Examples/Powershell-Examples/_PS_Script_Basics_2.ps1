@@ -1,4 +1,43 @@
-﻿# 1-settings variable
+﻿<#
+
+.SYNOPSIS
+Short description.
+This is a simple Powershell script to explain how to create a script
+
+.DESCRIPTION
+Long description.
+This script illustrates
+# 1-settings variable
+# 2-creating paramteters
+# 3-if & foreach constructs
+# 4-member enumeration
+
+.EXAMPLE
+Examples of how to use this script.
+
+.EXAMPLE
+./_Ps_Script_Basics_1.ps1
+
+.NOTES
+Put some notes here.
+
+.LINK
+http://kevinpelgrims.wordpress.com
+
+#>
+
+#----------------------------
+#Script name
+#Creator
+#Date
+#Updated
+#Refs
+#Parameters
+#Varibles
+#Remarks
+#----------------------------
+
+# 1-settings variable
 # 2-creating paramteters
 # 3-if & foreach constructs
 # 4-member enumeration
