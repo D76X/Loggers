@@ -610,10 +610,47 @@ The following table illustrates commands related to setting or querying the Exec
 |`help SetExecutionPolicy -full`| Get all the network drive mappings.|
 |`Set-ExecutionPolicy Unrestricted`|The level granted to the Execution Policy can be altered.|
 |`Get-ExecutionPolicy`| Yo test for the session's EP.|
-|``| .|
-|``| .|
+
+---
+
+## Gathering Registry Information
+
+| Command | Results |
+| ------- | ------- |
+|`help Get-PSProvider`| Gets help on the command.|
+|`Get-PSProvider`| Allows to see the contents of the System Registry as if it were a file system.|
+|`Get-Item`| Gets a key in the registry.|
+|`Set-Item`| Sets a key in the registry.|
+|`Get-ItemProperty`| Gets the value of a key in the registry.|
+|`Set-Item-Property`| Sets the value of a key in the registry.|
+
+---
+
+## Working with Active Directory 
+
+Active Directory **(Active Directory Doman Services ADDS)** is a **directory service** responsible for **centrally** organizing, managing, administering and location resources on a network.
+
+**Resources** may be **files, folders, printers, users and groups, computers and much more.** It is customary to refer to **resources** as **objects8**. 
+
+A **domain** provides an **administrative boundary** to centrally manage these resources.
+
+It's installed on Windows Server. 
+
+| Command | Results |
+| ------- | ------- |
+|`Get-ADUser`| .|
+|`Search-ADAccount`| .|
+|`Get-ADComputer`| .|
+|`Get-ADGroup`| .|
+|`Get-ADGroupMemmber`| .|
+|`Add-ADGroupMember`| .|
 |``| .|
 |``| .|
 |``| .|
 
 ---
+
+## Working with Files and Printers
+
+---
+

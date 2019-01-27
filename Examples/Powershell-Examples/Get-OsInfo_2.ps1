@@ -108,4 +108,4 @@ $mydomain = $env:userdomain
 
 # Active Directory
 #UserInfo ???
-(Get-ADUser)
+(Get-AdUse)
