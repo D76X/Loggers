@@ -11,6 +11,9 @@
 		},
 		{
 			"path": "Examples\\MSBuild-Examples"
+		},
+		{
+			"path": "C:\\GitHub\\Study-Notes-AZ"
 		}
 	],
 	"settings": {}
