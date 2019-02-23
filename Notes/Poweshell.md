@@ -628,13 +628,19 @@ The following table illustrates commands related to setting or querying the Exec
 
 ## Working with Active Directory 
 
-Active Directory **(Active Directory Doman Services ADDS)** is a **directory service** responsible for **centrally** organizing, managing, administering and location resources on a network.
+Active Directory **(Active Directory Domain Services ADDS)** is a **directory service** responsible for **centrally** organizing, managing, administering and location resources on a network.
 
 **Resources** may be **files, folders, printers, users and groups, computers and much more.** It is customary to refer to **resources** as **objects8**. 
 
 A **domain** provides an **administrative boundary** to centrally manage these resources.
 
-It's installed on Windows Server. 
+It's installed on **Windows Server** and **[Active Directory Administrative Center](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center)** is the IDE tool used to interact with **ADDS** without the need to issue Powershell commands. 
+
+Ifypu are trying to use **Active Directory on Windows 10** there might be a few more steps.
+
+- [The term 'Get-ADUser' is not recognized as the name of a cmdlet](https://stackoverflow.com/questions/17548523/the-term-get-aduser-is-not-recognized-as-the-name-of-a-cmdlet)  
+
+- [How To Install Remote Server Administration Tools for Windows 10](https://www.youtube.com/watch?v=eBdEoczETDY)  
 
 | Command | Results |
 | ------- | ------- |

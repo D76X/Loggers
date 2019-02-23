@@ -1,36 +1,61 @@
-﻿# The Active Directory Domain Sevice might not be installed by default on your Windoes OS. 
+﻿# The Active Directory Domain Sevice might not be installed by default on your Windwos OS. 
+
+#------------------------------------------------------------------
+# For example 
 # The term 'Get-ADUser' is not recognized as the name of a cmdlet
 
-# Even when the ADDS is installed you might still need to import the 
-# corresponding Powershell module.
-# https://stackoverflow.com/questions/17548523/the-term-get-aduser-is-not-recognized-as-the-name-of-a-cmdlet
-import-module activedirectory
+# This is the case when the **Active Directive Module for PS** has
+# noy yet been installed on your OS which might be the case on the
+# Windows 10 OS.
+#------------------------------------------------------------------
 
-# To check whether the ADDS Powershell Module is already istalled.
-# check whather a module exists on your system
+# The ADDS services are a set of applications that you find installed 
+# on Windows 10 as **Windows Administrative Tools**. Check these tools
+# from the start menu to see whether the ADDS parts are present.
+# If this is not the case you must install then as a separate component. 
+
+# https://www.microsoft.com/en-us/download/details.aspx?id=45520
+
+#------------------------------------------------------------------
+
+# Alternatively, to check whether the ADDS Powershell Module is already 
+# istalled you may use the cmdlet below.
+
 get-module -listavailable
 
 # ------------------------------------------------------------
-# 1-Install the Active Directory PowerShell Module on Windows 10
-# 2-Turn on the RSAT services.
-# 3-Make sure that the ActiceDirectory Powershell module is installed.
 
-# https://blogs.technet.microsoft.com/ashleymcglone/2016/02/26/install-the-active-directory-powershell-module-on-windows-10/
-# https://social.technet.microsoft.com/Forums/en-US/35b8af8b-a266-495e-aca8-f7b4efd3b41c/powershell-install-active-directory-modules-on-windows-10-from-windows-2016-dc?forum=winserverpowershell
+# Even when the ADDS is installed you might still need to import the 
+# corresponding Powershell module. You can easily test whether this 
+# is necessary by typing 'Get-ADUser' in the ISE to see whether the 
+# commands are already installed. This should be the case if the module
+# is present in **Windows Administrative Tools**.
 
-# This is especially useful
-# https://stackoverflow.com/questions/38345129/install-active-directory-module-powershell-for-windows-10
+# If the module still needs to be install you can do so by executing
+# the cmdlet below as Admin.
 
-# A brief summary
-# Remote Server Administration Tools (RSAT) for Windows operating systems.
-# Remote Server Administration Tools (RSAT) enables IT administrators to remotely manage roles and features.
-# You cannot install RSAT on computers that are running Home or Standard editions of Windows.
-# You can install RSAT only on Professional or Enterprise editions of the Windows client operating system. 
-# The tools are not automatically available after you download and install RSAT. You must enable the tools that you want to use by using Control Panel.
-# click Start, click Control Panel, click Programs and Features, and then click Turn Windows features on or off. 
+# https://stackoverflow.com/questions/17548523/the-term-get-aduser-is-not-recognized-as-the-name-of-a-cmdlet
+import-module activedirectory
 
-# https://support.microsoft.com/en-us/help/2693643/remote-server-administration-tools-rsat-for-windows-operating-systems
+# you might also want to update the module's help on the local PC.
+Update-Help -Module activedirectory
 
-# Remote Server Administration Tools for Windows 10 download.
-# https://www.microsoft.com/en-us/download/details.aspx?id=45520
 # ------------------------------------------------------------
+
+
+# 1-Install the Active Directory PowerShell Module on Windows 10
+# 2-Turn on teh Windows Feature **Active Directory Lightweight Directory Services**
+# 3-Turn on the Windows Feature **RAS Connection Manager Administrator (CMAK)** .
+# 4-Make sure that the ActiceDirectory Powershell module is installed.
+
+# https://www.youtube.com/watch?v=eBdEoczETDY
+
+# ------------------------------------------------------------
+
+# if all has been correctly setup you should be able to run the following cmdlets.
+# as usual to know more about the available cmdlets and their usage
+help Get-ADUser -examples
+
+# http://www.curtisjohnstone.com/?tag=powershell-ad-unable-to-find-a-default-server-with-active-directory-web-service-running
+# https://www.petenetlive.com/KB/Article/0001275
+Get-ADUser -Identity davidespano -Properties *
